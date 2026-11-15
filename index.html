@@ -6368,6 +6368,13 @@
          in a quoted string a lost escape once corrupted this script's pattern
          and it failed to parse in every single game. */
       var NAV_INJECT = '<scr' + 'ipt>document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[href]"):null;if(!a)return;var h=a.getAttribute("href")||"";if(h.indexOf("../")!==0)return;var slug=h.slice(3);if(slug.charAt(slug.length-1)==="/")slug=slug.slice(0,-1);if(!/^[a-z0-9-]+$/.test(slug))return;e.preventDefault();try{parent.postMessage({hootGameNav:slug},"*");}catch(_){}});</scr' + 'ipt>';
+      /* Fix pass: the scenery (.decor buttons — sun, clouds, trees, butterflies)
+         sits under the HUD/play layers, so a tap on the picture landed on the
+         empty layer above it and nothing happened. Everything tappable in these
+         games is a real button, so a tap that hits no button but has scenery
+         underneath is forwarded to the scenery. Same tap-guard shape as the
+         3e49 Find It! magnifier fix. No regex escapes on purpose (see above). */
+      var DECOR_INJECT = '<scr' + 'ipt>(function(){var sx=0,sy=0,down=0,dt=null;function inter(el){return !!(el&&el.closest&&el.closest("button,a,input,select,textarea,[role=button]"));}document.addEventListener("pointerdown",function(e){sx=e.clientX;sy=e.clientY;down=1;dt=e.target;},true);document.addEventListener("pointerup",function(e){if(!down)return;down=0;if(Math.abs(e.clientX-sx)+Math.abs(e.clientY-sy)>10)return;if(inter(e.target)||inter(dt))return;if(e.target&&e.target.closest&&e.target.closest(".decor"))return;if(!document.elementsFromPoint)return;var st=document.elementsFromPoint(e.clientX,e.clientY);for(var i=0;i<st.length;i++){var d=st[i].closest?st[i].closest(".decor"):null;if(d){if(getComputedStyle(d).pointerEvents==="none")return;d.click();return;}}},true);})();</scr' + 'ipt>';
       /* Fit-to-player, injected with the nav script into every opened game:
          a page-style game (one .wrap column) taller than the player viewport
          is scaled down — aspect kept, never up — until the whole game,
@@ -6452,8 +6459,8 @@
            shape cards, so a tap on the circle or triangle rustled the tree instead. */
         if(key === "shapes") html = html.replace("</body>", function(){ return '<style id="hw-shapesfit">@media (max-width:600px){.tree{display:none!important}}</style></body>'; });
         if(key === "band") html = html.replace("</body>", function(){ return '<style id="hw-bandfit">@media (max-height:800px){#hootFig{width:clamp(78px,13.5vh,124px)!important}#hootStage{margin-top:0!important}#podium{height:14px!important}.row-label{margin-top:3px!important}#actionRow{margin-top:6px!important}}@media (max-width:480px){#actionRow{flex-wrap:nowrap!important;gap:6px!important;padding:0 6px}#playTuneBtn,#listenBtn{font-size:14.5px!important;padding:10px 11px!important;white-space:nowrap}}@media (max-height:680px){.row-label{display:none!important}#hootFig{width:clamp(60px,11vh,90px)!important}.pad svg{max-height:52px!important}}@media (max-height:600px){#hootStage{display:none!important}}#scene{overflow-y:auto}</style></body>'; });
-        if(html.indexOf("</body>") > -1) html = html.replace("</body>", function(){ return TEXT_INJECT + NAV_INJECT + FIT_INJECT + "</body>"; });
-        else html += TEXT_INJECT + NAV_INJECT + FIT_INJECT;
+        if(html.indexOf("</body>") > -1) html = html.replace("</body>", function(){ return TEXT_INJECT + NAV_INJECT + FIT_INJECT + DECOR_INJECT + "</body>"; });
+        else html += TEXT_INJECT + NAV_INJECT + FIT_INJECT + DECOR_INJECT;
         /* srcdoc documents have a base of about:srcdoc. Relative clip
            paths and leftover href="data:," icons throw WebKit
            "The string did not match the expected pattern." Point the
