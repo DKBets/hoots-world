@@ -1,0 +1,1656 @@
+/* Hoot's World layout preview 2 — v63 Little Learners SCREEN STRUCTURE.
+   Token: hw-ll-preview3e. Game/tutor/lesson internals are unchanged. */
+@font-face{font-family:Fredoka;src:url(fonts/fredoka.woff2) format("woff2");font-weight:300 700;font-display:swap}
+
+:root{
+  --bg:#FFF6E0;--ink:#1F2133;--kid:#C3185B;--mut:#555B66;--r:28px;
+  --ease:cubic-bezier(.34,1.56,.64,1);
+  --banner:48px;--ll-header:58px;
+  --ll-tabs-offset:10px;
+  --ll-tabs-btn:72px;
+  --ll-tabs-inner:12px;
+  --ll-tabs-lift:8px;
+  --ll-tabs-gap:24px;
+  --ll-tabbar-h:calc(var(--ll-tabs-offset) + env(safe-area-inset-bottom,0px) + var(--ll-tabs-inner) + var(--ll-tabs-btn) + var(--ll-tabs-lift));
+  --ll-tabbar-clear:calc(var(--ll-tabbar-h) + var(--ll-tabs-gap));
+}
+
+html{-webkit-text-size-adjust:100%;scrollbar-width:none}
+html::-webkit-scrollbar,body::-webkit-scrollbar{width:0;height:0}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+
+/* ---- Preview banner: always on top, overlays start BELOW it ---- */
+#preview-banner{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  box-sizing:border-box;
+  height:calc(var(--banner) + env(safe-area-inset-top,0px));
+  min-height:var(--banner);
+  padding:0 14px;padding-top:env(safe-area-inset-top,0px);
+  display:flex;align-items:center;justify-content:center;
+  background:#1F2133;color:#fff;text-align:center;
+  font-family:Fredoka,system-ui,sans-serif;font-size:15px;font-weight:600;line-height:1.3;
+}
+
+.ll-shell-header{
+  position:fixed;
+  top:calc(var(--banner) + env(safe-area-inset-top,0px));
+  left:0;right:0;z-index:50;
+  background:linear-gradient(135deg,var(--kid),color-mix(in srgb,var(--kid) 60%,#FFC94D));
+  color:#fff;
+  padding:12px max(20px,env(safe-area-inset-right)) 14px max(20px,env(safe-area-inset-left));
+  border-radius:0 0 30px 30px;
+  box-shadow:0 6px 0 #0000001a;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.ll-shell-header h1{
+  margin:0;font-size:26px;font-weight:700;text-shadow:0 2px 0 #0003;
+  font-family:Fredoka,system-ui,sans-serif;color:#fff;
+}
+.ll-shell-header .stars{
+  background:#fff;color:#8A5A00;border-radius:30px;padding:6px 16px;
+  font-weight:700;font-size:20px;box-shadow:0 3px 0 #0002;
+}
+
+/* Hidden until a profile is picked */
+#ll-app,#ll-tabs{display:none}
+body.ll-shell-on #ll-app{display:block}
+body.ll-shell-on #ll-tabs{display:flex}
+body.ll-shell-on{
+  font-family:Fredoka,"Arial Rounded MT Bold",system-ui,sans-serif !important;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 8% 12%,#FFE29A 0 70px,transparent 71px),
+    radial-gradient(circle at 94% 26%,#BDE0FE 0 110px,transparent 111px),
+    radial-gradient(circle at 15% 78%,#FFC8DD 0 90px,transparent 91px),
+    var(--bg) !important;
+  padding-top:calc(var(--banner) + var(--ll-header) + env(safe-area-inset-top,0px));
+  padding-bottom:var(--ll-tabbar-clear) !important;
+  scroll-padding-bottom:var(--ll-tabbar-clear);
+}
+
+/* Hide Muse chrome once the v63 shell is on */
+body.ll-shell-on #main-nav,
+body.ll-shell-on #home-start,
+body.ll-shell-on #welcome,
+body.ll-shell-on #hoot-host,
+body.ll-shell-on #hoot-dock,
+body.ll-shell-on #install-card,
+body.ll-shell-on .welcome-jump,
+body.ll-shell-on #fresh-ideas,
+body.ll-shell-on body.welcome-open,
+body.ll-shell-on #profile-gate{display:none !important}
+body.ll-shell-on.welcome-open{overflow:auto}
+body.ll-shell-on #daily,
+body.ll-shell-on #montessori,
+body.ll-shell-on #montessori-shelf,
+body.ll-shell-on #game-library,
+body.ll-shell-on #roadmap,
+body.ll-shell-on #ages,
+body.ll-shell-on .learn-head,
+body.ll-shell-on .panel,
+body.ll-shell-on .growth,
+body.ll-shell-on #adv-wrap,
+body.ll-shell-on .curr{display:none !important}
+body.ll-shell-on footer{display:none !important}
+
+/* Show Muse sections only when a tab explicitly hosts them */
+body.ll-shell-on.ll-tab-days #roadmap{display:block !important;max-width:980px;margin:0 auto;padding:0 8px 20px}
+body.ll-shell-on.ll-tab-learn.ll-overlay-open #panel-little,
+body.ll-shell-on.ll-tutor-open #panel-little,
+body.ll-shell-on.ll-tutor-open #panel-early,
+body.ll-shell-on.ll-tutor-open #panel-teen,
+body.ll-shell-on.ll-tutor-open #panel-quest,
+body.ll-shell-on.ll-tutor-open #panel-creator,
+body.ll-shell-on.ll-tutor-open .panel.active{display:block !important}
+
+#ll-app{max-width:980px;margin:0 auto;padding:14px max(14px,env(safe-area-inset-right)) 14px max(14px,env(safe-area-inset-left))}
+
+/* ---- v63 7-tab bar: no wrap, no clip, 44px+ ---- */
+#ll-tabs{
+  position:fixed;z-index:400;
+  bottom:calc(10px + env(safe-area-inset-bottom,0px));
+  left:max(10px,env(safe-area-inset-left,0px));
+  right:max(10px,env(safe-area-inset-right,0px));
+  max-width:720px;margin:0 auto;
+  display:flex;flex-wrap:nowrap;
+  background:#fffffff2;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-radius:32px;box-shadow:0 8px 24px #0002;padding:6px;
+  overflow:visible;
+}
+#ll-tabs button{
+  flex:1 1 0;min-width:0;min-height:72px;
+  border:0;background:none;font:inherit;color:var(--ink);
+  font-family:Fredoka,system-ui,sans-serif;
+  padding:6px 0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border-radius:26px;transition:transform .25s var(--ease),background .25s;
+  cursor:pointer;
+}
+#ll-tabs button .ic{font-size:26px;line-height:1}
+#ll-tabs button .lb{
+  font-size:11px;font-weight:600;max-width:100%;
+  white-space:normal;overflow:visible;text-overflow:unset;line-height:1.1;text-align:center;
+}
+#ll-tabs button.on{background:var(--kid);color:#fff;transform:translateY(-5px)}
+#ll-tabs button:active{transform:translateY(3px) scale(.98)}
+@media(max-width:430px){
+  :root{--ll-tabs-btn:68px}
+  #ll-tabs button{min-height:68px}
+  #ll-tabs button .ic{font-size:22px}
+  #ll-tabs button .lb{font-size:9.5px;white-space:normal}
+  .ll-shell-header h1{font-size:22px}
+}
+
+/* ---- v63 pieces ---- */
+.ll-kidbar{display:flex;flex-wrap:nowrap;align-items:center;gap:8px;overflow:visible;padding:4px 2px 6px}
+.ll-kidbar::-webkit-scrollbar{display:none}
+.ll-kidbar button{
+  font:inherit;font-weight:700;font-size:21px;color:var(--k,#C3185B);
+  border:4px solid transparent;border-radius:999px;padding:6px 22px 6px 6px;
+  background:#fff;display:flex;align-items:center;gap:8px;cursor:pointer;
+  white-space:nowrap;min-height:48px;min-width:44px;flex:0 0 auto;
+}
+.ll-kidbar .av{
+  font-size:38px;width:56px;height:56px;border-radius:50%;
+  display:inline-grid;place-items:center;background:color-mix(in srgb,var(--k,#ccc) 20%,white);flex:none;
+}
+.ll-kidbar button.on{border-color:var(--k)}
+
+.ll-card{background:#fff;border-radius:var(--r);padding:18px;margin:14px 0;box-shadow:0 6px 0 #0000000f,0 2px 14px #00000012}
+.ll-hero{display:flex;gap:16px;align-items:center;background:linear-gradient(135deg,#fff 40%,color-mix(in srgb,var(--k,#C3185B) 15%,white))}
+.ll-hero .big{
+  font-size:64px;width:96px;height:96px;border-radius:50%;
+  display:grid;place-items:center;background:linear-gradient(180deg,#fff,#FFE08A);
+  box-shadow:0 6px 0 rgba(0,0,0,.06);flex:none;overflow:hidden;
+}
+.ll-hero .big svg{width:84%;height:84%}
+.ll-hero .htxt{flex:1;min-width:0}
+.ll-hero h2{margin:0 0 6px;font-size:24px;font-weight:700}
+.ll-hero .hoot-line{margin:0 0 8px;color:var(--mut);font-weight:600;font-size:16px}
+.ll-prog{height:18px;background:#EEE;border-radius:9px;overflow:hidden;margin:6px 0}
+.ll-prog i{display:block;height:100%;background:linear-gradient(90deg,var(--kid),#F7B500);border-radius:9px}
+.ll-d4{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;column-gap:.5rem;
+  width:100%;margin:6px 0 0;padding:4px 8px;border:1px solid #D1D5DB;border-radius:14px;
+  font:inherit;font-size:14px;color:var(--ink);text-align:left;background:linear-gradient(90deg,#D1FAE5 var(--p,#fff),#fff var(--p,#fff));
+  min-height:44px;box-sizing:border-box;
+}
+.ll-d4 .tl{font-weight:700;white-space:nowrap}
+.ll-d4 .split{font-size:12.5px;color:#4B5563}
+
+.todoh-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:14px 4px 6px;flex-wrap:nowrap}
+.todoh-row .todoh{margin:0;font-size:1.25rem;min-width:0}
+.todoh-row .muted{color:var(--mut);font-weight:600}
+.ni-top{min-height:52px;padding:8px 18px;font-size:1.05rem;font-weight:800;white-space:nowrap;border-radius:30px;background:var(--kid);color:#fff;border:0;box-shadow:0 4px 12px #0002;font-family:inherit;cursor:pointer;flex:none}
+
+.ll-grid{display:grid;grid-template-columns:1fr;gap:0 14px}
+@media(min-width:700px){.ll-grid{grid-template-columns:1fr 1fr}}
+
+.ll-act{border-top:10px solid var(--dc,#C3185B);display:flex;flex-direction:column}
+.ll-act .row{display:flex;gap:12px;align-items:center}
+.ll-act .emo{font-size:52px;line-height:1;width:80px;height:80px;display:grid;place-items:center;border-radius:24px;background:color-mix(in srgb,var(--dc,#C3185B) 22%,white);flex:none}
+.ll-act .atxt{flex:1;min-width:0}
+.ll-act h3{margin:0;font-size:22px;line-height:1.2}
+.ll-tag{display:inline-block;font-size:14px;font-weight:600;padding:3px 10px;border-radius:12px;color:var(--ink);background:color-mix(in srgb,var(--c,#3A56D4) 25%,white);margin:4px 4px 0 0}
+.ll-chk{width:72px;height:72px;border-radius:50%;border:5px solid var(--dc,#C3185B);background:#fff;font-size:38px;font-weight:700;flex:none;box-shadow:0 5px 0 #00000026;color:#fff;cursor:pointer}
+.ll-act.done .ll-chk{background:#0A7E57;border-color:#0A7E57;color:#fff}
+.ll-act p{margin:10px 0;font-size:17px}
+.ll-btn{font:inherit;font-weight:700;color:var(--ink);min-height:60px;border-radius:22px;border:0;padding:12px 22px;font-size:20px;background:#EDF0F4;box-shadow:0 5px 0 #00000026;margin:6px 6px 6px 0;cursor:pointer}
+.ll-btn.pri{background:#C3185B;color:#fff}
+.ll-btn.ok{background:#0A7E57;color:#fff}
+.ll-btn.sm{min-height:48px;font-size:17px;padding:8px 16px}
+.ll-btn.wide{width:100%}
+.ll-btn:active{transform:translateY(3px) scale(.98);box-shadow:none}
+.ll-tw{display:inline-block;margin:8px 0;font-weight:700;min-height:44px;border-radius:22px;border:0;padding:8px 16px;background:#FFF1C9;color:#6B4A00;font-family:inherit;cursor:pointer}
+.ll-phbtns{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.ll-phbtns .ll-btn{margin:0}
+
+/* Games grid — v63 / B1 Hoot's Games cards */
+#gameGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(min-width:700px){#gameGrid{grid-template-columns:1fr 1fr 1fr}}
+#gameGrid .gcard,#learnGrid .wcard,.ll-pathcard{
+  background:#fff;border:0;border-radius:var(--r);padding:14px;min-height:96px;
+  box-shadow:0 6px 0 rgba(0,0,0,.06);text-align:left;font-weight:700;
+  display:flex;flex-direction:column;gap:4px;font-family:inherit;color:var(--ink);cursor:pointer;
+}
+#gameGrid .gcard small,#learnGrid .wcard small,.ll-pathcard small{color:var(--mut);font-weight:600}
+#learnGrid{display:grid;grid-template-columns:1fr;gap:12px;margin:0 0 8px}
+@media(min-width:700px){#learnGrid{grid-template-columns:1fr 1fr}}
+.ll-pathcard{min-height:120px;padding:16px 18px}
+.ll-pathcard .emo{
+  font-size:48px;line-height:1;width:80px;height:80px;display:grid;place-items:center;
+  border-radius:24px;background:linear-gradient(180deg,#fff,#D1FAE5);flex:none;
+  box-shadow:0 4px 0 rgba(0,0,0,.06);
+}
+.ll-pathcard b{font-size:22px;line-height:1.2;color:var(--ink)}
+.ll-pathcard small{font-size:16px}
+
+/* Overlay — sits BELOW the banner so Back/Close is never covered */
+#ll-overlay,#game-overlay{
+  position:fixed;left:0;right:0;bottom:0;
+  top:calc(var(--banner) + env(safe-area-inset-top,0px));
+  z-index:850;background:var(--bg);display:none;flex-direction:column;
+}
+body.game-open #game-overlay:not([hidden]),
+body.ll-overlay-open #ll-overlay:not([hidden]){display:flex !important}
+
+.ll-obar,.go-bar,body.ll-shell-on #game-overlay .go-bar{
+  flex:none;display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:8px 12px;background:#1F2133;color:#fff;min-height:52px;
+  font-family:Fredoka,system-ui,sans-serif;
+}
+body.ll-shell-on #game-overlay .go-note{display:none}
+body.ll-shell-on #game-overlay .go-title,
+.ll-obar h2,#ll-otitle{margin:0;font-size:18px;font-weight:700;color:#fff;flex:1;text-align:left}
+body.ll-shell-on #game-close,
+#ll-oclose{
+  flex:none;min-height:44px;min-width:72px;border:0;border-radius:22px;
+  background:#fff;color:var(--ink);font-weight:700;font-family:Fredoka,system-ui,sans-serif;
+  padding:8px 16px;cursor:pointer;box-shadow:none;
+}
+body.ll-shell-on #game-frame{flex:1;width:100%;border:0;background:#fff}
+#ll-obody{flex:1;overflow:auto;padding:0}
+
+/* Tutor: lesson is parked inside #ll-overlay, so header/tabs stay covered by the overlay itself */
+body.ll-overlay-open .ll-shell-header,
+body.ll-overlay-open #ll-tabs{pointer-events:none}
+
+/* Days: let the Muse map use the shell page width */
+body.ll-tab-days #ll-app{padding-left:0;padding-right:0}
+/* 3e59: children past the Little Explorers years get their own days list instead of the map */
+body.ll-shell-on.ll-tab-days.ll-days-own #roadmap{display:none !important}
+body.ll-tab-days.ll-days-own #ll-app{padding-left:max(14px,env(safe-area-inset-left));padding-right:max(14px,env(safe-area-inset-right))}
+body.ll-tab-days #roadmap .hub-head{
+  background:#fff !important;color:var(--ink) !important;
+  border-radius:var(--r);margin:14px;padding:16px 18px;
+  box-shadow:0 6px 0 #0000000f;
+}
+body.ll-tab-days #roadmap .hub-head h2,
+body.ll-tab-days #roadmap .hub-head p{color:var(--ink) !important}
+
+/* Grown-ups hosts the parent panel inside the shell */
+body.ll-shell-on.ll-tab-grownups #panel-parent{
+  display:block !important;max-width:980px;margin:0 auto;padding:0 14px var(--ll-tabbar-clear);
+  background:transparent;
+}
+
+/* ---- Profile gate: v63 compact cards, cream page ---- */
+#profile-gate{
+  background:var(--bg) !important;z-index:880;
+  padding:calc(16px + env(safe-area-inset-top,0px) + 48px) 20px calc(24px + env(safe-area-inset-bottom,0px)) !important;
+  align-items:flex-start !important;overflow:auto;
+}
+#profile-gate .gate-panel{background:transparent !important;border:0 !important;box-shadow:none !important;max-width:560px;margin:0 auto;text-align:center;width:100%}
+#profile-gate .gate-panel h2{color:var(--kid) !important;font-size:30px !important;font-family:Fredoka,system-ui,sans-serif !important}
+#profile-gate .gate-hoot{
+  width:140px;height:140px;margin:8px auto 6px;border-radius:50%;
+  background:linear-gradient(180deg,#fff,#FFE08A);box-shadow:0 8px 0 rgba(0,0,0,.08);
+  display:grid;place-items:center;
+}
+#profile-gate .prof-cards{display:grid;gap:12px;grid-template-columns:1fr}
+#profile-gate .prof-card{
+  display:flex;flex-direction:row !important;align-items:center;gap:14px;text-align:left;
+  background:#fff !important;border:0 !important;border-radius:var(--r) !important;
+  padding:14px 16px !important;min-height:88px;
+  box-shadow:0 6px 0 rgba(0,0,0,.06) !important;width:100%;
+  font-family:Fredoka,system-ui,sans-serif !important;color:var(--ink) !important;
+}
+#profile-gate .prof-card .prof-face{width:64px;height:64px;flex:none}
+#profile-gate .prof-card-main,#profile-gate .prof-card b{color:var(--ink) !important;text-align:left}
+#sayHiLl{
+  min-height:88px;width:100%;font-size:24px;border-radius:28px;background:var(--kid);color:#fff;
+  box-shadow:0 8px 0 rgba(0,0,0,.12);margin:8px 0 18px;border:0;font-family:Fredoka,system-ui,sans-serif;font-weight:700;cursor:pointer;
+}
+#profile-gate-skip{margin-top:14px;min-height:44px;border:0;background:transparent;color:var(--mut);font-weight:700;font-family:Fredoka,system-ui,sans-serif}
+
+/* Hide header on the gate (banner stays) */
+body:has(#profile-gate:not([hidden])) .ll-shell-header{display:none}
+body:has(#profile-gate:not([hidden])):not(.ll-shell-on){padding-top:0}
+
+@media (max-height:500px){
+  :root{--ll-tabs-btn:56px}
+  .ll-shell-header{padding-top:8px;padding-bottom:8px}
+  .ll-shell-header h1{font-size:20px}
+  #ll-tabs button{min-height:56px}
+  .ll-hero .big{width:72px;height:72px;font-size:46px}
+}
+@media (max-width:500px){
+  #profile-gate{padding:calc(8px + env(safe-area-inset-top,0px) + 40px) 12px 12px !important}
+  #profile-gate .gate-panel h2{font-size:24px !important}
+  #profile-gate .gate-hoot{width:96px;height:96px}
+  #profile-gate .prof-card{min-height:72px;padding:8px 12px !important}
+  #sayHiLl{min-height:64px;font-size:20px}
+}
+
+/* Grown-ups: restyle Muse parent panel as v63 cards on cream, do not rewrite it */
+body.ll-tab-grownups #panel-parent,
+body.ll-tab-grownups #panel-parent .stage-parent{background:transparent;color:var(--ink)}
+body.ll-tab-grownups #panel-parent .stage-head,
+body.ll-tab-grownups #panel-parent .prof-settings,
+body.ll-tab-grownups #panel-parent .growth,
+body.ll-tab-grownups #panel-parent .curr,
+body.ll-tab-grownups #panel-parent section,
+body.ll-tab-grownups #panel-parent .card{
+  background:#fff;color:var(--ink);border-radius:var(--r);padding:16px 18px;margin:12px 0;
+  box-shadow:0 6px 0 #0000000f,0 2px 14px #00000012;
+}
+body.ll-tab-grownups #panel-parent h2,
+body.ll-tab-grownups #panel-parent h3,
+body.ll-tab-grownups #panel-parent p,
+body.ll-tab-grownups #panel-parent .sub{color:var(--ink)!important}
+body.ll-tab-grownups #panel-parent .kidchip{font-family:Fredoka,system-ui,sans-serif}
+
+/* Lesson / path parked in the overlay body — keep Muse tutor CSS, match shell contrast */
+#ll-obody{padding:12px 14px 24px;background:var(--bg)}
+#ll-obody .lsn,#ll-obody .ny-lsn{max-width:720px;margin:0 auto 16px;background:#fff;border-radius:var(--r);padding:16px;box-shadow:0 6px 0 #0000000f;color:var(--ink)}
+#ll-obody .ll-lesson-hidden{display:none!important}
+#ll-obody.ll-path-open .panel,
+#ll-obody .ll-path-host,
+#ll-obody .panel,
+#ll-obody #ny-creator-wrap{
+  display:block !important;
+  background:transparent !important;
+  color:var(--ink) !important;
+  max-width:720px;margin:0 auto;padding:0;
+  box-shadow:none;border:0;
+}
+/* Muse hides .curr under body.ll-shell-on; unhide it once parked in the overlay. */
+#ll-obody .curr,
+#ll-obody .panel .curr{display:block !important}
+#ll-obody .panel .curr,
+#ll-obody .stage-head,
+#ll-obody .learn-head,
+#ll-obody .lsn-intro,
+#ll-obody .lsn-progress,
+#ll-obody .lsn-top h4,
+#ll-obody .lsn-teach,
+#ll-obody .lsn-q,
+#ll-obody .lsn-fb,
+#ll-obody .lt-bubble,
+#ll-obody .tutor-hoot,
+#ll-obody p, #ll-obody h2, #ll-obody h3, #ll-obody h4{
+  color:var(--ink) !important;
+}
+#ll-obody .lsn-intro, #ll-obody .lsn-progress{
+  background:#fff;border-radius:18px;padding:12px 14px;margin:0 0 12px;
+  box-shadow:0 4px 0 #0000000a;
+}
+#ll-overlay[hidden]{display:none!important}
+/* When a path or lesson is parked, hide Muse's playground / voice-bar / extras
+   so the tutor is the first thing on screen and the shell stays consistent. */
+#ll-obody.ll-path-open .stage,
+#ll-obody.ll-path-open .voice-bar,
+#ll-obody.ll-path-open .play-strip,
+#ll-obody.ll-path-open .stickers,
+#ll-obody.ll-path-open .curr-cols,
+#ll-obody.ll-path-open .monti-box,
+#ll-obody.ll-path-open .curr-std{display:none!important}
+#ll-obody.ll-one-lesson .curr-head,
+#ll-obody.ll-one-lesson .lsn-intro,
+#ll-obody.ll-one-lesson .lsn-progress{display:none!important}
+#ll-obody.ll-one-lesson .curr::after{display:none!important;content:none!important}
+
+
+/* Days map on cream */
+body.ll-tab-days #roadmap{color:var(--ink)}
+body.ll-tab-days #roadmap h2,body.ll-tab-days #roadmap h3,body.ll-tab-days #roadmap p{color:inherit}
+
+/* Keep bottom tabs visible above page content, never clipped by overflow */
+html{overflow-x:hidden;overflow-y:hidden;height:100%}
+body.ll-shell-on{overflow-x:hidden}
+#ll-tabs{box-sizing:border-box}
+
+/* Game Close bar must sit BELOW the preview banner (Muse pins .go-bar at top:0) */
+body.ll-shell-on #game-overlay,
+body.game-open #game-overlay{
+  --go-bar-h:52px;
+  top:calc(var(--banner) + env(safe-area-inset-top,0px)) !important;
+  left:0 !important;right:0 !important;bottom:0 !important;
+  height:auto !important;
+  padding-top:52px !important;
+  z-index:850 !important;
+  background:#17263b;
+}
+body.ll-shell-on #game-overlay .go-bar,
+body.game-open #game-overlay .go-bar{
+  position:fixed !important;
+  top:calc(var(--banner) + env(safe-area-inset-top,0px)) !important;
+  left:0 !important;right:0 !important;
+  height:52px !important;
+  padding:8px 12px !important;
+  z-index:860 !important;
+  box-sizing:border-box;
+}
+body.ll-shell-on #game-overlay .go-title,
+body.ll-shell-on #game-overlay #game-title{display:block !important;color:#fff;font-weight:700}
+
+/* Compact v63-style profile cards */
+#profile-gate .gate-title-ll{
+  margin:0 0 4px;font-size:28px;font-weight:700;color:var(--kid);
+  font-family:Fredoka,system-ui,sans-serif;
+}
+#profile-gate .gate-panel > p{display:none}
+#profile-gate .prof-card .prof-play,
+#profile-gate .prof-card .prof-now,
+#profile-gate .prof-card .prof-counts{display:none !important}
+#profile-gate .prof-card .prof-face{width:56px;height:56px;flex:none;border-radius:50%}
+#profile-gate .prof-card b{font-size:22px;display:block}
+#profile-gate .prof-card small{display:block;color:var(--mut);font-weight:600;font-size:15px}
+#profile-gate .prof-card{min-height:80px}
+
+/* Days: start at the map, not leftover hub chrome */
+body.ll-tab-days #roadmap .rm-guide,
+body.ll-tab-days #hoot-host{display:none !important}
+
+
+/* Preview3: Close on the right; game cards are picture-first thumbnails */
+body.ll-shell-on #game-overlay .go-title,
+body.ll-shell-on #game-title{
+  order:1; flex:1 1 auto; text-align:left; margin-right:8px;
+}
+body.ll-shell-on #game-close{
+  order:2; margin-left:auto; flex:0 0 auto;
+}
+#ll-oclose{ margin-left:auto; }
+#gameGrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(132px, 1fr));
+  gap:12px;
+  padding:4px 0 16px;
+}
+#gameGrid .gcard{
+  display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+  text-align:center; gap:6px; padding:10px 8px 12px;
+  min-height:44px; min-width:44px; border-radius:16px;
+  border:3px solid #fff; box-shadow:0 4px 0 rgba(34,48,74,.1);
+  background:#fffdf6; cursor:pointer; font-family:Fredoka,system-ui,sans-serif;
+}
+#gameGrid .gthumb{
+  position:relative;
+  width:100%;
+  aspect-ratio:1 / 1;
+  height:auto;
+  border-radius:18px;
+  overflow:hidden;
+  display:block;
+  background:var(--k,#ffe08a);
+  box-shadow:0 3px 0 rgba(34,48,74,.12);
+  flex:none;
+}
+#gameGrid .gthumb img,
+.ll-act-game .gthumb img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  aspect-ratio:1 / 1;
+}
+#gameGrid .gbadge,
+.ll-act-game .gbadge{
+  position:absolute;right:6px;bottom:6px;
+  width:28px;height:28px;border-radius:50%;
+  background:#fff;box-shadow:0 2px 0 rgba(34,48,74,.15);
+  display:grid;place-items:center;
+  font-size:16px;line-height:1;pointer-events:none;
+}
+.ll-act-game .gthumb{
+  position:relative;
+  width:100%;
+  aspect-ratio:4 / 3;
+  border-radius:20px;
+  overflow:hidden;
+  display:block;
+  background:color-mix(in srgb,var(--dc,#C3185B) 22%,white);
+  margin:0 0 10px;
+  flex:none;
+}
+#gameGrid .gcard b{ font-size:13px; line-height:1.2; font-weight:700; color:var(--ink,#1F2133); }
+#gameGrid .gcard small{ font-size:11px; }
+
+
+/* Preview3b: tab-bar clearance, one-row profiles, compact 375 layout */
+body.ll-shell-on .wrap{
+  padding-top:0;
+  padding-bottom:0;
+  margin:0;
+  max-width:none;
+}
+#ll-app{
+  padding-bottom:0;
+}
+#gameGrid, .ll-grid, body.ll-tab-days #roadmap, body.ll-tab-grownups #panel-parent{
+  scroll-margin-bottom:var(--ll-tabbar-clear);
+}
+
+@media (max-width:430px){
+  .ll-kidbar{flex-wrap:nowrap;overflow:visible;gap:4px}
+  .ll-kidbar button{
+    font-size:12px;
+    padding:2px 6px 2px 2px;
+    min-height:44px;
+    gap:4px;
+    border-width:3px;
+  }
+  .ll-kidbar .av{width:28px;height:28px;font-size:18px}
+  .ll-hero{padding:12px;margin:8px 0;gap:10px}
+  .ll-hero .big{width:64px;height:64px;font-size:42px}
+  .ll-hero .big svg{width:84%;height:84%}
+  .ll-hero h2{font-size:20px;margin:0 0 4px}
+  .ll-hero .hoot-line{font-size:14px;margin:0 0 4px}
+  #gameGrid{gap:10px;padding:2px 0 8px}
+  #gameGrid .gthumb{border-radius:14px}
+  #gameGrid .gbadge,.ll-act-game .gbadge{width:24px;height:24px;font-size:14px;right:4px;bottom:4px}
+  #gameGrid .gcard{padding:8px 6px 10px}
+  #ll-app{padding:8px max(10px,env(safe-area-inset-right)) 0 max(10px,env(safe-area-inset-left))}
+}
+
+/* Preview3b: make body the one scrollport so padding-bottom can actually
+   scroll the last row clear of the tab bar (html+body both at overflow-x
+   hidden were leaving the window unable to scroll). */
+html{height:100%;overflow:hidden}
+body.ll-shell-on{
+  height:100%;
+  max-height:100%;
+  box-sizing:border-box;
+  overflow-x:hidden !important;
+  overflow-y:auto !important;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-y:contain;
+}
+
+/* preview3e5 gate: 44px hit areas and 375-wide layout only. Look unchanged. */
+body.ll-tab-grownups #panel-parent,
+body.ll-tab-grownups #panel-parent .stage-parent,
+body.ll-tab-grownups #panel-parent .prof-settings,
+body.ll-tab-grownups #panel-parent .setrow,
+body.ll-tab-grownups #panel-parent .sync-join,
+body.ll-tab-grownups #panel-parent #sync-join-input,
+body.ll-tab-grownups #panel-parent #state-select-parent,
+body.ll-tab-grownups #panel-parent .state-select,
+body.ll-tab-grownups #panel-parent .switch{
+  max-width:100%;
+  box-sizing:border-box;
+}
+body.ll-tab-grownups #panel-parent .setrow{
+  flex-wrap:wrap;
+  min-width:0;
+}
+body.ll-tab-grownups #panel-parent .setrow > div{
+  min-width:0;
+  flex:1 1 auto;
+}
+body.ll-tab-grownups #panel-parent .sync-join{
+  flex-wrap:wrap;
+  min-width:0;
+  width:100%;
+}
+body.ll-tab-grownups #panel-parent #sync-join-input{
+  min-width:0;
+  flex:1 1 auto;
+  width:100%;
+  max-width:100%;
+}
+body.ll-tab-grownups #panel-parent #state-select-parent,
+body.ll-tab-grownups #panel-parent .state-select{
+  min-width:0;
+  flex:1 1 auto;
+}
+/* Visual track stays 58x32; the button itself is a 44px-tall hit area. */
+body.ll-tab-grownups #panel-parent .switch{
+  width:58px;
+  height:44px;
+  min-width:44px;
+  min-height:44px;
+  margin-left:auto;
+  flex:none;
+  background:transparent;
+  border-radius:0;
+  position:relative;
+}
+body.ll-tab-grownups #panel-parent .switch::before{
+  content:"";
+  position:absolute;
+  top:6px;left:0;
+  width:58px;height:32px;
+  border-radius:999px;
+  background:#ddd2ba;
+  transition:background .2s ease;
+  pointer-events:none;
+}
+body.ll-tab-grownups #panel-parent .switch[aria-checked="true"]{
+  background:transparent;
+}
+body.ll-tab-grownups #panel-parent .switch[aria-checked="true"]::before{
+  background:#5da85f;
+}
+body.ll-tab-grownups #panel-parent .switch::after{
+  top:10px;
+  left:4px;
+}
+body.ll-tab-grownups #panel-parent .switch[aria-checked="true"]::after{
+  left:30px;
+}
+
+/* Days Adventure Map — taller coordinate space on every size so 31 stops,
+   labels, region names and the Hoot marker do not pile up. Muse's own
+   10/15 scene is already crowded on a phone (live 91 overlap pairs at
+   375); our old 14px roadmap padding made it narrower and worse.
+   Body already scrolls vertically. Stop list, order and names are unchanged. */
+body.ll-tab-days #rm-scene{
+  /* Tightest same-column gap is 6%. 6% of 1800px = 108px, enough for a
+     62px circle + a two-line label + 2px tolerance. Override Muse's
+     10/15 aspect-ratio — with min-height, WebKit grew the width to
+     ~964px and the map overflowed the phone. */
+  aspect-ratio:auto;
+  width:100%;
+  max-width:100%;
+  height:1800px;
+  min-height:1800px;
+  box-sizing:border-box;
+}
+body.ll-tab-days .rm-stop .rm-tag{
+  white-space:normal;
+  max-width:7.4em;
+  text-align:center;
+  line-height:1.15;
+  overflow:visible;
+}
+/* Centre the figures on the % point placeAvoid chooses. */
+body.ll-tab-days #rm-hootfig{
+  width:44px;
+  height:44px;
+  margin:0;
+  transition:none !important;
+}
+body.ll-tab-days #rm-marker{
+  width:40px;
+  height:44px;
+  margin:0;
+  transition:none !important;
+}
+body.ll-tab-days #rm-marker .rm-token{
+  width:40px;height:40px;border-radius:50%;
+  background:#FFF6E4;
+  box-shadow:0 0 0 2px #fff, 0 4px 8px rgba(16,50,80,.32);
+  box-sizing:border-box;
+  filter:none;
+}
+/* Region labels: wrap so long names fit in the gutters. */
+body.ll-tab-days .rm-zone{
+  white-space:normal;
+  max-width:6.6em;
+  text-align:center;
+  line-height:1.15;
+  transform:translate(-50%,-50%);
+  z-index:2;
+}
+
+
+/* 3e8: Muse Work Shelf and Indoor/Outdoor cards parked in the shell overlay */
+body.ll-overlay-open.ll-muse-card-open #ll-obody{
+  padding:12px 14px 28px;
+  background:var(--bg);
+}
+#ll-obody .work-card.ll-muse-host,
+#ll-obody .hub-card.ll-muse-host{
+  display:block;
+  max-width:720px;
+  width:100%;
+  margin:0 auto;
+  box-sizing:border-box;
+}
+#ll-obody .work-card.ll-muse-host{
+  background:#fff;
+  color:var(--ink);
+  border:3px solid #e8dcbb;
+  border-radius:var(--r);
+  padding:16px;
+  box-shadow:0 6px 0 #0000000f;
+}
+#ll-obody .hub-card.ll-muse-host{
+  border-radius:var(--r);
+  padding:18px 16px;
+  box-shadow:0 6px 0 #0000000f;
+}
+#ll-obody .hub-card.ll-muse-host .hub-go,
+#ll-obody .hub-card.ll-muse-host button,
+#ll-obody .work-card.ll-muse-host button,
+#ll-obody .work-card.ll-muse-host .bead,
+#ll-obody .work-card.ll-muse-host .cube,
+#ll-obody .work-card.ll-muse-host .pom,
+#ll-obody .work-card.ll-muse-host .flower,
+#ll-obody .work-card.ll-muse-host .sorter-piece,
+#ll-obody .work-card.ll-muse-host .sorter-hole,
+#ll-obody .work-card.ll-muse-host .sound-cyl,
+#ll-obody .work-card.ll-muse-host .thread-choice,
+#ll-obody .work-card.ll-muse-host .wash-item,
+#ll-obody .work-card.ll-muse-host .wash-slot,
+#ll-obody .work-card.ll-muse-host .monti-jar,
+#ll-obody .work-card.ll-muse-host .monti-btn,
+#ll-obody .work-card.ll-muse-host .pom-bowl{
+  min-width:44px;
+  min-height:44px;
+  box-sizing:border-box;
+}
+@media (max-width:430px){
+  #ll-obody .work-card.ll-muse-host,
+  #ll-obody .hub-card.ll-muse-host{padding:14px 12px}
+  #ll-obody .jar-row,
+  #ll-obody .pour-btns{gap:8px}
+  #ll-obody .work-card.ll-muse-host h3{font-size:1.15rem}
+}
+
+/* "Your turn" is a spoken-question tap target (role=button). */
+#ll-obody .lsn-q{min-height:44px;display:flex;align-items:center;}
+
+/* 3e10: phone lesson — keep teaching + Your turn answers on screen */
+@media (max-width: 500px){
+  #ll-obody.ll-one-lesson{
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    padding:8px 10px 10px;
+  }
+  #ll-obody.ll-one-lesson .panel,
+  #ll-obody.ll-one-lesson .ll-path-host,
+  #ll-obody.ll-one-lesson .curr,
+  #ll-obody.ll-one-lesson .lsn-wrap,
+  #ll-obody.ll-one-lesson #ny-creator-wrap{
+    display:flex !important;
+    flex-direction:column;
+    min-height:0;
+    flex:1 1 auto;
+    max-height:100%;
+    overflow:hidden;
+    margin:0 auto;
+    width:100%;
+  }
+  #ll-obody.ll-one-lesson .lsn:not(.ll-lesson-hidden){
+    display:flex;
+    flex-direction:column;
+    min-height:0;
+    flex:1 1 auto;
+    max-height:100%;
+    overflow:hidden;
+    margin:0 auto;
+    padding:10px 12px;
+  }
+  /* Teaching stage + text can scroll; Your turn and answers stay in view. */
+  #ll-obody.ll-one-lesson .lsn-teach{
+    flex:1 1 auto;
+    min-height:0;
+    overflow:auto;
+    -webkit-overflow-scrolling:touch;
+    margin-top:6px;
+    padding:8px 10px;
+  }
+  #ll-obody.ll-one-lesson .lsn-top,
+  #ll-obody.ll-one-lesson .lsn-q,
+  #ll-obody.ll-one-lesson .lsn-opts,
+  #ll-obody.ll-one-lesson .lsn-fb{
+    flex:none;
+  }
+  #ll-obody.ll-one-lesson .lsn-q{margin:8px 0 0;font-size:1.05rem;}
+  #ll-obody.ll-one-lesson .lsn-opts{margin-top:8px;}
+  #ll-obody.ll-one-lesson #panel-little .lt-stage{
+    grid-template-columns:64px 1fr !important;
+    gap:4px 8px;
+    margin:0 0 6px;
+  }
+  #ll-obody.ll-one-lesson #panel-little .lt-hoot svg{
+    width:60px !important;
+    height:60px !important;
+  }
+  #ll-obody.ll-one-lesson #panel-little .lt-bubble{
+    font-size:.95rem;
+    padding:8px 10px;
+    margin:0 0 6px;
+  }
+  #ll-obody.ll-one-lesson #panel-little .lt-scene{
+    padding:8px 6px;
+    min-height:0;
+  }
+  #ll-obody.ll-one-lesson #panel-little .lsn-teach .cdot,
+  #ll-obody.ll-one-lesson .lsn-teach .cdot{
+    width:56px !important;
+    height:56px !important;
+    font-size:.8rem !important;
+  }
+  #ll-obody.ll-one-lesson .lsn-visual{margin:4px 0;gap:8px;}
+  #ll-obody.ll-one-lesson #panel-little .lsn-opt,
+  #ll-obody.ll-one-lesson .lsn-opt{
+    min-height:48px;
+    font-size:1.05rem;
+    padding:8px 14px;
+  }
+  #ll-obody.ll-one-lesson #panel-little .lsn-opt .cdot{
+    width:36px !important;
+    height:36px !important;
+  }
+  #ll-obody.ll-one-lesson #panel-little .lsn-opt svg{
+    width:36px;
+    height:36px;
+  }
+}
+
+
+/* Grown-ups question gate: hide Muse's parent panel until the question is answered. */
+body.ll-shell-on.ll-tab-grownups:not(.ll-parent-unlocked) #panel-parent{
+  display:none !important;
+}
+body.ll-shell-on.ll-tab-grownups.ll-parent-unlocked #panel-parent{
+  display:block !important;
+}
+.ll-parent-gate{padding:18px 18px 22px}
+.ll-gate-q{font-family:Fredoka,system-ui,sans-serif;font-weight:700;font-size:26px;margin:12px 0 8px;color:var(--ink)}
+.ll-gate-typed{min-height:48px;font-family:Fredoka,system-ui,sans-serif;font-weight:700;font-size:28px;background:#fff;border-radius:16px;padding:8px 14px;box-shadow:inset 0 0 0 2px #00000014;margin:0 0 12px}
+.ll-gate-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:320px}
+.ll-gate-pad .ll-btn{margin:0;min-height:52px;width:100%}
+.ll-gate-msg{min-height:24px;margin:10px 0 0;font-weight:700}
+.ll-gate-shake{animation:llGateShake .35s ease}
+@keyframes llGateShake{
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(-8px)}
+  75%{transform:translateX(8px)}
+}
+
+/* Outdoor overlay extras (steps + Add a photo) live beside the parked Muse card. */
+.ll-outdoor-extra{max-width:720px;margin:12px auto 24px;background:#fff;border-radius:var(--r);padding:16px 18px 18px;box-shadow:0 6px 0 #0000000f}
+.ll-outdoor-extra h3{margin:0 0 8px;font-family:Fredoka,system-ui,sans-serif}
+.ll-outdoor-steps{margin:0 0 14px;padding-left:1.3em}
+.ll-outdoor-steps li{margin:0 0 8px;line-height:1.35}
+#ll-add-photo{min-height:52px}
+.ll-photo-preview{margin-top:12px}
+.ll-photo-preview img{display:block;max-width:100%;border-radius:16px;box-shadow:0 4px 0 #00000014}
+.ll-photo-preview p{margin:8px 0 0;font-weight:700}
+
+
+/* 3e14 Learn contrast: badges and colour chips at least 4.5:1.
+   Muse lesson HTML is left unchanged; only computed paint is overridden. */
+#panel-little .lt-hoot-name,
+.ot-name{
+  background:#b74c4a;
+  color:#fff;
+}
+/* RED chip: white on #e23b3b was 4.27:1. Same hue, darkened, white 5.09:1. */
+#ll-obody .cdot[style*="#e23b3b"],
+#panel-little .cdot[style*="#e23b3b"]{
+  background:#cc3535 !important;
+  color:#fff;
+}
+/* GREEN chip: white on #43a047 was 3.30:1. Dark ink keeps the green, 4.62:1. */
+#ll-obody .cdot[style*="#43a047"],
+#panel-little .cdot[style*="#43a047"]{
+  color:#17263b !important;
+  text-shadow:none !important;
+}
+/* ORANGE chip: white on #f07d1a was 2.74:1. Dark ink like YELLOW, 5.56:1. */
+#ll-obody .cdot[style*="#f07d1a"],
+#panel-little .cdot[style*="#f07d1a"]{
+  color:#17263b !important;
+  text-shadow:none !important;
+}
+
+/* Path-panel buttons that sit in the parked Little Explorers overlay. */
+#ll-obody .play-hello,
+.play-hello{
+  background:#b74625;
+  color:#fff;
+}
+#ll-obody .world-giggle,
+.world-giggle{
+  background:#b74266;
+  color:#fff;
+}
+
+/* 3e15 app-wide chrome contrast: every badge, chip, button and tab ≥4.5:1.
+   Same hues, darkened (or existing #C3185B pink). Muse HTML is unchanged. */
+.ll-kidbar button{
+  color:var(--k,#C3185B);
+}
+body.ll-shell-on .hub-count,
+body.ll-shell-on .start-tag,
+body.ll-shell-on .learn-start-btn{
+  background:#C93D24;
+  color:#fff;
+}
+body.ll-shell-on .place-badge,
+body.ll-shell-on .hub-meta span.place-badge{
+  background:#0B7A79;
+  color:#fff;
+}
+body.ll-shell-on .place-badge.outdoor,
+body.ll-shell-on .hub-meta span.place-badge.outdoor{
+  background:#267E36;
+  color:#fff;
+}
+body.ll-shell-on .badge{
+  color:#5F6B4C;
+}
+body.ll-tab-grownups #panel-parent .setrow span,
+body.ll-tab-grownups #panel-parent #limit-label,
+body.ll-tab-grownups #panel-parent #parent-state-label,
+body.ll-tab-grownups #panel-parent .pcard .sub2,
+body.ll-tab-grownups #panel-parent .chart .col b{
+  color:#7C6951;
+}
+/* Hub duration chips: white on 32% frost over a light card was 2.25:1.
+   Solid ink pill (same as Days map .rm-tag) keeps them readable on every card colour. */
+body.ll-shell-on .hub-meta span:not(.place-badge){
+  background:rgba(23,38,59,.88);
+  color:#fff;
+}
+
+
+/* 3e19: phone layout for Little Explorers lessons. The 3e10 flex lock above
+   squeezed Hoot's stage into a ~150px inner scroller at 375 wide, hiding the
+   shapes. Little lessons now use one normal page scroll and a compact stage
+   that fits teach + question + answers on a 375x667 screen. */
+@media (max-width: 500px){
+  #ll-obody.ll-one-lesson.ll-little-one{display:block;overflow:auto;-webkit-overflow-scrolling:touch}
+  #ll-obody.ll-little-one .panel,
+  #ll-obody.ll-little-one .ll-path-host,
+  #ll-obody.ll-little-one .curr,
+  #ll-obody.ll-little-one .lsn-wrap{display:block !important;overflow:visible;max-height:none}
+  #ll-obody.ll-little-one .lsn:not(.ll-lesson-hidden){display:block;overflow:visible;max-height:none;padding:10px 10px 14px}
+  #ll-obody.ll-little-one .lsn-teach{overflow:visible;padding:6px 8px;margin-top:4px}
+  #ll-obody.ll-little-one .lsn-teach > p:not([data-ctap-done]){display:none}
+  #ll-obody.ll-little-one #panel-little .lt-stage{grid-template-columns:50px 1fr !important;gap:4px 8px;margin:0}
+  #ll-obody.ll-little-one #panel-little .lt-hoot svg{width:48px !important;height:48px !important}
+  #ll-obody.ll-little-one #panel-little .lt-hoot-name{display:none}
+  #ll-obody.ll-little-one #panel-little .lt-bubble{font-size:.92rem;padding:7px 9px;margin:0 0 6px}
+  #ll-obody.ll-little-one #panel-little .lt-scene{padding:6px;min-height:0}
+  #ll-obody.ll-little-one #panel-little .lt-scene .lsn-visual{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:0}
+  #ll-obody.ll-little-one #panel-little .lt-scene .lchip{flex:1 1 28%;min-width:0;padding:6px 4px;flex-direction:column;font-size:.85rem;gap:2px;text-align:center}
+  #ll-obody.ll-little-one #panel-little .lt-scene .lchip svg{width:40px;height:40px}
+  #ll-obody.ll-little-one #panel-little .lsn-replay{min-height:46px;font-size:1rem;margin-top:6px}
+  #ll-obody.ll-little-one #panel-little .lsn-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(92px,1fr));gap:8px}
+  #ll-obody.ll-little-one #panel-little .lsn-opt{min-height:84px;flex-direction:column;justify-content:center;padding:6px 4px;font-size:1rem;margin:0}
+  #ll-obody.ll-little-one #panel-little .lsn-opt svg{width:40px;height:40px}
+  #ll-obody.ll-little-one #panel-little .lsn-end-btn{min-height:50px;font-size:1rem}
+}
+
+
+/* ===== 3e19: Teen band (ages 11–13+). Calm study-app look: system font,
+   neutral surfaces, compact cards, no bouncy shadows or pastel blobs.
+   Applied by body.ll-teen from the profile's band. All text >= 4.5:1. ===== */
+body.ll-teen{--bg:#F3F4F6;--ink:#151922;--mut:#4A5261;--r:14px;--kid:#0B5E43;--teen-accent:#0B5E43;--teen-line:#DDE1E7}
+body.ll-shell-on.ll-teen{
+  background:var(--bg) !important;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif !important;
+}
+body.ll-teen #ll-app *,body.ll-teen #ll-tabs *,body.ll-teen .ll-shell-header *,
+body.ll-teen #ll-overlay *:not(svg):not(svg *){
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif !important;
+}
+body.ll-teen .ll-shell-header{background:#151922;border-radius:0;box-shadow:0 1px 0 #0000001a}
+body.ll-teen .ll-shell-header h1{font-size:19px;font-weight:650;letter-spacing:.01em;text-shadow:none}
+body.ll-teen .ll-shell-header .stars{background:#ffffff1a;color:#fff;box-shadow:none;font-size:15px;padding:5px 12px;font-weight:600}
+body.ll-teen .ll-kidbar button{border-width:1.5px;box-shadow:none;min-height:44px;font-weight:600}
+body.ll-teen .ll-card{border-radius:var(--r);box-shadow:none;border:1px solid var(--teen-line);padding:16px}
+body.ll-teen .ll-hero{background:#fff;gap:12px}
+body.ll-teen .ll-hero .big{width:56px;height:56px;min-width:56px;box-shadow:none;background:#F3EBDD}
+body.ll-teen .ll-hero h2{font-size:21px;font-weight:700}
+body.ll-teen .ll-hero .hoot-line{font-size:15px;font-weight:500;color:var(--mut);line-height:1.45}
+body.ll-teen .ll-prog{height:8px;background:#E5E7EB}
+body.ll-teen .ll-prog i{background:var(--teen-accent)}
+body.ll-teen .ll-d4{box-shadow:none;border:1px solid var(--teen-line)}
+body.ll-teen .todoh-row .todoh{font-size:1.1rem;font-weight:700}
+body.ll-teen .ni-top{min-height:44px;font-size:.95rem;font-weight:600;border-radius:10px;background:#fff;color:var(--ink);border:1px solid var(--teen-line);box-shadow:none}
+body.ll-teen .ll-act{border-top:0;border-left:4px solid var(--dc,#0B5E43)}
+body.ll-teen .ll-act .emo{font-size:26px;width:46px;height:46px;border-radius:10px}
+body.ll-teen .ll-act h3{font-size:17px;font-weight:650;line-height:1.3}
+body.ll-teen .ll-tag{font-size:12px;font-weight:600;border-radius:6px;padding:2px 8px;background:#EEF0F3;color:#2F3542}
+body.ll-teen .ll-act p{font-size:15px;color:var(--mut);margin:8px 0}
+body.ll-teen .ll-chk{width:40px;height:40px;border-width:2px;font-size:20px;box-shadow:none}
+body.ll-teen .ll-btn{min-height:44px;font-size:15px;font-weight:600;border-radius:10px;box-shadow:none;padding:10px 16px}
+body.ll-teen .ll-btn.pri{background:var(--teen-accent);color:#fff}
+body.ll-teen .ll-btn:active{transform:none}
+body.ll-teen #gameGrid .gcard,body.ll-teen .ll-pathcard{border-radius:var(--r);box-shadow:none;border:1px solid var(--teen-line)}
+body.ll-teen .ll-pathcard{min-height:88px}
+body.ll-teen #ll-tabs{border-radius:16px;background:#fffffff7;box-shadow:0 4px 16px #0000001f;padding:4px}
+body.ll-teen #ll-tabs button{min-height:58px;border-radius:12px}
+body.ll-teen #ll-tabs button .ic{font-size:19px}
+body.ll-teen #ll-tabs button .lb{font-size:11px;font-weight:600}
+body.ll-teen #ll-tabs button.on{background:#151922;color:#fff;transform:none}
+/* Teen lesson overlay: same teach-first content, study-app styling. */
+body.ll-teen #ll-obody{background:var(--bg)}
+body.ll-teen #ll-obody .ny-lsn{border-radius:var(--r) !important;box-shadow:none !important;border:1px solid var(--teen-line) !important}
+body.ll-teen #ll-obody .ny-lsn h4{font-size:19px;font-weight:700}
+body.ll-teen #ll-obody .ny-lsn p,body.ll-teen #ll-obody .ny-lsn li{font-size:16px;line-height:1.6;font-weight:450}
+body.ll-teen #ll-obody .ny-vocab{border-style:solid;border-width:1px;border-left-width:4px;border-radius:10px}
+body.ll-teen #ll-obody .ny-warmup,body.ll-teen #ll-obody .ny-teachback{border-width:1px;border-left-width:4px;border-radius:10px}
+body.ll-teen #ll-obody .ny-std-main{border-width:1px;border-radius:10px;font-weight:500}
+body.ll-teen #ll-obody .ny-opt,body.ll-teen #ll-obody .ny-try-opt{border-radius:10px;box-shadow:none;font-weight:600}
+@media (max-width:430px){
+  body.ll-teen #ll-tabs button .lb{font-size:10px}
+}
+
+/* 3e19: one teen lesson open — the per-lesson pill already names the standard. */
+#ll-obody.ll-one-lesson .ny-std-main{display:none}
+/* 3e19: the blanket "#ll-obody p { color: ink !important }" above made the
+   navy "So remember" recap 1.15:1. Dark components keep their light text. */
+#ll-obody .ny-recap,#ll-obody .ny-recap *{color:#ffd93b !important}
+/* 3e19: Teen/Creator path headers sit on saturated blue/purple; the blanket
+   ink rule made them ~2.5:1. White text there is ~7:1. */
+#ll-obody #panel-teen .curr-head,#ll-obody #panel-teen .curr-head *:not(.curr-age),
+#ll-obody #panel-creator .curr-head,#ll-obody #panel-creator .curr-head *:not(.curr-age){color:#fff !important}
+#ll-obody #panel-teen .curr-head .curr-age,#ll-obody #panel-creator .curr-head .curr-age{color:#151922 !important}
+
+/* 3e20: Creator (CT, ages 11–13) lessons open even when the state is set to
+   New York — Muse hides that list in NY mode, which left 8 lessons blank. */
+#ll-obody #panel-creator #ct-creator-wrap{display:block !important}
+#ll-obody.ll-path-open:not(.ll-one-lesson) #panel-creator #ny-creator-wrap{display:none !important}
+#ll-obody .tutor-replay:disabled{opacity:1;color:#3d4a5c;background:#ffe98a}
+
+/* 3e21: Grown-ups → Each child */
+.ll-kidsettings .ll-kidset{border-top:1px solid #E3E6EB;padding:12px 0 4px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px}
+.ll-kidsettings .ll-kidset h3{grid-column:1/-1;margin:0;font-size:18px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.ll-kidsettings .ll-kidset h3 small{font-size:14px;font-weight:600;color:#3d4a5c}
+.ll-kidsettings label{display:flex;flex-direction:column;gap:4px;font-size:14px;font-weight:600;color:#2b3442}
+.ll-kidsettings input,.ll-kidsettings select{font:inherit;font-size:16px;min-height:44px;border:1.5px solid #9aa8b8;border-radius:10px;padding:6px 10px;background:#fff;color:#151922;width:100%}
+@media (max-width:430px){.ll-kidsettings .ll-kidset{grid-template-columns:1fr}}
+
+/* ===== 3e22: Hoot lessons engine (js/hoot-lessons.js) ===== */
+#ll-obody .hl{max-width:760px;margin:0 auto;padding:6px 4px 18px;color:#17263b}
+#ll-obody .hl-stage{display:grid;grid-template-columns:76px 1fr;gap:10px;align-items:center}
+#ll-obody .hl-hoot svg{width:72px;height:72px}
+#ll-obody .hl-bubble{margin:0;background:#fff;border:3px solid #17263b;border-radius:18px;padding:10px 14px;font-size:1.12rem;font-weight:700;line-height:1.35;color:#17263b;min-height:52px}
+#ll-obody .hl-show{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:12px 0 4px}
+#ll-obody .hl-item,#ll-obody .hl-opt{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:110px;min-height:110px;flex:1 1 0;max-width:180px;padding:10px;border:3px solid #17263b;border-radius:22px;background:#fff;cursor:pointer;touch-action:manipulation;font:inherit;color:#17263b;transition:transform .15s}
+#ll-obody .hl-item svg,#ll-obody .hl-opt svg{width:70px;height:70px}
+#ll-obody .hl-item.on{transform:scale(1.08);box-shadow:0 0 0 6px #ffd93b}
+#ll-obody .hl-lab{font-size:1.05rem;font-weight:800;color:#17263b}
+#ll-obody .hl-glyph{font-size:4.2rem;font-weight:800;line-height:1}
+#ll-obody .hl-glyph small{font-size:2.4rem;margin-left:6px}
+#ll-obody .hl-num{font-size:4rem;font-weight:800;line-height:1;color:#17263b}
+#ll-obody .hl-emoji{font-size:3.4rem;line-height:1}
+#ll-obody .hl-swatch{width:66px;height:66px;border-radius:50%;border:3px solid #17263b}
+#ll-obody .hl-replay{display:block;margin:10px auto 0;min-height:52px;padding:8px 22px;border-radius:999px;border:3px solid #17263b;background:#ffd93b;color:#17263b;font:inherit;font-weight:800;font-size:1.05rem;cursor:pointer}
+#ll-obody .hl-replay:disabled{background:#fff3bf;cursor:default}
+#ll-obody .hl-dots{display:flex;align-items:center;justify-content:center;gap:6px;margin:12px 0 4px;font-weight:700;font-size:.95rem;color:#3d4a5c}
+#ll-obody .hl-dots i{width:14px;height:14px;border-radius:50%;border:2.5px solid #17263b;background:#fff}
+#ll-obody .hl-dots i.on{background:#1b7a34;border-color:#1b7a34}
+#ll-obody .hl-dots i.now{background:#ffd93b}
+#ll-obody .hl-choices{display:flex;gap:12px;justify-content:center;margin-top:8px}
+#ll-obody .hl-opt.right{background:#1b7a34;border-color:#1b7a34;color:#fff}
+#ll-obody .hl-opt.right .hl-lab,#ll-obody .hl-opt.right .hl-num,#ll-obody .hl-opt.right .hl-glyph{color:#fff !important}
+#ll-obody .hl-opt.wrong{opacity:.45;border-style:dashed}
+#ll-obody .hl-opt.hint{animation:hlPulse 1s ease-in-out 3;box-shadow:0 0 0 6px #ffd93b}
+@keyframes hlPulse{50%{transform:scale(1.07)}}
+#ll-obody .hl-burst{position:absolute;top:-10px;right:-6px;font-size:2rem;animation:hlBurst .9s ease-out forwards;pointer-events:none}
+@keyframes hlBurst{to{transform:translateY(-30px) scale(1.4);opacity:0}}
+#ll-obody .hl-end{text-align:center;margin-top:10px}
+#ll-obody .hl-sticker{font-size:4rem;margin:0;animation:hlPulse 1.2s ease-in-out 2}
+#ll-obody .hl-endbtns{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap}
+#ll-obody .hl-endbtns .hl-song{flex:1 1 100%;border-width:4px}
+#ll-obody .hl-endbtns .hl-song.pg-singing{background:#FFD43B;animation:pgPulse 1.2s ease-in-out infinite}
+#ll-obody .hl-endbtns button{flex:1 1 0;min-height:56px;border-radius:999px;border:3px solid #17263b;font:inherit;font-weight:800;font-size:1.08rem;cursor:pointer;background:#fff;color:#17263b}
+#ll-obody .hl-endbtns .hl-next{background:#17263b;color:#fff}
+#ll-obody .hl-endbtns button:disabled{background:#e9eef4;color:#17263b;border-color:#9aa8b8}
+/* path tiles */
+#ll-obody .hl-pathlead{font-size:1.05rem;font-weight:600;color:#2b3442;margin:4px 4px 12px}
+#ll-obody .hl-tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px}
+#ll-obody .hl-tile{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:104px;border:3px solid #17263b;border-radius:20px;background:#fff;cursor:pointer;font:inherit;color:#17263b;padding:8px}
+#ll-obody .hl-tile-emo{font-size:2.4rem;font-weight:800;line-height:1;color:var(--c,#17263b)}
+#ll-obody .hl-tile-t{font-size:.9rem;font-weight:700;text-align:center;line-height:1.2}
+#ll-obody .hl-tile.done{background:#ebfbee}
+#ll-obody .hl-tile-star{position:absolute;top:4px;right:6px;font-size:1.1rem}
+@media (max-width:500px){
+  #ll-obody .hl-stage{grid-template-columns:52px 1fr}
+  #ll-obody .hl-hoot svg{width:50px;height:50px}
+  #ll-obody .hl-bubble{font-size:1rem;padding:8px 10px}
+  #ll-obody .hl-item,#ll-obody .hl-opt{min-width:0;min-height:96px;padding:6px}
+  #ll-obody .hl-item svg,#ll-obody .hl-opt svg{width:52px;height:52px}
+  #ll-obody .hl-glyph{font-size:3.2rem}
+  #ll-obody .hl-glyph small{font-size:1.8rem}
+  #ll-obody .hl-num{font-size:3rem}
+  #ll-obody .hl-show{gap:6px;flex-wrap:nowrap}
+  #ll-obody .hl-choices{gap:8px}
+}
+
+/* ===== 3e23: home for ages 2–7 ===== */
+body.ll-kidband #ll-tabs button[data-tab="reading"],body.ll-kidband #ll-tabs button[data-tab="memories"]{display:none}
+.kh-hero{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center;margin:6px 0 10px}
+.kh-hoot{width:120px;height:126px;border:0;background:none;padding:0;cursor:pointer;touch-action:manipulation}
+.kh-hoot.wiggle{animation:khWig .6s ease-in-out}
+@keyframes khWig{25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
+.kh-bubble{margin:0;background:#fff;border:3px solid #17263b;border-radius:22px;padding:12px 16px;font-size:1.25rem;font-weight:800;line-height:1.3;color:#17263b}
+.kh-path{list-style:none;margin:0 0 14px;padding:10px 6px;display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;position:relative}
+.kh-stone{position:relative;width:100%;min-height:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border:4px solid #17263b;border-radius:30px;background:#fff;color:#17263b;font:inherit;cursor:pointer;padding:10px 8px;touch-action:manipulation}
+.kh-stone .kh-emo{font-size:2.8rem;line-height:1}
+.kh-stone .kh-t{font-size:.98rem;font-weight:800;line-height:1.2;text-align:center}
+.kh-stone.done{background:#ebfbee;border-color:#1b7a34}
+.kh-stone.next{background:#fff3bf;box-shadow:0 0 0 6px #ffd93b;animation:khGlow 1.6s ease-in-out infinite}
+@keyframes khGlow{50%{box-shadow:0 0 0 12px #ffd93b80}}
+.kh-go{position:absolute;top:-12px;right:-8px;width:40px;height:40px;border-radius:50%;background:#17263b;color:#fff;display:grid;place-items:center;font-size:1.1rem}
+.kh-big3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 20px}
+.kh-big{min-height:118px;border:4px solid var(--b);border-radius:28px;background:#fff;color:#17263b;font:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;touch-action:manipulation}
+.kh-big span{font-size:3rem;line-height:1}
+.kh-big b{font-size:1.2rem;font-weight:800}
+.kh-book{padding:4px}
+.kh-booklead{font-size:1.1rem;font-weight:700;color:#17263b;margin:4px 4px 12px}
+.kh-slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px}
+.kh-slot{border:3px dashed #9aa8b8;border-radius:18px;min-height:96px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px;background:#f6f7f9}
+.kh-slot span{font-size:2.4rem;line-height:1;color:#5b6675}
+.kh-slot small{font-size:.75rem;font-weight:700;text-align:center;color:#3d4a5c;line-height:1.15}
+.kh-slot.got{border:3px solid #1b7a34;background:#ebfbee}
+.ll-gtoday{display:flex;flex-direction:column;gap:6px}
+.ll-gt-row{display:flex;align-items:center;gap:10px;font-weight:600}
+@media (max-width:500px){
+  .kh-hero{grid-template-columns:84px 1fr}
+  .kh-hoot{width:84px;height:88px}
+  .kh-bubble{font-size:1.05rem;padding:10px 12px}
+  .kh-path{grid-template-columns:repeat(2,1fr);gap:10px;padding:8px 2px}
+  .kh-stone{min-height:116px}
+  .kh-big{min-height:100px}
+  .kh-big span{font-size:2.4rem}
+}
+/* iPad and up: toddler-sized everything */
+@media (min-width:700px){
+  .kh-hero{grid-template-columns:170px 1fr;gap:18px;margin:12px 0 16px}
+  .kh-hoot{width:170px;height:178px}
+  .kh-bubble{font-size:1.7rem;padding:18px 24px;border-radius:28px}
+  .kh-path{grid-template-columns:repeat(4,1fr);gap:18px;padding:14px 8px}
+  .kh-stone{min-height:200px;border-radius:36px}
+  .kh-stone .kh-emo{font-size:4.6rem}
+  .kh-stone .kh-t{font-size:1.25rem}
+  .kh-go{width:52px;height:52px;font-size:1.4rem;top:-16px;right:-10px}
+  .kh-big3{gap:18px}
+  .kh-big{min-height:170px;border-radius:36px}
+  .kh-big span{font-size:4.4rem}
+  .kh-big b{font-size:1.5rem}
+  .kh-slots{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+  .kh-slot{min-height:130px}
+  .kh-slot span{font-size:3.2rem}
+  .kh-slot small{font-size:.9rem}
+}
+
+/* ===== 3e24: grown-up dashboard ===== */
+.ll-dash .db-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px;margin:0 0 10px}
+.ll-dash .db-stats div{border:1.5px solid #DDE1E7;border-radius:12px;padding:8px;text-align:center;background:#fff}
+.ll-dash .db-stats b{display:block;font-size:1.3rem;color:#151922}
+.ll-dash .db-stats span{font-size:.85rem;font-weight:600;color:#3d4a5c}
+.ll-dash .db-h{font-size:1rem;margin:12px 0 6px;color:#151922}
+.ll-dash .db-list{margin:0;padding-left:18px}
+.ll-dash .db-list li{margin:3px 0;font-weight:500}
+.ll-dash .db-list small{color:#3d4a5c}
+.ll-dash .db-ok{color:#1b7a34;font-weight:700}
+.ll-dash .db-help{color:#9c2a1b;font-weight:700}
+.ll-dash .db-chips{display:flex;flex-wrap:wrap;gap:6px;margin:0}
+.ll-dash .db-chip{border:1.5px solid #9aa8b8;border-radius:999px;padding:3px 10px;font-size:.88rem;font-weight:600;color:#151922;background:#fff}
+.ll-dash .db-chip.ok{border-color:#1b7a34;background:#ebfbee}
+.ll-dash .db-chip.help{border-color:#9c2a1b;background:#fff1ee}
+.ll-dash .db-ct{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 12px}
+.ll-dash .db-ct li{font-weight:600;color:#151922}
+.ll-dash .db-ct li.ok span{color:#1b7a34}
+.ll-dash .db-ct li.gap span,.ll-dash .db-ct li small{color:#3d4a5c}
+.ll-dash .db-note,.ll-dash .db-empty,.ll-dash .db-ny{font-size:.9rem;color:#2b3442;margin:8px 0 0}
+@media (max-width:430px){.ll-dash .db-ct{grid-template-columns:1fr}}
+
+/* 3e25: More games */
+.ll-moregames{margin:14px 0 24px}
+.ll-moregames summary{cursor:pointer;min-height:52px;display:flex;align-items:center;justify-content:center;border:3px solid #17263b;border-radius:999px;background:#fff;font-weight:800;font-size:1.05rem;color:#17263b;list-style:none}
+.ll-moregames summary::-webkit-details-marker{display:none}
+.ll-moregames #gameGridMore{display:grid;grid-template-columns:inherit;gap:inherit;margin-top:12px}
+#gameGridMore{display:grid !important;grid-template-columns:1fr 1fr;gap:12px}
+@media(min-width:700px){#gameGridMore{grid-template-columns:1fr 1fr 1fr}}
+
+/* ===== 3e26: older kids ===== */
+#ll-obody .ny-stepper{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 10px;padding:0;position:sticky;top:0;z-index:3;background:#F3F4F6;padding:6px 0}
+#ll-obody .ny-stepper li{display:flex;align-items:center;gap:4px;border:1.5px solid #9aa8b8;border-radius:999px;padding:4px 10px;font-size:.85rem;font-weight:600;color:#2b3442;background:#fff}
+#ll-obody .ny-stepper li span{font-weight:800;color:#1b7a34}
+#ll-obody .ny-stepper li.done{border-color:#1b7a34;background:#ebfbee}
+#ll-obody .ny-stepper li.now{border-color:#151922;background:#151922;color:#fff}
+#ll-obody.ll-one-lesson .ny-lsn:not(.ny-all) .ny-past{display:none !important}
+#ll-obody .ny-showall{min-height:44px;margin:0 0 10px;border:1.5px solid #9aa8b8;border-radius:10px;background:#fff;color:#151922;font:inherit;font-weight:600;padding:6px 14px;cursor:pointer}
+.ll-classbox .cb-h,.ll-progress .cb-h{margin:0 0 6px;font-size:1.15rem}
+.ll-classbox .cb-lab{display:block;font-size:.95rem;font-weight:600;color:#2b3442;margin-bottom:6px}
+.ll-classbox .cb-row{display:flex;gap:8px}
+.ll-classbox input{flex:1;min-width:0;min-height:44px;font:inherit;font-size:16px;border:1.5px solid #9aa8b8;border-radius:10px;padding:6px 10px;color:#151922;background:#fff}
+.ll-classbox .cb-res{margin:10px 0 8px;font-size:.95rem;color:#2b3442}
+.ll-progress .pp-row{display:grid;grid-template-columns:minmax(0,1fr) 120px 56px;gap:10px;align-items:center;margin:6px 0}
+.ll-progress .pp-t{font-weight:600;color:#151922;font-size:.95rem}
+.ll-progress .pp-bar{height:10px;border-radius:999px;background:#E5E7EB;overflow:hidden}
+.ll-progress .pp-bar i{display:block;height:100%;background:#0B5E43}
+.ll-progress .pp-n{font-size:.9rem;font-weight:600;color:#2b3442;text-align:right}
+@media (max-width:430px){.ll-progress .pp-row{grid-template-columns:minmax(0,1fr) 70px 46px}}
+
+/* 3e27 */
+#ll-obody .hl-pair{display:flex;gap:4px}
+#ll-obody .hl-pair svg{width:46px !important;height:46px !important}
+@media (max-width:500px){#ll-obody .hl-pair svg{width:34px !important;height:34px !important}}
+#ll-obody .hl-show[hidden]{display:none !important}
+@media (max-width:500px){
+  #ll-obody .hl-show{flex-wrap:wrap !important}
+  #ll-obody .hl-show .hl-item{flex:1 1 28%;max-width:31%}
+}
+@media (max-width:500px){#ll-obody .hl-opt svg{width:66px;height:66px}}
+
+/* ===== 3e28: Grade 7 math (study engine) ===== */
+#ll-obody .hs{max-width:720px;margin:0 auto;padding:4px 2px 24px;color:#151922;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+#ll-obody .hs *{font-family:inherit !important}
+#ll-obody .hs-std{font-size:.85rem;font-weight:600;color:#3d4a5c;margin:2px 0 6px}
+#ll-obody .hs-steps{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px;padding:0}
+#ll-obody .hs-steps li{border:1.5px solid #9aa8b8;border-radius:999px;padding:4px 10px;font-size:.85rem;font-weight:600;color:#2b3442;background:#fff}
+#ll-obody .hs-steps li.done{border-color:#1b7a34;background:#ebfbee;color:#145e28}
+#ll-obody .hs-steps li.now{border-color:#151922;background:#151922;color:#fff}
+#ll-obody .hs-card{background:#fff;border:1px solid #DDE1E7;border-radius:14px;padding:16px}
+#ll-obody .hs-card h3{margin:0 0 8px;font-size:1.25rem}
+#ll-obody .hs-card h4{margin:14px 0 6px}
+#ll-obody .hs-card p{font-size:1.02rem;line-height:1.55;margin:0 0 10px;color:#151922 !important}
+#ll-obody .hs-vocab{background:#F3F4F6;border-left:4px solid #0B5E43;border-radius:8px;padding:8px 10px}
+#ll-obody .hs-q{font-size:1.1rem !important;font-weight:600}
+/* 3e31: reading passage above an English question */
+#ll-obody .hs-pass{margin:0 0 12px;padding:12px 14px;background:#FBF7EE;border-left:4px solid #7A2E8E;border-radius:8px;font-size:1.05rem;line-height:1.55;color:#151922}
+#ll-obody .hs-count{font-size:.85rem !important;font-weight:600;color:#3d4a5c !important;margin-bottom:4px !important}
+#ll-obody .hs-sol{margin:6px 0 12px;padding-left:22px}
+#ll-obody .hs-sol li{margin:4px 0;font-size:1rem;line-height:1.5;color:#151922}
+#ll-obody .hs-btn{min-height:46px;border-radius:10px;border:1.5px solid #9aa8b8;background:#fff;color:#151922;font-weight:600;font-size:1rem;padding:8px 16px;cursor:pointer;margin:4px 6px 4px 0}
+#ll-obody .hs-btn.pri{background:#0B5E43;border-color:#0B5E43;color:#fff}
+#ll-obody .hs-btn.sm{min-height:44px;font-size:.92rem;padding:6px 12px}
+#ll-obody .hs-form{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#ll-obody .hs-in{flex:1;min-width:140px;min-height:46px;font-size:18px;border:1.5px solid #9aa8b8;border-radius:10px;padding:6px 12px;color:#151922;background:#fff}
+#ll-obody .hs-mc{display:grid;gap:8px}
+#ll-obody .hs-choice{min-height:48px;text-align:left;border:1.5px solid #9aa8b8;border-radius:10px;background:#fff;color:#151922;font-size:1.05rem;font-weight:600;padding:8px 12px;cursor:pointer}
+#ll-obody .hs-choice.right{background:#ebfbee;border-color:#1b7a34;color:#145e28}
+#ll-obody .hs-choice.wrong{background:#fff1ee;border-color:#9c2a1b;color:#7a1f14}
+#ll-obody .hs-fb{font-weight:700;margin:10px 0 4px !important}
+#ll-obody .hs-fb.ok{color:#145e28 !important}
+#ll-obody .hs-fb.no{color:#9c2a1b !important}
+#ll-obody .hs-fb.warn{color:#7a4a00 !important}
+#ll-obody .hs-hints{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+#ll-obody .hs-hint{color:#2b3442 !important;font-size:.98rem !important}
+#ll-obody .hs-verdict.ok{color:#145e28 !important;font-weight:700}
+#ll-obody .hs-verdict.no{color:#9c2a1b !important;font-weight:700}
+#ll-obody .hs-miss{border-top:1px solid #DDE1E7;padding-top:8px;margin-top:8px}
+#ll-obody .hs-end{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+#ll-obody .hs-list{display:flex;flex-direction:column;gap:8px}
+#ll-obody .hs-row{display:flex;align-items:center;gap:12px;min-height:56px;border:1px solid #DDE1E7;border-radius:12px;background:#fff;padding:8px 12px;cursor:pointer;text-align:left;color:#151922;font-size:1rem}
+#ll-obody .hs-n{width:30px;height:30px;border-radius:50%;background:#F3F4F6;display:grid;place-items:center;font-weight:700;flex:none}
+#ll-obody .hs-t{flex:1;font-weight:600}
+#ll-obody .hs-t small{display:block;font-weight:500;color:#3d4a5c;font-size:.82rem}
+#ll-obody .hs-tag{font-size:.8rem;font-weight:700;border-radius:999px;padding:3px 8px}
+#ll-obody .hs-tag.ok{background:#ebfbee;color:#145e28}
+#ll-obody .hs-tag.no{background:#fff1ee;color:#7a1f14}
+
+/* ===== 3e29: Hoot's Party Games — candy look ===== */
+.pg-rowh{font-size:1.15rem;margin:16px 4px 8px;color:#17263b}
+.pg-row,.pg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.pgcard{background:linear-gradient(160deg,#FFE3F1,#E7F5FF) !important;border:3px solid #17263b !important;border-radius:26px !important;min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:10px;color:#17263b}
+.pgcard .pg-ico{font-size:3.4rem;line-height:1;animation:pgBob 2.4s ease-in-out infinite}
+.pgcard b{font-size:1.05rem;text-align:center}
+.pgcard small{font-size:.85rem;font-weight:700;color:#7a1f4a}
+@keyframes pgBob{50%{transform:translateY(-6px) rotate(-4deg)}}
+#ll-obody .pg{position:relative;min-height:calc(100% - 4px);background:var(--bg);border-radius:24px;padding:12px;overflow:hidden;color:#17263b}
+#ll-obody .pg-top{display:grid;grid-template-columns:72px 1fr 52px;gap:10px;align-items:center}
+#ll-obody .pg-hoot svg{width:70px;height:70px}
+#ll-obody .pg-hoot.pg-dancing{animation:pgDance .55s ease-in-out infinite alternate}
+@keyframes pgDance{from{transform:rotate(-10deg) translateY(0)}to{transform:rotate(10deg) translateY(-6px)}}
+#ll-obody .pg-bubble{margin:0;background:#fff;border:3px solid #17263b;border-radius:20px;padding:10px 14px;font-size:1.12rem;font-weight:800;line-height:1.3;color:#17263b}
+#ll-obody .pg-music{width:52px;height:52px;border-radius:50%;border:3px solid #17263b;background:#fff;font-size:1.4rem;cursor:pointer}
+#ll-obody .pg-dots{display:flex;justify-content:center;gap:8px;margin:10px 0}
+#ll-obody .pg-dots i{width:16px;height:16px;border-radius:50%;border:3px solid #17263b;background:#fff}
+#ll-obody .pg-dots i.on{background:#F06595}
+#ll-obody .pg-dots i.now{background:#FFD43B}
+#ll-obody .pg-start{display:flex;justify-content:center;margin:30px 0}
+#ll-obody .pg-play{min-width:220px;min-height:90px;border-radius:999px;border:4px solid #17263b;background:#F06595;color:#fff;font-size:2rem;font-weight:800;cursor:pointer;box-shadow:0 8px 0 #17263b;animation:pgPulse 1.3s ease-in-out infinite}
+@keyframes pgPulse{50%{transform:scale(1.07)}}
+#ll-obody .pg-stage{position:relative;min-height:340px}
+#ll-obody .pg-no{animation:pgNo .4s}
+@keyframes pgNo{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+#ll-obody .pg-yay{animation:pgYay .5s}
+@keyframes pgYay{50%{transform:scale(1.18)}}
+#ll-obody .pg-burst{position:absolute;top:-8px;right:-4px;font-size:2rem;animation:pgBurst .9s ease-out forwards;pointer-events:none}
+@keyframes pgBurst{to{transform:translateY(-34px) scale(1.5);opacity:0}}
+/* bubbles */
+#ll-obody .pg-sky{position:relative;height:380px}
+#ll-obody .pg-bub{position:absolute;left:var(--x);bottom:-110px;width:96px;height:96px;border-radius:50%;border:3px solid #17263b;background:radial-gradient(circle at 30% 28%,#fff 0 14%,#BDE7FF 15% 55%,#91D5FF 56%);font-size:2.6rem;font-weight:800;color:#17263b;cursor:pointer;animation:pgRise var(--t) linear var(--d) infinite;touch-action:manipulation}
+@keyframes pgRise{0%{transform:translateY(0)}50%{transform:translateY(-250px) translateX(14px)}100%{transform:translateY(-500px)}}
+#ll-obody .pg-bub.pg-popped{animation:pgPop .35s forwards}
+@keyframes pgPop{to{transform:scale(1.6);opacity:0}}
+/* garden */
+#ll-obody .pg-garden{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:8px}
+#ll-obody .pg-soil{min-height:84px;border-radius:20px;border:3px solid #17263b;background:#C68B59;font-size:2rem;cursor:pointer;touch-action:manipulation}
+#ll-obody .pg-soil span{opacity:.0}
+#ll-obody .pg-soil .pg-flower{opacity:1;font-size:2.8rem;display:inline-block;animation:pgGrow .4s ease-out}
+@keyframes pgGrow{from{transform:scale(.2) translateY(20px)}}
+#ll-obody .pg-count{text-align:center;font-size:3rem;font-weight:800;margin:12px 0 0;color:#17263b}
+/* train */
+#ll-obody .pg-track{margin-top:30px;border-bottom:8px solid #17263b;padding-bottom:4px;overflow:hidden}
+#ll-obody .pg-train{display:flex;align-items:flex-end;gap:8px;animation:pgChug .6s ease-in-out infinite alternate}
+#ll-obody .pg-train.pg-go{animation:pgLeave 1.6s ease-in forwards}
+@keyframes pgChug{to{transform:translateY(-3px)}}
+@keyframes pgLeave{to{transform:translateX(120%)}}
+#ll-obody .pg-engine{font-size:4.6rem;line-height:1;transform:scaleX(-1)}
+#ll-obody .pg-car{position:relative;flex:1;min-width:0;min-height:110px;border-radius:18px;border:4px solid #17263b;background:#fff;display:grid;place-items:center;cursor:pointer;touch-action:manipulation}
+#ll-obody .pg-car-paint{width:70%;height:64px;border-radius:12px;border:3px solid #17263b}
+#ll-obody .pg-cargo{position:absolute;top:-30px;font-size:2rem}
+/* dance + helpers */
+#ll-obody .pg-floor,#ll-obody .pg-town{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+#ll-obody .pg-move,#ll-obody .pg-place{min-height:150px;border-radius:26px;border:4px solid #17263b;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;color:#17263b;touch-action:manipulation}
+#ll-obody .pg-move span,#ll-obody .pg-place span{font-size:3.6rem;line-height:1}
+#ll-obody .pg-move b,#ll-obody .pg-place b{font-size:1.05rem;font-weight:800;text-align:center}
+#ll-obody .pg-helper{text-align:center;font-size:5rem;line-height:1;margin-top:6px;animation:pgBob 2s ease-in-out infinite}
+#ll-obody .pg-helper.pg-walk{animation:pgYay .6s}
+/* end */
+#ll-obody .pg-end{text-align:center}
+#ll-obody .pg-sticker{font-size:5rem;margin:0;animation:pgPulse 1.2s ease-in-out 3}
+#ll-obody .pg-endbtns button{min-height:60px;min-width:200px;border-radius:999px;border:4px solid #17263b;background:#FFD43B;color:#17263b;font-size:1.2rem;font-weight:800;cursor:pointer;margin-top:8px}
+#ll-obody .pg-confetti{position:absolute;inset:0;pointer-events:none}
+#ll-obody .pg-confetti i{position:absolute;top:-20px;left:var(--x);width:12px;height:18px;border-radius:3px;background:var(--c);animation:pgFall 2.6s ease-in var(--d) forwards}
+@keyframes pgFall{to{transform:translateY(420px) rotate(540deg)}}
+@media (max-width:500px){
+  #ll-obody .pg-top{grid-template-columns:52px 1fr 48px}
+  #ll-obody .pg-hoot svg{width:50px;height:50px}
+  #ll-obody .pg-bubble{font-size:1rem;padding:8px 10px}
+  #ll-obody .pg-bub{width:78px;height:78px;font-size:2.1rem}
+  #ll-obody .pg-garden{grid-template-columns:repeat(4,1fr)}
+  #ll-obody .pg-soil{min-height:74px}
+  #ll-obody .pg-engine{font-size:3.2rem}
+  #ll-obody .pg-car{min-height:90px}
+  #ll-obody .pg-move,#ll-obody .pg-place{min-height:120px}
+  #ll-obody .pg-move span,#ll-obody .pg-place span{font-size:2.8rem}
+  .pg-row,.pg-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (prefers-reduced-motion: reduce){#ll-obody .pg-bub{animation-duration:30s}}
+#gameGrid > .pg-rowh,#gameGrid > .pg-row,#gameGrid > .pg-grid,#gameGrid > .pg-songs{grid-column:1/-1}
+#ll-obody .pg-start[hidden],#ll-obody .pg-end[hidden]{display:none !important}
+#ll-obody .pg-play{background:#C2255C}
+/* bubbles bob up and down and always stay on screen */
+#ll-obody .pg-bub{bottom:auto;top:var(--y);animation:pgFloat var(--t) ease-in-out var(--d) infinite alternate}
+@keyframes pgFloat{from{transform:translateY(0)}to{transform:translateY(-60px)}}
+@media (max-width:500px){#ll-obody .pg-sky{height:320px}}
+#ll-obody .pg-endbtns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+#ll-obody .pg-endbtns .pg-sing{background:#fff;color:#17263b}
+/* Sing with Hoot */
+.pg-songs{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 18px}
+.pg-songbtn,#ll-obody .pg-endbtns .pg-sing{min-height:60px;padding:0 20px;border-radius:999px;border:4px solid #17263b;background:#fff;color:#17263b;font-size:1.1rem;font-weight:800;cursor:pointer}
+.pg-songbtn.pg-singing,#ll-obody .pg-endbtns .pg-sing.pg-singing{background:#FFD43B;animation:pgPulse 1.2s ease-in-out infinite}
+.kh-bye{margin-top:10px}
+.kh-hero .kh-bye{grid-column:1/-1;justify-self:center;width:auto;margin:0}
+
+/* ===== 3e34: magic for the little ones ===== */
+.kh-hero.sky-day,.kh-hero.sky-dawn,.kh-hero.sky-dusk,.kh-hero.sky-night{position:relative;overflow:hidden;border-radius:26px;padding:12px;border:3px solid #17263b}
+.kh-hero.sky-day{background:linear-gradient(180deg,#BFE6FF,#EAF7FF)}
+.kh-hero.sky-dawn{background:linear-gradient(180deg,#FFD6A5,#FFF3DC)}
+.kh-hero.sky-dusk{background:linear-gradient(180deg,#FDBA74,#DDD6FE)}
+.kh-hero.sky-night{background:linear-gradient(180deg,#1E3A8A,#3730A3)}
+.kh-hero.sky-night::before{content:"✦  ·  ✧    ✦   ·  ✧";position:absolute;top:6px;left:12px;color:#fff;font-size:14px;letter-spacing:6px;opacity:.85;pointer-events:none}
+.kh-hero > .kh-hoot,.kh-hero > .kh-bubble,.kh-hero > .kh-bye{position:relative;z-index:2}
+.kh-fall{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.kh-fall span{position:absolute;top:-30px;font-size:20px;opacity:.85;animation:khFall var(--t) linear var(--d) infinite}
+@keyframes khFall{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(260px) rotate(200deg)}}
+.kh-moon{position:absolute;top:6px;right:12px;font-size:30px;z-index:1}
+.kh-balloons{position:absolute;top:-4px;right:6px;font-size:24px;z-index:3;animation:khFloat 3s ease-in-out infinite}
+@keyframes khFloat{50%{transform:translateY(-6px)}}
+.kh-hoot{position:relative}
+.kh-hat{position:absolute;pointer-events:none}
+.kh-hat.party{width:34%;left:33%;top:-14%;transform:rotate(-8deg)}
+.kh-hat.night{width:52%;left:28%;top:-6%;transform:rotate(8deg)}
+.kh-hoot.sleepy .eyes{transform:scaleY(.2);transform-box:fill-box;transform-origin:center}
+.kh-hoot.trick-spin{animation:khSpin .9s ease-in-out}
+@keyframes khSpin{to{transform:rotate(360deg)}}
+.kh-hoot.trick-wink .eyes{animation:khBlink .7s ease-in-out 2;transform-box:fill-box;transform-origin:center}
+@keyframes khBlink{50%{transform:scaleY(.1)}}
+.kh-hoot.trick-feathers{animation:khWig .6s ease-in-out}
+.kh-feathers,.kh-hearts{position:absolute;inset:0;pointer-events:none}
+.kh-feathers i,.kh-hearts i{position:absolute;left:45%;top:40%;font-style:normal;font-size:22px;animation:khPuff 1.4s ease-out forwards}
+.kh-feathers i:nth-child(2),.kh-hearts i:nth-child(2){--x:-50px}.kh-feathers i:nth-child(3),.kh-hearts i:nth-child(3){--x:50px}.kh-feathers i:nth-child(4){--x:-20px}
+@keyframes khPuff{0%{opacity:1;transform:translate(0,0)}100%{opacity:0;transform:translate(var(--x,10px),-70px) rotate(40deg)}}
+
+.kh-nest{position:relative;overflow:hidden;display:grid;grid-template-columns:110px 1fr;gap:12px;align-items:center;background:#FFF8E7;border:3px solid #17263b;border-radius:24px;padding:12px 14px;margin:0 0 14px}
+.kh-egg,.kh-pet{position:relative;width:100px;height:112px;border:0;background:none;padding:0;cursor:pointer;touch-action:manipulation;display:flex;align-items:center;justify-content:center}
+.kh-egg svg{width:86px;height:104px;animation:khWobble 2.4s ease-in-out infinite;transform-origin:50% 90%}
+.kh-egg.crack1 svg{animation-duration:1.6s}.kh-egg.crack2 svg{animation-duration:.9s}
+.kh-egg.warmed svg{filter:drop-shadow(0 0 10px #FDBA74)}
+@keyframes khWobble{0%,100%{transform:rotate(0)}25%{transform:rotate(-6deg)}75%{transform:rotate(6deg)}}
+.kh-petface{font-size:62px;line-height:1;display:inline-block;transition:transform .3s}
+.kh-pet.st1 .kh-petface{transform:scale(1.2)}.kh-pet.st2 .kh-petface{transform:scale(1.4)}
+.kh-pet.hatching .kh-petface{animation:khHatch 1.2s cubic-bezier(.2,1.6,.4,1)}
+@keyframes khHatch{0%{transform:scale(0) rotate(-30deg)}100%{transform:scale(1) rotate(0)}}
+.kh-pet.grewup .kh-petface,.kh-pet.boing .kh-petface,.kh-egg.boing svg{animation:khBoing .6s ease-out}
+@keyframes khBoing{30%{transform:scale(1.25) translateY(-8px)}60%{transform:scale(.95)}100%{transform:scale(1)}}
+.kh-nesttxt p{margin:0 0 6px;font-size:1.15rem;font-weight:800;line-height:1.3;color:#17263b}
+.kh-warm{display:flex;flex-wrap:wrap;gap:5px}
+.kh-warm{gap:2px}
+.kh-warm i{font-style:normal;font-size:19px;line-height:1;color:#E5E7EB;-webkit-text-stroke:1px #9CA3AF}
+.kh-warm i.on{color:#FB923C;-webkit-text-stroke:1px #C2410C}
+.kh-friends{display:flex;gap:4px;margin-top:6px;font-size:28px}
+
+.kh-garden{background:linear-gradient(180deg,#E7F8EC,#C9EFD3);border:3px solid #17263b;border-bottom:12px solid #8B5A2B;border-radius:24px;padding:10px 14px;margin:0 0 14px}
+.kh-garden h3{margin:0 0 4px;font-size:1.1rem;color:#14532D}
+.kh-bed{display:flex;flex-wrap:wrap;gap:2px 4px;font-size:30px;line-height:1.15}
+.kh-bed span.sprout{animation:khSprout .7s cubic-bezier(.2,1.6,.4,1) var(--d) both}
+@keyframes khSprout{0%{transform:scale(0) translateY(20px)}100%{transform:scale(1) translateY(0)}}
+.kh-seed{margin:0;font-weight:700;color:#14532D}
+
+.kh-confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:3}
+.kh-confetti i{position:absolute;top:-14px;width:9px;height:14px;border-radius:2px;transform:rotate(var(--r));animation:khConf 2s ease-in var(--d) forwards}
+@keyframes khConf{to{transform:translateY(360px) rotate(calc(var(--r) + 540deg));opacity:.2}}
+.kh-party{position:fixed;inset:0;pointer-events:none;z-index:60}
+.kh-party .kh-confetti i{animation-duration:2.6s}
+.kh-fly{position:absolute;top:28%;left:-80px;font-size:64px;animation:khFly 3.2s ease-in-out .3s forwards}
+@keyframes khFly{0%{transform:translate(0,0)}50%{transform:translate(55vw,-40px) rotate(-8deg)}100%{transform:translate(115vw,10px);opacity:0}}
+
+@media (max-width:520px){.kh-nest{grid-template-columns:84px 1fr;padding:10px}.kh-egg,.kh-pet{width:80px;height:92px}.kh-egg svg{width:70px;height:86px}.kh-petface{font-size:50px}.kh-bed{font-size:26px}.kh-nesttxt p{font-size:1.02rem}}
+@media (prefers-reduced-motion:reduce){.kh-fall,.kh-confetti,.kh-fly{display:none}.kh-egg svg,.kh-balloons,.kh-bed span.sprout,.kh-pet .kh-petface{animation:none!important}}
+
+/* ===== 3e35: story time ===== */
+.kh-story{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:64px;margin:0 0 14px;border:3px solid #17263b;border-radius:24px;background:#EEF2FF;color:#17263b;font:inherit;font-size:1.25rem;font-weight:800;cursor:pointer}
+.kh-story span{font-size:30px}
+.kh-story.glow{background:linear-gradient(180deg,#1E3A8A,#3730A3);color:#fff;box-shadow:0 0 0 4px #FDE68A}
+#ll-obody .st{text-align:center;padding:4px 0 10px}
+#ll-obody .st-stage{position:relative;margin:0 auto 10px;max-width:420px;height:200px;border:3px solid #17263b;border-radius:28px;background:linear-gradient(180deg,#1E3A8A,#4338CA);display:flex;align-items:center;justify-content:center;overflow:hidden}
+#ll-obody .st-pic{font-size:84px;line-height:1;animation:stFloat 4s ease-in-out infinite}
+#ll-obody .st-stars{position:absolute;top:12px;left:0;right:0;color:#FDE68A;font-size:20px;letter-spacing:22px;opacity:.5}
+#ll-obody .st-stage.playing .st-stars{animation:stTw 1.6s ease-in-out infinite;opacity:1}
+@keyframes stFloat{50%{transform:translateY(-8px)}}
+@keyframes stTw{50%{opacity:.35}}
+#ll-obody .st-title{margin:6px 0 12px;font-size:1.35rem;color:#17263b}
+#ll-obody .st-play{min-height:64px;min-width:220px;padding:0 24px;border-radius:999px;border:4px solid #17263b;background:#FDE68A;color:#17263b;font:inherit;font-size:1.25rem;font-weight:800;cursor:pointer}
+#ll-obody .st-play.on{background:#fff}
+#ll-obody .st-more{margin:18px 0 6px;font-weight:800;color:#17263b}
+#ll-obody .st-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+#ll-obody .st-chip{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:64px;min-height:64px;padding:6px 8px;border:3px solid #17263b;border-radius:18px;background:#fff;color:#17263b;font:inherit;font-weight:800;cursor:pointer}
+#ll-obody .st-chip span{font-size:26px}
+#ll-obody .st-chip.on{background:#FDE68A}
+@media (prefers-reduced-motion:reduce){#ll-obody .st-pic,#ll-obody .st-stage.playing .st-stars{animation:none}}
+
+/* ===== 3e36: keep progress safe ===== */
+.ll-safe .ll-safelist{list-style:none;margin:0 0 12px;padding:0;display:grid;gap:8px}
+.ll-safe .ll-safelist li{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:12px;border:2px solid #d4dae3;background:#fff}
+.ll-safe .ll-safelist li.todo{border-color:#F59E0B;background:#FFFBEB}
+.ll-safe .ll-safelist li.ok{border-color:#86EFAC;background:#F0FDF4}
+.ll-safe .ll-safelist span{font-size:20px;line-height:1.2}
+.ll-safe .ll-safelist b{display:block}
+.ll-safe .ll-safelist small{display:block;font-size:.95rem;line-height:1.35;color:#374151}
+.ll-safe .ll-safebtns{display:flex;flex-wrap:wrap;gap:10px}
+.ll-safe .ll-safemsg{margin:10px 0 0;font-weight:700;color:#17263b}
+.ll-safe .ll-safemsg .ll-btn{margin:6px 6px 0 0}
+.ll-safe .ll-safenote{margin:8px 0 0;font-size:.9rem;color:#4B5563}
+
+/* ===== 3e38: one path, one button (ages 2–7) ===== */
+.kh-trail{position:relative;grid-template-columns:repeat(2,1fr)}
+.kh-trail li{position:relative;z-index:1}
+.kh-stone .kh-here{position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:2rem;line-height:1;filter:drop-shadow(0 2px 0 #17263b33);animation:khHop 1.4s ease-in-out infinite}
+.kh-stone .kh-tick{position:absolute;top:8px;right:10px;width:30px;height:30px;border-radius:50%;background:#1b7a34;color:#fff;font-weight:900;font-size:1.1rem;display:grid;place-items:center}
+@keyframes khHop{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-8px)}}
+.kh-gowrap{display:flex;justify-content:center;margin:6px 0 18px}
+.kh-gobtn{display:flex;align-items:center;justify-content:center;gap:16px;width:min(100%,560px);min-height:104px;padding:10px 28px;border:5px solid #17263b;border-radius:999px;background:#FFD93B;color:#17263b;font:inherit;cursor:pointer;box-shadow:0 8px 0 #17263b;animation:khGoPulse 1.8s ease-in-out infinite}
+.kh-gobtn:active{transform:translateY(6px);box-shadow:0 2px 0 #17263b}
+.kh-gobtn .kh-goemo{font-size:3.2rem;line-height:1}
+.kh-gobtn b{font-size:2.6rem;font-weight:900;letter-spacing:.02em}
+.kh-gobtn i{font-style:normal;font-size:2rem;width:60px;height:60px;border-radius:50%;background:#17263b;color:#FFD93B;display:grid;place-items:center;padding-left:4px}
+.kh-gobtn.nudge{animation:khNudge .6s ease-in-out 2}
+@keyframes khGoPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+@keyframes khNudge{0%,100%{transform:translateX(0)}25%{transform:translateX(-10px)}75%{transform:translateX(10px)}}
+.kh-alldone{display:flex;align-items:center;justify-content:center;gap:12px;margin:6px 0 18px;padding:14px;border:4px solid #1b7a34;border-radius:28px;background:#ebfbee;color:#14532D}
+.kh-alldone span{font-size:2.6rem}.kh-alldone b{font-size:1.5rem;font-weight:900}
+.kh-along{display:grid;grid-template-columns:1fr;gap:0 14px}
+.kh-big.locked{position:relative;filter:grayscale(1);opacity:.6;border-style:dashed}
+.kh-big .kh-lock{position:absolute;top:8px;right:12px;font-style:normal;font-size:1.6rem}
+body.ll-pathlock #ll-tabs button[data-tab="games"],body.ll-pathlock #ll-tabs button[data-tab="learn"]{display:none}
+@media (min-width:700px){
+  .kh-trail{grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:14px;padding:30px 8px 34px}
+  .kh-trail::before{content:"";position:absolute;left:6%;right:6%;top:50%;border-top:8px dotted #C9A66B;z-index:0}
+  .kh-trail li:nth-child(even){transform:translateY(22px)}
+  .kh-trail li:nth-child(odd){transform:translateY(-6px)}
+  .kh-trail .kh-stone{min-height:150px;border-radius:30px}
+  .kh-trail .kh-stone .kh-emo{font-size:3.2rem}
+  .kh-trail .kh-stone .kh-t{font-size:1rem}
+  .kh-trail.kh-wrap{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:38px}
+  .kh-trail.kh-wrap::before{display:none}
+  .kh-along{grid-template-columns:1fr 1fr;align-items:stretch}
+}
+@media (max-width:520px){
+  .kh-gobtn{min-height:88px;gap:10px;padding:8px 16px}
+  .kh-gobtn b{font-size:2rem}.kh-gobtn .kh-goemo{font-size:2.4rem}.kh-gobtn i{width:48px;height:48px;font-size:1.5rem}
+  .kh-trail{row-gap:26px;padding-top:24px}
+}
+@media (prefers-reduced-motion:reduce){.kh-gobtn,.kh-stone .kh-here{animation:none}}
+/* a grown-up's own stop, as the child sees it */
+.cs{display:flex;flex-direction:column;align-items:center;gap:12px;padding:24px 16px;text-align:center}
+.cs-pic{font-size:7rem;line-height:1}
+.cs h2{margin:0;font-size:2rem;color:#17263b}
+.cs p{margin:0;font-size:1.2rem;font-weight:700;color:#374151}
+.cs-done{min-height:84px;padding:10px 34px;border:5px solid #17263b;border-radius:999px;background:#86EFAC;color:#14532D;font:inherit;font-size:1.8rem;font-weight:900;cursor:pointer;box-shadow:0 6px 0 #17263b}
+/* ===== 3e38: checklist for ages 11+ ===== */
+.tc-head{display:flex;align-items:center;gap:14px;margin:8px 0 14px;padding:14px 16px;background:#fff;border:1px solid var(--teen-line,#DDE1E7);border-radius:14px}
+.tc-mark{width:44px;height:44px;flex:0 0 44px;display:grid;place-items:center}
+.tc-mark svg,.tc-mark img{width:44px;height:44px}
+.tc-htxt{flex:1;min-width:0}
+.tc-htxt h2{margin:0;font-size:1.5rem;font-weight:700;color:#151922}
+.tc-htxt p{margin:2px 0 0;color:#4A5261;font-size:.98rem}
+.tc-ring{--p:0;width:60px;height:60px;flex:0 0 60px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#0B5E43 calc(var(--p)*1%),#E5E7EB 0)}
+.tc-ring b{width:46px;height:46px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:.85rem;font-weight:700;color:#151922}
+.tc-list{list-style:none;margin:0 0 10px;padding:0;background:#fff;border:1px solid var(--teen-line,#DDE1E7);border-radius:14px;overflow:hidden}
+.tc-row{display:flex;align-items:center;gap:12px;padding:14px 14px 14px 12px;border-left:5px solid var(--dc);border-bottom:1px solid var(--teen-line,#DDE1E7)}
+.tc-row:last-child{border-bottom:0}
+.tc-row.next{background:#F0FDF4}
+.tc-row .tc-chk{flex:0 0 34px;width:34px;height:34px;min-height:34px;border-radius:50%;border:2px solid #6B7280;background:#fff;color:#fff;font-weight:800;cursor:pointer;padding:0}
+.tc-row .tc-chk.on{background:#0B5E43;border-color:#0B5E43}
+.tc-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.tc-main b{font-size:1.05rem;font-weight:650;color:#151922;line-height:1.3}
+.tc-main small{color:#4A5261;font-size:.9rem;line-height:1.35}
+.tc-tag{font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--dc)}
+.tc-row.done .tc-main b{text-decoration:line-through;color:#4A5261}
+.tc-row .tc-go{flex:0 0 auto;min-height:44px}
+.tc-tools{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 20px;color:#4A5261;font-size:.92rem}
+.tc-h{margin:0 0 8px;font-size:1.05rem;font-weight:700;color:#151922}
+.tc-courses{display:flex;flex-direction:column;gap:8px;margin:0 0 20px}
+.tc-course{display:grid;grid-template-columns:28px minmax(0,1.3fr) minmax(60px,1fr) auto;align-items:center;gap:10px;width:100%;min-height:52px;padding:8px 14px;background:#fff;border:1px solid var(--teen-line,#DDE1E7);border-radius:12px;font:inherit;color:#151922;text-align:left;cursor:pointer}
+.tc-cname{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tc-bar{height:8px;border-radius:8px;background:#E5E7EB;overflow:hidden}.tc-bar i{display:block;height:100%;background:#0B5E43;border-radius:8px}
+.tc-cnum{font-size:.88rem;color:#4A5261;white-space:nowrap}
+@media (max-width:520px){.tc-row{flex-wrap:wrap}.tc-row .tc-go{margin-left:46px}.tc-course{grid-template-columns:24px minmax(0,1fr) auto}.tc-bar{grid-column:1/-1;order:3}}
+/* ===== 3e38: planner (Grown-ups) ===== */
+.pl-h{margin:18px 0 8px;font-size:1.05rem;color:#17263b}
+.pl-row{justify-content:space-between;flex-wrap:wrap;padding:6px 0;border-bottom:1px solid #E5E7EB}
+.pl-row .pl-t{flex:1;min-width:160px}.pl-row.done .pl-t{color:#4B5563}
+.pl-t small,.pl-minerow small{font-weight:600;color:#4B5563;margin-left:6px}
+.pl-btns{display:flex;gap:6px}
+.pl-btns .ll-btn[disabled]{opacity:.35;cursor:default}
+.pl-skipped{margin:10px 0 0;font-weight:600;color:#374151}.pl-skipped span{display:inline-flex;align-items:center;gap:6px;margin:0 8px 6px 0}
+.pl-form{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
+.pl-form label{display:flex;flex-direction:column;gap:4px;font-weight:700;font-size:.92rem;color:#17263b}
+.pl-form input,.pl-form select,.pl-free select{min-height:44px;padding:6px 10px;border:2px solid #17263b;border-radius:12px;font:inherit;font-weight:600;background:#fff;color:#17263b}
+.pl-form input{width:min(240px,70vw)}
+.pl-minerow{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid #E5E7EB;font-weight:600}
+.pl-none{margin:0;color:#4B5563}
+.pl-week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.pl-day{display:flex;flex-direction:column;gap:4px;padding:8px 6px;border:2px solid #D1D5DB;border-radius:12px;background:#fff;min-height:96px}
+.pl-day.today{border-color:#17263b;background:#FFF8E7}
+.pl-day b{font-size:.92rem;color:#17263b}.pl-day small{color:#4B5563;font-size:.78rem}
+.pl-auto{font-size:.74rem;color:#4B5563;line-height:1.25}
+.pl-chip{font-size:.78rem;font-weight:700;background:#EDE9FE;color:#4C1D95;border-radius:8px;padding:2px 5px;line-height:1.25;overflow-wrap:anywhere}
+.pl-free{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:700;color:#17263b}
+@media (max-width:640px){.pl-week{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* 3e38: on a phone the big button comes first, so it is never under the tab bar */
+.kh-pathwrap{display:flex;flex-direction:column}
+@media (max-width:699px){
+  .kh-pathwrap .kh-gowrap,.kh-pathwrap .kh-alldone{order:-1;margin:4px 0 22px}
+  .kh-trail{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;row-gap:24px}
+  .kh-trail .kh-stone{min-height:96px;border-radius:22px;border-width:3px}
+  .kh-trail .kh-stone .kh-emo{font-size:2rem}
+  .kh-trail .kh-stone .kh-t{font-size:.8rem}
+  .kh-stone .kh-here{font-size:1.6rem;top:-18px}
+  .kh-stone .kh-tick{width:22px;height:22px;font-size:.8rem;top:5px;right:6px}
+}
+
+/* ===== 3e39: recap and history in the planner ===== */
+.pl-recap{margin:0 0 6px;font-size:1.05rem;color:#17263b}
+.pl-back{margin:0 0 8px;font-weight:600;color:#374151;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.pl-oc{margin-left:8px;font-size:.9rem;font-weight:700;white-space:nowrap}
+.pl-oc small{font-weight:600;color:#4B5563;margin-left:4px}
+.pl-note{margin:-2px 0 8px;font-size:.9rem;color:#4B5563}
+.pl-past{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.pl-pday{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 4px;border:2px solid #D1D5DB;border-radius:12px;background:#fff}
+.pl-pday b{font-size:.9rem;color:#17263b}.pl-pday small{font-size:.78rem;color:#4B5563;text-align:center}
+.pl-pbar{width:18px;height:46px;border-radius:9px;background:#E5E7EB;display:flex;align-items:flex-end;overflow:hidden}
+.pl-pbar i{display:block;width:100%;background:#1b7a34;border-radius:9px}
+.pl-pday.none{border-style:dashed}
+.pl-day .pl-auto{display:block}
+
+/* 3e39: ticks in the planner were white on white; make a done stop look done */
+.ll-gt-row .ll-chk{width:48px;height:48px;font-size:24px;border-width:4px;box-shadow:0 3px 0 #00000026}
+.ll-gt-row .ll-chk.on{background:#1b7a34;border-color:#1b7a34;color:#fff}
+body.ll-teen .ll-gt-row .ll-chk{width:40px;height:40px;font-size:20px;border-width:2px;box-shadow:none}
+
+/* ===== 3e40: family account card ===== */
+.ac-form{display:flex;flex-direction:column;gap:10px;max-width:440px}
+.ac-form label{display:flex;flex-direction:column;gap:4px;font-weight:700;font-size:.95rem;color:#17263b}
+.ac-form input[type=email],.ac-form input[type=password],.ac-form input:not([type]),.ac-form input[type=text]{min-height:46px;padding:8px 12px;border:2px solid #17263b;border-radius:12px;font:inherit;font-weight:600;background:#fff;color:#17263b}
+.ac-form .ac-check{flex-direction:row;align-items:flex-start;gap:10px;font-weight:600;line-height:1.35}
+.ac-form .ac-check input{width:24px;height:24px;flex:0 0 24px;margin-top:2px}
+.ac-tabs,.ac-row{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px}
+.ac-note{margin:0 0 10px;padding:8px 12px;border-radius:12px;background:#ECFDF5;color:#14532D;font-weight:700}
+.ac-err{margin:0 0 10px;padding:8px 12px;border-radius:12px;background:#FEF2F2;color:#991B1B;font-weight:700}
+.ac-small{margin:0;font-size:.9rem;color:#4B5563}
+.ac-danger{margin-top:14px;border-top:1px solid #E5E7EB;padding-top:10px}
+.ac-danger summary{cursor:pointer;font-weight:700;color:#991B1B}
+.ac-danger p{font-size:.95rem;color:#374151}
+.ac-card code{font-size:.9em;background:#F3F4F6;border-radius:6px;padding:1px 5px}
+
+.ll-acct-note{position:relative;z-index:5;max-width:560px;margin:12px auto;padding:10px 14px;border-radius:14px;background:#FFF8E7;border:3px solid #17263b;color:#17263b;font-weight:800;text-align:center}
+/* 3e48: old Little Explorers cards whose lesson moved to the new engine show one Start button */
+.lsn[data-hl-moved] > :not(.lsn-top):not(.ll-hl-go):not(.hoot-pick-tag){display:none!important}
+.ll-hl-go{display:block;margin:10px auto 4px;min-height:64px;min-width:240px;padding:12px 28px;border-radius:999px;border:4px solid #17263b;background:#ffd93b;color:#17263b;font:800 1.35rem "Fredoka",sans-serif;cursor:pointer;box-shadow:0 6px 0 #17263b}
+.ll-hl-go:active{transform:translateY(3px);box-shadow:0 3px 0 #17263b}
+/* 3e52: answer buttons in the lesson window had a white border on a white card, so the
+   numbers looked like they were floating above an empty shadow */
+#ll-obody .lsn .lsn-opt:not(.right):not(.wrong){border-color:#17263b !important}
+#ll-obody .lsn .lsn-opt{align-items:center;justify-content:center}
+
+/* 3e54: Activities tab — real things to do together; the only place to add photos and videos */
+body.ll-teen #ll-tabs button[data-tab="activities"]{display:none}
+.ll-actv{display:flex;flex-direction:column;gap:8px}
+.ll-actv-top{display:flex;gap:12px;align-items:center}
+.ll-actv-top h3{margin:0 0 4px}
+.ll-actv-emo{font-size:40px;line-height:1;width:56px;height:56px;display:grid;place-items:center;background:#fff6e0;border-radius:16px;flex:none}
+.ll-actv p{margin:0}
+.ll-actv-add{margin-top:auto;align-self:flex-start}
+.ll-actm-row{display:flex;gap:8px;flex-wrap:wrap}
+.ll-actm{position:relative;margin:0;width:96px;height:96px;border-radius:14px;overflow:hidden;background:#eee}
+.ll-actm img,.ll-actm video{width:100%;height:100%;object-fit:cover;display:block}
+.ll-actm-rm{position:absolute;top:4px;right:4px;width:28px;height:28px;border-radius:50%;border:none;background:rgba(0,0,0,.65);color:#fff;font-size:18px;line-height:1;cursor:pointer}
+#ll-app > h2.todoh{margin:20px 16px 8px;font-size:1.3rem}
+.ll-actall{margin:18px 14px}
+.ll-actall>summary{cursor:pointer;font-family:"Fredoka",sans-serif;font-weight:700;font-size:1.15rem;padding:14px 16px;background:#fff;border-radius:18px;box-shadow:0 3px 0 rgba(0,0,0,.08);list-style-position:inside}
+.ll-actall .ll-grid{margin-top:12px}
+.ll-actv.sm .ll-actv-emo{width:44px;height:44px;font-size:30px}
+#ll-app > h2.todoh .muted{font-size:.8rem;font-weight:600;opacity:.7;margin-left:6px}
+.ll-actdone{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ll-actdone .ll-btn{margin:0}
+.ll-actdone-me.on{background:#0B8A5F;color:#fff;border-color:#0B8A5F}
+.ll-actdone-msg{font-weight:800;color:#0B6B4A;background:#E3F6EC;border-radius:999px;padding:8px 14px}
+.ll-actdone-undo{border:none;background:none;color:#3A56D4;font-weight:800;text-decoration:underline;cursor:pointer;padding:8px 6px;font-size:.95rem}
+.ll-actlog h3{margin:0 0 10px}
+.ll-actlog-stats{display:flex;flex-wrap:wrap;gap:8px}
+.ll-actlog-stats span{background:#f4f8fc;border-radius:999px;padding:6px 12px;font-weight:700}
+.ll-actlog-days{margin-top:12px}
+.ll-actlog-days summary{cursor:pointer;font-weight:800}
+.ll-actlog-days>ul{list-style:none;padding:0;margin:8px 0 0}
+.ll-actlog-days>ul>li{margin:8px 0}
+.ll-actlog-days ul ul{margin:4px 0 0;padding-left:18px}
+.ll-actlog-tag{font-size:.85em;background:#E3F6EC;color:#0B6B4A;border-radius:999px;padding:1px 8px;font-weight:700}
+.ny-redo{display:block;margin:14px auto 4px;border:3px solid #17263b;background:#fff;color:#17263b;font-family:"Fredoka",sans-serif;font-weight:700;font-size:1.05rem;padding:12px 22px;border-radius:999px;cursor:pointer}
+.ny-redo[hidden]{display:none}
