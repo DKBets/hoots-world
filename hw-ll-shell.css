@@ -1882,7 +1882,7 @@ body.ll-teen .wc2-tib{border-radius:8px}
 .we1-questemo{font-size:2rem;line-height:1.1}
 .we1-questtxt{font-size:1.1rem;font-weight:700;margin:4px 0 0}
 .we1-questbtns{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-.we1-toast{position:fixed;top:64px;left:50%;transform:translateX(-50%);z-index:80;width:min(94vw,560px);display:flex;gap:10px;align-items:center;background:#FFF8EC;border:2px solid #F3D9A4;border-radius:var(--r);padding:10px 12px;box-shadow:0 10px 30px rgba(23,38,59,.25);color:var(--ink);font:inherit}
+.we1-toast{position:static;width:auto;max-width:560px;margin:12px auto;display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:#FFF8EC;border:2px solid #F3D9A4;border-radius:var(--r);padding:10px 12px;box-shadow:0 10px 30px rgba(23,38,59,.25);color:var(--ink);font:inherit}
 .we1-toastemo{font-size:1.6rem}
 .we1-toasttxt{display:flex;flex-direction:column;margin-right:auto}
 .we1-toasttxt span{color:var(--mut);font-size:.92rem}
@@ -1910,7 +1910,7 @@ body.ll-teen .we1-nosupport{border-radius:var(--r)}
 .we2-plot small{color:#6B5B3E;font-size:.8rem;line-height:1.35}
 .we2-plot.flower{background:#FDF0F5;border-color:#F3B8D0}
 .we2-empty,.we2-more{color:#6B5B3E;line-height:1.5}
-.we2-bloom-toast{position:fixed;top:64px;left:50%;transform:translateX(-50%);z-index:80;width:min(94vw,560px);background:#FDF0F5;border:2px solid #F3B8D0;border-radius:var(--r);padding:12px 14px;box-shadow:0 10px 30px rgba(23,38,59,.25);color:var(--ink);font:inherit;line-height:1.45}
+.we2-bloom-toast{position:static;width:auto;max-width:560px;margin:12px auto;background:#FDF0F5;border:2px solid #F3B8D0;border-radius:var(--r);padding:12px 14px;box-shadow:0 10px 30px rgba(23,38,59,.25);color:var(--ink);font:inherit;line-height:1.45}
 .we2-car{background:#101623;color:#F4F6FB;border-radius:var(--r);padding:16px 14px 18px}
 .we2-car-note{font-size:1.05rem;line-height:1.5;margin:0 0 14px;color:#C9D4EA}
 .we2-player{text-align:center;background:#182238;border:1.5px solid #2A3A5F;border-radius:var(--r);padding:16px 10px 18px;margin-bottom:14px}
@@ -1990,3 +1990,10 @@ body:not(.ll-teen) .wc2-supply{border:3px solid #E9C46A;background:#FFFDF4;box-s
 body:not(.ll-teen) .wc2-supply.on{border-color:#0B8A5F;background:#EAF7EA;box-shadow:0 3px 0 rgba(11,142,95,.25)}
 body:not(.ll-teen) .ll-actv-emo{border:3px solid #FFE1A8;border-radius:18px}
 body:not(.ll-teen) .ll-actall>summary{border:3px solid var(--ink);border-radius:22px;box-shadow:0 5px 0 rgba(31,33,51,.14)}
+
+/* Fix pass 5 — NY lesson focus (Kaitlyn): when her lesson is the focused card
+   in the overlay, drop the hub print row and shrink the card art so the first
+   activity — the warm-up question — is on the first screen instead of below a
+   full-width picture. Scoped to .ny-lsn focus only. */
+#ll-obody:has(.ll-lesson-focus.ny-lsn) .wc2-printrow{display:none}
+#ll-obody .ll-lesson-focus.ny-lsn .lsn-art{height:104px;aspect-ratio:auto;margin:6px 0 2px}
