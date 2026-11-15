@@ -1096,7 +1096,7 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
     }).join("");
     var HG = window.HootGames, songs = HG && HG.songs && HG.songs.length ? '<h2 class="pg-rowh">🎵 Sing with Hoot</h2><div class="pg-songs">' + HG.songs.map(function (sg) { return HG.songBtn(sg, "pg-songbtn"); }).join("") + "</div>" : "";
     var cards = (party ? '<h2 class="pg-rowh">🎉 Hoot\'s Party Games</h2><div class="pg-row">' + party + "</div>" + songs + '<h2 class="pg-rowh">Hoot\'s picks</h2><div id="gameGridPicks" class="pg-grid">' : "") + picks.map(card).join("") + (party ? "</div>" : "") +
-      '</div><details class="ll-moregames"' + (state.moreGames ? " open" : "") + '><summary>More games (' + more.length + ')</summary><div id="gameGridMore">' + more.map(card).join("") + "</div></details><div>";
+      '<details class="ll-moregames"' + (state.moreGames ? " open" : "") + '><summary>More games (' + more.length + ')</summary><div id="gameGridMore">' + more.map(card).join("") + "</div></details>";
     return '<div class="ll-kidbar">' + kidbarHtml() + '</div><section class="ll-card ll-hero" style="--k:' + state.profile.color + '"><div class="big">' + brownHootFace() + '</div><div class="htxt"><h2>Hoot\'s Games</h2><p class="hoot-line">Pick a game — they all open here, inside Hoot\'s World.</p></div></section><div id="gameGrid">' + cards + "</div>" + wc2MissionsEntryHtml() + we2CarEntryHtml(); /* Wave E2: car mode entry */
   }
 
