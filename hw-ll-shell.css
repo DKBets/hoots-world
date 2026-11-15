@@ -1218,7 +1218,7 @@ body.ll-kidband #ll-tabs button[data-tab="reading"],body.ll-kidband #ll-tabs but
 .ll-moregames{margin:14px 0 24px}
 .ll-moregames summary{cursor:pointer;min-height:52px;display:flex;align-items:center;justify-content:center;border:3px solid #17263b;border-radius:999px;background:#fff;font-weight:800;font-size:1.05rem;color:#17263b;list-style:none}
 .ll-moregames summary::-webkit-details-marker{display:none}
-.ll-moregames #gameGridMore{display:grid;grid-template-columns:inherit;gap:inherit;margin-top:12px}
+.ll-moregames #gameGridMore{margin-top:12px}
 #gameGridMore{display:grid !important;grid-template-columns:1fr 1fr;gap:12px}
 @media(min-width:700px){#gameGridMore{grid-template-columns:1fr 1fr 1fr}}
 
@@ -1380,7 +1380,7 @@ body.ll-kidband #ll-tabs button[data-tab="reading"],body.ll-kidband #ll-tabs but
   .pg-row,.pg-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media (prefers-reduced-motion: reduce){#ll-obody .pg-bub{animation-duration:30s}}
-#gameGrid > .pg-rowh,#gameGrid > .pg-row,#gameGrid > .pg-grid,#gameGrid > .pg-songs{grid-column:1/-1}
+#gameGrid > .pg-rowh,#gameGrid > .pg-row,#gameGrid > .pg-grid,#gameGrid > .pg-songs,#gameGrid > .ll-moregames{grid-column:1/-1}
 #ll-obody .pg-start[hidden],#ll-obody .pg-end[hidden]{display:none !important}
 #ll-obody .pg-play{background:#C2255C}
 /* bubbles bob up and down and always stay on screen */
