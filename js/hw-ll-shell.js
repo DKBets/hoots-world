@@ -3951,7 +3951,7 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
       var ts = b.missions[m.id];
       chips.push('<span class="wc-badge' + (ts ? "" : " locked") + '">' + (ts ? "🏅 " : "🔒 ") + m.emo + " " + esc(m.title) + (ts ? " · " + wc2FmtDate(ts) : "") + "</span>");
     });
-    WC2_QUESTS.forEach(function (q) {
+    if (!isTeenBand(curBand())) WC2_QUESTS.forEach(function (q) {
       var ts = b.quests[q.id];
       chips.push('<span class="wc-badge' + (ts ? "" : " locked") + '">' + (ts ? "🏅 " : "🔒 ") + q.emo + " " + esc(q.title) + (ts ? " · " + wc2FmtDate(ts) : "") + "</span>");
     });
@@ -4050,6 +4050,7 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
   }
   function wc2QuestStates() { return WC2_QUESTS.map(wc2QuestState); }
   function wc2DaysHtml() {
+    if (isTeenBand(curBand())) return ""; /* Fix pass 5: Quest Days (Pirate/Dinosaur/Space/Cozy) are little-kid themed days — not on the teen side */
     var states = wc2QuestStates(), b = wc2Badges();
     states.forEach(function (s) { if (s.complete) wc2Award("quests", s.quest.id); });
     var cards = states.map(function (s) {
@@ -4086,6 +4087,7 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
       '<p class="wc2-restartrow"><button type="button" class="ll-btn sm" data-wc2-qrestart="' + q.id + '">↺ Start this day again</button> <span class="wc2-more">The badge stays earned — the journey starts fresh.</span></p></div>';
   }
   function openQuestDay(id) {
+    if (isTeenBand(curBand())) return; /* Fix pass 5: teen side has no Quest Days, even via a restored view */
     var q = WC2_QUESTS.filter(function (x) { return x.id === id; })[0];
     if (!q) return;
     nextView = { kind: "wc2quest", key: id, title: q.title };
@@ -4411,7 +4413,12 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
     d.innerHTML = '<span class="we1-toastemo" aria-hidden="true">📸</span><div class="we1-toasttxt"><b>Photo quest unlocked!</b><span>' + esc(q.text) + (a.lessonTitle ? " · from ⭐ " + esc(a.lessonTitle) : "") + "</span></div>" +
       '<button type="button" class="ll-btn pri sm" data-we1-quest="photo">📷 Take the photo</button>' +
       '<button type="button" class="ll-btn sm" data-we1-quest="notnow">Not now</button>';
-    ov.appendChild(d);
+    /* Fix pass 4: in-flow card at the end of the lesson view — the old
+       position:fixed toast dropped over the top of the end screen and
+       covered the celebration (Dawid's iPhone report, 2026-11-15). */
+    var host = document.getElementById("ll-obody") || ov;
+    host.appendChild(d);
+    try { d.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (e) {}
   }
   function we1HideQuestToast() { var t = document.getElementById("we1-quest-toast"); if (t) t.remove(); }
   var we1PendingPhoto = null;
@@ -4766,11 +4773,12 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
   function we2BloomCelebrate(rec) {
     try { if (window.__hwSay) window.__hwSay(["hoot-great-job"]); } catch (e) {}
     try {
-      var host = document.getElementById("ll-overlay"); if (!host) return;
+      var host = document.getElementById("ll-obody") || document.getElementById("ll-overlay"); if (!host) return;
       var old = document.getElementById("we2-bloom-toast"); if (old) old.remove();
       var t = document.createElement("div"); t.id = "we2-bloom-toast"; t.className = "we2-bloom-toast";
       t.innerHTML = "🌸 <b>A flower bloomed in your Oops Garden!</b><br><small>" + esc(rec.label || rec.title || "") + " — you got it right today!</small>";
       host.appendChild(t);
+      try { t.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (e) {}
       setTimeout(function () { try { t.remove(); } catch (e) {} }, 7000);
     } catch (e) {}
   }
@@ -4834,6 +4842,7 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
       '<button type="button" class="wc2-entrybtn" data-we2-car="1">🚗 <b>Car mode</b><span>Big-button listening for drives — set it up before you go</span></button></section>';
   }
   function we2CarEntryHtml() {
+    if (isTeenBand(curBand())) return ""; /* Fix pass 5: car-mode mixes are little-kid clips — not on the teen side */
     return '<section class="ll-card we2-games"><button type="button" class="wc2-entrybtn" data-we2-car="1">🚗 <b>Car mode</b><span>Listening mixes for drives — set it up before you go</span></button></section>';
   }
 
