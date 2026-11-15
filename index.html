@@ -2256,6 +2256,8 @@
       @media (prefers-color-scheme: dark) and (max-width: 0px){ .ny-step b, .ny-try-result b{ color:#ffd93b; } }
       .ny-nextstep, .ny-check-ok, .ny-check-again{ border:3px solid #17263b; border-radius:999px; font-family:"Fredoka",sans-serif; font-weight:700; font-size:1.02rem; padding:11px 20px; cursor:pointer; min-height:50px; margin-top:10px; }
       .ny-nextstep{ background:#7d5ba6; border-color:#5b4a9e; color:#fff; box-shadow:0 4px 0 rgba(0,0,0,.18); }
+      .ny-lsn [data-kidc-say]{ cursor:pointer; }
+      .ny-lsn [data-kidc-say]::after{ content:"🔊"; font-size:.78em; margin-left:.5em; opacity:.5; }
       .ny-nextstep:active{ transform:translateY(2px); }
       .ny-check-ok{ background:#1b7a34; border-color:#145e28; color:#fff; }
       .ny-check-again{ background:#fff; color:#17263b; margin-left:8px; }
@@ -4276,49 +4278,49 @@
               <div class="lsn-top"><span class="lsn-num">1</span><h4>Unit rates: the price of ONE</h4><span class="lsn-star" aria-hidden="true">⭐</span></div>
               <img class="lsn-art" src="assets/lesson-art/ny-unit-rates-the-price-of-one.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
               <span class="ny-std-tag">NY Next Generation · Math 7.RP — Ratios &amp; Proportional Relationships</span>
-              <div class="ny-hoot"><span class="ny-owl" aria-hidden="true">🦉</span><p>Hoo hoo, Profile C! Today I'm your tutor for <b>unit rates</b>. Stores everywhere use these every day — they tell you what ONE of something costs, so you can spot the best deal. We'll go tiny-step by tiny-step.</p></div>
-              <p class="ny-vocab">📖 Words to know: a <b>unit rate</b> means the cost (or amount) for <b>exactly 1</b> — like $7 for 1 ticket. <b>Divide</b> means share a total into equal parts.</p>
+              <div class="ny-hoot" data-kidc-say="kidc-unit-rates-intro.mp3"><span class="ny-owl" aria-hidden="true">🦉</span><p>Hoo hoo, Profile C! Today I'm your tutor for <b>unit rates</b>. Stores everywhere use these every day — they tell you what ONE of something costs, so you can spot the best deal. We'll go tiny-step by tiny-step.</p></div>
+              <p class="ny-vocab" data-kidc-say="kidc-unit-rates-vocab.mp3">📖 Words to know: a <b>unit rate</b> means the cost (or amount) for <b>exactly 1</b> — like $7 for 1 ticket. <b>Divide</b> means share a total into equal parts.</p>
               <div class="ny-phase" data-phase="watch">
                 <h5>👀 Watch me — I'll do one first</h5>
                 <div class="ny-steps">
-                  <p class="ny-step"><b>Step 1.</b> Here's my problem: <b>6 concert tickets cost $42</b>. I want the price of ONE ticket.</p>
-                  <p class="ny-step" hidden><b>Step 2.</b> To find the price of one, I share the total equally. I <b>divide</b>: 42 ÷ 6. Think: 6 × ? = 42.</p>
-                  <p class="ny-step" hidden><b>Step 3.</b> 6 × 7 = 42 — so 42 ÷ 6 = <b>7</b>.</p>
-                  <p class="ny-step" hidden><b>Step 4.</b> So the <b>unit rate is $7 per ticket</b>. That word “per” is my clue — it always means “for 1”.</p>
+                  <p class="ny-step" data-kidc-say="kidc-unit-rates-watch1.mp3"><b>Step 1.</b> Here's my problem: <b>6 concert tickets cost $42</b>. I want the price of ONE ticket.</p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-unit-rates-watch2.mp3"><b>Step 2.</b> To find the price of one, I share the total equally. I <b>divide</b>: 42 ÷ 6. Think: 6 × ? = 42.</p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-unit-rates-watch3.mp3"><b>Step 3.</b> 6 × 7 = 42 — so 42 ÷ 6 = <b>7</b>.</p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-unit-rates-watch4.mp3"><b>Step 4.</b> So the <b>unit rate is $7 per ticket</b>. That word “per” is my clue — it always means “for 1”.</p>
                 </div>
                 <button type="button" class="ny-nextstep">Next step ▶</button>
-                <p class="ny-stepdone" hidden>✅ That's the whole trick: <b>total ÷ how many = price of one</b>. Nice watching — noticing the steps is real learning.</p>
+                <p class="ny-stepdone" hidden data-kidc-say="kidc-unit-rates-stepdone.mp3">✅ That's the whole trick: <b>total ÷ how many = price of one</b>. Nice watching — noticing the steps is real learning.</p>
               </div>
               <div class="ny-check" hidden>
                 <h5>🦉 Quick check, Profile C</h5>
                 <p style="font-weight:700;line-height:1.5;margin:0">How is that sitting? No wrong answer here — I just want to know how to help.</p>
                 <button type="button" class="ny-check-ok">👍 Makes sense</button>
                 <button type="button" class="ny-check-again">🔁 Show me again</button>
-                <div class="ny-alt" hidden><b>A different way — picture it:</b> Imagine 6 friends splitting a $42 pizza bill fairly. Nobody pays $42 — each person pays their one fair share. $42 shared by 6 people is $7 each. A unit rate is just a fair share — the price of one share.</div>
+                <div class="ny-alt" hidden data-kidc-say="kidc-unit-rates-alt.mp3"><b>A different way — picture it:</b> Imagine 6 friends splitting a $42 pizza bill fairly. Nobody pays $42 — each person pays their one fair share. $42 shared by 6 people is $7 each. A unit rate is just a fair share — the price of one share.</div>
                 <p class="ny-check-fb" aria-live="polite"></p>
               </div>
               <div class="ny-phase" data-phase="try" hidden>
                 <h5>🤝 Try with me — we do this one together</h5>
                 <p style="font-weight:700;line-height:1.5;margin:0">New problem, same trick: <b>4 notebooks cost $10</b>. You tap each step — I'm right here.</p>
                 <div class="ny-try-step">
-                  <p class="ny-try-q">Step 1: To find the price of ONE notebook, what do we divide?</p>
+                  <p class="ny-try-q" data-kidc-say="kidc-unit-rates-tryq1.mp3">Step 1: To find the price of ONE notebook, what do we divide?</p>
                   <div class="ny-try-opts">
                     <button type="button" class="ny-try-opt" data-hint="Almost! We share the MONEY between the notebooks, so the money total goes first: 10 ÷ 4.">4 ÷ 10</button>
                     <button type="button" class="ny-try-opt" data-right="1">10 ÷ 4 — the total money ÷ how many notebooks</button>
                   </div>
                   <p class="ny-try-fb" aria-live="polite"></p>
-                  <p class="ny-try-result" hidden>✔️ <b>Exactly — total ÷ how many.</b> You picked the right setup. That's the hardest part, and you did it.</p>
+                  <p class="ny-try-result" hidden data-kidc-say="kidc-unit-rates-tryfb1.mp3">✔️ <b>Exactly — total ÷ how many.</b> You picked the right setup. That's the hardest part, and you did it.</p>
                 </div>
                 <div class="ny-try-step" hidden>
-                  <p class="ny-try-q">Step 2: What is 10 ÷ 4?</p>
+                  <p class="ny-try-q" data-kidc-say="kidc-unit-rates-tryq2.mp3">Step 2: What is 10 ÷ 4?</p>
                   <div class="ny-try-opts">
                     <button type="button" class="ny-try-opt" data-right="1">$2.50 — because 4 × $2.50 = $10</button>
                     <button type="button" class="ny-try-opt" data-hint="Check it by multiplying back: 4 × $6 = $24, not $10. Try the one where 4 × the answer makes exactly 10.">$6</button>
                   </div>
                   <p class="ny-try-fb" aria-live="polite"></p>
-                  <p class="ny-try-result" hidden>✔️ <b>Unit rate: $2.50 per notebook.</b> We did that one together — the next one is yours, and I know you can.</p>
+                  <p class="ny-try-result" hidden data-kidc-say="kidc-unit-rates-tryfb2.mp3">✔️ <b>Unit rate: $2.50 per notebook.</b> We did that one together — the next one is yours, and I know you can.</p>
                 </div>
-                <p class="ny-try-done" hidden>🎉 Together: done! Now show me your solo flight…</p>
+                <p class="ny-try-done" hidden data-kidc-say="kidc-unit-rates-trydone.mp3">🎉 Together: done! Now show me your solo flight…</p>
               </div>
               <div class="ny-phase" data-phase="your" hidden>
                 <h5>⭐ Your turn, Profile C</h5>
@@ -4330,57 +4332,57 @@
                 </div>
                 <p class="lsn-fb ny-fb" aria-live="polite"></p>
               </div>
-              <p class="ny-recap" hidden>🦉 So remember: <b>unit rate = total ÷ how many</b>. “Per” means “for 1” — and dividing finds it every time.</p>
+              <p class="ny-recap" hidden data-kidc-say="kidc-unit-rates-recap.mp3">🦉 So remember: <b>unit rate = total ÷ how many</b>. “Per” means “for 1” — and dividing finds it every time.</p>
             </div>
 
             <div class="ny-lsn" data-nylsn data-lsn-id="ny-negative-numbers-on-the-number-line">
               <div class="lsn-top"><span class="lsn-num">2</span><h4>Negative numbers on the number line</h4><span class="lsn-star" aria-hidden="true">⭐</span></div>
               <img class="lsn-art" src="assets/lesson-art/ny-negative-numbers-on-the-number-line.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
               <span class="ny-std-tag">NY Next Generation · Math 7.NS — The Number System</span>
-              <div class="ny-hoot"><span class="ny-owl" aria-hidden="true">🦉</span><p>Hi Profile C! Today: <b>adding and subtracting negative numbers</b>. Your school tests love these — and they get easy once you can <i>see</i> them on a number line. Watch my feet hop along the line.</p></div>
-              <p class="ny-vocab">📖 Words to know: a <b>negative number</b> is less than zero — like −3, three steps LEFT of zero. The <b>number line</b> is a path: adding walks right, subtracting walks left.</p>
+              <div class="ny-hoot" data-kidc-say="kidc-neg-numbers-intro.mp3"><span class="ny-owl" aria-hidden="true">🦉</span><p>Hi Profile C! Today: <b>adding and subtracting negative numbers</b>. Your school tests love these — and they get easy once you can <i>see</i> them on a number line. Watch my feet hop along the line.</p></div>
+              <p class="ny-vocab" data-kidc-say="kidc-neg-numbers-vocab.mp3">📖 Words to know: a <b>negative number</b> is less than zero — like −3, three steps LEFT of zero. The <b>number line</b> is a path: adding walks right, subtracting walks left.</p>
               <div class="ny-visual"><div class="ny-numline" aria-hidden="true"><span><i>−6</i>·</span><span><i>−5</i>·</span><span><i>−4</i>·</span><span class="hot"><i>−3</i>start</span><span><i>−2</i>·</span><span><i>−1</i>·</span><span><i>0</i>·</span><span><i>1</i>·</span><span><i>2</i>·</span><span><i>3</i>·</span><span class="hot"><i>4</i>land!</span><span><i>5</i>·</span><span><i>6</i>·</span><span><i>7</i>·</span><span><i>8</i>·</span></div></div>
               <div class="ny-phase" data-phase="watch">
                 <h5>👀 Watch me — I'll do one first</h5>
                 <div class="ny-steps">
-                  <p class="ny-step"><b>Step 1.</b> My problem: <b>−3 + 7</b>. I stand on <b>−3</b> on the number line (find it above — it's lit up).</p>
-                  <p class="ny-step" hidden><b>Step 2.</b> I'm <b>adding</b> 7, so I walk RIGHT 7 hops: −2, −1, 0, 1, 2, 3, 4.</p>
-                  <p class="ny-step" hidden><b>Step 3.</b> I landed on <b>4</b>. So <b>−3 + 7 = 4</b>.</p>
-                  <p class="ny-step" hidden><b>Step 4.</b> Notice: I passed zero on the way. Starting negative doesn't mean ending negative — a big enough walk right crosses zero!</p>
+                  <p class="ny-step" data-kidc-say="kidc-neg-numbers-watch1.mp3"><b>Step 1.</b> My problem: <b>−3 + 7</b>. I stand on <b>−3</b> on the number line (find it above — it's lit up).</p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-neg-numbers-watch2.mp3"><b>Step 2.</b> I'm <b>adding</b> 7, so I walk RIGHT 7 hops: −2, −1, 0, 1, 2, 3, 4.</p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-neg-numbers-watch3.mp3"><b>Step 3.</b> I landed on <b>4</b>. So <b>−3 + 7 = 4</b>.</p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-neg-numbers-watch4.mp3"><b>Step 4.</b> Notice: I passed zero on the way. Starting negative doesn't mean ending negative — a big enough walk right crosses zero!</p>
                 </div>
                 <button type="button" class="ny-nextstep">Next step ▶</button>
-                <p class="ny-stepdone" hidden>✅ The line does the thinking: <b>start at the first number, walk, land</b>.</p>
+                <p class="ny-stepdone" hidden data-kidc-say="kidc-neg-numbers-stepdone.mp3">✅ The line does the thinking: <b>start at the first number, walk, land</b>.</p>
               </div>
               <div class="ny-check" hidden>
                 <h5>🦉 Quick check, Profile C</h5>
                 <p style="font-weight:700;line-height:1.5;margin:0">How is that sitting? No wrong answer here — I just want to know how to help.</p>
                 <button type="button" class="ny-check-ok">👍 Makes sense</button>
                 <button type="button" class="ny-check-again">🔁 Show me again</button>
-                <div class="ny-alt" hidden><b>A different way — think temperature:</b> It's −3° outside, and the day warms up by 7 degrees. −3, then warmer: −2, −1, 0, 1, 2, 3, 4. The thermometer ends at 4°. Same walk, same answer: <b>−3 + 7 = 4</b>.</div>
+                <div class="ny-alt" hidden data-kidc-say="kidc-neg-numbers-alt.mp3"><b>A different way — think temperature:</b> It's −3° outside, and the day warms up by 7 degrees. −3, then warmer: −2, −1, 0, 1, 2, 3, 4. The thermometer ends at 4°. Same walk, same answer: <b>−3 + 7 = 4</b>.</div>
                 <p class="ny-check-fb" aria-live="polite"></p>
               </div>
               <div class="ny-phase" data-phase="try" hidden>
                 <h5>🤝 Try with me — we do this one together</h5>
                 <p style="font-weight:700;line-height:1.5;margin:0">This one has a famous trap, and we'll disarm it together: <b>5 − (−2)</b>.</p>
                 <div class="ny-try-step">
-                  <p class="ny-try-q">Step 1: Subtracting a negative flips it into adding. So 5 − (−2) becomes…?</p>
+                  <p class="ny-try-q" data-kidc-say="kidc-neg-numbers-tryq1.mp3">Step 1: Subtracting a negative flips it into adding. So 5 − (−2) becomes…?</p>
                   <div class="ny-try-opts">
                     <button type="button" class="ny-try-opt" data-right="1">5 + 2 — the two minuses team up and make a plus</button>
                     <button type="button" class="ny-try-opt" data-hint="Good thinking, but watch the signs: minus a NEGATIVE flips to plus. It's the second number that's negative here.">5 − 2</button>
                   </div>
                   <p class="ny-try-fb" aria-live="polite"></p>
-                  <p class="ny-try-result" hidden>✔️ <b>You got the sign rule right that time</b> — minus a negative becomes plus. That rule is the whole lesson!</p>
+                  <p class="ny-try-result" hidden data-kidc-say="kidc-neg-numbers-tryfb1.mp3">✔️ <b>You got the sign rule right that time</b> — minus a negative becomes plus. That rule is the whole lesson!</p>
                 </div>
                 <div class="ny-try-step" hidden>
-                  <p class="ny-try-q">Step 2: So what is 5 + 2?</p>
+                  <p class="ny-try-q" data-kidc-say="kidc-neg-numbers-tryq2.mp3">Step 2: So what is 5 + 2?</p>
                   <div class="ny-try-opts">
                     <button type="button" class="ny-try-opt" data-hint="Stand on 5 and walk RIGHT 2 (we're adding now): 6, then…?">3</button>
                     <button type="button" class="ny-try-opt" data-right="1">7</button>
                   </div>
                   <p class="ny-try-fb" aria-live="polite"></p>
-                  <p class="ny-try-result" hidden>✔️ <b>5 − (−2) = 7.</b> Together: done. The trap didn't stand a chance.</p>
+                  <p class="ny-try-result" hidden data-kidc-say="kidc-neg-numbers-tryfb2.mp3">✔️ <b>5 − (−2) = 7.</b> Together: done. The trap didn't stand a chance.</p>
                 </div>
-                <p class="ny-try-done" hidden>🎉 Now one on your own — use the number line above any time. It's not cheating; it's the strategy!</p>
+                <p class="ny-try-done" hidden data-kidc-say="kidc-neg-numbers-trydone.mp3">🎉 Now one on your own — use the number line above any time. It's not cheating; it's the strategy!</p>
               </div>
               <div class="ny-phase" data-phase="your" hidden>
                 <h5>⭐ Your turn, Profile C</h5>
@@ -4392,56 +4394,56 @@
                 </div>
                 <p class="lsn-fb ny-fb" aria-live="polite"></p>
               </div>
-              <p class="ny-recap" hidden>🦉 So remember: on the number line, <b>adding walks right, subtracting walks left</b> — and <b>minus a negative flips to plus</b>.</p>
+              <p class="ny-recap" hidden data-kidc-say="kidc-neg-numbers-recap.mp3">🦉 So remember: on the number line, <b>adding walks right, subtracting walks left</b> — and <b>minus a negative flips to plus</b>.</p>
             </div>
 
             <div class="ny-lsn" data-nylsn data-lsn-id="ny-two-step-equations-unwrap-x">
               <div class="lsn-top"><span class="lsn-num">3</span><h4>Two-step equations: unwrap x</h4><span class="lsn-star" aria-hidden="true">⭐</span></div>
               <img class="lsn-art" src="assets/lesson-art/ny-two-step-equations-unwrap-x.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
               <span class="ny-std-tag">NY Next Generation · Math 7.EE — Expressions &amp; Equations</span>
-              <div class="ny-hoot"><span class="ny-owl" aria-hidden="true">🦉</span><p>Tutor time, Profile C! <b>Two-step equations</b> look scary, but they're just presents: x is wrapped in two layers, and we unwrap them <b>backwards</b>. I'll unwrap one slowly, then we unwrap one together.</p></div>
-              <p class="ny-vocab">📖 Words to know: an <b>equation</b> is a balance — both sides weigh the same. <b>Undo</b> means do the opposite: the opposite of +5 is −5, and the opposite of ×3 is ÷3. Whatever you do to one side, do to the other — the balance stays fair.</p>
+              <div class="ny-hoot" data-kidc-say="kidc-equations-intro.mp3"><span class="ny-owl" aria-hidden="true">🦉</span><p>Tutor time, Profile C! <b>Two-step equations</b> look scary, but they're just presents: x is wrapped in two layers, and we unwrap them <b>backwards</b>. I'll unwrap one slowly, then we unwrap one together.</p></div>
+              <p class="ny-vocab" data-kidc-say="kidc-equations-vocab.mp3">📖 Words to know: an <b>equation</b> is a balance — both sides weigh the same. <b>Undo</b> means do the opposite: the opposite of +5 is −5, and the opposite of ×3 is ÷3. Whatever you do to one side, do to the other — the balance stays fair.</p>
               <div class="ny-phase" data-phase="watch">
                 <h5>👀 Watch me — I'll do one first</h5>
                 <div class="ny-steps">
-                  <p class="ny-step"><b>Step 1.</b> My equation: <b>3x + 5 = 20</b>. x was multiplied by 3, then 5 was added. I unwrap in REVERSE: last layer on, first layer off.</p>
-                  <p class="ny-step" hidden><b>Step 2.</b> Undo the +5 first: subtract 5 from BOTH sides. 3x + 5 − 5 = 20 − 5, so <b>3x = 15</b>.</p>
-                  <p class="ny-step" hidden><b>Step 3.</b> Now undo the ×3: divide both sides by 3. 15 ÷ 3 = 5, so <b>x = 5</b>.</p>
-                  <p class="ny-step" hidden><b>Step 4.</b> Always check! 3 × 5 + 5 = 15 + 5 = 20 ✔️. The balance balances — I'm sure.</p>
+                  <p class="ny-step" data-kidc-say="kidc-equations-watch1.mp3"><b>Step 1.</b> My equation: <b>3x + 5 = 20</b>. x was multiplied by 3, then 5 was added. I unwrap in REVERSE: last layer on, first layer off.</p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-equations-watch2.mp3"><b>Step 2.</b> Undo the +5 first: subtract 5 from BOTH sides. 3x + 5 − 5 = 20 − 5, so <b>3x = 15</b>.</p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-equations-watch3.mp3"><b>Step 3.</b> Now undo the ×3: divide both sides by 3. 15 ÷ 3 = 5, so <b>x = 5</b>.</p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-equations-watch4.mp3"><b>Step 4.</b> Always check! 3 × 5 + 5 = 15 + 5 = 20 ✔️. The balance balances — I'm sure.</p>
                 </div>
                 <button type="button" class="ny-nextstep">Next step ▶</button>
-                <p class="ny-stepdone" hidden>✅ Unwrap backwards: <b>undo the adding first, then undo the multiplying</b> — and check at the end.</p>
+                <p class="ny-stepdone" hidden data-kidc-say="kidc-equations-stepdone.mp3">✅ Unwrap backwards: <b>undo the adding first, then undo the multiplying</b> — and check at the end.</p>
               </div>
               <div class="ny-check" hidden>
                 <h5>🦉 Quick check, Profile C</h5>
                 <p style="font-weight:700;line-height:1.5;margin:0">How is that sitting? No wrong answer here — I just want to know how to help.</p>
                 <button type="button" class="ny-check-ok">👍 Makes sense</button>
                 <button type="button" class="ny-check-again">🔁 Show me again</button>
-                <div class="ny-alt" hidden><b>A different way — think of a gift:</b> x is a surprise inside a box (+5 of wrapping paper), inside a bag (×3 of ribbon). To open it you remove the LAST thing put on, first. Undo +5, then undo ×3. Same unwrapping — that's all an equation is.</div>
+                <div class="ny-alt" hidden data-kidc-say="kidc-equations-alt.mp3"><b>A different way — think of a gift:</b> x is a surprise inside a box (+5 of wrapping paper), inside a bag (×3 of ribbon). To open it you remove the LAST thing put on, first. Undo +5, then undo ×3. Same unwrapping — that's all an equation is.</div>
                 <p class="ny-check-fb" aria-live="polite"></p>
               </div>
               <div class="ny-phase" data-phase="try" hidden>
                 <h5>🤝 Try with me — we do this one together</h5>
                 <p style="font-weight:700;line-height:1.5;margin:0">Our equation: <b>4x − 3 = 13</b>. You lead, I steady the balance.</p>
                 <div class="ny-try-step">
-                  <p class="ny-try-q">Step 1: x was multiplied by 4, then 3 was SUBTRACTED. Unwrapping backwards, what's the first move?</p>
+                  <p class="ny-try-q" data-kidc-say="kidc-equations-tryq1.mp3">Step 1: x was multiplied by 4, then 3 was SUBTRACTED. Unwrapping backwards, what's the first move?</p>
                   <div class="ny-try-opts">
                     <button type="button" class="ny-try-opt" data-right="1">Add 3 to both sides — undo the −3 first</button>
                     <button type="button" class="ny-try-opt" data-hint="That's the SECOND layer. Backwards means the last thing done to x comes off first — the −3 was done last.">Divide both sides by 4 first</button>
                   </div>
                   <p class="ny-try-fb" aria-live="polite"></p>
-                  <p class="ny-try-result" hidden>✔️ <b>4x = 16.</b> You unwrapped in the right order — that's the skill!</p>
+                  <p class="ny-try-result" hidden data-kidc-say="kidc-equations-tryfb1.mp3">✔️ <b>4x = 16.</b> You unwrapped in the right order — that's the skill!</p>
                 </div>
                 <div class="ny-try-step" hidden>
-                  <p class="ny-try-q">Step 2: Now undo the ×4. What is x?</p>
+                  <p class="ny-try-q" data-kidc-say="kidc-equations-tryq2.mp3">Step 2: Now undo the ×4. What is x?</p>
                   <div class="ny-try-opts">
                     <button type="button" class="ny-try-opt" data-hint="Divide 16 by 4: 4 × ? = 16. Count: 4, 8, 12, 16 — four 4s!">12</button>
                     <button type="button" class="ny-try-opt" data-right="1">x = 4 — because 16 ÷ 4 = 4</button>
                   </div>
                   <p class="ny-try-fb" aria-live="polite"></p>
-                  <p class="ny-try-result" hidden>✔️ Check it: 4 × 4 − 3 = 13 ✔️. <b>We solved it together.</b> Solo flight next!</p>
+                  <p class="ny-try-result" hidden data-kidc-say="kidc-equations-tryfb2.mp3">✔️ Check it: 4 × 4 − 3 = 13 ✔️. <b>We solved it together.</b> Solo flight next!</p>
                 </div>
-                <p class="ny-try-done" hidden>🎉 You've got the unwrapping order down. Your turn!</p>
+                <p class="ny-try-done" hidden data-kidc-say="kidc-equations-trydone.mp3">🎉 You've got the unwrapping order down. Your turn!</p>
               </div>
               <div class="ny-phase" data-phase="your" hidden>
                 <h5>⭐ Your turn, Profile C</h5>
@@ -4453,57 +4455,57 @@
                 </div>
                 <p class="lsn-fb ny-fb" aria-live="polite"></p>
               </div>
-              <p class="ny-recap" hidden>🦉 So remember: <b>unwrap x backwards</b> — undo the +/− first, then the ×/÷, keep both sides balanced, and <b>always check</b>.</p>
+              <p class="ny-recap" hidden data-kidc-say="kidc-equations-recap.mp3">🦉 So remember: <b>unwrap x backwards</b> — undo the +/− first, then the ×/÷, keep both sides balanced, and <b>always check</b>.</p>
             </div>
 
             <div class="ny-lsn" data-nylsn data-lsn-id="ny-main-idea-citing-evidence">
               <div class="lsn-top"><span class="lsn-num">4</span><h4>Main idea &amp; citing evidence</h4><span class="lsn-star" aria-hidden="true">⭐</span></div>
               <img class="lsn-art" src="assets/lesson-art/ny-main-idea-citing-evidence.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
               <span class="ny-std-tag">NY Next Generation · ELA 7R1 — Read closely &amp; cite text evidence</span>
-              <div class="ny-hoot"><span class="ny-owl" aria-hidden="true">🦉</span><p>Reading time, Profile C — and this is the skill your teachers ask for most: find the <b>main idea</b>, then <b>prove it</b> with a sentence from the text. Detectives do exactly this. Let's be detectives.</p></div>
-              <p class="ny-vocab">📖 Words to know: the <b>main idea</b> is what the WHOLE text is mostly about, in one line. <b>Evidence</b> is a sentence from the text that proves your idea. To <b>cite</b> means to point at that exact sentence.</p>
+              <div class="ny-hoot" data-kidc-say="kidc-main-idea-intro.mp3"><span class="ny-owl" aria-hidden="true">🦉</span><p>Reading time, Profile C — and this is the skill your teachers ask for most: find the <b>main idea</b>, then <b>prove it</b> with a sentence from the text. Detectives do exactly this. Let's be detectives.</p></div>
+              <p class="ny-vocab" data-kidc-say="kidc-main-idea-vocab.mp3">📖 Words to know: the <b>main idea</b> is what the WHOLE text is mostly about, in one line. <b>Evidence</b> is a sentence from the text that proves your idea. To <b>cite</b> means to point at that exact sentence.</p>
               <div class="ny-phase" data-phase="watch">
                 <h5>👀 Watch me — I'll do one first</h5>
                 <div class="ny-passage">“For many years, factories dumped waste into the Hudson River, and fish nearly disappeared. Then people got to work: towns cleaned the water, scientists tested it, and volunteers planted grasses along the banks. Today, striped bass and even eagles have returned to the river.”</div>
                 <div class="ny-steps">
-                  <p class="ny-step"><b>Step 1.</b> I ask: what does EVERY sentence talk about? The Hudson River — first dirty, then cleaned, then alive again.</p>
-                  <p class="ny-step" hidden><b>Step 2.</b> So the main idea covers the whole trip: <b>“People helped the Hudson River recover.”</b> Not just “fish” (one detail) — the whole change.</p>
-                  <p class="ny-step" hidden><b>Step 3.</b> Now I cite evidence — the sentence that proves people helped: <u>“towns cleaned the water, scientists tested it, and volunteers planted grasses along the banks.”</u></p>
-                  <p class="ny-step" hidden><b>Step 4.</b> See the pattern? <b>Main idea = the whole story in one line. Evidence = the sentence that proves it.</b></p>
+                  <p class="ny-step" data-kidc-say="kidc-main-idea-watch1.mp3"><b>Step 1.</b> I ask: what does EVERY sentence talk about? The Hudson River — first dirty, then cleaned, then alive again.</p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-main-idea-watch2.mp3"><b>Step 2.</b> So the main idea covers the whole trip: <b>“People helped the Hudson River recover.”</b> Not just “fish” (one detail) — the whole change.</p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-main-idea-watch3.mp3"><b>Step 3.</b> Now I cite evidence — the sentence that proves people helped: <u>“towns cleaned the water, scientists tested it, and volunteers planted grasses along the banks.”</u></p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-main-idea-watch4.mp3"><b>Step 4.</b> See the pattern? <b>Main idea = the whole story in one line. Evidence = the sentence that proves it.</b></p>
                 </div>
                 <button type="button" class="ny-nextstep">Next step ▶</button>
-                <p class="ny-stepdone" hidden>✅ Detective rule: never just say the idea — <b>point at the sentence</b>.</p>
+                <p class="ny-stepdone" hidden data-kidc-say="kidc-main-idea-stepdone.mp3">✅ Detective rule: never just say the idea — <b>point at the sentence</b>.</p>
               </div>
               <div class="ny-check" hidden>
                 <h5>🦉 Quick check, Profile C</h5>
                 <p style="font-weight:700;line-height:1.5;margin:0">How is that sitting? No wrong answer here — I just want to know how to help.</p>
                 <button type="button" class="ny-check-ok">👍 Makes sense</button>
                 <button type="button" class="ny-check-again">🔁 Show me again</button>
-                <div class="ny-alt" hidden><b>A different way — the umbrella:</b> The main idea is an umbrella. Every sentence in the text should fit UNDER it. “Fish” is too small an umbrella — the cleaning sentences poke out. “People helped the river recover” covers everything. If a sentence pokes out, your umbrella (main idea) is too small.</div>
+                <div class="ny-alt" hidden data-kidc-say="kidc-main-idea-alt.mp3"><b>A different way — the umbrella:</b> The main idea is an umbrella. Every sentence in the text should fit UNDER it. “Fish” is too small an umbrella — the cleaning sentences poke out. “People helped the river recover” covers everything. If a sentence pokes out, your umbrella (main idea) is too small.</div>
                 <p class="ny-check-fb" aria-live="polite"></p>
               </div>
               <div class="ny-phase" data-phase="try" hidden>
                 <h5>🤝 Try with me — we do this one together</h5>
                 <div class="ny-passage">“Maya practised piano a little every day. At first her fingers stumbled over the keys. After two months of short daily practice, she played her first full song without stopping.”</div>
                 <div class="ny-try-step">
-                  <p class="ny-try-q">Step 1: Which umbrella covers the WHOLE passage?</p>
+                  <p class="ny-try-q" data-kidc-say="kidc-main-idea-tryq1.mp3">Step 1: Which umbrella covers the WHOLE passage?</p>
                   <div class="ny-try-opts">
                     <button type="button" class="ny-try-opt" data-hint="That's one small detail from the middle — the umbrella must cover the practice AND the song at the end.">Maya's fingers stumbled</button>
                     <button type="button" class="ny-try-opt" data-right="1">Daily practice helped Maya learn to play a full song</button>
                   </div>
                   <p class="ny-try-fb" aria-live="polite"></p>
-                  <p class="ny-try-result" hidden>✔️ <b>Right-sized umbrella!</b> It covers the beginning, middle and end.</p>
+                  <p class="ny-try-result" hidden data-kidc-say="kidc-main-idea-tryfb1.mp3">✔️ <b>Right-sized umbrella!</b> It covers the beginning, middle and end.</p>
                 </div>
                 <div class="ny-try-step" hidden>
-                  <p class="ny-try-q">Step 2: Which sentence from the passage is EVIDENCE that practice worked?</p>
+                  <p class="ny-try-q" data-kidc-say="kidc-main-idea-tryq2.mp3">Step 2: Which sentence from the passage is EVIDENCE that practice worked?</p>
                   <div class="ny-try-opts">
                     <button type="button" class="ny-try-opt" data-right="1">“After two months of short daily practice, she played her first full song without stopping.”</button>
                     <button type="button" class="ny-try-opt" data-hint="That sentence shows the problem at the START, not the result. Evidence for “practice worked” should show what changed.">“At first her fingers stumbled over the keys.”</button>
                   </div>
                   <p class="ny-try-fb" aria-live="polite"></p>
-                  <p class="ny-try-result" hidden>✔️ <b>You cited real evidence</b> — the sentence that proves the change. Detective work, done together.</p>
+                  <p class="ny-try-result" hidden data-kidc-say="kidc-main-idea-tryfb2.mp3">✔️ <b>You cited real evidence</b> — the sentence that proves the change. Detective work, done together.</p>
                 </div>
-                <p class="ny-try-done" hidden>🎉 Now a fresh case, all yours…</p>
+                <p class="ny-try-done" hidden data-kidc-say="kidc-main-idea-trydone.mp3">🎉 Now a fresh case, all yours…</p>
               </div>
               <div class="ny-phase" data-phase="your" hidden>
                 <h5>⭐ Your turn, Profile C</h5>
@@ -4516,56 +4518,56 @@
                 </div>
                 <p class="lsn-fb ny-fb" aria-live="polite"></p>
               </div>
-              <p class="ny-recap" hidden>🦉 So remember: <b>main idea = the whole text in one line; evidence = the exact sentence that proves it.</b> Always point at the sentence.</p>
+              <p class="ny-recap" hidden data-kidc-say="kidc-main-idea-recap.mp3">🦉 So remember: <b>main idea = the whole text in one line; evidence = the exact sentence that proves it.</b> Always point at the sentence.</p>
             </div>
 
             <div class="ny-lsn" data-nylsn data-lsn-id="ny-argument-writing-claim-evidence-reasoning">
               <div class="lsn-top"><span class="lsn-num">5</span><h4>Argument writing: claim, evidence, reasoning</h4><span class="lsn-star" aria-hidden="true">⭐</span></div>
               <img class="lsn-art" src="assets/lesson-art/ny-argument-writing-claim-evidence-reasoning.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
               <span class="ny-std-tag">NY Next Generation · ELA Writing — Write arguments with reasons &amp; evidence</span>
-              <div class="ny-hoot"><span class="ny-owl" aria-hidden="true">🦉</span><p>Writing time, Profile C! An <b>argument</b> isn't a fight — it's building a case so a reader says “okay, I'm convinced.” It has three parts, and I'll build one with you, brick by brick.</p></div>
-              <p class="ny-vocab">📖 Words to know: a <b>claim</b> is what you want the reader to believe. <b>Evidence</b> is a fact, number or example that backs it up. <b>Reasoning</b> is the sentence that explains WHY the evidence proves the claim. An <b>opinion</b> (“it's the best!”) is a feeling — it is NOT evidence.</p>
+              <div class="ny-hoot" data-kidc-say="kidc-argument-intro.mp3"><span class="ny-owl" aria-hidden="true">🦉</span><p>Writing time, Profile C! An <b>argument</b> isn't a fight — it's building a case so a reader says “okay, I'm convinced.” It has three parts, and I'll build one with you, brick by brick.</p></div>
+              <p class="ny-vocab" data-kidc-say="kidc-argument-vocab.mp3">📖 Words to know: a <b>claim</b> is what you want the reader to believe. <b>Evidence</b> is a fact, number or example that backs it up. <b>Reasoning</b> is the sentence that explains WHY the evidence proves the claim. An <b>opinion</b> (“it's the best!”) is a feeling — it is NOT evidence.</p>
               <div class="ny-phase" data-phase="watch">
                 <h5>👀 Watch me — I'll build one first</h5>
                 <div class="ny-steps">
-                  <p class="ny-step"><b>Step 1 — CLAIM:</b> “Our school day should start later.” Short, clear, arguable. That's my case.</p>
-                  <p class="ny-step" hidden><b>Step 2 — EVIDENCE:</b> “Doctors say most teenagers need about 8 to 10 hours of sleep a night, and teenage brains naturally fall asleep late.” A fact — not a feeling.</p>
-                  <p class="ny-step" hidden><b>Step 3 — REASONING:</b> “If school starts before tired brains have slept enough, students learn less in first period — so a later start matches how teenage brains actually work.” See how it connects the fact back to the claim?</p>
-                  <p class="ny-step" hidden><b>Step 4.</b> Claim says it. Evidence backs it. Reasoning ties the knot. <b>C–E–R.</b></p>
+                  <p class="ny-step" data-kidc-say="kidc-argument-watch1.mp3"><b>Step 1 — CLAIM:</b> “Our school day should start later.” Short, clear, arguable. That's my case.</p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-argument-watch2.mp3"><b>Step 2 — EVIDENCE:</b> “Doctors say most teenagers need about 8 to 10 hours of sleep a night, and teenage brains naturally fall asleep late.” A fact — not a feeling.</p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-argument-watch3.mp3"><b>Step 3 — REASONING:</b> “If school starts before tired brains have slept enough, students learn less in first period — so a later start matches how teenage brains actually work.” See how it connects the fact back to the claim?</p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-argument-watch4.mp3"><b>Step 4.</b> Claim says it. Evidence backs it. Reasoning ties the knot. <b>C–E–R.</b></p>
                 </div>
                 <button type="button" class="ny-nextstep">Next step ▶</button>
-                <p class="ny-stepdone" hidden>✅ Three bricks: <b>claim, evidence, reasoning</b> — in that order.</p>
+                <p class="ny-stepdone" hidden data-kidc-say="kidc-argument-stepdone.mp3">✅ Three bricks: <b>claim, evidence, reasoning</b> — in that order.</p>
               </div>
               <div class="ny-check" hidden>
                 <h5>🦉 Quick check, Profile C</h5>
                 <p style="font-weight:700;line-height:1.5;margin:0">How is that sitting? No wrong answer here — I just want to know how to help.</p>
                 <button type="button" class="ny-check-ok">👍 Makes sense</button>
                 <button type="button" class="ny-check-again">🔁 Show me again</button>
-                <div class="ny-alt" hidden><b>A different way — a courtroom:</b> The claim is the verdict you want. Evidence is what the detective brings in — real things people can check. Reasoning is the lawyer's closing line: “and THAT is why the evidence proves it.” Feelings (“I just think so”) get thrown out of court.</div>
+                <div class="ny-alt" hidden data-kidc-say="kidc-argument-alt.mp3"><b>A different way — a courtroom:</b> The claim is the verdict you want. Evidence is what the detective brings in — real things people can check. Reasoning is the lawyer's closing line: “and THAT is why the evidence proves it.” Feelings (“I just think so”) get thrown out of court.</div>
                 <p class="ny-check-fb" aria-live="polite"></p>
               </div>
               <div class="ny-phase" data-phase="try" hidden>
                 <h5>🤝 Try with me — we build one together</h5>
                 <p style="font-weight:700;line-height:1.5;margin:0">Our topic: <b>school gardens</b>. Claim (I'll give you this one): “Our school should have a garden.”</p>
                 <div class="ny-try-step">
-                  <p class="ny-try-q">Step 1: Which of these is real EVIDENCE for the claim?</p>
+                  <p class="ny-try-q" data-kidc-say="kidc-argument-tryq1.mp3">Step 1: Which of these is real EVIDENCE for the claim?</p>
                   <div class="ny-try-opts">
                     <button type="button" class="ny-try-opt" data-hint="“Fun” is a feeling — an opinion. Evidence is something checkable: a count, a measurement, a fact.">“Gardens are just really fun.”</button>
                     <button type="button" class="ny-try-opt" data-right="1">“Last spring, one class grew 12 pounds of tomatoes in a single garden bed.”</button>
                   </div>
                   <p class="ny-try-fb" aria-live="polite"></p>
-                  <p class="ny-try-result" hidden>✔️ <b>You spotted evidence over opinion</b> — 12 pounds is checkable. That's the writer's eye!</p>
+                  <p class="ny-try-result" hidden data-kidc-say="kidc-argument-tryfb1.mp3">✔️ <b>You spotted evidence over opinion</b> — 12 pounds is checkable. That's the writer's eye!</p>
                 </div>
                 <div class="ny-try-step" hidden>
-                  <p class="ny-try-q">Step 2: Which sentence is the REASONING — the one that ties the evidence to the claim?</p>
+                  <p class="ny-try-q" data-kidc-say="kidc-argument-tryq2.mp3">Step 2: Which sentence is the REASONING — the one that ties the evidence to the claim?</p>
                   <div class="ny-try-opts">
                     <button type="button" class="ny-try-opt" data-right="1">“So a garden can really feed people — that's why our school should have one.”</button>
                     <button type="button" class="ny-try-opt" data-hint="That just repeats the tomato fact. Reasoning must CONNECT: it says “so…” or “that's why…” and links back to the claim.">“Tomatoes are red.”</button>
                   </div>
                   <p class="ny-try-fb" aria-live="polite"></p>
-                  <p class="ny-try-result" hidden>✔️ <b>Claim + evidence + reasoning — a complete argument, built by you and me.</b></p>
+                  <p class="ny-try-result" hidden data-kidc-say="kidc-argument-tryfb2.mp3">✔️ <b>Claim + evidence + reasoning — a complete argument, built by you and me.</b></p>
                 </div>
-                <p class="ny-try-done" hidden>🎉 Now judge one on your own…</p>
+                <p class="ny-try-done" hidden data-kidc-say="kidc-argument-trydone.mp3">🎉 Now judge one on your own…</p>
               </div>
               <div class="ny-phase" data-phase="your" hidden>
                 <h5>⭐ Your turn, Profile C</h5>
@@ -4577,57 +4579,57 @@
                 </div>
                 <p class="lsn-fb ny-fb" aria-live="polite"></p>
               </div>
-              <p class="ny-recap" hidden>🦉 So remember: <b>claim</b> says it, <b>evidence</b> (checkable facts — never feelings) backs it, <b>reasoning</b> ties the knot.</p>
+              <p class="ny-recap" hidden data-kidc-say="kidc-argument-recap.mp3">🦉 So remember: <b>claim</b> says it, <b>evidence</b> (checkable facts — never feelings) backs it, <b>reasoning</b> ties the knot.</p>
             </div>
 
             <div class="ny-lsn" data-nylsn data-lsn-id="ny-photosynthesis-matter-energy-in-plants">
               <div class="lsn-top"><span class="lsn-num">6</span><h4>Photosynthesis: matter &amp; energy in plants</h4><span class="lsn-star" aria-hidden="true">⭐</span></div>
               <img class="lsn-art" src="assets/lesson-art/ny-photosynthesis-matter-energy-in-plants.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
               <span class="ny-std-tag">NYSSLS · Science MS-LS1-6 — Matter &amp; energy in organisms</span>
-              <div class="ny-hoot"><span class="ny-owl" aria-hidden="true">🦉</span><p>Science, Profile C! Plants look quiet, but inside every leaf a tiny factory is running: <b>photosynthesis</b>. It takes simple things in, and builds food. Let's walk the factory floor together.</p></div>
-              <p class="ny-vocab">📖 Words to know: <b>photosynthesis</b> means “building with light.” <b>Carbon dioxide</b> is a gas in the air (the one you breathe OUT). <b>Glucose</b> is a sugar — the plant's food, where the sunlight's energy gets stored.</p>
+              <div class="ny-hoot" data-kidc-say="kidc-photosynthesis-intro.mp3"><span class="ny-owl" aria-hidden="true">🦉</span><p>Science, Profile C! Plants look quiet, but inside every leaf a tiny factory is running: <b>photosynthesis</b>. It takes simple things in, and builds food. Let's walk the factory floor together.</p></div>
+              <p class="ny-vocab" data-kidc-say="kidc-photosynthesis-vocab.mp3">📖 Words to know: <b>photosynthesis</b> means “building with light.” <b>Carbon dioxide</b> is a gas in the air (the one you breathe OUT). <b>Glucose</b> is a sugar — the plant's food, where the sunlight's energy gets stored.</p>
               <div class="ny-visual"><div class="ny-flow" aria-hidden="true"><span class="ny-fbox">☀️ Sunlight<br />+ 💧 Water<br />+ 🌬️ Carbon dioxide</span><span class="ny-farr">→</span><span class="ny-fbox">🌿 The leaf factory<br />(photosynthesis)</span><span class="ny-farr">→</span><span class="ny-fbox">🍬 Glucose (food)<br />+ 🌬️ Oxygen<br />released into the air</span></div></div>
               <div class="ny-phase" data-phase="watch">
                 <h5>👀 Watch me — let's trace it through</h5>
                 <div class="ny-steps">
-                  <p class="ny-step"><b>Step 1 — INPUTS in:</b> The plant takes in three things: <b>sunlight</b>, <b>water</b> (from roots), and <b>carbon dioxide</b> (from the air).</p>
-                  <p class="ny-step" hidden><b>Step 2 — THE BUILD:</b> In the leaf, those pieces get rearranged — taken apart and rebuilt into something new. The sunlight provides the <b>energy</b> for the building.</p>
-                  <p class="ny-step" hidden><b>Step 3 — OUTPUTS out:</b> The factory makes <b>glucose</b> (sugar — the plant's food, storing the energy) and <b>oxygen</b>, which floats out into the air — the oxygen we breathe!</p>
-                  <p class="ny-step" hidden><b>Step 4.</b> Nothing appears from nowhere: the sugar's matter came from the air and water, and its energy came from the sun.</p>
+                  <p class="ny-step" data-kidc-say="kidc-photosynthesis-watch1.mp3"><b>Step 1 — INPUTS in:</b> The plant takes in three things: <b>sunlight</b>, <b>water</b> (from roots), and <b>carbon dioxide</b> (from the air).</p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-photosynthesis-watch2.mp3"><b>Step 2 — THE BUILD:</b> In the leaf, those pieces get rearranged — taken apart and rebuilt into something new. The sunlight provides the <b>energy</b> for the building.</p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-photosynthesis-watch3.mp3"><b>Step 3 — OUTPUTS out:</b> The factory makes <b>glucose</b> (sugar — the plant's food, storing the energy) and <b>oxygen</b>, which floats out into the air — the oxygen we breathe!</p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-photosynthesis-watch4.mp3"><b>Step 4.</b> Nothing appears from nowhere: the sugar's matter came from the air and water, and its energy came from the sun.</p>
                 </div>
                 <button type="button" class="ny-nextstep">Next step ▶</button>
-                <p class="ny-stepdone" hidden>✅ In: <b>light + water + carbon dioxide</b>. Out: <b>sugar + oxygen</b>.</p>
+                <p class="ny-stepdone" hidden data-kidc-say="kidc-photosynthesis-stepdone.mp3">✅ In: <b>light + water + carbon dioxide</b>. Out: <b>sugar + oxygen</b>.</p>
               </div>
               <div class="ny-check" hidden>
                 <h5>🦉 Quick check, Profile C</h5>
                 <p style="font-weight:700;line-height:1.5;margin:0">How is that sitting? No wrong answer here — I just want to know how to help.</p>
                 <button type="button" class="ny-check-ok">👍 Makes sense</button>
                 <button type="button" class="ny-check-again">🔁 Show me again</button>
-                <div class="ny-alt" hidden><b>A different way — a bakery:</b> A leaf is a bakery. Flour and water (the matter) go in; the oven's heat (the energy — sunlight) bakes them into bread (glucose). The lovely smell drifting out is like the oxygen released. Ingredients in, energy to build, new product out.</div>
+                <div class="ny-alt" hidden data-kidc-say="kidc-photosynthesis-alt.mp3"><b>A different way — a bakery:</b> A leaf is a bakery. Flour and water (the matter) go in; the oven's heat (the energy — sunlight) bakes them into bread (glucose). The lovely smell drifting out is like the oxygen released. Ingredients in, energy to build, new product out.</div>
                 <p class="ny-check-fb" aria-live="polite"></p>
               </div>
               <div class="ny-phase" data-phase="try" hidden>
                 <h5>🤝 Try with me — a plant problem</h5>
                 <p style="font-weight:700;line-height:1.5;margin:0">A plant sits in a <b>dark closet</b>. It gets watered, and air reaches it. Something is missing…</p>
                 <div class="ny-try-step">
-                  <p class="ny-try-q">Step 1: Which INPUT is the closet plant missing?</p>
+                  <p class="ny-try-q" data-kidc-say="kidc-photosynthesis-tryq1.mp3">Step 1: Which INPUT is the closet plant missing?</p>
                   <div class="ny-try-opts">
                     <button type="button" class="ny-try-opt" data-hint="It IS watered, remember — water is arriving. Think about what a dark closet has none of.">Water</button>
                     <button type="button" class="ny-try-opt" data-right="1">Sunlight — there's no light in a dark closet</button>
                   </div>
                   <p class="ny-try-fb" aria-live="polite"></p>
-                  <p class="ny-try-result" hidden>✔️ <b>No light, no energy for building.</b> You traced the missing input!</p>
+                  <p class="ny-try-result" hidden data-kidc-say="kidc-photosynthesis-tryfb1.mp3">✔️ <b>No light, no energy for building.</b> You traced the missing input!</p>
                 </div>
                 <div class="ny-try-step" hidden>
-                  <p class="ny-try-q">Step 2: So what happens to that plant over time?</p>
+                  <p class="ny-try-q" data-kidc-say="kidc-photosynthesis-tryq2.mp3">Step 2: So what happens to that plant over time?</p>
                   <div class="ny-try-opts">
                     <button type="button" class="ny-try-opt" data-right="1">It can't make its food (glucose), so it weakens and may die</button>
                     <button type="button" class="ny-try-opt" data-hint="The factory needs its energy source. Without sunlight it can't BUILD sugar at all — it has nothing to live on.">It grows extra fast in the dark</button>
                   </div>
                   <p class="ny-try-fb" aria-live="polite"></p>
-                  <p class="ny-try-result" hidden>✔️ <b>Exactly — inputs decide outputs.</b> Science reasoning, together.</p>
+                  <p class="ny-try-result" hidden data-kidc-say="kidc-photosynthesis-tryfb2.mp3">✔️ <b>Exactly — inputs decide outputs.</b> Science reasoning, together.</p>
                 </div>
-                <p class="ny-try-done" hidden>🎉 Your turn — one quick product question…</p>
+                <p class="ny-try-done" hidden data-kidc-say="kidc-photosynthesis-trydone.mp3">🎉 Your turn — one quick product question…</p>
               </div>
               <div class="ny-phase" data-phase="your" hidden>
                 <h5>⭐ Your turn, Profile C</h5>
@@ -4639,57 +4641,57 @@
                 </div>
                 <p class="lsn-fb ny-fb" aria-live="polite"></p>
               </div>
-              <p class="ny-recap" hidden>🦉 So remember: <b>sunlight + water + carbon dioxide → glucose + oxygen</b>. Matter gets rearranged; energy from sunlight gets stored in the sugar.</p>
+              <p class="ny-recap" hidden data-kidc-say="kidc-photosynthesis-recap.mp3">🦉 So remember: <b>sunlight + water + carbon dioxide → glucose + oxygen</b>. Matter gets rearranged; energy from sunlight gets stored in the sugar.</p>
             </div>
 
             <div class="ny-lsn" data-nylsn data-lsn-id="ny-ecosystems-the-hudson-river-food-web">
               <div class="lsn-top"><span class="lsn-num">7</span><h4>Ecosystems: the Hudson River food web</h4><span class="lsn-star" aria-hidden="true">⭐</span></div>
               <img class="lsn-art" src="assets/lesson-art/ny-ecosystems-the-hudson-river-food-web.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
               <span class="ny-std-tag">NYSSLS · Science MS-LS2 — Ecosystems: interactions, energy &amp; dynamics</span>
-              <div class="ny-hoot"><span class="ny-owl" aria-hidden="true">🦉</span><p>More science, Profile C — close to home this time! The <b>Hudson River</b> and <b>Long Island Sound</b>, near New York City, are full of living things that depend on each other. Tug one thread of the web, and the whole web moves.</p></div>
-              <p class="ny-vocab">📖 Words to know: an <b>ecosystem</b> is a community of living things plus their home. A <b>food web</b> shows who eats whom — arrows point from the food to the eater (following the energy). <b>Interdependent</b> means they all lean on each other.</p>
+              <div class="ny-hoot" data-kidc-say="kidc-ecosystems-intro.mp3"><span class="ny-owl" aria-hidden="true">🦉</span><p>More science, Profile C — close to home this time! The <b>Hudson River</b> and <b>Long Island Sound</b>, near New York City, are full of living things that depend on each other. Tug one thread of the web, and the whole web moves.</p></div>
+              <p class="ny-vocab" data-kidc-say="kidc-ecosystems-vocab.mp3">📖 Words to know: an <b>ecosystem</b> is a community of living things plus their home. A <b>food web</b> shows who eats whom — arrows point from the food to the eater (following the energy). <b>Interdependent</b> means they all lean on each other.</p>
               <div class="ny-visual"><div class="ny-flow" aria-hidden="true"><span class="ny-fbox">🌿 Phytoplankton<br />(tiny floating plants)</span><span class="ny-farr">→</span><span class="ny-fbox">🦐 Zooplankton<br />(tiny animals)</span><span class="ny-farr">→</span><span class="ny-fbox">🐟 Small fish<br />(silversides, killifish)</span><span class="ny-farr">→</span><span class="ny-fbox">🐠 Striped bass<br />+ 🦅 osprey &amp; heron</span></div></div>
               <div class="ny-phase" data-phase="watch">
                 <h5>👀 Watch me — trace the web with me</h5>
                 <div class="ny-steps">
-                  <p class="ny-step"><b>Step 1.</b> Sunlight grows <b>phytoplankton</b> — tiny floating plants. (Hello again, photosynthesis!)</p>
-                  <p class="ny-step" hidden><b>Step 2.</b> Tiny animals, <b>zooplankton</b>, eat the phytoplankton. Then <b>small fish</b> eat the zooplankton.</p>
-                  <p class="ny-step" hidden><b>Step 3.</b> <b>Striped bass</b> — and birds like <b>osprey</b> and <b>herons</b> — eat the small fish. Energy flows up the chain, meal by meal.</p>
-                  <p class="ny-step" hidden><b>Step 4.</b> So every creature holds threads for others: the bass needs the small fish; the small fish need the zooplankton; everything needs the phytoplankton.</p>
+                  <p class="ny-step" data-kidc-say="kidc-ecosystems-watch1.mp3"><b>Step 1.</b> Sunlight grows <b>phytoplankton</b> — tiny floating plants. (Hello again, photosynthesis!)</p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-ecosystems-watch2.mp3"><b>Step 2.</b> Tiny animals, <b>zooplankton</b>, eat the phytoplankton. Then <b>small fish</b> eat the zooplankton.</p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-ecosystems-watch3.mp3"><b>Step 3.</b> <b>Striped bass</b> — and birds like <b>osprey</b> and <b>herons</b> — eat the small fish. Energy flows up the chain, meal by meal.</p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-ecosystems-watch4.mp3"><b>Step 4.</b> So every creature holds threads for others: the bass needs the small fish; the small fish need the zooplankton; everything needs the phytoplankton.</p>
                 </div>
                 <button type="button" class="ny-nextstep">Next step ▶</button>
-                <p class="ny-stepdone" hidden>✅ One web, many threads: <b>remove one species, and its eaters AND its food both feel it</b>.</p>
+                <p class="ny-stepdone" hidden data-kidc-say="kidc-ecosystems-stepdone.mp3">✅ One web, many threads: <b>remove one species, and its eaters AND its food both feel it</b>.</p>
               </div>
               <div class="ny-check" hidden>
                 <h5>🦉 Quick check, Profile C</h5>
                 <p style="font-weight:700;line-height:1.5;margin:0">How is that sitting? No wrong answer here — I just want to know how to help.</p>
                 <button type="button" class="ny-check-ok">👍 Makes sense</button>
                 <button type="button" class="ny-check-again">🔁 Show me again</button>
-                <div class="ny-alt" hidden><b>A different way — a seesaw:</b> Picture predators and their food on a seesaw, balanced. Remove lots of the food, and the predator side sinks — hungry predators decline. Remove the predators, and the food side pops UP — nothing is eating them. Every change tips the seesaw two ways.</div>
+                <div class="ny-alt" hidden data-kidc-say="kidc-ecosystems-alt.mp3"><b>A different way — a seesaw:</b> Picture predators and their food on a seesaw, balanced. Remove lots of the food, and the predator side sinks — hungry predators decline. Remove the predators, and the food side pops UP — nothing is eating them. Every change tips the seesaw two ways.</div>
                 <p class="ny-check-fb" aria-live="polite"></p>
               </div>
               <div class="ny-phase" data-phase="try" hidden>
                 <h5>🤝 Try with me — tug a thread together</h5>
                 <p style="font-weight:700;line-height:1.5;margin:0">A disease wipes out <b>most of the small fish</b> in the Sound one summer. Predict with me…</p>
                 <div class="ny-try-step">
-                  <p class="ny-try-q">Step 1: What most likely happens to the striped bass?</p>
+                  <p class="ny-try-q" data-kidc-say="kidc-ecosystems-tryq1.mp3">Step 1: What most likely happens to the striped bass?</p>
                   <div class="ny-try-opts">
                     <button type="button" class="ny-try-opt" data-right="1">They struggle — their main food is mostly gone</button>
                     <button type="button" class="ny-try-opt" data-hint="Look at the web: what do bass EAT? If that food mostly disappears, the eaters can't stay the same.">Nothing changes for the bass</button>
                   </div>
                   <p class="ny-try-fb" aria-live="polite"></p>
-                  <p class="ny-try-result" hidden>✔️ <b>Predators feel it when food vanishes.</b> One direction of the seesaw — nailed.</p>
+                  <p class="ny-try-result" hidden data-kidc-say="kidc-ecosystems-tryfb1.mp3">✔️ <b>Predators feel it when food vanishes.</b> One direction of the seesaw — nailed.</p>
                 </div>
                 <div class="ny-try-step" hidden>
-                  <p class="ny-try-q">Step 2: And what happens to the zooplankton, now that few fish are eating them?</p>
+                  <p class="ny-try-q" data-kidc-say="kidc-ecosystems-tryq2.mp3">Step 2: And what happens to the zooplankton, now that few fish are eating them?</p>
                   <div class="ny-try-opts">
                     <button type="button" class="ny-try-opt" data-hint="Flip the seesaw: their PREDATORS are mostly gone. With nobody eating them, their numbers…?">They decrease</button>
                     <button type="button" class="ny-try-opt" data-right="1">They increase — hardly anything is eating them now</button>
                   </div>
                   <p class="ny-try-fb" aria-live="polite"></p>
-                  <p class="ny-try-result" hidden>✔️ <b>Both directions!</b> Food up, eaters down — that's real ecosystem prediction.</p>
+                  <p class="ny-try-result" hidden data-kidc-say="kidc-ecosystems-tryfb2.mp3">✔️ <b>Both directions!</b> Food up, eaters down — that's real ecosystem prediction.</p>
                 </div>
-                <p class="ny-try-done" hidden>🎉 Now predict one solo…</p>
+                <p class="ny-try-done" hidden data-kidc-say="kidc-ecosystems-trydone.mp3">🎉 Now predict one solo…</p>
               </div>
               <div class="ny-phase" data-phase="your" hidden>
                 <h5>⭐ Your turn, Profile C</h5>
@@ -4701,55 +4703,55 @@
                 </div>
                 <p class="lsn-fb ny-fb" aria-live="polite"></p>
               </div>
-              <p class="ny-recap" hidden>🦉 So remember: in a food web, <b>removing a species tips things twice</b> — its food increases, and its eaters struggle. Everything is connected.</p>
+              <p class="ny-recap" hidden data-kidc-say="kidc-ecosystems-recap.mp3">🦉 So remember: in a food web, <b>removing a species tips things twice</b> — its food increases, and its eaters struggle. Everything is connected.</p>
             </div>
 
             <div class="ny-lsn" data-nylsn data-lsn-id="ny-from-the-articles-to-the-constitution">
               <div class="lsn-top"><span class="lsn-num">8</span><h4>From the Articles to the Constitution</h4><span class="lsn-star" aria-hidden="true">⭐</span></div>
               <img class="lsn-art" src="assets/lesson-art/ny-from-the-articles-to-the-constitution.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
               <span class="ny-std-tag">NY Social Studies Framework · Grade 7 — History of the United States</span>
-              <div class="ny-hoot"><span class="ny-owl" aria-hidden="true">🦉</span><p>History, Profile C! America's first plan for a government <b>didn't work</b> — and the fix became the Constitution, the plan still used today. This is a story of a problem and a repair. Let's walk it slowly.</p></div>
-              <p class="ny-vocab">📖 Words to know: a <b>confederation</b> is a loose team of independent states. The <b>Constitution</b> is the written plan for the U.S. government. <b>Checks and balances</b> means each branch of government can limit the others, so nobody gets too powerful.</p>
+              <div class="ny-hoot" data-kidc-say="kidc-constitution-intro.mp3"><span class="ny-owl" aria-hidden="true">🦉</span><p>History, Profile C! America's first plan for a government <b>didn't work</b> — and the fix became the Constitution, the plan still used today. This is a story of a problem and a repair. Let's walk it slowly.</p></div>
+              <p class="ny-vocab" data-kidc-say="kidc-constitution-vocab.mp3">📖 Words to know: a <b>confederation</b> is a loose team of independent states. The <b>Constitution</b> is the written plan for the U.S. government. <b>Checks and balances</b> means each branch of government can limit the others, so nobody gets too powerful.</p>
               <div class="ny-phase" data-phase="watch">
                 <h5>👀 Watch me — the story in steps</h5>
                 <div class="ny-steps">
-                  <p class="ny-step"><b>Step 1 — Plan A:</b> After independence, the states teamed up under the <b>Articles of Confederation</b> (1781). Each state stayed almost like its own country.</p>
-                  <p class="ny-step" hidden><b>Step 2 — The weakness:</b> The national government could <b>not collect taxes</b> and had <b>no president and no national courts</b>. It couldn't pay soldiers or settle fights between states.</p>
-                  <p class="ny-step" hidden><b>Step 3 — The warning:</b> When farmers in Massachusetts protested (Shays' Rebellion), the national government was too weak to help. Leaders realised Plan A was failing.</p>
-                  <p class="ny-step" hidden><b>Step 4 — Plan B:</b> In 1787, delegates met in Philadelphia and wrote the <b>Constitution</b>: a stronger national government with <b>three branches</b> — Congress makes laws, the President carries them out, courts judge them — each checking the others. The <b>Bill of Rights</b> was added in 1791 to protect people's freedoms.</p>
+                  <p class="ny-step" data-kidc-say="kidc-constitution-watch1.mp3"><b>Step 1 — Plan A:</b> After independence, the states teamed up under the <b>Articles of Confederation</b> (1781). Each state stayed almost like its own country.</p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-constitution-watch2.mp3"><b>Step 2 — The weakness:</b> The national government could <b>not collect taxes</b> and had <b>no president and no national courts</b>. It couldn't pay soldiers or settle fights between states.</p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-constitution-watch3.mp3"><b>Step 3 — The warning:</b> When farmers in Massachusetts protested (Shays' Rebellion), the national government was too weak to help. Leaders realised Plan A was failing.</p>
+                  <p class="ny-step" hidden data-kidc-say="kidc-constitution-watch4.mp3"><b>Step 4 — Plan B:</b> In 1787, delegates met in Philadelphia and wrote the <b>Constitution</b>: a stronger national government with <b>three branches</b> — Congress makes laws, the President carries them out, courts judge them — each checking the others. The <b>Bill of Rights</b> was added in 1791 to protect people's freedoms.</p>
                 </div>
                 <button type="button" class="ny-nextstep">Next step ▶</button>
-                <p class="ny-stepdone" hidden>✅ Story shape: <b>weak plan → real problems → stronger plan with safety checks</b>.</p>
+                <p class="ny-stepdone" hidden data-kidc-say="kidc-constitution-stepdone.mp3">✅ Story shape: <b>weak plan → real problems → stronger plan with safety checks</b>.</p>
               </div>
               <div class="ny-check" hidden>
                 <h5>🦉 Quick check, Profile C</h5>
                 <p style="font-weight:700;line-height:1.5;margin:0">How is that sitting? No wrong answer here — I just want to know how to help.</p>
                 <button type="button" class="ny-check-ok">👍 Makes sense</button>
                 <button type="button" class="ny-check-again">🔁 Show me again</button>
-                <div class="ny-alt" hidden><b>A different way — a team with no captain:</b> Imagine a soccer team where nobody can collect money for uniforms, there's no captain and no referee, and every player makes their own rules. Chaos — right? That's the Articles. The Constitution gave the team a captain (President), a rulebook committee (Congress) and referees (courts) — but each one can be overruled by the others, so nobody becomes a boss of everything.</div>
+                <div class="ny-alt" hidden data-kidc-say="kidc-constitution-alt.mp3"><b>A different way — a team with no captain:</b> Imagine a soccer team where nobody can collect money for uniforms, there's no captain and no referee, and every player makes their own rules. Chaos — right? That's the Articles. The Constitution gave the team a captain (President), a rulebook committee (Congress) and referees (courts) — but each one can be overruled by the others, so nobody becomes a boss of everything.</div>
                 <p class="ny-check-fb" aria-live="polite"></p>
               </div>
               <div class="ny-phase" data-phase="try" hidden>
                 <h5>🤝 Try with me — match the problem to the fix</h5>
                 <div class="ny-try-step">
-                  <p class="ny-try-q">Step 1: Problem — “Congress couldn't collect taxes, so the country couldn't pay its soldiers.” Which fix does the Constitution give?</p>
+                  <p class="ny-try-q" data-kidc-say="kidc-constitution-tryq1.mp3">Step 1: Problem — “Congress couldn't collect taxes, so the country couldn't pay its soldiers.” Which fix does the Constitution give?</p>
                   <div class="ny-try-opts">
                     <button type="button" class="ny-try-opt" data-right="1">Congress CAN collect taxes under the Constitution</button>
                     <button type="button" class="ny-try-opt" data-hint="That's the Articles problem all over again — states keeping all the money power IS what failed. The fix gave taxing power to Congress.">Only the states may ever collect money</button>
                   </div>
                   <p class="ny-try-fb" aria-live="polite"></p>
-                  <p class="ny-try-result" hidden>✔️ <b>Problem matched to its fix.</b> That's how historians read this story!</p>
+                  <p class="ny-try-result" hidden data-kidc-say="kidc-constitution-tryfb1.mp3">✔️ <b>Problem matched to its fix.</b> That's how historians read this story!</p>
                 </div>
                 <div class="ny-try-step" hidden>
-                  <p class="ny-try-q">Step 2: Problem — “One person with all the power could become a tyrant.” What's the Constitution's safety device?</p>
+                  <p class="ny-try-q" data-kidc-say="kidc-constitution-tryq2.mp3">Step 2: Problem — “One person with all the power could become a tyrant.” What's the Constitution's safety device?</p>
                   <div class="ny-try-opts">
                     <button type="button" class="ny-try-opt" data-hint="Making one ruler stronger is the opposite of safety here. The device SPLITS power up.">A single strong king</button>
                     <button type="button" class="ny-try-opt" data-right="1">Three separate branches with checks and balances</button>
                   </div>
                   <p class="ny-try-fb" aria-live="polite"></p>
-                  <p class="ny-try-result" hidden>✔️ <b>Power split three ways, each branch checking the others.</b> You've got the whole story now.</p>
+                  <p class="ny-try-result" hidden data-kidc-say="kidc-constitution-tryfb2.mp3">✔️ <b>Power split three ways, each branch checking the others.</b> You've got the whole story now.</p>
                 </div>
-                <p class="ny-try-done" hidden>🎉 Last question of the set — it's yours…</p>
+                <p class="ny-try-done" hidden data-kidc-say="kidc-constitution-trydone.mp3">🎉 Last question of the set — it's yours…</p>
               </div>
               <div class="ny-phase" data-phase="your" hidden>
                 <h5>⭐ Your turn, Profile C</h5>
@@ -4761,7 +4763,7 @@
                 </div>
                 <p class="lsn-fb ny-fb" aria-live="polite"></p>
               </div>
-              <p class="ny-recap" hidden>🦉 So remember: the <b>Articles made the national government too weak</b>; the <b>Constitution made it stronger — and split it into three branches that check each other</b>.</p>
+              <p class="ny-recap" hidden data-kidc-say="kidc-constitution-recap.mp3">🦉 So remember: the <b>Articles made the national government too weak</b>; the <b>Constitution made it stronger — and split it into three branches that check each other</b>.</p>
             </div>
           </div>
           <div class="curr-cols"><div><h4>🏅 Milestones to celebrate</h4><ul class="curr-miles"><li>Completes a full project from plan to finished piece</li><li>Explains what went wrong and what they changed</li><li>Designs a Toy Lab buddy and downloads its print blueprint</li><li>Presents their work with a beginning, middle and end</li></ul></div><div><h4>🧩 Skills being built</h4><div class="curr-skills"><span>Research</span><span>Project planning</span><span>Debugging</span><span>Design &amp; 3D thinking</span><span>Storytelling</span><span>Data journaling</span><span>Presenting</span><span>Percentages</span><span>Design loop</span><span>Claims &amp; evidence</span><span>Budgeting</span></div></div></div>
@@ -11481,8 +11483,8 @@
           kidcClipCur = ++kidcClipGen;
           kidcClipBusy = false;
           kidcSpeaking(false);
-          var kind = kidcClipQueue.shift();
-          if(kind) KIDC_VOICE.play(kind);
+          var f = kidcClipQueue.shift();
+          if(f) KIDC_VOICE.playFile(f);
         }
         function kidcPlayer(){
           if(!kidcClipEl){
@@ -11505,8 +11507,12 @@
           play: function(kind){
             var file = this.clips[kind];
             if(!file) return false;
+            return this.playFile(file);
+          },
+          playFile: function(file){
+            if(!file) return false;
             if(kidcQuiet()) return false;
-            if(kidcClipBusy){ kidcClipQueue.push(kind); return true; }
+            if(kidcClipBusy){ kidcClipQueue.push(file); return true; }
             kidcClipBusy = true;
             var gen = ++kidcClipGen; kidcClipCur = gen;
             var a = kidcPlayer();
@@ -11549,6 +11555,44 @@
           var recap = card.querySelector(".ny-recap");
           if(recap){ recap.setAttribute("data-voice", "kidc"); recap.setAttribute("data-kidc-line", "recap"); }
         });
+        /* Spoken teaching lines (fix pass 6): every teaching block in her
+           lessons carries data-kidc-say with a clip recorded in her tutor
+           voice. Lines speak when the lesson flow reveals them (show()
+           below consults kidcSpeakRevealed, gated to reveals that follow
+           her own tap inside a lesson so state restores stay silent),
+           the intro speaks when the shell focuses her lesson, and any
+           line can be tapped to hear it again. */
+        var kidcLastTap = 0;
+        document.addEventListener("click", function(e){
+          if(e.target && e.target.closest && e.target.closest(".ny-lsn")) kidcLastTap = Date.now();
+        }, true);
+        document.addEventListener("click", function(e){
+          if(!e.target || !e.target.closest) return;
+          var t = e.target.closest("[data-kidc-say]");
+          if(!t) return;
+          if(e.target.closest("button, a, input, select, textarea")) return;
+          KIDC_VOICE.stop();
+          KIDC_VOICE.playFile(t.getAttribute("data-kidc-say"));
+        }, true);
+        var kidcIntroAt = {};
+        if(window.MutationObserver){
+          var kidcObs = new MutationObserver(function(muts){
+            muts.forEach(function(m){
+              var card = m.target;
+              if(!card.classList || !card.classList.contains("ny-lsn")) return;
+              var had = !!(m.oldValue && m.oldValue.indexOf("ll-lesson-focus") !== -1);
+              if(card.classList.contains("ll-lesson-focus") && !had){
+                var key = card.getAttribute("data-lsn-id") || "";
+                var now = Date.now();
+                if(kidcIntroAt[key] && now - kidcIntroAt[key] < 30000) return;
+                kidcIntroAt[key] = now;
+                var intro = card.querySelector(".ny-hoot[data-kidc-say]");
+                if(intro) KIDC_VOICE.playFile(intro.getAttribute("data-kidc-say"));
+              }
+            });
+          });
+          cards.forEach(function(card){ kidcObs.observe(card, { attributes: true, attributeFilter: ["class"], attributeOldValue: true }); });
+        }
         var NY_KEY = "hootworld.nylessons.v1";
         var store = {};
         try{ store = JSON.parse(localStorage.getItem(NY_KEY) || "{}") || {}; }catch(e){ store = {}; }
@@ -11734,8 +11778,36 @@
         document.addEventListener("visibilitychange", function(){
           if(document.visibilityState === "hidden") saveStore();
         });
-        function show(el){ if(el) el.hidden = false; }
-        function hide(el){ if(el) el.hidden = true; }
+        function kidcVisible(el){
+          var n = el;
+          while(n && n !== document.body){ if(n.hidden) return false; n = n.parentElement; }
+          return true;
+        }
+        function kidcSpeakRevealed(root){
+          if(Date.now() - kidcLastTap > 2500) return;
+          var targets = [];
+          if(root.hasAttribute && root.hasAttribute("data-kidc-say")) targets.push(root);
+          if(root.querySelectorAll){
+            var all = root.querySelectorAll("[data-kidc-say]");
+            for(var i = 0; i < all.length; i++) targets.push(all[i]);
+          }
+          for(var j = 0; j < targets.length; j++){
+            var d = targets[j];
+            if(d.getAttribute("data-kidc-armed") === "0") continue;
+            if(!kidcVisible(d)) continue;
+            d.setAttribute("data-kidc-armed", "0");
+            KIDC_VOICE.playFile(d.getAttribute("data-kidc-say"));
+            break;
+          }
+        }
+        function kidcRearm(root){
+          if(!root || !root.querySelectorAll) return;
+          if(root.hasAttribute && root.hasAttribute("data-kidc-say")) root.setAttribute("data-kidc-armed", "1");
+          var all = root.querySelectorAll("[data-kidc-say]");
+          for(var i = 0; i < all.length; i++) all[i].setAttribute("data-kidc-armed", "1");
+        }
+        function show(el){ if(!el) return; el.hidden = false; kidcSpeakRevealed(el); }
+        function hide(el){ if(!el) return; el.hidden = true; kidcRearm(el); }
 
         /* ---------- New York state visibility ---------- */
         function syncState(){
@@ -11830,6 +11902,7 @@
           slice(card.querySelectorAll(".ny-opt")).forEach(function(o){ o.disabled = false; o.classList.remove("right", "wrong"); });
           var fb = card.querySelector(".ny-fb"); if(fb) fb.textContent = "";
           hide(card.querySelector(".ny-recap"));
+          slice(card.querySelectorAll("[data-kidc-say]")).forEach(function(d){ d.setAttribute("data-kidc-armed", "1"); });
         }
         function applyDone(card){
           card.classList.add("done");
@@ -11900,6 +11973,7 @@
            star, save, counts, clips, recap, host refresh. */
         function completeLesson(card){
           card.classList.add("done");
+          KIDC_VOICE.play("praise");
           show(card.querySelector(".ny-recap"));
           nyRedoBtn(card);
           var pick = card.querySelector(".hoot-pick-tag"); if(pick) pick.remove();
@@ -11908,9 +11982,11 @@
           updateProgress();
           decorateCounts();
           renderReport();
-          /* Profile C-only voice: her praise + recap carry completion —
-             no generic Hoot clip chimes in here. */
-          KIDC_VOICE.play("praise"); KIDC_VOICE.play("recap");
+          /* Profile C-only voice: praise (queued above, before the recap
+             reveal) + the lesson's OWN spoken recap carry completion —
+             the generic recap clip is only a fallback for a lesson with
+             no recorded recap line. No generic Hoot clip chimes in here. */
+          if(!card.querySelector(".ny-recap[data-kidc-say]")) KIDC_VOICE.play("recap");
           if(window.__hootRefreshHost) setTimeout(window.__hootRefreshHost, 650);
         }
 
@@ -11924,7 +12000,7 @@
             var steps = slice(card.querySelectorAll(".ny-step"));
             var hiddenStep = null;
             for(var i = 0; i < steps.length; i++){ if(steps[i].hidden){ hiddenStep = steps[i]; break; } }
-            if(hiddenStep){ hiddenStep.hidden = false; return; }
+            if(hiddenStep){ show(hiddenStep); return; }
             hide(nextBtn);
             show(card.querySelector(".ny-stepdone"));
             show(card.querySelector(".ny-check"));
@@ -11958,7 +12034,7 @@
               warmOpt.classList.add("right");
               slice(wWrap.querySelectorAll(".ny-warm-opt")).forEach(function(o){ o.disabled = true; });
               if(wFb) wFb.textContent = "🔥 Warmed up — that earlier lesson is still in there! Now for today's new idea…";
-              var watchW = wCard.querySelector('[data-phase="watch"]'); if(watchW) watchW.hidden = false;
+              var watchW = wCard.querySelector('[data-phase="watch"]'); if(watchW) show(watchW);
             } else {
               warmOpt.classList.add("wrong");
               setTimeout(function(){ warmOpt.classList.remove("wrong"); }, 650);
