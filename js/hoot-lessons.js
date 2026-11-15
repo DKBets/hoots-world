@@ -347,6 +347,18 @@
     list.forEach(function (x) { x.path = path.id; x.ext = true; lessons.push(x); byId[x.id] = x; byTitleMap[x.title] = x; paths[path.id].lessons.push(x.id); });
     external[path.id] = playFn;
   }
+  /* Fix pass: a big bubbly illustration at the top of every lesson screen.
+     The four moved lessons reuse their generic lesson art; every other
+     native lesson has its own hl-<id>.svg (letters: hl-letter-<x>.svg). */
+  var HL_ART = {
+    "colors-first": "little-colour-names",
+    "colors-more": "little-more-colours-green-orange-purple",
+    "shapes-first": "little-shape-names",
+    "shapes-star-heart": "little-star-and-heart-shapes"
+  };
+  function hlArtFile(id) {
+    return "assets/lesson-art/" + (HL_ART[id] || ("hl-" + id)) + ".svg";
+  }
   function play(id, body) {
     var lesson = byId[id] || byTitleMap[id];
     if (!lesson || !body) return false;
@@ -365,6 +377,7 @@
       '<div class="hl" data-hl="' + lesson.id + '">' +
         '<div class="hl-stage"><div class="hl-hoot">' + hootSvg() + "</div>" +
           '<p class="hl-bubble" aria-live="polite"></p></div>' +
+        '<img class="hl-art" src="' + hlArtFile(lesson.id) + '" alt="" onerror="this.remove()">' +
         '<div class="hl-show">' + teach.map(function (it, i) {
           return '<button type="button" class="hl-item" data-i="' + i + '" aria-label="Hear ' + esc(it.name) + '">' + face(it, lesson) + label(it) + "</button>";
         }).join("") + "</div>" +

@@ -1308,6 +1308,11 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
     [/colou?r/i, "🎨"], [/shape/i, "🔺"], [/count|number|stairs|tower|pieces/i, "🔢"], [/letter|word|write/i, "🔤"],
     [/read|book|story/i, "📚"], [/animal|says that|zoo|farm/i, "🐮"], [/home|build|block|make/i, "🧱"], [/star/i, "⭐"],
     [/basket|treasure/i, "🧺"], [/music|song|sing|dance/i, "🎵"], [/photo|walk|quest|hunt|safari|outing/i, "🔎"]];
+  /* Fix pass: every activity has its own illustration at
+     assets/activity-art/<slug>.svg — slug rule must match the generator. */
+  function actSlug(t) {
+    return String(t || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  }
   function actEmo(g) {
     var t = g.title + " " + (g.desc || "").slice(0, 60);
     for (var i = 0; i < ACT_EMO.length; i++) if (ACT_EMO[i][0].test(g.title)) return ACT_EMO[i][1];
@@ -1412,6 +1417,7 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
         return '<figure class="ll-actm">' + m + '<button type="button" class="ll-actm-rm" data-act-rm="' + gi + ":" + i + '" aria-label="Remove this ' + (fig._hwVideo ? "video" : "photo") + '">×</button></figure>';
       }).join("");
       return '<article class="ll-card ll-actv' + (small ? " sm" : "") + '" data-act-i="' + gi + '">' +
+        '<img class="ll-actv-art" src="assets/activity-art/' + actSlug(g.title) + '.svg" alt="" loading="lazy" onerror="this.remove()">' +
         '<div class="ll-actv-top"><span class="ll-actv-emo" aria-hidden="true">' + esc(g.emo || actEmo(g)) + '</span>' +
         '<div><h3>' + esc(g.title) + '</h3><span class="ll-tag" style="--c:' + (g.place === "outdoor" ? "#0B8A5F" : "#3A56D4") + '">' + (g.place === "outdoor" ? "Outside" : "At home") + "</span></div></div>" +
         (g.desc ? "<p>" + esc(g.desc) + "</p>" : "") +
