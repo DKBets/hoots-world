@@ -2847,6 +2847,15 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
   }
   function goBack() {
     var e = viewStack.pop();
+    /* Fix pass 2: an HL lesson opened through a parked path host (Today's
+       Pick, the Learn grid) sits on top of a lessonFocus/path entry that is
+       a funnel, not a screen — restoring it auto-starts the same lesson
+       again, so Back looped the lesson forever and only Home escaped.
+       Skip the funnel entry and land on the real view beneath it. A real
+       HL path list (hlpath) is a browsable screen and is still restored. */
+    if (curView && curView.kind === "hl") {
+      while (e && (e.kind === "lessonFocus" || e.kind === "path")) e = viewStack.pop();
+    }
     if (!e || e.kind === "tab") {
       var y = e ? e.y : 0;
       closeOverlay();
