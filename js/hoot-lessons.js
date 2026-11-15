@@ -464,6 +464,7 @@
       var key = b.getAttribute("data-k"), tgt = R.cur.tgt, rd = R.cur.rd;
       if (String(key) === String(tgt.key)) {
         b.classList.add("right");
+        try { if (window.__oopsAnswer) window.__oopsAnswer({ pid: kidId(), lessonId: lesson.id, title: lesson.title, item: "r" + R.round, right: true }); } catch (e) {} /* Wave E2: Oops Garden */
         choices.querySelectorAll(".hl-opt").forEach(function (o) { o.disabled = true; });
         var pr = pickFresh(PRAISE);
         var yes = rd.ask === "sound" ? tgt.name + " makes that sound!" : rd.ask === "more" ? "That group has MORE!" : rd.ask === "less" ? "That group has LESS!" : rd.ask === "same" ? "Those two are the SAME!" : rd.ask === "different" ? "Those two are DIFFERENT!" : "That's " + tgt.name + "!";
@@ -482,6 +483,7 @@
         });
       } else {
         R.wrong += 1; R.cur.wrongHere += 1;
+        try { if (window.__oopsAnswer) window.__oopsAnswer({ pid: kidId(), lessonId: lesson.id, title: lesson.title, item: "r" + R.round, right: false }); } catch (e) {} /* Wave E2: Oops Garden */
         b.classList.add("wrong"); b.disabled = true;
         var tapped = (R.opts || []).filter(function (o) { return String(o.key) === String(key); })[0] || item(lesson.kind, isNaN(+key) ? key : +key);
         var cmpT = rd.ask === "more" || rd.ask === "less" ? "That group has " + tapped.name + ". " + (rd.ask === "more" ? "Find the group with MORE!" : "Find the group with LESS!")

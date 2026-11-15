@@ -317,12 +317,54 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
   }
   document.addEventListener("hoot-lesson-done", function (e) {
     var x = e.detail || {}; logAdd(x.kid, { type: "lesson", title: x.title, wrong: x.wrong, rounds: x.rounds, ms: x.ms, mastered: x.mastered });
+    recordCompletion(x.kid, x.title); /* Wave C1: Then & Now history */
   });
   /* Muse-engine lessons (Little Explorers, NY, Creator…): log when the open lesson turns done */
   function watchMuseDone() {
     if (!window.MutationObserver) return;
+    var wcTutorWasOpen = false, wcSess = 0;
     var mo = new MutationObserver(function (list) {
-      if (!document.body.classList.contains("ll-tutor-open")) return;
+      var tutorOpen = document.body.classList.contains("ll-tutor-open");
+      if (tutorOpen && !wcTutorWasOpen) wcSess++;
+      wcTutorWasOpen = tutorOpen;
+      if (!tutorOpen) return;
+      /* Wave C1: replay finishes are invisible to the .done watch (a generic
+         card keeps .done forever), but the engine's own finish class
+         .lsn-finished is removed by Play again / teach mode and re-added by
+         its onRight on EVERY genuine finish. Arm a card when it is seen
+         without the class in this overlay session; count when it gains it.
+         The build-time restore add is never armed, so merely opening an
+         already-done lesson counts nothing. recordCompletion's own guard
+         dedupes the fresh-card case where .done fires in the same moment. */
+      var fcards = document.querySelectorAll("#ll-obody .lsn, #ll-obody .ny-lsn");
+      for (var ci = 0; ci < fcards.length; ci++) {
+        var fc = fcards[ci];
+        if (fc.hasAttribute("data-hl-moved")) continue;
+        if (!fc.classList.contains("lsn-finished")) { fc._wcArm = wcSess; continue; }
+        if (fc._wcArm === wcSess && state.profile) {
+          fc._wcArm = -1;
+          var fh = fc.querySelector("h4");
+          if (fh) recordCompletion(state.profile.id, fh.textContent.trim());
+        }
+      }
+      /* Wave C1: the generic teach-back family never touches lsn-finished —
+         its replay contract is the _again flag: startTeach / Play again set
+         it true for the fresh run, and every completion branch (plain,
+         teach-back, rounds) sets it false in the same moment it completes.
+         Mark cards seen replaying this session; count the true→false flip
+         on a done card. Fresh cards never arm (their .done transition is
+         counted by the watcher below), and recordCompletion's guard
+         dedupes any overlap with the lsn-finished signal. */
+      for (var ri = 0; ri < fcards.length; ri++) {
+        var rc = fcards[ri];
+        if (rc.hasAttribute("data-hl-moved")) continue;
+        if (rc._again === true) { rc._wcReplay = wcSess; continue; }
+        if (rc._again === false && rc._wcReplay === wcSess && rc.classList.contains("done") && state.profile) {
+          rc._wcReplay = -1;
+          var rh = rc.querySelector("h4");
+          if (rh) recordCompletion(state.profile.id, rh.textContent.trim());
+        }
+      }
       list.forEach(function (m) {
         var el = m.target;
         if (!el.classList || !el.classList.contains("done") || (m.oldValue || "").indexOf("done") !== -1) return;
@@ -330,6 +372,7 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
         if (el.hasAttribute("data-hl-moved")) return; /* 3e49: already logged by the new lesson engine */
         var h = el.querySelector("h4"); if (!h || !state.profile) return;
         logAdd(state.profile.id, { type: "lesson", title: h.textContent.trim(), wrong: null });
+        recordCompletion(state.profile.id, h.textContent.trim()); /* Wave C1: Then & Now history */
       });
     });
     mo.observe(document.body, { subtree: true, attributes: true, attributeFilter: ["class"], attributeOldValue: true });
@@ -547,18 +590,28 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
     );
   }
 
+  /* Wave B (B6): per-lesson illustrations live in assets/lesson-art/<id>.svg.
+     Only ids in this set have art; other lessons keep the emoji tile. */
+var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing":1,"creator-make-a-claim-bring-evidence":1,"creator-percentages-parts-of-100":1,"creator-present-hook-build-land":1,"creator-ratios-scale-both-sides":1,"creator-research-you-can-trust":1,"creator-the-design-loop-test-fix-retest":1,"early-answer-questions-about-a-story":1,"early-blend-sounds-into-words":1,"early-counting-on-to-add":1,"early-letter-sounds":1,"early-read-a-line-and-understand-it":1,"early-rhyming-words":1,"early-taking-away":1,"early-tens-and-ones":1,"little-animal-sounds":1,"little-big-and-small":1,"little-colour-names":1,"little-counting-back-from-5":1,"little-counting-to-10":1,"little-counting-to-5":1,"little-feelings-faces":1,"little-first-letter-sounds":1,"little-more-colours-green-orange-purple":1,"little-more-letter-sounds":1,"little-my-body-eyes-ears-nose":1,"little-patterns-what-comes-next":1,"little-shape-names":1,"little-sorting-things-that-go-together":1,"little-star-and-heart-shapes":1,"little-up-and-down":1,"ny-argument-writing-claim-evidence-reasoning":1,"ny-ecosystems-the-hudson-river-food-web":1,"ny-from-the-articles-to-the-constitution":1,"ny-main-idea-citing-evidence":1,"ny-negative-numbers-on-the-number-line":1,"ny-photosynthesis-matter-energy-in-plants":1,"ny-two-step-equations-unwrap-x":1,"ny-unit-rates-the-price-of-one":1,"quest-area-length-width":1,"quest-coding-order-matters":1,"quest-division-is-sharing-equally":1,"quest-find-the-main-idea":1,"quest-fractions-equal-parts":1,"quest-how-plants-make-food":1,"quest-times-tables-are-groups":1,"quest-topic-sentences":1,"teen-algebra-ii-keep-the-balance":1,"teen-algebra-ii-two-step-equations":1,"teen-biology-dna-to-protein":1,"teen-biology-where-energy-comes-from":1,"teen-history-a-thesis-is-a-claim":1,"teen-history-primary-vs-secondary-sources":1,"teen-spanish-ii-ar-verb-endings":1,"teen-study-science-test-don-t-re-read":1};
+
   function actCard(item) {
     var done = isDone(item.title);
     var isGame = item.kind === "game" && item.key && !isTeen();
     var lessonId = item.kind === "lesson" ? (item.id || lessonIdForTitle(item.title)) : null;
+    var hasArt = !!lessonId && !!LESSON_ART[lessonId];
+    var artBanner = hasArt && !isTeen();
     var media = isGame
       ? gameThumb(item.key, item.emo)
-      : '<div class="emo">' + (item.emo || "⭐") + "</div>";
+      : artBanner
+        ? '<span class="lthumb"><img src="assets/lesson-art/' + lessonId + '.svg" alt="" loading="lazy" decoding="async">' + (item.emo ? '<span class="gbadge" aria-hidden="true">' + item.emo + "</span>" : "") + "</span>"
+        : hasArt
+          ? '<img class="ll-art-sm" src="assets/lesson-art/' + lessonId + '.svg" alt="" loading="lazy" decoding="async">'
+          : '<div class="emo">' + (item.emo || "⭐") + "</div>";
     var html =
       '<article class="ll-card ll-act' + (isGame ? " ll-act-game" : "") + (done ? " done" : "") + '" style="--dc:' + (item.color || "#E0457B") + '" data-title="' + esc(item.title) + '"' + (isGame ? ' data-game-key="' + esc(item.key) + '"' : "") + (lessonId ? ' data-lesson-id="' + esc(lessonId) + '"' : "") + '>' +
-      (isGame ? media : "") +
+      (isGame || artBanner ? media : "") +
       '<div class="row">' +
-      (isGame ? "" : media) +
+      (isGame || artBanner ? "" : media) +
       '<div class="atxt"><h3>' + esc(item.title) + "</h3>" + tagsHtml(item.tags) + "</div>" +
       '<button type="button" class="ll-chk" aria-label="Mark done">' + (done ? "✓" : "") + "</button>" +
       "</div>" +
@@ -788,6 +841,10 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
         (open ? '<button type="button" class="kh-big" data-kh-go="games" style="--b:#1D4ED8"><span aria-hidden="true">🎮</span><b>Play</b></button>' : lockBtn("🎮", "Play", "#1D4ED8")) +
         '<button type="button" class="kh-big" data-kh-go="stickers" style="--b:#BE185D"><span aria-hidden="true">📒</span><b>Stickers</b></button>' +
       "</div>";
+    html += waveTodayHtml(); /* Wave C1: daily pick, Right Now chips, world map entry */
+    html += wc2TodayHtml(); /* Wave C2: missions entry */
+    html += we1TodayHtml(); /* Wave E1: Morning Hello + photo quest */
+    html += we2TodayHtml(); /* Wave E2: Oops Garden + Car mode entries */
     if (magic) magicSound(p, ps, party);
     return html;
   }
@@ -832,6 +889,14 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
         return '<button type="button" class="st-chip' + (x === k ? " on" : "") + '" data-story="' + x + '"><span aria-hidden="true">' + STORIES[x].pic.slice(0, 2) + "</span><b>" + x.toUpperCase() + "</b></button>";
       }).join("") + "</div></div>";
   }
+  /* Wave B (B7): sticker slots are real buttons — a tap pops the slot and
+     Hoot reacts: a giggle for an earned sticker, "keep going" for a ?. */
+  document.addEventListener("click", function (e) {
+    var s = e.target.closest && e.target.closest(".kh-slot");
+    if (!s || !s.closest("#ll-obody")) return;
+    s.classList.remove("kh-pop"); void s.offsetWidth; s.classList.add("kh-pop");
+    sayClip(s.classList.contains("got") ? "hoot-giggle" : "hoot-keep-going");
+  });
   /* the story screen lives in the overlay, outside #ll-app, so it listens on its own */
   document.addEventListener("click", function (e) {
     var t = e.target.closest && e.target.closest("[data-story],[data-st]");
@@ -841,6 +906,7 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
   });
   function openStory(k) {
     k = STORIES[k] ? k : storyPick();
+    nextView = { kind: "story", key: k, title: "Story time" };
     stopStory(); try { if (window.HootGames) window.HootGames.stopSing(); } catch (e) {}
     openShellOverlay("Story time", storyHtml(k));
     playStory(k, true);
@@ -862,8 +928,9 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
     ["letters", "basics", "world"].forEach(function (pid) { hlLessons(pid).forEach(function (l) { all.push({ title: l.title, done: lessonDone(l.title) }); }); });
     var got = all.filter(function (x) { return x.done; }).length;
     return '<div class="kh-book"><p class="kh-booklead">' + got + " of " + all.length + " stickers — finish a lesson to win its sticker!</p>" +
+      '<p class="wc-progmap"><button type="button" class="ll-btn sm" data-wc-map="1">🗺️ World map — see your whole journey</button> <button type="button" class="ll-btn sm" data-we2-garden="1">🌸 Oops Garden</button></p>' +
       '<div class="kh-slots">' + all.map(function (x) {
-        return '<div class="kh-slot' + (x.done ? " got" : "") + '"><span aria-hidden="true">' + (x.done ? stickerFor(x.title) : "?") + "</span><small>" + esc(x.title) + "</small></div>";
+        return '<button type="button" class="kh-slot' + (x.done ? " got" : "") + '"><span aria-hidden="true">' + (x.done ? stickerFor(x.title) : "?") + "</span><small>" + esc(x.title) + "</small></button>";
       }).join("") + "</div></div>";
   }
   var BYE_KEY = "hootworld.bye.v1";
@@ -962,7 +1029,10 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
           '<button type="button" class="ni-top" id="ll-newideas">🔀 New ideas</button>') +
       "</div>" +
       '<div class="ll-grid">' + plan.map(actCard).join("") + "</div>" +
-      (isTeen() && cfgNow.mode === "school" ? classBoxHtml() : "")
+      (isTeen() && cfgNow.mode === "school" ? classBoxHtml() : "") +
+      waveTodayHtml() + wc2TodayHtml() + /* Wave C1: daily pick, Right Now chips, world map entry; Wave C2: missions entry */
+      we1TodayHtml() + /* Wave E1: Morning Hello + photo quest */
+      we2TodayHtml() /* Wave E2: Oops Garden + Car mode entries */
     );
   }
 
@@ -993,7 +1063,10 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
       '<ol class="tc-list" aria-label="Today\'s checklist">' + rows + "</ol>" +
       '<p class="tc-tools"><button type="button" class="ni-top" id="ll-newideas">Shuffle plan</button><span>' + esc(cfgNow.mode === "school" ? "Practice what you're covering in class." : "Stuck? Open the lesson and Hoot explains it another way.") + "</span></p>" +
       (courses ? '<h3 class="tc-h">Courses</h3><div class="tc-courses">' + courses + "</div>" : "") +
-      (cfgNow.mode === "school" ? classBoxHtml() : "");
+      (cfgNow.mode === "school" ? classBoxHtml() : "") +
+      waveTodayHtml() + wc2TodayHtml() + /* Wave C1: daily pick, Right Now chips, world map entry; Wave C2: missions entry */
+      we1TodayHtml() + /* Wave E1: Morning Hello + photo quest */
+      we2TodayHtml(); /* Wave E2: Oops Garden + Car mode entries */
   }
 
   function kidbarHtml() {
@@ -1024,7 +1097,7 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
     var HG = window.HootGames, songs = HG && HG.songs && HG.songs.length ? '<h2 class="pg-rowh">🎵 Sing with Hoot</h2><div class="pg-songs">' + HG.songs.map(function (sg) { return HG.songBtn(sg, "pg-songbtn"); }).join("") + "</div>" : "";
     var cards = (party ? '<h2 class="pg-rowh">🎉 Hoot\'s Party Games</h2><div class="pg-row">' + party + "</div>" + songs + '<h2 class="pg-rowh">Hoot\'s picks</h2><div id="gameGridPicks" class="pg-grid">' : "") + picks.map(card).join("") + (party ? "</div>" : "") +
       '</div><details class="ll-moregames"' + (state.moreGames ? " open" : "") + '><summary>More games (' + more.length + ')</summary><div id="gameGridMore">' + more.map(card).join("") + "</div></details><div>";
-    return '<div class="ll-kidbar">' + kidbarHtml() + '</div><section class="ll-card ll-hero" style="--k:' + state.profile.color + '"><div class="big">' + brownHootFace() + '</div><div class="htxt"><h2>Hoot\'s Games</h2><p class="hoot-line">Pick a game — they all open here, inside Hoot\'s World.</p></div></section><div id="gameGrid">' + cards + "</div>";
+    return '<div class="ll-kidbar">' + kidbarHtml() + '</div><section class="ll-card ll-hero" style="--k:' + state.profile.color + '"><div class="big">' + brownHootFace() + '</div><div class="htxt"><h2>Hoot\'s Games</h2><p class="hoot-line">Pick a game — they all open here, inside Hoot\'s World.</p></div></section><div id="gameGrid">' + cards + "</div>" + wc2MissionsEntryHtml() + we2CarEntryHtml(); /* Wave E2: car mode entry */
   }
 
   function renderLearn() {
@@ -1085,9 +1158,9 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
       var ls = LESSONS[p.id] || hlLessons(p.id), dn = ls.filter(function (l) { return lessonDone(l.title); }).length, pc = Math.round(100 * dn / Math.max(1, ls.length));
       return '<div class="pp-row"><span class="pp-t">' + esc(p.title) + '</span><span class="pp-bar" role="progressbar" aria-valuenow="' + pc + '" aria-valuemin="0" aria-valuemax="100"><i style="width:' + pc + '%"></i></span><span class="pp-n">' + dn + " / " + ls.length + "</span></div>";
     }).join("");
-    body = '<section class="ll-card ll-progress"><h2 class="cb-h">Your progress</h2>' + prog + "</section>" + body;
+    body = '<section class="ll-card ll-progress"><h2 class="cb-h">Your progress</h2>' + prog + '<p class="wc-progmap"><button type="button" class="ll-btn sm" data-wc-map="1">🗺️ See it on the world map</button> <button type="button" class="ll-btn sm" data-we2-garden="1">🌸 Oops Garden</button></p>' + "</section>" + body;
     return '<div class="ll-kidbar">' + kidbarHtml() + '</div>' +
-      '<section class="ll-card ll-hero"><div class="htxt"><h2>Practice</h2><p class="hoot-line">Built from your own lessons: tricky topics first, then quick reviews so it sticks.</p></div></section>' + body;
+      '<section class="ll-card ll-hero"><div class="htxt"><h2>Practice</h2><p class="hoot-line">Built from your own lessons: tricky topics first, then quick reviews so it sticks.</p></div></section>' + body + wc2MissionsEntryHtml() + we2CarEntryHtml(); /* Wave E2: car mode entry */
   }
 
   function renderReading() {
@@ -1344,6 +1417,7 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
         (g.desc ? "<p>" + esc(g.desc) + "</p>" : "") +
         (thumbs ? '<div class="ll-actm-row">' + thumbs + "</div>" : "") +
         actDoneRow(g, gi) +
+        '<div class="wc2-actbtns"><button type="button" class="ll-btn sm" data-wc2-printact="' + esc(g.title) + '">🖨 Print card</button></div>' +
         '<button type="button" class="ll-btn ' + (small ? "" : "pri ") + 'll-actv-add" data-act-add="' + gi + '">📷 Add a photo or video' + (actPhotoOwners(g.title) ? " for both" : "") + "</button>" +
         "</article>";
     };
@@ -1354,7 +1428,7 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
       '<section class="ll-card ll-hero" style="--k:' + p.color + '"><div class="big">🧺</div><div class="htxt"><h2>Activities</h2>' +
       "<p class='hoot-line'>Real things to do together, away from the screen. New ones every day. Take a photo or a short video — it's saved on this device and collects in Grown-ups → Photo memories.</p></div></section>" +
       (groups.length ? "" : '<section class="ll-card"><p class="hoot-line">Loading activities…</p></section>') +
-      actLogHtml() +
+      wc2IhaveEntryHtml() + actLogHtml() +
       (today.length ? '<h2 class="todoh">✨ ' + dayName + "'s activities <span class=\"muted\">new ones tomorrow</span></h2><div class=\"ll-grid\">" + today.map(function (g) { return card(g, false); }).join("") + "</div>" : "") +
       (withMedia.length ? '<h2 class="todoh">📸 Your photos and videos</h2><div class="ll-grid">' + withMedia.map(function (g) { return card(g, true); }).join("") + "</div>" : "") +
       (rest.length ? '<details class="ll-actall"' + (state._actAllOpen ? " open" : "") + '><summary>All activities (' + groups.length + ")</summary>" +
@@ -1429,11 +1503,11 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
       return '<div class="ll-kidbar">' + kidbarHtml() + "</div>" +
         '<section class="ll-card ll-hero" style="--k:' + p.color + '"><div class="big">🗓️</div><div class="htxt"><h2>' + esc(p.label) + "'s days</h2><p class='hoot-line'>What you finished on each day, newest first.</p></div></section>" +
         '<section class="ll-card ll-mydays">' + (rows ? '<ul style="list-style:none;margin:0;padding:0;line-height:1.5">' + rows + "</ul>"
-          : '<p class="hoot-line" style="margin:0">Nothing yet. Finish a lesson or a game and the day shows up here.</p>') + "</section>";
+          : '<p class="hoot-line" style="margin:0">Nothing yet. Finish a lesson or a game and the day shows up here.</p>') + "</section>" + wc2DaysHtml();
     }
     return '<div class="ll-kidbar" style="padding-left:14px;padding-right:14px">' + kidbarHtml() + "</div>" +
       '<section class="ll-card" style="margin:14px"><h2 style="margin:0 0 6px">Days</h2><p class="hoot-line" style="margin:0">The Adventure Map: follow the stops to the Star Castle. The glowing stop is next.</p></section>' +
-      '<div id="ll-days-host"></div>';
+      '<div id="ll-days-host"></div>' + wc2DaysHtml();
   }
 
   function renderGrownups() {
@@ -1442,7 +1516,7 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
         '<section class="ll-card"><h2 style="margin:0 0 8px">Grown-ups</h2><p>Settings, progress and the Kids 2–4 button for each child.</p>' +
         '<p><button type="button" class="ll-btn pri" id="ll-kidmode">Kids 2–4: bigger buttons</button></p>' +
         '<p class="hoot-line">Everything for each child is below. This is a preview, so nothing here changes your family\'s data.</p></section>' +
-        (window.HootAccount ? window.HootAccount.cardHtml() : "") + safeCardHtml() + dashboardHtml() + grownupTodayHtml() + childrenSettingsHtml();
+        (window.HootAccount ? window.HootAccount.cardHtml() : "") + safeCardHtml() + dashboardHtml() + grownupTodayHtml() + childrenSettingsHtml() + we1NotesHtml() + we2ReportHtml(); /* Wave E2: monthly growth report */
     }
     return '<div class="ll-kidbar">' + kidbarHtml() + "</div>" +
       '<section class="ll-card ll-parent-gate" id="ll-parent-gate" aria-label="Grown-up question">' +
@@ -1657,6 +1731,7 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
   function openCustomStop(title) {
     var it = null; currentPlan().forEach(function (x) { if (x.title === title) it = x; });
     if (!it) return;
+    nextView = { kind: "custom", title: title };
     openShellOverlay(it.title, '<div class="cs" data-cs-title="' + esc(it.title) + '"><span class="cs-pic" aria-hidden="true">' + esc(it.emo || "⭐") + '</span><h2>' + esc(it.title) + '</h2><p>Do this one with your grown-up.</p><button type="button" class="cs-done" data-cs="done"><span aria-hidden="true">✓</span> We did it!</button></div>');
   }
   document.addEventListener("click", function (e) {
@@ -1711,19 +1786,103 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
       row(inst, inst ? "Opened from the Home Screen" : "Add Hoot to the Home Screen", inst ? "Safari won't clear this app's saved progress." : "Safari clears a website's saved data after 7 days without a visit. On the iPad: tap Share (□↑), then \"Add to Home Screen\", and open Hoot from that icon from now on.") +
       row(!!last, "Backup file", last ? "Last saved " + esc(new Date(+last).toLocaleDateString()) + ". Save one now and then, and keep it in Files or iCloud Drive." : "Save a copy of all three kids' progress to a file. Restore it any time, or on a new iPad.") +
       '</ul><div class="ll-safebtns"><button type="button" class="ll-btn pri" id="ll-backup">💾 Save a backup file</button><button type="button" class="ll-btn" id="ll-restore">📂 Restore from a backup</button></div>' +
-      '<p class="ll-safemsg" id="ll-safemsg" role="status" aria-live="polite"></p><p class="ll-safenote">' + (acctOn ? "Photos stay on each device while you are signed in. They are not in the backup file either." : "Photos and videos are not in the backup file. They stay on this device.") + "</p></section>";
+      '<p class="ll-safemsg" id="ll-safemsg" role="status" aria-live="polite"></p><p class="ll-safenote">' + (acctOn ? "Photos stay on each device while you are signed in — but they ARE in the backup file below, so save one now and then." : "Photos and videos are in the backup file too, so the file can be big. They also stay on this device.") + "</p></section>";
   }
   function safeMsg(t) { var m = document.getElementById("ll-safemsg"); if (m) m.textContent = t; }
+  /* ===== Wave D: photos ride along in the backup file =====
+     The photo store is IndexedDB "hootworld-photos" / "photos" (records:
+     { id, key, caption, title, prof, ts, blob } — or { ..., buf, type } on
+     browsers that refuse Blob storage). Export embeds each photo as a data
+     URL with a manifest count; restore writes them back MERGED BY ID
+     (put overwrites the same id, device-only photos are never deleted) —
+     deliberately unlike the localStorage stores above, which restore
+     replace-per-key. A photo a family deleted on purpose stays deleted
+     under Family Sync because the tombstone list is not part of the
+     backup and restore never clears it. */
+  function photoDb() {
+    return new Promise(function (resolve) {
+      if (!("indexedDB" in window)) { resolve(null); return; }
+      var req;
+      try { req = indexedDB.open("hootworld-photos", 1); } catch (e) { resolve(null); return; }
+      req.onupgradeneeded = function () { try { req.result.createObjectStore("photos", { keyPath: "id" }); } catch (e) {} };
+      req.onsuccess = function () { resolve(req.result); };
+      req.onerror = function () { resolve(null); };
+    });
+  }
+  function photoAll() {
+    return photoDb().then(function (db) {
+      return new Promise(function (resolve) {
+        if (!db) { resolve([]); return; }
+        try {
+          var rq = db.transaction("photos", "readonly").objectStore("photos").getAll();
+          rq.onsuccess = function () { resolve(rq.result || []); };
+          rq.onerror = function () { resolve([]); };
+        } catch (e) { resolve([]); }
+      });
+    });
+  }
+  function photoPut(rec) {
+    return photoDb().then(function (db) {
+      return new Promise(function (resolve) {
+        if (!db) { resolve(); return; }
+        try {
+          var tx = db.transaction("photos", "readwrite");
+          tx.objectStore("photos").put(rec);
+          tx.oncomplete = function () { resolve(); };
+          tx.onerror = function () { resolve(); };
+        } catch (e) { resolve(); }
+      });
+    });
+  }
+  function blobToDataUrl(blob) {
+    return new Promise(function (resolve) {
+      try {
+        var r = new FileReader();
+        r.onload = function () { resolve(String(r.result || "")); };
+        r.onerror = function () { resolve(""); };
+        r.readAsDataURL(blob);
+      } catch (e) { resolve(""); }
+    });
+  }
+  function collectPhotosForBackup() {
+    return photoAll().then(function (recs) {
+      var items = [], bytes = 0;
+      var chain = Promise.resolve();
+      recs.forEach(function (rec) {
+        chain = chain.then(function () {
+          var blob = rec.blob || (rec.buf ? new Blob([rec.buf], { type: rec.type || "image/jpeg" }) : null);
+          if (!blob) return;
+          return blobToDataUrl(blob).then(function (url) {
+            if (!url) return;
+            var item = {};
+            Object.keys(rec).forEach(function (k) { if (k !== "blob" && k !== "buf") item[k] = rec[k]; });
+            item.type = blob.type || item.type || "image/jpeg";
+            item.dataUrl = url;
+            bytes += url.length;
+            items.push(item);
+          });
+        });
+      });
+      return chain.then(function () { return { count: items.length, approxBytes: bytes, items: items }; });
+    }).catch(function () { return { count: 0, approxBytes: 0, items: [] }; });
+  }
+  function fmtSize(n) { return n >= 1048576 ? (n / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(n / 1024)) + " KB"; }
   function saveBackup() {
-    var data = {}; backupKeys().forEach(function (k) { data[k] = localStorage.getItem(k); });
-    var d = new Date(), stamp = d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2);
-    var file = { app: "hoots-world", version: 1, savedAt: d.toISOString(), keys: Object.keys(data).length, data: data };
-    var blob = new Blob([JSON.stringify(file)], { type: "application/json" }), a = document.createElement("a");
-    a.href = URL.createObjectURL(blob); a.download = "hoot-backup-" + stamp + ".json"; document.body.appendChild(a); a.click();
-    setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
-    try { localStorage.setItem("hootworld.lastbackup.v1", String(Date.now())); } catch (e) {}
-    safeMsg("Saved hoot-backup-" + stamp + ".json (" + file.keys + " parts). On the iPad, choose \"Save to Files\".");
-    window.__llLastBackup = file;
+    safeMsg("Saving backup…");
+    collectPhotosForBackup().then(function (photos) {
+      return collectNotesForBackup().then(function (notes) { return { photos: photos, notes: notes }; });
+    }).then(function (both) {
+      var photos = both.photos, notes = both.notes;
+      var data = {}; backupKeys().forEach(function (k) { data[k] = localStorage.getItem(k); });
+      var d = new Date(), stamp = d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2);
+      var file = { app: "hoots-world", version: 2, savedAt: d.toISOString(), keys: Object.keys(data).length, data: data, photos: photos, audionotes: notes };
+      var blob = new Blob([JSON.stringify(file)], { type: "application/json" }), a = document.createElement("a");
+      a.href = URL.createObjectURL(blob); a.download = "hoot-backup-" + stamp + ".json"; document.body.appendChild(a); a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+      try { localStorage.setItem("hootworld.lastbackup.v1", String(Date.now())); } catch (e) {}
+      safeMsg("Saved hoot-backup-" + stamp + ".json (" + file.keys + " parts + " + photos.count + " photo" + (photos.count === 1 ? "" : "s") + " + " + notes.count + " voice note" + (notes.count === 1 ? "" : "s") + (photos.count ? ", ~" + fmtSize(photos.approxBytes) : "") + "). On the iPad, choose \"Save to Files\".");
+      window.__llLastBackup = file;
+    });
   }
   var pendingRestore = null;
   function pickRestore() {
@@ -1740,17 +1899,50 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
     var file = null; try { file = JSON.parse(text); } catch (e) {}
     if (!file || file.app !== "hoots-world" || !file.data || typeof file.data !== "object") { safeMsg("That file isn't a Hoot backup. Nothing was changed."); return false; }
     var keys = Object.keys(file.data).filter(function (k) { return /^hootworld\./.test(k) && !BACKUP_SKIP[k] && typeof file.data[k] === "string"; });
-    pendingRestore = { keys: keys, data: file.data };
+    /* Wave D: photos are optional in the file — backups saved before they
+       were included have no photos field and restore exactly as before. */
+    var photoItems = null;
+    if (file.photos && Array.isArray(file.photos.items)) {
+      photoItems = file.photos.items.filter(function (it) { return it && typeof it.id === "string" && typeof it.dataUrl === "string" && it.dataUrl.indexOf("data:") === 0; });
+    }
+    /* Wave E1: voice notes are optional too, same rule as photos. */
+    var noteItems = null;
+    if (file.audionotes && Array.isArray(file.audionotes.items)) {
+      noteItems = file.audionotes.items.filter(function (it) { return it && typeof it.id === "string" && typeof it.dataUrl === "string" && it.dataUrl.indexOf("data:") === 0; });
+    }
+    pendingRestore = { keys: keys, data: file.data, photos: photoItems, notes: noteItems };
     var box = document.getElementById("ll-safemsg");
-    if (box) box.innerHTML = 'Backup from <b>' + esc(new Date(file.savedAt).toLocaleString()) + "</b> (" + keys.length + ' parts). This replaces the progress on this device. <button type="button" class="ll-btn pri" id="ll-restore-yes">Yes, restore it</button> <button type="button" class="ll-btn" id="ll-restore-no">Cancel</button>';
+    if (box) box.innerHTML = 'Backup from <b>' + esc(new Date(file.savedAt).toLocaleString()) + "</b> (" + keys.length + " parts" + (photoItems ? " + " + photoItems.length + " photo" + (photoItems.length === 1 ? "" : "s") : "") + (noteItems ? " + " + noteItems.length + " voice note" + (noteItems.length === 1 ? "" : "s") : "") + '). This replaces the progress on this device.' + (photoItems && photoItems.length ? " The photos are added to this device's photos — photos already here are kept." : "") + (noteItems && noteItems.length ? " Voice notes are added the same way — notes already here are kept." : "") + ' <button type="button" class="ll-btn pri" id="ll-restore-yes">Yes, restore it</button> <button type="button" class="ll-btn" id="ll-restore-no">Cancel</button>';
     return true;
   }
   function doRestore() {
     if (!pendingRestore) return;
-    pendingRestore.keys.forEach(function (k) { try { localStorage.setItem(k, pendingRestore.data[k]); } catch (e) {} });
+    var job = pendingRestore;
     pendingRestore = null;
-    safeMsg("Restored. Reloading…");
-    setTimeout(function () { try { location.reload(); } catch (e) {} }, 600);
+    job.keys.forEach(function (k) { try { localStorage.setItem(k, job.data[k]); } catch (e) {} });
+    var finish = function () {
+      safeMsg("Restored. Reloading…");
+      setTimeout(function () { try { location.reload(); } catch (e) {} }, 600);
+    };
+    var chain = Promise.resolve();
+    if (job.photos && job.photos.length) {
+      safeMsg("Restoring… (" + job.photos.length + " photos)");
+      job.photos.forEach(function (item) {
+        chain = chain.then(function () {
+          return fetch(item.dataUrl).then(function (r) { return r.blob(); }).then(function (blob) {
+            var rec = {};
+            Object.keys(item).forEach(function (k) { if (k !== "dataUrl") rec[k] = item[k]; });
+            rec.blob = blob;
+            return photoPut(rec);
+          }).catch(function () {});
+        });
+      });
+    }
+    if (job.notes && job.notes.length) {
+      chain = chain.then(function () { return restoreNotesFromBackup(job.notes); });
+    }
+    if ((job.photos && job.photos.length) || (job.notes && job.notes.length)) chain.then(finish);
+    else finish();
   }
   window.__llBackup = { keys: backupKeys, check: checkRestore, restore: doRestore };
   /* ask the browser to keep this site's data (helps on Chrome/Android; Safari mainly needs the Home Screen install) */
@@ -2079,8 +2271,9 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
       var t = $("#game-title");
       if (t && g) t.textContent = g.title;
       var close = $("#game-close");
-      if (close) close.textContent = "Close";
+      if (close) close.textContent = "← Back";
     } else {
+      nextView = { kind: "none" };
       openShellOverlay(g ? g.title : "Game", "<p style='padding:20px'>The game player is still loading. Try again in a moment.</p>");
     }
   }
@@ -2164,6 +2357,16 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
       Array.prototype.forEach.call(card.querySelectorAll(".lsn-opt"), function (o) { o.disabled = false; o.classList.remove("right", "wrong", "lt-gold"); });
       var fb0 = card.querySelector(".lsn-fb"); if (fb0) fb0.textContent = "";
       card.classList.remove("lsn-finished");
+      /* Wave C1: "starts fresh" must include the stage flags — with _solo /
+         _tibDone left over from the first run, the first right tap fell
+         through to the plain completion branch and the guided → solo →
+         teach-back flow never re-ran (so a replay produced no completion
+         signal at all). Reset them and the teach-back block too. */
+      card._solo = false; card._tib = false; card._tibDone = false;
+      if (card._tibBlock) {
+        card._tibBlock.hidden = true;
+        Array.prototype.forEach.call(card._tibBlock.querySelectorAll(".lsn-tib-opt"), function (o) { o.disabled = false; o.classList.remove("right", "wrong"); });
+      }
     }
     var btn = card.querySelector(".lsn-replay, .tutor-replay");
     var gen = ++teachGen;
@@ -2211,6 +2414,7 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
   }
   function openPathHost(host, title, focus) {
     if (!host) return false;
+    nextView = focus ? { kind: "lessonFocus", hostId: host.id, title: title, focusTitle: title } : { kind: "path", hostId: host.id, title: title };
     restoreParked();
     clearLessonFocus(host);
     var body = $("#ll-obody");
@@ -2243,6 +2447,8 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
       } catch (e) {}
       startTeach(focus);
       if (focus.classList.contains("ny-lsn")) nyStepper(focus);
+      wcThenInsert(focus.getAttribute ? focus.getAttribute("data-lsn-id") : null, title); /* Wave C1: Then & Now strip */
+      wc2PrintBtnInsert(focus.getAttribute ? focus.getAttribute("data-lsn-id") : null, title); /* Wave C2: Print card */
     } else {
       try { if (body) body.scrollTop = 0; } catch (e) {}
     }
@@ -2307,6 +2513,7 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
   function openPath(id) {
     var h = HL();
     if (h && h.paths[id]) {
+      nextView = { kind: "hlpath", id: id, title: h.paths[id].title };
       openShellOverlay(h.paths[id].title, "");
       document.body.classList.add("ll-tutor-open");
       h.renderPath(id, $("#ll-obody"));
@@ -2318,9 +2525,12 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
   function openLesson(title) {
     var h = HL();
     if (h && h.byTitle(title)) {
+      nextView = { kind: "hl", title: title };
       openShellOverlay(title, "");
       document.body.classList.add("ll-tutor-open");
       h.play(h.byTitle(title).id, $("#ll-obody"));
+      wcThenInsert(null, title); /* Wave C1: Then & Now strip */
+      wc2PrintBtnInsert(null, title); /* Wave C2: Print card */
       return;
     }
     openLessonRoute(title, false);
@@ -2411,7 +2621,46 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
     if (ttl) ttl.textContent = "";
   }
 
+  /* ===== Wave B (B5): overlay view-history stack for the back bar =====
+     Every overlay opener records the view it is opening in nextView just
+     before it calls openShellOverlay. Opening a view pushes the view it
+     replaces (the tab beneath, with its body scroll, or the overlay view
+     beneath, with its list scroll). Back pops and restores that exact
+     view; Home leaves the overlay for Today. closeOverlay (a full exit)
+     clears the stack, so the bar never resurrects a stale view. */
+  var viewStack = [];
+  var curView = null;
+  var nextView = null;
+  var navRestoring = false;
+  function bodyScrollY() { return window.scrollY || document.body.scrollTop || document.documentElement.scrollTop || 0; }
+  function setBodyScrollY(y) { try { window.scrollTo(0, y); } catch (e) {} try { document.body.scrollTop = y; } catch (e) {} try { document.documentElement.scrollTop = y; } catch (e) {} }
+  function sameView(a, b) {
+    if (!a || !b) return false;
+    return [a.kind, a.id || "", a.title || "", a.hostId || "", a.key || ""].join("|") === [b.kind, b.id || "", b.title || "", b.hostId || "", b.key || ""].join("|");
+  }
+  function findCardInHost(host, title) {
+    if (!host || !title) return null;
+    var t = String(title).replace(/\s+/g, " ").trim().toLowerCase();
+    var cards = $$(".lsn, .ny-lsn", host);
+    for (var i = 0; i < cards.length; i++) {
+      var h = cards[i].querySelector("h4, h3, h2");
+      if (h && h.textContent.replace(/\s+/g, " ").trim().toLowerCase() === t) return cards[i];
+    }
+    return null;
+  }
+
   function openShellOverlay(title, inner) {
+    /* Wave B: remember the view this one replaces, so Back restores it. */
+    if (!navRestoring) {
+      var ov0 = $("#ll-overlay");
+      if (!ov0 || ov0.hidden) {
+        viewStack.push({ kind: "tab", tab: state.tab, y: bodyScrollY() });
+      } else if (curView && curView.kind !== "none" && !sameView(curView, nextView)) {
+        var ob0 = $("#ll-obody");
+        viewStack.push(Object.assign({}, curView, { oy: ob0 ? ob0.scrollTop : 0 }));
+      }
+    }
+    if (nextView) { curView = nextView; nextView = null; }
     /* Restore parked Muse nodes first so a later innerHTML wipe cannot destroy them. */
     restoreParked();
     var ov = $("#ll-overlay");
@@ -2503,6 +2752,7 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
     var G = window.HootGames; if (!G) return;
     var g = G.list.filter(function (x) { return x.key === key; })[0]; if (!g) return;
     if (document.body.classList.contains("ll-overlay-open")) closeOverlay();
+    nextView = { kind: "party", key: key, title: g.title };
     openShellOverlay(g.title, "");
     document.body.classList.add("ll-tutor-open");
     state.partyOpen = { title: g.title, t0: Date.now() };
@@ -2513,6 +2763,8 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
     state.partyOpen = null;
   });
   function closeOverlay() {
+    /* Wave B: a full exit clears the back stack (a restore in flight keeps it). */
+    if (!navRestoring) { viewStack.length = 0; curView = null; nextView = null; }
     stopStory();
     try { if (window.HootGames) window.HootGames.stop(); } catch (e) {}
     if (state.partyOpen && state.profile) { logAdd(state.profile.id, { type: "game", title: state.partyOpen.title, ms: Date.now() - state.partyOpen.t0 }); state.partyOpen = null; }
@@ -2535,6 +2787,50 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
     if (go) go.hidden = true;
     var gt = $("#game-title");
     if (gt) gt.textContent = "";
+  }
+
+  /* ===== Wave B (B5): Back / Home for the overlay back bar ===== */
+  function restoreView(e) {
+    navRestoring = true;
+    try {
+      if (e.kind === "path") { var h1 = document.getElementById(e.hostId); if (h1) openPathHost(h1, e.title, null); }
+      else if (e.kind === "lessonFocus") { var h2 = document.getElementById(e.hostId); if (h2) openPathHost(h2, e.title, findCardInHost(h2, e.focusTitle || e.title)); }
+      else if (e.kind === "hlpath") openPath(e.id);
+      else if (e.kind === "hl") openLesson(e.title);
+      else if (e.kind === "party") openPartyGame(e.key);
+      else if (e.kind === "muse") { var n = findShelfNode(e.title) || findHubIdeaNode(e.title); if (n) openMuseCard(e.title, n); }
+      else if (e.kind === "story") openStory(e.key);
+      else if (e.kind === "custom") openCustomStop(e.title);
+      else if (e.kind === "stickers") { nextView = { kind: "stickers", title: "My stickers" }; openShellOverlay("My stickers", stickerBook()); }
+      else if (e.kind === "rightnow") openRightNow(e.key);
+      else if (e.kind === "worldmap") openWorldMap();
+      else if (e.kind === "wc2missions") openMissions();
+      else if (e.kind === "wc2mission") openMission(e.key);
+      else if (e.kind === "wc2ihave") openIhave();
+      else if (e.kind === "wc2quest") openQuestDay(e.key);
+      else if (e.kind === "we2garden") openOopsGarden();
+      else if (e.kind === "we2car") openCarMode();
+    } catch (err) {}
+    navRestoring = false;
+    if (e.oy != null) {
+      var oy = e.oy;
+      setTimeout(function () { var ob = $("#ll-obody"); if (ob) ob.scrollTop = oy; }, 60);
+      setTimeout(function () { var ob = $("#ll-obody"); if (ob) ob.scrollTop = oy; }, 350);
+    }
+  }
+  function goBack() {
+    var e = viewStack.pop();
+    if (!e || e.kind === "tab") {
+      var y = e ? e.y : 0;
+      closeOverlay();
+      if (e) { setTimeout(function () { setBodyScrollY(y); }, 0); setTimeout(function () { setBodyScrollY(y); }, 90); }
+      return;
+    }
+    restoreView(e);
+  }
+  function goHome() {
+    viewStack.length = 0; curView = null; nextView = null;
+    setTab("today");
   }
 
   document.addEventListener("change", function (e) { if (e.target && e.target.closest && e.target.closest("#ll-app .ll-kidsettings")) onKidSetting(e); });
@@ -2589,7 +2885,7 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
     if (t.id === "ll-restore-yes") { doRestore(); return; }
     if (t.id === "ll-restore-no") { pendingRestore = null; safeMsg("Restore cancelled. Nothing was changed."); return; }
     var go = t.getAttribute("data-kh-go");
-    if (go === "stickers") { openShellOverlay("My stickers", stickerBook()); return; }
+    if (go === "stickers") { nextView = { kind: "stickers", title: "My stickers" }; openShellOverlay("My stickers", stickerBook()); return; }
     if (go) { setTab(go); return; }
     if (t.classList.contains("kh-stone") || t.classList.contains("kh-gobtn")) { var li = t.closest("[data-title]"); state.pendingStone = li && li.getAttribute("data-title"); }
     if (t.getAttribute("data-gp-tab")) { setTab(t.getAttribute("data-gp-tab")); return; }
@@ -2732,6 +3028,7 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
 
   function openMuseCard(title, node) {
     if (!node) return false;
+    nextView = { kind: "muse", title: title };
     restoreParked();
     wipeOverlayHtml();
     openShellOverlay(title, "");
@@ -2805,9 +3102,12 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
       ov.hidden = true;
       ov.setAttribute("role", "dialog");
       ov.setAttribute("aria-modal", "true");
-      ov.innerHTML = '<div class="ll-obar"><h2 id="ll-otitle"></h2><button type="button" id="ll-oclose">Close</button></div><div id="ll-obody"></div>';
+      ov.innerHTML = '<div class="ll-obar"><button type="button" id="ll-oclose">← Back</button><h2 id="ll-otitle"></h2><button type="button" id="ll-homebtn" aria-label="Home">🏠</button></div><div id="ll-obody"></div>';
       document.body.appendChild(ov);
-      $("#ll-oclose").addEventListener("click", closeOverlay);
+      /* Wave B: the bar's left button is Back (pops the view stack); the
+         #ll-oclose id stays because hub code clicks it to finish a work. */
+      $("#ll-oclose").addEventListener("click", goBack);
+      $("#ll-homebtn").addEventListener("click", goHome);
     }
     var appEl = $("#ll-app");
     if (appEl && !appEl._bound) {
@@ -2931,5 +3231,1799 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", function () { boot(); accountAttention(); });
   else { boot(); accountAttention(); }
 
-  window.__llShell = { setTab: setTab, setProfile: setProfile, state: state, openGame: openGame, openLesson: openLesson, openPath: openPath, closeOverlay: closeOverlay, render: render, openMuseCard: openMuseCard, findShelfNode: findShelfNode, findHubIdeaNode: findHubIdeaNode, playNow: playNow, openLessonById: openLessonById, findLessonNodeById: findLessonNodeById, LESSON_BY_ID: LESSON_BY_ID, checkParentGate: checkParentGate, newGateQuestion: newGateQuestion };
+  /* ===== Wave C1: Hoot's pick of the day + Tomorrow, Right Now chips,
+     the progress world map, and Then & Now (ported from The Idea Jar) =====
+     All counts and picks read the app's own state (lessonDone, the paths
+     for the active child, the activity groups) — nothing is invented.
+     Picks/stats are computed for the ACTIVE profile, because lessonDone
+     itself reads the active child's state. */
+
+  /* --- Then & Now data: a real completion log, one record per
+     child+lesson { n, first, last }. Written only where the shell already
+     observes a completion (the hoot-lesson-done event and the done-class
+     watcher beside the activity log), so it is exactly as complete as the
+     app's own activity log. Existing done stores are never touched. --- */
+  var COMP_KEY = "hootworld.completions.v1";
+  function compLoad() { try { return JSON.parse(localStorage.getItem(COMP_KEY) || "{}") || {}; } catch (e) { return {}; } }
+  function compSave(d) { try { localStorage.setItem(COMP_KEY, JSON.stringify(d)); } catch (e) {} }
+  function recordCompletion(kid, title) {
+    if (!kid || !title) return;
+    var id = lessonIdForTitle(title);
+    var key = id || ("t:" + title);
+    var d = compLoad(), k = d[kid] || (d[kid] = {});
+    var now = Date.now(), r = k[key];
+    if (r && now - (r.last || 0) < 8000) return; /* one completion can be seen by two watchers */
+    if (!r) { r = { n: 0, first: now, last: now, title: title }; k[key] = r; }
+    r.n += 1; r.last = now; r.title = title;
+    compSave(d);
+    try { we1OnLessonComplete(kid, id, title); } catch (e) {} /* Wave E1: photo quest + parent praise note */
+  }
+  function wcCompletion(pid, id, title) {
+    var k = compLoad()[pid] || {};
+    if (id && k[id]) return k[id];
+    if (title) {
+      if (k["t:" + title]) return k["t:" + title];
+      var lid = lessonIdForTitle(title);
+      if (lid && k[lid]) return k[lid];
+    }
+    return null;
+  }
+  function wcThenHtml(pid, id, title) {
+    var r = wcCompletion(pid, id, title);
+    if (!r || !r.n) return "";
+    var when = "";
+    try { when = new Date(r.first).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" }); } catch (e) { when = ""; }
+    return '<div class="wc-then" role="note">↩ <b>Then &amp; Now</b> · First finished: ' + esc(when) + " · You've done this " + r.n + (r.n === 1 ? " time" : " times") + "</div>";
+  }
+  function wcThenInsert(id, title) {
+    var body = $("#ll-obody");
+    if (!body || !state.profile) return;
+    var old = body.querySelector(".wc-then");
+    if (old) old.remove();
+    var html = wcThenHtml(state.profile.id, id, title);
+    if (!html) return;
+    var d = document.createElement("div");
+    d.innerHTML = html;
+    body.insertBefore(d.firstChild, body.firstChild);
+  }
+
+  /* --- shared helpers --- */
+  function wcHash(s) { var h = 2166136261; s = String(s); for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619) >>> 0; } return h >>> 0; }
+  function wcDayIndex(d) { return Math.floor((d.getTime() - d.getTimezoneOffset() * 60000) / 86400000); }
+  function wcSeasonOf(d) { var m = d.getMonth(); return m === 11 || m < 2 ? "winter" : m < 5 ? "spring" : m < 8 ? "summer" : "fall"; }
+  var WC_SUMMER_RX = /plant|photosynthesis|garden|grow|beach|swim|picnic|ice cream/i;
+  var WC_COZY_RX = /colour|color|sort|pattern|story|read|rhyme|letter|count|shape|code|music|feelings|fractions|sharing|body/i;
+  function wcText(l) { return (l.title + " " + (l.blurb || "") + " " + (l.tags || []).join(" ")); }
+  function wcIsSummer(l) { return WC_SUMMER_RX.test(wcText(l)); }
+  function wcIsCozy(l) { return WC_COZY_RX.test(wcText(l)); }
+  /* the child's own lessons that carry a stable shell id, in path order */
+  function wcPool(pid) {
+    var out = [], seen = {};
+    pathsFor(pid).forEach(function (p) {
+      (LESSONS[p.id] || []).forEach(function (l) {
+        if (l.id && !seen[l.id]) { seen[l.id] = 1; out.push({ id: l.id, title: l.title, emo: l.emo, tags: l.tags || [], color: l.color, blurb: l.blurb || "", path: p.id, pathTitle: p.title }); }
+      });
+    });
+    return out;
+  }
+  function wcDoneToday(pid, title, date) {
+    var dk = dayKeyOf(date);
+    var rec = wcCompletion(pid, null, title);
+    if (rec && rec.last && dayKeyOf(new Date(rec.last)) === dk) return true;
+    var evs = logLoad()[pid] || [];
+    for (var i = 0; i < evs.length; i++) {
+      if (evs[i].type === "lesson" && evs[i].title === title && dayKeyOf(new Date(evs[i].t)) === dk) return true;
+    }
+    return false;
+  }
+
+  /* --- Feature 1: the daily pick (deterministic per child + date) --- */
+  function wcDailyPick(pid, date) {
+    date = date || new Date();
+    var pool = wcPool(pid);
+    if (!pool.length) return null;
+    var season = wcSeasonOf(date);
+    var fresh = pool.filter(function (l) { return !lessonDone(l.title); });
+    var base = fresh.length ? fresh.slice() : pool.slice();
+    if (season === "winter") {
+      var ns = base.filter(function (l) { return !wcIsSummer(l); });
+      if (ns.length) base = ns; /* never a summer-only topic in winter */
+    } else if (season === "fall") {
+      base = base.filter(function (l) { return !wcIsSummer(l); }).concat(base.filter(wcIsSummer));
+    } else if (season === "spring") {
+      base = base.filter(wcIsSummer).concat(base.filter(function (l) { return !wcIsSummer(l); }));
+    }
+    var notToday = base.filter(function (l) { return !wcDoneToday(pid, l.title, date); });
+    if (notToday.length) base = notToday;
+    /* start at the child's current path position, then step forward a
+       little each day (0–2) so consecutive days differ but the pick
+       stays near where the child actually is on the path */
+    var step = base.length > 1 ? (wcDayIndex(date) + wcHash(pid)) % Math.min(3, base.length) : 0;
+    var pick = base[step % base.length];
+    return { lesson: pick, season: season, current: !!(fresh.length && pick.id === fresh[0].id) };
+  }
+  var WC_TOPIC_WORD = { numbers: "counting", colours: "colours", colors: "colours", letters: "letters", phonics: "letter sounds", shapes: "shapes", maths: "maths", math: "maths", reading: "reading", science: "science", sorting: "sorting", patterns: "patterns", feelings: "feelings", animals: "animals" };
+  function wcWhy(pick, date, when) {
+    var l = pick.lesson, season = pick.season;
+    var topic = WC_TOPIC_WORD[String((l.tags && l.tags[0]) || "").toLowerCase()] || String((l.tags && l.tags[0]) || "learning").toLowerCase();
+    var cold = season === "winter" || (season === "fall" && date.getMonth() === 10); /* a Connecticut November is a cold day */
+    var s;
+    if (wcIsSummer(l) && (season === "summer" || season === "spring")) s = "A sunny " + topic + " pick while the days are warm.";
+    else if (cold && wcIsCozy(l)) s = "A cozy " + topic + " pick for a cold day — good indoors.";
+    else if (cold) s = "An indoor " + topic + " pick for a cold day.";
+    else if (pick.current) s = "The very next step on the path — keep going!";
+    else s = "A fresh " + topic + " pick for " + (when === "tomorrow" ? "tomorrow" : "today") + ".";
+    if (pick.current && when !== "tomorrow" && s.indexOf("next step") === -1) s = "Next step on the path — " + s.charAt(0).toLowerCase() + s.slice(1);
+    return s;
+  }
+  function wcPickCard(pick, date, when) {
+    var l = pick.lesson;
+    var art = LESSON_ART[l.id]
+      ? '<img class="wc-pickart" src="assets/lesson-art/' + l.id + '.svg" alt="" loading="lazy" decoding="async">'
+      : '<span class="wc-pickemo" aria-hidden="true">' + (l.emo || "⭐") + "</span>";
+    return '<button type="button" class="wc-pickcard' + (when === "tomorrow" ? " wc-tomorrow" : "") + '" data-wc-open="lesson:' + l.id + '" aria-label="' + (when === "tomorrow" ? "Tomorrow's pick" : "Today's pick") + ": " + esc(l.title) + '">' +
+      art +
+      '<span class="wc-picktxt"><span class="wc-pickkicker">' + (when === "tomorrow" ? "🌙 Tomorrow" : "⭐ Today's pick") + "</span><b>" + esc(l.title) + '</b><small class="wc-why">' + esc(wcWhy(pick, date, when)) + "</small></span>" +
+      '<span class="wc-pickgo" aria-hidden="true">▶</span></button>';
+  }
+
+  /* --- Feature 3 data: real per-child lesson stats --- */
+  function wcStats(pid) {
+    var seen = {}, total = 0, done = 0, perPath = [];
+    pathsFor(pid).forEach(function (p) {
+      var ls = LESSONS[p.id] || hlLessons(p.id), pd = 0;
+      ls.forEach(function (l) {
+        var d = lessonDone(l.title);
+        if (d) pd++;
+        if (!seen[l.title]) { seen[l.title] = 1; total++; if (d) done++; }
+      });
+      perPath.push({ id: p.id, title: p.title, emo: p.emo || "⭐", total: ls.length, done: pd, lessons: ls });
+    });
+    return { total: total, done: done, pct: total ? Math.round(100 * done / total) : 0, perPath: perPath };
+  }
+
+  function waveTodayHtml() {
+    var p = state.profile;
+    if (!p) return "";
+    var now = new Date();
+    var today = wcDailyPick(p.id, now);
+    if (!today) return "";
+    var tmrDate = new Date(now.getTime() + 86400000);
+    var tmr = wcDailyPick(p.id, tmrDate);
+    var stats = wcStats(p.id);
+    var chips = '<div class="wc-chips" role="group" aria-label="Right now"><span class="wc-chipslabel">Right now:</span>' +
+      WC_CHIPS.map(function (c) { return '<button type="button" class="wc-chip" data-wc-chip="' + c.id + '">' + c.emo + " " + esc(c.label) + "</button>"; }).join("") + "</div>";
+    return '<section class="ll-card wc-today" aria-label="Hoot\'s picks">' +
+      '<h2 class="todoh">🦉 Hoot\'s pick <span class="muted">for ' + esc(p.label) + "</span></h2>" +
+      wcPickCard(today, now, "today") +
+      (tmr ? wcPickCard(tmr, tmrDate, "tomorrow") : "") +
+      chips +
+      '<button type="button" class="wc-mapbtn" data-wc-map="1">🗺️ <b>World map</b><span>' + stats.done + " of " + stats.total + " lessons · " + stats.pct + "%</span></button>" +
+      "</section>";
+  }
+
+  /* --- Feature 2: Right Now chips --- */
+  var WC_CHIPS = [
+    { id: "burn", label: "Burn energy", emo: "🏃", lead: "Wiggles to burn? These will do it — big movement first." },
+    { id: "calm", label: "Calm them down", emo: "🌙", lead: "Slowing down — gentle things only, nothing timed." },
+    { id: "ten", label: "10 minutes before dinner", emo: "⏱️", lead: "Only a few minutes? Everything here is short." },
+    { id: "grandma", label: "Grandma's visiting", emo: "👵", lead: "Things to show off, and things to do together." }
+  ];
+  function wcGamesFor(pid) {
+    var b = bandOf(pid);
+    if (b === "little" || b === "early") return GAMES.slice();
+    if (isTeenBand(b)) return GAMES.filter(function (g) { return TEEN_GAMES.indexOf(g.key) >= 0; });
+    return [];
+  }
+  function wcActs() { try { return activityGroups() || []; } catch (e) { return []; } }
+  function wcRightNowItems(pid, chip) {
+    var pool = wcPool(pid), games = wcGamesFor(pid), acts = wcActs();
+    var items = [], used = {};
+    function add(it) { if (it && !used[it.open] && items.length < 6) { used[it.open] = 1; items.push(it); } }
+    function game(key, why) {
+      var g = null;
+      games.forEach(function (x) { if (x.key === key) g = x; });
+      if (g) add({ open: "game:" + key, title: g.title, emo: g.emo, color: g.color, why: why, gameKey: key });
+    }
+    function lesson(l, why) { if (l) add({ open: "lesson:" + l.id, title: l.title, emo: l.emo, color: l.color, why: why, art: l.id }); }
+    function lessonsMatching(rx, why, max) { var n = 0; pool.forEach(function (l) { if (n < max && rx.test(l.title + " " + l.tags.join(" "))) { lesson(l, why); n++; } }); }
+    function actsWhere(fn, why, max) { var n = 0; acts.forEach(function (g) { if (n < max && fn(g)) { add({ open: "activity:" + g.title, title: g.title, emo: g.emo || "🧺", color: "#0B8A5F", why: why }); n++; } }); }
+    function pad(why) {
+      pool.forEach(function (l) { if (items.length < 4 && !lessonDone(l.title)) lesson(l, why); });
+      pool.forEach(function (l) { if (items.length < 4) lesson(l, why); });
+    }
+    if (chip === "burn") {
+      game("dance", "Dance it out — wiggle, jump, spin");
+      game("twinkle", "Chase and catch the twinkling stars");
+      game("band", "Stomp, clap and copy the beat");
+      game("rocket", "Count up and blast off");
+      actsWhere(function (g) { return g.place === "outdoor"; }, "Fresh air and room to move", 2);
+      lessonsMatching(/up and down|animal sounds|counting back/i, "Learn it with your whole body", 2);
+      pad("A lively pick from the path");
+    } else if (chip === "calm") {
+      game("paint", "Quiet drawing — no timers, no rushing");
+      game("splash", "Gentle colours at your own pace");
+      game("memory", "Slow looking and remembering");
+      game("peek", "A soft, gentle hide-and-seek");
+      lessonsMatching(/sort|colour|color|pattern|feelings|shape/i, "Quiet and focused", 2);
+      actsWhere(function (g) { return g.place !== "outdoor"; }, "A calm hands-on activity", 2);
+      pad("A gentle pick from the path");
+    } else if (chip === "ten") {
+      var band = bandOf(pid);
+      var shortPool = isTeenBand(band) ? pool.filter(function (l) { return l.path === "creator"; }).concat(pool.filter(function (l) { return l.path !== "creator"; })) : pool;
+      var freshShort = shortPool.filter(function (l) { return !lessonDone(l.title); });
+      (freshShort.length ? freshShort : shortPool).slice(0, 2).forEach(function (l) { lesson(l, isTeenBand(band) ? "A short lesson — just a few minutes" : "One short lesson — just a few minutes"); });
+      game("find", "One quick looking round");
+      game("peek", "A quick round of hide-and-seek");
+      game("feed", "A quick, silly round");
+      game("piano", "One quick tune");
+      game("band", "One quick rhythm round");
+      game("memory", "One quick matching round");
+      actsWhere(function (g) { return g.place !== "outdoor"; }, "Quick to start, quick to tidy", 1);
+      pad("Short and sweet");
+    } else if (chip === "grandma") {
+      var doneLs = pool.filter(function (l) { return lessonDone(l.title); });
+      doneLs.slice(0, 3).forEach(function (l) { lesson(l, "Already learned it — perfect for showing off"); });
+      if (!doneLs.length && pool.length) lesson(pool[0], "The newest lesson — show Grandma what's new");
+      game("dress", "Take turns dressing the friends");
+      game("paint", "Make a picture together");
+      game("memory", "The classic matching game — Grandma knows it");
+      game("band", "Clap a beat together");
+      actsWhere(function (g) { return g.place !== "outdoor"; }, "Something lovely to make together", 1);
+      pad("Fun to share together");
+    }
+    return items;
+  }
+  function rightNowHtml(chip) {
+    var def = WC_CHIPS.filter(function (c) { return c.id === chip; })[0];
+    var items = wcRightNowItems(state.profile.id, chip);
+    return '<div class="wc-rn"><p class="wc-rnlead">' + esc(def.lead) + '</p><div class="wc-rnlist">' +
+      items.map(function (it) {
+        var media = it.art && LESSON_ART[it.art]
+          ? '<img class="wc-rnart" src="assets/lesson-art/' + it.art + '.svg" alt="" loading="lazy" decoding="async">'
+          : it.gameKey ? gameThumb(it.gameKey, it.emo)
+          : '<span class="wc-rnemo" aria-hidden="true">' + (it.emo || "⭐") + "</span>";
+        return '<button type="button" class="wc-rnitem" data-wc-open="' + esc(it.open) + '" style="--dc:' + (it.color || "#E0457B") + '">' + media +
+          '<span class="wc-rntxt"><b>' + esc(it.title) + "</b><small>" + esc(it.why) + '</small></span><span class="wc-rngo" aria-hidden="true">▶</span></button>';
+      }).join("") + "</div></div>";
+  }
+  function openRightNow(chip) {
+    var def = WC_CHIPS.filter(function (c) { return c.id === chip; })[0];
+    if (!def || !state.profile) return;
+    nextView = { kind: "rightnow", key: chip, title: def.label };
+    openShellOverlay(def.emo + " " + def.label, rightNowHtml(chip));
+  }
+
+  /* --- Feature 3: the world map --- */
+  var WC_MILESTONES = [
+    { pct: 25, name: "Pathfinder" },
+    { pct: 50, name: "Explorer" },
+    { pct: 75, name: "Trailblazer" },
+    { pct: 100, name: "World Master" }
+  ];
+  function wcMapSvg(stats) {
+    var W = 360, topH = 116, rowH = 78, H = topH + stats.perPath.length * rowH + 14;
+    var pal = ["#E0457B", "#3A56D4", "#0B8A5F", "#F5A623", "#7A2E8E", "#0E6E8C"];
+    var s = [];
+    s.push('<svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="World map: ' + stats.done + " of " + stats.total + ' lessons finished">');
+    s.push('<rect x="0" y="0" width="' + W + '" height="' + H + '" rx="16" fill="#E8F4FD"/>');
+    s.push('<ellipse cx="46" cy="' + (H + 26) + '" rx="150" ry="86" fill="#CDEBC0"/>');
+    s.push('<ellipse cx="330" cy="' + (H + 34) + '" rx="170" ry="96" fill="#B7E2A8"/>');
+    s.push('<circle cx="324" cy="30" r="16" fill="#FFD93C"/>');
+    s.push('<g fill="#FFFFFF" opacity="0.95"><ellipse cx="48" cy="26" rx="25" ry="9"/><ellipse cx="70" cy="20" rx="18" ry="8"/></g>');
+    s.push('<text x="18" y="30" font-size="16" font-weight="800" fill="#21324A">Your world</text>');
+    s.push('<text x="18" y="50" font-size="12" fill="#5A6B84">' + stats.done + " of " + stats.total + " lessons finished · " + stats.pct + "%</text>");
+    var x0 = 24, x1 = 336, yT = 84;
+    var ty = function (t) { return yT - Math.sin(t * Math.PI) * 12; };
+    var d = "";
+    for (var i = 0; i <= 40; i++) { var t = i / 40; d += (i ? "L" : "M") + (x0 + (x1 - x0) * t).toFixed(1) + " " + ty(t).toFixed(1) + " "; }
+    s.push('<path d="' + d + '" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>');
+    s.push('<path d="' + d + '" fill="none" stroke="#D8B25C" stroke-width="2.6" stroke-dasharray="0.1 7" stroke-linecap="round"/>');
+    WC_MILESTONES.forEach(function (m) {
+      var t = m.pct / 100, fx = x0 + (x1 - x0) * t, fy = ty(t), earned = stats.pct >= m.pct;
+      s.push('<line x1="' + fx.toFixed(1) + '" y1="' + fy.toFixed(1) + '" x2="' + fx.toFixed(1) + '" y2="' + (fy - 17).toFixed(1) + '" stroke="#7A6A53" stroke-width="2"/>');
+      s.push('<path d="M' + fx.toFixed(1) + " " + (fy - 17).toFixed(1) + ' l11 3.4 -11 3.4 z" fill="' + (earned ? "#E0457B" : "#C4CBD4") + '"/>');
+      s.push('<text x="' + fx.toFixed(1) + '" y="' + (fy + 13).toFixed(1) + '" font-size="8.5" text-anchor="middle" fill="#5A6B84">' + m.pct + "%</text>");
+    });
+    var hp = Math.max(0, Math.min(100, stats.pct)) / 100;
+    s.push('<text x="' + (x0 + (x1 - x0) * hp).toFixed(1) + '" y="' + (ty(hp) - 4).toFixed(1) + '" font-size="15" text-anchor="middle">🦉</text>');
+    stats.perPath.forEach(function (pp, i) {
+      var y = topH + i * rowH, col = pal[i % pal.length];
+      s.push('<g data-wc-open="path:' + pp.id + '" style="cursor:pointer">');
+      s.push('<rect x="8" y="' + (y + 2) + '" width="344" height="' + (rowH - 8) + '" rx="12" fill="#FFFFFF" opacity="0.72"/>');
+      s.push('<circle cx="36" cy="' + (y + 26) + '" r="16" fill="' + col + '"/>');
+      s.push('<text x="36" y="' + (y + 32) + '" font-size="15" text-anchor="middle">' + pp.emo + "</text>");
+      s.push('<text x="60" y="' + (y + 22) + '" font-size="12.5" font-weight="700" fill="#21324A">' + esc(pp.title) + "</text>");
+      s.push('<text x="60" y="' + (y + 38) + '" font-size="10.5" fill="#5A6B84">' + pp.done + " of " + pp.total + " done — tap to open</text>");
+      var n = pp.lessons.length;
+      for (var j = 0; j < n; j++) {
+        var cx = n === 1 ? 60 : 60 + j * (284 / (n - 1));
+        var dn = lessonDone(pp.lessons[j].title);
+        s.push('<circle cx="' + cx.toFixed(1) + '" cy="' + (y + 56) + '" r="' + (n > 20 ? 3.2 : 4.2) + '" fill="' + (dn ? col : "#FFFFFF") + '" stroke="' + col + '" stroke-width="1.6"/>');
+      }
+      s.push("</g>");
+    });
+    s.push("</svg>");
+    return s.join("");
+  }
+  function wcBadgesHtml(stats) {
+    return '<div class="wc-badges" aria-label="Milestone badges">' + WC_MILESTONES.map(function (m) {
+      var earned = stats.pct >= m.pct;
+      return '<span class="wc-badge' + (earned ? "" : " locked") + '">' + (earned ? "🏅 " : "🔒 ") + m.pct + "% · " + m.name + (earned ? " — earned!" : " — " + (m.pct - stats.pct) + "% to go") + "</span>";
+    }).join("") + "</div>";
+  }
+  function openWorldMap() {
+    var p = state.profile;
+    if (!p) return;
+    var stats = wcStats(p.id);
+    nextView = { kind: "worldmap", title: "World map" };
+    openShellOverlay("🗺️ World map", '<div class="wc-map"><p class="wc-maplead">' + esc(p.label) + "'s journey — every finished lesson lights a stop on its trail.</p>" + wcMapSvg(stats) + wcBadgesHtml(stats) + "</div>");
+  }
+
+  /* --- opening Wave C targets + click delegation (Today lives in
+     #ll-app, the chip list and map live in #ll-overlay; one document
+     listener covers both. The attrs are Wave C's own, so the shell's
+     onAppClick ignores them.) --- */
+  function wcOpen(spec) {
+    var cut = spec.indexOf(":");
+    if (cut < 0) return;
+    var kind = spec.slice(0, cut), arg = spec.slice(cut + 1);
+    if (kind === "lesson") { if (!openLessonById(arg)) { var r = LESSON_BY_ID[arg]; if (r) openLesson(r.lesson.title); } }
+    else if (kind === "game") openGame(arg);
+    else if (kind === "path") openPath(arg);
+    else if (kind === "activity") {
+      var n = findHubIdeaNode(arg);
+      if (n) openMuseCard(arg, n);
+      else { closeOverlay(); setTab("activities"); }
+    }
+  }
+  document.addEventListener("click", function (e) {
+    var t = e.target && e.target.closest ? e.target.closest("[data-wc-open], [data-wc-chip], [data-wc-map]") : null;
+    if (!t) return;
+    if (t.hasAttribute("data-wc-chip")) { openRightNow(t.getAttribute("data-wc-chip")); return; }
+    if (t.hasAttribute("data-wc-map")) { openWorldMap(); return; }
+    var spec = t.getAttribute("data-wc-open");
+    if (spec) wcOpen(spec);
+  });
+
+
+  /* ===== Wave C2: "I Have…" supplies mode, co-op learning missions,
+     Quest Days, and printable cards (ported from The Idea Jar) =====
+     Everything here reads the app's own signals — the completions store,
+     the per-child activity log, the day-plan done state — and persists
+     only small family stores of its own. No new audio is recorded and
+     device text-to-speech is never used. */
+
+  /* ---------- small family stores ---------- */
+  var WC2_BADGE_KEY = "hootworld.wc2badges.v1"; /* { missions:{id:ts}, quests:{id:ts} } */
+  var WC2_IHAVE_KEY = "hootworld.ihave.v1";     /* [supplyId, ...] — the whole family's shelf */
+  var WC2_QUEST_KEY = "hootworld.quests.v1";    /* { dayId: { resetAt: ts } } */
+  function wc2Store(key, dflt) { try { var v = JSON.parse(localStorage.getItem(key) || "null"); return v == null ? dflt : v; } catch (e) { return dflt; } }
+  function wc2Save(key, v) { try { localStorage.setItem(key, JSON.stringify(v)); } catch (e) {} }
+  function wc2Badges() { var b = wc2Store(WC2_BADGE_KEY, {}); b.missions = b.missions || {}; b.quests = b.quests || {}; return b; }
+  function wc2Award(kind, id) {
+    var b = wc2Badges();
+    if (!b[kind][id]) { b[kind][id] = Date.now(); wc2Save(WC2_BADGE_KEY, b); }
+    return b;
+  }
+  function wc2FmtDate(ts) { try { return new Date(ts).toLocaleDateString(undefined, { month: "short", day: "numeric" }); } catch (e) { return ""; } }
+
+  /* ---------- completion signals, family-wide ----------
+     A mission or quest step counts when ANY child in the family has
+     really done the thing: the completions store (Wave C1), the HL
+     engine's own results, the shared activity log, or the day-plan
+     done state. Timestamps are returned so Quest Days can restart. */
+  function wc2LessonDoneAt(id, title) {
+    var best = 0, d = compLoad(), pid, k;
+    for (pid in d) {
+      k = d[pid];
+      if (id && k[id] && k[id].n) best = Math.max(best, k[id].last || 1);
+      if (title && k["t:" + title] && k["t:" + title].n) best = Math.max(best, k["t:" + title].last || 1);
+    }
+    var h = HL();
+    if (h && title && h.byTitle(title)) {
+      var lid = h.byTitle(title).id;
+      PROFILES.forEach(function (p) {
+        try { var r = h.results(p.id)[lid]; if (r && (r.mastered || r.done || r.last)) best = Math.max(best, r.last || 1); } catch (e) {}
+        try { if (h.isDone(title, p.id)) best = Math.max(best, 1); } catch (e) {}
+      });
+    }
+    var logs = logLoad();
+    for (pid in logs) (logs[pid] || []).forEach(function (ev) { if (ev.type === "lesson" && ev.title === title) best = Math.max(best, ev.t || 1); });
+    if (!best && title && state.profile && lessonDone(title)) best = 1;
+    return best;
+  }
+  function wc2GameTitle(key) { var g = GAMES.filter(function (x) { return x.key === key; })[0]; return g ? g.title : key; }
+  function wc2GameDoneAt(key) {
+    var title = wc2GameTitle(key), best = 0, logs = logLoad(), pid;
+    for (pid in logs) (logs[pid] || []).forEach(function (ev) { if (ev.type === "game" && ev.title === title) best = Math.max(best, ev.t || 1); });
+    return best;
+  }
+  function wc2ActDoneAt(title) {
+    var best = 0, log = actLogAll(), pid, day;
+    for (pid in log) for (day in log[pid]) { var e = log[pid][day][title]; if (e) best = Math.max(best, e.t || 1); }
+    if (!best) { for (var i = 0; i < PROFILES.length; i++) if (isDoneFor(PROFILES[i].id, title)) { best = 1; break; } }
+    return best;
+  }
+
+  /* ---------- band-aware target resolution ---------- */
+  function wc2BandKey() { var b = curBand(); return b === "high" ? "teen" : b; }
+  function wc2ResolveLessonId(map) {
+    if (!map) return null;
+    var order = [wc2BandKey(), "early", "quest", "little", "teen"];
+    for (var i = 0; i < order.length; i++) { var id = map[order[i]]; if (id && LESSON_BY_ID[id]) return id; }
+    for (var k in map) if (LESSON_BY_ID[map[k]]) return map[k];
+    return null;
+  }
+  function wc2ResolveGameKey(step) {
+    var b = curBand();
+    if (isTeenBand(b)) {
+      if (step.gameTeen) return step.gameTeen;
+      return TEEN_GAMES.indexOf(step.game) >= 0 ? step.game : "memory";
+    }
+    return step.game;
+  }
+  function wc2ResolveActivity(step) {
+    var groups = wcActs();
+    if (!groups.length) return null;
+    if (step.actTitle) { var ex = groups.filter(function (g) { return g.title === step.actTitle; })[0]; if (ex) return ex; }
+    if (step.actRx) { var m = groups.filter(function (g) { return step.actRx.test(g.title + " " + (g.desc || "")); })[0]; if (m) return m; }
+    return groups[0];
+  }
+  function wc2GoActivity(title) {
+    closeOverlay();
+    setTab("activities");
+    setTimeout(function () {
+      var groups = state._actGroups || [], gi = -1;
+      groups.forEach(function (g, i) { if (g.title === title) gi = i; });
+      if (gi < 0) return;
+      var det = document.querySelector(".ll-actall"); if (det && !det.open) det.open = true;
+      setTimeout(function () {
+        var card = document.querySelector('[data-act-i="' + gi + '"]');
+        if (card) { card.scrollIntoView({ block: "center" }); card.classList.add("wc2-flash"); setTimeout(function () { card.classList.remove("wc2-flash"); }, 2400); }
+      }, 60);
+    }, 80);
+  }
+  function wc2OpenStepTarget(step) {
+    if (step.kind === "lesson" || step.kind === "teach") {
+      var id = wc2ResolveLessonId(step.lesson);
+      if (id) { if (!openLessonById(id)) { var r = LESSON_BY_ID[id]; if (r) openLesson(r.lesson.title); } }
+    } else if (step.kind === "game") openGame(wc2ResolveGameKey(step));
+    else if (step.kind === "activity") { var g = wc2ResolveActivity(step); if (g) wc2GoActivity(g.title); }
+  }
+  function wc2StepDone(step) {
+    if (step.kind === "lesson" || step.kind === "teach") {
+      var id = wc2ResolveLessonId(step.lesson), rec = id ? LESSON_BY_ID[id] : null;
+      return wc2LessonDoneAt(id, rec ? rec.lesson.title : null) > 0;
+    }
+    if (step.kind === "game") return wc2GameDoneAt(wc2ResolveGameKey(step)) > 0;
+    if (step.kind === "activity") { var g = wc2ResolveActivity(step); return !!g && wc2ActDoneAt(g.title) > 0; }
+    return false;
+  }
+  function wc2StepDoneAt(step, since) {
+    var t = 0;
+    if (step.kind === "lesson" || step.kind === "teach") { var id = wc2ResolveLessonId(step.lesson), rec = id ? LESSON_BY_ID[id] : null; t = wc2LessonDoneAt(id, rec ? rec.lesson.title : null); }
+    else if (step.kind === "game") t = wc2GameDoneAt(wc2ResolveGameKey(step));
+    else if (step.kind === "activity") { var g = wc2ResolveActivity(step); t = g ? wc2ActDoneAt(g.title) : 0; }
+    return t > 0 && t >= (since || 0);
+  }
+  function wc2StepTarget(step) {
+    if (step.kind === "lesson" || step.kind === "teach") {
+      var id = wc2ResolveLessonId(step.lesson), rec = id ? LESSON_BY_ID[id] : null;
+      return rec ? { title: rec.lesson.title, emo: rec.lesson.emo, art: id } : { title: "Lesson", emo: "📚" };
+    }
+    if (step.kind === "game") {
+      var key = wc2ResolveGameKey(step), g = GAMES.filter(function (x) { return x.key === key; })[0];
+      return { title: g ? g.title : key, emo: g ? g.emo : "🎮", gameKey: key };
+    }
+    var a = wc2ResolveActivity(step);
+    return a ? { title: a.title, emo: a.emo || actEmo(a) } : { title: "Activity", emo: "🧺" };
+  }
+
+  /* ================= Feature 1: "I Have…" supplies mode =================
+     The activities carry no supplies field — what they need is written
+     in their own descriptions ("put paper on top and rub a crayon…").
+     The vocabulary below is matched against each activity's title +
+     description, so the lists are derived from the app's own data. */
+  var WC2_SUPPLIES = [
+    { id: "paper", label: "Paper", emo: "📄", rx: /paper/i },
+    { id: "crayons", label: "Crayons", emo: "🖍️", rx: /crayon/i },
+    { id: "pencil", label: "Pencil or pen", emo: "✏️", rx: /pencil|\bpen\b/i },
+    { id: "paint", label: "Paints", emo: "🎨", rx: /paint/i },
+    { id: "brush", label: "Big brush", emo: "🖌️", rx: /brush/i },
+    { id: "glue", label: "Glue", emo: "🧴", rx: /glue/i },
+    { id: "scissors", label: "Scissors", emo: "✂️", rx: /scissors/i },
+    { id: "tape", label: "Tape", emo: "🩹", rx: /tape/i },
+    { id: "box", label: "Cardboard box", emo: "📦", rx: /cardboard|\bbox\b/i },
+    { id: "string", label: "String or ribbon", emo: "🧵", rx: /string|ribbon/i },
+    { id: "cups", label: "Cups", emo: "🥤", rx: /\bcups?\b/i },
+    { id: "water", label: "Water", emo: "💧", rx: /water/i },
+    { id: "bowl", label: "Bowl", emo: "🥣", rx: /bowl/i },
+    { id: "spoon", label: "Spoon", emo: "🥄", rx: /spoon/i },
+    { id: "jug", label: "Jug", emo: "🏺", rx: /jug/i },
+    { id: "bucket", label: "Bucket", emo: "🪣", rx: /bucket/i },
+    { id: "plate", label: "Plates", emo: "🍽️", rx: /plate/i },
+    { id: "pasta", label: "Dry pasta", emo: "🍝", rx: /pasta/i },
+    { id: "stickers", label: "Stickers", emo: "⭐", rx: /sticker/i },
+    { id: "ball", label: "Ball", emo: "⚽", rx: /\bball\b/i },
+    { id: "blanket", label: "Blanket", emo: "🛏️", rx: /blanket/i },
+    { id: "pillows", label: "Pillows or cushions", emo: "🛋️", rx: /pillow|cushion/i },
+    { id: "torch", label: "Torch", emo: "🔦", rx: /torch|flashlight/i },
+    { id: "chalk", label: "Chalk", emo: "⬜", rx: /chalk/i },
+    { id: "bubbles", label: "Bubbles", emo: "🫧", rx: /bubbles/i, not: /bubble wrap/i },
+    { id: "sponge", label: "Sponge", emo: "🧽", rx: /sponge/i },
+    { id: "towel", label: "Towel", emo: "🏖️", rx: /towel/i },
+    { id: "book", label: "A book", emo: "📖", rx: /\bbooks?\b/i },
+    { id: "socks", label: "Socks", emo: "🧦", rx: /sock/i },
+    { id: "hats", label: "Hats", emo: "🎩", rx: /\bhats?\b/i },
+    { id: "music", label: "Music player", emo: "🎵", rx: /music/i },
+    { id: "playdough", label: "Play dough", emo: "🟠", rx: /play-dough|play dough/i },
+    { id: "fruit", label: "Fruit", emo: "🍓", rx: /fruit/i },
+    { id: "toycars", label: "Toy cars", emo: "🚗", rx: /toy car/i }
+  ];
+  var WC2_SUPPLY_BY_ID = {};
+  WC2_SUPPLIES.forEach(function (s) { WC2_SUPPLY_BY_ID[s.id] = s; });
+  function wc2SuppliesFor(groupOrTitle) {
+    var g = groupOrTitle;
+    if (typeof g === "string") g = wcActs().filter(function (x) { return x.title === groupOrTitle; })[0];
+    if (!g) return null;
+    var text = g.title + " " + (g.desc || "");
+    return WC2_SUPPLIES.filter(function (s) { return s.rx.test(text) && !(s.not && s.not.test(text)); }).map(function (s) { return s.id; });
+  }
+  function wc2IhaveLoad() { return wc2Store(WC2_IHAVE_KEY, []); }
+  function wc2IhaveSave(list) { wc2Save(WC2_IHAVE_KEY, list); }
+  function wc2IhaveData() {
+    var groups = wcActs(), have = wc2IhaveLoad(), haveSet = {};
+    have.forEach(function (id) { haveSet[id] = 1; });
+    var freq = {};
+    var rows = groups.map(function (g) {
+      var sup = wc2SuppliesFor(g) || [];
+      sup.forEach(function (id) { freq[id] = (freq[id] || 0) + 1; });
+      var missing = sup.filter(function (id) { return !haveSet[id]; });
+      return { g: g, sup: sup, missing: missing };
+    });
+    var picker = WC2_SUPPLIES.filter(function (s) { return (freq[s.id] || 0) >= 3; })
+      .sort(function (a, b) { return (freq[b.id] || 0) - (freq[a.id] || 0); }).slice(0, 20);
+    var can = rows.filter(function (r) { return r.missing.length === 0; });
+    var nearBy = {};
+    rows.filter(function (r) { return r.missing.length === 1; }).forEach(function (r) {
+      var m = r.missing[0]; (nearBy[m] = nearBy[m] || []).push(r);
+    });
+    var near = Object.keys(nearBy).map(function (id) { return { supply: WC2_SUPPLY_BY_ID[id], rows: nearBy[id] }; })
+      .sort(function (a, b) { return b.rows.length - a.rows.length; });
+    return { groups: groups, have: have, picker: picker, freq: freq, can: can, near: near };
+  }
+  function wc2ActRowHtml(r, showSup) {
+    var g = r.g;
+    var sup = r.sup.length
+      ? '<span class="wc2-supchips">' + r.sup.map(function (id) { var s = WC2_SUPPLY_BY_ID[id]; return '<span class="wc2-supchip">' + s.emo + " " + esc(s.label) + "</span>"; }).join("") + "</span>"
+      : '<span class="wc2-supchips"><span class="wc2-supchip free">✋ Just yourselves — nothing to fetch</span></span>';
+    return '<button type="button" class="wc-rnitem wc2-actrow" data-wc2-act="' + esc(g.title) + '" style="--dc:#0B8A5F">' +
+      '<span class="wc-rnemo" aria-hidden="true">' + esc(g.emo || actEmo(g)) + '</span>' +
+      '<span class="wc-rntxt"><b>' + esc(g.title) + "</b><small>" + (g.place === "outdoor" ? "🌳 Outside" : "🏠 At home") + "</small>" + (showSup ? sup : "") + '</span><span class="wc-rngo" aria-hidden="true">▶</span></button>';
+  }
+  function ihaveHtml() {
+    var d = wc2IhaveData(), haveSet = {};
+    d.have.forEach(function (id) { haveSet[id] = 1; });
+    var chips = d.picker.map(function (s) {
+      var on = !!haveSet[s.id];
+      return '<button type="button" class="wc2-supply' + (on ? " on" : "") + '" data-wc2-supply="' + s.id + '" aria-pressed="' + on + '">' + s.emo + " " + esc(s.label) + ' <span class="wc2-supn">' + (d.freq[s.id] || 0) + "</span></button>";
+    }).join("");
+    var canHtml = d.can.slice(0, 24).map(function (r) { return wc2ActRowHtml(r, true); }).join("");
+    var nearHtml = d.near.map(function (n) {
+      return '<div class="wc2-near"><h3 class="wc2-nearh">One more thing — ' + n.supply.emo + " " + esc(n.supply.label) + " — unlocks " + n.rows.length + " more</h3>" +
+        n.rows.slice(0, 8).map(function (r) { return wc2ActRowHtml(r, false); }).join("") + "</div>";
+    }).join("");
+    return '<div class="wc2-ihave"><p class="wc-rnlead">Tap everything you have at home. Hoot checks it against what each activity needs — the needs come from the activities themselves.</p>' +
+      (d.picker.length ? '<div class="wc2-supplies" role="group" aria-label="What we have">' + chips + "</div>"
+        : '<p class="hoot-line">Nothing to gather for this band — every activity here is a just-yourselves one, so the whole list below is ready right now.</p>') +
+      '<h3 class="wc2-sech">✅ You can make these now (' + d.can.length + ")</h3>" +
+      (d.can.length ? '<div class="wc-rnlist">' + canHtml + "</div>" + (d.can.length > 24 ? '<p class="wc2-more">…and ' + (d.can.length - 24) + " more — the full list is in Activities.</p>" : "")
+        : '<p class="hoot-line">Nothing yet — tap a few things you have and watch this list grow.</p>') +
+      (nearHtml ? '<h3 class="wc2-sech">🔓 Nearly there</h3>' + nearHtml : "") + "</div>";
+  }
+  function openIhave() {
+    nextView = { kind: "wc2ihave", title: "I Have…" };
+    openShellOverlay("🧺 I Have…", ihaveHtml());
+  }
+  function wc2IhaveEntryHtml() {
+    return '<section class="ll-card wc2-entry"><div class="wc2-entrytxt"><h3>🧺 I Have…</h3><p>Tap what you\'ve got at home — paper, crayons, a box — and see what you can make right now.</p></div>' +
+      '<button type="button" class="ll-btn pri" data-wc2-ihave="1">What we have →</button></section>';
+  }
+
+  /* ================= Feature 2: co-op learning missions =================
+     Roles are written for a family: a bigger Reader/Teacher and little
+     Finders and Matchers. Steps resolve to the ACTIVE child's band, so
+     the same mission works whoever is signed in. Teach-back sentences
+     are the lessons' own, from the hub's TEACHBACK table (Wave A) —
+     except the little-band one: the teach-back stage never runs on the
+     little panel by design, so that sentence is written for this
+     feature and says so in the log. */
+  var WC2_TIB = {
+    "early-letter-sounds": "Every letter makes its own sound — S says “sss” like a snake.",
+    "quest-topic-sentences": "A topic sentence opens a paragraph by announcing its one main idea as a claim — and every sentence after it works to prove that claim.",
+    "teen-algebra-ii-two-step-equations": "A two-step equation is solved by undoing the operations in reverse order — the addition or subtraction first, then the multiplication or division — applying each step to both sides.",
+    "little-first-letter-sounds": "Every letter makes its own sound — S says “sss” like a snake, and M hums “mmm”."
+  };
+  var WC2_MISSIONS = [
+    { id: "story-detectives", title: "Story Detectives", emo: "🔍", color: "#3A56D4",
+      intro: "Read it, find it, make one up — a story hunt for the whole crew.",
+      steps: [
+        { role: "Reader", roleEmo: "📖", kind: "lesson", text: "Read the lesson out loud for everyone, the way Hoot does.",
+          lesson: { little: "little-animal-sounds", early: "early-read-a-line-and-understand-it", quest: "quest-find-the-main-idea", teen: "ny-main-idea-citing-evidence" } },
+        { role: "Finder", roleEmo: "🔎", kind: "game", game: "find", text: "Hunt down every hidden thing in Find It!" },
+        { role: "Matcher", roleEmo: "🧩", kind: "activity", actRx: /story|book|read/i, actTitle: "Story stones", text: "Make up a tiny story together, one sentence each." }
+      ] },
+    { id: "number-chefs", title: "Number Chefs", emo: "🧑‍🍳", color: "#0B8A5F",
+      intro: "Cook up some numbers, then cook up a snack.",
+      steps: [
+        { role: "Counter", roleEmo: "🔢", kind: "lesson", text: "Do the counting lesson together — everyone counts out loud.",
+          lesson: { little: "little-counting-to-5", early: "early-counting-on-to-add", quest: "quest-division-is-sharing-equally", teen: "ny-unit-rates-the-price-of-one" } },
+        { role: "Matcher", roleEmo: "🧩", kind: "game", game: "bubblepop", gameTeen: "band", text: "Pop the right numbers — call them out before you pop." },
+        { role: "Helper", roleEmo: "🤲", kind: "activity", actRx: /fruit|cook|bak|kitchen|snack|salad/i, actTitle: "Fruit salad helper", text: "Help with a real snack, or set up a pretend feast for the toys." }
+      ] },
+    { id: "letter-fishing-trip", title: "Letter Fishing Trip", emo: "🎣", color: "#0E6E8C",
+      intro: "Learn the sounds, catch the letters, then the big kid teaches them back.",
+      steps: [
+        { role: "Reader", roleEmo: "📖", kind: "lesson", text: "Learn the letter sounds together first.",
+          lesson: { little: "little-first-letter-sounds", early: "early-letter-sounds", quest: "quest-topic-sentences", teen: "teen-spanish-ii-ar-verb-endings" } },
+        { role: "Finder", roleEmo: "🔎", kind: "game", game: "fishing", text: "Catch the letters in Letter Fishing — shout the sound of each one you reel in." },
+        { role: "Teacher", roleEmo: "🦉", kind: "teach", text: "Teacher: read Hoot's sentence out loud. Finder: say it back in your own words. That's teaching!",
+          lesson: { little: "little-first-letter-sounds", early: "early-letter-sounds", quest: "quest-topic-sentences", teen: "teen-algebra-ii-two-step-equations" } }
+      ] },
+    { id: "animal-rescuers", title: "Animal Rescuers", emo: "🐾", color: "#F5A623",
+      intro: "Meet the animals, spot them in the game, then look after the real ones.",
+      steps: [
+        { role: "Reader", roleEmo: "📖", kind: "lesson", text: "Do the lesson together — make every animal sound out loud.",
+          lesson: { little: "little-animal-sounds", early: "early-rhyming-words", quest: "quest-how-plants-make-food", teen: "teen-biology-where-energy-comes-from" } },
+        { role: "Finder", roleEmo: "🔎", kind: "game", game: "animals", text: "Find all the animals hiding in the game." },
+        { role: "Helper", roleEmo: "🤲", kind: "activity", actRx: /bird|duck|bug|animal|snail|worm/i, actTitle: "Bird feeder watch", text: "Do something kind for a real animal." }
+      ] },
+    { id: "builders-workshop", title: "Builders' Workshop", emo: "🧱", color: "#E0457B",
+      intro: "Plan it, match it, build it — taller than yesterday.",
+      steps: [
+        { role: "Counter", roleEmo: "🔢", kind: "lesson", text: "Warm up with the building-brain lesson.",
+          lesson: { little: "little-patterns-what-comes-next", early: "early-tens-and-ones", quest: "quest-area-length-width", teen: "creator-budget-the-project" } },
+        { role: "Matcher", roleEmo: "🧩", kind: "game", game: "shapes", gameTeen: "piano", text: "Match the shapes — name each one before it lands." },
+        { role: "Helper", roleEmo: "🤲", kind: "activity", actRx: /tower|box|build|fort|block/i, actTitle: "Tower of cups", text: "Build the real thing together. Photo for Memories!" }
+      ] },
+    { id: "music-makers", title: "Music Makers", emo: "🎵", color: "#7A2E8E",
+      intro: "Feel the beat in words, in the game, and in the kitchen band.",
+      steps: [
+        { role: "Reader", roleEmo: "📖", kind: "lesson", text: "Start with the word-rhythm lesson — clap the beats as you go.",
+          lesson: { little: "little-animal-sounds", early: "early-rhyming-words", quest: "quest-coding-order-matters", teen: "creator-present-hook-build-land" } },
+        { role: "Matcher", roleEmo: "🧩", kind: "game", game: "band", text: "Copy the beat in Copy the Beat — little ones copy the big ones." },
+        { role: "Helper", roleEmo: "🤲", kind: "activity", actRx: /dance|music|song|sing|band/i, actTitle: "Kitchen band", text: "Make real music together — pots count as drums." }
+      ] },
+    { id: "kindness-crew", title: "Kindness Crew", emo: "💛", color: "#B4761B",
+      intro: "Feelings first, then sharing, then helping at home.",
+      steps: [
+        { role: "Reader", roleEmo: "📖", kind: "lesson", text: "Talk through the lesson together — everyone gets a turn to answer.",
+          lesson: { little: "little-feelings-faces", early: "early-answer-questions-about-a-story", quest: "quest-fractions-equal-parts", teen: "ny-argument-writing-claim-evidence-reasoning" } },
+        { role: "Matcher", roleEmo: "🧩", kind: "game", game: "memory", text: "Play Memory Match together — help each other remember." },
+        { role: "Helper", roleEmo: "🤲", kind: "activity", actRx: /sort|wash|laundry|scrub|tidy|help/i, actTitle: "Laundry sort", text: "Do one real helping job at home, together." }
+      ] }
+  ];
+  function wc2MissionState(m) {
+    var steps = m.steps.map(wc2StepDone);
+    return { mission: m, steps: steps, doneCount: steps.filter(Boolean).length, complete: steps.every(Boolean) };
+  }
+  function wc2MissionStates() { return WC2_MISSIONS.map(wc2MissionState); }
+  function wc2BadgeShelfHtml() {
+    var b = wc2Badges(), chips = [];
+    WC2_MISSIONS.forEach(function (m) {
+      var ts = b.missions[m.id];
+      chips.push('<span class="wc-badge' + (ts ? "" : " locked") + '">' + (ts ? "🏅 " : "🔒 ") + m.emo + " " + esc(m.title) + (ts ? " · " + wc2FmtDate(ts) : "") + "</span>");
+    });
+    WC2_QUESTS.forEach(function (q) {
+      var ts = b.quests[q.id];
+      chips.push('<span class="wc-badge' + (ts ? "" : " locked") + '">' + (ts ? "🏅 " : "🔒 ") + q.emo + " " + esc(q.title) + (ts ? " · " + wc2FmtDate(ts) : "") + "</span>");
+    });
+    return '<div class="wc-badges" aria-label="Badge shelf">' + chips.join("") + "</div>";
+  }
+  function missionsHtml() {
+    var states = wc2MissionStates();
+    states.forEach(function (s) { if (s.complete) wc2Award("missions", s.mission.id); });
+    var cards = states.map(function (s) {
+      var m = s.mission, earned = !!wc2Badges().missions[m.id];
+      return '<button type="button" class="wc-rnitem wc2-mission" data-wc2-mission="' + m.id + '" style="--dc:' + m.color + '">' +
+        '<span class="wc-rnemo" aria-hidden="true">' + m.emo + '</span>' +
+        '<span class="wc-rntxt"><b>' + esc(m.title) + (earned ? ' <span class="wc2-earned">🏅 badge earned</span>' : "") + "</b><small>" + esc(m.intro) + '</small></span>' +
+        '<span class="wc2-prog" aria-label="' + s.doneCount + " of 3 steps done\">" + s.doneCount + "/3</span></button>";
+    }).join("");
+    return '<div class="wc2-missions"><p class="wc-rnlead">Missions are for the whole family together. The <b>Reader</b> and <b>Teacher</b> are the big kid or a grown-up; the little ones are the <b>Finder</b>, <b>Matcher</b>, <b>Counter</b> and <b>Helper</b>. Finish all 3 steps to earn the badge.</p>' +
+      "<h3 class=\"wc2-sech\">🏆 Badge shelf</h3>" + wc2BadgeShelfHtml() +
+      '<h3 class="wc2-sech">Missions</h3><div class="wc-rnlist">' + cards + "</div></div>";
+  }
+  function openMissions() {
+    nextView = { kind: "wc2missions", title: "Co-op missions" };
+    openShellOverlay("🎖️ Co-op missions", missionsHtml());
+  }
+  function missionHtml(id) {
+    var m = WC2_MISSIONS.filter(function (x) { return x.id === id; })[0];
+    if (!m) return '<p class="hoot-line">That mission has flown away.</p>';
+    var s = wc2MissionState(m);
+    if (s.complete) wc2Award("missions", m.id);
+    var earned = !!wc2Badges().missions[m.id];
+    var steps = m.steps.map(function (step, i) {
+      var t = wc2StepTarget(step), done = s.steps[i];
+      var tib = "";
+      if (step.kind === "teach") {
+        var tid = wc2ResolveLessonId(step.lesson);
+        var sent = tid && WC2_TIB[tid];
+        if (sent) tib = '<blockquote class="wc2-tib">“' + esc(sent) + "”</blockquote>";
+      }
+      return '<div class="wc2-step' + (done ? " done" : "") + '">' +
+        '<span class="wc2-stepn" aria-hidden="true">' + (done ? "✓" : (i + 1)) + "</span>" +
+        '<div class="wc2-stepmain"><span class="wc2-role">' + step.roleEmo + " " + esc(step.role) + '</span>' +
+        "<b>" + esc(t.title) + "</b><p>" + esc(step.text) + "</p>" + tib +
+        (done ? '<span class="wc2-done">✓ Done</span>'
+              : '<button type="button" class="ll-btn pri sm" data-wc2-step="' + m.id + ":" + i + '">▶ Go</button>') +
+        "</div></div>";
+    }).join("");
+    return '<div class="wc2-missionview"><p class="wc-rnlead">' + m.emo + " " + esc(m.intro) + (earned ? ' <b>🏅 Badge earned ' + wc2FmtDate(wc2Badges().missions[m.id]) + ".</b>" : "") + '</p><div class="wc2-steps">' + steps + "</div></div>";
+  }
+  function openMission(id) {
+    var m = WC2_MISSIONS.filter(function (x) { return x.id === id; })[0];
+    if (!m) return;
+    nextView = { kind: "wc2mission", key: id, title: m.title };
+    openShellOverlay(m.emo + " " + m.title, missionHtml(id));
+  }
+  function wc2MissionsEntryHtml() {
+    var b = wc2Badges(), n = Object.keys(b.missions).length + Object.keys(b.quests).length;
+    return '<section class="ll-card wc2-entry"><div class="wc2-entrytxt"><h3>🎖️ Co-op missions</h3><p>Three steps, the whole family, roles for everyone — ' + (n ? n + " badge" + (n === 1 ? "" : "s") + " earned so far." : "badges to earn together.") + '</p></div>' +
+      '<button type="button" class="ll-btn pri" data-wc2-missions="1">Open missions →</button></section>';
+  }
+
+  /* ================= Feature 3: Quest Days (in the Days tab) ================= */
+  var WC2_QUESTS = [
+    { id: "pirate", title: "Pirate Day", emo: "🏴‍☠️", color: "#0E6E8C", intro: "A whole day of treasure, tides and tall ships.",
+      stops: [
+        { kind: "lesson", label: "Count the treasure", lesson: { little: "little-counting-to-10", early: "early-counting-on-to-add", quest: "quest-times-tables-are-groups", teen: "creator-percentages-parts-of-100" } },
+        { kind: "activity", label: "Treasure trail", actRx: /treasure|trail|hunt|map/i, actTitle: "Treasure trail" },
+        { kind: "game", label: "Fish for gold", game: "fishing" },
+        { kind: "activity", label: "Sail the seven seas", actRx: /water|pour|splash|boat/i, actTitle: "Water pouring" }
+      ] },
+    { id: "space", title: "Space Day", emo: "🚀", color: "#3A56D4", intro: "Countdown, blast off, and school among the stars.",
+      stops: [
+        { kind: "game", label: "Blast off", game: "rocket", gameTeen: "band" },
+        { kind: "lesson", label: "Launch sequence", lesson: { little: "little-counting-back-from-5", early: "early-taking-away", quest: "quest-coding-order-matters", teen: "creator-the-design-loop-test-fix-retest" } },
+        { kind: "activity", label: "Build a rocket", actRx: /box|rocket|car/i, actTitle: "Cardboard box car" },
+        { kind: "lesson", label: "Star school", lesson: { little: "little-star-and-heart-shapes", early: "early-rhyming-words", quest: "quest-how-plants-make-food", teen: "creator-research-you-can-trust" } }
+      ] },
+    { id: "dino", title: "Dinosaur Day", emo: "🦕", color: "#0B8A5F", intro: "Stomp, dig, and find out how big big really was.",
+      stops: [
+        { kind: "lesson", label: "Dino sizes", lesson: { little: "little-big-and-small", early: "early-tens-and-ones", quest: "quest-division-is-sharing-equally", teen: "teen-history-primary-vs-secondary-sources" } },
+        { kind: "activity", label: "Dino dig", actRx: /dig|sand|rock|stone/i, actTitle: "Rock family" },
+        { kind: "game", label: "Dino safari", game: "animals" },
+        { kind: "activity", label: "Dino stomp", actRx: /stomp|walk|track|foot/i, actTitle: "Sound walk" }
+      ] },
+    { id: "cozy", title: "Cozy Winter Day", emo: "🧣", color: "#B4761B", intro: "Blankets, stories and warm drinks — a slow day on purpose.",
+      stops: [
+        { kind: "lesson", label: "Cozy story time", lesson: { little: "little-colour-names", early: "early-read-a-line-and-understand-it", quest: "quest-find-the-main-idea", teen: "teen-history-a-thesis-is-a-claim" } },
+        { kind: "activity", label: "Build a cozy fort", actRx: /blanket|fort|sock|cushion|pillow/i, actTitle: "Sock match" },
+        { kind: "game", label: "Draw a winter picture", game: "paint", gameTeen: "piano" },
+        { kind: "activity", label: "One more story", actRx: /story|book|read/i, actTitle: "Story stones" }
+      ] }
+  ];
+  function wc2QuestResetAt(id) { var q = wc2Store(WC2_QUEST_KEY, {}); return (q[id] && q[id].resetAt) || 0; }
+  function wc2QuestState(q) {
+    var since = wc2QuestResetAt(q.id);
+    var stops = q.stops.map(function (s) { return wc2StepDoneAt(s, since); });
+    return { quest: q, stops: stops, doneCount: stops.filter(Boolean).length, complete: stops.every(Boolean), since: since };
+  }
+  function wc2QuestStates() { return WC2_QUESTS.map(wc2QuestState); }
+  function wc2DaysHtml() {
+    var states = wc2QuestStates(), b = wc2Badges();
+    states.forEach(function (s) { if (s.complete) wc2Award("quests", s.quest.id); });
+    var cards = states.map(function (s) {
+      var q = s.quest, earned = !!b.quests[q.id];
+      var dots = s.stops.map(function (dn) { return '<span class="wc2-qdot' + (dn ? " on" : "") + '">' + (dn ? "✓" : "·") + "</span>"; }).join('<span class="wc2-qline"></span>');
+      return '<button type="button" class="wc2-qcard" data-wc2-quest="' + q.id + '" style="--dc:' + q.color + '">' +
+        '<span class="wc2-qemo" aria-hidden="true">' + q.emo + '</span>' +
+        '<span class="wc2-qtxt"><b>' + esc(q.title) + (earned ? ' <span class="wc2-earned">🏅</span>' : "") + "</b><small>" + esc(q.intro) + '</small></span>' +
+        '<span class="wc2-qdots" aria-label="' + s.doneCount + " of 4 stops done\">" + dots + "</span>" +
+        '<span class="wc2-qn">' + s.doneCount + "/4</span></button>";
+    }).join("");
+    return '<section class="ll-card wc2-quests"><h2 style="margin:0 0 4px">🗺️ Quest Days</h2>' +
+      '<p class="hoot-line" style="margin:0 0 10px">A themed day in four stops — some on screen, some out in the real world. Finish all four stops to earn the day\'s badge.</p>' +
+      '<div class="wc2-qgrid">' + cards + "</div></section>";
+  }
+  function questDayHtml(id) {
+    var q = WC2_QUESTS.filter(function (x) { return x.id === id; })[0];
+    if (!q) return '<p class="hoot-line">That quest has sailed away.</p>';
+    var s = wc2QuestState(q);
+    if (s.complete) wc2Award("quests", q.id);
+    var earned = !!wc2Badges().quests[q.id];
+    var stops = q.stops.map(function (stop, i) {
+      var t = wc2StepTarget(stop), done = s.stops[i];
+      return '<div class="wc2-step' + (done ? " done" : "") + '">' +
+        '<span class="wc2-stepn" aria-hidden="true">' + (done ? "✓" : (i + 1)) + "</span>" +
+        '<div class="wc2-stepmain"><span class="wc2-role">' + (stop.kind === "lesson" ? "📚 Lesson" : stop.kind === "game" ? "🎮 Game" : "🧺 Real world") + '</span>' +
+        "<b>" + esc(stop.label) + "</b><p>" + esc(t.title) + "</p>" +
+        (done ? '<span class="wc2-done">✓ Done</span>' : '<button type="button" class="ll-btn pri sm" data-wc2-qstep="' + q.id + ":" + i + '">▶ Go</button>') +
+        "</div></div>";
+    }).join("");
+    return '<div class="wc2-missionview"><p class="wc-rnlead">' + q.emo + " " + esc(q.intro) + (earned ? ' <b>🏅 Badge earned ' + wc2FmtDate(wc2Badges().quests[q.id]) + ".</b>" : "") + '</p>' +
+      '<div class="wc2-journey" aria-hidden="true">' + q.stops.map(function (_, i) { return '<span class="wc2-jnode' + (s.stops[i] ? " on" : "") + '">' + (s.stops[i] ? "✓" : (i + 1)) + "</span>" + (i < 3 ? '<span class="wc2-jline' + (s.stops[i] && s.stops[i + 1] ? " on" : "") + '"></span>' : ""); }).join("") + "</div>" +
+      '<div class="wc2-steps">' + stops + "</div>" +
+      '<p class="wc2-restartrow"><button type="button" class="ll-btn sm" data-wc2-qrestart="' + q.id + '">↺ Start this day again</button> <span class="wc2-more">The badge stays earned — the journey starts fresh.</span></p></div>';
+  }
+  function openQuestDay(id) {
+    var q = WC2_QUESTS.filter(function (x) { return x.id === id; })[0];
+    if (!q) return;
+    nextView = { kind: "wc2quest", key: id, title: q.title };
+    openShellOverlay(q.emo + " " + q.title, questDayHtml(id));
+  }
+
+  /* ================= Feature 4: printable cards ================= */
+  function wc2PrintRoot() {
+    var r = document.getElementById("wc2-print-root");
+    if (!r) { r = document.createElement("div"); r.id = "wc2-print-root"; document.body.appendChild(r); }
+    return r;
+  }
+  function wc2LessonSteps(id, title) {
+    var steps = [];
+    var card = id ? document.querySelector('.lsn[data-lsn-id="' + id + '"], .ny-lsn[data-lsn-id="' + id + '"]') : null;
+    if (!card && title) card = findLessonNode(title);
+    if (card) {
+      card.querySelectorAll(".tutor-step").forEach(function (n) { var t = n.textContent.replace(/\s+/g, " ").trim(); if (t) steps.push(t); });
+      if (!steps.length && card.classList.contains("ny-lsn")) {
+        var secs = nySections(card);
+        NY_STEPS.forEach(function (st, i) { if (secs[i]) steps.push(st.label); });
+      }
+      if (!steps.length) {
+        var teach = card.querySelector(".lsn-teach");
+        if (teach) teach.textContent.replace(/\s+/g, " ").trim().split(/(?<=[.!?])\s+/).forEach(function (s) { if (s && steps.length < 4) steps.push(s); });
+      }
+    }
+    if (!steps.length) {
+      var h = HL(), hl = h && title ? h.byTitle(title) : null;
+      if (hl) {
+        if (hl.intro) steps.push(hl.intro);
+        if (hl.rounds && hl.rounds.length) steps.push("Practise " + hl.rounds.length + " quick rounds with Hoot.");
+        if (hl.recap) steps.push(hl.recap);
+      }
+    }
+    return steps.slice(0, 6);
+  }
+  function wc2PrintCardHtml(o) {
+    var steps = o.steps.length ? "<ol>" + o.steps.map(function (s) { return "<li>" + esc(s) + "</li>"; }).join("") + "</ol>"
+      : "<p>" + esc(o.blurb || "") + "</p>";
+    return '<div class="wc2-pcard">' +
+      '<div class="wc2-phead"><span class="wc2-pemo" aria-hidden="true">' + (o.emo || "🦉") + "</span><div><h1>" + esc(o.title) + '</h1><p class="wc2-pkind">' + esc(o.kindLabel) + " · Hoot's World</p></div></div>" +
+      (o.art ? '<img class="wc2-part" src="assets/lesson-art/' + o.art + '.svg" alt="">' : "") +
+      (o.blurb ? '<p class="wc2-pblurb">' + esc(o.blurb) + "</p>" : "") +
+      '<h2>Your steps</h2>' + steps +
+      '<div class="wc2-pdone"><span class="wc2-pbox" aria-hidden="true"></span><span>We did it! &nbsp; Date: ____________</span></div>' +
+      '<p class="wc2-pfoot">Stick me on the fridge 🧲</p></div>';
+  }
+  function wc2DoPrint(html) {
+    var r = wc2PrintRoot();
+    r.innerHTML = html;
+    setTimeout(function () { try { window.print(); } catch (e) {} }, 60);
+  }
+  function wc2PrintLesson(id, title) {
+    var rec = id ? LESSON_BY_ID[id] : null, l = rec ? rec.lesson : (title ? LESSON_BY_TITLE[title] : null);
+    var hl = !l && title && HL() ? HL().byTitle(title) : null;
+    var t = l ? l.title : (hl ? hl.title : title);
+    if (!t) return;
+    var lid = l ? l.id : (id || lessonIdForTitle(t));
+    wc2DoPrint(wc2PrintCardHtml({
+      title: t, emo: l ? l.emo : (hl ? hl.emo : "🦉"), art: lid && LESSON_ART[lid] ? lid : null,
+      blurb: l ? (l.blurb || "") : "", kindLabel: "Lesson card", steps: wc2LessonSteps(lid, t)
+    }));
+  }
+  function wc2PrintActivity(title) {
+    var g = wcActs().filter(function (x) { return x.title === title; })[0];
+    if (!g) return;
+    var steps = (g.desc || "").split(/(?<=[.!?])\s+/).filter(Boolean).slice(0, 5);
+    wc2DoPrint(wc2PrintCardHtml({
+      title: g.title, emo: g.emo || actEmo(g), art: null,
+      blurb: g.place === "outdoor" ? "A real-world activity — outside." : "A real-world activity — at home.",
+      kindLabel: "Activity card", steps: steps
+    }));
+  }
+  function wc2PrintBtnInsert(id, title) {
+    var body = $("#ll-obody");
+    if (!body || body.querySelector(".wc2-printrow")) return;
+    var row = document.createElement("div");
+    row.className = "wc2-printrow";
+    row.innerHTML = '<button type="button" class="ll-btn sm" data-wc2-printlesson="' + esc(id || "") + "|" + esc(title || "") + '">🖨 Print card</button>';
+    body.insertBefore(row, body.firstChild);
+  }
+
+  /* ---------- Today / Play entries ---------- */
+  function wc2TodayHtml() {
+    if (!state.profile) return "";
+    return '<section class="ll-card wc2-today"><h2 class="todoh">🎖️ Together time</h2>' +
+      '<button type="button" class="wc2-entrybtn" data-wc2-missions="1">🎖️ <b>Co-op missions</b><span>Family missions with roles for everyone</span></button>' +
+      "</section>";
+  }
+
+  /* ---------- clicks (Wave C2's own attrs; the shell's and Wave C1's
+     listeners ignore them) ---------- */
+  document.addEventListener("click", function (e) {
+    var t = e.target && e.target.closest ? e.target.closest("[data-wc2-missions],[data-wc2-mission],[data-wc2-step],[data-wc2-ihave],[data-wc2-supply],[data-wc2-act],[data-wc2-quest],[data-wc2-qstep],[data-wc2-qrestart],[data-wc2-printlesson],[data-wc2-printact]") : null;
+    if (!t) return;
+    if (t.hasAttribute("data-wc2-missions")) { openMissions(); return; }
+    if (t.hasAttribute("data-wc2-mission")) { openMission(t.getAttribute("data-wc2-mission")); return; }
+    if (t.hasAttribute("data-wc2-step")) {
+      var parts = t.getAttribute("data-wc2-step").split(":"), m = WC2_MISSIONS.filter(function (x) { return x.id === parts[0]; })[0];
+      if (m) wc2OpenStepTarget(m.steps[+parts[1]]);
+      return;
+    }
+    if (t.hasAttribute("data-wc2-ihave")) { openIhave(); return; }
+    if (t.hasAttribute("data-wc2-supply")) {
+      var sid = t.getAttribute("data-wc2-supply"), have = wc2IhaveLoad(), i = have.indexOf(sid);
+      if (i >= 0) have.splice(i, 1); else have.push(sid);
+      wc2IhaveSave(have);
+      nextView = { kind: "wc2ihave", title: "I Have…" };
+      openShellOverlay("🧺 I Have…", ihaveHtml());
+      return;
+    }
+    if (t.hasAttribute("data-wc2-act")) { wc2GoActivity(t.getAttribute("data-wc2-act")); return; }
+    if (t.hasAttribute("data-wc2-quest")) { openQuestDay(t.getAttribute("data-wc2-quest")); return; }
+    if (t.hasAttribute("data-wc2-qstep")) {
+      var qp = t.getAttribute("data-wc2-qstep").split(":"), q = WC2_QUESTS.filter(function (x) { return x.id === qp[0]; })[0];
+      if (q) wc2OpenStepTarget(q.stops[+qp[1]]);
+      return;
+    }
+    if (t.hasAttribute("data-wc2-qrestart")) {
+      var qid = t.getAttribute("data-wc2-qrestart"), qs = wc2Store(WC2_QUEST_KEY, {});
+      qs[qid] = { resetAt: Date.now() };
+      wc2Save(WC2_QUEST_KEY, qs);
+      nextView = { kind: "wc2quest", key: qid, title: (WC2_QUESTS.filter(function (x) { return x.id === qid; })[0] || {}).title || "Quest Day" };
+      var qq = WC2_QUESTS.filter(function (x) { return x.id === qid; })[0];
+      openShellOverlay(qq.emo + " " + qq.title, questDayHtml(qid));
+      return;
+    }
+    if (t.hasAttribute("data-wc2-printlesson")) {
+      var lp = t.getAttribute("data-wc2-printlesson").split("|");
+      wc2PrintLesson(lp[0] || null, lp.slice(1).join("|") || null);
+      return;
+    }
+    if (t.hasAttribute("data-wc2-printact")) { wc2PrintActivity(t.getAttribute("data-wc2-printact")); return; }
+  });
+
+  /* ================= Wave E1: Morning Hello (21), parent voice notes (22),
+     lesson photo quests (24) — Dawid's own additions =================
+     All state is new keys; existing stores untouched. New localStorage keys
+     ride family backups via the hootworld. pattern, like C1's completions.
+     Spoken sequences and the parent's own recorded note play through Audio
+     elements flagged __govVoice, so the app-wide voice governor serialises
+     them behind whatever is speaking — never two voices at once. (The one
+     single-clip praise line still uses window.__hwSay.) No device TTS. */
+
+  var WE1_HELLO_KEY = "hootworld.hello.v1";        /* { pid: { day, at } } */
+  var WE1_NOTES_CFG_KEY = "hootworld.vnotes.cfg.v1"; /* { enabled: 1|0 } */
+  var WE1_QUEST_KEY = "hootworld.pquests.v1";      /* { pid: { active, total, doneCount, lastDone } } */
+  function we1Store(k, dflt) { try { var v = JSON.parse(localStorage.getItem(k) || "null"); return v == null ? dflt : v; } catch (e) { return dflt; } }
+  function we1Save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+
+  /* ---------- Feature 21: Hoot's Morning Hello ---------- */
+  var WE1_MISSIONS = [
+    { clip: "hello-mission-1", text: "Find something round in the kitchen!" },
+    { clip: "hello-mission-2", text: "Count the stairs — every single one!" },
+    { clip: "hello-mission-3", text: "Spot something red outside!" },
+    { clip: "hello-mission-4", text: "Find something that starts with the letter B!" },
+    { clip: "hello-mission-5", text: "Hug somebody you love!" },
+    { clip: "hello-mission-6", text: "Find the biggest leaf you can!" },
+    { clip: "hello-mission-7", text: "Listen for a bird and copy its song!" },
+    { clip: "hello-mission-8", text: "Build the tallest tower you can — then knock it down!" },
+    { clip: "hello-mission-9", text: "Find something soft and give it a squeeze!" },
+    { clip: "hello-mission-10", text: "Count all the windows in your home!" },
+    { clip: "hello-mission-11", text: "Find something that can float in water!" },
+    { clip: "hello-mission-12", text: "Draw a picture of your family!" }
+  ];
+  var WE1_CHALLENGES = [
+    { clip: "hello-challenge-1", text: "Find something round in the kitchen." },
+    { clip: "hello-challenge-2", text: "Count the stairs in your home, every one." },
+    { clip: "hello-challenge-3", text: "Spot something red outside." },
+    { clip: "hello-challenge-4", text: "Find something that starts with the letter B." },
+    { clip: "hello-challenge-5", text: "Do one kind thing for somebody at home." },
+    { clip: "hello-challenge-6", text: "Find the biggest leaf you can." },
+    { clip: "hello-challenge-7", text: "Listen for a bird and try to copy its song." },
+    { clip: "hello-challenge-8", text: "Build the tallest tower you can, then knock it down." },
+    { clip: "hello-challenge-9", text: "Find something soft and describe how it feels." },
+    { clip: "hello-challenge-10", text: "Count all the windows in your home." },
+    { clip: "hello-challenge-11", text: "Find something that floats in water and test it." },
+    { clip: "hello-challenge-12", text: "Sketch a quick picture of your family." }
+  ];
+  /* The day's hello is deterministic per child + date (same FNV/day-index
+     machinery as the C1 daily pick): stable across reloads, rotates daily.
+     Greeting reuses the app's own by-name greeting clips where they exist
+     (__llGreetClip: good-morning-/hi-/sleepy-<profile>, recorded in the base
+     build); the teen band's tutor voice has no by-name clips in the library
+     (the base build makes the same choice — Profile C is never greeted by a
+     Hoot name clip), so she gets the recorded tutor greeting instead. */
+  function we1HelloPlan(pid, date) {
+    var teen = isTeenBand(bandOf(pid));
+    var di = wcDayIndex(date || new Date());
+    var letter = "abcdefghijklmnopqrstuvwxyz"[((di + wcHash(pid)) % 26 + 26) % 26];
+    var m = (teen ? WE1_CHALLENGES : WE1_MISSIONS)[((di * 7 + wcHash(pid)) % 12 + 12) % 12];
+    var greet;
+    if (teen) greet = "hello-greet-tutor";
+    else {
+      var gc = null; try { gc = window.__llGreetClip && window.__llGreetClip(pid); } catch (e) {}
+      greet = gc ? String(gc).replace(/\.mp3$/, "") : "hoot-welcome";
+    }
+    return { teen: teen, letter: letter, mission: m,
+             clips: [greet, teen ? "hello-letter-tutor" : "hello-letter-hoot", "name-letter-" + letter, m.clip] };
+  }
+  function we1HelloDone(pid) { var d = we1Store(WE1_HELLO_KEY, {}); return !!(d[pid] && d[pid].day === dayKeyOf(new Date())); }
+  /* Sequence player: a single governed element chained on real 'ended'
+     events. (The hub queue chain inside __hwSay intermittently stalls
+     behind the governor's src-deferral when other voices are in flight —
+     drive-verified in .work-wavee/debug-replay.js: the last clip of the
+     sequence sometimes never started. This player has no queue to desync:
+     it sets src only while paused/ended, advances on ended/error, and a
+     watchdog re-checks every few seconds without ever interrupting a
+     clip that is genuinely still playing.) */
+  var we1SeqEl = null, we1SeqTimer = null;
+  function we1PlaySequence(clips) {
+    try { if (window.__hootStopClip) window.__hootStopClip(); } catch (e) {}
+    if (!we1SeqEl) { we1SeqEl = new Audio(); we1SeqEl.__govVoice = 1; we1SeqEl.preload = "auto"; }
+    var el = we1SeqEl, i = 0;
+    try { el.pause(); } catch (e) {}
+    if (we1SeqTimer) { clearTimeout(we1SeqTimer); we1SeqTimer = null; }
+    function arm() {
+      if (we1SeqTimer) clearTimeout(we1SeqTimer);
+      we1SeqTimer = setTimeout(function () {
+        if (!el.paused && !el.ended) { arm(); return; } /* still playing: keep waiting */
+        step();
+      }, 6000);
+    }
+    function step() {
+      if (we1SeqTimer) { clearTimeout(we1SeqTimer); we1SeqTimer = null; }
+      if (i >= clips.length) { el.onended = null; el.onerror = null; (window.__we1SeqLog = window.__we1SeqLog || []).push({ clip: "(done)", at: Date.now() }); return; }
+      var name = clips[i++];
+      (window.__we1SeqLog = window.__we1SeqLog || []).push({ clip: name, at: Date.now() });
+      el.src = "assets/voice/" + name + ".mp3";
+      var pr = el.play(); if (pr && pr.catch) pr.catch(function () {});
+      arm();
+    }
+    el.onended = step; el.onerror = step;
+    step();
+  }
+  function we1PlayHello() {
+    var p = state.profile; if (!p) return;
+    var plan = we1HelloPlan(p.id, new Date());
+    we1PlaySequence(plan.clips);
+    var d = we1Store(WE1_HELLO_KEY, {});
+    d[p.id] = { day: dayKeyOf(new Date()), at: Date.now() };
+    we1Save(WE1_HELLO_KEY, d);
+    var card = document.getElementById("we1-hello");
+    if (card) { var t = document.createElement("div"); t.innerHTML = we1HelloChipHtml(); var n = t.firstChild; if (n) card.replaceWith(n); }
+  }
+  function we1HelloChipHtml() {
+    return '<section class="ll-card we1-hellochip" id="we1-hello" aria-label="Morning Hello"><span aria-hidden="true">☀️</span><b>Morning Hello ✓</b>' +
+      '<button type="button" class="ll-btn sm" data-we1-hello="replay">🔁 Hear it again</button></section>';
+  }
+  function we1HelloHtml() {
+    var p = state.profile; if (!p) return "";
+    if (we1HelloDone(p.id)) return we1HelloChipHtml();
+    var plan = we1HelloPlan(p.id, new Date());
+    return '<section class="ll-card we1-hello" id="we1-hello" aria-label="Morning Hello">' +
+      '<div class="we1-hellotop"><span class="we1-helloemo" aria-hidden="true">☀️</span><div>' +
+      "<h2 class=\"todoh\" style=\"margin:0\">" + (plan.teen ? "Morning brief" : "Morning Hello") + '</h2>' +
+      '<p class="hoot-line" style="margin:2px 0 0">' + (plan.teen ? "Your tutor has a hello, today's letter and a challenge for you." : "Hoot has a hello, today's letter and a tiny mission for " + esc(p.label) + ".") + "</p></div></div>" +
+      '<p class="we1-helloline">Today\'s letter: <b>' + plan.letter.toUpperCase() + "</b> · " + (plan.teen ? "Challenge" : "Mission") + ": " + esc(plan.mission.text) + "</p>" +
+      '<button type="button" class="we1-bigplay" data-we1-hello="play">▶ ' + (plan.teen ? "Hear your morning brief" : "Hear your Morning Hello") + "</button></section>";
+  }
+
+  /* ---------- Feature 24: lesson photo quests ---------- */
+  var WE1_QUESTS = [
+    { id: "round-things", emo: "⭕", text: "Photograph 3 round things" },
+    { id: "big-leaf", emo: "🍃", text: "Find a leaf bigger than your hand and photograph it" },
+    { id: "starts-with-b", emo: "🅱️", text: "Take a picture of something that starts with B" },
+    { id: "something-red", emo: "🔴", text: "Photograph something red" },
+    { id: "favourite-snack", emo: "🍎", text: "Take a picture of your favourite snack" },
+    { id: "a-shadow", emo: "🌤️", text: "Photograph a shadow" },
+    { id: "it-floats", emo: "🎈", text: "Find something that floats and photograph it" },
+    { id: "tallest-tower", emo: "🗼", text: "Build the tallest tower you can and photograph it" },
+    { id: "something-soft", emo: "🧸", text: "Photograph something soft" },
+    { id: "bug-or-bird", emo: "🐞", text: "Take a picture of a bug or a bird — from far away!" },
+    { id: "water", emo: "💧", text: "Photograph water — in a cup, a puddle or the bath" },
+    { id: "wheels", emo: "🚗", text: "Take a picture of something with wheels" }
+  ];
+  function we1QuestDef(qid) { return WE1_QUESTS.filter(function (x) { return x.id === qid; })[0] || null; }
+  function we1QuestState(pid) { var d = we1Store(WE1_QUEST_KEY, {}); return d[pid] || { active: null, total: 0, doneCount: 0, lastDone: null }; }
+  function we1QuestSave(pid, s) { var d = we1Store(WE1_QUEST_KEY, {}); d[pid] = s; we1Save(WE1_QUEST_KEY, d); }
+  /* One active quest per child; a new one is assigned only when none is
+     active, rotating through the authored set in order. */
+  function we1AssignQuest(pid, lessonId, title) {
+    var s = we1QuestState(pid);
+    if (s.active) return { active: s.active, fresh: false };
+    var q = WE1_QUESTS[(s.total || 0) % WE1_QUESTS.length];
+    s.active = { qid: q.id, lessonId: lessonId || null, lessonTitle: title || "", at: Date.now(), dismissedDay: "" };
+    s.total = (s.total || 0) + 1;
+    we1QuestSave(pid, s);
+    return { active: s.active, fresh: true };
+  }
+  function we1QuestSpotKey(pid, a) { return "pq:" + pid + ":" + a.qid + ":" + (a.lessonId || "lesson"); }
+  function we1QuestCaption(a) {
+    var q = we1QuestDef(a.qid);
+    return "📸 Photo quest: " + (q ? q.text : "Photo quest") + (a.lessonTitle ? " · ⭐ " + a.lessonTitle : "");
+  }
+  function we1RegisterQuestSpot(pid, a) {
+    if (!window.__hwPhotoAPI || !window.__hwPhotoAPI.register || !a) return null;
+    var q = we1QuestDef(a.qid);
+    return window.__hwPhotoAPI.register(we1QuestSpotKey(pid, a), q ? q.text : "Photo quest", we1QuestCaption(a), {});
+  }
+  /* Restored quest photos must find their spot again so the album figure
+     carries the quest caption (the badge) after a reload: register a spot
+     for every pq: record already in the store. */
+  setTimeout(function () {
+    photoAll().then(function (recs) {
+      var seen = {};
+      (recs || []).forEach(function (r) {
+        if (r && typeof r.key === "string" && r.key.indexOf("pq:") === 0 && !seen[r.key]) {
+          seen[r.key] = 1;
+          if (window.__hwPhotoAPI && window.__hwPhotoAPI.register) window.__hwPhotoAPI.register(r.key, r.title || "Photo quest", r.caption || "📸 Photo quest", {});
+        }
+      });
+    }).catch(function () {});
+  }, 1500);
+  function we1ShowQuestToast(a) {
+    we1HideQuestToast();
+    var ov = document.getElementById("ll-overlay");
+    if (!ov || ov.hidden) return;
+    var q = we1QuestDef(a.qid); if (!q) return;
+    var d = document.createElement("div");
+    d.className = "we1-toast"; d.id = "we1-quest-toast"; d.setAttribute("role", "note");
+    d.innerHTML = '<span class="we1-toastemo" aria-hidden="true">📸</span><div class="we1-toasttxt"><b>Photo quest unlocked!</b><span>' + esc(q.text) + (a.lessonTitle ? " · from ⭐ " + esc(a.lessonTitle) : "") + "</span></div>" +
+      '<button type="button" class="ll-btn pri sm" data-we1-quest="photo">📷 Take the photo</button>' +
+      '<button type="button" class="ll-btn sm" data-we1-quest="notnow">Not now</button>';
+    ov.appendChild(d);
+  }
+  function we1HideQuestToast() { var t = document.getElementById("we1-quest-toast"); if (t) t.remove(); }
+  var we1PendingPhoto = null;
+  function we1TakeQuestPhoto() {
+    var p = state.profile; if (!p) return;
+    var s = we1QuestState(p.id); if (!s.active) return;
+    we1RegisterQuestSpot(p.id, s.active);
+    we1PendingPhoto = { pid: p.id, spotKey: we1QuestSpotKey(p.id, s.active), since: Date.now(), tries: 0 };
+    we1WatchQuestPhoto();
+    /* the hub's own photo input — on a phone this opens the camera /
+       photo picker; nothing about the camera is faked in-app */
+    if (window.__hwPhotoAPI) window.__hwPhotoAPI.add(we1PendingPhoto.spotKey, p.id);
+  }
+  function we1WatchQuestPhoto() {
+    var pend = we1PendingPhoto; if (!pend) return;
+    var iv = setInterval(function () {
+      if (we1PendingPhoto !== pend) { clearInterval(iv); return; }
+      pend.tries++;
+      if (pend.tries > 45) { clearInterval(iv); we1PendingPhoto = null; return; }
+      photoAll().then(function (recs) {
+        var hit = null;
+        (recs || []).forEach(function (r) { if (r && r.key === pend.spotKey && (r.ts || 0) >= pend.since - 5000 && !r.quest) hit = hit || r; });
+        if (hit) { clearInterval(iv); we1CompleteQuestPhoto(pend, hit); }
+      }).catch(function () {});
+    }, 700);
+  }
+  function we1CompleteQuestPhoto(pend, rec) {
+    we1PendingPhoto = null;
+    var s = we1QuestState(pend.pid);
+    var a = s.active;
+    /* the quest + lesson ride ON the photo record, so Wave D's backup
+       export carries them with the photo like every other record field */
+    var upd = {}; Object.keys(rec).forEach(function (k) { upd[k] = rec[k]; });
+    upd.quest = a ? a.qid : null; upd.lessonId = a ? a.lessonId : null; upd.lessonTitle = a ? a.lessonTitle : "";
+    photoPut(upd).catch(function () {});
+    if (a) {
+      s.lastDone = { qid: a.qid, lessonId: a.lessonId, at: Date.now() };
+      s.doneCount = (s.doneCount || 0) + 1;
+      s.active = null;
+      we1QuestSave(pend.pid, s);
+    }
+    we1HideQuestToast();
+    try { if (window.__hwSay) window.__hwSay(["hoot-great-job"]); } catch (e) {}
+    if (document.getElementById("we1-quest")) render();
+  }
+  function we1QuestHtml() {
+    var p = state.profile; if (!p) return "";
+    var s = we1QuestState(p.id);
+    if (!s.active) return "";
+    if (s.active.dismissedDay === dayKeyOf(new Date())) return "";
+    var q = we1QuestDef(s.active.qid); if (!q) return "";
+    we1RegisterQuestSpot(p.id, s.active);
+    return '<section class="ll-card we1-quest" id="we1-quest" aria-label="Photo quest">' +
+      '<div class="we1-questtop"><span class="we1-questemo" aria-hidden="true">' + q.emo + '</span><div>' +
+      '<h2 class="todoh" style="margin:0">📸 Photo quest</h2>' +
+      '<p class="we1-questtxt">' + esc(q.text) + "</p>" +
+      (s.active.lessonTitle ? '<p class="hoot-line" style="margin:2px 0 0">Unlocked by ⭐ ' + esc(s.active.lessonTitle) + "</p>" : "") +
+      '</div></div><div class="we1-questbtns">' +
+      '<button type="button" class="ll-btn pri" data-we1-quest="photo">📷 Take or choose a photo</button>' +
+      '<button type="button" class="ll-btn" data-we1-quest="notnow-today">Not now</button></div></section>';
+  }
+  function we1TodayHtml() { return we1HelloHtml() + we1QuestHtml(); }
+
+  /* ---------- Feature 22: parent voice notes ---------- */
+  /* Own IndexedDB database in the photo store's pattern (the photos DB is
+     opened at version 1 by the hub, so a second store there would force a
+     version bump under it — a sibling database is the safe shape). Records:
+     { id, pid, label, type, ts, blob } with the same { buf, type } fallback
+     as photos when a browser refuses Blob storage. */
+  var we1NotesDbP = null;
+  function we1NotesDb() {
+    if (we1NotesDbP) return we1NotesDbP;
+    we1NotesDbP = new Promise(function (resolve) {
+      if (!("indexedDB" in window)) { resolve(null); return; }
+      var req;
+      try { req = indexedDB.open("hootworld-audionotes", 1); } catch (e) { resolve(null); return; }
+      req.onupgradeneeded = function () { try { req.result.createObjectStore("notes", { keyPath: "id" }); } catch (e) {} };
+      req.onsuccess = function () { resolve(req.result); };
+      req.onerror = function () { resolve(null); };
+    });
+    return we1NotesDbP;
+  }
+  function we1NotesAll() {
+    return we1NotesDb().then(function (db) {
+      return new Promise(function (resolve) {
+        if (!db) { resolve([]); return; }
+        try {
+          var rq = db.transaction("notes", "readonly").objectStore("notes").getAll();
+          rq.onsuccess = function () { resolve(rq.result || []); };
+          rq.onerror = function () { resolve([]); };
+        } catch (e) { resolve([]); }
+      });
+    });
+  }
+  function we1NotePutRaw(db, rec, onFail) {
+    var tx;
+    try { tx = db.transaction("notes", "readwrite"); tx.objectStore("notes").put(rec); } catch (e) { onFail(); return; }
+    tx.onerror = function (ev) { try { ev.preventDefault(); } catch (e) {} onFail(); };
+    tx.onabort = function () { onFail(); };
+    tx.oncomplete = function () {};
+  }
+  function we1NotePut(rec) {
+    return we1NotesDb().then(function (db) {
+      return new Promise(function (resolve) {
+        if (!db) { resolve(); return; }
+        var done = false;
+        var finish = function () { if (!done) { done = true; resolve(); } };
+        try {
+          var tx = db.transaction("notes", "readwrite");
+          tx.objectStore("notes").put(rec);
+          tx.oncomplete = finish; tx.onerror = function () { fallback(); }; tx.onabort = function () { fallback(); };
+        } catch (e) { fallback(); }
+        function fallback() {
+          if (done || !rec.blob) { finish(); return; }
+          (rec.blob.arrayBuffer ? rec.blob.arrayBuffer() : new Promise(function (ok, no) { var fr = new FileReader(); fr.onload = function () { ok(fr.result); }; fr.onerror = no; fr.readAsArrayBuffer(rec.blob); })).then(function (buf) {
+            var r2 = {}; Object.keys(rec).forEach(function (k) { if (k !== "blob") r2[k] = rec[k]; });
+            r2.buf = buf; r2.type = rec.blob.type || "audio/webm";
+            we1NotePutRaw(db, r2, finish);
+            setTimeout(finish, 300);
+          }).catch(finish);
+        }
+      });
+    });
+  }
+  function we1NoteDelete(id) {
+    return we1NotesDb().then(function (db) {
+      return new Promise(function (resolve) {
+        if (!db) { resolve(); return; }
+        try { var tx = db.transaction("notes", "readwrite"); tx.objectStore("notes").delete(id); tx.oncomplete = function () { resolve(); }; tx.onerror = function () { resolve(); }; }
+        catch (e) { resolve(); }
+      });
+    });
+  }
+  /* The one save path — the recorder and any other caller land here. */
+  function we1SaveNote(pid, label, blob) {
+    var rec = { id: "n" + Date.now().toString(36) + Math.random().toString(36).slice(2, 8),
+                pid: pid, label: label || "Praise note", type: (blob && blob.type) || "audio/webm", ts: Date.now(), blob: blob };
+    return we1NotePut(rec).then(function () { return rec; });
+  }
+  function we1NoteBlob(n) { return n ? (n.blob || (n.buf ? new Blob([n.buf], { type: n.type || "audio/webm" }) : null)) : null; }
+  function we1NotesEnabled() { var c = we1Store(WE1_NOTES_CFG_KEY, { enabled: 1 }); return !(c.enabled === 0 || c.enabled === false); }
+  window.__we1NoteLog = []; /* drive evidence: one entry per note playback */
+  var we1NoteAudio = null;
+  function we1PlayNoteBlob(blob, pid, label) {
+    if (!blob) return;
+    if (we1NoteAudio) { try { we1NoteAudio.pause(); } catch (e) {} we1NoteAudio = null; }
+    var url = URL.createObjectURL(blob);
+    var a = new Audio(url);
+    a.__govVoice = 1; /* through the voice governor: waits its turn behind
+                         any clip still speaking, then plays alone */
+    we1NoteAudio = a;
+    var rec = { pid: pid, label: label, at: Date.now(), startedAt: 0, waited: false };
+    window.__we1NoteLog.push(rec);
+    a.addEventListener("playing", function () { rec.startedAt = Date.now(); rec.waited = rec.startedAt - rec.at > 250; });
+    a.addEventListener("ended", function () { try { URL.revokeObjectURL(url); } catch (e) {} if (we1NoteAudio === a) we1NoteAudio = null; });
+    var pr = a.play(); if (pr && pr.catch) pr.catch(function () {});
+  }
+  function we1PlayNoteById(id) {
+    we1NotesAll().then(function (ns) {
+      var n = ns.filter(function (x) { return x.id === id; })[0];
+      if (n) we1PlayNoteBlob(we1NoteBlob(n), n.pid, n.label);
+    }).catch(function () {});
+  }
+  function we1NotesSupported() { return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder); }
+  function we1NoteMsg(t) { var m = document.getElementById("we1-notemsg"); if (m) m.textContent = t; }
+  function we1NotesHtml() {
+    var supported = we1NotesSupported();
+    var rows = PROFILES.map(function (p) {
+      return '<div class="we1-notechild"><h3><span aria-hidden="true">' + p.emoji + "</span> " + esc(p.label) + '</h3>' +
+        '<div class="we1-notelist" data-we1-list="' + p.id + '"><p class="hoot-line" style="margin:0">Loading…</p></div>' +
+        '<div class="we1-recrow"><input type="text" data-we1-label="' + p.id + '" maxlength="40" autocomplete="off" placeholder="Name it — e.g. Dad — great job"' + (supported ? "" : " disabled") + ">" +
+        '<button type="button" class="ll-btn" data-we1-rec="' + p.id + '"' + (supported ? "" : " disabled") + ">● Record praise</button></div></div>";
+    }).join("");
+    setTimeout(we1FillNoteLists, 40);
+    return '<section class="ll-card we1-notes" id="we1-notes"><h2 style="margin:0 0 4px">🎙️ Praise voice notes</h2>' +
+      '<p class="hoot-line" style="margin:0 0 10px">Record a short praise clip for each child, in your own voice. When they finish a lesson, your note plays right after Hoot\'s celebration. Notes live on this device and ride along in backup files, like the photos.</p>' +
+      '<label class="we1-toggle"><input type="checkbox" id="we1-notes-toggle"' + (we1NotesEnabled() ? " checked" : "") + '> Play my note when a lesson is finished</label>' +
+      (supported ? "" : '<p class="we1-nosupport" role="note">🎙️ This browser can\'t record audio, so new voice notes can\'t be recorded here. Notes you already have still play — and you can record on another browser or device.</p>') +
+      rows + '<p class="ll-safemsg" id="we1-notemsg" role="status" aria-live="polite"></p></section>';
+  }
+  function we1FillNoteLists() {
+    if (!document.getElementById("we1-notes")) return;
+    we1NotesAll().then(function (ns) {
+      PROFILES.forEach(function (p) {
+        var box = document.querySelector('[data-we1-list="' + p.id + '"]'); if (!box) return;
+        var mine = ns.filter(function (n) { return n.pid === p.id; }).sort(function (a, b) { return (b.ts || 0) - (a.ts || 0); });
+        box.innerHTML = mine.length ? mine.map(function (n) {
+          return '<div class="we1-note"><span class="we1-notelabel">🎙️ ' + esc(n.label || "Praise note") + "</span><small>" + esc(new Date(n.ts || Date.now()).toLocaleDateString()) + '</small>' +
+            '<button type="button" class="ll-btn sm" data-we1-play="' + n.id + '">▶ Play</button>' +
+            '<button type="button" class="ll-btn sm" data-we1-del="' + n.id + '">🗑 Delete</button></div>';
+        }).join("") : '<p class="hoot-line" style="margin:0">No notes yet for ' + esc(p.label) + ".</p>";
+      });
+    }).catch(function () {});
+  }
+  var we1Rec = null;
+  function we1ToggleRecord(pid, btn) {
+    if (we1Rec) { try { we1Rec.mr.stop(); } catch (e) {} return; }
+    if (!we1NotesSupported()) { we1NoteMsg("This browser can't record audio here."); return; }
+    navigator.mediaDevices.getUserMedia({ audio: true }).then(function (stream) {
+      var mr;
+      try { mr = new MediaRecorder(stream); } catch (e) { stream.getTracks().forEach(function (t) { t.stop(); }); we1NoteMsg("This browser can't record audio here."); return; }
+      var chunks = [];
+      mr.ondataavailable = function (ev) { if (ev.data && ev.data.size) chunks.push(ev.data); };
+      mr.onstop = function () {
+        stream.getTracks().forEach(function (t) { t.stop(); });
+        var blob = new Blob(chunks, { type: mr.mimeType || "audio/webm" });
+        var inp = document.querySelector('[data-we1-label="' + pid + '"]');
+        var label = inp && inp.value.trim() ? inp.value.trim() : "Praise note";
+        we1Rec = null;
+        $$("[data-we1-rec]").forEach(function (b) { b.textContent = "● Record praise"; b.classList.remove("rec"); });
+        if (!blob.size) { we1NoteMsg("That recording came out empty — nothing was saved."); return; }
+        we1SaveNote(pid, label, blob).then(function () { we1NoteMsg("Saved your note — it will play when a lesson is finished."); we1FillNoteLists(); });
+      };
+      we1Rec = { mr: mr, pid: pid };
+      mr.start();
+      if (btn) { btn.textContent = "■ Stop"; btn.classList.add("rec"); }
+      we1NoteMsg("Recording… tap Stop when you're done.");
+    }).catch(function () { we1NoteMsg("The microphone wasn't allowed, so nothing was recorded."); });
+  }
+  /* Backup: voice notes ride the backup file exactly like Wave D photos —
+     embedded as data URLs with a manifest, restored merged by id. */
+  function collectNotesForBackup() {
+    return we1NotesAll().then(function (recs) {
+      var items = [], bytes = 0, chain = Promise.resolve();
+      (recs || []).forEach(function (rec) {
+        chain = chain.then(function () {
+          var blob = we1NoteBlob(rec);
+          if (!blob) return;
+          return blobToDataUrl(blob).then(function (url) {
+            if (!url) return;
+            var item = {};
+            Object.keys(rec).forEach(function (k) { if (k !== "blob" && k !== "buf") item[k] = rec[k]; });
+            item.type = blob.type || item.type || "audio/webm";
+            item.dataUrl = url;
+            bytes += url.length;
+            items.push(item);
+          });
+        });
+      });
+      return chain.then(function () { return { count: items.length, approxBytes: bytes, items: items }; });
+    }).catch(function () { return { count: 0, approxBytes: 0, items: [] }; });
+  }
+  function restoreNotesFromBackup(items) {
+    var chain = Promise.resolve();
+    (items || []).forEach(function (item) {
+      chain = chain.then(function () {
+        return fetch(item.dataUrl).then(function (r) { return r.blob(); }).then(function (blob) {
+          var rec = {};
+          Object.keys(item).forEach(function (k) { if (k !== "dataUrl") rec[k] = item[k]; });
+          rec.blob = blob;
+          return we1NotePut(rec);
+        }).catch(function () {});
+      });
+    });
+    return chain;
+  }
+
+  /* ---------- the completion funnel: quests + praise notes ---------- */
+  /* recordCompletion is the one funnel every engine's real completion
+     signal already flows through (C1). Called from there, once per genuine
+     completion (recordCompletion's own 8s guard has already passed). */
+  function we1OnLessonComplete(kid, lessonId, title) {
+    var got = we1AssignQuest(kid, lessonId, title);
+    if (got.fresh && state.profile && state.profile.id === kid) {
+      we1RegisterQuestSpot(kid, got.active);
+      we1ShowQuestToast(got.active);
+    }
+    if (we1NotesEnabled()) {
+      we1NotesAll().then(function (ns) {
+        var mine = ns.filter(function (n) { return n.pid === kid; }).sort(function (a, b) { return (b.ts || 0) - (a.ts || 0); });
+        if (!mine.length) return;
+        we1PlayNoteBlob(we1NoteBlob(mine[0]), kid, mine[0].label);
+      }).catch(function () {});
+    }
+  }
+
+  /* ---------- clicks + toggle (Wave E1's own attrs) ---------- */
+  document.addEventListener("click", function (e) {
+    var t = e.target && e.target.closest ? e.target.closest("[data-we1-hello],[data-we1-quest],[data-we1-rec],[data-we1-play],[data-we1-del]") : null;
+    if (!t) return;
+    if (t.hasAttribute("data-we1-hello")) { we1PlayHello(); return; }
+    if (t.hasAttribute("data-we1-quest")) {
+      var act = t.getAttribute("data-we1-quest");
+      if (act === "photo") we1TakeQuestPhoto();
+      else if (act === "notnow") we1HideQuestToast();
+      else if (act === "notnow-today") {
+        var p = state.profile;
+        if (p) { var s = we1QuestState(p.id); if (s.active) { s.active.dismissedDay = dayKeyOf(new Date()); we1QuestSave(p.id, s); } }
+        var card = document.getElementById("we1-quest"); if (card) card.remove();
+      }
+      return;
+    }
+    if (t.hasAttribute("data-we1-rec")) { we1ToggleRecord(t.getAttribute("data-we1-rec"), t); return; }
+    if (t.hasAttribute("data-we1-play")) { we1PlayNoteById(t.getAttribute("data-we1-play")); return; }
+    if (t.hasAttribute("data-we1-del")) { we1NoteDelete(t.getAttribute("data-we1-del")).then(function () { we1FillNoteLists(); }); return; }
+  });
+  document.addEventListener("change", function (e) {
+    if (e.target && e.target.id === "we1-notes-toggle") {
+      var c = we1Store(WE1_NOTES_CFG_KEY, { enabled: 1 });
+      c.enabled = e.target.checked ? 1 : 0;
+      we1Save(WE1_NOTES_CFG_KEY, c);
+    }
+  });
+
+
+
+  /* ================= Wave E2 (2026-11-15): Oops Garden (23), Car mode (25),
+     Monthly growth report (26) =================
+     Oops Garden: the four lesson engines report every answer through
+     window.__oopsAnswer (one defensive call inside each engine's own answer
+     handler — HL player, little rounds engine, generic player, NY engine).
+     A wrong answer plants (or re-plants) a seed for that lesson+item; a right
+     answer blooms it ONLY in a later session or on a later day, so the win is
+     genuinely spaced. Seeds never wilt and nothing is ever taken away.
+     Store: hootworld.oops.v1 — rides backups like the other hootworld.*.v1
+     stores. Granularity: per question round where the engine exposes rounds
+     (HL + little rounds lessons), per guided step / warm-up / teach-back in
+     the NY engine, lesson level (one question per card) in the generic
+     player, plus its teach-back.
+     Car mode: mixes are built ONLY from clips already in the library
+     (inventoried 2026-11-15 — nothing new recorded). Playback chains on real
+     'ended' events through one governor-serialised Audio element (the Wave
+     E1 pattern), so two voices can never overlap. "Get ready for offline"
+     writes every mix clip into the service worker's cache and verifies each
+     one with cache.match before a mix is called ready.
+     Growth report: computed live from hootworld.completions.v1 plus the HL
+     results store ("another look" lessons). An empty month says so plainly;
+     nothing is ever invented. Prints through the Wave C2 print system. */
+  function we2Sess() {
+    try {
+      var s = sessionStorage.getItem("hootworld.sess.v1");
+      if (!s) { s = "s" + Date.now().toString(36) + Math.floor(Math.random() * 1e6).toString(36); sessionStorage.setItem("hootworld.sess.v1", s); }
+      return s;
+    } catch (e) { return "s-shared"; }
+  }
+  function we2FmtDate(ts) { try { return new Date(ts).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }); } catch (e) { return ""; } }
+
+  /* ---------- 23 · Oops Garden ---------- */
+  var WE2_OOPS_KEY = "hootworld.oops.v1", WE2_GARDEN_CAP = 24;
+  function we2OopsLoad() { try { return JSON.parse(localStorage.getItem(WE2_OOPS_KEY) || "{}") || {}; } catch (e) { return {}; } }
+  function we2OopsSave(d) { try { localStorage.setItem(WE2_OOPS_KEY, JSON.stringify(d)); } catch (e) {} }
+  function we2OopsMine(pid) { var d = we2OopsLoad(); return (pid && d[pid]) || {}; }
+  function we2GardenCounts(pid) { var m = we2OopsMine(pid), s = 0, f = 0; Object.keys(m).forEach(function (k) { if (m[k].state === "flower") f++; else s++; }); return { seeds: s, flowers: f, total: s + f }; }
+  function we2ItemLabel(title, item) {
+    var t = title || "A lesson";
+    if (item === "tib") return t + " — teach it back";
+    if (item === "warm") return t + " — warm-up";
+    if (item && item.indexOf("try") === 0) return t + " — guided step " + (parseInt(item.slice(3), 10) + 1);
+    if (item && item.charAt(0) === "r" && item.length > 1 && !isNaN(parseInt(item.slice(1), 10))) return t + " — question " + (parseInt(item.slice(1), 10) + 1);
+    return t;
+  }
+  function we2BloomCelebrate(rec) {
+    try { if (window.__hwSay) window.__hwSay(["hoot-great-job"]); } catch (e) {}
+    try {
+      var host = document.getElementById("ll-overlay"); if (!host) return;
+      var old = document.getElementById("we2-bloom-toast"); if (old) old.remove();
+      var t = document.createElement("div"); t.id = "we2-bloom-toast"; t.className = "we2-bloom-toast";
+      t.innerHTML = "🌸 <b>A flower bloomed in your Oops Garden!</b><br><small>" + esc(rec.label || rec.title || "") + " — you got it right today!</small>";
+      host.appendChild(t);
+      setTimeout(function () { try { t.remove(); } catch (e) {} }, 7000);
+    } catch (e) {}
+  }
+  function we2OopsAnswer(info) {
+    if (!info) return;
+    var card = info.card || null;
+    var pid = info.pid || (state.profile && state.profile.id);
+    if (!pid) return;
+    var lid = info.lessonId || (card && card.getAttribute ? card.getAttribute("data-lsn-id") : null) || null;
+    var title = info.title || "";
+    if (!title && card && card.querySelector) { var h4 = card.querySelector("h4"); if (h4) title = h4.textContent.replace(/\s+/g, " ").trim(); }
+    if (!lid && title) lid = lessonIdForTitle(title);
+    if (!lid && !title) return;
+    var item = info.item || "q";
+    var key = (lid || ("t:" + title)) + "|" + item;
+    var d = we2OopsLoad(); var mine = d[pid] || (d[pid] = {});
+    var rec = mine[key]; var now = Date.now(); var day = dayKeyOf(new Date()); var sess = we2Sess();
+    if (!info.right) {
+      if (!rec) { rec = { lesson: lid || "", title: title, label: we2ItemLabel(title, item), state: "seed", plantedAt: now, plantedDay: day, plantedSess: sess, wrongs: 0, blooms: 0, lastBloom: 0 }; mine[key] = rec; }
+      else { rec.state = "seed"; rec.plantedAt = now; rec.plantedDay = day; rec.plantedSess = sess; if (title) rec.title = title; rec.label = we2ItemLabel(title || rec.title, item); }
+      rec.wrongs = (rec.wrongs || 0) + 1;
+      we2OopsSave(d);
+      return;
+    }
+    if (rec && rec.state === "seed" && (sess !== rec.plantedSess || day !== rec.plantedDay)) {
+      rec.state = "flower"; rec.blooms = (rec.blooms || 0) + 1; rec.lastBloom = now;
+      we2OopsSave(d);
+      we2BloomCelebrate(rec);
+    }
+  }
+  window.__oopsAnswer = we2OopsAnswer;
+  function we2GardenHtml() {
+    var p = state.profile; if (!p) return "";
+    var mine = we2OopsMine(p.id);
+    var rows = Object.keys(mine).map(function (k) { return mine[k]; });
+    rows.sort(function (a, b) { return Math.max(b.lastBloom || 0, b.plantedAt || 0) - Math.max(a.lastBloom || 0, a.plantedAt || 0); });
+    var counts = we2GardenCounts(p.id);
+    var h = '<div class="we2-garden"><p class="we2-lead">Every tricky question plants a seed here. Answer it right on another day and it blooms into a flower. Seeds just wait — they never wilt, and nothing here is ever taken away. 🌱</p>';
+    if (!rows.length) return h + '<p class="we2-empty">No seeds yet. When a question is tricky, its seed will appear here — that is how learning grows!</p></div>';
+    var shown = rows.slice(0, WE2_GARDEN_CAP);
+    var flowers = shown.filter(function (r) { return r.state === "flower"; });
+    var seeds = shown.filter(function (r) { return r.state !== "flower"; });
+    h += '<p class="we2-counts">' + counts.flowers + (counts.flowers === 1 ? " flower" : " flowers") + " bloomed · " + counts.seeds + (counts.seeds === 1 ? " seed" : " seeds") + " waiting</p>";
+    if (flowers.length) h += '<h3 class="we2-h">🌸 Bloomed</h3><div class="we2-grid">' + flowers.map(function (r) {
+      return '<div class="we2-plot flower"><span aria-hidden="true">🌸</span><b>' + esc(r.label || r.title || "") + '</b><small>Bloomed ' + we2FmtDate(r.lastBloom) + (r.blooms > 1 ? " · bloomed " + r.blooms + " times" : "") + '</small></div>';
+    }).join("") + "</div>";
+    if (seeds.length) h += '<h3 class="we2-h">🌱 Still growing</h3><div class="we2-grid">' + seeds.map(function (r) {
+      return '<div class="we2-plot seed"><span aria-hidden="true">🌱</span><b>' + esc(r.label || r.title || "") + '</b><small>Planted ' + we2FmtDate(r.plantedAt) + " · waiting for another day</small></div>";
+    }).join("") + "</div>";
+    if (rows.length > shown.length) h += '<p class="we2-more">Showing the ' + shown.length + " most recent — " + (rows.length - shown.length) + " more are kept safe in the garden diary.</p>";
+    return h + "</div>";
+  }
+  function openOopsGarden() { nextView = { kind: "we2garden", title: "Oops Garden" }; openShellOverlay("🌸 Oops Garden", we2GardenHtml()); }
+
+  /* ---------- Today / Play entries ---------- */
+  function we2TodayHtml() {
+    if (!state.profile) return "";
+    var c = we2GardenCounts(state.profile.id);
+    return '<section class="ll-card we2-today"><h2 class="todoh">🌸 Garden &amp; car</h2>' +
+      '<button type="button" class="wc2-entrybtn" data-we2-garden="1">🌸 <b>Oops Garden</b><span>' + (c.total ? (c.flowers + (c.flowers === 1 ? " flower" : " flowers") + " bloomed · " + c.seeds + (c.seeds === 1 ? " seed" : " seeds") + " waiting") : "See your seeds and flowers") + '</span></button>' +
+      '<button type="button" class="wc2-entrybtn" data-we2-car="1">🚗 <b>Car mode</b><span>Big-button listening for drives — set it up before you go</span></button></section>';
+  }
+  function we2CarEntryHtml() {
+    return '<section class="ll-card we2-games"><button type="button" class="wc2-entrybtn" data-we2-car="1">🚗 <b>Car mode</b><span>Listening mixes for drives — set it up before you go</span></button></section>';
+  }
+
+  /* ---------- 25 · Car mode ---------- */
+  var WE2_MIXES = [
+    { id: "letters", emo: "🔤", title: "Letters & sounds", clips: ["step-early-letter-sounds-1", "step-early-letter-sounds-2", "step-early-letter-sounds-3", "step-early-letter-sounds-4", "coach/phonics-a", "coach/phonics-b", "coach/phonics-c", "coach/phonics-d", "coach/phonics-e", "coach/phonics-f", "coach/phonics-g", "coach/phonics-h", "coach/phonics-i", "coach/phonics-j", "coach/phonics-k", "coach/phonics-l", "coach/phonics-m", "coach/phonics-n", "coach/phonics-o", "coach/phonics-p", "coach/phonics-q", "coach/phonics-r", "coach/phonics-s", "coach/phonics-t", "coach/phonics-u", "coach/phonics-v", "coach/phonics-w", "coach/phonics-x", "coach/phonics-y", "coach/phonics-z"] },
+    { id: "numbers", emo: "🔢", title: "Numbers", clips: ["step-little-counting-to-5-1", "step-little-counting-to-5-3", "step-little-counting-to-5-4", "step-early-counting-on-to-add-1", "step-early-counting-on-to-add-2", "step-early-counting-on-to-add-3", "step-early-counting-on-to-add-4", "name-number-1", "name-number-2", "name-number-3", "name-number-4", "name-number-5", "name-number-6", "name-number-7", "name-number-8", "name-number-9", "name-number-10", "song-counting"] },
+    { id: "stories", emo: "📖", title: "Stories & songs", clips: ["story-intro", "story-a", "song-abc", "story-b", "song-hoot-party", "story-c", "song-goodbye"] },
+    { id: "calm", emo: "🌙", title: "Calm down", clips: ["story-intro", "story-d", "story-e", "owl-sleepy", "song-goodbye"] }
+  ];
+  function we2MixById(id) { for (var i = 0; i < WE2_MIXES.length; i++) if (WE2_MIXES[i].id === id) return WE2_MIXES[i]; return null; }
+  function we2ClipUrl(c) { return new URL("assets/voice/" + c + ".mp3", document.baseURI).href; }
+  var we2Wake = null;
+  function we2GrabWake() { try { if (navigator.wakeLock && navigator.wakeLock.request) { var p = navigator.wakeLock.request("screen"); if (p && p.then) p.then(function (w) { we2Wake = w; }, function () {}); } } catch (e) {} }
+  function we2DropWake() { try { if (we2Wake && we2Wake.release) we2Wake.release(); } catch (e) {} we2Wake = null; }
+  var we2Car = { audio: null, mixId: null, idx: 0, playing: false, timer: 0 };
+  function we2CarUi() {
+    var now = document.getElementById("we2-car-now"), cnt = document.getElementById("we2-car-count"), tg = document.getElementById("we2-car-toggle");
+    if (!now) return;
+    var mix = we2MixById(we2Car.mixId);
+    if (!mix) { now.textContent = "Pick a mix below 👇"; if (cnt) cnt.textContent = ""; if (tg) tg.textContent = "▶"; return; }
+    now.textContent = mix.emo + " " + mix.title;
+    if (cnt) cnt.textContent = (we2Car.playing || we2Car.audio) ? ("Clip " + (we2Car.idx + 1) + " of " + mix.clips.length) : "";
+    if (tg) tg.textContent = we2Car.playing ? "⏸" : "▶";
+    $$(".we2-mix").forEach(function (row) { row.classList.toggle("on", row.getAttribute("data-we2-mixrow") === we2Car.mixId); });
+  }
+  function we2CarStopAudio() {
+    if (we2Car.audio) { try { we2Car.audio.onended = null; we2Car.audio.onerror = null; we2Car.audio.pause(); we2Car.audio.removeAttribute("src"); we2Car.audio.load(); } catch (e) {} we2Car.audio = null; }
+  }
+  function we2CarFullStop() {
+    if (we2Car.timer) { clearInterval(we2Car.timer); we2Car.timer = 0; }
+    we2CarStopAudio(); we2Car.playing = false; we2DropWake();
+  }
+  function we2CarPlayAt(mixId, idx) {
+    var mix = we2MixById(mixId); if (!mix || !mix.clips.length) return;
+    we2CarStopAudio();
+    we2Car.mixId = mixId; we2Car.idx = Math.max(0, Math.min(idx || 0, mix.clips.length - 1)); we2Car.playing = true;
+    var a = new Audio(); a.preload = "auto"; a.__govVoice = true;
+    a.src = "assets/voice/" + mix.clips[we2Car.idx] + ".mp3";
+    a.onended = function () { we2CarAdvance(1); };
+    a.onerror = function () { we2CarAdvance(1); };
+    we2Car.audio = a;
+    try { var pr = a.play(); if (pr && pr.catch) pr.catch(function () {}); } catch (e) {}
+    we2GrabWake();
+    if (!we2Car.timer) we2Car.timer = setInterval(we2CarWatch, 1000);
+    we2CarUi();
+  }
+  function we2CarAdvance(d) {
+    var mix = we2MixById(we2Car.mixId); if (!mix) return;
+    var n = we2Car.idx + d;
+    if (n < 0) n = 0;
+    if (n >= mix.clips.length) {
+      we2CarStopAudio(); we2Car.playing = false; we2Car.idx = 0; we2DropWake();
+      var now = document.getElementById("we2-car-now"); if (now) now.textContent = "🏁 " + mix.title + " finished — tap ▶ to hear it again";
+      var cnt = document.getElementById("we2-car-count"); if (cnt) cnt.textContent = "";
+      var tg = document.getElementById("we2-car-toggle"); if (tg) tg.textContent = "▶";
+      $$(".we2-mix").forEach(function (row) { row.classList.remove("on"); });
+      return;
+    }
+    we2CarPlayAt(we2Car.mixId, n);
+  }
+  function we2CarToggle() {
+    if (!we2Car.mixId) { if (WE2_MIXES.length) we2CarPlayAt(WE2_MIXES[0].id, 0); return; }
+    if (we2Car.playing) { we2Car.playing = false; if (we2Car.audio) { try { we2Car.audio.pause(); } catch (e) {} } we2DropWake(); we2CarUi(); return; }
+    if (we2Car.audio && !we2Car.audio.ended) { we2Car.playing = true; try { var pr = we2Car.audio.play(); if (pr && pr.catch) pr.catch(function () {}); } catch (e) {} we2GrabWake(); we2CarUi(); return; }
+    we2CarPlayAt(we2Car.mixId, we2Car.idx);
+  }
+  function we2CarWatch() {
+    if (!document.getElementById("we2-car")) { we2CarFullStop(); return; }
+    var a = we2Car.audio;
+    if (we2Car.playing && a && a.ended) we2CarAdvance(1);
+    else if (we2Car.playing && a && a.paused && a.readyState >= 2) { try { var pr = a.play(); if (pr && pr.catch) pr.catch(function () {}); } catch (e) {} }
+  }
+  function we2CacheName() {
+    if (!("caches" in window)) return Promise.resolve("hw-hootv2-waveE2");
+    return caches.keys().then(function (ks) {
+      var m = ks.filter(function (k) { return k.indexOf("hw-hootv2") === 0; });
+      if (m.indexOf("hw-hootv2-waveE2") >= 0) return "hw-hootv2-waveE2";
+      return m.length ? m[m.length - 1] : "hw-hootv2-waveE2";
+    }).catch(function () { return "hw-hootv2-waveE2"; });
+  }
+  function we2MixReady(mix) {
+    if (!("caches" in window)) return Promise.resolve(false);
+    return we2CacheName().then(function (n) { return caches.open(n); }).then(function (cache) {
+      return Promise.all(mix.clips.map(function (c) { return cache.match(we2ClipUrl(c)); })).then(function (rs) { return rs.every(function (r) { return !!r; }); });
+    }).catch(function () { return false; });
+  }
+  function we2CarRefreshReady() {
+    WE2_MIXES.forEach(function (mix) {
+      var el = document.querySelector('[data-we2-ready="' + mix.id + '"]'); if (!el) return;
+      we2MixReady(mix).then(function (ok) { el.textContent = ok ? "✓ Ready offline" : "Not downloaded yet"; el.classList.toggle("ok", ok); });
+    });
+  }
+  function we2CarPrepare(btn) {
+    var stat = document.getElementById("we2-prepstat");
+    if (!("caches" in window)) { if (stat) stat.textContent = "This browser cannot save clips for offline."; return; }
+    var seen = {}, urls = [];
+    WE2_MIXES.forEach(function (m) { m.clips.forEach(function (c) { if (!seen[c]) { seen[c] = 1; urls.push(c); } }); });
+    if (btn) { btn.disabled = true; btn.textContent = "Saving…"; }
+    we2CacheName().then(function (n) { return caches.open(n); }).then(function (cache) {
+      var done = 0, fails = 0;
+      var chain = Promise.resolve();
+      urls.forEach(function (c) {
+        chain = chain.then(function () {
+          return cache.match(we2ClipUrl(c)).then(function (hit) {
+            if (hit) { done++; return null; }
+            return cache.add(we2ClipUrl(c)).then(function () { done++; }, function () { fails++; });
+          }).then(function () { if (stat) stat.textContent = "Saving clips for the car… " + (done + fails) + " of " + urls.length; });
+        });
+      });
+      return chain.then(function () { return { done: done, fails: fails }; });
+    }).then(function (r) {
+      if (btn) { btn.disabled = false; btn.textContent = "⬇ Get ready for offline — download every mix"; }
+      if (stat) stat.textContent = r.fails ? ("Saved " + r.done + " clips, but " + r.fails + " could not be saved — check the connection and try again.") : "✓ All mixes are ready offline — they will play with no signal.";
+      we2CarRefreshReady();
+    }).catch(function () {
+      if (btn) { btn.disabled = false; btn.textContent = "⬇ Get ready for offline — download every mix"; }
+      if (stat) stat.textContent = "Offline saving did not work here — the mixes will still play when you have signal.";
+    });
+  }
+  function we2CarHtml() {
+    var rows = WE2_MIXES.map(function (m) {
+      return '<div class="we2-mix" data-we2-mixrow="' + m.id + '"><button type="button" class="we2-mix-play" data-we2-mix="' + m.id + '">' + m.emo + " <b>" + esc(m.title) + '</b><span>' + m.clips.length + ' clips</span></button><span class="we2-ready" data-we2-ready="' + m.id + '">Checking offline…</span></div>';
+    }).join("");
+    return '<div class="we2-car" id="we2-car">' +
+      '<p class="we2-car-note">Set it up before you drive — then just listen. Hoot reads, teaches and sings; nobody needs to look at the screen on the road. 🚗</p>' +
+      '<div class="we2-player"><div class="we2-now" id="we2-car-now">Pick a mix below 👇</div><div class="we2-count" id="we2-car-count"></div>' +
+      '<div class="we2-btns"><button type="button" class="we2-big" data-we2-carctl="prev" aria-label="Back a clip">⏮</button>' +
+      '<button type="button" class="we2-big main" data-we2-carctl="toggle" id="we2-car-toggle" aria-label="Play or pause">▶</button>' +
+      '<button type="button" class="we2-big" data-we2-carctl="next" aria-label="Next clip">⏭</button></div></div>' +
+      '<div class="we2-mixes">' + rows + '</div>' +
+      '<button type="button" class="ll-btn pri we2-prep" data-we2-prep="1">⬇ Get ready for offline — download every mix</button>' +
+      '<p class="we2-prepstat" id="we2-prepstat" role="status"></p></div>';
+  }
+  function openCarMode() { nextView = { kind: "we2car", title: "Car mode" }; openShellOverlay("🚗 Car mode", we2CarHtml()); we2CarRefreshReady(); we2CarUi(); }
+
+  /* ---------- 26 · Monthly growth report ---------- */
+  var WE2_MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  function we2YmOf(ts) { var d = new Date(ts); return d.getFullYear() + "-" + pad2(d.getMonth() + 1); }
+  function we2YmLabel(ym) { var p = String(ym).split("-"); return (WE2_MONTHS[parseInt(p[1], 10) - 1] || "") + " " + p[0]; }
+  function we2MonthsAvailable() {
+    var set = {}, d = compLoad();
+    Object.keys(d).forEach(function (pid) { Object.keys(d[pid] || {}).forEach(function (k) { var r = d[pid][k]; if (r && r.first) set[we2YmOf(r.first)] = 1; if (r && r.last) set[we2YmOf(r.last)] = 1; }); });
+    set[we2YmOf(Date.now())] = 1;
+    return Object.keys(set).sort().reverse().slice(0, 12);
+  }
+  function we2ReportData(pid, ym) {
+    var p = String(ym).split("-"), y = parseInt(p[0], 10), m = parseInt(p[1], 10) - 1;
+    var start = new Date(y, m, 1).getTime(), end = new Date(y, m + 1, 1).getTime();
+    var d = compLoad(), mine = d[pid] || {};
+    var mastered = [], revisited = [];
+    Object.keys(mine).forEach(function (k) { var r = mine[k]; if (!r || !r.n) return;
+      if (r.first >= start && r.first < end) mastered.push(r);
+      else if (r.first < start && r.last >= start && r.last < end) revisited.push(r);
+    });
+    mastered.sort(function (a, b) { return a.first - b.first; });
+    revisited.sort(function (a, b) { return b.last - a.last; });
+    var working = [];
+    try {
+      var hl = JSON.parse(localStorage.getItem("hootworld.hl.v1") || "{}") || {};
+      var titles = {}; ["letters", "basics", "world"].forEach(function (pp) { hlLessons(pp).forEach(function (l) { titles[l.id] = l.title; }); });
+      var res = hl[pid] || {};
+      Object.keys(res).forEach(function (id) { var r = res[id];
+        if (r && r.struggle && r.last >= start && r.last < end) {
+          var t = titles[id] || (mine[id] && mine[id].title) || id;
+          var dup = mastered.some(function (x) { return x.title === t; }) || revisited.some(function (x) { return x.title === t; });
+          if (!dup) working.push({ title: t, last: r.last });
+        } });
+    } catch (e) {}
+    working.sort(function (a, b) { return b.last - a.last; });
+    var next = [];
+    try { wcPool(pid).forEach(function (l) { if (next.length >= 5) return; if (!lessonDone(l.title) && !(l.id && mine[l.id])) next.push(l.title); }); } catch (e) {}
+    return { mastered: mastered, revisited: revisited, working: working, next: next, empty: !mastered.length && !revisited.length && !working.length };
+  }
+  function we2ReportCardHtml(pid, ym) {
+    var prof = null; PROFILES.forEach(function (x) { if (x.id === pid) prof = x; }); if (!prof) return "";
+    var data = we2ReportData(pid, ym);
+    var h = '<div class="we2-pcard"><div class="we2-phead"><span class="we2-pemo">' + prof.emoji + '</span><div><h1>' + esc(prof.label) + " — " + we2YmLabel(ym) + '</h1><p class="we2-pkind">Hoot\'s World growth report · ' + esc(bandLabel(bandOf(pid))) + "</p></div></div>";
+    if (data.empty) {
+      h += '<p class="we2-pnone">No lessons were finished or practised again in ' + we2YmLabel(ym) + " in Hoot's diary yet — nothing is made up here; this report fills in as " + esc(prof.label) + " plays and learns.</p>";
+    } else {
+      if (data.mastered.length) h += "<h2>⭐ Mastered this month</h2><ul>" + data.mastered.map(function (r) { return "<li><b>" + esc(r.title) + "</b> — finished " + r.n + (r.n === 1 ? " time" : " times") + ", first on " + we2FmtDate(r.first) + "</li>"; }).join("") + "</ul>";
+      var work = data.revisited.map(function (r) { return { title: r.title, note: "first finished " + we2FmtDate(r.first) + ", practised again " + we2FmtDate(r.last) }; })
+        .concat(data.working.map(function (r) { return { title: r.title, note: "Hoot is giving this one another look — practised " + we2FmtDate(r.last) }; }));
+      if (work.length) h += "<h2>🌱 Working on</h2><ul>" + work.map(function (w) { return "<li><b>" + esc(w.title) + "</b> — " + esc(w.note) + "</li>"; }).join("") + "</ul>";
+    }
+    if (data.next.length) h += "<h2>➡️ Next up on the path</h2><ul>" + data.next.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>";
+    return h + '<p class="we2-pfoot">Made with Hoot\'s World 🦉</p></div>';
+  }
+  function we2ReportHtml() {
+    var months = we2MonthsAvailable();
+    var cur = we2YmOf(Date.now());
+    var kidOpts = PROFILES.map(function (p) { return '<option value="' + p.id + '"' + (state.profile && p.id === state.profile.id ? " selected" : "") + ">" + esc(p.label) + "</option>"; }).join("");
+    var monthOpts = months.map(function (ym) { return '<option value="' + ym + '"' + (ym === cur ? " selected" : "") + ">" + we2YmLabel(ym) + "</option>"; }).join("");
+    var pid = state.profile ? state.profile.id : PROFILES[0].id;
+    return '<section class="ll-card we2-report" id="we2-report"><h2 style="margin:0 0 6px">📈 Monthly growth report</h2>' +
+      '<p class="hoot-line" style="margin:0 0 10px">One printable page per child, written from Hoot\'s own diary of finished lessons — print it or save it as a PDF for grandparents.</p>' +
+      '<div class="we2-reportrow"><label>Child <select id="we2-report-kid">' + kidOpts + '</select></label><label>Month <select id="we2-report-month">' + monthOpts + '</select></label>' +
+      '<button type="button" class="ll-btn pri" data-we2-report="print">🖨 Print report</button></div>' +
+      '<div id="we2-report-preview">' + we2ReportCardHtml(pid, cur) + "</div></section>";
+  }
+  function we2ReportSelection() {
+    var k = document.getElementById("we2-report-kid"), m = document.getElementById("we2-report-month");
+    return { pid: k ? k.value : (state.profile ? state.profile.id : "kida"), ym: m ? m.value : we2YmOf(Date.now()) };
+  }
+  function we2ReportRefresh() { var pv = document.getElementById("we2-report-preview"); if (!pv) return; var s = we2ReportSelection(); pv.innerHTML = we2ReportCardHtml(s.pid, s.ym); }
+  function we2ReportPrint() { var s = we2ReportSelection(); wc2DoPrint(we2ReportCardHtml(s.pid, s.ym)); }
+
+  /* ---------- Delegated controls ---------- */
+  document.addEventListener("click", function (e) {
+    var t = e.target && e.target.closest ? e.target.closest("[data-we2-garden],[data-we2-car],[data-we2-mix],[data-we2-carctl],[data-we2-prep],[data-we2-report]") : null;
+    if (!t) return;
+    if (t.hasAttribute("data-we2-garden")) { openOopsGarden(); return; }
+    if (t.hasAttribute("data-we2-car")) { openCarMode(); return; }
+    if (t.hasAttribute("data-we2-mix")) { we2CarPlayAt(t.getAttribute("data-we2-mix"), 0); return; }
+    if (t.hasAttribute("data-we2-carctl")) { var c = t.getAttribute("data-we2-carctl"); if (c === "toggle") we2CarToggle(); else we2CarAdvance(c === "next" ? 1 : -1); return; }
+    if (t.hasAttribute("data-we2-prep")) { we2CarPrepare(t); return; }
+    if (t.hasAttribute("data-we2-report")) { we2ReportPrint(); return; }
+  });
+  document.addEventListener("change", function (e) {
+    if (e.target && (e.target.id === "we2-report-kid" || e.target.id === "we2-report-month")) we2ReportRefresh();
+  });
+
+  window.__llShell = { setTab: setTab, setProfile: setProfile, state: state, openGame: openGame, openLesson: openLesson, openPath: openPath, closeOverlay: closeOverlay, render: render, openMuseCard: openMuseCard, findShelfNode: findShelfNode, findHubIdeaNode: findHubIdeaNode, playNow: playNow, openLessonById: openLessonById, findLessonNodeById: findLessonNodeById, LESSON_BY_ID: LESSON_BY_ID, checkParentGate: checkParentGate, newGateQuestion: newGateQuestion, goBack: goBack, goHome: goHome, viewStack: viewStack, curView: function () { return curView; },
+    waveC1: { dailyPick: function (pid, date) { var r = wcDailyPick(pid, date || new Date()); return r ? { id: r.lesson.id, title: r.lesson.title, current: r.current, season: r.season } : null; }, stats: wcStats, completions: compLoad, completionFor: wcCompletion, rightNowItems: wcRightNowItems, openRightNow: openRightNow, openWorldMap: openWorldMap, pool: wcPool },
+    waveC2: { missions: wc2MissionStates, openMissions: openMissions, openMission: openMission, ihave: wc2IhaveData, ihaveLoad: wc2IhaveLoad, openIhave: openIhave, suppliesFor: wc2SuppliesFor, quests: wc2QuestStates, openQuestDay: openQuestDay, printLesson: wc2PrintLesson, printActivity: wc2PrintActivity, badges: wc2Badges, stepTarget: wc2StepTarget, stepDone: wc2StepDone },
+    waveE1: { helloPlan: we1HelloPlan, helloDone: we1HelloDone, playHello: we1PlayHello, questState: we1QuestState, assignQuest: we1AssignQuest, takeQuestPhoto: we1TakeQuestPhoto, questDef: we1QuestDef, notesAll: we1NotesAll, saveNoteBlob: we1SaveNote, playNoteById: we1PlayNoteById, notesEnabled: we1NotesEnabled, notesSupported: we1NotesSupported, noteLog: window.__we1NoteLog, missions: WE1_MISSIONS, challenges: WE1_CHALLENGES, photoQuests: WE1_QUESTS },
+    waveE2: { oopsState: function (pid) { return we2OopsMine(pid || (state.profile && state.profile.id)); }, oopsAnswer: we2OopsAnswer, gardenCounts: we2GardenCounts, mixes: WE2_MIXES, mixReady: function (id) { var m = we2MixById(id); return m ? we2MixReady(m) : Promise.resolve(false); }, reportData: we2ReportData, reportHtml: we2ReportCardHtml, carState: function () { return { mixId: we2Car.mixId, idx: we2Car.idx, playing: we2Car.playing, hasAudio: !!we2Car.audio, paused: we2Car.audio ? we2Car.audio.paused : null, ended: we2Car.audio ? we2Car.audio.ended : null, src: we2Car.audio ? we2Car.audio.src : "" }; }, carPlay: we2CarPlayAt, carToggle: we2CarToggle, openGarden: openOopsGarden, openCar: openCarMode } };
 })();
