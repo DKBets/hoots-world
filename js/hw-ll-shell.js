@@ -2368,6 +2368,27 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
         Array.prototype.forEach.call(card._tibBlock.querySelectorAll(".lsn-tib-opt"), function (o) { o.disabled = false; o.classList.remove("right", "wrong"); });
       }
     }
+    /* Moved lessons (3e48): the old card is only a launcher — its player UI
+       (question, answers, teach stage) is hidden by design, so auto-running
+       its teach sequence plays a spoken question the child can see no
+       answers for and cannot tap ("can't press anything", confirmed on
+       Dawid's phone 2026-11-15 for Colour names + Shape names). Start the
+       real lesson instead, hands-free like teach mode intends. */
+    if (card.hasAttribute && card.hasAttribute("data-hl-moved")) {
+      var goBtn = card.querySelector(".ll-hl-go");
+      var mgen = ++teachGen;
+      try { window.__startTeach = { moved: true, hasGo: !!goBtn, gen: mgen }; } catch (e) {}
+      if (!goBtn) return;
+      setTimeout(function () {
+        if (mgen !== teachGen) return;
+        try {
+          goBtn.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, view: window }));
+        } catch (e) {
+          try { goBtn.click(); } catch (e2) {}
+        }
+      }, 60);
+      return;
+    }
     var btn = card.querySelector(".lsn-replay, .tutor-replay");
     var gen = ++teachGen;
     try { window.__startTeach = { hasCard: !!card, hasBtn: !!btn, disabled: !!(btn && btn.disabled), text: btn && btn.textContent, gen: gen }; } catch (e) {}
