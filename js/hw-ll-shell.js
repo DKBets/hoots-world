@@ -112,7 +112,15 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
       { id: "ny-two-step-equations-unwrap-x", title: "Two-step equations: unwrap x", emo: "𝑥", tags: ["Maths"], color: "#E0457B" , blurb: "Unwrap x in reverse order, keeping both sides balanced." },
       { id: "ny-photosynthesis-matter-energy-in-plants", title: "Photosynthesis: matter & energy in plants", emo: "🌱", tags: ["Science"], color: "#3A56D4" , blurb: "What a plant takes in, what it builds, and what it releases." },
       { id: "ny-ecosystems-the-hudson-river-food-web", title: "Ecosystems: the Hudson River food web", emo: "🐟", tags: ["Science"], color: "#0B8A5F" , blurb: "Who eats whom in the Hudson — and what changes when one species goes." },
-      { id: "ny-from-the-articles-to-the-constitution", title: "From the Articles to the Constitution", emo: "🗽", tags: ["Social studies"], color: "#F5A623", reading: true , blurb: "Why the Articles failed, and how the Constitution rebalanced power." }
+      { id: "ny-from-the-articles-to-the-constitution", title: "From the Articles to the Constitution", emo: "🗽", tags: ["Social studies"], color: "#F5A623", reading: true , blurb: "Why the Articles failed, and how the Constitution rebalanced power." },
+      { id: "ny-percents-tax-tip-and-discounts", title: "Percents: tax, tip & discounts", emo: "💵", tags: ["Maths"], color: "#0B8A5F" , blurb: "The 1% stepping stone: build any percent — tax, tips and discounts." },
+      { id: "ny-circles-area-and-circumference", title: "Circles: around & inside", emo: "⭕", tags: ["Maths"], color: "#3A56D4" , blurb: "Circumference and area — one special number, pi, does both jobs." },
+      { id: "ny-summarizing-just-the-facts", title: "Summarizing: just the facts", emo: "📝", tags: ["ELA", "Reading"], color: "#E0457B", reading: true , blurb: "Shrink a whole text to its key points with the five-finger trick." },
+      { id: "ny-context-clues-and-word-roots", title: "Context clues & word roots", emo: "🔍", tags: ["ELA", "Reading"], color: "#F5A623", reading: true , blurb: "Crack unknown words with the clues around them and their roots." },
+      { id: "ny-the-water-cycle", title: "The water cycle", emo: "💧", tags: ["Science"], color: "#3A56D4" , blurb: "One drop's whole loop: evaporate, condense, precipitate, collect." },
+      { id: "ny-cells-the-building-blocks-of-life", title: "Cells: building blocks of life", emo: "🦠", tags: ["Science"], color: "#0B8A5F" , blurb: "The parts of a cell and what each one does — plus plant extras." },
+      { id: "ny-the-american-revolution", title: "The American Revolution", emo: "🔔", tags: ["Social studies"], color: "#E0457B", reading: true , blurb: "Taxes with no say, a declaration, a war — how a new country was born." },
+      { id: "ny-the-erie-canal-and-a-growing-new-york", title: "The Erie Canal & a growing New York", emo: "🚢", tags: ["Social studies"], color: "#F5A623", reading: true , blurb: "A water highway across New York that changed what everything cost." }
     ]
   };
 
