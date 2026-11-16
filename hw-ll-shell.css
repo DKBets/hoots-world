@@ -2044,3 +2044,9 @@ body:not(.ll-teen) .ll-actall>summary{border:3px solid var(--ink);border-radius:
 .tutexp-opt.right{ border-color:#2e9e5b; background:#e7f7ec; }
 .tutexp-opt.wrong{ border-color:#d64545; background:#fdecec; }
 .tutexp-fb{ margin:10px 0 0; color:#44403a; }
+
+/* Tutor-experience pass (3): "Simpler, please" inside NY watch steps */
+.ny-simple-wrap{ display:block; margin-top:8px; }
+.ny-simple-btn{ font-family:"Fredoka",sans-serif; font-weight:700; font-size:.85rem; border-radius:999px; padding:5px 12px; cursor:pointer; border:2px solid #5b4a9e; background:#fff; color:#5b4a9e; }
+.ny-simple-txt{ display:block; margin-top:8px; background:#f4f0ff; border-left:4px solid #5b4a9e; border-radius:8px; padding:8px 10px; line-height:1.45; }
+.ny-simple-txt[hidden]{ display:none; }
