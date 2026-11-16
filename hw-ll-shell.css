@@ -1996,4 +1996,23 @@ body:not(.ll-teen) .ll-actall>summary{border:3px solid var(--ink);border-radius:
    activity — the warm-up question — is on the first screen instead of below a
    full-width picture. Scoped to .ny-lsn focus only. */
 #ll-obody:has(.ll-lesson-focus.ny-lsn) .wc2-printrow{display:none}
-#ll-obody .ll-lesson-focus.ny-lsn .lsn-art{height:144px;aspect-ratio:auto;object-fit:contain;margin:6px 0 2px}
+#ll-obody .ll-lesson-focus.ny-lsn .lsn-art{height:96px;aspect-ratio:auto;object-fit:contain;margin:6px 0 2px}
+/* Fix pass 8: compact first screen on Kaitlyn's focused lessons — one-row stepper + tighter spacing so the warm-up question and answers are on the first screen */
+#ll-obody .ll-lesson-focus.ny-lsn .ny-stepper{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:6px 0 8px}
+#ll-obody .ll-lesson-focus.ny-lsn .ny-stepper::-webkit-scrollbar{display:none}
+#ll-obody .ll-lesson-focus.ny-lsn .ny-stepper li{flex:0 0 auto;padding:3px 9px;font-size:.8rem}
+#ll-obody .ll-lesson-focus.ny-lsn .ny-hoot{margin-top:8px;padding:10px 12px}
+#ll-obody .ll-lesson-focus.ny-lsn .ny-vocab{margin-top:8px;padding:8px 12px}
+#ll-obody .ll-lesson-focus.ny-lsn .ny-warmup{margin-top:10px}
+/* Fix pass 8b: reclaim the remaining first-screen height so all three warm-up answers fit without scrolling */
+#ll-obody .ll-lesson-focus.ny-lsn .ny-std-tag{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.78rem;margin-top:6px}
+#ll-obody .ll-lesson-focus.ny-lsn .lsn-art{height:80px}
+#ll-obody .ll-lesson-focus.ny-lsn .ny-hoot p{line-height:1.45}
+#ll-obody .ll-lesson-focus.ny-lsn .ny-vocab{line-height:1.45}
+#ll-obody .ll-lesson-focus.ny-lsn .ny-warmup{padding:10px 12px}
+#ll-obody .ll-lesson-focus.ny-lsn .ny-warmup .ny-opts{margin-top:8px;gap:8px}
+#ll-obody .ll-lesson-focus.ny-lsn .ny-warm-opt{padding:9px 12px}
+/* Fix pass 8c: final first-screen trims */
+#ll-obody .ll-lesson-focus.ny-lsn .lsn-art{height:72px}
+#ll-obody .ll-lesson-focus.ny-lsn .ny-warmup h5{margin-bottom:5px}
+#ll-obody .ll-lesson-focus.ny-lsn .ny-warm-opt{padding:8px 12px}
