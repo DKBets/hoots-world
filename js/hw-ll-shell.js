@@ -1074,7 +1074,8 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
       (cfgNow.mode === "school" ? classBoxHtml() : "") +
       waveTodayHtml() + wc2TodayHtml() + /* Wave C1: daily pick, Right Now chips, world map entry; Wave C2: missions entry */
       we1TodayHtml() + /* Wave E1: Morning Hello + photo quest */
-      we2TodayHtml(); /* Wave E2: Oops Garden + Car mode entries */
+      we2TodayHtml() + /* Wave E2: Oops Garden + Car mode entries */
+      tutExpTodayHtml(); /* Tutor-experience pass (1)+(2): Today's 15 minutes + Second Look */
   }
 
   function kidbarHtml() {
@@ -4842,6 +4843,121 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
   function openOopsGarden() { nextView = { kind: "we2garden", title: "Oops Garden" }; openShellOverlay("🌸 Oops Garden", we2GardenHtml()); }
 
   /* ---------- Today / Play entries ---------- */
+
+  /* ===== Tutor-experience pass (Dawid's picks 1 + 2, 2026-11-15) =====
+     Today's 15 minutes: a 3-step study plan on the teen Today tab —
+     warm-up/review, one new NY lesson, Second Look — plus the Second
+     Look card itself, which resurfaces questions she missed about two
+     days later until she answers them right here. Miss capture lives
+     in the NY engine (index.html); this module only reads its store. */
+  var TUTEXP_SL_KEY = "hootworld.secondlook.v1";
+  function tutExpTodayStr() { var d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+  function tutExpSL() { try { var d = JSON.parse(localStorage.getItem(TUTEXP_SL_KEY) || "{}"); if (!d || !Array.isArray(d.items)) d = { items: [] }; return d; } catch (e) { return { items: [] }; } }
+  function tutExpSLDue(it) { var a = Date.parse((it.firstMiss || "") + "T00:00:00"), b = Date.parse(tutExpTodayStr() + "T00:00:00"); return isFinite(a) && isFinite(b) && (b - a) >= 2 * 86400000; }
+  var TUTEXP_NY_KEYS = ["Unit rates", "Negative numbers", "Two-step equations", "Main idea", "Argument writing", "Photosynthesis", "Ecosystems", "Constitution", "Percents", "Circles", "Summarizing", "Context clues", "water cycle", "Cells", "American Revolution", "Erie Canal"];
+  function tutExpNyData() {
+    var pid = state.profile && state.profile.id;
+    /* Titles in ENGINE card order (the NY engine's indices — dones,
+       dates and Second Look items are all keyed by it). LESSONS.ny is
+       grouped for the Learn tab, so map by distinctive substring. */
+    var pool = (LESSONS.ny || []).map(function (l) { return l.title; });
+    var titles = TUTEXP_NY_KEYS.map(function (k) {
+      var hit = pool.filter(function (t) { return t.toLowerCase().indexOf(k.toLowerCase()) > -1; })[0];
+      return hit || k;
+    });
+    /* Prefer the cards' own headings — the single source of truth,
+       already in engine order in the DOM. */
+    var domTitles = Array.prototype.map.call(document.querySelectorAll("#ny-creator-wrap .ny-lsn .lsn-top h4"), function (h) { return h.textContent.trim(); });
+    if (domTitles.length === titles.length) titles = domTitles;
+    var dones = []; try { dones = (JSON.parse(localStorage.getItem("hootworld.nylessons.v1") || "{}") || {})[pid] || []; } catch (e) {}
+    var dates = {}; try { dates = (JSON.parse(localStorage.getItem("hootworld.nydates.v1") || "{}") || {})[pid] || {}; } catch (e) {}
+    return { titles: titles, dones: dones, dates: dates };
+  }
+  function tutExpPlan() {
+    try { var d = JSON.parse(localStorage.getItem("hootworld.plan15.v1") || "null"); if (d && d.date === tutExpTodayStr() && d.checks) return d; } catch (e) {}
+    return { date: tutExpTodayStr(), checks: {} };
+  }
+  function tutExpPlanSave(p) { try { localStorage.setItem("hootworld.plan15.v1", JSON.stringify(p)); } catch (e) {} }
+  function tutExpSteps() {
+    var ny = tutExpNyData(), sl = tutExpSL();
+    var due = sl.items.filter(function (it) { return !it.resolved && tutExpSLDue(it); });
+    var resting = sl.items.filter(function (it) { return !it.resolved && !tutExpSLDue(it); }).length;
+    var nextIdx = -1, reviewIdx = -1, reviewDate = "";
+    ny.titles.forEach(function (t, i) { if (nextIdx < 0 && !ny.dones[i]) nextIdx = i; });
+    ny.titles.forEach(function (t, i) { if (ny.dones[i]) { var dt = ny.dates[i] || ""; if (reviewIdx < 0 || dt >= reviewDate) { reviewIdx = i; reviewDate = dt; } } });
+    var steps = [];
+    if (due.length) steps.push({ label: "Second Look", sub: due.length + (due.length === 1 ? " question" : " questions") + " from earlier lessons — nail them now", act: "scrollsl" });
+    else if (reviewIdx >= 0) steps.push({ label: "Warm up — replay", sub: ny.titles[reviewIdx], act: "open", arg: ny.titles[reviewIdx] });
+    else if (nextIdx >= 0) steps.push({ label: "Warm up", sub: "The first lesson starts with one built in", act: "open", arg: ny.titles[nextIdx] });
+    if (nextIdx >= 0) steps.push({ label: "New lesson", sub: ny.titles[nextIdx], act: "open", arg: ny.titles[nextIdx], autoIdx: nextIdx });
+    else steps.push({ label: "New lesson", sub: "All " + ny.titles.length + " NY lessons mastered 🎉", act: "" });
+    if (due.length && steps[0].act !== "scrollsl") steps.push({ label: "Second Look", sub: due.length + " waiting below", act: "scrollsl" });
+    else if (resting) steps.push({ label: "Second Look", sub: resting + (resting === 1 ? " question" : " questions") + " resting — back in a day or two", act: "scrollsl" });
+    else if (!due.length) steps.push({ label: "Finish strong", sub: "Every lesson ends with teach-it-back — that's the finish line", act: "" });
+    return steps;
+  }
+  function tutExpTodayHtml() {
+    var steps = tutExpSteps(), plan = tutExpPlan(), ny = tutExpNyData();
+    var rows = steps.map(function (st, i) {
+      var auto = st.autoIdx != null && ny.dates[st.autoIdx] === tutExpTodayStr();
+      var on = !!plan.checks[i] || auto;
+      return '<li class="tutexp-step' + (on ? " done" : "") + '"><button type="button" class="tutexp-chk" data-tutexp-check="' + i + '" aria-pressed="' + on + '">' + (on ? "✓" : "") + "</button>" +
+        '<div class="tutexp-main"><b>' + esc(st.label) + "</b><small>" + esc(st.sub) + "</small></div>" +
+        (st.act ? '<button type="button" class="ll-btn tutexp-go" data-tutexp-act="' + i + '">Start</button>' : "") + "</li>";
+    }).join("");
+    return '<section class="tutexp"><h3 class="tc-h">🎓 Today\'s 15 minutes</h3>' +
+      '<p class="tutexp-sub">Your tutor built today\'s session: a warm-up, one new lesson, one look back. About 15 minutes, in order.</p>' +
+      '<ol class="tutexp-list">' + rows + "</ol>" +
+      '<button type="button" class="ll-btn pri tutexp-start" data-tutexp-start>▶ Start my 15 minutes</button></section>' +
+      tutExpSLHtml();
+  }
+  function tutExpSLHtml() {
+    var sl = tutExpSL(), ny = tutExpNyData();
+    var due = sl.items.filter(function (it) { return !it.resolved && tutExpSLDue(it); });
+    var resting = sl.items.filter(function (it) { return !it.resolved && !tutExpSLDue(it); }).length;
+    if (!due.length && !resting) return "";
+    var blocks = due.map(function (it) {
+      var title = ny.titles[it.lesson] || ("NY lesson " + (it.lesson + 1));
+      var opts = it.opts.map(function (o, oi) { return '<button type="button" class="tutexp-opt" data-tutexp-opt="' + esc(it.key) + "|" + oi + '">' + esc(o.t) + "</button>"; }).join("");
+      return '<div class="tutexp-q" data-tutexp-item="' + esc(it.key) + '"><p class="tutexp-from">From: ' + esc(title) + '</p><p class="tutexp-qq">' + esc(it.q) + '</p><div class="tutexp-opts">' + opts + '</div><p class="tutexp-fb" hidden></p></div>';
+    }).join("");
+    return '<section class="tutexp" id="tutexp-sl"><h3 class="tc-h">👀 Second Look</h3>' +
+      '<p class="tutexp-sub">Questions from a couple of days ago come back until they\'re easy. No timers, no penalties.</p>' + blocks +
+      (resting ? '<p class="tutexp-sub">' + resting + (resting === 1 ? " question is" : " questions are") + " resting — they\'ll pop up here in a day or two.</p>" : "") + "</section>";
+  }
+  function tutExpAct(i) {
+    var st = tutExpSteps()[i]; if (!st) return;
+    if (st.act === "open" && st.arg) openLesson(st.arg);
+    else if (st.act === "scrollsl") { var el = document.getElementById("tutexp-sl"); if (el) el.scrollIntoView({ block: "start" }); }
+  }
+  document.addEventListener("click", function (e) {
+    var t = e.target; if (!t || !t.closest) return;
+    var start = t.closest("[data-tutexp-start]");
+    if (start) { var steps = tutExpSteps(), plan = tutExpPlan(), ny = tutExpNyData(); for (var i = 0; i < steps.length; i++) { var auto = steps[i].autoIdx != null && ny.dates[steps[i].autoIdx] === tutExpTodayStr(); if (!plan.checks[i] && !auto && steps[i].act) { tutExpAct(i); break; } } return; }
+    var go = t.closest("[data-tutexp-act]");
+    if (go) { tutExpAct(parseInt(go.getAttribute("data-tutexp-act"), 10)); return; }
+    var chk = t.closest("[data-tutexp-check]");
+    if (chk) { var p2 = tutExpPlan(), k = chk.getAttribute("data-tutexp-check"); p2.checks[k] = !p2.checks[k]; tutExpPlanSave(p2); var li = chk.closest(".tutexp-step"); if (li) { li.classList.toggle("done", !!p2.checks[k]); chk.textContent = p2.checks[k] ? "✓" : ""; chk.setAttribute("aria-pressed", String(!!p2.checks[k])); } return; }
+    var opt = t.closest("[data-tutexp-opt]");
+    if (opt) {
+      var parts = opt.getAttribute("data-tutexp-opt").split("|"), key = parts.slice(0, -1).join("|"), oi = parseInt(parts[parts.length - 1], 10);
+      var d = tutExpSL(), item = null;
+      d.items.forEach(function (it) { if (it.key === key) item = it; });
+      if (!item || item.resolved) return;
+      var block = opt.closest("[data-tutexp-item]"), fb = block ? block.querySelector(".tutexp-fb") : null;
+      var chosen = item.opts[oi];
+      if (chosen && chosen.right) {
+        item.resolved = true; item.resolvedDate = tutExpTodayStr();
+        try { localStorage.setItem(TUTEXP_SL_KEY, JSON.stringify(d)); } catch (err) {}
+        if (block) { block.classList.add("cleared"); block.querySelectorAll(".tutexp-opt").forEach(function (o) { o.disabled = true; }); opt.classList.add("right"); }
+        if (fb) { fb.hidden = false; fb.textContent = "✔️ Nailed it — that one's cleared from your Second Look list."; }
+      } else {
+        opt.classList.add("wrong"); setTimeout(function () { opt.classList.remove("wrong"); }, 650);
+        if (fb) { fb.hidden = false; fb.textContent = "Not yet — " + (item.fix || "have another look at the lesson and try again.") + " It stays on the list until it clicks."; }
+      }
+    }
+  });
+
   function we2TodayHtml() {
     if (!state.profile) return "";
     var c = we2GardenCounts(state.profile.id);
