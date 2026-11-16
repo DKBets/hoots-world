@@ -366,7 +366,7 @@
       stdSay([learned ? "std-learned.mp3" : "std-almost.mp3"]);
       if (window.HootLessons && window.HootLessons.recordResult) window.HootLessons.recordResult(lesson.id, S.wrongFirst, quiz.length, Date.now() - S.t0);
       shell('<section class="hs-card"><h3>' + right + " of " + quiz.length + " right first try</h3>" +
-        '<p class="hs-verdict ' + (learned ? "ok" : "no") + '">' + (learned ? "✓ Learned! Hoot will bring this back for a quick review in a few days." : "Almost — this goes on your Practice list so Hoot can show it again tomorrow.") + "</p>" +
+        '<p class="hs-verdict ' + (learned ? "ok" : "no") + '">' + (learned ? "✓ Learned! I'll bring this back for a quick review in a few days." : "Almost — this goes on your Practice list so I can show it again tomorrow.") + "</p>" +
         (S.misses.length ? "<h4>Look again</h4>" + S.misses.map(function (p) { return '<div class="hs-miss">' + qHtml(p) + '<ol class="hs-sol">' + p.steps.map(function (s) { return "<li>" + esc(s) + "</li>"; }).join("") + "</ol></div>"; }).join("") : "") +
         '<div class="hs-end"><button type="button" class="hs-btn" data-hs="again">↻ Practice again (' + esc(lesson.again || "new numbers") + ')</button>' + (nextOf(lesson) ? '<button type="button" class="hs-btn pri" data-hs="nextlesson">Next lesson ▶</button>' : "") + "</div></section>");
     }

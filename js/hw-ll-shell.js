@@ -150,7 +150,7 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
       { kind: "outdoor", title: "Leaf Hunt Walk", emo: "🍃", tags: ["Outdoor", "Nature"], color: "#F5A623", blurb: "An Indoor / Outdoor adventure: collect three different leaves." }
     ],
     teen: [
-      { kind: "lesson", title: "Main idea & citing evidence", emo: "📌", tags: ["ELA", "Reading"], color: "#E0457B", blurb: "Hoot's pick for today — find the main idea and cite evidence." },
+      { kind: "lesson", title: "Main idea & citing evidence", emo: "📌", tags: ["ELA", "Reading"], color: "#E0457B", blurb: "Tutor's pick for today — find the main idea and cite evidence." },
       { kind: "lesson", title: "Unit rates: the price of ONE", emo: "📊", tags: ["Maths"], color: "#3A56D4", blurb: "Find the price of one, then scale it." },
       { kind: "lesson", title: "Photosynthesis: matter & energy in plants", emo: "🌱", tags: ["Science"], color: "#0B8A5F", blurb: "How plants make food from light, water and air." },
       { kind: "lesson", title: "Ratios: scale both sides", emo: "⚖️", tags: ["Maths"], color: "#F5A623", blurb: "Scale a recipe up and down — keep both sides in step." }
@@ -990,10 +990,10 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
   function classBoxHtml() {
     var cur = classTopic(), m = cur ? matchTopic(cur) : [];
     return '<section class="ll-card ll-classbox"><h2 class="cb-h">This week in class</h2>' +
-      '<form class="cb-form" data-cb="1"><label class="cb-lab" for="cb-in">What is your class working on? Hoot lines up practice for it.</label>' +
+      '<form class="cb-form" data-cb="1"><label class="cb-lab" for="cb-in">What is your class working on? Your tutor lines up practice for it.</label>' +
       '<div class="cb-row"><input id="cb-in" name="t" maxlength="80" placeholder="e.g. ratios, the Constitution, writing an argument" value="' + esc(cur) + '"><button type="submit" class="ll-btn pri">Save</button></div></form>' +
       (cur ? (m.length
-        ? '<p class="cb-res">Hoot\'s practice for <b>' + esc(cur) + "</b>:</p><div class=\"ll-grid\">" + m.map(function (l) { return actCard({ kind: "lesson", title: l.title, emo: l.emo, tags: ["This week"], color: l.color, blurb: "Matches what your class is covering." }); }).join("") + "</div>"
+        ? '<p class="cb-res">Your tutor\'s practice for <b>' + esc(cur) + "</b>:</p><div class=\"ll-grid\">" + m.map(function (l) { return actCard({ kind: "lesson", title: l.title, emo: l.emo, tags: ["This week"], color: l.color, blurb: "Matches what your class is covering." }); }).join("") + "</div>"
         : '<p class="cb-res">No lesson matches <b>' + esc(cur) + "</b> yet. Your other lessons are below; tell a grown-up so it can be added.</p>") : "") +
       "</section>";
   }
@@ -1014,7 +1014,7 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
     var pHours = Math.min(100, Math.round((todayMs / ((p.hourGoal || 1) * 3600000)) * 100));
     var cfgNow = childCfg(p.id);
     var greet = isTeen()
-      ? (cfgNow.mode === "school" ? "Practice what you're covering in class. Stuck on homework? Hoot explains it a different way." : "Here's your plan for today. Stuck on something? Hoot explains it a different way.")
+      ? (cfgNow.mode === "school" ? "Practice what you're covering in class. Stuck on homework? Your tutor explains it a different way." : "Here's your plan for today. Stuck on something? Your tutor explains it a different way.")
       : "Hoo hoo! Ready to play, " + p.label + "?";
     return (
       '<div class="ll-kidbar" id="ll-kidbar">' + kidbarHtml() + "</div>" +
@@ -1070,7 +1070,7 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
       '<div class="tc-ring" style="--p:' + pct + '" role="img" aria-label="' + pct + ' percent of today done"><b>' + pct + "%</b></div></section>" +
       tutExpTodayHtml() + /* Fix pass 10: Today's 15 minutes sits at the TOP of her Today, not the bottom */
       '<ol class="tc-list" aria-label="Today\'s checklist">' + rows + "</ol>" +
-      '<p class="tc-tools"><button type="button" class="ni-top" id="ll-newideas">Shuffle plan</button><span>' + esc(cfgNow.mode === "school" ? "Practice what you're covering in class." : "Stuck? Open the lesson and Hoot explains it another way.") + "</span></p>" +
+      '<p class="tc-tools"><button type="button" class="ni-top" id="ll-newideas">Shuffle plan</button><span>' + esc(cfgNow.mode === "school" ? "Practice what you're covering in class." : "Stuck? Open the lesson and your tutor explains it another way.") + "</span></p>" +
       (courses ? '<h3 class="tc-h">Courses</h3><div class="tc-courses">' + courses + "</div>" : "") +
       (cfgNow.mode === "school" ? classBoxHtml() : "") +
       waveTodayHtml() + wc2TodayHtml() + /* Wave C1: daily pick, Right Now chips, world map entry; Wave C2: missions entry */
@@ -1118,7 +1118,7 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
       return '<button type="button" class="ll-pathcard" data-path="' + esc(p.id) + '"><span class="emo" aria-hidden="true">' + p.emo + '</span><b>' + esc(p.title) + "</b><small>" + p.count + " lessons · " + (isTeen() ? "Open" : "Play") + "</small></button>";
     }).join("");
     var cards = lessons.map(function (l) {
-      return actCard({ kind: "lesson", title: l.title, emo: l.emo, tags: (l.tags || []).concat([l.path]), color: l.color, blurb: l.blurb || (isTeen() ? "Hoot explains it, shows a worked example, you practise, then a short quiz." : "Open this lesson with the owl tutor.") });
+      return actCard({ kind: "lesson", title: l.title, emo: l.emo, tags: (l.tags || []).concat([l.path]), color: l.color, blurb: l.blurb || (isTeen() ? "Your tutor explains it, shows a worked example, you practise, then a short quiz." : "Open this lesson with the owl tutor.") });
     }).join("");
     return '<div class="ll-kidbar">' + kidbarHtml() + "</div>" +
       (isTeen()
@@ -1148,7 +1148,7 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
     return { needs: needs, fresh: fresh, todo: todo };
   }
   function practiceItem(t, note, emo, color) {
-    return actCard({ kind: "lesson", title: t, emo: emo, tags: [note], color: color, blurb: note === "Re-teach" ? "Hoot had to explain this a second way. Run it again until it feels easy." : note === "Review" ? "Done once — a quick second pass makes it stick." : "Next up on your path." });
+    return actCard({ kind: "lesson", title: t, emo: emo, tags: [note], color: color, blurb: note === "Re-teach" ? (isTeen() ? "Your tutor had to explain this a second way. Run it again until it feels easy." : "Hoot had to explain this a second way. Run it again until it feels easy.") : note === "Review" ? "Done once — a quick second pass makes it stick." : "Next up on your path." });
   }
   function renderPractice() {
     var d = practiceData();
@@ -1181,7 +1181,7 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
       (LESSONS[p.id] || hlLessons(p.id).slice(0, 6)).forEach(function (l) { if (l.reading) prefer.push(Object.assign({ kind: "lesson" }, l)); });
     });
     var cards = prefer.map(function (l) {
-      return actCard({ kind: "lesson", title: l.title, emo: l.emo, tags: l.tags, color: l.color, blurb: l.blurb || (isTeen() ? "A reading or writing lesson. Start lesson opens it with Hoot." : "A reading or story lesson. Play now opens the tutor.") });
+      return actCard({ kind: "lesson", title: l.title, emo: l.emo, tags: l.tags, color: l.color, blurb: l.blurb || (isTeen() ? "A reading or writing lesson. Start lesson opens it with your tutor." : "A reading or story lesson. Play now opens the tutor.") });
     }).join("");
     return '<div class="ll-kidbar">' + kidbarHtml() + '</div>' + libSectionHtml() + '<section class="ll-card ll-hero" style="--k:' + state.profile.color + '"><div class="big">📚</div><div class="htxt"><h2>Reading</h2><p class="hoot-line">' + (band === "teen" ? "Reading and writing lessons at your level." : "Letter sounds and listening — Hoot says every word out loud.") + '</p></div></section><div class="ll-grid">' + cards + "</div>";
   }
@@ -3453,8 +3453,9 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
     var stats = wcStats(p.id);
     var chips = '<div class="wc-chips" role="group" aria-label="Right now"><span class="wc-chipslabel">Right now:</span>' +
       WC_CHIPS.map(function (c) { return '<button type="button" class="wc-chip" data-wc-chip="' + c.id + '">' + c.emo + " " + esc(c.label) + "</button>"; }).join("") + "</div>";
-    return '<section class="ll-card wc-today" aria-label="Hoot\'s picks">' +
-      '<h2 class="todoh">🦉 Hoot\'s pick <span class="muted">for ' + esc(p.label) + "</span></h2>" +
+    var teenPick = isTeen();
+  return '<section class="ll-card wc-today" aria-label="' + (teenPick ? "Tutor's picks" : "Hoot\'s picks") + '">' +
+      '<h2 class="todoh">' + (teenPick ? "🎓 Tutor\'s pick" : "🦉 Hoot\'s pick") + ' <span class="muted">for ' + esc(p.label) + "</span></h2>" +
       wcPickCard(today, now, "today") +
       (tmr ? wcPickCard(tmr, tmrDate, "tomorrow") : "") +
       chips +
