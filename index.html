@@ -5820,6 +5820,13 @@
       window.__hwResolveClips = function(clips){
         var out = [], H = window.HOOT_HAVE || {}, P = window.__hwPendingAsk;
         (clips || []).forEach(function(c){ if(P[c] && !H[c]) out = out.concat(P[c]); else out.push(c); });
+        /* Fix pass 10: the lesson clip channels resolve through here too —
+           on the teen profile, generic clips with a tutor twin use it. */
+        try {
+          if (document.body && document.body.classList.contains("ll-teen") && window.__hwTutHave) {
+            out = out.map(function(c){ return window.__hwTutHave[c] ? "tut-" + c : c; });
+          }
+        } catch (e) {}
         return out;
       };
       var HOOT_CLIPS = {
@@ -5859,6 +5866,14 @@
         if(currentVoice === "off") return false;
         var file = HOOT_CLIPS[key];
         if(!file) return false;
+        /* Fix pass 10: named-key celebrations on the teen profile also use
+           the tutor twin (hoot-great-job -> tut-hoot-great-job). */
+        try {
+          if (document.body && document.body.classList.contains("ll-teen") && window.__hwTutHave) {
+            var base = file.replace(/\.mp3$/, "");
+            if (window.__hwTutHave[base]) file = "tut-" + file;
+          }
+        } catch (e) {}
         if(!chained) hootClipQueue.length = 0;
         var a = hootClipPlayer();
         try{
@@ -5872,13 +5887,19 @@
       function queueHootClip(key){ hootClipQueue.push(key); }
       /* 3e51: shelf works speak their key words (colours, shapes, counting) in Hoot's
          recorded voice, one short clip after another, instead of only writing them. */
+      /* Fix pass 10: on the teen (Kaitlyn) profile, every generic clip that
+         has a tutor-voice twin resolves to it — her tutor, not Hoot, speaks
+         inside her lessons (Dawid's rule: everything for Kaitlyn gets a
+         tutor explaining every step). */
+      var TUT_HAVE = (window.__hwTutHave = {"owl-hello":1,"owl-excited":1,"owl-sleepy":1,"hoot-great-job":1,"hoot-amazing":1,"hoot-star":1,"hoot-try-again":1,"hoot-look-closely":1,"hoot-great-thinking":1,"hoot-keep-going":1,"hoot-you-learned":1,"name-number-1":1,"name-number-2":1,"name-number-3":1,"name-number-4":1,"name-number-5":1,"name-number-6":1,"name-number-7":1,"name-number-8":1,"name-number-9":1,"name-number-10":1,"name-color-red":1,"name-color-blue":1,"name-color-yellow":1,"name-color-green":1,"name-color-orange":1,"name-color-purple":1,"name-color-pink":1,"name-color-black":1,"name-color-white":1,"name-color-brown":1,"name-color-sky-blue":1,"call-color-red":1,"call-color-blue":1,"call-color-yellow":1,"call-color-green":1,"call-color-orange":1,"call-color-purple":1,"call-color-pink":1,"call-color-black":1,"call-color-white":1,"call-color-brown":1});
       window.__hwSay = function(names){
         try{
           if(currentVoice === "off") return;
           var H = window.HOOT_HAVE || {}, P = window.__hwPendingAsk || {}, list = [];
           (names || []).forEach(function(n){ if(!n) return; if(P[n] && !H[n]) list = list.concat(P[n]); else list.push(n); });
           stopHootClip();
-          list.forEach(function(n, i){ var k = "x-" + n; HOOT_CLIPS[k] = n + ".mp3"; if(i === 0) playHootClip(k); else queueHootClip(k); });
+          var teenTut = false; try { teenTut = document.body && document.body.classList.contains("ll-teen"); } catch(e) {}
+          list.forEach(function(n, i){ var k = "x-" + n; HOOT_CLIPS[k] = (teenTut && TUT_HAVE[n] ? "tut-" + n : n) + ".mp3"; if(i === 0) playHootClip(k); else queueHootClip(k); });
         }catch(e){}
       };
       function stopHootClip(){
@@ -5886,6 +5907,7 @@
         if(hootClipEl){ try{ hootClipEl.pause(); }catch(e){} }
         setSpeaking(false);
       }
+      window.__hwStop = stopHootClip;
       function clipForLine(t){
         var s = String(t || "").toLowerCase();
         if(s.indexOf("hee hee") === 0) return "giggle";
