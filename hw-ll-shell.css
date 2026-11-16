@@ -2145,3 +2145,113 @@ body:not(.ll-teen) .lib-page { font-size: 1.5rem; }
 .lib-resgen { width: 42px; height: 62px; display: flex; align-items: center; justify-content: center; background: #8D6E63; color: #fff; border-radius: 4px; font-size: .6rem; text-align: center; padding: 3px; }
 .lib-homecase .lib-none { color: #ffe9c4; padding: 4px 8px; }
 @media (max-width: 520px) { .lib-row { grid-template-columns: repeat(4, 1fr); gap: 8px; } .lib-gencover b { font-size: .68rem; } .lib-gencover .lib-gc-emo { font-size: 1.4rem; } }
+
+/* ===== Library 2 (2026-11-16): magical bookcase + full-screen reader =====
+   Owner rejected the v1 look as "weak / very basic": the cases are now deep
+   grained wood under a warm glow with brass nameplates and thick boards, the
+   originals show their generated watercolour covers, and an open book takes
+   the WHOLE screen (body.lib-book-open) instead of a 640px card. */
+
+/* --- Bookcase --- */
+.lib-wrap { background: linear-gradient(180deg, #fdf6e9, #f6ead2); border: 2px solid #e9dcc3; }
+.lib-case { position: relative; border: 3px solid #4a2c10; border-radius: 20px; padding: 16px 12px 16px; margin: 16px 0;
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(255, 190, 90, .30), rgba(255, 190, 90, 0) 55%),
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, .10) 0 2px, rgba(0, 0, 0, 0) 2px 118px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, .05) 0 3px, rgba(0, 0, 0, 0) 3px 7px),
+    linear-gradient(180deg, #8a5427, #6f421e 60%, #5d3516);
+  box-shadow: inset 0 2px 0 rgba(255, 220, 160, .35), inset 0 -16px 30px rgba(0, 0, 0, .38), 0 14px 30px rgba(80, 58, 46, .30); }
+.lib-caseh { display: inline-block; background: linear-gradient(180deg, #f5d78c, #dda950); color: #4a2f10;
+  padding: 5px 16px; border-radius: 999px; font-size: 1rem; text-shadow: none; margin: 0 6px 8px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, .4), inset 0 1px 0 rgba(255, 255, 255, .65); }
+.lib-row { gap: 14px; padding: 10px 10px 0; }
+.lib-book { filter: drop-shadow(0 9px 7px rgba(0, 0, 0, .38)); }
+.lib-book:nth-child(4n+2) { transform: rotate(-.7deg); }
+.lib-book:nth-child(4n+4) { transform: rotate(.7deg); }
+.lib-book:hover, .lib-book:focus-visible { transform: translateY(-7px) rotate(-1deg); filter: drop-shadow(0 16px 12px rgba(0, 0, 0, .42)); }
+.lib-board { height: 18px; margin: 2px 0 8px; border-radius: 5px;
+  background: linear-gradient(180deg, #e2ac60, #b57e3a 45%, #87571f);
+  box-shadow: 0 10px 14px rgba(0, 0, 0, .45), inset 0 2px 0 rgba(255, 235, 190, .65), inset 0 -3px 0 rgba(0, 0, 0, .28); }
+.lib-spine { border-radius: 5px 10px 10px 5px;
+  box-shadow: inset 6px 0 10px -4px rgba(0, 0, 0, .45), inset -2px 0 4px rgba(255, 255, 255, .22), 0 5px 10px rgba(0, 0, 0, .35); }
+.lib-artcover { position: relative; overflow: hidden; background: #3a2410; }
+.lib-spine.lib-artcover { aspect-ratio: 4/5; }
+.lib-coverart { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.lib-band { position: absolute; left: 0; right: 0; bottom: 0; padding: 14px 4px 7px; text-align: center; color: #fff7e6;
+  background: linear-gradient(180deg, rgba(24, 14, 4, .45), rgba(24, 14, 4, .88) 32%, rgba(24, 14, 4, .95)); }
+.lib-band b { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; font-size: .64rem; line-height: 1.12; }
+.lib-band small { display: block; font-size: .52rem; line-height: 1.15; opacity: .88; }
+.lib-artcover .lib-gc-fb { position: absolute; inset: 0; }
+.lib-readmark { bottom: -9px; z-index: 2; }
+.lib-bigcover.lib-artcover { aspect-ratio: 4/5; width: min(300px, 76vw); }
+.lib-bigcover .lib-band { padding: 18px 12px 12px; }
+.lib-bigcover .lib-band b { font-size: 1.02rem; }
+.lib-bigcover .lib-band small { font-size: .8rem; }
+.lib-opencover .lib-artcover { aspect-ratio: auto; height: 100%; width: 100%; }
+
+/* --- Full-screen mode: the overlay takes the whole viewport (its own Back
+   bar stays visible just under the app's preview banner) --- */
+body.lib-book-open #ll-overlay { top: 0; padding-top: calc(var(--banner) + env(safe-area-inset-top, 0px)); box-sizing: border-box; background: #201203; }
+body.lib-book-open #ll-obody { padding: 0; background: radial-gradient(110% 70% at 50% 16%, #5a3d22, #33200f 58%, #201203); }
+
+/* --- Pull-out stage + title page: dark library, warm spotlight --- */
+.lib-stage { min-height: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 26px 16px 36px;
+  background: radial-gradient(62% 48% at 50% 42%, rgba(255, 196, 96, .30), rgba(255, 196, 96, 0) 70%); }
+.lib-halo { position: absolute; left: 50%; top: 44%; width: min(440px, 94vw); aspect-ratio: 1; transform: translate(-50%, -50%);
+  border-radius: 50%; background: radial-gradient(circle, rgba(255, 205, 110, .48), rgba(255, 205, 110, 0) 65%); pointer-events: none; }
+.lib-spark { color: #ffd98a; font-size: 1.35rem; }
+/* #ll-obody forces ink colour with !important, so stage text on the dark
+   backdrop needs ID-scoped !important rules of its own. */
+#ll-obody .lib-stagehint, #ll-obody .lib-stagehint2 { position: relative; z-index: 1; color: #ffe9c4 !important; opacity: 1; text-shadow: 0 2px 8px rgba(0, 0, 0, .55); }
+#ll-obody .lib-done-stage .lib-rtitle, #ll-obody .lib-done-stage .lib-page, #ll-obody .lib-done-stage .lib-page small, #ll-obody .lib-done-stage .lib-pageno { color: #ffe9c4 !important; }
+.lib-done-stage .lib-pageno { opacity: .85; }
+.lib-bigbook { position: relative; z-index: 1; filter: drop-shadow(0 26px 32px rgba(0, 0, 0, .55)); }
+.lib-openbook { width: min(680px, 94vw); max-width: none; }
+.lib-titlecard { box-shadow: inset 0 0 0 2px rgba(176, 141, 79, .25); }
+.lib-done-stage .lib-rtitle { color: #fff3da; }
+.lib-done-stage .lib-page { color: #ffe9c4; }
+.lib-done-stage .lib-pageno { color: #ffe9c4; opacity: .85; }
+.lib-done-stage .lib-nav { background: none; border-top: 0; width: min(480px, 100%); }
+
+/* --- Reader: full screen --- */
+.lib-reader { max-width: none; margin: 0; padding: 0; height: 100%; box-sizing: border-box;
+  display: flex; flex-direction: column; position: relative; text-align: center; }
+.lib-sheet { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+.lib-sheet.turn-next { animation: libTurnN .38s ease; }
+.lib-sheet.turn-prev { animation: libTurnP .38s ease; }
+.lib-artwrap { flex: 0 0 55%; min-height: 0; position: relative; overflow: hidden; }
+.lib-artwrap::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 56px;
+  background: linear-gradient(180deg, rgba(255, 250, 240, 0), #fffaf0); pointer-events: none; }
+.lib-art { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 0; margin: 0; }
+.lib-textwrap { flex: 1; min-height: 0; overflow: auto; display: flex; flex-direction: column; align-items: center;
+  background: linear-gradient(180deg, #fffaf0, #fdf2da); padding: 10px 22px 4px; }
+.lib-little .lib-page { font-size: 1.62rem; line-height: 1.5; max-width: 640px; margin: auto 0; }
+.lib-little .lib-pageno { margin: 6px 0 2px; }
+.lib-dots { margin: 4px 0 8px; }
+.lib-dot { width: 10px; height: 10px; }
+.lib-dot.on { background: #e79a1e; box-shadow: 0 0 0 3px rgba(231, 154, 30, .25); }
+.lib-nav { position: relative; z-index: 5; padding: 10px 14px calc(12px + env(safe-area-inset-bottom, 0px));
+  background: linear-gradient(180deg, #fdf3dd, #f6e5bf); border-top: 2px solid #e8d5ae; }
+.lib-zone { position: absolute; top: 0; bottom: 0; width: 22%; background: transparent; border: 0; padding: 0; z-index: 3; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.lib-zone-prev { left: 0; }
+.lib-zone-next { right: 0; }
+.lib-zone:focus-visible { outline: 3px solid #F5A623; outline-offset: -3px; }
+
+/* --- Teen reader: full-screen e-reader, cream page on the dark library --- */
+.lib-reader.lib-teen { align-items: center; }
+.lib-reader.lib-teen .lib-pagecard { flex: 1; width: min(680px, 100%); margin: 0; border: 0; border-radius: 0;
+  overflow: auto; display: flex; flex-direction: column; box-sizing: border-box;
+  padding: 32px clamp(20px, 6vw, 46px) 20px; box-shadow: 0 0 60px rgba(0, 0, 0, .5); }
+.lib-reader.lib-teen .lib-page { font-size: 1.2rem; line-height: 1.8; text-align: left; margin: 0 0 16px; }
+.lib-reader.lib-teen .lib-orn { font-size: 1.5rem; margin: 0 0 14px; }
+.lib-reader.lib-teen .lib-pageno { text-align: center; margin: auto 0 0; padding-top: 14px; }
+.lib-reader.lib-teen .lib-dots { margin: 0; padding: 8px 0 4px; width: min(680px, 100%); box-sizing: border-box;
+  background: linear-gradient(180deg, #fffaf0, #fdf3dd); }
+.lib-reader.lib-teen .lib-nav { width: min(680px, 100%); box-sizing: border-box; }
+
+@media (max-width: 520px) {
+  .lib-little .lib-page { font-size: 1.56rem; }
+  .lib-band b { font-size: .60rem; }
+  .lib-band small { font-size: .52rem; }
+}
