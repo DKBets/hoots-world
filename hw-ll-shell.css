@@ -1136,7 +1136,8 @@ body.ll-teen #ll-obody .ny-opt,body.ll-teen #ll-obody .ny-try-opt{border-radius:
 }
 
 /* ===== 3e23: home for ages 2–7 ===== */
-body.ll-kidband #ll-tabs button[data-tab="reading"],body.ll-kidband #ll-tabs button[data-tab="memories"]{display:none}
+/* fix pass 10a: the book library lives on the Reading tab — Dawid wants it for the little kids too, so the tab stays visible for ages 2–7; only Memories stays grown-up-side */
+body.ll-kidband #ll-tabs button[data-tab="memories"]{display:none}
 .kh-hero{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center;margin:6px 0 10px}
 .kh-hoot{width:120px;height:126px;border:0;background:none;padding:0;cursor:pointer;touch-action:manipulation}
 .kh-hoot.wiggle{animation:khWig .6s ease-in-out}
