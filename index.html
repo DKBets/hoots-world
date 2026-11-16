@@ -7673,9 +7673,9 @@
            is never used. Lessons without clips behave exactly as before. */
         var TIB_HAVE = { "creator-budget-the-project": 1, "creator-debug-change-one-thing": 1, "creator-make-a-claim-bring-evidence": 1, "creator-percentages-parts-of-100": 1, "creator-present-hook-build-land": 1, "creator-ratios-scale-both-sides": 1, "creator-research-you-can-trust": 1, "creator-the-design-loop-test-fix-retest": 1, "early-answer-questions-about-a-story": 1, "early-blend-sounds-into-words": 1, "early-counting-on-to-add": 1, "early-letter-sounds": 1, "early-read-a-line-and-understand-it": 1, "early-rhyming-words": 1, "early-taking-away": 1, "early-tens-and-ones": 1, "quest-area-length-width": 1, "quest-coding-order-matters": 1, "quest-division-is-sharing-equally": 1, "quest-find-the-main-idea": 1, "quest-fractions-equal-parts": 1, "quest-how-plants-make-food": 1, "quest-times-tables-are-groups": 1, "quest-topic-sentences": 1, "teen-algebra-ii-keep-the-balance": 1, "teen-algebra-ii-two-step-equations": 1, "teen-biology-dna-to-protein": 1, "teen-biology-where-energy-comes-from": 1, "teen-history-a-thesis-is-a-claim": 1, "teen-history-primary-vs-secondary-sources": 1, "teen-spanish-ii-ar-verb-endings": 1, "teen-study-science-test-don-t-re-read": 1 };
         function tibIdFor(c){ return c ? (c.getAttribute("data-lsn-id") || "") : ""; }
-        function tibSay(keys){ try{ if(window.__hwSay) window.__hwSay(keys); }catch(e){} }
+        function tibSay(keys, lid){ try{ if(window.__hwSay){ if(lid && /^(teen|creator)-/.test(lid)) keys = keys.map(function(k){ return "tut-" + k; }); window.__hwSay(keys); } }catch(e){} }
         function buildTib(c){
-          if(c._tibBlock){ c._tibBlock.hidden = false; if(!c._tibDone && TIB_HAVE[tibIdFor(c)]) tibSay(["tib-intro"]); return c._tibBlock; }
+          if(c._tibBlock){ c._tibBlock.hidden = false; if(!c._tibDone && TIB_HAVE[tibIdFor(c)]) tibSay(["tib-intro"], tibIdFor(c)); return c._tibBlock; }
           var data = tibFor(c);
           if(!data) return null;
           var wrap = document.createElement("div");
@@ -7707,7 +7707,7 @@
           if(fbEl && fbEl.parentNode) fbEl.parentNode.insertBefore(wrap, fbEl);
           else c.appendChild(wrap);
           c._tibBlock = wrap;
-          if(TIB_HAVE[tibId]) tibSay(["tib-intro"]);
+          if(TIB_HAVE[tibId]) tibSay(["tib-intro"], tibId);
           return wrap;
         }
         document.addEventListener("click", function(e){
@@ -7736,13 +7736,13 @@
               if(tbadge) tbadge.textContent = "🏆 You taught Hoot — lesson done!";
               panelProgress(tcard.closest(".panel"));
               var tibDoneId = tibIdFor(tcard);
-              if(TIB_HAVE[tibDoneId]) tibSay(["tib-" + tibDoneId, "tib-done"]);
+              if(TIB_HAVE[tibDoneId]) tibSay(["tib-" + tibDoneId, "tib-done"], tibDoneId);
             } else {
               tibOpt.classList.add("wrong");
               setTimeout(function(){ tibOpt.classList.remove("wrong"); }, 650);
               if(tfb) tfb.textContent = tibOpt.getAttribute("data-fix") || "Not quite — think about what Hoot taught, then pick again!";
               var tibFixClip = tibOpt.getAttribute("data-fixclip");
-              if(tibFixClip) tibSay([tibFixClip]);
+              if(tibFixClip) tibSay([tibFixClip], tibIdFor(tcard));
             }
             return;
           }
@@ -7918,6 +7918,7 @@
           if(!card || (card.classList.contains("done") && !card._again) || opt.disabled) return;
           if(card.closest("#panel-little")) return; /* the little tutor speaks it inside its own beats */
           var clip = opt.getAttribute("data-whyclip");
+          if(clip && /^(teen|creator)-/.test(card.getAttribute("data-lsn-id") || "")) clip = "tut-" + clip;
           if(clip && opt.getAttribute("data-hint") === opt.getAttribute("data-whyhint")) say([clip]);
         });
 
@@ -8081,7 +8082,7 @@
           var info = { band: raw[0], title: raw[1], card: card, steps: [] };
           var ok = true;
           raw[2].forEach(function(se, si){
-            var st = { dur: se[0] || null, clipName: se[0] ? ("step-" + id + "-" + (si + 1)) : null, _els: [] };
+            var st = { dur: se[0] || null, clipName: se[0] ? (((raw[0] === "teen" || raw[0] === "creator") ? "tut-step-" : "step-") + id + "-" + (si + 1)) : null, _els: [] };
             se[1].forEach(function(ix){
               var el = ix === "Q" ? q : kids[ix];
               if(el) st._els.push(el); else ok = false;
