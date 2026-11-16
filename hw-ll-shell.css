@@ -2016,3 +2016,31 @@ body:not(.ll-teen) .ll-actall>summary{border:3px solid var(--ink);border-radius:
 #ll-obody .ll-lesson-focus.ny-lsn .lsn-art{height:72px}
 #ll-obody .ll-lesson-focus.ny-lsn .ny-warmup h5{margin-bottom:5px}
 #ll-obody .ll-lesson-focus.ny-lsn .ny-warm-opt{padding:8px 12px}
+
+/* Tutor-experience pass (5): confidence gate before "Your turn" (NY lessons) */
+.ny-conf{ margin-top:14px; border:2.5px solid #5b4a9e; border-radius:16px; padding:14px 16px; background:#f4f0ff; }
+.ny-conf-q{ font-size:1.05rem; line-height:1.45; margin:0 0 12px; color:#2c2350; }
+.ny-conf-btns{ display:flex; gap:10px; flex-wrap:wrap; }
+.ny-conf-ready,.ny-conf-watch,.ny-conf-back{ font-family:"Fredoka",sans-serif; font-weight:700; font-size:1rem; border-radius:999px; padding:10px 18px; cursor:pointer; border:2.5px solid #5b4a9e; }
+.ny-conf-ready{ background:#5b4a9e; color:#fff; }
+.ny-conf-watch{ background:#fff; color:#5b4a9e; }
+.ny-conf-back{ background:#5b4a9e; color:#fff; margin-top:12px; }
+
+/* Tutor-experience pass (1)+(2): Today's 15 minutes + Second Look (teen Today) */
+.tutexp{ margin-top:18px; }
+.tutexp-sub{ color:#5a5348; font-size:.95rem; margin:4px 0 10px; }
+.tutexp-list{ list-style:none; margin:0 0 12px; padding:0; display:flex; flex-direction:column; gap:8px; }
+.tutexp-step{ display:flex; align-items:center; gap:10px; background:#fff; border:2px solid #e3ddcf; border-radius:14px; padding:10px 12px; }
+.tutexp-step.done{ opacity:.65; }
+.tutexp-chk{ width:30px; height:30px; border-radius:50%; border:2.5px solid #5b4a9e; background:#fff; color:#5b4a9e; font-weight:800; cursor:pointer; flex:none; }
+.tutexp-step.done .tutexp-chk{ background:#5b4a9e; color:#fff; }
+.tutexp-main{ flex:1; } .tutexp-main b{ display:block; } .tutexp-main small{ color:#5a5348; }
+.tutexp-q{ background:#fff; border:2px solid #e3ddcf; border-radius:14px; padding:12px 14px; margin-bottom:10px; }
+.tutexp-q.cleared{ border-color:#2e9e5b; }
+.tutexp-from{ font-size:.8rem; color:#5b4a9e; font-weight:700; margin:0 0 4px; }
+.tutexp-qq{ margin:0 0 10px; font-size:1rem; }
+.tutexp-opts{ display:flex; flex-direction:column; gap:8px; }
+.tutexp-opt{ text-align:left; border:2px solid #d9d2c4; background:#faf7ef; border-radius:10px; padding:9px 12px; cursor:pointer; font-size:.98rem; }
+.tutexp-opt.right{ border-color:#2e9e5b; background:#e7f7ec; }
+.tutexp-opt.wrong{ border-color:#d64545; background:#fdecec; }
+.tutexp-fb{ margin:10px 0 0; color:#44403a; }
