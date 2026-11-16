@@ -5469,8 +5469,39 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
       results.innerHTML = '<p class="lib-none">The book finder could not connect — <button type="button" class="ll-btn" data-lib-home-manual>Add it with the name I typed</button></p>';
     });
   }
+  /* Swipe to turn pages (Dawid, 2026-11-16): a clear horizontal swipe on a
+     book page turns it — left for next, right for back. The synthetic click
+     a touch can leave behind on an edge zone is swallowed for a beat so a
+     swipe never turns two pages. Vertical scrolling (teen pages) is left
+     alone: the swipe must dominate horizontally. */
+  var libSwipe = null, libSwipeSwallowUntil = 0;
+  document.addEventListener("touchstart", function (e) {
+    libSwipe = null;
+    if (!libState || libState.stage !== "page" || !e.touches || e.touches.length !== 1) return;
+    var r = e.target && e.target.closest ? e.target.closest(".lib-reader") : null;
+    if (!r) return;
+    libSwipe = { x: e.touches[0].clientX, y: e.touches[0].clientY, at: Date.now() };
+  }, { passive: true });
+  document.addEventListener("touchmove", function (e) {
+    /* Claim a clearly-horizontal drag so the page does not scroll and the
+       browser does not steal the gesture (edge back-swipe) mid-turn. */
+    if (!libSwipe || !e.touches || e.touches.length !== 1) return;
+    var dx = e.touches[0].clientX - libSwipe.x, dy = e.touches[0].clientY - libSwipe.y;
+    if (Math.abs(dx) > 12 && Math.abs(dx) > 1.6 * Math.abs(dy)) e.preventDefault();
+  }, { passive: false });
+  document.addEventListener("touchend", function (e) {
+    if (!libSwipe) return;
+    var t = e.changedTouches && e.changedTouches[0];
+    var dx = t ? t.clientX - libSwipe.x : 0, dy = t ? t.clientY - libSwipe.y : 0;
+    var dt = Date.now() - libSwipe.at;
+    libSwipe = null;
+    if (!t || dt > 700 || Math.abs(dx) < 56 || Math.abs(dx) < 1.6 * Math.abs(dy)) return;
+    libSwipeSwallowUntil = Date.now() + 450;
+    libTurn(dx < 0 ? 1 : -1);
+  }, { passive: true });
   document.addEventListener("click", function (e) {
     var t = e.target; if (!t || !t.closest) return;
+    if (Date.now() < libSwipeSwallowUntil && t.closest("[data-lib-page]")) return;
     var open = t.closest("[data-lib-open]");
     if (open) { openBook(open.getAttribute("data-lib-open")); return; }
     var ob = t.closest("[data-lib-openbook]");
