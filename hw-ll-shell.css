@@ -2050,3 +2050,97 @@ body:not(.ll-teen) .ll-actall>summary{border:3px solid var(--ink);border-radius:
 .ny-simple-btn{ font-family:"Fredoka",sans-serif; font-weight:700; font-size:.85rem; border-radius:999px; padding:5px 12px; cursor:pointer; border:2px solid #5b4a9e; background:#fff; color:#5b4a9e; }
 .ny-simple-txt{ display:block; margin-top:8px; background:#f4f0ff; border-left:4px solid #5b4a9e; border-radius:8px; padding:8px 10px; line-height:1.45; }
 .ny-simple-txt[hidden]{ display:none; }
+
+/* ---------- Book library (fix pass 10) ---------- */
+.lib-wrap { padding: 16px; margin-bottom: 14px; }
+.lib-h { margin: 0 0 4px; font-size: 1.3rem; }
+.lib-sub { margin: 0 0 10px; opacity: .85; }
+.lib-searchwrap { display: flex; align-items: center; gap: 8px; background: #fff; border: 2px solid #e7ddcf; border-radius: 999px; padding: 8px 14px; margin: 0 0 12px; }
+.lib-search { border: 0; outline: 0; font: inherit; flex: 1; background: transparent; }
+.lib-sh { margin: 12px 0 8px; font-size: 1rem; }
+.lib-none { margin: 0; opacity: .75; }
+.lib-shelf { display: flex; flex-wrap: wrap; gap: 8px; }
+.lib-chip { border: 2px solid #bfe3c8; background: #effaf1; border-radius: 999px; padding: 7px 12px; font: inherit; cursor: pointer; }
+.lib-done { color: #0B8A5F; font-weight: 700; }
+.lib-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.lib-card { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: left; background: #fff; border: 2px solid #eee2d0; border-top: 6px solid var(--lc, #F5A623); border-radius: 16px; padding: 12px; font: inherit; cursor: pointer; }
+.lib-card .lib-cover { font-size: 2rem; }
+.lib-tt b { display: block; line-height: 1.25; }
+.lib-tt small { opacity: .75; }
+.lib-badge { font-size: .8rem; font-weight: 700; color: #0B8A5F; }
+.lib-badge.todo { color: #8a6d3b; }
+.lib-nores { opacity: .75; }
+.lib-reader { max-width: 640px; margin: 0 auto; padding: 18px 16px 26px; text-align: center; }
+.lib-rcover { font-size: 4rem; line-height: 1.1; }
+.lib-rtitle { margin: 8px 0 2px; font-size: 1.5rem; }
+.lib-rauthor { margin: 0 0 14px; opacity: .75; }
+.lib-page { font-size: 1.35rem; line-height: 1.55; margin: 0 0 16px; }
+.lib-reader.lib-teen .lib-page { font-size: 1.08rem; text-align: left; }
+.lib-dots { display: flex; gap: 6px; justify-content: center; margin-bottom: 6px; }
+.lib-dot { width: 9px; height: 9px; border-radius: 50%; background: #ddd2c0; }
+.lib-dot.on { background: #F5A623; }
+.lib-pageno { opacity: .7; margin: 0 0 14px; }
+.lib-nav { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.lib-alread { font-weight: 700; color: #0B8A5F; }
+body:not(.ll-teen) .lib-card { border-radius: 22px; }
+body:not(.ll-teen) .lib-page { font-size: 1.5rem; }
+
+/* ---------- Book library: bookcases + magical reader (fix pass 10) ---------- */
+.lib-case { background: linear-gradient(180deg, #7c4a21, #96622e); border-radius: 18px; padding: 12px 10px 14px; margin: 14px 0; box-shadow: inset 0 2px 0 rgba(255,255,255,.25), 0 8px 20px rgba(80,58,46,.18); }
+.lib-caseh { color: #ffe9c4; margin: 2px 6px 6px; font-size: 1.05rem; text-shadow: 0 1px 2px rgba(0,0,0,.35); }
+.lib-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 8px 8px 0; align-items: end; }
+.lib-board { height: 14px; margin: 0 2px; background: linear-gradient(180deg, #c98d4b, #a06a30); border-radius: 4px; box-shadow: 0 6px 8px rgba(0,0,0,.35); }
+.lib-book { background: none; border: 0; padding: 0; cursor: pointer; position: relative; transition: transform .18s ease; font: inherit; }
+.lib-book:hover, .lib-book:focus-visible { transform: translateY(-6px) rotate(-1deg); }
+.lib-spine { display: block; width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 4px 9px 9px 4px; box-shadow: inset 5px 0 8px -4px rgba(0,0,0,.35), 0 4px 8px rgba(0,0,0,.3); background: #fff; }
+.lib-gencover { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; text-align: center; padding: 8px 6px; background: linear-gradient(160deg, var(--lc, #F5A623), var(--lc, #F5A623)); color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.3); }
+.lib-gencover .lib-gc-emo { font-size: 1.9rem; }
+.lib-gencover b { font-size: .82rem; line-height: 1.2; }
+.lib-gencover small { font-size: .68rem; opacity: .9; }
+.lib-readmark { position: absolute; left: 50%; transform: translateX(-50%); bottom: -7px; background: #0B8A5F; color: #fff; font-size: .68rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; white-space: nowrap; box-shadow: 0 2px 5px rgba(0,0,0,.3); }
+.lib-stage { position: relative; text-align: center; padding: 30px 16px 34px; overflow: hidden; }
+.lib-sparks { position: absolute; inset: 0; pointer-events: none; }
+.lib-spark { position: absolute; left: var(--sx); top: var(--sy); color: #F5A623; font-size: 1.1rem; animation: libSpark 2.6s ease-in-out infinite; animation-delay: calc(var(--sd) * .35s); opacity: 0; }
+@keyframes libSpark { 0%, 100% { opacity: 0; transform: translateY(6px) scale(.6) rotate(0deg); } 50% { opacity: 1; transform: translateY(-8px) scale(1.15) rotate(40deg); } }
+.lib-bigbook { background: none; border: 0; cursor: pointer; padding: 0; animation: libPull .8s cubic-bezier(.2,1.4,.4,1) both, libFloat 3.4s ease-in-out 1s infinite; }
+@keyframes libPull { from { transform: translateY(46px) scale(.55) rotate(-4deg); opacity: .2; } to { transform: translateY(0) scale(1) rotate(0); opacity: 1; } }
+@keyframes libFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+.lib-bigcover { display: flex; width: min(230px, 60vw); aspect-ratio: 2/3; object-fit: cover; border-radius: 6px 14px 14px 6px; box-shadow: inset 8px 0 14px -6px rgba(0,0,0,.4), 0 18px 34px rgba(80,58,46,.35); background: #fff; margin: 0 auto; }
+.lib-stagehint { font-weight: 700; opacity: .8; margin: 0 0 14px; }
+.lib-stagehint2 { margin: 16px 0 0; opacity: .75; }
+.lib-openbook { display: flex; justify-content: center; align-items: stretch; max-width: 620px; margin: 0 auto; filter: drop-shadow(0 16px 26px rgba(80,58,46,.3)); }
+.lib-opencover { flex: 0 0 44%; transform-origin: left center; animation: libOpen 1s ease both; }
+.lib-opencover .lib-bigcover { width: 100%; height: 100%; border-radius: 10px 2px 2px 10px; margin: 0; }
+@keyframes libOpen { from { transform: perspective(1100px) rotateY(-52deg); opacity: .4; } to { transform: perspective(1100px) rotateY(0deg); opacity: 1; } }
+.lib-titlecard { flex: 1; background: linear-gradient(105deg, #f7ecd2, #fffaf0 30%); border-radius: 2px 12px 12px 2px; padding: 20px 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+.lib-tp-emo { font-size: 2.4rem; margin: 0; }
+.lib-tp-pages { opacity: .7; margin: 2px 0 8px; }
+.lib-pagecard { background: linear-gradient(100deg, #f3e7c9, #fffdf6 18%, #fffaf0); border: 1px solid #e8dcc0; border-radius: 6px 14px 14px 6px; box-shadow: inset 14px 0 26px -14px rgba(120,90,40,.35), 0 8px 20px rgba(80,58,46,.14); padding: 18px 20px 12px; margin-bottom: 12px; }
+.lib-pagecard.turn-next { animation: libTurnN .38s ease; }
+.lib-pagecard.turn-prev { animation: libTurnP .38s ease; }
+@keyframes libTurnN { from { transform: perspective(900px) rotateY(-13deg) translateX(30px); opacity: .35; } to { transform: none; opacity: 1; } }
+@keyframes libTurnP { from { transform: perspective(900px) rotateY(13deg) translateX(-30px); opacity: .35; } to { transform: none; opacity: 1; } }
+.lib-art { width: 100%; border-radius: 10px; margin-bottom: 12px; display: block; }
+.lib-orn { text-align: center; color: #b08d4f; font-size: 1.2rem; margin: 0 0 8px; }
+.lib-finishrow { display: inline-flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+.lib-done-emo { font-size: 3.4rem; margin: 0; }
+.lib-homegrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 10px; padding: 10px 8px 2px; }
+.lib-homebook { position: relative; background: #fffdf6; border-radius: 10px; padding: 7px; box-shadow: 0 3px 7px rgba(0,0,0,.25); }
+.lib-homecover { width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 5px; display: flex; }
+.lib-homebook .lib-gencover b { font-size: .72rem; }
+.lib-homett { display: block; margin-top: 5px; }
+.lib-homett b { display: block; font-size: .78rem; line-height: 1.2; }
+.lib-homett small { font-size: .7rem; opacity: .75; }
+.lib-homedel { position: absolute; top: 3px; right: 3px; width: 22px; height: 22px; border-radius: 50%; border: 0; background: rgba(255,255,255,.92); color: #a33; cursor: pointer; font-size: .8rem; line-height: 1; box-shadow: 0 1px 4px rgba(0,0,0,.3); }
+.lib-add { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 8px 4px; align-items: center; }
+.lib-addin { flex: 1 1 150px; padding: 10px 12px; border-radius: 10px; border: 2px solid #e7ddcf; font: inherit; background: #fffdf6; }
+.lib-tog { width: 100%; color: #ffe9c4; font-size: .92rem; }
+.lib-results { width: 100%; }
+.lib-resgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 8px; }
+.lib-res { display: flex; gap: 9px; align-items: center; text-align: left; background: #fffdf6; border: 2px solid #eee2d0; border-radius: 12px; padding: 7px; font: inherit; cursor: pointer; }
+.lib-res img { width: 42px; height: 62px; object-fit: cover; border-radius: 4px; }
+.lib-res b { display: block; font-size: .85rem; line-height: 1.2; }
+.lib-res small { font-size: .72rem; opacity: .75; }
+.lib-resgen { width: 42px; height: 62px; display: flex; align-items: center; justify-content: center; background: #8D6E63; color: #fff; border-radius: 4px; font-size: .6rem; text-align: center; padding: 3px; }
+.lib-homecase .lib-none { color: #ffe9c4; padding: 4px 8px; }
+@media (max-width: 520px) { .lib-row { grid-template-columns: repeat(4, 1fr); gap: 8px; } .lib-gencover b { font-size: .68rem; } .lib-gencover .lib-gc-emo { font-size: 1.4rem; } }
