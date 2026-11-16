@@ -230,6 +230,36 @@
     return Math.abs(v - p.ans) <= (p.tol || (p.type === "prob" ? 0.005 : 1e-6));
   }
 
+  /* ---------- tutor voice (fix pass 10) ----------
+     Her tutor explains every step in the study engine too (Dawid's rule).
+     Clips are pre-recorded (std-* in assets/voice). Bank lessons (English,
+     science, social studies) have fixed items, so every item's explanation
+     (why), the lesson method and the lesson hints are spoken. Math problems
+     are generated with fresh numbers each run, so their worked steps stay
+     on-screen text; the tutor voices the math concepts, vocabulary and
+     feedback. No device TTS anywhere. */
+  var stdEl = null, stdQueue = [], stdBusy = false, stdGen = 0;
+  function stdNext() {
+    if (stdBusy || !stdQueue.length) return;
+    var f = stdQueue.shift(), gen = stdGen;
+    stdBusy = true;
+    try {
+      var a = new Audio("assets/voice/" + f);
+      stdEl = a;
+      a.onended = a.onerror = function () { if (gen === stdGen) { stdBusy = false; stdNext(); } };
+      var p = a.play(); if (p && p.catch) p.catch(function () { if (gen === stdGen) { stdBusy = false; stdNext(); } });
+    } catch (e) { stdBusy = false; }
+  }
+  function stdSay(files, append) {
+    if (!append) stdStop();
+    (files || []).forEach(function (f) { if (f) stdQueue.push(f); });
+    stdNext();
+  }
+  function stdStop() {
+    stdGen++; stdQueue.length = 0; stdBusy = false;
+    if (stdEl) { try { stdEl.pause(); } catch (e) {} stdEl = null; }
+  }
+
   /* ---------- UI ---------- */
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   /* a reading passage (English) shows above its question */
@@ -237,6 +267,7 @@
   var STEPS = ["Learn", "Watch", "Together", "Your turn", "Recap"];
   var cur = null;
   function play(lesson, body) {
+    stdStop();
     var S = cur = { lesson: lesson, step: 0, wrongFirst: 0, misses: [], t0: Date.now() };
     if (lesson.newRun) lesson.newRun();
     var ex = lesson.gen();
@@ -253,10 +284,18 @@
       S.step = 0;
       shell('<section class="hs-card"><h3>' + esc(lesson.title) + "</h3>" + lesson.learn.map(function (p) { return "<p>" + esc(p) + "</p>"; }).join("") +
         '<p class="hs-vocab"><b>Key idea:</b> ' + esc(lesson.vocab) + '</p><button type="button" class="hs-btn pri" data-hs="next">Watch an example ▶</button></section>');
+      stdSay(["std-" + lesson.id + "-learn1.mp3", "std-" + lesson.id + "-learn2.mp3", "std-" + lesson.id + "-vocab.mp3"]);
     }
     function watch() {
       S.step = 1; var shown = 1;
+      S._wSpoken = 0;
+      stdSay(["std-watch.mp3"]);
       function draw() {
+        while (S._wSpoken < shown) {
+          var wi = S._wSpoken++;
+          var wc = wi === 0 ? ex.methodClip : wi === 1 ? ex.whyClip : null;
+          if (wc) stdSay([wc], true);
+        }
         shell('<section class="hs-card">' + qHtml(ex) + '<ol class="hs-sol">' + ex.steps.slice(0, shown).map(function (s) { return "<li>" + esc(s) + "</li>"; }).join("") + "</ol>" +
           (shown < ex.steps.length ? '<button type="button" class="hs-btn" data-hs="more">Next step ▼</button>' : '<button type="button" class="hs-btn pri" data-hs="next">Try one together ▶</button>') + "</section>");
       }
@@ -277,6 +316,7 @@
       function show() {
         S.step = mode === "quiz" ? 3 : 2;
         var p = list[i]; S.p = p; S.tries = 0; S.mode = mode; S.locked = false;
+        if (i === 0) stdSay([mode === "quiz" ? "std-yourturn.mp3" : "std-together.mp3"]);
         shell(problemHtml(p, i, mode));
         var f = body.querySelector(".hs-in"); if (f) try { f.focus({ preventScroll: true }); } catch (e) {}
       }
@@ -289,16 +329,21 @@
           S.locked = true;
           fb.textContent = "✓ Correct!" + (S.tries === 1 ? " First try." : "");
           fb.className = "hs-fb ok";
+          stdSay([S.tries === 1 ? "std-correct-first.mp3" : "std-correct.mp3"]);
           finishItem(true);
         } else if (S.tries === 1) {
           fb.textContent = "Not yet — try again.";
           fb.className = "hs-fb no";
           hint.textContent = "💡 " + p.hints[mode === "quiz" ? 0 : 1];
+          if (p.whyClip) stdSay(["std-notyet.mp3", mode === "quiz" ? p.hintClips[0] : (p.hintClip || p.hintClips[1])]);
+          else stdSay(["std-notyet.mp3"]);
           if (mode === "quiz") { S.wrongFirst++; S.misses.push(p); }
         } else {
           S.locked = true;
           fb.textContent = "Here's how it works:";
           fb.className = "hs-fb no";
+          if (p.whyClip) stdSay(["std-heres-how.mp3", p.methodClip, p.whyClip]);
+          else stdSay(["std-heres-how.mp3"]);
           finishItem(false);
         }
         var pickBtn = body.querySelector('[data-hs-pick="' + val + '"]');
@@ -312,12 +357,13 @@
         var inp = body.querySelector(".hs-in"); if (inp) inp.disabled = true;
       }
       S.nextItem = function () { i++; if (i < list.length) show(); else done(); };
-      S.hint = function (k) { var h = body.querySelector(".hs-hint"); if (h && S.p) h.textContent = ["💡 ", "🔄 ", "👣 "][k] + S.p.hints[k]; };
+      S.hint = function (k) { var h = body.querySelector(".hs-hint"); if (h && S.p) { h.textContent = ["💡 ", "🔄 ", "👣 "][k] + S.p.hints[k]; var hc = k === 1 && S.p.hintClip ? S.p.hintClip : (S.p.hintClips ? S.p.hintClips[k] : null); if (hc) stdSay([hc]); } };
       show();
     }
     function recap() {
       S.step = 4;
       var right = quiz.length - S.wrongFirst, learned = S.wrongFirst <= 1;
+      stdSay([learned ? "std-learned.mp3" : "std-almost.mp3"]);
       if (window.HootLessons && window.HootLessons.recordResult) window.HootLessons.recordResult(lesson.id, S.wrongFirst, quiz.length, Date.now() - S.t0);
       shell('<section class="hs-card"><h3>' + right + " of " + quiz.length + " right first try</h3>" +
         '<p class="hs-verdict ' + (learned ? "ok" : "no") + '">' + (learned ? "✓ Learned! Hoot will bring this back for a quick review in a few days." : "Almost — this goes on your Practice list so Hoot can show it again tomorrow.") + "</p>" +
@@ -350,7 +396,7 @@
     e.preventDefault(); cur.answer(f.querySelector(".hs-in").value);
   });
 
-  var api = { lessons: L, play: play, stop: function () { cur = null; }, parseAns: parseAns, correct: correct,
+  var api = { lessons: L, play: play, stop: function () { cur = null; stdStop(); }, parseAns: parseAns, correct: correct,
     current: function () { return cur && cur.p ? { type: cur.p.type, ans: cur.p.ans, choices: cur.p.choices } : null; } /* used by the QA playthrough */ };
   window.HootStudy = api;
   /* 3e31: courses register here — Grade 7 math below, Grade 7 English from
@@ -372,6 +418,10 @@
      bottom, so one run never repeats a question. */
   function shuf(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
   function bank(lesson) {
+    lesson.items.forEach(function (it, i) {
+      if (!it.__whyClip) it.__whyClip = "std-why-" + lesson.id + "-" + i + ".mp3";
+      if (it.hint && !it.__hintClip) it.__hintClip = "std-hint-" + lesson.id + "-" + i + ".mp3";
+    });
     var deck = [], last = [];
     lesson.newRun = function () { deck = shuf(last).concat(shuf(lesson.items.filter(function (x) { return last.indexOf(x) < 0; }))); last = []; };
     lesson.gen = function () {
@@ -379,7 +429,9 @@
       var it = deck.pop(); last.push(it);
       var choices = it.fixed ? it.fixed.slice() : shuf([it.a].concat(it.w));
       return { q: it.q, passage: it.pass || "", type: "mc", choices: choices, ans: choices.indexOf(it.a),
-        steps: [lesson.method, it.why, "Answer: " + it.a], hints: [lesson.hints[0], it.hint || lesson.hints[1], lesson.hints[2]] };
+        steps: [lesson.method, it.why, "Answer: " + it.a], hints: [lesson.hints[0], it.hint || lesson.hints[1], lesson.hints[2]],
+        whyClip: it.__whyClip || null, hintClip: it.__hintClip || null, methodClip: "std-" + lesson.id + "-method.mp3",
+        hintClips: ["std-hint1-" + lesson.id + ".mp3", "std-hint2-" + lesson.id + ".mp3", "std-hint3-" + lesson.id + ".mp3"] };
     };
     return lesson;
   }
@@ -387,7 +439,7 @@
      lesson, so older material keeps coming back like a unit test */
   api.addBankCourse = function (meta, list) {
     if (meta.review) {
-      var all = []; list.forEach(function (l) { l.items.forEach(function (it) { all.push(Object.assign({ why: "" }, it, { why: it.why + " (From: " + l.title + ")" })); }); });
+      var all = []; list.forEach(function (l) { l.items.forEach(function (it, j) { all.push(Object.assign({ why: "" }, it, { why: it.why + " (From: " + l.title + ")", __whyClip: "std-why-" + l.id + "-" + j + ".mp3", __hintClip: it.hint ? "std-hint-" + l.id + "-" + j + ".mp3" : null })); }); });
       list = list.concat([{ id: meta.id + "-review", title: meta.review, std: "All lessons", emo: "🏁",
         learn: ["This review mixes questions from every lesson in the course, like a unit test.", "Take your time. If one stumps you, the explanation tells you which lesson to go back to."],
         vocab: "mixed practice = the best way to make learning stick",
