@@ -2709,6 +2709,8 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
     if (body) body.innerHTML = (inner == null ? "" : String(inner));
     if (ov) { ov.hidden = false; ov.setAttribute("aria-hidden", "false"); }
     document.body.classList.add("ll-overlay-open");
+    /* Library 2: a book on screen switches the overlay to full-screen mode. */
+    document.body.classList.toggle("lib-book-open", !!(body && body.querySelector(".lib-reader, .lib-stage")));
     scheduleFitLearn(); setTimeout(fitLearn, 700);
   }
 
@@ -2824,7 +2826,7 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
     teachGen++;
     restoreParked();
     wipeOverlayHtml();
-    document.body.classList.remove("ll-overlay-open", "ll-tutor-open", "ll-muse-card-open", "game-open");
+    document.body.classList.remove("ll-overlay-open", "ll-tutor-open", "ll-muse-card-open", "game-open", "lib-book-open");
     var ov = $("#ll-overlay");
     if (ov) { ov.hidden = true; ov.setAttribute("aria-hidden", "true"); }
     $$(".ll-lesson-host").forEach(function (n) { n.classList.remove("ll-lesson-host"); });
@@ -5244,7 +5246,12 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
   function libLittlePids() { return PROFILES.filter(function (p) { return !isTeenBand(bandOf(p.id)); }).map(function (p) { return p.id; }); }
   function libCoverHtml(b, cls) {
     if (b.cover) return '<img class="' + cls + ' lib-coverimg" src="' + esc(b.cover) + '" alt="" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><span class="' + cls + ' lib-gencover" style="display:none;--lc:' + b.color + '"><span class="lib-gc-emo" aria-hidden="true">' + b.emo + '</span><b>' + esc(b.title) + '</b><small>' + esc(b.author) + '</small></span>';
-    return '<span class="' + cls + ' lib-gencover" style="--lc:' + b.color + '"><span class="lib-gc-emo" aria-hidden="true">' + b.emo + '</span><b>' + esc(b.title) + '</b><small>' + esc(b.author) + '</small></span>';
+    /* Library 2: originals show their generated watercolour cover art with a
+       title/author band along the bottom (the art itself carries no text).
+       If the art ever fails to load, the generated emoji cover takes over. */
+    return '<span class="' + cls + ' lib-artcover"><img class="lib-coverart" src="assets/book-art/' + b.id + '-cover.webp" alt="" loading="lazy" onerror="var p=this.parentNode;this.style.display=\'none\';var bd=p.querySelector(\'.lib-band\');if(bd)bd.style.display=\'none\';var fb=p.querySelector(\'.lib-gc-fb\');if(fb)fb.style.display=\'flex\'">' +
+      '<span class="lib-band"><b>' + esc(b.title) + '</b><small>' + esc(b.author) + '</small></span>' +
+      '<span class="lib-gencover lib-gc-fb" style="display:none;--lc:' + b.color + '"><span class="lib-gc-emo" aria-hidden="true">' + b.emo + '</span><b>' + esc(b.title) + '</b><small>' + esc(b.author) + '</small></span></span>';
   }
   function libCaseHtml(title, books, read) {
     if (!books.length) return "";
@@ -5295,7 +5302,7 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
     return '<span class="lib-sparks" aria-hidden="true">' + s + "</span>";
   }
   function libStageHtml(book) {
-    return '<section class="lib-stage">' + libSparkles(12) +
+    return '<section class="lib-stage">' + libSparkles(16) + '<div class="lib-halo" aria-hidden="true"></div>' +
       '<p class="lib-stagehint">Your book is coming off the shelf…</p>' +
       '<button type="button" class="lib-bigbook" data-lib-openbook aria-label="Open ' + esc(book.title) + '">' + libCoverHtml(book, "lib-bigcover") + '</button>' +
       '<p class="lib-stagehint2">Tap the book to open it ✨</p></section>';
@@ -5315,23 +5322,39 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
     var total = book.pages.length, last = page >= total - 1;
     var read = state.profile ? libReadMap(state.profile.id) : {};
     var dots = book.pages.length <= 24 ? book.pages.map(function (_, i) { return '<span class="lib-dot' + (i === page ? " on" : "") + '"></span>'; }).join("") : "";
-    var art = book.band === "little" ? '<img class="lib-art" src="assets/book-art/' + book.id + '-p' + (page + 1) + '.svg" alt="" onerror="this.style.display=\'none\'">' : "";
     var togetherBtn = last && !read[book.id] && book.band === "little" && libLittlePids().length > 1
       ? '<button type="button" class="ll-btn" data-lib-together>👫 We read it together!</button>' : "";
-    return '<section class="lib-reader lib-' + book.band + '">' +
-      '<div class="lib-pagecard ' + (turnCls || "") + '">' + art +
-      (book.band === "teen" ? '<p class="lib-orn" aria-hidden="true">❦</p>' : "") +
-      '<p class="lib-page">' + esc(book.pages[page]) + '</p>' +
-      '<p class="lib-pageno">Page ' + (page + 1) + ' of ' + total + '</p></div>' +
-      (dots ? '<div class="lib-dots" aria-hidden="true">' + dots + '</div>' : "") +
-      '<div class="lib-nav">' +
+    var nav = '<div class="lib-nav">' +
       (page > 0 ? '<button type="button" class="ll-btn" data-lib-page="-1">← Back</button>' : '<span></span>') +
       (book.band === "little" ? '<button type="button" class="ll-btn" data-lib-listen>🔊 Read to me</button>' : '<span></span>') +
       (last
         ? (read[book.id] ? '<span class="lib-alread">✓ You read this book!</span>'
                           : '<span class="lib-finishrow"><button type="button" class="ll-btn pri" data-lib-finish>Finished! 🎉</button>' + togetherBtn + "</span>")
         : '<button type="button" class="ll-btn pri" data-lib-page="1">Next page →</button>') +
-      "</div></section>";
+      "</div>";
+    if (book.band === "teen") {
+      /* Library 2: teen books are a full-screen e-reader — cream page, ornament,
+         clean text, no illustrations. */
+      return '<section class="lib-reader lib-teen">' +
+        '<div class="lib-pagecard ' + (turnCls || "") + '"><p class="lib-orn" aria-hidden="true">❦</p>' +
+        '<p class="lib-page">' + esc(book.pages[page]) + '</p>' +
+        '<p class="lib-pageno">Page ' + (page + 1) + ' of ' + total + '</p></div>' +
+        (dots ? '<div class="lib-dots" aria-hidden="true">' + dots + '</div>' : "") + nav + "</section>";
+    }
+    /* Library 2: little books open full-screen — the watercolour fills the top
+       of the screen, big type sits on the cream page below, and the screen
+       edges are large invisible page-turn tap zones. Art is WebP, falling
+       back to the v1 SVG, then hiding if neither exists. */
+    var artBase = "assets/book-art/" + book.id + "-p" + (page + 1);
+    var art = '<div class="lib-artwrap"><img class="lib-art" src="' + artBase + '.webp" alt="" onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src=\'' + artBase + '.svg\'}else{this.style.display=\'none\'}"></div>';
+    var zones = (page > 0 ? '<button type="button" class="lib-zone lib-zone-prev" data-lib-page="-1" aria-label="Previous page"></button>' : "") +
+      (!last ? '<button type="button" class="lib-zone lib-zone-next" data-lib-page="1" aria-label="Next page"></button>' : "");
+    return '<section class="lib-reader lib-little">' +
+      '<div class="lib-sheet ' + (turnCls || "") + '">' + art +
+      '<div class="lib-textwrap"><p class="lib-page">' + esc(book.pages[page]) + '</p>' +
+      '<p class="lib-pageno">Page ' + (page + 1) + ' of ' + total + '</p>' +
+      (dots ? '<div class="lib-dots" aria-hidden="true">' + dots + '</div>' : "") + "</div></div>" +
+      zones + nav + "</section>";
   }
   function libSpeakPage() {
     if (!libState || libState.stage !== "page") return;
