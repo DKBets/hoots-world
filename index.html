@@ -12094,6 +12094,14 @@
           if(!store[id]) store[id] = [];
           store[id][idx] = true;
           saveStore();
+          /* Tutor-experience pass (7): first-completion dates feed the
+             weekly tutor report ("mastered this week"). */
+          try{
+            var dk = "hootworld.nydates.v1";
+            var dd = JSON.parse(localStorage.getItem(dk) || "{}") || {};
+            if(!dd[id]) dd[id] = {};
+            if(!dd[id][idx]){ dd[id][idx] = slTodayStr(); localStorage.setItem(dk, JSON.stringify(dd)); }
+          }catch(e){}
         }
 
         /* ===== TOP-NOTCH TEACHER PASS =====
@@ -12109,7 +12117,7 @@
            per-lesson "needed support" flags (a misconception fix or
            a different-way re-teach) save alongside her stars and
            render ONLY in Parents, on Profile C's profile row. */
-        var NY_TITLES = ["Unit rates", "Negative numbers", "Two-step equations", "Main idea & citing evidence", "Argument writing", "Photosynthesis", "Hudson River food webs", "Articles of Confederation → Constitution"];
+        var NY_TITLES = ["Unit rates", "Negative numbers", "Two-step equations", "Main idea & citing evidence", "Argument writing", "Photosynthesis", "Hudson River food webs", "Articles of Confederation → Constitution", "Percents", "Circles", "Summarizing", "Context clues", "The water cycle", "Cells", "The American Revolution", "The Erie Canal"];
         var NEED_KEY = "hootworld.nyneed.v1";
         var needStore = {};
         try{ needStore = JSON.parse(localStorage.getItem(NEED_KEY) || "{}") || {}; }catch(e){ needStore = {}; }
@@ -12121,6 +12129,29 @@
           if(!needStore[id][idx]){ needStore[id][idx] = true; saveNeed(); }
           renderReport();
         }
+        /* Tutor-experience pass (2): Second Look capture — every missed
+           NY question is snapshotted (question + options + fix) into a
+           per-profile store; the shell's Today card resurfaces items due
+           (about 2 days later) until she answers them right there. */
+        var SL_KEY = "hootworld.secondlook.v1";
+        function slLoad(){ try{ var d = JSON.parse(localStorage.getItem(SL_KEY) || "{}"); if(!d || !Array.isArray(d.items)) d = { items: [] }; return d; }catch(e){ return { items: [] }; } }
+        function slSave(d){ try{ localStorage.setItem(SL_KEY, JSON.stringify(d)); }catch(e){} }
+        function slTodayStr(){ var d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+        function slLog(lessonIdx, stage, q, opts, fix){
+          try{
+            if(lessonIdx == null || lessonIdx < 0 || !q || !opts || opts.length < 2) return;
+            var clean = [];
+            opts.forEach(function(o){ if(o && o.t) clean.push({ t: String(o.t), right: o.right ? 1 : 0 }); });
+            if(clean.length < 2 || !clean.some(function(o){ return o.right; })) return;
+            var key = lessonIdx + "|" + stage + "|" + q.slice(0, 60);
+            var d = slLoad();
+            for(var i = 0; i < d.items.length; i++){ if(d.items[i].key === key && !d.items[i].resolved){ d.items[i].misses = (d.items[i].misses || 1) + 1; slSave(d); return; } }
+            d.items.push({ key: key, lesson: lessonIdx, stage: stage, q: q, opts: clean, fix: fix || "", firstMiss: slTodayStr(), misses: 1, resolved: false });
+            if(d.items.length > 60) d.items = d.items.slice(-60);
+            slSave(d);
+          }catch(e){}
+        }
+        function slDueNow(it){ try{ var a = Date.parse((it.firstMiss || "") + "T00:00:00"); var b = Date.parse(slTodayStr() + "T00:00:00"); return isFinite(a) && isFinite(b) && (b - a) >= 2 * 86400000; }catch(e){ return false; } }
         function renderReport(){
           var els = slice(document.querySelectorAll("[data-kidc-report]"));
           if(!els.length) return;
@@ -12129,14 +12160,26 @@
           /* If lessons were played before a profile was picked, the
              current profile's records are the freshest fallback. */
           if(curProf() === "kidc"){ kd = store["kidc"] || []; kn = needStore["kidc"] || {}; }
-          var mastered = [], needed = [];
+          var dates = {};
+          try{ dates = (JSON.parse(localStorage.getItem("hootworld.nydates.v1") || "{}") || {})["kidc"] || {}; }catch(e){}
+          var slAll = slLoad().items;
+          var slOpen = slAll.filter(function(it){ return !it.resolved; });
+          var slDueN = slOpen.filter(function(it){ return slDueNow(it); }).length;
+          var slCleared = slAll.length - slOpen.length;
+          var wk = new Date(); wk.setDate(wk.getDate() - 7);
+          var wkStr = wk.getFullYear() + "-" + String(wk.getMonth() + 1).padStart(2, "0") + "-" + String(wk.getDate()).padStart(2, "0");
+          var masteredWeek = [], masteredEarlier = 0, needed = [], next = [];
           NY_TITLES.forEach(function(t, i){
-            if(kd[i]) mastered.push(t);
+            if(kd[i]){ if(dates[i] && dates[i] >= wkStr) masteredWeek.push(t); else masteredEarlier++; }
+            else if(next.length < 2) next.push(t);
             if(kn[i]) needed.push(t);
           });
-          var txt = "🎓 Tutor report — Mastered: " + (mastered.length ? mastered.join(", ") : "none yet")
+          var txt = "🎓 Tutor report (weekly) — Mastered this week: " + (masteredWeek.length ? masteredWeek.join(", ") : "none yet")
+            + " · Mastered earlier: " + masteredEarlier + " of " + NY_TITLES.length
             + " · Needed re-teaching: " + (needed.length ? needed.join(", ") : "none yet")
-            + ". From Profile C's real NY lesson attempts — a topic lands in re-teaching whenever a wrong pick needed its mistake named and fixed, or Hoot re-taught a point a different way.";
+            + " · Second Look: " + slDueN + " due now · " + (slOpen.length - slDueN) + " waiting · " + slCleared + " cleared"
+            + " · Coming next: " + (next.length ? next.join(", ") : "all " + NY_TITLES.length + " mastered 🎉")
+            + ". From Profile C's real NY lesson attempts; \"this week\" counts lessons first finished in the last 7 days.";
           els.forEach(function(el){ el.textContent = txt; });
         }
         /* Warm-ups: index = lesson index (0-based); null for Lesson 1.
@@ -12434,6 +12477,7 @@
             slice(st.querySelectorAll(".ny-try-opt")).forEach(function(o){ o.disabled = false; o.classList.remove("right", "wrong"); });
           });
           hide(card.querySelector(".ny-try-done"));
+          hide(card.querySelector(".ny-conf")); hide(card.querySelector(".ny-conf-back")); card._confDone = false;
           hide(card.querySelector('[data-phase="your"]'));
           slice(card.querySelectorAll(".ny-opt")).forEach(function(o){ o.disabled = false; o.classList.remove("right", "wrong"); });
           var fb = card.querySelector(".ny-fb"); if(fb) fb.textContent = "";
@@ -12491,6 +12535,20 @@
           show(card.querySelector(".ny-recap"));
           nyRedoBtn(card);
         }
+        /* Tutor-experience pass (5): confidence gate before "Your turn" —
+           built once per card, shown when the guided Try stage finishes. */
+        cards.forEach(function(card){
+          if(card.querySelector(".ny-conf")) return;
+          var your = card.querySelector('[data-phase="your"]'); if(!your) return;
+          var conf = document.createElement("div");
+          conf.className = "ny-conf"; conf.hidden = true;
+          conf.innerHTML = '<p class="ny-conf-q">🤔 That was us trying it <strong>together</strong>. Next comes <strong>your turn</strong> — all by yourself. Ready, or watch once more?</p>' +
+            '<div class="ny-conf-btns"><button type="button" class="ny-conf-ready">I\'m ready ✓</button>' +
+            '<button type="button" class="ny-conf-watch">Watch once more</button></div>';
+          your.parentNode.insertBefore(conf, your);
+          var watch = card.querySelector('[data-phase="watch"]');
+          if(watch){ var bk = document.createElement("button"); bk.type = "button"; bk.className = "ny-conf-back"; bk.hidden = true; bk.textContent = "Back to my turn →"; watch.appendChild(bk); }
+        });
         function applyAll(){
           var d = dones();
           cards.forEach(function(card, i){ if(d[i]) applyDone(card); else resetCard(card); });
@@ -12576,7 +12634,7 @@
               setTimeout(function(){ warmOpt.classList.remove("wrong"); }, 650);
               if(wFb) wFb.textContent = warmOpt.getAttribute("data-fix") || "Almost — that's just a warm-up, no penalty. Have another go!";
               var wuData = WARMUPS[cards.indexOf(wCard)];
-              if(wuData) flagNeed(wuData.from);
+              if(wuData){ flagNeed(wuData.from); slLog(wuData.from, "warm", wuData.q, wuData.opts, warmOpt.getAttribute("data-fix") || ""); }
             }
             return;
           }
@@ -12598,9 +12656,17 @@
               setTimeout(function(){ tbOpt.classList.remove("wrong"); }, 650);
               if(tbFb) tbFb.textContent = tbOpt.getAttribute("data-fix") || "Good try — that's not the best explanation though. Read the others again; you can retry as many times as you like.";
               flagNeed(cards.indexOf(tbCard));
+              var tbData = TEACHBACKS[cards.indexOf(tbCard)];
+              if(tbData) slLog(cards.indexOf(tbCard), "tib", tbData.q, tbData.opts, tbOpt.getAttribute("data-fix") || "");
             }
             return;
           }
+          var confReady = t.closest(".ny-conf-ready");
+          if(confReady){ var cR = confReady.closest(".ny-lsn"); if(!cR) return; cR._confDone = true; hide(cR.querySelector(".ny-conf")); show(cR.querySelector('[data-phase="your"]')); return; }
+          var confWatch = t.closest(".ny-conf-watch");
+          if(confWatch){ var cW = confWatch.closest(".ny-lsn"); if(!cW) return; hide(cW.querySelector(".ny-conf")); var wEl = cW.querySelector('[data-phase="watch"]'); if(wEl){ show(wEl); slice(cW.querySelectorAll(".ny-step")).forEach(function(stp){ stp.hidden = false; }); show(cW.querySelector(".ny-stepdone")); var bk = cW.querySelector(".ny-conf-back"); if(bk) show(bk); try{ wEl.scrollIntoView({ block: "start" }); }catch(e){} } return; }
+          var confBack = t.closest(".ny-conf-back");
+          if(confBack){ var cB = confBack.closest(".ny-lsn"); if(!cB) return; cB._confDone = true; hide(confBack); show(cB.querySelector('[data-phase="your"]')); var yEl = cB.querySelector('[data-phase="your"]'); if(yEl){ try{ yEl.scrollIntoView({ block: "start" }); }catch(e){} } return; }
           var tryOpt = t.closest(".ny-try-opt");
           if(tryOpt && !tryOpt.disabled){
             var step = tryOpt.closest(".ny-try-step");
@@ -12617,13 +12683,17 @@
               if(idx > -1 && idx + 1 < stepsAll.length){ show(stepsAll[idx + 1]); }
               else {
                 show(card4.querySelector(".ny-try-done"));
-                show(card4.querySelector('[data-phase="your"]'));
+                if(card4._confDone){ show(card4.querySelector('[data-phase="your"]')); }
+                else { var cfEl = card4.querySelector(".ny-conf"); if(cfEl){ show(cfEl); try{ cfEl.scrollIntoView({ block: "nearest" }); }catch(e){} KIDC_VOICE.playFile("kidc-conf.mp3"); } else { show(card4.querySelector('[data-phase="your"]')); } }
               }
             } else {
               tryOpt.classList.add("wrong");
               setTimeout(function(){ tryOpt.classList.remove("wrong"); }, 650);
               if(tfb) tfb.textContent = tryOpt.getAttribute("data-misconception") || tryOpt.getAttribute("data-hint") || "Almost — look at my thinking again and try the other one. I'm right here.";
               flagNeed(cards.indexOf(card4));
+              var slStepIdx = trySteps(card4).indexOf(step);
+              var slQ = step.querySelector(".ny-try-q");
+              slLog(cards.indexOf(card4), "try" + slStepIdx, slQ ? slQ.textContent.trim() : "", slice(step.querySelectorAll(".ny-try-opt")).map(function(o){ return { t: o.textContent.trim(), right: o.hasAttribute("data-right") ? 1 : 0 }; }), tryOpt.getAttribute("data-misconception") || tryOpt.getAttribute("data-hint") || "");
             }
             return;
           }
@@ -12652,6 +12722,8 @@
               opt.classList.add("wrong");
               setTimeout(function(){ opt.classList.remove("wrong"); }, 650);
               flagNeed(cards.indexOf(card5));
+              var slQ5 = card5.querySelector(".lsn-q");
+              slLog(cards.indexOf(card5), "your", slQ5 ? slQ5.textContent.trim() : "", slice(card5.querySelectorAll('[data-phase="your"] .ny-opt')).map(function(o){ return { t: o.textContent.trim(), right: o.hasAttribute("data-right") ? 1 : 0 }; }), opt.getAttribute("data-misconception") || opt.getAttribute("data-hint") || "");
               if(fb5){
                 /* First layer: THIS option's own misconception —
                    the actual mistake behind the choice, named, with
