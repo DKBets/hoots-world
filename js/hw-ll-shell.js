@@ -233,7 +233,7 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
       var s7 = { id: "sci7", title: "Grade 7 science · full course", count: cnt("sci7", 8), emo: "🔬" };
       var ss7 = { id: "ss7", title: "Grade 7 social studies · full course", count: cnt("ss7", 8), emo: "🗽" };
       return st === "New York"
-        ? [{ id: "ny", title: "Grade 7 · NY standards", count: 8, emo: "🗽" }, m7, e7, s7, ss7, { id: "creator", title: "Creator skills · ages 11–13", count: 8, emo: "✨" }]
+        ? [{ id: "ny", title: "Grade 7 · NY standards", count: 16, emo: "🗽" }, m7, e7, s7, ss7, { id: "creator", title: "Creator skills · ages 11–13", count: 8, emo: "✨" }]
         : [m7, e7, s7, ss7, { id: "creator", title: "Creator skills · ages 11–13", count: 8, emo: "✨" }];
     }
     return LEARN_PATHS[b] || LEARN_PATHS.little;
@@ -387,7 +387,7 @@ var HW_THUMBS = {"animals": "data:image/webp;base64,UklGRnAWAABXRUJQVlA4IGQWAADw
     quest: [{ id: "quest", title: "Quest Kids · ages 8–10", count: 8, emo: "🗺️" }],
     high: [{ id: "teen", title: "High school · ages 14–18", count: 8, emo: "🎓" }],
     teen: [
-      { id: "ny", title: "Grade 7 · NY standards", count: 8, emo: "🗽" },
+      { id: "ny", title: "Grade 7 · NY standards", count: 16, emo: "🗽" },
       { id: "creator", title: "Creator skills · ages 11–13", count: 8, emo: "✨" }
     ]
   };
