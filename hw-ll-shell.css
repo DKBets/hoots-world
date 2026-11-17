@@ -2265,3 +2265,17 @@ body.lib-book-open #ll-obody { padding: 0; background: radial-gradient(110% 70% 
   .lib-band b { font-size: .60rem; }
   .lib-band small { font-size: .52rem; }
 }
+
+/* Find it! picture hunts (2026-11-17) */
+.lib-findrow { padding: 2px 14px 12px; text-align: center; }
+.lib-findbtn { background: #FFD93D; border: 3px solid #E8A100; color: #5b4300; font-weight: 800; font-size: 1.1rem; border-radius: 999px; padding: 10px 22px; animation: libBtnPulse 1.6s ease-in-out infinite; cursor: pointer; }
+.lib-findbtn.done { background: #DFF5D8; border-color: #7FB069; color: #2f5d23; animation: none; }
+.lib-findlayer { position: absolute; inset: 0; z-index: 4; cursor: pointer; }
+.lib-findbanner { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 5; background: #fffdf5; border: 3px solid #FFD93D; border-radius: 999px; padding: 10px 20px; font-size: 1.3rem; font-weight: 800; color: #4a3800; box-shadow: 0 4px 14px rgba(0,0,0,.25); max-width: 92%; text-align: center; pointer-events: none; }
+.lib-findbanner.wiggle { animation: libWiggle .45s ease; }
+.lib-findhint { position: absolute; width: 120px; height: 120px; margin: -60px 0 0 -60px; border: 5px solid #FFD93D; border-radius: 50%; box-shadow: 0 0 0 4px rgba(255,217,61,.35); animation: libHintPulse 1s ease-in-out infinite; pointer-events: none; z-index: 4; }
+.lib-findstar { position: absolute; font-size: 3rem; margin: -30px 0 0 -24px; animation: libPop .5s ease; pointer-events: none; z-index: 5; text-shadow: 0 2px 8px rgba(0,0,0,.3); }
+@keyframes libBtnPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+@keyframes libWiggle { 0%,100% { transform: translateX(-50%); } 25% { transform: translateX(calc(-50% - 7px)); } 75% { transform: translateX(calc(-50% + 7px)); } }
+@keyframes libHintPulse { 0%,100% { transform: scale(.85); opacity: .75; } 50% { transform: scale(1.08); opacity: 1; } }
+@keyframes libPop { 0% { transform: scale(.2); } 70% { transform: scale(1.35); } 100% { transform: scale(1); } }
