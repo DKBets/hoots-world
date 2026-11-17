@@ -12892,7 +12892,10 @@
           { name:"lotw",      key:"hootworld.lotw.v1" },
           { name:"log",       key:"hootworld.log.v1" },
           /* 3e38: the grown-up's plan (own stops, order, skips, free-play rule) */
-          { name:"plan",      key:"hootworld.plan.v1" }
+          { name:"plan",      key:"hootworld.plan.v1" },
+          /* Author shelf: Kaitlyn's writing-studio drafts ride Family Sync
+             so her tutor's workshop can pick up submitted stories. */
+          { name:"stories",   key:"hootworld.stories.v1" }
         ];
         var SYNCED = {};
         STORES.forEach(function(s){ SYNCED[s.key] = true; });
@@ -12924,6 +12927,7 @@
             if(name === "lotw") return Object.keys(v).length > 0;
             if(name === "plan") return !!v.kids && Object.keys(v.kids).some(function(id){ var k = v.kids[id]; return !!k && ((Array.isArray(k.extra) && k.extra.length > 0) || !!k.free || (k.days && Object.keys(k.days).length > 0)); });
             if(name === "log") return Object.keys(v).some(function(id){ var a = v[id]; return Array.isArray(a) ? a.length > 0 : !!a && typeof a === "object" && Object.keys(a).length > 0; });
+            if(name === "stories") return Object.keys(v).some(function(id){ var o = v[id]; if(!o || typeof o !== "object" || !o.drafts) return false; return Object.keys(o.drafts).some(function(did){ var d = o.drafts[did]; return !!d && (!!(d.title && String(d.title).trim()) || (Array.isArray(d.pages) && d.pages.some(function(pg){ return !!(pg && String(pg).trim()); }))); }); });
             if(name === "profiles"){
               var snaps = v.snaps || {};
               return Object.keys(snaps).some(function(id){
