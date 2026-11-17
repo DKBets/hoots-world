@@ -5435,6 +5435,7 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
     if (!libState || !state.profile) return;
     var book = libBook(libState.id); if (!book) return;
     var pids = together ? libLittlePids() : [state.profile.id];
+    var starNow = false, starKey = "📖 " + book.title;
     try {
       var all = libStore(), prog = JSON.parse(localStorage.getItem(LIBPROG_KEY) || "{}") || {};
       pids.forEach(function (pid) {
@@ -5442,16 +5443,23 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
         if (!mine[book.id]) mine[book.id] = tutExpTodayStr();
         all[pid] = mine;
         if (prog[pid]) delete prog[pid][book.id];
+        try {
+          var xp = planDay(pid, true); xp.d.done = xp.d.done || {};
+          if (!xp.d.done[starKey]) { xp.d.done[starKey] = 1; if (pid === state.profile.id) starNow = true; }
+          planSave(xp.s);
+        } catch (e2) {}
       });
       localStorage.setItem(LIB_KEY, JSON.stringify(all));
       localStorage.setItem(LIBPROG_KEY, JSON.stringify(prog));
     } catch (e) {}
+    try { bumpStars(); } catch (e) {}
     var body = $("#ll-obody");
     if (body) body.innerHTML = '<section class="lib-stage lib-done-stage">' + libSparkles(14) +
       '<p class="lib-done-emo" aria-hidden="true">🎉</p>' +
       '<h3 class="lib-rtitle">You finished a book!</h3>' +
       '<p class="lib-page">' + esc(book.title) + '<br><small>by ' + esc(book.author) + '</small></p>' +
       '<p class="lib-pageno">' + (together ? "It is on BOTH kids' read shelves now — reading together counts for everyone!" : "It is on your “Books I've read” shelf now.") + '</p>' +
+      (starNow ? '<p class="lib-pageno">\u2B50 +1 star for finishing this book!</p>' : "") +
       '<div class="lib-nav"><span></span><button type="button" class="ll-btn pri" data-lib-back>Back to the library</button><span></span></div></section>';
     try { if (window.__hwSay) window.__hwSay(["hoot-star"]); } catch (e) {}
   }
