@@ -1,0 +1,14 @@
+[
+  {
+    "kind": "story",
+    "book": "Stories",
+    "chapter": 1,
+    "voice": "girl",
+    "file": "1.m4a",
+    "duration_sec": 70.848,
+    "size_bytes": 292225,
+    "sha256_source": "963f13090e86ba07e6a3728db765fefea3d01bddfbe63fa23f35e44ca955a2ea",
+    "sha256_encoded": "ec15a5fc2bd70eed780f28c356026eee029aca6d0cfdb0de0baf608fa26ddb33",
+    "source_path": "long-road-kids-audio/sample1/stories/1.m4a"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "kind": "chapter",
+    "book": "3 John",
+    "chapter": 1,
+    "voice": "girl",
+    "file": "3 John/1.m4a",
+    "duration_sec": 118.536,
+    "size_bytes": 489567,
+    "sha256_source": "480612dc5d7872e8c4be575e676bdeca89790402f29025f1cb4b27f1b7249e3e",
+    "sha256_encoded": "dbb945168dadca39d0bd838fafa9e99b922523415b7b0282b0b140b33ee7b9e3",
+    "source_path": "kids-bible-audio/sample1/3 John/1.m4a"
+  }
+]
