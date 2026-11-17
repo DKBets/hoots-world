@@ -5306,6 +5306,7 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
     } else {
       libFind.misses++;
       libFindRender();
+      libFindSay("libfind-miss-" + (((libFind.misses - 1) % 3) + 1));
     }
   }
   function libStore() { try { return JSON.parse(localStorage.getItem(LIB_KEY) || "{}") || {}; } catch (e) { return {}; } }
@@ -5474,7 +5475,7 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
     var findNav = '<div class="lib-nav lib-findnav"><button type="button" class="ll-btn" data-lib-findback>\u2190 Back to the story</button>' +
       '<button type="button" class="ll-btn pri" data-lib-findask>🔊 Hear it again</button></div>';
     var findRow = ft ? '<div class="lib-findrow"><button type="button" class="ll-btn lib-findbtn' + (libFindDone[book.id + ":" + page] ? " done" : "") + '" data-lib-findit>' +
-      (libFindDone[book.id + ":" + page] ? "\u2713 You found " + esc(ft.label) + "! 🔍 Again!" : "🔍 Find it!") + "</button></div>" : "";
+      "🔍 Find it!" + "</button></div>" : "";
     return '<section class="lib-reader lib-little">' +
       '<div class="lib-sheet ' + (turnCls || "") + '">' + art +
       '<div class="lib-textwrap"><p class="lib-page">' + esc(book.pages[page]) + '</p>' +
