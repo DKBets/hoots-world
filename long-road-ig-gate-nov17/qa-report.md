@@ -3,7 +3,7 @@ Prepared by Muse (support role) 2026-11-16, ahead of the Tue Nov 17 slot on the 
 
 ## Files
 - nov17-library-window.png — final, 1080×1350 (4:5), byte-identical to photo-ideas-v3-college/04-library-window.png (sha256 8d1fd7e5…)
-- nov17-library-window-grid-square.png — center square crop (1080×1080, top offset 135px), made in this run and visually inspected
+- nov17-library-window-grid-square.png — square crop (1080×1080, top offset 110px per CoS ruling), re-cropped and visually inspected
 - nov17-caption.md — caption exactly as in photo-ideas-v3-college/captions.md §C4, laid out in the Nov 14/16 gate format (hook + verse + plain-words + standing line + save/send + hashtags); nothing rewritten
 
 ## Checks (image inspected at full size in this run, not just measured)
