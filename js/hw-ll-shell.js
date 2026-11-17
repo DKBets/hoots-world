@@ -5373,6 +5373,22 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
         bedtimeCase = libCaseHtml("🌙 Bedtime Stories", bed, read);
       }
     }
+    /* Author shelf (Kaitlyn): her published books on their own case, plus
+       the Writing Studio entry card on her profile (kidc) only. The case is
+       band-gated by libCatalog, so little profiles never see it. */
+    var kaitlynCase = "", studioCard = "";
+    if (libBand() === "teen") {
+      kaitlynCase = libCaseHtml("✍️ By Kaitlyn", libCatalog("kaitlyn"), read);
+      if (p.id === "kidc") {
+        var wsList = wsMineDrafts();
+        var wsNOpen = wsList.filter(function (d) { return d.status === "draft"; }).length;
+        var wsNSent = wsList.filter(function (d) { return d.status === "submitted" && !(d.bookId && libBook(d.bookId)); }).length;
+        studioCard = '<div class="ws-card"><h4 class="ws-cardh">✒️ My Writing Studio</h4>' +
+          '<p class="ws-cardline">Your stories begin here — your tutor helps with ideas, page by page.</p>' +
+          '<p class="ws-cardstat">' + (wsList.length ? wsNOpen + " in progress" + (wsNSent ? " · " + wsNSent + " with your tutor 📮" : "") : "No drafts yet — start your first story!") + '</p>' +
+          '<button type="button" class="ll-btn pri" data-ws-act="open">✒️ Open my writing studio</button></div>';
+      }
+    }
     return '<section class="ll-card lib-wrap"><h3 class="lib-h">📚 The Library</h3>' +
       '<p class="lib-sub">' + (libBand() === "teen" ? "Tap a book — it comes off the shelf and opens. Finish it and it joins your read shelf." : "Tap a book — it comes off the shelf, opens up, and Hoot reads it with you!") + '</p>' +
       tonightHtml +
@@ -5380,6 +5396,8 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
       '<h4 class="lib-sh">Books I\'ve read</h4>' + shelf +
       libCaseHtml("📖 Our Storybooks", libCatalog("ours"), read) +
       libCaseHtml("🏛️ Classic Books", libCatalog("classic"), read) +
+      kaitlynCase +
+      studioCard +
       bedtimeCase +
       '<div class="lib-case lib-homecase"><h4 class="lib-caseh">🏠 Books We Read at Home</h4>' +
       (homeCards ? '<div class="lib-homegrid">' + homeCards + '</div><div class="lib-board" aria-hidden="true"></div>' : '<p class="lib-none">No home books yet. Read a hard-copy book together, then add it here!</p>') +
@@ -5406,6 +5424,7 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
       '<div class="lib-titlecard"><p class="lib-tp-emo" aria-hidden="true">' + book.emo + '</p>' +
       '<h3 class="lib-rtitle">' + esc(book.title) + '</h3><p class="lib-rauthor">by ' + esc(book.author) + '</p>' +
       '<p class="lib-tp-pages">' + book.pages.length + ' pages' + (prog > 0 ? ' · you stopped on page ' + (prog + 1) : "") + '</p>' +
+      (book.shelf === "kaitlyn" && book.note ? '<div class="lib-tutnote"><p class="lib-tutnoteh">🎓 From your tutor</p><p class="lib-tutnotetext">' + esc(book.note) + '</p><button type="button" class="ll-btn" data-lib-fb="overall">🔊 Hear it</button></div>' : "") +
       '<button type="button" class="ll-btn pri lib-begin" data-lib-begin>' + (prog > 0 ? "Continue reading ▶" : "Begin reading ▶") + '</button>' +
       (prog > 0 ? '<button type="button" class="ll-btn lib-restart" data-lib-restart>Start over</button>' : "") +
       "</div></div></section>";
@@ -5418,7 +5437,7 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
       ? '<button type="button" class="ll-btn" data-lib-together>👫 We read it together!</button>' : "";
     var nav = '<div class="lib-nav">' +
       (page > 0 ? '<button type="button" class="ll-btn" data-lib-page="-1">← Back</button>' : '<span></span>') +
-      (book.band === "little" ? '<button type="button" class="ll-btn" data-lib-listen>🔊 Read to me</button>' : '<span></span>') +
+      ((book.band === "little" || book.narrate) ? '<button type="button" class="ll-btn" data-lib-listen>🔊 Read to me</button>' : '<span></span>') +
       (last
         ? (read[book.id] ? '<span class="lib-alread">✓ You read this book!</span>'
                           : '<span class="lib-finishrow"><button type="button" class="ll-btn pri" data-lib-finish>Finished! 🎉</button>' + togetherBtn + "</span>")
@@ -5431,6 +5450,7 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
         '<div class="lib-pagecard ' + (turnCls || "") + '"><p class="lib-orn" aria-hidden="true">❦</p>' +
         '<p class="lib-page">' + esc(book.pages[page]) + '</p>' +
         '<p class="lib-pageno">Page ' + (page + 1) + ' of ' + total + '</p></div>' +
+        (book.pnotes && book.pnotes[page] ? '<div class="lib-tutnote"><p class="lib-tutnoteh">🎓 Your tutor\'s note on this page</p><p class="lib-tutnotetext">' + esc(book.pnotes[page]) + '</p><button type="button" class="ll-btn" data-lib-fb="' + (page + 1) + '">🔊 Hear it</button></div>' : "") +
         (dots ? '<div class="lib-dots" aria-hidden="true">' + dots + '</div>' : "") + nav + "</section>";
     }
     /* Library 2: little books open full-screen — the watercolour fills the top
@@ -5465,7 +5485,7 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
   function libSpeakPage() {
     if (!libState || libState.stage !== "page") return;
     var book = libBook(libState.id);
-    if (!book || book.band !== "little") return;
+    if (!book || (book.band !== "little" && !book.narrate)) return;
     try { if (window.__hwSay) window.__hwSay(["lib-" + book.id.replace(/^(lib|cls)-/, "") + "-p" + (libState.page + 1)]); } catch (e) {}
   }
   function libSaveProg() {
@@ -5485,7 +5505,7 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
       libState = { id: id, page: page, stage: "page" };
       nextView = { kind: "book", key: id, page: page, title: book.title };
       openShellOverlay(book.title, libPageHtml(book, page));
-      if (book.band === "little") setTimeout(libSpeakPage, 300);
+      if (book.band === "little" || book.narrate) setTimeout(libSpeakPage, 300);
       return;
     }
     libState = { id: id, page: 0, stage: "cover" };
@@ -5508,7 +5528,7 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
     var body = $("#ll-obody"); if (body) body.innerHTML = libPageHtml(book, libState.page, "turn-next");
     if (curView && curView.kind === "book") curView.page = libState.page;
     libSaveProg();
-    if (book.band === "little") setTimeout(libSpeakPage, 250);
+    if (book.band === "little" || book.narrate) setTimeout(libSpeakPage, 250);
   }
   function libTurn(delta) {
     if (!libState) return;
@@ -5518,7 +5538,7 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
     var body = $("#ll-obody"); if (body) body.innerHTML = libPageHtml(book, libState.page, delta > 0 ? "turn-next" : "turn-prev");
     if (curView && curView.kind === "book") curView.page = libState.page;
     libSaveProg();
-    if (book.band === "little") libSpeakPage();
+    if (book.band === "little" || book.narrate) libSpeakPage();
   }
   function libFinish(together) {
     if (!libState || !state.profile) return;
@@ -5631,6 +5651,8 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
     if (pg) { libTurn(parseInt(pg.getAttribute("data-lib-page"), 10)); return; }
     var ls = t.closest("[data-lib-listen]");
     if (ls) { libSpeakPage(); return; }
+    var lfb = t.closest("[data-lib-fb]");
+    if (lfb) { libPlayFb(lfb.getAttribute("data-lib-fb")); return; }
     var fin = t.closest("[data-lib-finish]");
     if (fin) { libFinish(false); return; }
     var tog = t.closest("[data-lib-together]");
@@ -5667,6 +5689,8 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
       if (title2) { libHomeSave({ id: "home-" + Date.now(), title: title2, author: author2, cover: "", date: tutExpTodayStr() }, !!(togetherEl2 && togetherEl2.checked)); render(); }
       return;
     }
+    var wsa = t.closest("[data-ws-act]");
+    if (wsa) { wsAct(wsa.getAttribute("data-ws-act"), wsa); return; }
     var del = t.closest("[data-lib-home-del]");
     if (del && state.profile) {
       try {
@@ -5689,6 +5713,335 @@ var LESSON_ART = {"creator-budget-the-project":1,"creator-debug-change-one-thing
     });
     var nr = wrap.querySelector(".lib-nores"); if (nr) nr.hidden = shown > 0;
   });
+
+  /* ================= Kaitlyn's Writing Studio (author shelf) ==========
+     Drafts live in hootworld.stories.v1 (rides Family Sync). She writes
+     page by page; her tutor (tut-ws-* clips, Lily's voice) guides with
+     story sparks, tips and stuck-point help. Sending a story mints its
+     bookId; the tutor's workshop publishes under that exact id, and the
+     studio spots the finished book on her shelf via libBook(bookId).
+     Her words are never edited by the studio. The studio is an overlay,
+     so leaving it silences the tutor via closeOverlay/goBack like every
+     other overlay (Dawid's exit rule). */
+  var WS_KEY = "hootworld.stories.v1";
+  var WS_MAX_DRAFTS = 12, WS_MAX_PAGES = 20, WS_MAX_CHARS = 900;
+  var wsState = null;
+  var WS_CATS = [
+    { id: "animal", emo: "🐾", name: "Animal tales" },
+    { id: "space", emo: "🚀", name: "Space stories" },
+    { id: "mystery", emo: "🔎", name: "Mysteries" },
+    { id: "friendship", emo: "💛", name: "Friendship" },
+    { id: "magic", emo: "✨", name: "Magic" },
+    { id: "ocean", emo: "🌊", name: "Ocean stories" }
+  ];
+  var WS_SEEDS = [
+    { id: "animal-1", cat: "animal", title: "The Fox Who Lost His Tail", hook: "A young fox wakes up and his tail is gone — and a trail of feathers leads into the woods.", first: "When Finn the fox woke up, something felt wrong. His tail was gone." },
+    { id: "animal-2", cat: "animal", title: "The Stray Cat's Secret", hook: "A stray cat follows one girl home every day — but she is the only one who can see her.", first: "The cat was waiting on the fence again, watching Maya with one green eye and one gold." },
+    { id: "space-1", cat: "space", title: "The Last Star Map", hook: "A girl finds a star map in her grandmother's attic — and one star on it is blinking.", first: "The star on the map blinked. Elena held her breath and counted: blink, blink, blink — like a message." },
+    { id: "space-2", cat: "space", title: "Luna Station's New Cook", hook: "The new cook on a space station has never cooked in zero gravity — and the captain hates surprises.", first: "The soup floated out of the pot in perfect silver bubbles, and Chef Marco knew he was in trouble." },
+    { id: "mystery-1", cat: "mystery", title: "The Locked Garden Shed", hook: "Every night at nine, a light comes on in the shed nobody has opened in ten years.", first: "At nine o'clock, the light in the old shed flickered on — just like it had every night that week." },
+    { id: "mystery-2", cat: "mystery", title: "The Missing Trophy", hook: "The school trophy vanished from a locked case. The only clue: one small, muddy footprint.", first: "By the time Nora reached the trophy case, the glass was clean, the lock was shut — and the cup was gone." },
+    { id: "friendship-1", cat: "friendship", title: "The New Girl's Notebook", hook: "You find the new girl's lost notebook. Reading it feels wrong — returning it might change everything.", first: "The notebook was lying in the rain, its cover swelling with water, and Sam knew exactly whose it was." },
+    { id: "friendship-2", cat: "friendship", title: "Two Captains", hook: "Best friends both get picked as team captain — of rival teams.", first: "Coach read out the names, and June's stomach dropped. Captain of the Hawks: her. Captain of the Wolves: Bea." },
+    { id: "magic-1", cat: "magic", title: "The Clock That Runs Backward", hook: "A little shop sells a clock that runs backward — and someone keeps using it to undo their worst moments.", first: "The clock above the counter ticked backward, and nobody in the shop seemed to notice but Wren." },
+    { id: "magic-2", cat: "magic", title: "One Wish, Carefully Worded", hook: "A fountain grants exactly one wish — but it takes every single word literally.", first: "\"I wish I could fly,\" said Petra, and the fountain's water went perfectly, dangerously still." },
+    { id: "ocean-1", cat: "ocean", title: "The Lighthouse Keeper's Daughter", hook: "Every storm, something knocks three times on the lighthouse door — from the sea side.", first: "The knock came at midnight, three slow raps, and the sea was far too rough for any boat." },
+    { id: "ocean-2", cat: "ocean", title: "The Tide Pool Map", hook: "At the lowest tide of the year, a pattern in the tide pools looks exactly like a treasure map.", first: "The tide had never gone out this far, and in the last pool, something gold was glinting." }
+  ];
+  var WS_TIPS = [
+    "One gentle idea: give your character one line of dialogue on this page. Talking shows us who they are.",
+    "Try the five senses: what does your character hear right now?",
+    "End the page on a small question or a surprise — it pulls your reader to the next page.",
+    "Show the feeling: instead of saying she was sad, what did her hands do?",
+    "Give your character a want — something they are trying to get. That is the engine of every story.",
+    "Short sentences speed things up. Long sentences slow things down. Mix them on purpose.",
+    "Read your page in your head like a movie. If a scene is blurry, add one clear detail.",
+    "Stuck on a name? Pick the first one that feels right and keep moving. Names can change later."
+  ];
+  var WS_ENC = [
+    "I love where this is going. Keep building, one page at a time.",
+    "That is a strong page. You are thinking like a real author now.",
+    "You are building something real here, Kaitlyn. Your reader is going to feel this story."
+  ];
+  var WS_HELP = [
+    { id: "beginning", title: "The beginning", moves: ["Start in the middle of a moment — your character already doing something.", "Let the reader catch up; explain the rest as you go.", "Give us one detail that makes us ask: what happens next?"] },
+    { id: "middle", title: "The middle", moves: ["Ask: what does my character want?", "Now ask: what is standing in the way?", "Every new problem your character meets makes the story stronger."] },
+    { id: "ending", title: "The ending", moves: ["Endings echo beginnings — look back at your first page.", "How has your character changed? Show that change in one small, clear moment.", "The last line should feel like a door closing softly, not a wall."] },
+    { id: "dialogue", title: "Dialogue", moves: ["Real people interrupt, tease, and leave things unsaid.", "Read your lines in your head — if a line sounds like a speech, trim it.", "You do not need 'he said' on every line. Actions can carry the talking."] },
+    { id: "describe", title: "Describing a place", moves: ["Pick three details only — the three that matter most.", "Use a sound and a smell, not just what things look like.", "Three sharp details paint a clearer picture than a long list."] }
+  ];
+  function wsStoreAll() { try { return JSON.parse(localStorage.getItem(WS_KEY) || "{}") || {}; } catch (e) { return {}; } }
+  function wsMineRaw() {
+    var all = wsStoreAll(), m = all.kidc;
+    if (!m || typeof m !== "object") m = { order: [], drafts: {} };
+    if (!m.drafts || typeof m.drafts !== "object") m.drafts = {};
+    if (!Array.isArray(m.order)) m.order = Object.keys(m.drafts);
+    return m;
+  }
+  function wsSave(mine) { try { var all = wsStoreAll(); all.kidc = mine; localStorage.setItem(WS_KEY, JSON.stringify(all)); } catch (e) {} }
+  function wsMineDrafts() { var m = wsMineRaw(); return m.order.map(function (id) { return m.drafts[id]; }).filter(Boolean); }
+  function wsDraft(id) { var m = wsMineRaw(); return m.drafts[id] || null; }
+  function wsSay(name) { try { if (window.__hwSay) window.__hwSay([name]); } catch (e) {} }
+  function wsPublished(d) { return !!(d && d.status === "submitted" && d.bookId && libBook(d.bookId)); }
+  function wsStatus(d) { if (wsPublished(d)) return "published"; return d.status === "submitted" ? "submitted" : "draft"; }
+  function wsSlug(t) { var s = String(t || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40).replace(/-+$/g, ""); return s || "story"; }
+  function wsMintBookId(title) {
+    var base = "kait-" + wsSlug(title), id = base, n = 2, taken = {};
+    wsMineDrafts().forEach(function (d) { if (d.bookId) taken[d.bookId] = 1; });
+    while (libBook(id) || taken[id]) { id = base + "-" + n; n++; }
+    return id;
+  }
+  function wsWords(s) { var t = String(s || "").trim(); return t ? t.split(/\s+/).length : 0; }
+  function wsRender() {
+    var body = $("#ll-obody"); if (!body || !wsState) return;
+    var html = "";
+    if (wsState.stage === "home") html = wsHomeHtml();
+    else if (wsState.stage === "seeds") html = wsSeedsHtml();
+    else if (wsState.stage === "editor") html = wsEditorHtml();
+    else if (wsState.stage === "help") html = wsHelpHtml();
+    else if (wsState.stage === "submit") html = wsSubmitHtml();
+    else if (wsState.stage === "confirmdel") html = wsConfirmDelHtml();
+    body.innerHTML = html;
+    if (wsState.stage === "editor") {
+      var d = wsDraft(wsState.draftId);
+      wsState.pageStartWords = d ? wsWords(d.pages[wsState.page]) : 0;
+    }
+    if (wsState.stage === "home") {
+      /* First studio visit after a book lands: celebrate it once. */
+      var m = wsMineRaw(), changed = false;
+      Object.keys(m.drafts).forEach(function (id) {
+        var d = m.drafts[id];
+        if (wsPublished(d) && !d.celebrated) { d.celebrated = 1; changed = true; }
+      });
+      if (changed) { wsSave(m); setTimeout(function () { wsSay("tut-ws-published"); }, 350); }
+    }
+  }
+  function wsOpenStudio() {
+    wsState = { stage: "home", draftId: null, page: 0, tipIdx: -1, encIdx: 0, helpId: null, banner: null, showTip: false };
+    nextView = { kind: "studio", title: "My Writing Studio" };
+    openShellOverlay("✒️ My Writing Studio", "");
+    wsRender();
+    wsSay("tut-ws-welcome");
+  }
+  function wsHomeHtml() {
+    var list = wsMineDrafts();
+    var rows = list.map(function (d) {
+      var st = wsStatus(d);
+      var chip = st === "published" ? '<span class="ws-chip pub">Published 🎉</span>'
+        : st === "submitted" ? '<span class="ws-chip sent">With my tutor 📮</span>'
+        : '<span class="ws-chip">Writing…</span>';
+      var btns = "";
+      if (st === "published") btns = '<button type="button" class="ll-btn pri" data-ws-act="read" data-draft="' + d.id + '">📖 Read my book</button>';
+      else if (st === "submitted") btns = '<button type="button" class="ll-btn" data-ws-act="edit" data-draft="' + d.id + '">👀 Look at it</button><button type="button" class="ll-btn" data-ws-act="unsend" data-draft="' + d.id + '">↩ Unsend</button>';
+      else btns = '<button type="button" class="ll-btn pri" data-ws-act="edit" data-draft="' + d.id + '">✏️ Keep writing</button>';
+      btns += '<button type="button" class="ll-btn ws-del" data-ws-act="del" data-draft="' + d.id + '">🗑 Delete</button>';
+      return '<div class="ws-draft"><div class="ws-draftmain"><b>' + esc(d.title || "Untitled story") + '</b>' +
+        '<small>' + d.pages.length + (d.pages.length === 1 ? " page" : " pages") + " · " + d.pages.reduce(function (a, p) { return a + wsWords(p); }, 0) + " words</small></div>" +
+        chip + '<div class="ws-draftbtns">' + btns + "</div></div>";
+    }).join("");
+    return '<section class="ws-wrap">' +
+      (wsState.banner ? '<p class="ws-banner">' + esc(wsState.banner) + "</p>" : "") +
+      '<p class="ws-intro">This is your studio, Kaitlyn. Write your own stories, one page at a time — your tutor is here with sparks, tips and help whenever you want them.</p>' +
+      '<div class="ws-topbtns"><button type="button" class="ll-btn pri" data-ws-act="new">✨ Start a new story</button>' +
+      '<button type="button" class="ll-btn" data-ws-act="seeds">🌱 Story sparks</button></div>' +
+      (rows ? '<div class="ws-list">' + rows + "</div>" : '<p class="ws-none">No stories yet. Tap “Start a new story”, or pick a spark and let it pull you in.</p>') +
+      '<div class="ws-foot"><button type="button" class="ll-btn" data-ws-act="done">✓ Done for now</button></div></section>';
+  }
+  function wsSeedsHtml() {
+    var groups = WS_CATS.map(function (c) {
+      var cards = WS_SEEDS.filter(function (s) { return s.cat === c.id; }).map(function (s) {
+        return '<div class="ws-seed"><b>' + esc(s.title) + '</b><p>' + esc(s.hook) + '</p>' +
+          '<p class="ws-seedfirst">“' + esc(s.first) + '”</p>' +
+          '<button type="button" class="ll-btn pri" data-ws-act="useseed" data-seed="' + s.id + '">Use this spark</button></div>';
+      }).join("");
+      return '<div class="ws-cat"><button type="button" class="ws-cathead" data-ws-act="seedcat" data-cat="' + c.id + '">' + c.emo + " " + c.name + ' <span class="ws-cathear">🔊</span></button>' + cards + "</div>";
+    }).join("");
+    return '<section class="ws-wrap"><p class="ws-intro">Story sparks are beginnings, not rules. Pick one and make it yours — change the names, the place, anything.</p>' +
+      groups +
+      '<div class="ws-foot"><button type="button" class="ll-btn" data-ws-act="home">← Back to my studio</button></div></section>';
+  }
+  function wsNewDraft(seed) {
+    var m = wsMineRaw();
+    if (Object.keys(m.drafts).length >= WS_MAX_DRAFTS) {
+      wsState.stage = "home"; wsState.banner = "Your studio shelf is full — finish or delete a draft to make room for a new story.";
+      wsRender(); return;
+    }
+    var id = "ws-" + Date.now();
+    var d = { id: id, title: seed ? seed.title : "", pages: [seed ? seed.first : ""], seedId: seed ? seed.id : null,
+      status: "draft", bookId: null, createdAt: Date.now(), updatedAt: Date.now(), submittedAt: null, celebrated: 0 };
+    m.drafts[id] = d; m.order.unshift(id); wsSave(m);
+    wsState.draftId = id; wsState.page = 0; wsState.stage = "editor"; wsState.banner = null; wsState.showTip = false;
+    wsRender();
+    wsSay(seed ? "tut-ws-seed-picked" : "tut-ws-new");
+  }
+  function wsEditorHtml() {
+    var d = wsDraft(wsState.draftId);
+    if (!d) { wsState.stage = "home"; return wsHomeHtml(); }
+    var st = wsStatus(d);
+    var locked = st !== "draft";
+    var page = Math.max(0, Math.min(wsState.page || 0, d.pages.length - 1));
+    wsState.page = page;
+    var dots = d.pages.length <= 24 ? d.pages.map(function (_, i) { return '<span class="lib-dot' + (i === page ? " on" : "") + '"></span>'; }).join("") : "";
+    var tip = wsState.showTip && wsState.tipIdx >= 0 ? '<div class="ws-tip"><p class="ws-tiphead">💡 Tutor tip</p><p>' + esc(WS_TIPS[wsState.tipIdx]) + "</p></div>" : "";
+    var head = "";
+    if (st === "published") head = '<p class="ws-banner pub">🎉 This story is a real book on your shelf now! <button type="button" class="ll-btn pri" data-ws-act="read" data-draft="' + d.id + '">📖 Read my book</button></p>';
+    else if (st === "submitted") head = '<p class="ws-banner">📮 This story is with your tutor. She is reading every page, writing your notes, painting your cover and recording it aloud. It is resting now — tap Unsend if you want to change it.</p>';
+    return '<section class="ws-wrap ws-editor">' +
+      (wsState.banner ? '<p class="ws-banner">' + esc(wsState.banner) + "</p>" : "") + head + tip +
+      '<label class="ws-lab">Story title</label>' +
+      '<input type="text" class="ws-title" data-ws-title maxlength="80" placeholder="Give your story a title…" value="' + esc(d.title || "") + '"' + (locked ? " disabled" : "") + ">" +
+      '<div class="ws-pagestrip"><span>Page ' + (page + 1) + " of " + d.pages.length + '</span>' + (dots ? '<span class="lib-dots">' + dots + "</span>" : "") +
+      '<span data-ws-count>' + String(d.pages[page] || "").length + " / " + WS_MAX_CHARS + " letters</span></div>" +
+      '<textarea class="ws-page" data-ws-page rows="10" maxlength="' + WS_MAX_CHARS + '" placeholder="Write this page of your story…"' + (locked ? " disabled" : "") + ">" + esc(d.pages[page] || "") + "</textarea>" +
+      '<div class="ws-nav">' +
+      (page > 0 ? '<button type="button" class="ll-btn" data-ws-act="prev">← Prev page</button>' : "<span></span>") +
+      '<span class="ws-words">' + wsWords(d.pages[page]) + " words on this page</span>" +
+      (!locked && page < d.pages.length - 1 ? '<button type="button" class="ll-btn" data-ws-act="next">Next page →</button>' : (!locked ? '<button type="button" class="ll-btn pri" data-ws-act="newpage">＋ New page</button>' : "<span></span>")) +
+      "</div>" +
+      (locked ? "" : '<div class="ws-tools">' +
+        '<button type="button" class="ll-btn" data-ws-act="seeds">🌱 Sparks</button>' +
+        '<button type="button" class="ll-btn" data-ws-act="tip">💡 Tutor tip</button>' +
+        '<button type="button" class="ll-btn" data-ws-act="help">🆘 Help me with this bit</button>' +
+        (page < d.pages.length - 1 ? '<button type="button" class="ll-btn" data-ws-act="newpage">＋ New page</button>' : "") +
+        (d.pages.length > 1 ? '<button type="button" class="ll-btn ws-del" data-ws-act="delpage">🗑 This page</button>' : "") +
+        "</div>") +
+      '<div class="ws-foot">' +
+      '<button type="button" class="ll-btn" data-ws-act="home">← My studio</button>' +
+      (st === "submitted" ? '<button type="button" class="ll-btn" data-ws-act="unsend" data-draft="' + d.id + '">↩ Unsend</button>' : "") +
+      (st === "draft" ? '<button type="button" class="ll-btn pri" data-ws-act="presubmit">📮 Send to my tutor</button>' : "") +
+      '<button type="button" class="ll-btn" data-ws-act="done">✓ Done for now</button></div></section>';
+  }
+  function wsHelpHtml() {
+    var open = WS_HELP.filter(function (h) { return h.id === wsState.helpId; })[0];
+    var secs = WS_HELP.map(function (h) {
+      var isOpen = open && open.id === h.id;
+      return '<div class="ws-helpsec"><button type="button" class="ws-helphead" data-ws-act="helpsec" data-help="' + h.id + '">' + esc(h.title) + "</button>" +
+        (isOpen ? '<ul class="ws-moves">' + h.moves.map(function (mv) { return "<li>" + esc(mv) + "</li>"; }).join("") + "</ul>" : "") + "</div>";
+    }).join("");
+    return '<section class="ws-wrap"><p class="ws-intro">Every writer gets stuck. Pick where you are stuck, and try one of the moves — then go back and write.</p>' +
+      secs +
+      '<div class="ws-foot"><button type="button" class="ll-btn pri" data-ws-act="backedit">✏️ Back to my page</button>' +
+      '<button type="button" class="ll-btn" data-ws-act="home">← My studio</button></div></section>';
+  }
+  function wsSubmitHtml() {
+    var d = wsDraft(wsState.draftId);
+    if (!d) { wsState.stage = "home"; return wsHomeHtml(); }
+    var emptyPages = [];
+    d.pages.forEach(function (p, i) { if (wsWords(p) < 3) emptyPages.push(i + 1); });
+    var hasTitle = !!(d.title && d.title.trim());
+    var li = function (ok, txt) { return '<li class="' + (ok ? "ok" : "no") + '">' + (ok ? "✓ " : "• ") + esc(txt) + "</li>"; };
+    return '<section class="ws-wrap"><h4 class="ws-h">📮 Send “' + esc(d.title || "Untitled story") + '” to your tutor?</h4>' +
+      '<ul class="ws-check">' + li(hasTitle, hasTitle ? "It has a title" : "It needs a title first") +
+      li(!emptyPages.length, emptyPages.length ? "Pages " + emptyPages.join(", ") + " still need a few words" : "Every page has words") +
+      li(true, d.pages.length + (d.pages.length === 1 ? " page" : " pages") + ", " + d.pages.reduce(function (a, p) { return a + wsWords(p); }, 0) + " words") + "</ul>" +
+      '<p class="ws-intro">Your tutor reads every page, writes you notes, paints your cover, and reads your story aloud in her voice. Your words stay exactly as you wrote them — notes are suggestions, never changes. Your book appears on your shelf when it is ready; your story travels to your tutor next time the app syncs.</p>' +
+      '<div class="ws-foot"><button type="button" class="ll-btn" data-ws-act="backedit">✏️ Keep writing</button>' +
+      '<button type="button" class="ll-btn pri" data-ws-act="send">📮 Send it</button></div></section>';
+  }
+  function wsConfirmDelHtml() {
+    var d = wsDraft(wsState.draftId);
+    if (!d) { wsState.stage = "home"; return wsHomeHtml(); }
+    return '<section class="ws-wrap"><h4 class="ws-h">🗑 Delete “' + esc(d.title || "Untitled story") + '”?</h4>' +
+      '<p class="ws-intro">Only do this if you are really sure. This cannot be undone.</p>' +
+      '<div class="ws-foot"><button type="button" class="ll-btn" data-ws-act="home">Keep it</button>' +
+      '<button type="button" class="ll-btn ws-delbtn" data-ws-act="delyes">Yes, delete it</button></div></section>';
+  }
+  function wsEncourageIfGrew() {
+    var d = wsDraft(wsState.draftId); if (!d) return;
+    var now = wsWords(d.pages[wsState.page]);
+    if (now >= (wsState.pageStartWords || 0) + 3) {
+      wsState.encIdx = (wsState.encIdx || 0) % 3 + 1;
+      wsState.banner = "🎓 " + WS_ENC[wsState.encIdx - 1];
+      wsSay("tut-ws-enc-" + wsState.encIdx);
+    }
+  }
+  function wsAct(act, el) {
+    if (!wsState && act !== "open") return;
+    var draftId = el && el.getAttribute ? el.getAttribute("data-draft") : null;
+    if (act === "open") { wsOpenStudio(); return; }
+    if (act === "done") { goBack(); return; }
+    if (act === "home") { wsState.stage = "home"; wsState.banner = null; wsRender(); return; }
+    if (act === "new") { wsNewDraft(null); return; }
+    if (act === "seeds") { wsState.stage = "seeds"; wsRender(); wsSay("tut-ws-seeds"); return; }
+    if (act === "seedcat") { wsSay("tut-ws-seed-" + el.getAttribute("data-cat")); return; }
+    if (act === "useseed") {
+      var seed = WS_SEEDS.filter(function (s) { return s.id === el.getAttribute("data-seed"); })[0];
+      if (seed) wsNewDraft(seed);
+      return;
+    }
+    if (act === "edit") { wsState.draftId = draftId; wsState.page = 0; wsState.stage = "editor"; wsState.banner = null; wsState.showTip = false; wsRender(); var ed = wsDraft(draftId); if (ed && wsStatus(ed) === "submitted") wsSay("tut-ws-locked"); return; }
+    if (act === "read") { var rd = wsDraft(draftId); if (rd && rd.bookId) openBook(rd.bookId); return; }
+    if (act === "del") { wsState.draftId = draftId; wsState.stage = "confirmdel"; wsRender(); wsSay("tut-ws-delete"); return; }
+    if (act === "delyes") {
+      var m = wsMineRaw(); delete m.drafts[wsState.draftId];
+      m.order = m.order.filter(function (x) { return x !== wsState.draftId; });
+      wsSave(m); wsState.stage = "home"; wsState.draftId = null; wsRender(); return;
+    }
+    if (act === "unsend") {
+      var m2 = wsMineRaw(), ud = m2.drafts[draftId || wsState.draftId];
+      if (ud) { ud.status = "draft"; ud.submittedAt = null; ud.updatedAt = Date.now(); wsSave(m2); }
+      if (wsState.stage === "editor") wsRender(); else { wsState.stage = "home"; wsRender(); }
+      return;
+    }
+    /* Editor-stage actions */
+    var d = wsDraft(wsState.draftId); if (!d) return;
+    if (act === "prev") { wsEncourageIfGrew(); wsState.page = Math.max(0, wsState.page - 1); wsRender(); return; }
+    if (act === "next") { wsEncourageIfGrew(); wsState.page = Math.min(d.pages.length - 1, wsState.page + 1); wsRender(); return; }
+    if (act === "newpage") {
+      if (d.pages.length >= WS_MAX_PAGES) { wsSay("tut-ws-cap"); wsState.banner = "This story has " + WS_MAX_PAGES + " pages — that is a whole book! Send it to your tutor, then start the next one."; wsRender(); return; }
+      wsEncourageIfGrew();
+      var m3 = wsMineRaw(); m3.drafts[d.id].pages.push(""); m3.drafts[d.id].updatedAt = Date.now(); wsSave(m3);
+      wsState.page = d.pages.length; wsRender(); wsSay("tut-ws-page-new"); return;
+    }
+    if (act === "delpage") {
+      var m4 = wsMineRaw(); m4.drafts[d.id].pages.splice(wsState.page, 1);
+      if (!m4.drafts[d.id].pages.length) m4.drafts[d.id].pages = [""];
+      m4.drafts[d.id].updatedAt = Date.now(); wsSave(m4);
+      wsState.page = Math.max(0, wsState.page - 1); wsRender(); return;
+    }
+    if (act === "tip") { wsState.tipIdx = ((typeof wsState.tipIdx === "number" ? wsState.tipIdx : -1) + 1) % WS_TIPS.length; wsState.showTip = true; wsRender(); wsSay("tut-ws-tip-" + (wsState.tipIdx + 1)); return; }
+    if (act === "help") { wsState.stage = "help"; wsState.helpId = null; wsRender(); wsSay("tut-ws-help"); return; }
+    if (act === "helpsec") { wsState.helpId = el.getAttribute("data-help"); wsRender(); wsSay("tut-ws-help-" + wsState.helpId); return; }
+    if (act === "backedit") { wsState.stage = "editor"; wsRender(); return; }
+    if (act === "presubmit") { wsState.stage = "submit"; wsRender(); wsSay("tut-ws-submit"); return; }
+    if (act === "send") {
+      var empty = d.pages.some(function (p) { return wsWords(p) < 3; });
+      if (!d.title || !d.title.trim() || empty) {
+        wsState.stage = "editor";
+        wsState.page = Math.max(0, d.pages.findIndex(function (p) { return wsWords(p) < 3; }));
+        wsState.banner = !d.title || !d.title.trim() ? "Your story needs a title before it goes to your tutor." : "One page still needs a few words before your story can go.";
+        wsRender(); wsSay("tut-ws-empty"); return;
+      }
+      var m5 = wsMineRaw(), sd = m5.drafts[d.id];
+      sd.bookId = wsMintBookId(sd.title); sd.status = "submitted"; sd.submittedAt = Date.now(); sd.updatedAt = Date.now();
+      wsSave(m5); wsState.stage = "home"; wsState.banner = "📮 Sent! Your story is with your tutor now."; wsRender(); wsSay("tut-ws-submitted"); return;
+    }
+  }
+  document.addEventListener("input", function (e) {
+    var inp = e.target; if (!inp || !inp.matches || !wsState) return;
+    var isTitle = inp.matches("[data-ws-title]"), isPage = inp.matches("[data-ws-page]");
+    if (!isTitle && !isPage) return;
+    var d = wsDraft(wsState.draftId); if (!d || wsStatus(d) !== "draft") return;
+    var m = wsMineRaw(), md = m.drafts[d.id]; if (!md) return;
+    if (isTitle) md.title = inp.value.slice(0, 80);
+    else {
+      md.pages[wsState.page] = inp.value.slice(0, WS_MAX_CHARS);
+      var wrap = inp.closest(".ws-editor");
+      var cnt = wrap && wrap.querySelector("[data-ws-count]");
+      if (cnt) cnt.textContent = inp.value.length + " / " + WS_MAX_CHARS + " letters";
+      var wspan = wrap && wrap.querySelector(".ws-words");
+      if (wspan) wspan.textContent = wsWords(inp.value) + " words on this page";
+    }
+    md.updatedAt = Date.now(); wsSave(m);
+  });
+  /* Tutor feedback clips for her published books (workshop-recorded):
+     tut-ws-fb-<slug>-overall / tut-ws-fb-<slug>-p<N>. */
+  function libPlayFb(kind) {
+    if (!libState) return;
+    var book = libBook(libState.id); if (!book || book.shelf !== "kaitlyn") return;
+    var slug = book.id.replace(/^kait-/, "");
+    wsSay("tut-ws-fb-" + slug + (kind === "overall" ? "-overall" : "-p" + kind));
+  }
 
   window.__llShell = { setTab: setTab, setProfile: setProfile, state: state, openGame: openGame, openLesson: openLesson, openPath: openPath, closeOverlay: closeOverlay, render: render, openMuseCard: openMuseCard, findShelfNode: findShelfNode, findHubIdeaNode: findHubIdeaNode, playNow: playNow, openLessonById: openLessonById, findLessonNodeById: findLessonNodeById, LESSON_BY_ID: LESSON_BY_ID, checkParentGate: checkParentGate, newGateQuestion: newGateQuestion, goBack: goBack, goHome: goHome, viewStack: viewStack, curView: function () { return curView; },
     waveC1: { dailyPick: function (pid, date) { var r = wcDailyPick(pid, date || new Date()); return r ? { id: r.lesson.id, title: r.lesson.title, current: r.current, season: r.season } : null; }, stats: wcStats, completions: compLoad, completionFor: wcCompletion, rightNowItems: wcRightNowItems, openRightNow: openRightNow, openWorldMap: openWorldMap, pool: wcPool },
