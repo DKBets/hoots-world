@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 60
+- Scored chapters: 70
 - PASS: 1
-- FAIL: 40
-- UNCERTAIN: 19 (jsonl verdict UNSURE)
-- Still to score: 869 Old Testament chapters
+- FAIL: 48
+- UNCERTAIN: 21 (jsonl verdict UNSURE)
+- Still to score: 859 Old Testament chapters
 
 ## PASS
 
@@ -280,6 +280,36 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Exodus 10** — missing verse 1 at 0:00–0:02 — "Then the LORD said to Moses Go to Pharaoh I have made him and his officials stubborn so I can show them these signs of my power I am doing this so you can tell your children and grandchildren how I dealt with the Egyptians and about the signs I did among them Then you will know that I am …" (small.en+medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00)
   - WER small 0.1498 / medium 0.2241; coverage small 0.854 / medium 0.7798; duration 261.46s vs expected 312.4s (ratio 0.837); sha256 `625146670ddc92cf843a2d4a9e861aab0e4607f839faa6370ed065b54c00d037`
+- **Exodus 11** — coverage low on both models (small 0.670, medium 0.897); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.341 / medium 0.1034; coverage small 0.6705 / medium 0.8966; duration 90.03s vs expected 104.4s (ratio 0.862); sha256 `5721350d070bc9bb0a53d84b51b37d60f8949860236f493a86484244225a772f`
+- **Exodus 12** — inserted verse 23 at 3:24–3:32 — "goes through the land to strike down the Egyptians but when he sees the blood on the door frame he" (small.en+medium.en)
+- **Exodus 12** — inserted verse 23 at 3:39–4:31 — "he will not pass the to kill anyone born Then the night's worst with the first lamb and every first lamb in the family of the rich man that The Lord goes through the lamb and named the first lamb each family in each day When the lamb comes for the tapest chain the lamb will break the first lamb …" (small.en+medium.en)
+- **Exodus 12** — repeated verse 23 at 3:36–3:39 — "the Lord goes through the land to strike down the Egyptians" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 23 3:38-4:02 (slice coverage small 0.92, medium 1.00) unclear: inserted verse 23 3:23-3:38 (slice coverage small 0.20, medium 1.00) refuted: repeated verse 23 3:35-3:45 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.2283 / medium 0.2243; coverage small 0.9188 / medium 0.9116; duration 493.14s vs expected 497.6s (ratio 0.991); sha256 `cc5577a77473b65a74575f026ff55a17069b17af1dc1d5cda39d1d01d50728eb`
+- **Exodus 13** — missing verse 1 at 0:00–0:02 — "The LORD said to Moses Set apart for me every firstborn male among the Israelites Every first son and every firstborn male animal belongs to me Moses said to the people Remember this day It is the day you came out of Egypt where you were slaves The LORD brought you out of here with his mighty hand Do not …" (small.en+medium.en)
+- **Exodus 13** — missing verse 9 at 1:29 — "the LORD brought you out of Egypt with his mighty hand So keep this rule at the right time every year The LORD will bring you into the land of the Canaanites as he" (small.en+medium.en)
+- **Exodus 13** — missing verse 20 at 3:10 — "They left Succoth and camped at Etham" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00) refuted: missing verse 9 1:15-1:24 (slice coverage small 1.00, medium 1.00) unclear: missing verse 20 3:01-3:11 (slice coverage small 0.86, medium 0.00)
+  - WER small 0.2641 / medium 0.3953; coverage small 0.7525 / medium 0.6113; duration 210.01s vs expected 240.8s (ratio 0.872); sha256 `c9f027e89de2b731bd12f9cb3534d7c31219b0c772e2c365cab2368eec5bc150`
+- **Exodus 16** — missing verse 1 at 0:25–0:29 — "The whole community of Israel left Elim They came to the desert of Sin between Elim and Sinai It was the fifteenth day of the second month after they had left Egypt There in the desert the whole community grumbled against Moses and Aaron The Israelites said to them We wish the LORD had let us die in Egypt There …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.83, medium 0.00)
+  - WER small 0.0891 / medium 0.2017; coverage small 0.912 / medium 0.8004; duration 310.06s vs expected 372.8s (ratio 0.832); sha256 `c5412c9f96ea57f8c8b5427dc93f325cacb1cc3560897ad9ffa957155d9ea9da`
+- **Exodus 17** — inserted verse 13 at 2:04–2:11 — "Then the Lord said to Moses Write this down in a book so it will be remembered for all the Jews in Israel" (small.en+medium.en)
+- **Exodus 17** — inserted verse 14 at 2:17–3:21 — "for all the Jews in Israel Then a man named Joshua was named born named Joshua He was the son of another Jews named Godfrey He planned plans with God and God said he was able to do whatever he wanted Seven times he was able to do it but the moment the God was blessed he was blessed and …" (small.en+medium.en)
+- **Exodus 17** — repeated verse 14 at 2:12–2:19 — "Then the Lord said to Moses Write this down in a book so it will be remembered for all the Jews in Israel Then" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 14 2:16-2:40 (slice coverage small 1.00, medium 0.92) refuted: repeated verse 14 2:11-2:25 (slice coverage small 1.00, medium 0.92, times 1/0) confirmed: inserted verse 13 2:03-2:17 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.3159 / medium 0.5653; coverage small 0.9786 / medium 0.5558; duration 218.5s vs expected 168.4s (ratio 1.297); sha256 `6c26c991a3f60493ff0a7dff60e006a426e8a2213f9b5288584f61024b927474`
+- **Exodus 18** — missing verse 5 at 0:57 — "Jethro Moses father in law came to Moses in the desert with Moses wife and sons Moses was camped near the mountain of God Jethro had sent word to Moses I your father in law Jethro am coming to you with your wife and her two sons So Moses went out to meet his father in law He bowed down" (small.en+medium.en)
+  - audio check: unclear: missing verse 5 0:33-0:42 (slice coverage small 1.00, medium 0.00)
+  - WER small 0.1694 / medium 0.1184; coverage small 0.8306 / medium 0.8906; duration 238.93s vs expected 266.8s (ratio 0.896); sha256 `72974983d1be24d06d00657e84a0bc217c60a9ee361207b553c869e6182e0c5c`
+- **Exodus 19** — missing verse 7 at 0:43 — "went back and called the leaders of the people together" (medium.en)
+  - audio check: confirmed: missing verse 7 0:34-0:44 (slice coverage small 0.30, medium 0.30)
+  - WER small 0.0093 / medium 0.1708; coverage small 0.9984 / medium 0.8307; duration 208.73s vs expected 257.6s (ratio 0.81); sha256 `6c666ecbad1d0dc847f40117c87fdf0b120cac18debe672b30b3f029c3020f4c`
+- **Exodus 20** — missing verse 10 at 1:22 — "On that day no one may do any work That includes you your sons and daughters your men and women servants your animals and any foreigner living in your towns In six days the LORD made the heavens the earth the sea and everything in them But" (small.en)
+- **Exodus 20** — missing verse 18 at 2:07 — "They saw the lightning and the smoking mountain They shook with fear and stood far away They said to Moses You speak to us and we will listen" (medium.en)
+  - audio check: confirmed: missing verse 10 1:04-1:13 (slice coverage small 0.08, medium 0.00) refuted: missing verse 18 1:56-2:05 (slice coverage small 0.92, medium 0.92)
+  - WER small 0.1326 / medium 0.0585; coverage small 0.8674 / medium 0.9415; duration 190.98s vs expected 205.2s (ratio 0.931); sha256 `fc13abc67163eae5ec80da7da696cb9f73f6931d85a0694ac3f7c028ab61c2ac`
 
 ## UNCERTAIN
 
@@ -342,6 +372,12 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Exodus 5** — audio slice contains the disputed words; the models still disagree (coverage small 0.996, medium 0.655)
   - audio check: refuted: missing verse 5 0:40-0:49 (slice coverage small 0.92, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.996, medium 0.655); WER small 0.0054 / medium 0.3466; coverage small 0.9964 / medium 0.6552; sha256 `ff0ed6f9a7bf6984dad18bb9f69c8f8f0684d747a1b8c8c79770d24a86dc6a9e`
+- **Exodus 14** — audio slice contains the disputed words; the models still disagree (coverage small 0.900, medium 0.654)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) refuted: missing verse 4 0:22-0:31 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.900, medium 0.654); WER small 0.1021 / medium 0.3506; coverage small 0.9004 / medium 0.6544; sha256 `c2dac8f380c5b93afc47a27b822335fa47a2e5c5e3080729189949e7e38f4bcb`
+- **Exodus 15** — audio slice contains the disputed words; the models still disagree (coverage small 0.992, medium 0.660)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.992, medium 0.660); WER small 0.0078 / medium 0.3427; coverage small 0.9922 / medium 0.6604; sha256 `e4b7861a476847d56d6d5f4fc60bbc21f0c54dfe6c2d7bc4e6775556db1a2d48`
 
 ## Script
 
