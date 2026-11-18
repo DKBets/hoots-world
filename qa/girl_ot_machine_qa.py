@@ -860,6 +860,7 @@ def decide(small: dict | None, medium: dict | None, acoustic: dict) -> tuple[str
                 "time": a.get("start") if a.get("start") is not None else b.get("start"),
                 "time_end": a.get("end") if a.get("end") is not None else b.get("end"),
                 "quote": a.get("quote") or b.get("quote"),
+                "words": a.get("words") or b.get("words"),
                 "models": "small.en+medium.en",
             }
         )
@@ -962,6 +963,7 @@ def _one_sided(span: dict, model: str) -> dict:
         "time": span.get("start"),
         "time_end": span.get("end"),
         "quote": span.get("quote"),
+        "words": span.get("words"),
         "models": model,
     }
 
@@ -1082,22 +1084,43 @@ def context_at(words: list[dict], t: float) -> str:
     return " ".join(near[:20])
 
 
-def shared_extra_phrase(models: dict, audio: np.ndarray, ref_norms: list[str], sr: int = 16000) -> dict | None:
+def shared_extra_phrase(
+    models: dict,
+    audio: np.ndarray,
+    ref_norms: list[str],
+    book: str,
+    chapter: int,
+    sr: int = 16000,
+) -> dict | None:
     """When full-file transcripts disagree, check short windows.
 
     A long file lets one model skip a bad opening that the other model
     quotes. Both models transcribe the first 36 seconds in overlapping
     windows. A 5-word phrase that is in both windows and not in the source
-    is an agreed content defect.
+    is an agreed content defect. A leading book/chapter announcement is not
+    an insertion, including the chapter number plus the first source words.
     """
     if audio.size < sr * 8:
         return None
     def in_source(gram: tuple[str, ...]) -> bool:
         # path/paths and other one-edit slips are the source line, not an extra.
         span = len(gram)
+        if span == 0:
+            return False
         for i in range(max(0, len(ref_norms) - span + 1)):
             if all(tokens_equal(gram[k], ref_norms[i + k]) for k in range(span)):
                 return True
+        return False
+
+    number_keys = {tuple(form) for form in number_forms(chapter)}
+
+    def is_announcement(gram: tuple[str, ...]) -> bool:
+        if in_source(gram):
+            return True
+        if gram[:1] in number_keys and in_source(gram[1:]):
+            return True
+        if gram and gram[0] in ("chapter", "chapters") and gram[1:2] in number_keys and in_source(gram[2:]):
+            return True
         return False
 
     found = {SMALL: {}, MEDIUM: {}}
@@ -1109,9 +1132,12 @@ def shared_extra_phrase(models: dict, audio: np.ndarray, ref_norms: list[str], s
         for name, model in models.items():
             words = transcribe(model, clip)
             norms = [tok[0] for tok in words_to_hyp(words)]
+            cut = header_cut(norms, book, chapter)
+            if cut:
+                norms = norms[cut:]
             for i in range(len(norms) - SPAN_MIN + 1):
                 gram = tuple(norms[i : i + SPAN_MIN])
-                if gram in found[name] or in_source(gram):
+                if gram in found[name] or is_announcement(gram):
                     continue
                 content = [w for w in gram if w not in FUNC and not w.isdigit()]
                 if len(content) < 2:
@@ -1429,8 +1455,17 @@ def _checkable_quote(quote: dict) -> bool:
     return quote.get("time") is not None
 
 
+def first_words(text: str, n: int = 16) -> str:
+    return " ".join(raw for _norm, raw in list(tokenize(text or ""))[:n])
+
+
 def check_disputed_spans(models, audio, quotes, verses) -> list[dict]:
-    """Re-transcribe each disputed span with both models. The slice is the audio check."""
+    """Re-transcribe each disputed span with both models. The slice is the audio check.
+
+    A missing-span timestamp is the next word the model did hear, so the gap
+    is before that clock time. The slice covers the gap, and the check uses
+    the first words of the quote (the part at the start of the gap).
+    """
     ranked = [q for q in (quotes or []) if _checkable_quote(q)]
     ranked.sort(key=lambda q: (-(q.get("words") or 0), q.get("time") is None, q.get("time") or 0.0))
     tail = source_tail_text(verses)
@@ -1441,11 +1476,24 @@ def check_disputed_spans(models, audio, quotes, verses) -> list[dict]:
         if kind == "truncation":
             t0, t1 = max(0.0, dur - 18.0), dur
             target = tail
+            clip, abs_s, abs_e = slice_clip(audio, t0, t1)
+        elif kind == "missing":
+            anchor = float(quote["time"])
+            n_words = quote.get("words") or len(tokenize(quote.get("quote") or ""))
+            gap = min(30.0, max(12.0, float(n_words) * 0.4))
+            abs_s = max(0.0, anchor - gap)
+            abs_e = min(dur, anchor + 1.5)
+            if abs_e - abs_s > 24.0:
+                abs_e = abs_s + 24.0
+            target = first_words(quote.get("quote") or "", 16)
+            a = int(abs_s * 16000)
+            b = min(int(audio.shape[0]), max(a + 1, int(abs_e * 16000)))
+            clip = audio[a:b]
         else:
             t0 = quote.get("time")
             t1 = quote.get("time_end")
-            target = quote.get("quote") or ""
-        clip, abs_s, abs_e = slice_clip(audio, t0, t1)
+            target = first_words(quote.get("quote") or "", 24)
+            clip, abs_s, abs_e = slice_clip(audio, t0, t1)
         heard = {}
         for name, model in models.items():
             words = transcribe(model, clip)
@@ -1557,8 +1605,21 @@ def apply_slice_checks(verdict, reasons, quotes, checks, small, medium, acoustic
     ignore_tail = all(c["kind"] == "truncation" for c in refuted) and bool(refuted)
     if refuted and _bars_ok(small, ignore_tail) and _bars_ok(medium, ignore_tail):
         return "PASS", ["disputed spans are not in the audio; both models meet the pass bars"], [], note
-    reasons = ["the audio span does not support that defect, and the models still disagree on the chapter"] + list(reasons)
-    return "UNSURE", reasons, quotes, note
+    both_low = (
+        small
+        and medium
+        and small["coverage"] < COVERAGE_FAIL
+        and medium["coverage"] < COVERAGE_FAIL
+    )
+    wer_both = small and medium and small["wer"] > WER_BACKSTOP and medium["wer"] > WER_BACKSTOP
+    if refuted and (both_low or wer_both):
+        return "FAIL", reasons, quotes, note
+    reasons = [
+        "audio slice contains the disputed words; the models still disagree "
+        f"(coverage small {small['coverage']:.3f}, medium {medium['coverage']:.3f})"
+    ]
+    kept = [q for q in quotes if not _checkable_quote(q)]
+    return "UNSURE", reasons, kept, note
 
 
 def score_chapter(job: dict, verses, note: str, models: dict) -> dict:
@@ -1620,7 +1681,7 @@ def score_chapter(job: dict, verses, note: str, models: dict) -> dict:
         ref_norms = []
         for _num, text in verses:
             ref_norms.extend(norm for norm, _raw in tokenize(text))
-        probe = shared_extra_phrase(models, audio, ref_norms)
+        probe = shared_extra_phrase(models, audio, ref_norms, job["book"], job["chapter"])
         if probe:
             verdict = "FAIL"
             reasons = [
@@ -2137,6 +2198,7 @@ def self_test() -> None:
     gap_audio[6 * sr : 7 * sr] = 0.2
     gaps = silence_gaps(gap_audio, sr)
     assert gaps and gaps[0]["seconds"] > 3.0, gaps
+    assert header_cut("genesis chapter 1 in the very beginning god made".split(), "Genesis", 1) == 3
 
     clean_models = {
         "coverage": 0.99,
