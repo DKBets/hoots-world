@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 490
-- PASS: 20
-- FAIL: 314
-- UNCERTAIN: 156 (jsonl verdict UNSURE)
-- Still to score: 439 Old Testament chapters
+- Scored chapters: 500
+- PASS: 21
+- FAIL: 320
+- UNCERTAIN: 159 (jsonl verdict UNSURE)
+- Still to score: 429 Old Testament chapters
 
 ## PASS
 
-20 chapters. Both models agreed there was no missing, invented, or repeated passage.
+21 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -77,7 +77,7 @@ words clears that span. A split slice stays UNCERTAIN.
 - Nehemiah 1, 5
 - Esther 10
 - Job 2, 34–35
-- Psalms 1, 3, 8, 11–12
+- Psalms 1, 3, 8, 11–12, 15
 
 ## FAIL
 
@@ -2878,6 +2878,22 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 10** — missing verse 5 at 0:58 — "They are proud and they don't" (medium.en)
   - audio check: refuted: missing verse 17 1:48-1:58 (slice coverage small 1.00, medium 1.00) confirmed: missing verse 5 0:49-0:59 (slice coverage small 0.33, medium 0.33)
   - WER small 0.0278 / medium 0.2593; coverage small 0.9753 / medium 0.7438; duration 121.94s vs expected 129.6s (ratio 0.941); sha256 `5d9d79b914aac67ae6eeac380271670ffba5a5a834e2ff02fa7b34b7b0f11bab`
+- **Psalms 16** — coverage low on both models (small 0.628, medium 0.590); WER backstop both models (small 0.372, medium 0.410); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.3723 / medium 0.4096; coverage small 0.6277 / medium 0.5904; duration 72.7s vs expected 75.2s (ratio 0.967); sha256 `9c613e9269dbf89a89e6fcbdd602fc2162f1f85d37f65cb2284ee2e87ce88d62`
+- **Psalms 17** — coverage low on both models (small 0.776, medium 0.545); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.2378 / medium 0.4545; coverage small 0.7762 / medium 0.5455; duration 107.01s vs expected 114.4s (ratio 0.935); sha256 `c0449589c5c95ee1126b4b8b7c7360c1dfe74bd685ba36d43ece670bd6113718`
+- **Psalms 18** — missing verse 2 at 0:27 — "my shield my strong helper and my high tower I call to the LORD who deserves to be praised And he saves me from" (medium.en)
+  - audio check: confirmed: missing verse 2 0:17-0:26 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.0189 / medium 0.1302; coverage small 0.987 / medium 0.8769; duration 294.87s vs expected 338.0s (ratio 0.872); sha256 `2d0b349a7c3969dec8be4c12d5ae58ccb581c9563c48161c0d3f4b66d17c08bc`
+- **Psalms 19** — missing verse 9 at 1:03 — "and they are always fair They are worth more than gold even lots of the finest gold" (small.en+medium.en)
+  - audio check: unclear: missing verse 9 0:54-1:04 (slice coverage small 0.92, medium 0.00)
+  - WER small 0.0971 / medium 0.5899; coverage small 0.9388 / medium 0.4101; duration 95.19s vs expected 111.2s (ratio 0.856); sha256 `d5011cde2b97eeae274f60248bf944445b2c8b5f7aecb789fe9d4d3e106ad118`
+- **Psalms 21** — missing verse 1 at 0:00–0:30 — "LORD the king is full of joy because you make him strong He is so happy that you save him You have given him what his heart wanted You have not said no to what he asked Selah You came to meet him with good blessings You put a crown of pure gold on his head He asked you for …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.4583 / medium 0.4444; coverage small 0.5509 / medium 0.5602; duration 67.24s vs expected 86.4s (ratio 0.778); sha256 `74c307a7f6ccc1d0497e0c74c77c396058c73c0573b39ef9869bcf0fb8c6573c`
+- **Psalms 22** — missing verse 3 at 0:19 — "Israel praises you Our families" (medium.en)
+  - audio check: confirmed: missing verse 3 0:10-0:20 (slice coverage small 0.20, medium 0.20)
+  - WER small 0.0049 / medium 0.106; coverage small 0.9951 / medium 0.9038; duration 204.67s vs expected 245.2s (ratio 0.835); sha256 `91910d8688e40449596966fc44974349efb1ed9ba62d5c5f134477453c8d0760`
 
 ## UNCERTAIN
 
@@ -3370,6 +3386,15 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 7** — audio slice contains the disputed words; the models still disagree (coverage small 0.742, medium 0.739)
   - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.742, medium 0.739); WER small 0.2579 / medium 0.2642; coverage small 0.7421 / medium 0.739; sha256 `b9abc0bea059e9222cb9e3f20f25d22524813013bc34770933be856d520cc6cb`
+- **Psalms 13** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.208)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.208); WER small 0.0 / medium 0.7921; coverage small 1.0 / medium 0.2079; sha256 `273020b9dc8984772bf9755e8df118cb7dc7f2dd1b1798845df7f64156f60b53`
+- **Psalms 14** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.046)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.046); WER small 0.0066 / medium 0.9539; coverage small 1.0 / medium 0.0461; sha256 `30cef6cc6552c2f8633c548d93e8ed6dec5234ca08c2765e59eba7634cba76c5`
+- **Psalms 20** — audio slice contains the disputed words; the models still disagree (coverage small 0.057, medium 0.075)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.057, medium 0.075); WER small 0.9434 / medium 0.9245; coverage small 0.0566 / medium 0.0755; sha256 `98041b6418933ee19eea74e13a27fe1994ac9904ec579c3713c7b1ba364211d4`
 
 ## Script
 
