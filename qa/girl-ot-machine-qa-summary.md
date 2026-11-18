@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 110
+- Scored chapters: 120
 - PASS: 5
-- FAIL: 71
-- UNCERTAIN: 34 (jsonl verdict UNSURE)
-- Still to score: 819 Old Testament chapters
+- FAIL: 75
+- UNCERTAIN: 40 (jsonl verdict UNSURE)
+- Still to score: 809 Old Testament chapters
 
 ## PASS
 
@@ -474,6 +474,83 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Leviticus 20** — missing verse 3 at 0:19 — "cut them off from their people By giving their child to Molech" (medium.en)
   - audio check: refuted: missing verse 11 1:28-1:38 (slice coverage small 1.00, medium 1.00) confirmed: missing verse 3 0:10-0:20 (slice coverage small 0.08, medium 0.00)
   - WER small 0.0852 / medium 0.3369; coverage small 0.9161 / medium 0.6658; duration 241.62s vs expected 300.4s (ratio 0.804); sha256 `f3d1fb575fb91715d3582c155e9e5f9a904f91cda991243ab3094a3ae47094be`
+- **Leviticus 23** — missing verse 19 at 9:08–9:17 — "two one year old male lambs" (small.en+medium.en)
+- **Leviticus 23** — missing verse 39 at 14:00–14:04 — "have gathered in your crops celebrate" (small.en+medium.en)
+- **Leviticus 23** — missing verse 40 at 14:25–14:28 — "trees palm branches leafy branches" (small.en+medium.en)
+- **Leviticus 23** — inserted before verse 1 at 0:02–0:08 — "the Lord said to Moses tell the Israelites these are my special festivals the Lord's best of" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 1 at 0:11–0:31 — "tell the Israelites these are my special festivals the Lord's festivals Tell the Israelites these are my special festivals the Lord's festivals Tell the Israelites these are my special festivals the Lord's festivals the Lord's festivals" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 2 at 0:35–1:18 — "festivals but these are just some notorious feasts that will not be included in this celebration Then quoted that name set apart from you as a commandment give permission to the prophets to announce the prophet festivals Take seven days days as desired for the first day of the festival and to leave the first day of the festival as …" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 4 at 1:45–1:50 — "The Lord's Passover is a midnight at the fourteenth day of the first month" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 5 at 1:53–1:58 — "the 14th day of the first month The Lord's Passover is a midnight at" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 5 at 2:01–2:57 — "This is the day when the Passover will offer a special festival a Noah festival a Noah meal in a set of weeks and as a commandment these elements are incorporated in the normal Passover Moses told the Israelites in a group as it places The day before the Passover it invites each tribe to come and make their own …" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 6 at 3:01–3:08 — "is a breach These are the days of the humanitarian benefits and offerings Please give the 10 days" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 6 at 3:09–3:12 — "the month in each state each day as a commandment" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 6 at 3:12–3:49 — "festivals Please give the 10 days of the month in each state each day as a commandment in a celebration This is the nature of the Mediterranean benefits These are the days of the Mediterranean benefits These are the days of the Mediterranean benefits every year On the 15th day of the month the Lord's festival is a breach These …" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 6 at 3:49–4:06 — "of the Mediterranean benefits Please give the Mediterranean benefits in their right times The Lord's festivals are meant to be incorporated in the menitarian benefits in their natural forms This is the nature of prophets They" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 11 at 4:48–5:53 — "and your families The Lord said to Moses Please give the Pharaohs as a gift of their own prophets and as their greatest favors these are the things I would say about the Israelites in many years These are the days of the Mediterranean benefits These are the days of the Mediterranean benefits These are the days of the Mediterranean …" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 13 at 6:09–7:04 — "of fiend flour and a teaspoon of incensed oil in a glass tan and a sip of butter or olive oil and a seven lambs lamb and a seven breast book lambs and a seven breast book lambs with rough bread and a seven plants wives and a seven plants wives with rough bread and a seven plants of wives …" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 13 at 7:05–7:10 — "the ten percent blasphemous even when the gods and prophets were known to be evil" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 18 at 8:21–8:59 — "And in the pre section end of the season the priests will offer the salmon as a piece of the pre sale offerings The pre section end of the season will offer the salmon as a piece of the Toga Raga Feast and the pre section end of the season will offer the salmon as a piece of the Toga …" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 19 at 8:59–9:06 — "the salmon as a piece of the Togo Raga feast and the pre section end of the season will offer the salmon" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 19 at 9:06–9:08 — "piece of the Togo Raga feast" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 19 at 9:08–9:17 — "the pre section end of the season will offer the salmon" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 19 at 9:18–9:21 — "piece of the Togo Raga feast and the pre section end of" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 20 at 9:22–9:24 — "offer the salmon as a piece of" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 20 at 9:30–9:32 — "a piece of the Togo Raga feast and that is" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 27 at 10:51–11:15 — "day of revenue for all the Israelites and it will be a day for revenue for all the Israelites used in the promised four centers every It will be a day of revenue for all the Israelites and it will be a day of revenue for all the Israelites and it will be a day of revenue for all the …" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 27 at 11:15–11:20 — "revenue for all the Israelites is a day that lasts forever and" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 27 at 11:32–11:33 — "revenue for all the Israelites" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 37 at 13:09–13:16 — "So bring in the fifteenth day on the seventh month at the temple of the sanctified flame Day seven and mid day on" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 37 at 13:16–13:19 — "same flame is fine To try these days" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 37 at 13:28–13:32 — "act of the seventh month in the fifteenth day of the month is holy feast" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 38 at 13:41–13:42 — "act of the seventh month" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 38 at 13:46–13:49 — "sail in Ottawa The Lord says instructions" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 38 at 13:52–13:54 — "go to act of the seventh month in" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 39 at 13:55–13:58 — "of the month is a holy feast of the meast offerings" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 39 at 14:00–14:04 — "will bring your best fish offerings and reasonable sacrifices sacrifices to" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 39 at 14:04–14:09 — "fishing country as incentive and reasonable sacrifices to the same flame in" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 39 at 14:14–14:17 — "prayers The Lord says instructions to" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 39 at 14:17–14:22 — "nations as He interprets the days The Lord says instructions to" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 40 at 14:25–14:28 — "meast offerings and reasonable sacrifices to the meast" (small.en+medium.en)
+- **Leviticus 23** — inserted verse 40 at 14:32–14:35 — "seventh month in the fifteenth day of the month" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 1 at 0:11–0:16 — "Moses tell the Israelites these are my special festivals the Lord's" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 1 at 0:16–0:30 — "Tell the Israelites these are my special festivals the Lord's festivals Tell the Israelites these are my special festivals the Lord's festivals" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 2 at 1:00–1:03 — "Moses tell the Israelites these are" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 2 at 1:04–1:07 — "that will not be included in this celebration" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 2 at 1:13–1:16 — "These are the ten days of the festival that" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 5 at 1:50–1:53 — "The Lord's Passover is a midnight at the" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 5 at 1:54–2:00 — "day of the first month The Lord's Passover is a midnight at the 14th day of the first month" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 6 at 3:14–3:19 — "Please give the 10 days of the month in each state each day as a commandment" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 6 at 3:26–3:31 — "of the Mediterranean benefits These are the days of the Mediterranean benefits" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 11 at 5:08–5:21 — "These are the days of the Mediterranean benefits These are the days of the Mediterranean benefits These are the days of the Mediterranean benefits Please give the Mediterranean benefits in" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 11 at 5:21–5:53 — "in many years These are the days of the Mediterranean benefits Please give the Mediterranean benefits in many years These are the days of the Mediterranean benefits These are the days of the Mediterranean benefits Please give the Mediterranean benefits in many years These are the days of the Mediterranean benefits Please give the Mediterranean benefits in many years These …" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 13 at 6:26–6:27 — "and a seven plants wives" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 13 at 6:27–6:30 — "with rough bread and a seven plants" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 18 at 8:27–8:29 — "The pre section end of the season" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 18 at 8:29–8:31 — "will offer the salmon as a piece of the" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 18 at 8:33–8:57 — "the pre section end of the season will offer the salmon as a piece of the Toga Raga Feast and the pre section end of the season will offer the salmon as a piece of the Toga Raga Feast and the pre section end of the season will offer the salmon as a piece of the Toga Raga Feast and …" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 18 at 8:57–9:01 — "And the pre section end of the season will offer the salmon as a piece of the" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 19 at 9:01–9:27 — "Raga feast and the pre section end of the season will offer the salmon as a piece of the Togo Raga feast and the pre section end of the season will offer the salmon as a piece of the Togo Raga feast and the pre section end of the season will offer the salmon as a piece of the Togo …" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 27 at 10:55–10:57 — "revenue for all the Israelites" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 27 at 11:01–11:17 — "day of revenue for all the Israelites and it will be a day of revenue for all the Israelites and it will be a day of revenue for all the Israelites and it will be a day of revenue for all the Israelites and it will be a day of revenue for all the Israelites" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 33 at 12:14–12:17 — "The Lord said to Moses Tell the Israelites" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 38 at 13:40–13:44 — "the go to act of the seventh month in the fifteenth day of the month" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 39 at 14:09–14:12 — "in the fifteenth day of the month as a celebration of the" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 39 at 14:13–14:18 — "offerings of the meast and prayers The Lord says instructions to the nations" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 39 at 14:20–14:22 — "The Lord says instructions to the" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 40 at 14:25–14:28 — "offerings and reasonable sacrifices to the" (small.en+medium.en)
+- **Leviticus 23** — repeated verse 40 at 14:31–14:35 — "go to act of the seventh month in the fifteenth day of the month" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 5 2:00-2:24 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 13 6:08-6:32 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 11 4:47-5:11 (slice coverage small 1.00, medium 0.79)
+  - WER small 1.3494 / medium 1.1859; coverage small 0.8169 / medium 0.9108; duration 904.23s vs expected 430.4s (ratio 2.101); sha256 `d1bd96005e58971a551a7058d87282c7bd83bf75b334ee052cde61e5bbf4a95b`
+- **Leviticus 24** — coverage low on both models (small 0.841, medium 0.792); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1588 / medium 0.2098; coverage small 0.8412 / medium 0.7921; duration 191.36s vs expected 211.6s (ratio 0.904); sha256 `92525694c236f836a8e940261d6376a216306dc28b1cacaa427de02ac16a5add`
+- **Numbers 2** — missing verse 1 at 0:00–0:02 — "The LORD said to Moses and Aaron The Israelites must camp around the Tent of Meeting a short distance away Each man must camp under his own flag with the banner of his family On the east side toward the sunrise the groups under the flag of Judah's camp will set up their tents The leader of the people of …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 1.00)
+  - WER small 0.1588 / medium 0.3899; coverage small 0.8412 / medium 0.6119; duration 223.91s vs expected 221.6s (ratio 1.01); sha256 `67b6d1cdd47954fd572f0e7bd8c7573f79d8ac63d01e8855801c7a22e0b0eb15`
+- **Numbers 3** — missing verse 30 at 3:17–3:19 — "Uzziel They were in charge" (small.en)
+- **Numbers 3** — missing verse 10 at 1:06 — "Appoint Aaron and his sons to serve as priests" (medium.en)
+  - audio check: refuted: missing verse 10 0:57-1:07 (slice coverage small 1.00, medium 1.00) confirmed: missing verse 30 3:08-3:18 (slice coverage small 0.20, medium 0.20)
+  - WER small 0.0486 / medium 0.1883; coverage small 0.9574 / medium 0.8266; duration 375.81s vs expected 403.6s (ratio 0.931); sha256 `a4ce78d88698c31e64065908a7d973704d9b1e84d71691b1e5143da8109cfcdd`
 
 ## UNCERTAIN
 
@@ -585,6 +662,26 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Leviticus 19** — audio slice contains the disputed words; the models still disagree (coverage small 0.903, medium 0.843)
   - audio check: refuted: missing verse 7 0:28-0:37 (slice coverage small 0.92, medium 0.83)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.903, medium 0.843); WER small 0.0987 / medium 0.162; coverage small 0.9026 / medium 0.8429; sha256 `0b30946db278fd8035124be6efcf54b3d88080f7d798ef3953b9efde051dea7a`
+- **Leviticus 21** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.707)
+  - audio check: refuted: missing verse 1 0:11-0:20 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.707); WER small 0.0017 / medium 0.2983; coverage small 1.0 / medium 0.7067; sha256 `9a2a67808b94a1679cf6c30b682346576c20b4dc9622ce588c6e38835540f2ac`
+- **Leviticus 22** — audio slice contains the disputed words; the models still disagree (coverage small 0.993, medium 0.659)
+  - audio check: refuted: missing verse 22 3:11-3:21 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.993, medium 0.659); WER small 0.0138 / medium 0.3609; coverage small 0.9925 / medium 0.6591; sha256 `681e1c8c408e40d14bc9dda315d05ad4eb1972405f0de9f51af3aec58cf59165`
+- **Leviticus 25** — missing verse 34 at 4:25–4:26 — "not be sold because they" (small.en)
+- **Leviticus 25** — missing verse 7 at 0:44 — "It will also be food" (medium.en)
+  - audio check: unclear: missing verse 7 0:35-0:45 (slice coverage small 0.40, medium 0.40) unclear: missing verse 34 4:16-4:26 (slice coverage small 0.60, medium 0.60)
+  - small.en only: missing 'not be sold because they'; medium.en only: missing 'It will also be food'; coverage unclear (small 0.986, medium 0.796; pass needs both >= 0.96); WER small 0.0154 / medium 0.2089; coverage small 0.9862 / medium 0.7957; sha256 `c15bf5cb79b954eb6b11e9e7c5d0e353ae4e21ca38e41b498ebbd2f9a7373144`
+- **Leviticus 26** — audio slice contains the disputed words; the models still disagree (coverage small 0.952, medium 0.726)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) refuted: missing verse 19 2:26-2:35 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.952, medium 0.726); WER small 0.0705 / medium 0.2795; coverage small 0.9516 / medium 0.7256; sha256 `38cf21db2b1dabc6ac4ae2d70d12264e9a587b75357c818652dcf2815c6e4738`
+- **Leviticus 27** — missing verse 28 at 3:38 — "an animal or family land must never be sold or bought back" (small.en)
+- **Leviticus 27** — missing verse 3 at 0:17 — "is 50 pieces of silver" (medium.en)
+  - audio check: refuted: missing verse 28 3:29-3:39 (slice coverage small 1.00, medium 1.00) unclear: missing verse 3 0:08-0:18 (slice coverage small 1.00, medium 0.00)
+  - small.en only: missing 'an animal or family land must never be sold or bought back'; medium.en only: missing 'is 50 pieces of silver'; WER small 0.0315 / medium 0.0373; coverage small 0.9732 / medium 0.9674; sha256 `c2d3d7086e8a4caefdb423f16b858a788579f41e08a1b1bec4733eee5fd56fb5`
+- **Numbers 1** — audio slice contains the disputed words; the models still disagree (coverage small 0.903, medium 0.815)
+  - audio check: refuted: repeated verse 26 2:53-3:03 (slice coverage small 1.00, medium 1.00, times 1/1) refuted: repeated verse 20 2:09-2:17 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.903, medium 0.815); WER small 0.0984 / medium 0.1901; coverage small 0.9026 / medium 0.8147; sha256 `d192b6d82ff9e2468be79f33e2cad0fb34b3d48b4fe39246f4d96caf2c056616`
 
 ## Script
 
