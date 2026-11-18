@@ -57,17 +57,19 @@ one full-file pass skipped.
 
 ## Counts
 
-- Scored chapters: 4
+- Scored chapters: 6
 - PASS: 0
-- FAIL: 1
-- UNSURE: 3
-- By list: priority-add 1, stt-suspect 3, nt 0, ot 0
-- Still to score: 1182 (suspect 42, nt 212, ot 928, priority-add 0)
+- FAIL: 2
+- UNSURE: 4
+- By list: priority-add 1, stt-suspect 5, nt 0, ot 0
+- Still to score: 1180 (suspect 40, nt 212, ot 928, priority-add 0)
 
 ## FAIL
 
 - **Luke 19** — inserted before verse 1 at 0:02–0:24 — "There was a man whose name was Zachary a Syrian tax collector He was one of the richest in the world This man was trying to see Kenri Zeltin but couldn't because he was seven feet two feet ten inches of height He was one of the richest in the world Then he saw the man who went by each …" (small.en+medium.en)
   - WER small 0.298 / medium 0.222; coverage small 0.917 / medium 0.839; duration 371.11s vs expected 400.0s (ratio 0.928); sha256 `6c67232dd15b287e6badcc91fdabafd03ee2b9ab28e84f0997378fbf10a2a5b8`
+- **Matthew 8** — missing verse 12 at 1:48 — "There they will cry and grind their teeth" (small.en+medium.en)
+  - WER small 0.0185 / medium 0.1735; coverage small 0.9841 / medium 0.8278; duration 280.79s vs expected 302.0s (ratio 0.93); sha256 `1c9e960422b88ef24036f7d3887e8e916d1fdb37c8b4297dfa1715c472463c2e`
 
 ## UNSURE
 
@@ -77,6 +79,8 @@ one full-file pass skipped.
   - models flagged verse 1 as an inserted repeat; a 0-18s slice says that sentence once; coverage unclear (small 0.906, medium 0.796); WER small 0.1092 / medium 0.2331; coverage small 0.9056 / medium 0.7956; sha256 `6f46486c995d1c0e278d09d353187ff381758b04da143989f1ddd24d484c52e7`
 - **Matthew 6** — missing verse 27 at 4:06 — "worrying And why do you worry about clothes Look at how the wildflowers grow They don't work or make their own clothes" (medium.en)
   - medium.en only: missing 'worrying And why do you worry about clothes Look at how the wildflowers grow They don't work or make their own clothes'; WER small 0.0037 / medium 0.0362; coverage small 0.9988 / medium 0.97; sha256 `17878fa585ee86dd8f01a9d5e2764d16ed848b6f3190d271d4ba26ebe42d5b23`
+- **Matthew 9** — missing verse 1 at ? — "Jesus got into a boat and crossed the lake. He came to his own town." (medium.en)
+  - coverage unclear (small 0.977, medium 0.879); window phrase 'he came home the sons' matches the source line 'He came to his own town' and was not counted; medium.en only misses the boat-and-mat opening; small.en coverage 0.977; WER small 0.0604 / medium 0.122; coverage small 0.9774 / medium 0.8792; sha256 `62c19692173f035947affc49ad6619906e0acd6e4520aa01eeecec3394a8386c`
 
 ## Script
 
