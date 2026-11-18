@@ -58,20 +58,21 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 310
-- PASS: 7
-- FAIL: 206
-- UNCERTAIN: 97 (jsonl verdict UNSURE)
-- Still to score: 619 Old Testament chapters
+- Scored chapters: 320
+- PASS: 8
+- FAIL: 211
+- UNCERTAIN: 101 (jsonl verdict UNSURE)
+- Still to score: 609 Old Testament chapters
 
 ## PASS
 
-7 chapters. Both models agreed there was no missing, invented, or repeated passage.
+8 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
 - Deuteronomy 11
 - Judges 14
+- 2 Kings 1
 
 ## FAIL
 
@@ -1508,6 +1509,73 @@ words clears that span. A split slice stays UNCERTAIN.
 - **1 Kings 19** — missing verse 9 at 1:11 — "into a cave and spent the night Then the LORD spoke to him" (medium.en)
   - audio check: confirmed: missing verse 9 1:02-1:12 (slice coverage small 0.25, medium 0.25) refuted: repeated verse 19 3:09-3:18 (slice coverage small 0.80, medium 0.80, times 0/0)
   - WER small 0.0193 / medium 0.0578; coverage small 0.9807 / medium 0.9437; duration 230.78s vs expected 270.0s (ratio 0.855); sha256 `073d6a62b18124501e4c083ddfd7824aa25b18019cd4f61c6f968fa264b68a24`
+- **1 Kings 21** — missing verse 19 at 3:07–3:10 — "same place where Naboth died you" (small.en+medium.en)
+- **1 Kings 21** — missing verse 23 at 4:41–4:47 — "not even be buried Anyone in Ahab's family who" (small.en+medium.en)
+- **1 Kings 21** — inserted verse 19 at 2:51–2:57 — "Ahab said to Elijah the Lord says you have killed a man and taken his vineyard" (small.en+medium.en)
+- **1 Kings 21** — inserted verse 19 at 3:00–3:06 — "you have killed a man and taken his vineyard Elijah said against his own people this is what" (small.en+medium.en)
+- **1 Kings 21** — inserted verse 19 at 3:07–3:10 — "Lord says Right now Naboth's vineyard" (small.en+medium.en)
+- **1 Kings 21** — inserted verse 19 at 3:10–3:17 — "ruin from its vineyard Elijah knew what they were talking about and his eyes went to their feet Then" (small.en+medium.en)
+- **1 Kings 21** — inserted verse 20 at 3:17–3:26 — "said to Elijah This is what the Lord Pharaoh says we tend those words with him and he ruins them present Elijah" (small.en+medium.en)
+- **1 Kings 21** — inserted verse 20 at 3:27–3:35 — "This is what the Lord Pharaoh says we withhold you intensely and never need any more than now and now as" (small.en+medium.en)
+- **1 Kings 21** — inserted verse 20 at 3:39–3:42 — "no tents inside our beds Then" (small.en+medium.en)
+- **1 Kings 21** — inserted verse 20 at 3:42–3:45 — "lifted up his feet and pleased and ate" (small.en+medium.en)
+- **1 Kings 21** — inserted verse 20 at 3:45–4:00 — "did Elijah said of himself if God wouldn't play then this is the end and if he sees this animal dead he wouldn't play But if he really wants to die then he will expire the mercy of God" (small.en+medium.en)
+- **1 Kings 21** — inserted verse 23 at 4:36–4:40 — "and when Jezebed dies some will live in their own places" (small.en+medium.en)
+- **1 Kings 21** — inserted verse 23 at 4:41–4:47 — "have a bleed of no name to save or save the names And when Jezebed" (small.en+medium.en)
+- **1 Kings 21** — inserted verse 24 at 4:47–4:59 — "they will have a new name from now on That is the name of Israel Israel dead buyers Elijah said to Elijah the Lord says this is the name of" (small.en+medium.en)
+- **1 Kings 21** — inserted verse 24 at 4:59–5:05 — "king of Israel I will sweep you over and make you into a proverb of no name to save" (small.en+medium.en)
+- **1 Kings 21** — inserted verse 24 at 5:05–5:09 — "save Then Elijah lifted up his feet and prayed" (small.en+medium.en)
+- **1 Kings 21** — inserted verse 24 at 5:09–5:16 — "the name of the Lord Israel Elijah said to Elijah tell Israel as this is the name" (small.en+medium.en)
+- **1 Kings 21** — inserted verse 24 at 5:18–5:39 — "have the new name from now on and if anyone wants to know the name definitions and images of this name are faded in the wind Elijah knew what it was Elijah knew that Ahab had never met in negative nowhere at but he thought in his head This is the name of the king of Israel Let it" (small.en+medium.en)
+- **1 Kings 21** — inserted verse 24 at 5:40–5:47 — "the main name of this house and no one will lose any more Elijah lived in every way he did" (small.en+medium.en)
+- **1 Kings 21** — repeated verse 19 at 2:53–2:57 — "the Lord says you have killed a man and taken his vineyard" (small.en+medium.en)
+- **1 Kings 21** — repeated verse 19 at 2:58–3:02 — "him the Lord says you have killed a man and taken his vineyard" (small.en+medium.en)
+- **1 Kings 21** — repeated verse 19 at 3:17–3:18 — "Then Ahab said to Elijah" (small.en+medium.en)
+- **1 Kings 21** — repeated verse 20 at 3:26–3:30 — "said to Elijah This is what the Lord Pharaoh says we" (small.en+medium.en)
+- **1 Kings 21** — repeated verse 24 at 5:06–5:09 — "Then Elijah lifted up his feet and" (small.en+medium.en)
+- **1 Kings 21** — repeated verse 24 at 5:18–5:20 — "new name from now on" (small.en+medium.en)
+- **1 Kings 21** — repeated verse 24 at 5:36–5:39 — "This is the name of the king of Israel" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 24 5:17-5:41 (slice coverage small 1.00, medium 1.00) unclear: inserted verse 20 3:44-4:06 (slice coverage small 0.96, medium 0.04) confirmed: inserted verse 24 4:46-5:05 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.4616 / medium 0.5735; coverage small 0.9415 / medium 0.8375; duration 397.7s vs expected 307.6s (ratio 1.293); sha256 `4f4c3b6f0b6dfbfd70e4d51252dc2ba40f04328adb0592ccb592ac2f753db76d`
+- **1 Kings 22** — missing verse 16 at 2:44–2:49 — "LORD's name Then Micaiah answered" (small.en+medium.en)
+- **1 Kings 22** — missing verse 24 at 8:55–9:00 — "Then Zedekiah son of Chenaanah walked up" (small.en+medium.en)
+- **1 Kings 22** — inserted verse 16 at 2:39–2:44 — "the name of the Lord And Elijah said I saw" (small.en+medium.en)
+- **1 Kings 22** — inserted verse 16 at 2:44–2:49 — "Lord see Pharaoh going through the wilderness And" (small.en+medium.en)
+- **1 Kings 22** — inserted verse 17 at 2:52–3:15 — "and he said among his prophets I saw the Lord king see that it was the land and the goats who were fed by the droves And the Lord said unto him Thou shalt live with me and I will make of a new land and give you an unfinished debt And in this sake you will earn favor among" (small.en+medium.en)
+- **1 Kings 22** — inserted verse 17 at 3:16–3:22 — "people and I will make you a people and you will be a God And I will go" (small.en+medium.en)
+- **1 Kings 22** — inserted verse 17 at 3:22–3:46 — "visit with my people and you will know and recognize and read And in this sake it will never cease to the debt of anyone's family that is ungodly and disrespectful of God The land is blessed and the most beautiful and well looked places in the world" (small.en+medium.en)
+- **1 Kings 22** — inserted verse 17 at 3:47–3:58 — "said unto him Lo thou the people and tell them go away and ride the fields or your speakers willing their hearts But then" (small.en+medium.en)
+- **1 Kings 22** — inserted verse 17 at 4:03–4:46 — "other God but Yahweh The Lord said unto him We would love to know the Lord your God yes you are prophet and ask you one day which God say you can The gods say the moon and the sun and the desert is blue and red and then said to the windward prophet The Lord said to the people …" (small.en+medium.en)
+- **1 Kings 22** — inserted verse 17 at 4:46–4:55 — "God is Yahweh The desert is blue and red and the moon is in the sky And I will lower you" (small.en+medium.en)
+- **1 Kings 22** — inserted verse 17 at 4:55–5:32 — "flames and you will know that Yahweh is your God The Lord said unto him Know you should pray to our God Rolesi over each God's save their souls The Lord says I saw the Lord sitting on his throne and all the great towers clamored around him And the Lord said I saw the Lord sitting on his throne …" (small.en+medium.en)
+- **1 Kings 22** — inserted verse 19 at 5:50–6:26 — "and the great towers clamored around him and rolled The Lord said I have never been to hear your testimony but I will if you are prayed prove me that it is true The Lord said I I have never been to hear your testimony but I will if you are prayed prove me that it is true The Lord …" (small.en+medium.en)
+- **1 Kings 22** — inserted verse 20 at 6:39–7:10 — "And others said One way and another way But then said The Lord hears the need and wins the need and then said aren't you influenced Moses and Isaac prayed the Lord no records no record of God saying that I would bring my flooded and end your king on his throne The Lord said everyone who wants to peace" (small.en+medium.en)
+- **1 Kings 22** — inserted verse 20 at 7:10–7:20 — "reckon his deeds The Lord said let them go into the desert and gather all the great taverns and go for them in" (small.en+medium.en)
+- **1 Kings 22** — inserted verse 20 at 7:24–7:28 — "I made a great tavern in the sand of Israel country" (small.en+medium.en)
+- **1 Kings 22** — inserted verse 20 at 7:32–7:42 — "desert and gather them into a place of their own Moses and Isaac praised the name of Yahweh Moses" (small.en+medium.en)
+- **1 Kings 22** — inserted verse 20 at 7:43–7:49 — "Never once can we do this or give grace to anyone who would come and go with us" (small.en+medium.en)
+- **1 Kings 22** — inserted verse 23 at 8:33–8:39 — "in sexual and yen set in the morning And yes everyone turned" (small.en+medium.en)
+- **1 Kings 22** — inserted verse 23 at 8:39–8:55 — "his face Then suddenly Moses walked away from the door and said If anyone goes away from this it's not my fault it's not my name it's your name why not you will answer as" (small.en+medium.en)
+- **1 Kings 22** — inserted verse 24 at 8:55–9:00 — "want The Lord said and others said Yes you will" (small.en+medium.en)
+- **1 Kings 22** — inserted verse 24 at 9:01–9:30 — "yes everyone does them But everyone is fully willing to take in the invites Frawl wrong say now it's not my fault it's not my name yes it is yes or no The Lord said I have no debt toward anyone on my own land or face to do with them Moses ten Taven" (small.en+medium.en)
+- **1 Kings 22** — repeated verse 17 at 3:47–3:48 — "And the Lord said unto him" (small.en+medium.en)
+- **1 Kings 22** — repeated verse 17 at 4:05–4:07 — "The Lord said unto him" (small.en+medium.en)
+- **1 Kings 22** — repeated verse 17 at 4:44–4:45 — "You will know and recognize" (small.en+medium.en)
+- **1 Kings 22** — repeated verse 17 at 5:18–5:23 — "said I saw the Lord sitting on his throne And" (small.en+medium.en)
+- **1 Kings 22** — repeated verse 23 at 8:15–8:18 — "tell lies The Lord said" (small.en+medium.en)
+- **1 Kings 22** — repeated verse 24 at 9:12–9:16 — "it's not my fault it's not my name" (small.en+medium.en)
+  - audio check: unclear: inserted verse 17 4:02-4:26 (slice coverage small 0.00, medium 1.00) confirmed: inserted verse 17 4:54-5:18 (slice coverage small 0.96, medium 0.92) confirmed: inserted verse 19 5:49-6:13 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.5935 / medium 0.6689; coverage small 0.9387 / medium 0.5418; duration 834.73s vs expected 541.2s (ratio 1.542); sha256 `e4b9d8d7d5dde7ce8321d33e4a094ccf6c8dc8d3a335325f56f20daed808d3f5`
+- **2 Kings 3** — missing verse 11 at 1:32–1:34 — "Jehoshaphat asked Isn't there a prophet of the LORD here We could ask the LORD through him" (small.en)
+- **2 Kings 3** — missing verse 27 at ? — "Great anger came against Israel so they left him and went back to their own land" (medium.en)
+  - audio check: confirmed: missing verse 11 1:23-1:33 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.0476 / medium 0.0423; coverage small 0.959 / medium 0.9669; duration 268.76s vs expected 302.4s (ratio 0.889); sha256 `9eb81b38607d6f1b6632c2131a9d9b7862e9097aa4fe4e805f65c9669b3590cd`
+- **2 Kings 6** — missing verse 2 at 0:11 — "of us can cut down a tree there and we can build a place to live Elisha said Go Then one" (medium.en)
+  - audio check: confirmed: missing verse 2 0:03-0:12 (slice coverage small 0.25, medium 0.25)
+  - WER small 0.0182 / medium 0.107; coverage small 0.9861 / medium 0.908; duration 331.35s vs expected 374.0s (ratio 0.886); sha256 `5117f815833f1ea596d2c71680242956de1be9f1b1c04e3e2d9bf38687f914e7`
+- **2 Kings 7** — missing verse 8 at 1:54 — "with leprosy reached the edge of the camp and went into one of the tents They ate and drank Then they took silver gold and clothes and went off and hid them They came back went into another tent took more things and hid them too Then they said to each other What we are doing is not right This …" (small.en+medium.en)
+  - audio check: confirmed: missing verse 8 1:16-1:25 (slice coverage small 0.25, medium 0.25)
+  - WER small 0.1387 / medium 0.1147; coverage small 0.8627 / medium 0.8893; duration 242.94s vs expected 300.0s (ratio 0.81); sha256 `3ead657967d7d61e794aaa528cb91963cb4f6edd3a0cda7d670f170317523b23`
 
 ## UNCERTAIN
 
@@ -1816,6 +1884,18 @@ words clears that span. A split slice stays UNCERTAIN.
 - **1 Kings 16** — audio slice contains the disputed words; the models still disagree (coverage small 0.947, medium 0.754)
   - audio check: refuted: repeated verse 15 2:10-2:19 (slice coverage small 1.00, medium 1.00, times 1/1)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.947, medium 0.754); WER small 0.0529 / medium 0.2505; coverage small 0.9471 / medium 0.7537; sha256 `fe985e9ed3e35cc911fa5e4a867f08c5ff2b29e65078cdb1a08fa6579d3bb48c`
+- **1 Kings 20** — audio slice contains the disputed words; the models still disagree (coverage small 0.967, medium 0.813)
+  - audio check: refuted: missing verse 4 0:21-0:31 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.967, medium 0.813); WER small 0.0347 / medium 0.1892; coverage small 0.9668 / medium 0.8131; sha256 `e66aab4ee49e6a2cfb89089cf70613868828e12b087ef37663533b7627fa96da`
+- **2 Kings 2** — audio slice contains the disputed words; the models still disagree (coverage small 0.995, medium 0.775)
+  - audio check: refuted: repeated verse 5 1:03-1:13 (slice coverage small 0.88, medium 0.88, times 0/0)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.995, medium 0.775); WER small 0.0117 / medium 0.2422; coverage small 0.9948 / medium 0.7747; sha256 `c2a6d39a3fbf4f44940d2addbf8bada298e05ea5ffccf083122b5bdcea023fd5`
+- **2 Kings 4** — missing verse 1 at 0:00–0:02 — "One day the wife of" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:01 (slice coverage small 0.00, medium 0.00)
+  - medium.en only: missing 'One day the wife of'; coverage unclear (small 0.981, medium 0.683; pass needs both >= 0.96); WER small 0.0244 / medium 0.319; coverage small 0.9805 / medium 0.6835; sha256 `2c6d78579bb78ee15b54c02f3530506fb743221dfb28f6275c3f60eed9965996`
+- **2 Kings 5** — audio slice contains the disputed words; the models still disagree (coverage small 0.919, medium 0.714)
+  - audio check: refuted: missing verse 8 1:21-1:30 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.919, medium 0.714); WER small 0.0805 / medium 0.3009; coverage small 0.9195 / medium 0.7136; sha256 `9a4c4dd06c92819dfa6275ebf113e418fdee332d340a64433d744a8b6f01689b`
 
 ## Script
 
