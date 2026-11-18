@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 410
-- PASS: 9
-- FAIL: 276
-- UNCERTAIN: 125 (jsonl verdict UNSURE)
-- Still to score: 519 Old Testament chapters
+- Scored chapters: 420
+- PASS: 11
+- FAIL: 281
+- UNCERTAIN: 128 (jsonl verdict UNSURE)
+- Still to score: 509 Old Testament chapters
 
 ## PASS
 
-9 chapters. Both models agreed there was no missing, invented, or repeated passage.
+11 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -74,6 +74,7 @@ words clears that span. A split slice stays UNCERTAIN.
 - Judges 14
 - 2 Kings 1
 - 2 Chronicles 3
+- Nehemiah 1, 5
 
 ## FAIL
 
@@ -2692,6 +2693,61 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Ezra 4** — inserted verse 1 at 1:10–1:16 — "had played a day later when Jeremiah the prophet told the people of the vision of the things" (small.en+medium.en)
   - audio check: confirmed: inserted verse 1 0:09-0:33 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 1 1:09-1:22 (slice coverage small 1.00, medium 0.89) confirmed: inserted verse 1 0:05-0:16 (slice coverage small 1.00, medium 1.00)
   - WER small 0.5136 / medium 0.3923; coverage small 0.8453 / medium 0.8086; duration 295.42s vs expected 250.8s (ratio 1.178); sha256 `9f88b85d34db36bda45e0115679af7dc5ecb0727e2943d33b4d509c5a09880e5`
+- **Ezra 10** — silence verse ? at 0:59–1:08 — "left God's house and went to the room of Jehonahand" (waveform)
+- **Ezra 10** — missing verse 6 at 1:25–1:34 — "Eliashib While he was there he did not eat any food or drink any water because he was so sad about" (small.en+medium.en)
+- **Ezra 10** — missing verse 6 at 1:42–1:43 — "people who had come back" (small.en+medium.en)
+- **Ezra 10** — missing verse 7 at 1:44–1:55 — "a message was sent all through Judah" (small.en+medium.en)
+- **Ezra 10** — inserted verse 5 at 0:54–0:59 — "Then Ezra left God's house and went to the room of Jehonahan" (small.en+medium.en)
+- **Ezra 10** — inserted verse 6 at 1:12–1:25 — "of Eli from the family of Eliajai setting them by the daily set of the tender TVs that they offered regularly And instead" (small.en+medium.en)
+- **Ezra 10** — inserted verse 6 at 1:25–1:34 — "setting their God's command in hand words they made decisions to be their God's commands Then Ezra went past his house and went deeper into" (small.en+medium.en)
+- **Ezra 10** — inserted verse 6 at 1:34–1:42 — "the desert and blue graved pigs Then Ezra left God's house and went to the desert pigs and went deeper into" (small.en+medium.en)
+- **Ezra 10** — inserted verse 6 at 1:42–1:43 — "set of the desert pigs" (small.en+medium.en)
+- **Ezra 10** — inserted verse 7 at 1:44–1:55 — "Ezra saw the tender TVs that they offered in hand words and instead of setting their God's command in hand words they made decisions to be their God's commands in hand words" (small.en+medium.en)
+- **Ezra 10** — inserted verse 7 at 1:55–1:59 — "edible Then Ezra knelt on his toes and went into" (small.en+medium.en)
+- **Ezra 10** — inserted verse 7 at 1:59–2:02 — "desert and blue graved pigs These promises" (small.en+medium.en)
+- **Ezra 10** — inserted verse 7 at 2:03–2:14 — "been done by many of the Jewish prophets and were many farable fare of God Then Ezra tested God kindly and went into the desert and blue graved pigs and went" (small.en+medium.en)
+- **Ezra 10** — inserted verse 7 at 2:14–2:24 — "God's house Ezra saw the tender TVs that they offered in hand words and were no longer morally unfaithful in hand words and Instead putting their faith" (small.en+medium.en)
+- **Ezra 10** — repeated verse 6 at 1:08–1:12 — "Then Ezra left God's house and went to the room of Jehonahan" (small.en+medium.en)
+- **Ezra 10** — repeated verse 6 at 1:40–1:43 — "and went deeper into the set of the desert" (small.en+medium.en)
+- **Ezra 10** — repeated verse 7 at 1:45–1:46 — "the tender TVs that they offered" (small.en+medium.en)
+- **Ezra 10** — repeated verse 7 at 1:47–1:54 — "and instead of setting their God's command in hand words they made decisions to be their God's commands" (small.en+medium.en)
+- **Ezra 10** — repeated verse 7 at 1:59–2:01 — "the desert and blue graved pigs" (small.en+medium.en)
+- **Ezra 10** — repeated verse 7 at 2:15–2:19 — "Ezra saw the tender TVs that they offered in hand words and" (small.en+medium.en)
+- **Ezra 10** — repeated verse 7 at 2:21–2:23 — "in hand words and Instead" (small.en+medium.en)
+- **Ezra 10** — repeated verse 27 at 6:04–6:08 — "and Aziza from the family of bibi Johanna Hananna" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 7 1:43-2:01 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 7 2:02-2:20 (slice coverage small 0.96, medium 1.00) confirmed: inserted verse 7 2:13-2:30 (slice coverage small 1.00, medium 0.92)
+  - WER small 0.5024 / medium 0.4707; coverage small 0.8509 / medium 0.7298; duration 478.76s vs expected 327.2s (ratio 1.463); sha256 `9c42e6a4c0f48710feeb7488688d62d51227aeac783c977278f151c54fbf1b27`
+- **Nehemiah 2** — inserted verse 8 at 0:58 — "also send me letters for the governor's" (small.en)
+- **Nehemiah 2** — missing verse 2 at 0:12 — "do you look so sad You are not sick You must be sad in your heart Then I was very afraid I said to the king May the king live forever How can I not be sad The city where my ancestors are buried is in ruins and its gates have been burned The king asked me What" (medium.en)
+  - audio check: confirmed: missing verse 2 0:00-0:09 (slice coverage small 0.00, medium 0.00) unclear: inserted verse 8 0:57-1:09 (slice coverage small 0.57, medium 0.57)
+  - WER small 0.0202 / medium 0.1488; coverage small 0.9907 / medium 0.8791; duration 195.71s vs expected 258.0s (ratio 0.759); sha256 `48aebc3202966b9f83ddba21eec7cb3ae2de85073ffaa736322690497b1cf8a6`
+- **Nehemiah 4** — missing verse 10 at 1:29 — "We can't build the wall And our enemies said They won't know or see us until we are right among them" (medium.en)
+  - audio check: confirmed: missing verse 10 1:21-1:30 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.0067 / medium 0.0978; coverage small 0.9949 / medium 0.9056; duration 207.02s vs expected 237.2s (ratio 0.873); sha256 `a1fc208674cb08cfd7c8695b7af28a48806d2c49f16354cb961bf8af7da7797a`
+- **Nehemiah 6** — silence verse ? at 2:51–2:59 — "of Shekaniya son of Ara. And his son Jihona" (waveform)
+- **Nehemiah 6** — inserted verse 18 at 3:08–4:05 — "of Barakai Both names had been placed in several target wars making impossible to reconcile The men in Judah sent him to their cities incentives teaching him to do their best and gracious efforts and mercies in the names of Jesus The great painter did these end works and carried out their project saving the Gospels of many They worked …" (small.en+medium.en)
+- **Nehemiah 6** — repeated verse 18 at 3:37–3:40 — "in the names of Jesus The Great Painter" (small.en+medium.en)
+- **Nehemiah 6** — repeated verse 18 at 3:40–3:43 — "him to do their best and gracious efforts and" (small.en+medium.en)
+- **Nehemiah 6** — repeated verse 18 at 3:43–4:00 — "mercies in the names of Jesus The Great Painter sent him to do their best and gracious efforts and give mercies in the names of Jesus The Great Painter sent him to do their best and gracious efforts and give mercies in the names of Jesus The great" (small.en+medium.en)
+- **Nehemiah 6** — repeated verse 18 at 4:01–4:06 — "sent him to do their best and gracious efforts and give mercies in the names of Jesus" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 18 3:07-3:31 (slice coverage small 0.96, medium 1.00) confirmed: repeated verse 18 3:42-4:06 (slice coverage small 1.00, medium 1.00, times 2/2) refuted: repeated verse 18 4:00-4:12 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.3352 / medium 0.3846; coverage small 0.9689 / medium 0.8516; duration 255.06s vs expected 218.4s (ratio 1.168); sha256 `1949e5dda1ea8fa55e6b5c8898d6d54d73bf5cdaa66513d54ddf723a33542184`
+- **Nehemiah 7** — missing verse 1 at 0:00–0:02 — "After the wall was built and I had put the doors in place the gatekeepers singers and Levites were given their jobs I put my brother Hanani in charge of Jerusalem along with Hananiah the leader of the fortress Hananiah was a faithful man who respected God more than most people did I told them Don't open the gates of …" (small.en+medium.en)
+- **Nehemiah 7** — missing verse 8 at 1:29–1:32 — "Parosh two thousand one hundred seventy two" (small.en+medium.en)
+- **Nehemiah 7** — missing verse 10 at 1:38–1:40 — "Arah six hundred fifty two" (small.en+medium.en)
+- **Nehemiah 7** — missing verse 11 at 1:45–1:48 — "two thousand eight hundred eighteen" (small.en+medium.en)
+- **Nehemiah 7** — missing verse 12 at 1:49–1:53 — "Elam one thousand two hundred fifty four" (small.en+medium.en)
+- **Nehemiah 7** — missing verse 15 at 2:02–2:04 — "Binnui six hundred forty eight" (small.en+medium.en)
+- **Nehemiah 7** — missing verse 17 at 2:10–2:13 — "Azgad two thousand three hundred twenty two" (small.en+medium.en)
+- **Nehemiah 7** — missing verse 20 at 2:23–2:25 — "Adin six hundred fifty five" (small.en+medium.en)
+- **Nehemiah 7** — missing verse 22 at 2:32–2:33 — "Hashum three hundred twenty eight" (small.en+medium.en)
+- **Nehemiah 7** — missing verse 29 at 2:59–3:02 — "Beeroth seven hundred forty three" (small.en+medium.en)
+- **Nehemiah 7** — missing verse 31 at 3:07–3:08 — "Michmas one hundred twenty two" (small.en+medium.en)
+- **Nehemiah 7** — missing verse 32 at 3:10–3:12 — "Ai one hundred twenty three" (small.en+medium.en)
+- **Nehemiah 7** — missing verse 34 at 3:18–3:20 — "one thousand two hundred fifty four" (small.en+medium.en)
+- **Nehemiah 7** — missing verse 62 at 5:57–5:59 — "Nekoda six hundred forty two" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00) confirmed: missing verse 8 1:20-1:30 (slice coverage small 0.00, medium 0.00) confirmed: missing verse 12 1:40-1:50 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.3466 / medium 0.4272; coverage small 0.6563 / medium 0.5738; duration 449.41s vs expected 412.0s (ratio 1.091); sha256 `1b30c9ba7083ae72b22e226c2b6a52457b2e0eaf8342b2573b727ee3a6486398`
 
 ## UNCERTAIN
 
@@ -3086,6 +3142,17 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Ezra 7** — audio slice contains the disputed words; the models still disagree (coverage small 0.786, medium 0.908)
   - audio check: refuted: missing verse 21 2:40-2:49 (slice coverage small 1.00, medium 1.00) refuted: missing verse 1 0:02-0:11 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.786, medium 0.908); WER small 0.2151 / medium 0.1096; coverage small 0.7863 / medium 0.9082; sha256 `6491ef33f71c78021d47a4f011cf577bb641253088671f6e7ccb9f093ebdeaed`
+- **Ezra 8** — missing verse 4 at 0:26–0:27 — "Eliehoenai son of Zerahiah and with him two hundred men" (small.en)
+- **Ezra 8** — missing verse 9 at 1:13 — "hundred eighteen men From the family of Shelomith the son of Josiphiah and with him one hundred sixty" (medium.en)
+  - audio check: unclear: missing verse 9 1:04-1:14 (slice coverage small 0.58, medium 0.17) unclear: missing verse 4 0:17-0:27 (slice coverage small 0.40, medium 0.40)
+  - small.en only: missing 'Eliehoenai son of Zerahiah and with him two hundred men'; medium.en only: missing 'hundred eighteen men From the family of Shelomith the son of Josiphiah and with him one hundred sixty'; coverage unclear (small 0.927, medium 0.836; pass needs both >= 0.96); WER small 0.0843 / medium 0.1824; coverage small 0.9273 / medium 0.836; sha256 `a49f307cf0c15b1986ba59296114059133fee96be44e9d0528f3c389739eb63c`
+- **Ezra 9** — missing verse 2 at 0:30 — "So God's holy people have mixed with the people of these lands" (small.en)
+- **Ezra 9** — missing verse 4 at 1:16 — "me because of the unfaithfulness of the people who had come back I sat there shocked until the time of the evening offering At the time of the evening offering I got up from my sorrow with my clothes and robe still torn I fell on my knees and lifted my hands to the LORD my God I prayed My …" (medium.en)
+  - audio check: refuted: missing verse 4 0:41-0:50 (slice coverage small 0.83, medium 0.75) unclear: missing verse 2 0:21-0:31 (slice coverage small 1.00, medium 0.08)
+  - small.en only: missing 'So God's holy people have mixed with the people of these lands'; medium.en only: missing 'me because of the unfaithfulness of the people who had come back I sat there shocked until the time of the evening offering At the time of the evening offering I got up from my sorrow with my clothes and robe still torn I fell on my knees and lifted my hands to the LORD my God I prayed My …'; coverage unclear (small 0.978, medium 0.837; pass needs both >= 0.96); WER small 0.0225 / medium 0.1716; coverage small 0.9775 / medium 0.8371; sha256 `7a81d20aa1db1645365f58c59a03736aa9dbefd552e299978c9182af1145981e`
+- **Nehemiah 3** — audio slice contains the disputed words; the models still disagree (coverage small 0.929, medium 0.824)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 1.00) refuted: repeated verse 21 3:34-3:43 (slice coverage small 1.00, medium 0.80, times 1/0)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.929, medium 0.824); WER small 0.0743 / medium 0.1836; coverage small 0.9291 / medium 0.8243; sha256 `8adb8a78e342326d37b08fdba7a5342d223b9cb494c68418f169f0b1dd92d32d`
 
 ## Script
 
