@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 10
+- Scored chapters: 20
 - PASS: 0
-- FAIL: 9
-- UNCERTAIN: 1 (jsonl verdict UNSURE)
-- Still to score: 919 Old Testament chapters
+- FAIL: 14
+- UNCERTAIN: 6 (jsonl verdict UNSURE)
+- Still to score: 909 Old Testament chapters
 
 ## PASS
 
@@ -97,12 +97,59 @@ None yet.
 - **Genesis 10** — inserted verse 25 at 2:29–2:36 — "Peleg lived in the days of the deep rebirth of Egypt Jepath is a name of the distant family of Rachel and Whelan" (small.en+medium.en)
   - audio check: confirmed: inserted verse 25 2:28-2:42 (slice coverage small 0.96, medium 0.91)
   - WER small 0.1526 / medium 0.4601; coverage small 0.9021 / medium 0.5968; duration 197.93s vs expected 175.6s (ratio 1.127); sha256 `21c9f5e60029c7707432b635e4359904c70e3c7aa70cd89c313f9ef73337ebc6`
+- **Genesis 11** — missing verse 4 at 0:55 — "for ourselves Then we won't be scattered all over the earth The LORD came down to see the city and the tower the people were building The LORD said Look They are one people and they all speak one language This is only the beginning of what they will do Now nothing they plan will be too hard for them …" (small.en+medium.en)
+  - audio check: unclear: missing verse 4 0:23-0:32 (slice coverage small 0.67, medium 0.67)
+  - WER small 0.2185 / medium 0.2133; coverage small 0.7902 / medium 0.792; duration 219.61s vs expected 228.8s (ratio 0.96); sha256 `8e0e67cff41b41880fa9aec31793c6cf6dcffdb0b798a6b6bc66fd74f0b5d28e`
+- **Genesis 12** — inserted verse 6 at 0:55–1:05 — "The Lord of Brant Then Abram said in Haran's golden peace says The Lord blesses those who bless you and curses those who hurt you" (small.en+medium.en)
+- **Genesis 12** — inserted verse 7 at 1:06–1:09 — "remembered God's promise and invited Abraham to come" (small.en+medium.en)
+- **Genesis 12** — inserted verse 7 at 1:09–1:11 — "the temple and his attic promise" (small.en+medium.en)
+- **Genesis 12** — inserted verse 7 at 1:12–2:12 — "said as I had been the Lord blesses the nation of Abraham and invited Abraham to come to the temple and his the attic promise The king Isaac also blessed Abraham and Evan navigated to the temple and his attic promise The name Evan sounds and invites Abraham to come to the temple and his attic promise The Lord was …" (small.en+medium.en)
+- **Genesis 12** — repeated verse 7 at 1:16–1:19 — "and invited Abraham to come to the temple and his" (small.en+medium.en)
+- **Genesis 12** — repeated verse 7 at 1:29–1:33 — "Abraham to come to the temple and his attic promise The" (small.en+medium.en)
+- **Genesis 12** — repeated verse 7 at 1:57–2:00 — "Abraham married a son of the same age as his wife" (small.en+medium.en)
+- **Genesis 12** — repeated verse 7 at 2:04–2:07 — "Abraham married a son of the same age as his wife" (small.en+medium.en)
+  - audio check: unclear: inserted verse 7 1:11-1:35 (slice coverage small 1.00, medium 0.29) unclear: inserted verse 6 0:54-1:11 (slice coverage small 0.88, medium 0.17) refuted: repeated verse 7 1:28-1:39 (slice coverage small 0.91, medium 1.00, times 0/1)
+  - WER small 0.4632 / medium 0.5736; coverage small 0.9935 / medium 0.6277; duration 233.3s vs expected 184.8s (ratio 1.262); sha256 `9b839e3906b6850d3b95b52040fbfc40a10a286bf048c4b3726d456257df9764`
+- **Genesis 15** — inserted verse 9 at 1:17–2:25 — "Abram brought all these animals to the Lord Then Abram brought them all together and kept them in a cozy barn and made them in a toasting furnace The Lord believed Abram's trust and he waved his exapatite The Lord promised Abram You will get everything you want There will no doubts in your mind Never tell you what will …" (small.en+medium.en)
+- **Genesis 15** — repeated verse 9 at 2:02–2:04 — "The Lord brought Abram a past fat" (small.en+medium.en)
+- **Genesis 15** — repeated verse 9 at 2:15–2:21 — "The Lord brought Abram a past fat and a memorable mega a dove of hen a dove of" (small.en+medium.en)
+- **Genesis 15** — repeated verse 9 at 2:24–2:26 — "and a lazy stag of eggs Abram" (small.en+medium.en)
+- **Genesis 15** — repeated verse 10 at 2:26–2:28 — "Abram brought all these animals to the" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 9 1:16-1:40 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 9 2:14-2:27 (slice coverage small 1.00, medium 0.00, times 1/0) refuted: repeated verse 9 2:01-2:10 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.5298 / medium 0.5787; coverage small 0.8894 / medium 0.6681; duration 240.73s vs expected 188.0s (ratio 1.28); sha256 `0042e579a790759ca785809c43fd48e7830f13120d45220df8c5e52a4dfd800b`
+- **Genesis 16** — missing verse 2 at 0:19 — "Abram did what Sarai said" (small.en+medium.en)
+  - audio check: unclear: missing verse 2 0:10-0:20 (slice coverage small 1.00, medium 0.00)
+  - WER small 0.1806 / medium 0.2408; coverage small 0.8194 / medium 0.7618; duration 134.02s vs expected 152.8s (ratio 0.877); sha256 `8121a580f1c285f6bb2cab32cd631e428a6d6092aeb7c5b380a3746322b5fc7f`
+- **Genesis 19** — inserted verse 24 at 3:18–4:12 — "onto Sodom and Gomorrah I will judge them as I always saw by their all generations and ancestors But the woman who had been brought with her was left in the middle of the new seed And the land was so moved into the heaven and a great pleas fair that every narrative of the book shows in the narrative …" (small.en+medium.en)
+- **Genesis 19** — inserted verse 24 at 4:12–4:29 — "breeches and one save was richly made with fire And one night Nana saw that a man was gifting a blessing of great weight And one night Nana saw that a man was gifting of great weight And one night Nana saw that a man was gifted of great weight" (small.en+medium.en)
+- **Genesis 19** — inserted verse 24 at 4:30–4:32 — "one night Nana saw that Amlan" (small.en+medium.en)
+- **Genesis 19** — repeated verse 24 at 3:52–3:54 — "the name of God's saved man" (small.en+medium.en)
+- **Genesis 19** — repeated verse 24 at 4:16–4:18 — "And one night Nana saw that" (small.en+medium.en)
+- **Genesis 19** — repeated verse 24 at 4:21–4:24 — "And one night Nana saw that a man was gifting" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 24 3:17-3:41 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 24 4:11-4:35 (slice coverage small 1.00, medium 0.96) refuted: repeated verse 24 4:20-4:30 (slice coverage small 0.90, medium 1.00, times 0/1)
+  - WER small 0.2454 / medium 0.3388; coverage small 0.9661 / medium 0.8737; duration 384.6s vs expected 389.6s (ratio 0.987); sha256 `b5b34f7b1f08ad250e31c43cdabdf8afd35672ff0cd336240d86148a865f4100`
 
 ## UNCERTAIN
 
 - **Genesis 1** — audio slice contains the disputed words; the models still disagree (coverage small 0.981, medium 0.810)
   - audio check: refuted: repeated verse 27 3:32-3:41 (slice coverage small 1.00, medium 1.00, times 1/1)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.981, medium 0.810); WER small 0.0187 / medium 0.1936; coverage small 0.9813 / medium 0.8104; sha256 `86ba1ba1ef465ab70417e00f1968b46b5e27a6c2709321bc4ba53277ed521b4b`
+- **Genesis 13** — audio slice contains the disputed words; the models still disagree (coverage small 0.750, medium 0.693)
+  - audio check: refuted: missing verse 18 2:08-2:18 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.750, medium 0.693); WER small 0.2524 / medium 0.3119; coverage small 0.75 / medium 0.6929; sha256 `5ed0630b5aeb25ce45172dc3461eaf3c929be1c5d092a451d64a86d2cc2ec50c`
+- **Genesis 14** — inserted verse 4 at 0:30 — "they joined the Valley of Sidim which is also called the" (small.en)
+- **Genesis 14** — missing verse 2 at 0:43 — "king of Zeboiim and the" (medium.en)
+  - audio check: refuted: inserted verse 4 0:29-0:41 (slice coverage small 0.27, medium 0.27) unclear: missing verse 2 0:34-0:44 (slice coverage small 0.40, medium 0.40)
+  - small.en only: inserted 'they joined the Valley of Sidim which is also called the'; medium.en only: missing 'king of Zeboiim and the'; coverage unclear (small 0.938, medium 0.628; pass needs both >= 0.96); WER backstop on one model (small 0.090, medium 0.377); WER small 0.0905 / medium 0.3769; coverage small 0.938 / medium 0.6281; sha256 `ef5c4978a521e26ca2bb37c5d4485b40e7b011121d4b05909e44501c431ae39d`
+- **Genesis 17** — missing verse 4 at 0:22 — "will be the father of many nations Your name will not be Abram anymore Your name" (medium.en)
+  - audio check: unclear: missing verse 4 0:13-0:23 (slice coverage small 0.25, medium 0.42)
+  - medium.en only: missing 'will be the father of many nations Your name will not be Abram anymore Your name'; coverage unclear (small 0.995, medium 0.784; pass needs both >= 0.96); WER small 0.0082 / medium 0.2209; coverage small 0.9951 / medium 0.784; sha256 `c8e7e4f8a2913a16d39686f8ffa099abee21c481c0906ea8acdcaee39caaced3`
+- **Genesis 18** — missing verse 1 at 0:00–0:02 — "The LORD appeared to Abraham by the big oak trees of Mamre Abraham was sitting at the door of his tent in the hottest part of the day He looked up and saw three men standing nearby When he saw them he ran from his tent to meet them He bowed low to the ground He said My lord if …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'The LORD appeared to Abraham by the big oak trees of Mamre Abraham was sitting at the door of his tent in the hottest part of the day He looked up and saw three men standing nearby When he saw them he ran from his tent to meet them He bowed low to the ground He said My lord if …'; coverage unclear (small 1.000, medium 0.643; pass needs both >= 0.96); WER backstop on one model (small 0.001, medium 0.357); WER small 0.0013 / medium 0.3567; coverage small 1.0 / medium 0.6433; sha256 `bf6c8c6e89d66fc4b4a09b8a99426cab75de8327378ad7d9e45b25c05bf40180`
+- **Genesis 20** — missing verse 3 at 0:21 — "You are going to die because of" (medium.en)
+  - audio check: unclear: missing verse 3 0:12-0:22 (slice coverage small 0.71, medium 0.71)
+  - medium.en only: missing 'You are going to die because of'; coverage unclear (small 0.984, medium 0.910; pass needs both >= 0.96); WER small 0.023 / medium 0.0922; coverage small 0.9839 / medium 0.9101; sha256 `78556b073cbb1ce3ca96f79a48bb4bf12ee024c3f2a503104ee9c24eef0bd7d2`
 
 ## Script
 
