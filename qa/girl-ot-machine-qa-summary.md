@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 350
+- Scored chapters: 360
 - PASS: 8
-- FAIL: 237
-- UNCERTAIN: 105 (jsonl verdict UNSURE)
-- Still to score: 579 Old Testament chapters
+- FAIL: 244
+- UNCERTAIN: 108 (jsonl verdict UNSURE)
+- Still to score: 569 Old Testament chapters
 
 ## PASS
 
@@ -2093,6 +2093,88 @@ words clears that span. A split slice stays UNCERTAIN.
 - **1 Chronicles 11** — repeated verse 24 at 6:00–6:08 — "a gift of double adoption David waved in favor and Joab gave him a gift of double adoption David" (small.en+medium.en)
   - audio check: confirmed: inserted verse 24 5:17-5:41 (slice coverage small 0.96, medium 0.96) confirmed: inserted verse 22 3:37-4:01 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 22 3:59-4:23 (slice coverage small 1.00, medium 1.00)
   - WER small 0.5028 / medium 0.647; coverage small 0.8808 / medium 0.6652; duration 487.04s vs expected 352.4s (ratio 1.382); sha256 `452830902cc6b7bf44960976ba2d635dfe52c9fc7054dd5f2c2b1f93b32c3128`
+- **1 Chronicles 14** — inserted before verse 1 at 0:07 — "logs stone workers and carpenters to" (small.en+medium.en windows)
+- **1 Chronicles 14** — missing verse 4 at 0:53–0:54 — "Shammua Shobab Nathan Solomon Ibhar Elishua Elpelet Nogah Nepheg Japhia Elishama Beeliada and Eliphelet The Philistines heard that David had been anointed king over all Israel So their whole army went looking for him But David heard about it and went out to fight them The Philistines had come and attacked the Valley of Rephaim" (small.en)
+  - audio check: unclear: missing verse 4 0:31-0:40 (slice coverage small 0.33, medium 0.42) confirmed: inserted verse ? 0:06-0:18 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.2046 / medium 0.0495; coverage small 0.802 / medium 0.9604; duration 119.38s vs expected 121.2s (ratio 0.985); sha256 `88ac8687495fad05293fc3b1b68766cc2902d2b6e94005c9368d8c469cae029f`
+- **1 Chronicles 15** — repeated verse 17 at 1:52–1:54 — "From the family of Marari" (small.en)
+- **1 Chronicles 15** — missing verse 2 at 0:40 — "to serve Him forever David gathered all the Israelites to Jerusalem to bring the LORD's ark" (medium.en)
+  - audio check: confirmed: missing verse 2 0:31-0:41 (slice coverage small 0.08, medium 0.08) refuted: repeated verse 17 1:51-2:00 (slice coverage small 1.00, medium 0.80, times 1/0)
+  - WER small 0.0579 / medium 0.2997; coverage small 0.9437 / medium 0.7103; duration 234.67s vs expected 241.6s (ratio 0.971); sha256 `d08f16d36e535c3b86b3d8fa54dcf3569a701d9d6012ad0e27132731e3bca421`
+- **1 Chronicles 16** — missing verse 5 at 0:33–0:38 — "Jeiel Shemiramoth Jehiel Mattithiah Eliab Benaiah" (small.en+medium.en)
+  - audio check: confirmed: missing verse 5 0:24-0:34 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.0349 / medium 0.3092; coverage small 0.9715 / medium 0.6921; duration 273.41s vs expected 309.2s (ratio 0.884); sha256 `e1bac11dce0568bcde8f8aebec50f9f3e9cc03d7d97b3e909d0767b7153bd704`
+- **1 Chronicles 17** — inserted verse 9 at 0:59 — "my people the power to be the greatest people on earth" (small.en+medium.en)
+  - audio check: unclear: inserted verse 9 0:58-1:10 (slice coverage small 0.36, medium 0.36)
+  - WER small 0.1305 / medium 0.0191; coverage small 0.893 / medium 0.9853; duration 211.8s vs expected 272.8s (ratio 0.776); sha256 `18c10038f83d5ebeae95364cb5454edc7e1fb596060bab74f55ffb25bf9fefe6`
+- **1 Chronicles 18** — missing verse 17 at 4:06–4:24 — "chief officials who served beside" (small.en+medium.en)
+- **1 Chronicles 18** — inserted verse 6 at 0:53–0:58 — "went David was dictated by the people and God prospered by whatever David" (small.en+medium.en)
+- **1 Chronicles 18** — inserted verse 6 at 0:58–2:08 — "about The kings of Edom added to their territory David won the battles against the princesses David won over the tribes of Dela and David won over the tribes of Jebaz David won battles against the princesses of Edom and David won over the tribes of Jebaz David won over the tribes of Lebanon and David won over the tribes …" (small.en+medium.en)
+- **1 Chronicles 18** — inserted verse 17 at 3:45–3:55 — "the Pioleites were the king's workers David died in 79 A D He was born in 78 D David's son Samuel was born in" (small.en+medium.en)
+- **1 Chronicles 18** — inserted verse 17 at 3:56–4:03 — "70s 80s He was ruled over Israel for almost 40 40 years David died in 78 D" (small.en+medium.en)
+- **1 Chronicles 18** — inserted verse 17 at 4:04–4:06 — "son Samuel was born in" (small.en+medium.en)
+- **1 Chronicles 18** — inserted verse 17 at 4:27–4:58 — "from Genesis to the died in the chapter of the previous month of the decade He was born in the 12th month of the decade In the was ruled over Israel for almost 40 died in the in honor sake of the land he built a great temple for Balaam in Israel out of order and intended in the way …" (small.en+medium.en)
+- **1 Chronicles 18** — repeated verse 6 at 1:07–1:09 — "David won over the tribes of" (small.en+medium.en)
+- **1 Chronicles 18** — repeated verse 6 at 1:12–1:16 — "and David won over the tribes of Jebaz David won" (small.en+medium.en)
+- **1 Chronicles 18** — repeated verse 6 at 1:15–1:17 — "David won over the tribes of" (small.en+medium.en)
+- **1 Chronicles 18** — repeated verse 6 at 1:17–1:19 — "and David won over the tribes of" (small.en+medium.en)
+- **1 Chronicles 18** — repeated verse 6 at 1:29–2:07 — "David built an artificial temple and built an artificial dome for Parver David built an artificial temple and built an artificial dome for Parver David built an artificial temple and built an artificial dome for Parver David built an artificial temple and built an artificial dome for Parver David built an artificial temple and built an artificial dome for Parver …" (small.en+medium.en)
+- **1 Chronicles 18** — repeated verse 17 at 4:01–4:07 — "in 78 D David's son Samuel was born in the 70s 80s" (small.en+medium.en)
+- **1 Chronicles 18** — repeated verse 17 at 4:38–4:41 — "he was ruled over Israel for almost 40" (small.en+medium.en)
+  - audio check: unclear: inserted verse 6 0:57-1:21 (slice coverage small 1.00, medium 0.08) unclear: repeated verse 6 1:28-1:52 (slice coverage small 0.04, medium 0.08, times 0/0) confirmed: inserted verse 17 4:26-4:50 (slice coverage small 1.00, medium 1.00)
+  - WER small 1.0186 / medium 0.8537; coverage small 0.9202 / medium 0.8856; duration 300.84s vs expected 150.4s (ratio 2.0); sha256 `e08bfea87d185013febc76160788fe29424d3350d31fa6f40f945674146c3db0`
+- **1 Chronicles 19** — missing verse 8 at 1:15 — "men The Ammonites came out and lined up for battle at the city gate The kings who had come to help them stayed by themselves out in the open field Joab saw that there were enemies in front of him and behind him So he chose some of the best soldiers in Israel and lined them up to fight the …" (small.en+medium.en)
+- **1 Chronicles 19** — missing verse 12 at 1:43 — "Syrians are too strong for me come and help me" (small.en+medium.en)
+  - audio check: confirmed: missing verse 8 0:49-0:58 (slice coverage small 0.25, medium 0.25) unclear: missing verse 12 1:34-1:44 (slice coverage small 1.00, medium 0.00)
+  - WER small 0.2239 / medium 0.2164; coverage small 0.7817 / medium 0.7985; duration 168.7s vs expected 214.4s (ratio 0.787); sha256 `6faa98b7848e32f9fe4a9d7f7c09f492b77d4bdd81111e4ea1ea0a3ee1f914f0`
+- **1 Chronicles 21** — missing verse 12 at 2:09–2:10 — "LORD's angel bringing destruction all" (small.en+medium.en)
+- **1 Chronicles 21** — missing verse 29 at 8:09–8:13 — "tent that Moses had made" (small.en+medium.en)
+- **1 Chronicles 21** — missing verse 29 at 8:27–8:30 — "worship in Gibeon at that time But" (small.en+medium.en)
+- **1 Chronicles 21** — missing verse 30 at 8:31–8:37 — "could not go there to ask God for help because he was afraid" (small.en+medium.en)
+- **1 Chronicles 21** — inserted verse 12 at 1:37–1:55 — "the Lord's angel And when Gad said I am in great danger Please tell me what answer to God send as a king David said to Gad I am in great danger but no man can take in this animal Please let us face and know what" (small.en+medium.en)
+- **1 Chronicles 21** — inserted verse 12 at 1:55–2:08 — "says in his answers David replied to Gad I am in great danger but let us not fall into the hands of the king Since I am mortal death and withered in a national day I will go down" (small.en+medium.en)
+- **1 Chronicles 21** — inserted verse 12 at 2:11–2:23 — "The king will look who was brave enough to save this family David replied to Gad I am in great danger but let us not fall into the hands of the king Since I am mortal death" (small.en+medium.en)
+- **1 Chronicles 21** — inserted verse 12 at 2:23–2:31 — "innocent I will die because of my great deed The king will look who is brave enough to save this family David replied" (small.en+medium.en)
+- **1 Chronicles 21** — inserted verse 12 at 2:32–2:37 — "Gad I am in great danger but let us not fall into the hands of the king" (small.en+medium.en)
+- **1 Chronicles 21** — inserted verse 12 at 2:39–2:41 — "is brave enough to save this family" (small.en+medium.en)
+- **1 Chronicles 21** — inserted verse 13 at 2:44–2:53 — "danger but let us not fall into the hands of the king The king will look who is brave enough to save this family David replied too" (small.en+medium.en)
+- **1 Chronicles 21** — inserted verse 15 at 3:32–4:37 — "David realized that he saw the Lord was intent on his message and his efforts and he said to the Lord the Lord said to the angel now he saw the Lord was intent on his efforts and his message and his actions and when it was he decided to give David the great sin and the price and atta …" (small.en+medium.en)
+- **1 Chronicles 21** — inserted verse 26 at 6:33–6:47 — "Then the Lord spoke to the angel and the angel put his sword back in its holder Then the Lord spoke to the angel and the angel put his sword back in its holder and The Lord pressed on the ground floor that altar David built" (small.en+medium.en)
+- **1 Chronicles 21** — inserted verse 27 at 6:48–7:10 — "David gave God every sacrifice and praised him as he offered the blood brought upon his altar and The Lord sent to heaven a fire to that altar and burnt the blood brought as it entered the prayers David blasted the altar as it entered the prayers and cried God for help and And the Lord sent to heaven a …" (small.en+medium.en)
+- **1 Chronicles 21** — inserted verse 27 at 7:16–7:54 — "And the Lord sent to heaven a fire to that altar and burnt the blood brought upon his altar David blessed the Lord for this sixth great breach praise and the Lord sent to heaven a fire to that altar and burnt the blood brought upon his altar David blessed the Lord for this sixth great breach praise and the …" (small.en+medium.en)
+- **1 Chronicles 21** — inserted verse 28 at 8:04–8:07 — "The Lord's holy temple and sacred prayers in Gibeon" (small.en+medium.en)
+- **1 Chronicles 21** — inserted verse 29 at 8:09–8:13 — "temple and sacred prayers were in the tabernacle of the Clemity" (small.en+medium.en)
+- **1 Chronicles 21** — inserted verse 29 at 8:15–8:17 — "blood brought upon his altar" (small.en+medium.en)
+- **1 Chronicles 21** — inserted verse 29 at 8:17–8:22 — "cried praises to the Lord David knew that the Lord had answered him at" (small.en+medium.en)
+- **1 Chronicles 21** — inserted verse 29 at 8:23–8:26 — "Ornan the Jebusite David built a new altar for" (small.en+medium.en)
+- **1 Chronicles 21** — inserted verse 29 at 8:27–8:30 — "the Clemadee and gave the blood brought upon his altar" (small.en+medium.en)
+- **1 Chronicles 21** — inserted verse 30 at 8:31–8:37 — "knew that the Lord had answered him at the threshing floor of Jebusite They entered the temple" (small.en+medium.en)
+- **1 Chronicles 21** — inserted verse 30 at 8:41–9:27 — "Lord sent fire to that altar and burnt the blood brought upon his altar The Lord sent to heaven that altar and burnt the blood brought altar The Lord sent to heaven a fire to that burnt the blood brought upon his altar The Lord sent fire to that altar and burnt the blood him at the threshing floor of …" (small.en+medium.en)
+- **1 Chronicles 21** — repeated verse 12 at 1:58–2:01 — "to Gad I am in great danger but" (small.en+medium.en)
+- **1 Chronicles 21** — repeated verse 12 at 2:14–2:23 — "David replied to Gad I am in great danger but let us not fall into the hands of the king Since I am mortal death and" (small.en+medium.en)
+- **1 Chronicles 21** — repeated verse 12 at 2:27–2:28 — "The king will look who" (small.en+medium.en)
+- **1 Chronicles 21** — repeated verse 12 at 2:28–2:37 — "brave enough to save this family David replied to Gad I am in great danger but let us not fall into the hands of the king" (small.en+medium.en)
+- **1 Chronicles 21** — repeated verse 12 at 2:37–2:53 — "The king will look who is brave enough to save this family David replied to Gad I am in great danger but let us not fall into the hands of the king The king will look who is brave enough to save this family David replied" (small.en+medium.en)
+- **1 Chronicles 21** — repeated verse 15 at 3:54–3:57 — "sent an angel to destroy Jerusalem but" (small.en+medium.en)
+- **1 Chronicles 21** — repeated verse 15 at 4:04–4:26 — "The Lord stayed with his message and his actions and when it was it just came down to the A thing of the city The Lord stayed with his message and his actions and when it was it just came down to the A thing of the city The Lord stayed with his message and his actions and when it …" (small.en+medium.en)
+- **1 Chronicles 21** — repeated verse 15 at 4:26–4:37 — "the city The Lord stayed with his message and his actions and when it was it just came down to the A thing of the city The Lord stayed with his message and his actions" (small.en+medium.en)
+- **1 Chronicles 21** — repeated verse 26 at 6:39–6:43 — "Then the Lord spoke to the angel and the angel put his sword back in its holder" (small.en+medium.en)
+- **1 Chronicles 21** — repeated verse 27 at 7:05–7:09 — "And the Lord sent to heaven a fire to that altar and burnt the blood brought" (small.en+medium.en)
+- **1 Chronicles 21** — repeated verse 27 at 7:09–7:10 — "the blood brought upon his altar" (small.en+medium.en)
+- **1 Chronicles 21** — repeated verse 27 at 7:11–7:16 — "The Lord spoke to the angel and the angel put his sword back in its holder And the Lord" (small.en+medium.en)
+- **1 Chronicles 21** — repeated verse 27 at 7:16–7:21 — "And the Lord sent to heaven a fire to that altar and burnt the blood brought upon his altar" (small.en+medium.en)
+- **1 Chronicles 21** — repeated verse 27 at 7:25–7:50 — "and the Lord sent to heaven a fire to that altar and burnt the blood brought upon his altar David blessed the Lord for this sixth great breach praise and the Lord sent to heaven a fire to that altar and burnt the blood brought upon his altar David blessed the Lord for this sixth great breach praise and the …" (small.en+medium.en)
+- **1 Chronicles 21** — repeated verse 29 at 8:07–8:11 — "The Lord's holy temple and sacred prayers" (small.en+medium.en)
+- **1 Chronicles 21** — repeated verse 29 at 8:15–8:17 — "offered the blood brought upon his altar and" (small.en+medium.en)
+- **1 Chronicles 21** — repeated verse 29 at 8:20–8:23 — "that the Lord had answered him at the threshing floor of" (small.en+medium.en)
+- **1 Chronicles 21** — repeated verse 29 at 8:28–8:31 — "the blood brought upon his altar David" (small.en+medium.en)
+- **1 Chronicles 21** — repeated verse 30 at 8:31–8:34 — "David knew that the Lord had answered him at the threshing floor of" (small.en+medium.en)
+- **1 Chronicles 21** — repeated verse 30 at 8:41–8:47 — "The Lord sent to heaven a fire to that altar and burnt the blood brought upon his altar The Lord" (small.en+medium.en)
+- **1 Chronicles 21** — repeated verse 30 at 8:46–9:08 — "The Lord sent to heaven a fire to that altar and burnt the blood brought upon his altar The Lord sent to heaven a fire to that altar and burnt the blood brought upon his altar The Lord sent to heaven a fire to that altar and burnt the blood brought upon his altar David knew that the Lord had …" (small.en+medium.en)
+- **1 Chronicles 21** — repeated verse 30 at 9:09–9:12 — "David built a new altar for the altar of the" (small.en+medium.en)
+- **1 Chronicles 21** — repeated verse 30 at 9:14–9:22 — "the blood brought upon his altar David knew that the Lord had answered him at the threshing floor of Jebusite So David" (small.en+medium.en)
+  - audio check: unclear: inserted verse 15 3:31-3:55 (slice coverage small 1.00, medium 0.08) confirmed: inserted verse 27 7:15-7:39 (slice coverage small 1.00, medium 1.00) unclear: inserted verse 30 8:40-9:04 (slice coverage small 0.58, medium 0.00)
+  - WER small 1.0623 / medium 0.8741; coverage small 0.9254 / medium 0.7665; duration 568.45s vs expected 327.2s (ratio 1.737); sha256 `fd08873718398eb25a0f2dc69265b0260174481e98985c48097a75cd2519822d`
 
 ## UNCERTAIN
 
@@ -2426,6 +2508,16 @@ words clears that span. A split slice stays UNCERTAIN.
 - **1 Chronicles 12** — audio slice contains the disputed words; the models still disagree (coverage small 0.865, medium 0.868)
   - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.92)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.865, medium 0.868); WER small 0.1427 / medium 0.1381; coverage small 0.8653 / medium 0.8676; sha256 `197665aa06dc06ae14b72ac4975267c854a3e582cca814b1ba5c93449d7c28dc`
+- **1 Chronicles 13** — audio slice contains the disputed words; the models still disagree (coverage small 0.966, medium 0.387)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.83, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.966, medium 0.387); WER small 0.042 / medium 0.6162; coverage small 0.9664 / medium 0.3866; sha256 `e2d6a1f1cc7d4b6dbeb6a9654121002c0918f85632d8565430307bbc4a5b70a5`
+- **1 Chronicles 20** — audio slice contains the disputed words; the models still disagree (coverage small 0.645, medium 0.641)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.92)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.645, medium 0.641); WER small 0.3592 / medium 0.3673; coverage small 0.6449 / medium 0.6408; sha256 `a1fdfa212bde61ad7c054c950bdddb753660f523e80eb8f8fd18889dc64b0e9d`
+- **1 Chronicles 22** — inserted verse 15 at 2:35–2:38 — "Stone cutters stone workers wood workers" (small.en)
+- **1 Chronicles 22** — missing verse 1 at 0:30 — "This is where the house of the LORD God will be with the altar of burnt offering for Israel David gave orders to gather the foreigners living in Israel He chose stoneworkers to cut stones to build God's house David got lots of iron ready to make nails for the doors of the gates and for the clamps He also …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00) refuted: inserted verse 15 2:34-2:44 (slice coverage small 0.00, medium 0.00)
+  - small.en only: inserted 'Stone cutters stone workers wood workers'; medium.en only: missing 'This is where the house of the LORD God will be with the altar of burnt offering for Israel David gave orders to gather the foreigners living in Israel He chose stoneworkers to cut stones to build God's house David got lots of iron ready to make nails for the doors of the gates and for the clamps He also …'; coverage unclear (small 0.991, medium 0.687; pass needs both >= 0.96); WER backstop on one model (small 0.017, medium 0.498); WER small 0.0173 / medium 0.4983; coverage small 0.9913 / medium 0.6869; sha256 `08c6c0e69764b1ff45160b7c5ff58dc883e1bda730001186af8c79cbef88dfe7`
 
 ## Script
 
