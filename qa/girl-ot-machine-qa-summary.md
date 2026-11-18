@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 30
+- Scored chapters: 40
 - PASS: 0
-- FAIL: 20
-- UNCERTAIN: 10 (jsonl verdict UNSURE)
-- Still to score: 899 Old Testament chapters
+- FAIL: 27
+- UNCERTAIN: 13 (jsonl verdict UNSURE)
+- Still to score: 889 Old Testament chapters
 
 ## PASS
 
@@ -153,6 +153,41 @@ None yet.
 - **Genesis 30** — missing verse 15 at 1:36 — "son's mandrakes too Rachel said All right Jacob can spend tonight with you in return for your" (medium.en)
   - audio check: confirmed: missing verse 15 1:27-1:37 (slice coverage small 0.17, medium 0.25) refuted: missing verse 21 2:16-2:26 (slice coverage small 1.00, medium 1.00)
   - WER small 0.0273 / medium 0.1525; coverage small 0.9769 / medium 0.857; duration 340.1s vs expected 380.4s (ratio 0.894); sha256 `443af245b5ee9ebded99968ca653582015bf0acd2711a3f3abc627ee1801e619`
+- **Genesis 31** — missing verse 1 at 0:30–0:34 — "heard that Laban's sons were saying" (small.en+medium.en)
+- **Genesis 31** — missing verse 1 at 0:35–0:40 — "has taken everything our father owned He got all his riches from our father" (small.en+medium.en)
+- **Genesis 31** — missing verse 2 at 0:41–0:45 — "also saw that Laban was not as friendly" (small.en+medium.en)
+- **Genesis 31** — inserted verse 1 at 0:30–0:34 — "have been found with his father And the Lord said to" (small.en+medium.en)
+- **Genesis 31** — inserted verse 1 at 0:35–0:40 — "Go back to your father's land and get yourself a sizable and use it to build an elaborate tent" (small.en+medium.en)
+- **Genesis 31** — inserted verse 2 at 0:41–0:45 — "agreed and went to the village of Nazareth Jacob said" (small.en+medium.en)
+- **Genesis 31** — inserted verse 2 at 0:45–0:59 — "his employees Get rid of your ungolawed seba and whether you have any means put it on your camera and get the sons of Nazareth out of your family Jacob said Yes we have seba and it's all in the past" (small.en+medium.en)
+- **Genesis 31** — inserted verse 3 at 1:01–1:06 — "you will go into Canaan and you will get 10 of the proceeds of your vineyards" (small.en+medium.en)
+- **Genesis 31** — inserted verse 3 at 1:09–1:24 — "into Canaan and whether you have any means out of your vineyards Give me the max in the past Jacob said yes I will give you of the means of your vineyards now in the past in Gaglobeth Jacob said yes I will give you of" (small.en+medium.en)
+- **Genesis 31** — inserted verse 3 at 1:25–1:30 — "vineyards now in the past Jacob said yes I will give you of the means of" (small.en+medium.en)
+- **Genesis 31** — repeated verse 3 at 1:10–1:12 — "and whether you have any means" (small.en+medium.en)
+- **Genesis 31** — repeated verse 3 at 1:15–1:17 — "Jacob said yes I will" (small.en+medium.en)
+- **Genesis 31** — repeated verse 3 at 1:21–1:27 — "Jacob said yes I will give you of the means of your vineyards now in the past" (small.en+medium.en)
+- **Genesis 31** — repeated verse 3 at 1:26–1:31 — "in the past Jacob said yes I will give you of the means of your vineyards now" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 3 1:08-1:30 (slice coverage small 1.00, medium 1.00) unclear: inserted verse 2 0:44-1:05 (slice coverage small 0.96, medium 0.21) confirmed: inserted verse 1 0:34-0:46 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.2422 / medium 0.2044; coverage small 0.8533 / medium 0.8985; duration 512.77s vs expected 540.0s (ratio 0.95); sha256 `ea69fb93ef83facca071fc062470e990dc260f55ff0baba40099e194b7cc3d9e`
+- **Genesis 32** — coverage low on both models (small 0.876, medium 0.672); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1243 / medium 0.3392; coverage small 0.8757 / medium 0.6716; duration 264.15s vs expected 296.0s (ratio 0.892); sha256 `a28229a9f50b498f61317f89f544da5c837bb4b899d899086c1a8bc0da30bc85`
+- **Genesis 35** — inserted verse 14 at 2:36–2:42 — "place Benya we beloved Israel we come from this very special" (small.en+medium.en)
+- **Genesis 35** — inserted verse 14 at 2:45–2:47 — "to those safer every day and bake you" (small.en+medium.en)
+- **Genesis 35** — inserted verse 15 at 2:57–3:06 — "there was a baby and Azap We come from Benya's son by days where there was a baby and Azap We come" (small.en+medium.en)
+- **Genesis 35** — inserted verse 16 at 3:12–3:15 — "Benya's son by days where there was a" (small.en+medium.en)
+- **Genesis 35** — inserted verse 18 at 3:32–3:43 — "a baby and A ZAP We come from Benya's son by days where there was a baby and A ZAP Both Benya's sons have buried their and he lost his family" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 18 3:31-3:49 (slice coverage small 1.00, medium 0.75) confirmed: inserted verse 15 2:56-3:12 (slice coverage small 0.91, medium 0.82) confirmed: inserted verse 14 2:35-2:48 (slice coverage small 1.00, medium 0.82)
+  - WER small 0.4274 / medium 0.3729; coverage small 0.731 / medium 0.9257; duration 300.67s vs expected 242.4s (ratio 1.24); sha256 `0f4311b2887be864073f808b22fba912698912f08746be27408954f4935ea32f`
+- **Genesis 36** — coverage low on both models (small 0.750, medium 0.725); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.258 / medium 0.2786; coverage small 0.7497 / medium 0.7253; duration 323.5s vs expected 311.6s (ratio 1.038); sha256 `a2e9a8188e51740a0d4f995a50c48c4a6bed78f7da8e717ee7119a8550d01426`
+- **Genesis 37** — coverage low on both models (small 0.891, medium 0.832); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1122 / medium 0.1701; coverage small 0.8912 / medium 0.8322; duration 289.92s vs expected 352.8s (ratio 0.822); sha256 `89c42d1baca89ec68409dcba0f70ff1f2113c53e4ece4d7d81142e8cb7ac2738`
+- **Genesis 38** — coverage low on both models (small 0.877, medium 0.812); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1268 / medium 0.1949; coverage small 0.8772 / medium 0.8117; duration 255.79s vs expected 299.6s (ratio 0.854); sha256 `74ed4c72649c9f903319ffd96d0b40c99f7d5ddbb7d0339ca0cabdcdd42864ef`
+- **Genesis 40** — repeated verse 20 at 2:29–2:31 — "bearer and the chief baker" (small.en)
+- **Genesis 40** — missing verse 9 at 1:22 — "cupbearer told Joseph his dream He said In my dream I saw a grapevine in front of me The vine had three branches As soon as it started to bud it bloomed Then its bunches of grapes became ripe I was holding Pharaoh's cup I took the grapes and squeezed them into Pharaoh's cup Then I put the" (medium.en)
+  - audio check: confirmed: missing verse 9 0:59-1:08 (slice coverage small 0.00, medium 0.00) refuted: repeated verse 20 2:28-2:37 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.0487 / medium 0.1988; coverage small 0.9727 / medium 0.8109; duration 166.66s vs expected 205.2s (ratio 0.812); sha256 `9b3897f8b15f66f8e3e404efb13d3c674d970a97f65072eb23e9a63db509b3fc`
 
 ## UNCERTAIN
 
@@ -187,6 +222,16 @@ None yet.
 - **Genesis 28** — audio slice contains the disputed words; the models still disagree (coverage small 0.981, medium 0.833)
   - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.92)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.981, medium 0.833); WER small 0.0195 / medium 0.172; coverage small 0.9805 / medium 0.8333; sha256 `33742cdd9dcefbed568c799ba0729d790429e90e513b90cae0ba213d8c0cc14f`
+- **Genesis 33** — missing verse 14 at 2:17 — "until I come to you in Seir Esau said Then let me leave some of my men with you But Jacob said Why do that You have already been so kind to me sir So that day Esau started back home to Seir But Jacob went to Succoth There he built a house for himself and shelters for his animals …" (medium.en)
+  - audio check: unclear: missing verse 14 1:47-1:56 (slice coverage small 0.83, medium 0.67)
+  - medium.en only: missing 'until I come to you in Seir Esau said Then let me leave some of my men with you But Jacob said Why do that You have already been so kind to me sir So that day Esau started back home to Seir But Jacob went to Succoth There he built a house for himself and shelters for his animals …'; coverage unclear (small 0.987, medium 0.816; pass needs both >= 0.96); WER small 0.0153 / medium 0.1904; coverage small 0.9869 / medium 0.8162; sha256 `edab97e9648f217e5f631ddfd2a7ee46cde547a67537c21490812cc6e636e733`
+- **Genesis 34** — repeated verse 20 at 2:16–2:18 — "Haymore and his son Shechem" (small.en)
+- **Genesis 34** — missing verse 1 at 0:00–0:02 — "One day Dinah the daughter of Leah and Jacob went out to visit the young women of the land Shechem the son of Hamor the Hivite was the prince of that land He saw Dinah and he took her and did a very wrong and shameful thing to her But then his heart was drawn to Dinah Jacob's daughter He …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.00) refuted: repeated verse 20 2:15-2:24 (slice coverage small 1.00, medium 0.80, times 1/0)
+  - small.en only: repeated 'Haymore and his son Shechem'; medium.en only: missing 'One day Dinah the daughter of Leah and Jacob went out to visit the young women of the land Shechem the son of Hamor the Hivite was the prince of that land He saw Dinah and he took her and did a very wrong and shameful thing to her But then his heart was drawn to Dinah Jacob's daughter He …'; coverage unclear (small 0.996, medium 0.843; pass needs both >= 0.96); WER small 0.0057 / medium 0.1617; coverage small 0.9957 / medium 0.8426; sha256 `239a4d17b59c22f8e2b034dd14ef1f60ce694c547337b9596ce3b190a45d35d8`
+- **Genesis 39** — audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.872)
+  - audio check: refuted: missing verse 17 2:23-2:32 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.872); WER small 0.0019 / medium 0.13; coverage small 0.9981 / medium 0.8719; sha256 `d189c067690349ad96e71551238158f66cd24aeffdb94a8224c0f0fd3010d879`
 
 ## Script
 
