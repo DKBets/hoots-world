@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 250
+- Scored chapters: 260
 - PASS: 7
-- FAIL: 161
-- UNCERTAIN: 82 (jsonl verdict UNSURE)
-- Still to score: 679 Old Testament chapters
+- FAIL: 169
+- UNCERTAIN: 84 (jsonl verdict UNSURE)
+- Still to score: 669 Old Testament chapters
 
 ## PASS
 
@@ -1146,6 +1146,33 @@ words clears that span. A split slice stays UNCERTAIN.
 - **1 Samuel 14** — missing verse 1 at 0:01–0:02 — "day Saul's son Jonathan said to the young man who carried his armor Come on let's go over to the Philistine camp on the other side But he didn't tell his father Saul was staying at the edge of Gibeah under a pomegranate tree in Migron About six hundred men were with him Ahijah was there too wearing the priest's …" (medium.en)
   - audio check: confirmed: missing verse 29 4:17-4:26 (slice coverage small 0.00, medium 0.00) unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
   - WER small 0.0882 / medium 0.2202; coverage small 0.9182 / medium 0.7834; duration 497.37s vs expected 557.6s (ratio 0.892); sha256 `3edd4ad7842d7df82b79740e3bef59815977e50819b33c65470289cfff6be141`
+- **1 Samuel 15** — missing verse 32 at 5:07 — "Amalekites Agag came to him cheerfully" (small.en)
+- **1 Samuel 15** — missing verse 1 at 0:29–0:30 — "Samuel said to Saul The LORD sent me to pour oil on you and make you king over his people Israel So now listen to the message from the LORD This is what the LORD of Armies says I remember what the Amalekites did to Israel They attacked them on the road when they were coming up out of Egypt …" (medium.en)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) confirmed: missing verse 32 4:58-5:08 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.0371 / medium 0.3191; coverage small 0.9697 / medium 0.6854; duration 343.0s vs expected 356.0s (ratio 0.963); sha256 `844a084f963986b7b4fae92785c0ceedbc65b3c3fdfeaff15e387f75e7a556fc`
+- **1 Samuel 16** — missing verse 8 at 1:19 — "Samuel But Samuel said The LORD hasn't chosen this one either Then Jesse had Shammah walk by But" (small.en+medium.en)
+- **1 Samuel 16** — missing verse 9 at 1:29 — "said The LORD hasn't chosen" (small.en+medium.en)
+  - audio check: confirmed: missing verse 8 1:10-1:20 (slice coverage small 0.00, medium 0.08) refuted: missing verse 9 1:20-1:30 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.0537 / medium 0.2607; coverage small 0.954 / medium 0.7408; duration 224.68s vs expected 260.8s (ratio 0.862); sha256 `9bb8bfc5107e54cfc9c54eac642e2c36115aa9fcf37e4c946d5d4aa88c3f7c67`
+- **1 Samuel 18** — missing verse 21 at 2:40 — "her to him so she can be a trap for him and the Philistines can attack him So Saul said to David a second time Now you" (small.en)
+- **1 Samuel 18** — missing verse 1 at 0:31 — "After David finished talking with Saul Jonathan's heart was joined to David's Jonathan loved him as much as he loved himself From that day on Saul kept David with him and didn't let him go back home to his father's house Jonathan and David made a promise of friendship because Jonathan loved David as much as himself Jonathan took off …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00) confirmed: missing verse 21 2:29-2:38 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.0622 / medium 0.2445; coverage small 0.9406 / medium 0.7597; duration 254.59s vs expected 289.6s (ratio 0.879); sha256 `f8ebfaba435f840b09ff2868b898210211f511ffe5e044823261a4740b8b2c4a`
+- **1 Samuel 20** — missing verse 40 at 6:11 — "to the boy and said Go take these back" (small.en)
+- **1 Samuel 20** — missing verse 1 at 0:29–0:30 — "David ran away from Naioth in Ramah He went to Jonathan and asked What have I done What wrong have I done How have I sinned against your father that he is trying to kill me Jonathan answered No way You won't die My father doesn't do anything big or small without telling me Why would he hide this from …" (medium.en)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.75, medium 0.83) confirmed: missing verse 40 6:02-6:12 (slice coverage small 0.33, medium 0.33)
+  - WER small 0.0759 / medium 0.2527; coverage small 0.9304 / medium 0.758; duration 384.47s vs expected 448.0s (ratio 0.858); sha256 `c318fe4dea3f851a79a984be690aa07e7a4a985f664fd8b633403a2af1cb6acc`
+- **1 Samuel 21** — missing verse 2 at 0:14 — "me a job to do He told me Don't let anyone know anything about what I am sending you to do I told my men to meet me at a certain place Now what do you have to eat Give" (medium.en)
+  - audio check: confirmed: missing verse 2 0:00-0:09 (slice coverage small 0.08, medium 0.17)
+  - WER small 0.0205 / medium 0.1409; coverage small 0.9841 / medium 0.8614; duration 138.58s vs expected 176.0s (ratio 0.787); sha256 `b5d3f2bfb6ab8579fd584b261813473f24ee9d868f7ee1d08b25ed63df966704`
+- **1 Samuel 22** — missing verse 10 at 1:43 — "the LORD what David should do He gave him food and the sword of Goliath" (medium.en)
+  - audio check: confirmed: missing verse 10 1:34-1:44 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.0242 / medium 0.1059; coverage small 0.9788 / medium 0.8941; duration 241.83s vs expected 264.4s (ratio 0.915); sha256 `7f2b66c9ffe6cbd25bcfc88ef87dc171f1262b88019cd7064e610b22bdec42a0`
+- **1 Samuel 23** — coverage low on both models (small 0.877, medium 0.890); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1324 / medium 0.1378; coverage small 0.877 / medium 0.8905; duration 279.3s vs expected 296.0s (ratio 0.944); sha256 `0e21fbcce9ca3ce2068cd72b71f0744248c4cf1f9d727277cd55e554a4b79b52`
+- **1 Samuel 24** — missing verse 22 at 0:00–0:02 — "promise to Saul Then Saul went home but David and his men went up to their hiding place" (small.en+medium.en)
+  - audio check: unclear: missing verse 22 0:00-0:01 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.0477 / medium 0.3109; coverage small 0.9605 / medium 0.6941; duration 199.3s vs expected 243.2s (ratio 0.819); sha256 `3c9e64c5ae57f22c083d34ee2c8a997d35e31cf4c2250c5bd58d0158a103c3af`
 
 ## UNCERTAIN
 
@@ -1407,6 +1434,11 @@ words clears that span. A split slice stays UNCERTAIN.
 - **1 Samuel 13** — audio slice contains the disputed words; the models still disagree (coverage small 0.956, medium 0.708)
   - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.92) refuted: missing verse 6 0:52-1:02 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.956, medium 0.708); WER small 0.0442 / medium 0.2942; coverage small 0.9558 / medium 0.7075; sha256 `fb4a9d4fa8430a4dc020f911ce217ad92e0f33df0fc54e99ae13e23f87c43f99`
+- **1 Samuel 17** — audio slice contains the disputed words; the models still disagree (coverage small 0.987, medium 0.786)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.75, medium 0.75) refuted: repeated verse 19 2:35-2:43 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.987, medium 0.786); WER small 0.0166 / medium 0.2184; coverage small 0.9867 / medium 0.7863; sha256 `f744e70cea3d2eae7ea0e5b85d39075e2b85115dcfda636f4f6fcbc671fc4cfa`
+- **1 Samuel 19** — coverage unclear (small 0.958, medium 0.976; pass needs both >= 0.96)
+  - coverage unclear (small 0.958, medium 0.976; pass needs both >= 0.96); WER small 0.0438 / medium 0.0389; coverage small 0.9579 / medium 0.9757; sha256 `82614edd05273d0857cc974d7de113b6ad7d1295314fb69c1aa81edc0845f3d2`
 
 ## Script
 
