@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 700
-- PASS: 47
-- FAIL: 400
-- UNCERTAIN: 253 (jsonl verdict UNSURE)
-- Still to score: 229 Old Testament chapters
+- Scored chapters: 710
+- PASS: 48
+- FAIL: 404
+- UNCERTAIN: 258 (jsonl verdict UNSURE)
+- Still to score: 219 Old Testament chapters
 
 ## PASS
 
-47 chapters. Both models agreed there was no missing, invented, or repeated passage.
+48 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -81,6 +81,7 @@ words clears that span. A split slice stays UNCERTAIN.
 - Proverbs 1
 - Ecclesiastes 6
 - Song of Solomon 4, 7
+- Isaiah 31
 
 ## FAIL
 
@@ -3220,6 +3221,23 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Isaiah 21** — missing verse 4 at 1:00 — "is pounding I am shaking with fear The evening I wanted to enjoy has become a time of trembling They set the table They spread out the rugs They eat and drink Get up you leaders Oil your shields This" (small.en+medium.en)
   - audio check: confirmed: missing verse 4 0:44-0:53 (slice coverage small 0.08, medium 0.08)
   - WER small 0.1749 / medium 0.2222; coverage small 0.8322 / medium 0.7872; duration 150.91s vs expected 169.2s (ratio 0.892); sha256 `ec906b6728c725676df9cda84723bbce6ad2bc7c3b9fc90fe90cab2d139e45d1`
+- **Isaiah 23** — missing verse 1 at 0:05–0:17 — "you big trading ships Tyre is destroyed No houses or harbor are left" (small.en+medium.en)
+- **Isaiah 23** — inserted verse 1 at 0:05–0:17 — "Tyro youth who sing bright fast take August of Atlanta and add bad bird Fantasy was a king of the desert island and Israel carried his prayer down to the Nile" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 1 0:04-0:23 (slice coverage small 1.00, medium 1.00) confirmed: missing verse 1 0:00-0:06 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.2564 / medium 0.2119; coverage small 0.7881 / medium 0.8305; duration 177.75s vs expected 188.8s (ratio 0.941); sha256 `5e59d20a10b1cf06173c40776749ea8d401e60b01b5fd20937f075e0c9de3b0b`
+- **Isaiah 25** — inserted verse 1 at 0:30–0:44 — "Isaiah 3 Chapter 5 11 you have been inspired by your explicit faith and I as they know you have seen and heard and you have heard by my hearts and I am known for it too Despite the fact that" (small.en+medium.en)
+- **Isaiah 25** — inserted verse 1 at 0:45–1:12 — "inspired by an explanation you have inspired me so much that I can see that faith is set Isaiah 3 Chapter 5 11 you have been inspired by an exponential you have been a new hag and inspired here that I am saved that I am saved I bled safely You have been I inspired by a nation I am …" (small.en+medium.en)
+- **Isaiah 25** — inserted verse 1 at 1:12–1:17 — "am saved You have been inspired by an effort to stand They" (small.en+medium.en)
+- **Isaiah 25** — repeated verse 1 at 0:53–0:57 — "Isaiah 3 Chapter 5 11 you have been inspired by" (small.en+medium.en)
+- **Isaiah 25** — repeated verse 1 at 1:10–1:15 — "inspired by a nation I am saved You have been inspired by an" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 1 0:44-1:08 (slice coverage small 0.79, medium 1.00) confirmed: inserted verse 1 0:29-0:50 (slice coverage small 1.00, medium 0.96) refuted: repeated verse 1 1:09-1:21 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.3629 / medium 0.3571; coverage small 0.9829 / medium 0.98; duration 199.59s vs expected 140.0s (ratio 1.426); sha256 `6b16f5f373bbd8488131014c6f3751b39f989dcc74dff509e5a8de4806577b5e`
+- **Isaiah 28** — coverage low on both models (small 0.871, medium 0.812); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1356 / medium 0.1904; coverage small 0.8709 / medium 0.8123; duration 264.79s vs expected 306.8s (ratio 0.863); sha256 `0eccad1d7aa656c1c39965af7f58d40fb459d15c0866c2cf78d79a59a1a07028`
+- **Isaiah 30** — missing verse 1 at 0:00–0:02 — "How sad for my stubborn children says" (small.en+medium.en)
+- **Isaiah 30** — missing verse 1 at 0:30 — "LORD They make plans but not with me They make deals but not by my Spirit They keep adding sin to sin They go down to Egypt without asking me They want Pharaoh to protect them They want to hide in Egypt's shadow But Pharaoh's protection will bring you shame Hiding in Egypt's shadow will make you embarrassed Your leaders …" (small.en+medium.en)
+  - audio check: refuted: missing verse 1 0:04-0:13 (slice coverage small 1.00, medium 1.00) unclear: missing verse 1 0:00-0:01 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.087 / medium 0.4203; coverage small 0.9161 / medium 0.588; duration 352.68s vs expected 386.4s (ratio 0.913); sha256 `be6d681adb6f395993c4554c2ad41bba47c70f50e5b11a660a12ee6618e78a11`
 
 ## UNCERTAIN
 
@@ -4007,6 +4025,22 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Isaiah 20** — missing verse 1 at 0:29 — "In the year that the army commander from Assyria came to Ashdod King Sargon of Assyria sent him He fought against Ashdod and captured it At that time the LORD spoke through Isaiah son of Amoz He said Go and take off the sackcloth from your body and the sandals from your feet Isaiah did it He walked around without …" (medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
   - medium.en only: missing 'In the year that the army commander from Assyria came to Ashdod King Sargon of Assyria sent him He fought against Ashdod and captured it At that time the LORD spoke through Isaiah son of Amoz He said Go and take off the sackcloth from your body and the sandals from your feet Isaiah did it He walked around without …'; coverage unclear (small 0.995, medium 0.232; pass needs both >= 0.96); WER backstop on one model (small 0.005, medium 0.768); WER small 0.0054 / medium 0.7676; coverage small 0.9946 / medium 0.2324; sha256 `8977c360219f2c2cc9f93aa1e564683ad69d7a5e41a664eb5393d83e5eac91da`
+- **Isaiah 22** — audio slice contains the disputed words; the models still disagree (coverage small 0.878, medium 0.989)
+  - audio check: refuted: missing verse 1 0:03-0:12 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.878, medium 0.989); WER small 0.124 / medium 0.0196; coverage small 0.8777 / medium 0.9886; sha256 `c531e84e53911390ce2a39c20b738f2f7092258520dfc11f4db854496600c356`
+- **Isaiah 24** — audio slice contains the disputed words; the models still disagree (coverage small 0.860, medium 0.653)
+  - audio check: refuted: missing verse 1 0:02-0:11 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.860, medium 0.653); WER small 0.1442 / medium 0.3467; coverage small 0.8595 / medium 0.6533; sha256 `5f24413d505bf73735bbd02fb117157a045d8df0d116923dc6acaddf0e475916`
+- **Isaiah 26** — missing verse 15 at 1:49 — "You have made the nation grow LORD" (small.en)
+- **Isaiah 26** — missing verse 1 at 0:00–0:02 — "On that day this song will be sung in the land of Judah We have a strong city God's salvation is like its walls and towers Open the gates so the good nation can come in the nation that stays faithful You will keep in perfect peace the one whose mind stays on you because he trusts in you Trust …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00) unclear: missing verse 15 1:40-1:50 (slice coverage small 0.57, medium 0.00)
+  - small.en only: missing 'You have made the nation grow LORD'; medium.en only: missing 'On that day this song will be sung in the land of Judah We have a strong city God's salvation is like its walls and towers Open the gates so the good nation can come in the nation that stays faithful You will keep in perfect peace the one whose mind stays on you because he trusts in you Trust …'; coverage unclear (small 0.986, medium 0.767; pass needs both >= 0.96); WER small 0.0157 / medium 0.2368; coverage small 0.9863 / medium 0.7671; sha256 `ddad930126ff4bbce430e17d703b592ce824ff5c43ba493f52cc7271196bb7a0`
+- **Isaiah 27** — audio slice contains the disputed words; the models still disagree (coverage small 0.997, medium 0.708)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.997, medium 0.708); WER small 0.0028 / medium 0.2975; coverage small 0.9972 / medium 0.7082; sha256 `7cb6656f048edc6b6d033dc44836a42a5f9116110ae3b6a0037e50022d5af3f2`
+- **Isaiah 29** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.791)
+  - audio check: refuted: missing verse 3 0:22-0:31 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.791); WER small 0.0028 / medium 0.2916; coverage small 1.0 / medium 0.7909; sha256 `af0bcbba64960b04d57c96f26dc94fcedb939f5b01b19f9789385c3ca617d1f4`
 
 ## Script
 
