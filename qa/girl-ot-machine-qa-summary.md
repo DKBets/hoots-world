@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 560
-- PASS: 29
-- FAIL: 340
-- UNCERTAIN: 191 (jsonl verdict UNSURE)
-- Still to score: 369 Old Testament chapters
+- Scored chapters: 570
+- PASS: 31
+- FAIL: 344
+- UNCERTAIN: 195 (jsonl verdict UNSURE)
+- Still to score: 359 Old Testament chapters
 
 ## PASS
 
-29 chapters. Both models agreed there was no missing, invented, or repeated passage.
+31 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -77,7 +77,7 @@ words clears that span. A split slice stays UNCERTAIN.
 - Nehemiah 1, 5
 - Esther 10
 - Job 2, 34–35
-- Psalms 1, 3, 8, 11–12, 15, 39, 50, 53, 58, 64, 70, 76, 82
+- Psalms 1, 3, 8, 11–12, 15, 39, 50, 53, 58, 64, 70, 76, 82–83, 92
 
 ## FAIL
 
@@ -2993,6 +2993,21 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 80** — missing verse 11 at 1:27 — "to the sea Its shoots reached" (medium.en)
   - audio check: confirmed: missing verse 11 1:18-1:28 (slice coverage small 0.17, medium 0.17)
   - WER small 0.0032 / medium 0.2332; coverage small 0.9968 / medium 0.7732; duration 109.27s vs expected 125.2s (ratio 0.873); sha256 `87d90a7b15dec22b841d434a80661916db10cfa641db8753f90a5b29e09ef297`
+- **Psalms 85** — inserted verse 1 at 0:30–0:33 — "The Nile Lakes River the mountains" (small.en+medium.en)
+- **Psalms 85** — inserted verse 1 at 0:37–1:17 — "you brought us down The Nile Lakes River the mountains you brought us down The Midland is yours forever Bethlehem dwells in Maya Bethlehem dwells in Maya Bethlehem dwells in Maya Bethlehem dwells in Maya Bethlehem dwells in Maya Bethlehem dwells in Maya Bethlehem dwells in Maya Bethlehem dwells in Maya Bethlehem dwells in Maya Bethlehem dwells in Jesus Bethlehem …" (small.en+medium.en)
+- **Psalms 85** — repeated verse 1 at 0:38–0:43 — "The Nile Lakes River the mountains you brought us down The" (small.en+medium.en)
+- **Psalms 85** — repeated verse 1 at 0:48–1:10 — "Bethlehem dwells in Maya Bethlehem dwells in Maya Bethlehem dwells in Maya Bethlehem dwells in Maya Bethlehem dwells in Maya Bethlehem dwells in Maya Bethlehem dwells in Maya Bethlehem dwells in Maya Bethlehem dwells in" (small.en+medium.en)
+  - audio check: unclear: inserted verse 1 0:36-1:00 (slice coverage small 0.00, medium 1.00) refuted: repeated verse 1 0:47-1:11 (slice coverage small 0.17, medium 0.04, times 0/0) refuted: repeated verse 1 0:37-0:49 (slice coverage small 1.00, medium 0.91, times 1/0)
+  - WER small 0.4213 / medium 0.5482; coverage small 0.9746 / medium 0.8579; duration 148.48s vs expected 78.8s (ratio 1.884); sha256 `8f58bf14343fbbe4601784fa9111b2f304fd5e138e906f8b87b1a7b68e7e1c0f`
+- **Psalms 86** — missing verse 1 at 0:00–0:02 — "Listen LORD and answer me because I am poor and in need Keep me safe because I am faithful to you You are my God Save me your servant because I trust in you Be kind to me Lord because I call to you all day long Make me happy Lord because I give my whole self to you You …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 1.00)
+  - WER small 0.2292 / medium 0.3322; coverage small 0.7741 / medium 0.6711; duration 113.15s vs expected 120.4s (ratio 0.94); sha256 `260740ef68948afa47e75fe6568270ff3c4c84b8f40602def0e19ba74203a8a6`
+- **Psalms 88** — missing verse 1 at 0:00–0:02 — "LORD you are the God who saves me I have cried out to you day and night Let my prayer come to you Listen to my cry My heart is full of trouble I feel close to the place of the dead People think I am about to die I am like someone who has no strength left I feel …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.3028 / medium 0.3123; coverage small 0.6972 / medium 0.6909; duration 101.93s vs expected 126.8s (ratio 0.804); sha256 `059d00bdd27634355c10f2ba88cecd1644200bce58505b7a08d4e053390aac17`
+- **Psalms 89** — missing verse 1 at 0:00–0:02 — "I will sing about the LORD's faithful love forever I will tell every generation how faithful you are I will say Your love stands strong forever You made the heavens and your faithfulness is there God said I have made a promise with the one I chose I have made a promise to David my servant I will make your …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 1.00)
+  - WER small 0.2797 / medium 0.1634; coverage small 0.7215 / medium 0.8402; duration 299.26s vs expected 330.4s (ratio 0.906); sha256 `a57ebe6bf3864a0418aee869bc8972e17796899f86e4023f2308bfe8ee13f0f9`
 
 ## UNCERTAIN
 
@@ -3589,6 +3604,17 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 81** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.729)
   - audio check: refuted: missing verse 5 0:30-0:39 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.729); WER small 0.0 / medium 0.2786; coverage small 1.0 / medium 0.7286; sha256 `b725dba8a8928b1132b1b7766cfa090e256f609f0e0dd9953950aaca8a55fd9f`
+- **Psalms 84** — missing verse 2 at 0:29 — "My heart and my body sing for joy to the living God Even the sparrow has found a home and the swallow has a nest where she can keep her babies near your altars LORD of the armies of heaven my King and" (medium.en)
+  - audio check: unclear: missing verse 2 0:12-0:21 (slice coverage small 0.58, medium 0.42)
+  - medium.en only: missing 'My heart and my body sing for joy to the living God Even the sparrow has found a home and the swallow has a nest where she can keep her babies near your altars LORD of the armies of heaven my King and'; coverage unclear (small 1.000, medium 0.763; pass needs both >= 0.96); WER small 0.0 / medium 0.2609; coverage small 1.0 / medium 0.7628; sha256 `09497e397765efe51b1e5bd42ece2366b97b73542a441c84a4567b52c0fdec68`
+- **Psalms 87** — missing verse 6 at ? — "When the LORD writes down the names of the nations he will write This one was born there Selah Singers and dancers will say All my joy comes from you" (medium.en)
+  - medium.en only: missing 'When the LORD writes down the names of the nations he will write This one was born there Selah Singers and dancers will say All my joy comes from you'; coverage unclear (small 1.000, medium 0.696; pass needs both >= 0.96); WER small 0.0 / medium 0.3391; coverage small 1.0 / medium 0.6957; sha256 `838710beb576c1f18f4a6f0ef853ad30373349b928931611b5420497da5402c4`
+- **Psalms 90** — missing verse 1 at 0:00–0:02 — "Lord you have always been our home for every generation Before the mountains were born before you made the earth and the world from forever ago to forever from now you are God You turn people back to dust You say Go back you children of people To you a thousand years are like yesterday that has already passed like …" (small.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.08)
+  - small.en only: missing 'Lord you have always been our home for every generation Before the mountains were born before you made the earth and the world from forever ago to forever from now you are God You turn people back to dust You say Go back you children of people To you a thousand years are like yesterday that has already passed like …'; coverage unclear (small 0.757, medium 0.993; pass needs both >= 0.96); WER small 0.2425 / medium 0.0166; coverage small 0.7575 / medium 0.9934; sha256 `a0100569ea667f1042b69ad0fced22d4433d3878c5e69a752689abf275506b4e`
+- **Psalms 91** — missing verse 1 at 0:27–0:29 — "Whoever lives in the shelter of the Most High will rest in the shadow of the Almighty I will say about the LORD He is my safe place and my strong fort He is my God and I trust him He will save you from hidden traps and from deadly sickness He will cover you with his feathers You will …" (small.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - small.en only: missing 'Whoever lives in the shelter of the Most High will rest in the shadow of the Almighty I will say about the LORD He is my safe place and my strong fort He is my God and I trust him He will save you from hidden traps and from deadly sickness He will cover you with his feathers You will …'; coverage unclear (small 0.726, medium 0.990; pass needs both >= 0.96); WER small 0.2737 / medium 0.014; coverage small 0.7263 / medium 0.9895; sha256 `59b7f26675b627f02b29665ee2f143db3df7f06a820991508b2badb97187814e`
 
 ## Script
 
