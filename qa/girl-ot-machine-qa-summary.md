@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 290
+- Scored chapters: 300
 - PASS: 7
-- FAIL: 191
-- UNCERTAIN: 92 (jsonl verdict UNSURE)
-- Still to score: 639 Old Testament chapters
+- FAIL: 197
+- UNCERTAIN: 96 (jsonl verdict UNSURE)
+- Still to score: 629 Old Testament chapters
 
 ## PASS
 
@@ -1329,6 +1329,124 @@ words clears that span. A split slice stays UNCERTAIN.
 - **2 Samuel 23** — repeated verse 22 at 4:34–5:53 — "He killed two of Moab's best warriors On a snowy day he went down into a pit and killed a lion He also killed a huge Egyptian who had a spear in his hand Benaiah went against him with only a club He grabbed the spear out of the Egyptians hand and killed him with his own spear These are …" (small.en+medium.en)
   - audio check: refuted: repeated verse 22 4:32-4:56 (slice coverage small 1.00, medium 1.00, times 1/1) confirmed: inserted verse 20 3:01-3:25 (slice coverage small 0.96, medium 1.00) confirmed: repeated verse 20 3:33-3:57 (slice coverage small 1.00, medium 1.00, times 2/2)
   - WER small 0.6587 / medium 0.5487; coverage small 0.8975 / medium 0.79; duration 433.96s vs expected 320.0s (ratio 1.356); sha256 `bbeae4f45281457296cd9087c720dde8620061343723f6088d061aa69aca2de2`
+- **2 Samuel 24** — inserted verse 1 at 0:05–0:36 — "with Israel with Israel He sent Paul and God said send me with a great number of 10 000 And the Lord said send me with a great number of 10 000 And I will tell that is I send me with a great number as we are not playing to pay many prices for actual visuals Send me" (small.en+medium.en)
+- **2 Samuel 24** — inserted verse 1 at 0:37–1:15 — "a great number send me without any special song send me without any special song and I will tell that number is used to build that temple Send me without any special talent and I will tell that number is used to build that temple As we are not playing to pay many prices for actual visuals I wouldn't put …" (small.en+medium.en)
+- **2 Samuel 24** — inserted verse 1 at 1:17–1:20 — "that number is used to build that temple" (small.en+medium.en)
+- **2 Samuel 24** — repeated verse 1 at 0:17–0:23 — "said send me with a great number of 10 000 And" (small.en+medium.en)
+- **2 Samuel 24** — repeated verse 1 at 0:25–0:27 — "send me with a great number" (small.en+medium.en)
+- **2 Samuel 24** — repeated verse 1 at 0:36–0:38 — "Send me with a great number" (small.en+medium.en)
+- **2 Samuel 24** — repeated verse 1 at 0:42–0:45 — "send me without any special song" (small.en+medium.en)
+- **2 Samuel 24** — repeated verse 1 at 0:56–1:01 — "and I will tell that number is used to build that temple" (small.en+medium.en)
+- **2 Samuel 24** — repeated verse 1 at 1:02–1:07 — "As we are not playing to pay many prices for actual visuals" (small.en+medium.en)
+- **2 Samuel 24** — repeated verse 18 at 4:43–4:45 — "the threshing floor of Arana the Jebusite" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 1 0:36-1:00 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 1 0:04-0:28 (slice coverage small 0.88, medium 0.88) refuted: repeated verse 1 0:55-1:07 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.2028 / medium 0.3091; coverage small 0.97 / medium 0.7922; duration 355.58s vs expected 319.6s (ratio 1.113); sha256 `192474ebbd3e19e002cb4e59e902cc50bb813f82fe32b1ede2a8dc02513ee723`
+- **1 Kings 1** — silence verse ? at 6:58–7:04 — "Nathan the prophet, and Benaiah the son of" (waveform)
+- **1 Kings 1** — silence verse ? at 8:36–8:39 — "and Judah." (waveform)
+- **1 Kings 1** — silence verse ? at 14:42–14:46 — "Zadok the priest, Nathan the prophet, Baniyah the son of Jehoiad." (waveform)
+- **1 Kings 1** — silence verse ? at 14:46–14:49 — "Jehoiad. Jehoiadite." (waveform)
+- **1 Kings 1** — inserted verse 8 at 1:05–1:24 — "Sheme the son of Jehoa Samuel the son of David Tim three men who stayed with David during his life None of them joined Adonijah Adonijah nevered the king or the son of his adversary He wanted to be in the presidents of Israel Knowing he was born Samuel was" (small.en+medium.en)
+- **1 Kings 1** — inserted verse 8 at 1:24–1:26 — "doctor and mentor of David's" (small.en+medium.en)
+- **1 Kings 1** — inserted verse 8 at 1:27–1:45 — "Then Adonijah gave birth He rose up and said I want to be in the king Samuel saw this as a challenge and promised him that he would honor his father Then Adonijah gave birth Now Adonijah wanted a king Samuel was the doctor and his mentor" (small.en+medium.en)
+- **1 Kings 1** — inserted verse 8 at 1:46–2:12 — "prophet it to go see a tangled tangle with his president He wanted to go see if the president was enamored and if so he would win the grand record Samuel would" (small.en+medium.en)
+- **1 Kings 1** — inserted verse 9 at 2:15–2:16 — "dug up a group of women" (small.en+medium.en)
+- **1 Kings 1** — inserted verse 9 at 2:19–2:22 — "he promised Then Adonijah turned around and kissed" (small.en+medium.en)
+- **1 Kings 1** — inserted verse 9 at 2:23–2:25 — "his father and pleased the king" (small.en+medium.en)
+- **1 Kings 1** — inserted verse 26 at 4:48–5:29 — "of Yehoedah Sorry guys I went way too fast If you don't mind will you just read what I went and then we will just see if we can make it to another day and we will just do the same thing We will just get 5 minutes of no comedy and see if we can make it to another …" (small.en+medium.en)
+- **1 Kings 1** — inserted verse 26 at 5:29–5:49 — "no comedy and see if we can make it to another day See how we will able to make it to another day Matthew said to the prophet and the priest defeated the prophet and the priest and said to them I have no god and said to the king I think you are a god and said to the …" (small.en+medium.en)
+- **1 Kings 1** — inserted verse 26 at 5:49–6:00 — "god and said to the prophet I see what is going on with you Then said to the man I have no God and said to the prophet I have no God and said to the king" (small.en+medium.en)
+- **1 Kings 1** — inserted verse 32 at 7:06–7:27 — "to the king and all were their witnesses King David grieved more than anyone and continued to catwalk towards Bathsheba He was mourning that he had let it knowing of his wife and not having privacy with his bedroom Then the king called Zadok the prophet and Benaiah the son of Jehada" (small.en+medium.en)
+- **1 Kings 1** — inserted verse 32 at 7:28–7:53 — "come and place a guarding on his throne throne The king made a terrible reset and placed a seal on his throne and placed a scepter on his throne and set a guarding on it and Benaiah and Johada sat on the throne of the king and played in the presence of the king and his wife the presence of …" (small.en+medium.en)
+- **1 Kings 1** — inserted verse 32 at 7:54–8:01 — "made a special reset and placed a scepter on his throne and placed a scepter on his throne of David" (small.en+medium.en)
+- **1 Kings 1** — inserted verse 36 at 9:46–11:08 — "was elected to Jebrez which is a bread of tablespoon May the Lord be in great union with my many May the Lord be in great union with my many May the Lord be in great union with my many May the Lord be in great union with my many May the Lord be in great union with my many …" (small.en+medium.en)
+- **1 Kings 1** — inserted verse 36 at 11:10–11:13 — "be in great union with my many May" (small.en+medium.en)
+- **1 Kings 1** — inserted verse 36 at 11:13–11:14 — "Lord be in great union with" (small.en+medium.en)
+- **1 Kings 1** — inserted verse 36 at 11:16–11:18 — "Lord be in great union with my many" (small.en+medium.en)
+- **1 Kings 1** — inserted verse 37 at 11:20–12:13 — "me in Covir and even in Benai I gave birth to this nation I was there for a day as a diesel fuel for the Benai sect I was there for a day as a diesel fuel for the Benai sect I was there for a day as a diesel fuel for the Benne I I sect I was there …" (small.en+medium.en)
+- **1 Kings 1** — inserted verse 37 at 12:13–12:21 — "Benai sect Robinson brought these words to this man named Robin which granted him as he was a Benai" (small.en+medium.en)
+- **1 Kings 1** — inserted verse 43 at 14:37–15:20 — "king The king sent Zadok the priest Nathan the prophet Benaiah the son of Jehoed Jehoedite Jehoedite Jehoedite Jehoedite Jehoedite The king sent Zadok the priest Nathan the prophet Benaiah the son of Jehoedite and the charities and the pelotites To the serious king David to the king of the Cairns and Peb to the tribes of Sira and the …" (small.en+medium.en)
+- **1 Kings 1** — inserted verse 43 at 15:20–15:34 — "OF THE NORTHERN KINGDOM AND THE 10 TRIBES OF ISRAEL TO THE 10 TRIBES OF BETLEHEM TO THE 10 TRIBES OF THE CAVE TO THE 10 TRIBES OF THE NASERAH TO THE 10 TRIBES OF THE NATIVE TUNGS AND PRONOUNDS" (small.en+medium.en)
+- **1 Kings 1** — inserted verse 44 at 15:51–15:55 — "end of the tribes T David and Bena relenting" (small.en+medium.en)
+- **1 Kings 1** — repeated verse 11 at 2:42–2:44 — "Adonijah the son of Hagith" (small.en+medium.en)
+- **1 Kings 1** — repeated verse 26 at 5:05–5:07 — "see if we can make it to another day" (small.en+medium.en)
+- **1 Kings 1** — repeated verse 26 at 5:08–5:18 — "do the same thing We will just get 5 minutes of no comedy and see if we can make it to another day We will" (small.en+medium.en)
+- **1 Kings 1** — repeated verse 26 at 5:18–5:23 — "We will just get 5 minutes of no comedy and see if we can make it to another day" (small.en+medium.en)
+- **1 Kings 1** — repeated verse 26 at 5:23–5:32 — "5 minutes of no comedy and see if we can make it to another day 5 minutes of no comedy and see if we can make it to another day" (small.en+medium.en)
+- **1 Kings 1** — repeated verse 26 at 5:34–5:35 — "make it to another day" (small.en+medium.en)
+- **1 Kings 1** — repeated verse 26 at 5:58–6:00 — "I have no God and said to the king" (small.en+medium.en)
+- **1 Kings 1** — repeated verse 32 at 7:24–7:26 — "the prophet and Benaiah the son of" (small.en+medium.en)
+- **1 Kings 1** — repeated verse 32 at 7:48–7:52 — "the presence of the king and his wife the" (small.en+medium.en)
+- **1 Kings 1** — repeated verse 36 at 9:54–10:12 — "May the Lord be in great union with my many May the Lord be in great union with my many May the Lord be in great union with my many May the Lord be in great union with my many May the Lord be in great union with my many" (small.en+medium.en)
+- **1 Kings 1** — repeated verse 36 at 10:37–11:18 — "union with my many May the Lord be in great union with my many May the Lord be in great union with my many May the Lord be in great union with my many May the Lord be in great union with my many" (small.en+medium.en)
+- **1 Kings 1** — repeated verse 37 at 11:31–11:39 — "I was there for a day as a diesel fuel for the Benai sect I was there for a day as a diesel fuel for the" (small.en+medium.en)
+- **1 Kings 1** — repeated verse 37 at 11:40–11:45 — "sect I was there for a day as a diesel fuel for the Benne I" (small.en+medium.en)
+- **1 Kings 1** — repeated verse 37 at 11:44–12:05 — "I sect I was there for a day as a diesel fuel for the Benne I sect I was there for a day as a diesel fuel for the Benne I sect I was there for a day as a diesel fuel for the Benne I sect I was there for a day as a diesel fuel for the Benne …" (small.en+medium.en)
+- **1 Kings 1** — repeated verse 38 at 13:30–13:32 — "In the name of the Lord your God" (small.en+medium.en)
+- **1 Kings 1** — repeated verse 38 at 13:31–13:35 — "God in the name of the Lord your God you" (small.en+medium.en)
+- **1 Kings 1** — repeated verse 43 at 14:55–14:58 — "The king sent Zadok the priest Nathan the prophet" (small.en+medium.en)
+- **1 Kings 1** — repeated verse 44 at 15:35–15:40 — "The King sent Zadok the priest Nathan the prophet Benaiah" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 37 11:19-11:43 (slice coverage small 1.00, medium 0.96) unclear: repeated verse 37 11:43-12:07 (slice coverage small 1.00, medium 0.96, times 2/0) refuted: inserted verse 26 4:46-5:10 (slice coverage small 0.00, medium 0.00)
+  - WER small 1.0291 / medium 1.0657; coverage small 0.959 / medium 0.6888; duration 1042.52s vs expected 536.0s (ratio 1.945); sha256 `bbdfc867897624c224800d83c57b114ab162f6751f1f842d4425ab58f13d4e6f`
+- **1 Kings 2** — silence verse ? at 3:52–3:57 — "So King Solomon sent Benaiah the son of Johada." (waveform)
+- **1 Kings 2** — silence verse ? at 3:58–4:01 — "silence" (waveform)
+- **1 Kings 2** — silence verse ? at 8:03–8:09 — "So Ben -ig -ah the son of Jehoriah" (waveform)
+- **1 Kings 2** — silence verse ? at 8:10–8:13 — "Jehoriah went up and" (waveform)
+- **1 Kings 2** — silence verse ? at 9:17–9:21 — "silence" (waveform)
+- **1 Kings 2** — silence verse ? at 9:22–9:26 — "you are plaired to be over" (waveform)
+- **1 Kings 2** — silence verse ? at 11:54–11:59 — "promise to the Lord? Why didn't you obey the command I gave you?" (waveform)
+- **1 Kings 2** — missing verse 26 at 4:56–5:06 — "The king said to Abiathar the priest Go back to your fields in Anathoth You deserve to die" (small.en+medium.en)
+- **1 Kings 2** — missing verse 26 at 5:08–5:14 — "put you to death now You carried the ark of" (small.en+medium.en)
+- **1 Kings 2** — missing verse 35 at 10:31–10:38 — "priest in Abiathar's place Then" (small.en+medium.en)
+- **1 Kings 2** — missing verse 46 at 12:42–12:47 — "kingdom was made strong in" (small.en+medium.en)
+- **1 Kings 2** — inserted verse 24 at 3:49–4:06 — "So King Solomon sent Beniah the son of Joh Johada And Benaiah struck Adonijah and he died" (small.en+medium.en)
+- **1 Kings 2** — inserted verse 25 at 4:11–4:28 — "Adonijah and he died And Benaiah slayed Adonijah and he died And Benaiah slayed Adonijah and he died And Benaiah slayed Adonijah and he died And Benaiah slayed Adonijah and he died And Benaiah slayed" (small.en+medium.en)
+- **1 Kings 2** — inserted verse 25 at 4:28–4:55 — "and he died And Benaiah slayed Adonijah" (small.en+medium.en)
+- **1 Kings 2** — inserted verse 26 at 4:56–5:06 — "and Benaiah slayed Adonijah and he died and Benaiah slayed Adonijah and he died and Benaiah sl slayed Adonijah and he died" (small.en+medium.en)
+- **1 Kings 2** — inserted verse 26 at 5:08–5:14 — "a good reason punishing the king for any other opinion For no shading arc to" (small.en+medium.en)
+- **1 Kings 2** — inserted verse 29 at 6:05–6:39 — "to Joab The king wants you to do the following Praise declare for the truth That the Lord would not have Joab a death now But if he does so punishing the truth Then Joab turned toward the sky and saw Adonijah and his wife and may he vindiculate But the Lord read the tears and the punishment of Joab …" (small.en+medium.en)
+- **1 Kings 2** — inserted verse 29 at 6:40–6:44 — "went on to take the throne from his wife David went" (small.en+medium.en)
+- **1 Kings 2** — inserted verse 30 at 6:44–6:52 — "the road and went on to the side of the temple David ran toward the temple and" (small.en+medium.en)
+- **1 Kings 2** — inserted verse 30 at 6:56–6:57 — "temple was built in brawn" (small.en+medium.en)
+- **1 Kings 2** — inserted verse 30 at 7:00–7:04 — "graveyard David ran toward the temple and saw Adonijah" (small.en+medium.en)
+- **1 Kings 2** — inserted verse 34 at 8:14–8:56 — "and he died And then said to David The Lord was honest faith and build his hearth and Israel in many years And may there be peace and may there be wars and may these wars not be soured And now who says the Lord will not make a treaty with his people but it will be a promise forever …" (small.en+medium.en)
+- **1 Kings 2** — inserted verse 34 at 8:57–9:10 — "tells Jethr that you are plaired to be the new king of Israel And then Jethr goes and is buried with the Pradvik He" (small.en+medium.en)
+- **1 Kings 2** — inserted verse 35 at 9:27–10:16 — "in Joab And Joab was the new king of Israel And now they know that David the king of Israel has a taste and is doing the many wars to his enemies They know that it is in an uneven time and as of David they are going enemies with his enemies They live and die US every year and …" (small.en+medium.en)
+- **1 Kings 2** — inserted verse 35 at 10:18–10:31 — "tells Jethr be the announcer of the Pradvik David is a man who res the two wars but did not know what other wars what" (small.en+medium.en)
+- **1 Kings 2** — inserted verse 35 at 10:31–10:38 — "other wars were He did that two wars against Israel And now he said" (small.en+medium.en)
+- **1 Kings 2** — inserted verse 46 at 12:25–12:34 — "ya and the employees were dead which would not be easier for them to do Then the king gave the order to Benaiyad the son of Jehoiaya ya" (small.en+medium.en)
+- **1 Kings 2** — inserted verse 46 at 12:37–12:42 — "with that the king gave Solomon as a gift Something might have happened The men of" (small.en+medium.en)
+- **1 Kings 2** — inserted verse 46 at 12:42–12:47 — "great prosper were pleased with praise and praised instead of any pranks of the day" (small.en+medium.en)
+- **1 Kings 2** — inserted verse 46 at 12:48–13:32 — "promised to Gath The great prosper brought him a temple No any menace any menace of any names would stand against his will No one could break the divide between Bethel No one could drive any napes against his will will No one could drive any napes against his will No one could drive any napes against his will No …" (small.en+medium.en)
+- **1 Kings 2** — repeated verse 25 at 4:10–4:13 — "And Benaiah struck Adonijah and he died" (small.en+medium.en)
+- **1 Kings 2** — repeated verse 25 at 4:14–5:04 — "Adonijah and he died And Benaiah slayed Adonijah and he died And Benaiah slayed Adonijah and he died And Benaiah slayed Adonijah and he died And Benaiah slayed Adonijah and he died And Benaiah slayed Adonijah and he died and Benaiah slayed Adonijah and he died and Benaiah slayed Adonijah and he died and Benaiah" (small.en+medium.en)
+- **1 Kings 2** — repeated verse 26 at 5:04–5:06 — "slayed Adonijah and he died" (small.en+medium.en)
+- **1 Kings 2** — repeated verse 30 at 6:57–7:00 — "and went on to the side of the graveyard" (small.en+medium.en)
+- **1 Kings 2** — repeated verse 30 at 7:01–7:03 — "David ran toward the temple and" (small.en+medium.en)
+- **1 Kings 2** — repeated verse 46 at 12:30–12:34 — "Then the king gave the order to Benaiyad the son of Jehoiaya ya" (small.en+medium.en)
+- **1 Kings 2** — repeated verse 46 at 13:06–13:09 — "No one could drive any napes against his will" (small.en+medium.en)
+- **1 Kings 2** — repeated verse 46 at 13:08–13:23 — "against his will No one could drive any napes against his will No one could drive any napes against his will No one could drive any napes against his will No one could drive any napes against his will No one could drive any napes against his will" (small.en+medium.en)
+- **1 Kings 2** — repeated verse 46 at 13:31–13:33 — "the great prosper warned his wife" (small.en+medium.en)
+  - audio check: unclear: inserted verse 46 12:47-13:11 (slice coverage small 1.00, medium 0.33) confirmed: inserted verse 35 9:26-9:50 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 34 8:13-8:37 (slice coverage small 1.00, medium 0.96)
+  - WER small 0.5649 / medium 0.5866; coverage small 0.8972 / medium 0.7644; duration 814.34s vs expected 533.2s (ratio 1.527); sha256 `a4a9b5246e5dab4621fc8be8f6400c6338fcfe7edb595591627d532c4a2b9fa0`
+- **1 Kings 4** — inserted verse 4 at 0:25–1:33 — "3 Angel Dilead the son of Japedeth was over the great lands Samuel the son of Japedeth was over the kings Samuel the son of Japedeth was over the kings Any Samuel the son of Japedef was over the kings And Samuel the son of Japedef was over the kings Any Samuel the son of Japedef was over the kings …" (small.en+medium.en)
+- **1 Kings 4** — repeated verse 4 at 0:33–0:44 — "Samuel the son of Japedeth was over the kings" (small.en+medium.en)
+- **1 Kings 4** — repeated verse 4 at 0:48–1:03 — "Samuel the son of Japedef was over the kings Any Samuel the son of Japedef was over the kings Any Samuel the son of Japedef was over the kings And Samuel the son of Japedef was over the kings And" (small.en+medium.en)
+- **1 Kings 4** — repeated verse 4 at 1:04–1:33 — "the son of Japedef was over the kings And Samuel the son of Japedef was over the kings And Moula the son of Japedef was over the kings And Samuel the son of Japedef was over the kings And Moula the son of Japedef was over the kings And Samuel the son of Japedef was over the kings And Moula …" (small.en+medium.en)
+  - audio check: unclear: inserted verse 4 0:24-0:48 (slice coverage small 0.92, medium 0.17) refuted: repeated verse 4 1:03-1:27 (slice coverage small 0.38, medium 0.83, times 0/0) refuted: repeated verse 4 0:47-1:09 (slice coverage small 1.00, medium 0.38, times 1/0)
+  - WER small 0.3256 / medium 0.4323; coverage small 0.928 / medium 0.853; duration 337.54s vs expected 277.6s (ratio 1.216); sha256 `c2fb3c3421d08dab8754edd860c3c046eee14da8299528683b32739afd67dda0`
+- **1 Kings 8** — missing verse 1 at 0:02–0:03 — "Then King Solomon called together" (small.en+medium.en)
+  - audio check: confirmed: missing verse 1 0:00-0:03 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.0155 / medium 0.1397; coverage small 0.9867 / medium 0.8657; duration 641.11s vs expected 750.4s (ratio 0.854); sha256 `990f2c02e850053972452451e05e34c006f75ec117da931a30f06789231584e9`
+- **1 Kings 9** — missing verse 22 at 4:02–4:07 — "his chariots and horsemen There were also five hundred fifty chief officers" (small.en+medium.en)
+- **1 Kings 9** — missing verse 25 at 5:04–5:17 — "house King Solomon also built ships at Ezion Geber near Eloth on the shore of the Red Sea" (small.en+medium.en)
+- **1 Kings 9** — missing verse 26 at 5:17–5:21 — "the land of Edom Hiram sent his own" (small.en+medium.en)
+- **1 Kings 9** — inserted verse 22 at 3:55–4:00 — "altar he had built for the Lord He burned incense with them in front of the Lord They burned" (small.en+medium.en)
+- **1 Kings 9** — inserted verse 22 at 4:02–4:07 — "the Lord The Lord began to the Revans and Anath was burned with it" (small.en+medium.en)
+- **1 Kings 9** — inserted verse 25 at 4:59–5:04 — "gods of Egypt were burned with it They burned with it and made them flew up" (small.en+medium.en)
+- **1 Kings 9** — inserted verse 25 at 5:04–5:17 — "hills and praised it say hallelujah and Anath was burned with it and everyone around them and then they shouted aloud It seemed more than a sale javing" (small.en+medium.en)
+- **1 Kings 9** — repeated verse 22 at 4:01–4:03 — "incense with them in front of the Lord" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 25 5:03-5:23 (slice coverage small 1.00, medium 0.88) refuted: inserted verse 22 3:54-4:06 (slice coverage small 0.21, medium 0.10) confirmed: missing verse 25 4:55-5:05 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.3436 / medium 0.4022; coverage small 0.7793 / medium 0.8184; duration 333.23s vs expected 286.4s (ratio 1.164); sha256 `679d8044b9bd99afc936d38e722811e6db22a6a9aca4cda42450e60a45fe17a3`
 
 ## UNCERTAIN
 
@@ -1620,6 +1738,20 @@ words clears that span. A split slice stays UNCERTAIN.
 - **2 Samuel 19** — audio slice contains the disputed words; the models still disagree (coverage small 0.989, medium 0.786)
   - audio check: refuted: missing verse 5 0:30-0:39 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 18 2:57-3:06 (slice coverage small 0.60, medium 1.00, times 0/1)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.989, medium 0.786); WER small 0.0161 / medium 0.2233; coverage small 0.9885 / medium 0.7859; sha256 `0596be6e5d4b68cb946095dcb874b45f050491d558037425bffc7f2d2f2d7b15`
+- **1 Kings 3** — missing verse 11 at 1:54 — "You did not ask for your enemies to die Instead you asked for understanding so you can do what is fair So I will do what you asked I will give you a wise and understanding heart There has never been anyone like you and there never will be I will also give you what you did not ask for" (small.en)
+- **1 Kings 3** — missing verse 1 at 0:29–0:30 — "Solomon made a peace agreement with Pharaoh the king of Egypt by marrying Pharaoh's daughter He brought her to the City of David until he finished building his palace the LORD's house and the wall around Jerusalem But the people were still offering sacrifices at the high places because a house for the LORD had not been built yet Solomon …" (medium.en)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) unclear: missing verse 11 1:30-1:39 (slice coverage small 0.58, medium 0.58)
+  - small.en only: missing 'You did not ask for your enemies to die Instead you asked for understanding so you can do what is fair So I will do what you asked I will give you a wise and understanding heart There has never been anyone like you and there never will be I will also give you what you did not ask for'; medium.en only: missing 'Solomon made a peace agreement with Pharaoh the king of Egypt by marrying Pharaoh's daughter He brought her to the City of David until he finished building his palace the LORD's house and the wall around Jerusalem But the people were still offering sacrifices at the high places because a house for the LORD had not been built yet Solomon …'; coverage unclear (small 0.925, medium 0.860; pass needs both >= 0.96); WER small 0.0865 / medium 0.1429; coverage small 0.9248 / medium 0.8596; sha256 `899da380e8b05d23cba66d7d1f4e1ebcece5bf0c485bb4232f5cf04547371d16`
+- **1 Kings 5** — missing verse 1 at 0:29–0:30 — "Hiram the king of Tyre had always loved David When he heard that Solomon had been anointed king in his father's place he sent his servants to Solomon Solomon sent this message back to Hiram You know that my father David could not build a house for the name of the LORD his God There were wars all around him …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.00)
+  - medium.en only: missing 'Hiram the king of Tyre had always loved David When he heard that Solomon had been anointed king in his father's place he sent his servants to Solomon Solomon sent this message back to Hiram You know that my father David could not build a house for the name of the LORD his God There were wars all around him …'; coverage unclear (small 0.979, medium 0.679; pass needs both >= 0.96); WER small 0.0214 / medium 0.3248; coverage small 0.9786 / medium 0.6795; sha256 `205c2a9544d1d5e0a0736af4fb0348193da56f915bc681d4c7008e283f9f1ea1`
+- **1 Kings 6** — repeated verse 10 at 1:22–1:23 — "floor was seven and a half feet" (small.en)
+- **1 Kings 6** — missing verse 1 at 0:29–0:30 — "Solomon began to build the LORD's house four hundred eighty years after the people of Israel came out of Egypt It was in the fourth year of his rule over Israel in the month of Ziv the second month The house King Solomon built for the LORD was 90 feet long 30 feet wide and 45 feet high The porch …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.58, medium 0.58) refuted: repeated verse 10 1:21-1:29 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - small.en only: repeated 'floor was seven and a half feet'; medium.en only: missing 'Solomon began to build the LORD's house four hundred eighty years after the people of Israel came out of Egypt It was in the fourth year of his rule over Israel in the month of Ziv the second month The house King Solomon built for the LORD was 90 feet long 30 feet wide and 45 feet high The porch …'; coverage unclear (small 0.988, medium 0.793; pass needs both >= 0.96); WER small 0.0163 / medium 0.217; coverage small 0.9883 / medium 0.7935; sha256 `e26e1ce8d9405cf6eca336a847041dd5ab63f33ed766ca61b40fbdf5dd4d9237`
+- **1 Kings 7** — audio slice contains the disputed words; the models still disagree (coverage small 0.952, medium 0.821)
+  - audio check: refuted: missing verse 5 0:30-0:40 (slice coverage small 1.00, medium 1.00) refuted: missing verse 8 0:55-1:05 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.952, medium 0.821); WER small 0.0492 / medium 0.1819; coverage small 0.9523 / medium 0.8213; sha256 `d7d120570c1691af9f7bd61a2828ccdc7fe9d46c9e0e83057542542ab6b184e2`
 
 ## Script
 
