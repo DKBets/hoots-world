@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 600
-- PASS: 34
-- FAIL: 361
-- UNCERTAIN: 205 (jsonl verdict UNSURE)
-- Still to score: 329 Old Testament chapters
+- Scored chapters: 610
+- PASS: 37
+- FAIL: 362
+- UNCERTAIN: 211 (jsonl verdict UNSURE)
+- Still to score: 319 Old Testament chapters
 
 ## PASS
 
-34 chapters. Both models agreed there was no missing, invented, or repeated passage.
+37 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -77,7 +77,7 @@ words clears that span. A split slice stays UNCERTAIN.
 - Nehemiah 1, 5
 - Esther 10
 - Job 2, 34–35
-- Psalms 1, 3, 8, 11–12, 15, 39, 50, 53, 58, 64, 70, 76, 82–83, 92, 100, 112–113
+- Psalms 1, 3, 8, 11–12, 15, 39, 50, 53, 58, 64, 70, 76, 82–83, 92, 100, 112–113, 124, 126, 130
 
 ## FAIL
 
@@ -3052,6 +3052,9 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 122** — missing verse 6 at 0:29 — "May the people who love you be safe and happy" (small.en)
   - audio check: confirmed: missing verse 6 0:20-0:30 (slice coverage small 0.10, medium 0.10)
   - WER small 0.0853 / medium 0.0078; coverage small 0.9147 / medium 1.0; duration 47.57s vs expected 51.6s (ratio 0.922); sha256 `8a0df720f5962e58ac8a6a9408e5c7edabd4f03422a4da0fcd3e55a5a131271e`
+- **Psalms 132** — missing verse 1 at 0:19–0:25 — "LORD remember David and all" (small.en+medium.en)
+  - audio check: confirmed: missing verse 1 0:10-0:20 (slice coverage small 0.20, medium 0.20)
+  - WER small 0.6507 / medium 0.5993; coverage small 0.6618 / medium 0.4044; duration 89.77s vs expected 108.8s (ratio 0.825); sha256 `f917107d185c1e32aef91cdf426c6ed24fe8a395800cd344bee6335488db11f1`
 
 ## UNCERTAIN
 
@@ -3690,6 +3693,23 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 120** — audio slice contains the disputed words; the models still disagree (coverage small 0.149, medium 0.149)
   - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.149, medium 0.149); WER small 0.8511 / medium 0.8511; coverage small 0.1489 / medium 0.1489; sha256 `081a1742a0fa0f145f9fe8ede6ab662913443d68974166dc772fac47cfec51b8`
+- **Psalms 123** — coverage unclear (small 0.954, medium 0.977; pass needs both >= 0.96)
+  - coverage unclear (small 0.954, medium 0.977; pass needs both >= 0.96); WER small 0.0465 / medium 0.0233; coverage small 0.9535 / medium 0.9767; sha256 `f1543373348406645df661308e9dd316e72bfd08d3b1f4a7a16332f3ba65c085`
+- **Psalms 125** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.146)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.146); WER small 0.0 / medium 0.8542; coverage small 1.0 / medium 0.1458; sha256 `d69d510a29c44dcd9c743f8f3707fe6e2549f4136aaa282424b98e372e3c5bb6`
+- **Psalms 127** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.670)
+  - audio check: refuted: missing verse 3 0:17-0:26 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.670); WER small 0.0 / medium 0.3486; coverage small 1.0 / medium 0.6697; sha256 `f7babeb1c12e0ae51d318a98c48607b54e1a73bd9571d068c9b1edf9b3c882d0`
+- **Psalms 128** — missing verse 1 at 0:00–0:03 — "Happy is everyone who respects the LORD and walks in his ways You will eat what you have worked for You will be happy and things will go well for you Your wife will be like a grapevine full of fruit in your home Your children will be like young olive trees around your table Look This is how the …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00)
+  - medium.en only: missing 'Happy is everyone who respects the LORD and walks in his ways You will eat what you have worked for You will be happy and things will go well for you Your wife will be like a grapevine full of fruit in your home Your children will be like young olive trees around your table Look This is how the …'; coverage unclear (small 0.971, medium 0.265; pass needs both >= 0.96); WER backstop on one model (small 0.029, medium 0.735); WER small 0.0294 / medium 0.7353; coverage small 0.9706 / medium 0.2647; sha256 `1614aa3db9dc9e2b93e23831e646d769d5b898a8f38319abf82ed38f7d1ae52a`
+- **Psalms 129** — missing verse 2 at 0:08 — "me many times since I was young but they have not beaten me" (medium.en)
+  - audio check: unclear: missing verse 2 0:00-0:09 (slice coverage small 0.67, medium 0.67)
+  - medium.en only: missing 'me many times since I was young but they have not beaten me'; coverage unclear (small 0.992, medium 0.881; pass needs both >= 0.96); WER small 0.0085 / medium 0.1186; coverage small 0.9915 / medium 0.8814; sha256 `3b91160fdbb51859164536314cde2e59d91b13423949b75850c3dc38436c9bbe`
+- **Psalms 131** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.000)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.000); WER small 0.0 / medium 1.0; coverage small 1.0 / medium 0.0; sha256 `93867e61d56218598b2da5d5ca8f824cd5c5d31dbc096cd329dc80a86b3982a0`
 
 ## Script
 
