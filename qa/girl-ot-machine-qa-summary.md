@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 440
+- Scored chapters: 450
 - PASS: 13
-- FAIL: 293
-- UNCERTAIN: 134 (jsonl verdict UNSURE)
-- Still to score: 489 Old Testament chapters
+- FAIL: 297
+- UNCERTAIN: 140 (jsonl verdict UNSURE)
+- Still to score: 479 Old Testament chapters
 
 ## PASS
 
@@ -2792,6 +2792,26 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Job 4** — missing verse 17 at 1:52 — "Can a human be more right than God Can a person be more pure than the One who made him God doesn't even trust his servants He finds mistakes in his angels So he surely finds mistakes in people who live in houses of clay Their bodies are made from dust They are crushed as easily as a moth Between …" (small.en+medium.en)
   - audio check: unclear: missing verse 17 1:22-1:31 (slice coverage small 1.00, medium 0.08)
   - WER small 0.2378 / medium 0.314; coverage small 0.7652 / medium 0.689; duration 116.95s vs expected 131.2s (ratio 0.891); sha256 `a92be5b935e30594fde68171642fa81379c93817904b06c64488592e26051427`
+- **Job 6** — missing verse 20 at 1:55 — "They get there and find nothing Now you are like those streams You see something scary and you are afraid" (medium.en)
+  - audio check: confirmed: missing verse 20 1:46-1:56 (slice coverage small 0.08, medium 0.00)
+  - WER small 0.0061 / medium 0.087; coverage small 0.996 / medium 0.913; duration 170.24s vs expected 197.6s (ratio 0.862); sha256 `9dbd7b30aa6e35871daf775e09f8ddfead785d9604d04ce9afd9c9aa408b0b38`
+- **Job 7** — inserted verse 15 at 1:31–1:34 — "I hate my life You daddy I ca" (small.en+medium.en)
+- **Job 7** — inserted verse 16 at 1:38–2:04 — "want to live any further Without me You're my only savior man and I will never leave you I'd rather die than live with you Daddy can you give me your will You are my fragment and I will never feel anything again With wishes maybe I will break you and I will be with Christ forever praising God Why …" (small.en+medium.en)
+- **Job 7** — inserted verse 16 at 2:04–2:24 — "to break me You all ever have me again You are the direct mediator between the devil and God depending on your gratitude You will see my God and I will never know the evil You will see God and I will never know the evil Why the evil Why would you do that" (small.en+medium.en)
+- **Job 7** — inserted verse 16 at 2:24–2:33 — "me I will never leave you My God is better than you You are the devil You are man is aided and I will never" (small.en+medium.en)
+- **Job 7** — inserted verse 16 at 2:34–2:45 — "with you Daddy you are awful and I will never know the evil With wishes maybe I will break you and I will be with Christ" (small.en+medium.en)
+- **Job 7** — repeated verse 16 at 2:19–2:22 — "God and I will never know the evil" (small.en+medium.en)
+- **Job 7** — repeated verse 16 at 2:25–2:26 — "I will never leave you" (small.en+medium.en)
+- **Job 7** — repeated verse 16 at 2:37–2:40 — "and I will never know the evil" (small.en+medium.en)
+- **Job 7** — repeated verse 16 at 2:41–2:46 — "With wishes maybe I will break you and I will be with Christ forever" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 16 1:37-2:01 (slice coverage small 0.96, medium 0.96) unclear: inserted verse 16 2:03-2:27 (slice coverage small 1.00, medium 0.00) confirmed: inserted verse 16 2:33-2:51 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.4727 / medium 0.6857; coverage small 0.9844 / medium 0.7688; duration 212.86s vs expected 154.0s (ratio 1.382); sha256 `7b3f52e08b564e30ec9b6b7e9f4c99c50a1f5b66cc0472b09432bc64b6ac28dd`
+- **Job 12** — missing verse 1 at 0:29 — "answered No doubt you are the only people who matter When you die wisdom will die with you But I have a mind just like you I am as good as you are Who doesn't know all these things My friends laugh at me even though I called on God and he" (small.en)
+- **Job 12** — missing verse 21 at 1:58 — "of the mighty He brings hidden things out" (medium.en)
+  - audio check: confirmed: missing verse 1 0:08-0:17 (slice coverage small 0.17, medium 0.17) unclear: missing verse 21 1:49-1:59 (slice coverage small 0.50, medium 0.50)
+  - WER small 0.1906 / medium 0.0297; coverage small 0.8094 / medium 0.9703; duration 142.29s vs expected 161.6s (ratio 0.881); sha256 `bdb5bc291f3032c8441a6e5c7b365af2da4787fdbf79e2f82d3824ff816d9474`
+- **Job 13** — coverage low on both models (small 0.842, medium 0.777); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1601 / medium 0.2274; coverage small 0.8422 / medium 0.7773; duration 134.61s vs expected 172.4s (ratio 0.781); sha256 `66425a916ae4574041c2af31d111c27570a903980b4515bf59cc0713659e60c7`
 
 ## UNCERTAIN
 
@@ -3215,6 +3235,25 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Esther 9** — missing verse 1 at 0:00–0:01 — "On the thirteenth day of the twelfth month the month of Adar the king's order was to be carried out On that day the enemies of the Jews had hoped to defeat them But just the opposite happened The Jews defeated those who hated them The Jews gathered together in their cities in all the lands of King Ahasuerus to …" (medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.83, medium 0.00) unclear: missing verse 31 4:39-4:49 (slice coverage small 1.00, medium 0.00)
   - small.en only: missing 'their times of fasting and sadness'; medium.en only: missing 'On the thirteenth day of the twelfth month the month of Adar the king's order was to be carried out On that day the enemies of the Jews had hoped to defeat them But just the opposite happened The Jews defeated those who hated them The Jews gathered together in their cities in all the lands of King Ahasuerus to …'; coverage unclear (small 0.966, medium 0.511; pass needs both >= 0.96); WER backstop on one model (small 0.038, medium 0.492); WER small 0.0384 / medium 0.4921; coverage small 0.9661 / medium 0.5113; sha256 `44c35635e32e034158f4a2da050ae287394b4ef45a5f308ea4a6188e88da656e`
+- **Job 5** — audio slice contains the disputed words; the models still disagree (coverage small 0.996, medium 0.628)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.92)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.996, medium 0.628); WER small 0.0068 / medium 0.3764; coverage small 0.9955 / medium 0.6281; sha256 `82e45128369f8e6068a6a77dafa3203d5857c2c05e55b97a6970cd4948d07834`
+- **Job 8** — audio slice contains the disputed words; the models still disagree (coverage small 0.989, medium 0.728)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.83, medium 0.92)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.989, medium 0.728); WER small 0.0168 / medium 0.2773; coverage small 0.9888 / medium 0.7283; sha256 `1a094b17b704b953d7dadf1e9e01246ee1e1793225456068a56a455c6608c056`
+- **Job 9** — missing verse 23 at 2:21 — "a sudden disaster kills he laughs at the trouble of innocent people The earth is given to wicked people He covers the eyes of its judges If he doesn't do it who does My days go by faster than a runner They fly away without seeing any happiness" (medium.en)
+  - audio check: unclear: missing verse 23 2:02-2:11 (slice coverage small 0.67, medium 0.67)
+  - medium.en only: missing 'a sudden disaster kills he laughs at the trouble of innocent people The earth is given to wicked people He covers the eyes of its judges If he doesn't do it who does My days go by faster than a runner They fly away without seeing any happiness'; coverage unclear (small 0.998, medium 0.895; pass needs both >= 0.96); WER small 0.0052 / medium 0.1047; coverage small 0.9983 / medium 0.8953; sha256 `937b853bdb64b832a51724ca6b7abc1a08efdc0bd67577f2f3b922daec9f815d`
+- **Job 10** — missing verse 11 at 0:58 — "You wove me together with bones and muscles" (small.en)
+- **Job 10** — missing verse 1 at 0:29–0:30 — "I am tired of my life So I will complain freely I will speak because my heart is bitter I will say to God Don't say I am guilty Tell me what you have against me Is it good for you to treat me harshly Why do you turn away from the person you made with your hands Why do …" (medium.en)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) unclear: missing verse 11 0:49-0:59 (slice coverage small 0.50, medium 0.50)
+  - small.en only: missing 'You wove me together with bones and muscles'; medium.en only: missing 'I am tired of my life So I will complain freely I will speak because my heart is bitter I will say to God Don't say I am guilty Tell me what you have against me Is it good for you to treat me harshly Why do you turn away from the person you made with your hands Why do …'; coverage unclear (small 0.980, medium 0.735; pass needs both >= 0.96); WER small 0.0447 / medium 0.2655; coverage small 0.9801 / medium 0.7345; sha256 `53700e1da1a545677e05ccf0765ded90a8839d47f2ccae499b1940234793c94d`
+- **Job 11** — audio slice contains the disputed words; the models still disagree (coverage small 0.991, medium 0.777)
+  - audio check: refuted: missing verse 6 0:28-0:37 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.991, medium 0.777); WER small 0.0092 / medium 0.2232; coverage small 0.9908 / medium 0.7768; sha256 `d05d7622e347936b8344db04002109ae3b81aa77105437146f9eefd8552e0c78`
+- **Job 14** — missing verse 1 at 0:00–0:02 — "People are born and they live only a short time Their lives are full of trouble They grow like flowers and then dry up They are like shadows that quickly disappear Do you keep your eye on someone like that Will you take me to court with you Who can make something clean out of something unclean No one You …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'People are born and they live only a short time Their lives are full of trouble They grow like flowers and then dry up They are like shadows that quickly disappear Do you keep your eye on someone like that Will you take me to court with you Who can make something clean out of something unclean No one You …'; coverage unclear (small 1.000, medium 0.781; pass needs both >= 0.96); WER small 0.0025 / medium 0.2267; coverage small 1.0 / medium 0.7809; sha256 `30a92167674733db0a702cf3fe06f09718898ecf3cbb7f4505a9019d7ab1e1b6`
 
 ## Script
 
