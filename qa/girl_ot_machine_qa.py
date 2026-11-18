@@ -86,7 +86,7 @@ DURATION_LONG = 1.45
 SMALL = "small.en"
 MEDIUM = "medium.en"
 SLICE_CONFIRM = 0.75
-SLICE_REFUTE = 0.50
+SLICE_REFUTE = 0.34
 MAX_SLICE_CHECKS = 3
 
 # Girl OT has no re-record exclusion. Pass rows on origin/lab-audio are skipped at runtime.
@@ -1212,6 +1212,20 @@ def shared_extra_phrase(
             return True
         return False
 
+    source_vocab = set(ref_norms)
+    numberish = set(_ONES) | set(_TENS) | {"hundred", "thousand"}
+
+    def invented_passage(gram: tuple[str, ...]) -> bool:
+        """A misread number or a line taken from two nearby verses is not a new passage."""
+        content = [
+            w for w in gram
+            if w not in FUNC and w not in numberish and not w.isdigit()
+        ]
+        if len(content) < 2:
+            return False
+        novel = [w for w in content if w not in source_vocab]
+        return len(novel) >= 2
+
     found = {SMALL: {}, MEDIUM: {}}
     limit = min(audio.size / sr, 36.0)
     start = 0.0
@@ -1226,7 +1240,7 @@ def shared_extra_phrase(
                 norms = norms[cut:]
             for i in range(len(norms) - SPAN_MIN + 1):
                 gram = tuple(norms[i : i + SPAN_MIN])
-                if gram in found[name] or is_announcement(gram):
+                if gram in found[name] or is_announcement(gram) or not invented_passage(gram):
                     continue
                 content = [w for w in gram if w not in FUNC and not w.isdigit()]
                 if len(content) < 2:
