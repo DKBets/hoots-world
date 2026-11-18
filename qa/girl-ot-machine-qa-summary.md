@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 420
+- Scored chapters: 430
 - PASS: 11
-- FAIL: 281
-- UNCERTAIN: 128 (jsonl verdict UNSURE)
-- Still to score: 509 Old Testament chapters
+- FAIL: 289
+- UNCERTAIN: 130 (jsonl verdict UNSURE)
+- Still to score: 499 Old Testament chapters
 
 ## PASS
 
@@ -2748,6 +2748,35 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Nehemiah 7** — missing verse 62 at 5:57–5:59 — "Nekoda six hundred forty two" (small.en+medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00) confirmed: missing verse 8 1:20-1:30 (slice coverage small 0.00, medium 0.00) confirmed: missing verse 12 1:40-1:50 (slice coverage small 0.00, medium 0.00)
   - WER small 0.3466 / medium 0.4272; coverage small 0.6563 / medium 0.5738; duration 449.41s vs expected 412.0s (ratio 1.091); sha256 `1b30c9ba7083ae72b22e226c2b6a52457b2e0eaf8342b2573b727ee3a6486398`
+- **Nehemiah 8** — missing verse 10 at 2:05 — "sweet drinks Share some with people who have nothing ready because today is a holy day" (medium.en)
+  - audio check: confirmed: missing verse 10 1:56-2:06 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.0382 / medium 0.0764; coverage small 0.9635 / medium 0.9336; duration 236.25s vs expected 240.8s (ratio 0.981); sha256 `d1a02bb4f21ffebca222daeb5a865c366ba724f13977fb7586594dd62baf9ea2`
+- **Nehemiah 9** — missing verse 8 at 1:53 — "Amorites Perizzites Jebusites and Girgashites And You kept Your promise because You always do what is right You saw how much our ancestors were suffering in Egypt You heard them cry out at the Red Sea You did amazing signs and wonders against Pharaoh all his officials and all the people of his land You knew how proudly they treated …" (small.en)
+- **Nehemiah 9** — missing verse 3 at 0:19 — "of the Law of the LORD their God was read for a fourth of the day For another fourth" (medium.en)
+  - audio check: refuted: missing verse 8 1:23-1:32 (slice coverage small 0.83, medium 1.00) confirmed: missing verse 3 0:10-0:20 (slice coverage small 0.25, medium 0.25)
+  - WER small 0.0781 / medium 0.1562; coverage small 0.9251 / medium 0.8478; duration 429.7s vs expected 491.6s (ratio 0.874); sha256 `ba50f041ef1012852e241dbc593af2f23ee1e42276d5268b4a99931c40042a40`
+- **Nehemiah 10** — inserted verse 22 at 1:22–2:07 — "Mazai Banai Bilgai Enani Menani Gondai Benai Bani Menani Benai Gondai Ethrobe Sherah Biliyay Boa Gondai Enai Gadu lar Gideon and Mahatua These were the chief leaders of the people These were the chief leaders of the masses These were the chief leaders of the medals These were the teeth leaders of the goddess these were the teeth leaders of …" (small.en+medium.en)
+  - audio check: unclear: inserted verse 22 1:21-1:45 (slice coverage small 0.88, medium 0.29)
+  - WER small 0.2397 / medium 0.446; coverage small 0.9302 / medium 0.5762; duration 306.09s vs expected 252.0s (ratio 1.215); sha256 `816cba89189b99d2198b217fb54cce1fec43a60894f20f2e9379e6f0574675ec`
+- **Nehemiah 11** — coverage low on both models (small 0.651, medium 0.637); WER backstop both models (small 0.352, medium 0.374); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.3522 / medium 0.3744; coverage small 0.6508 / medium 0.6374; duration 269.53s vs expected 269.2s (ratio 1.001); sha256 `2a797101139d0ae417d040ff0f740ca8f47c7a182bfa727150dc3fd8753c7e89`
+- **Nehemiah 12** — silence verse ? at 1:11–1:19 — "family. Mashulam for Ezra's" (waveform)
+- **Nehemiah 12** — missing verse 42 at 6:00–7:04 — "Eleazar Uzzi Jehohanan Malchijah Elam" (small.en+medium.en)
+- **Nehemiah 12** — inserted verse 13 at 1:21–1:41 — "family Athria for Moriel Furnes Rajnaud for Israel Renafire for Malia's family Ruah for Malia's family Ruah for Malia's family Ruah for Malia's family Ruah for Malia's family Ruah for Malia's" (small.en+medium.en)
+- **Nehemiah 12** — inserted verse 42 at 6:00–7:04 — "Elazar Yohannajai Makaliah Elizar and Ezra All the way to the Sheep Gate they did with one plant of Gilowi J's They vowed their vinitor to God who lives to God who dies to God who lives to God who dies to God who dies to God Who dies to God who dies the musical they got up in the …" (small.en+medium.en)
+- **Nehemiah 12** — repeated verse 42 at 6:13–6:16 — "to God who lives to God who dies to God who" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 42 5:59-6:23 (slice coverage small 0.83, medium 0.79) unclear: inserted verse 13 1:20-1:44 (slice coverage small 1.00, medium 0.67) refuted: repeated verse 42 6:12-6:22 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.3363 / medium 0.3665; coverage small 0.9318 / medium 0.8056; duration 495.57s vs expected 358.0s (ratio 1.384); sha256 `d65ab24a20daeb1ad0c0e8cb35fc3349d1a9a01268393f92dcd8c6dabacf61fd`
+- **Esther 2** — missing verse 11 at 1:50 — "of the women's house He wanted to find out how Esther was and what was happening to her Each young woman had to get ready for twelve months before her turn came to go to King Ahasuerus For six months she was treated with oil" (small.en+medium.en)
+- **Esther 2** — missing verse 12 at 1:51 — "myrrh and for six months with sweet perfumes and beauty treatments When it was a young woman's turn to go to the king she could take anything she wanted with her from" (small.en+medium.en)
+  - audio check: confirmed: missing verse 11 1:32-1:42 (slice coverage small 0.33, medium 0.33) confirmed: missing verse 12 1:38-1:47 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.1417 / medium 0.2888; coverage small 0.8596 / medium 0.7126; duration 257.28s vs expected 296.4s (ratio 0.868); sha256 `53149685a54216efd64ceec91499a8667f27593331e6c0a16b2b5e52c65f111a`
+- **Esther 3** — missing verse 1 at 0:25–0:29 — "After this King Ahasuerus gave a high honor to Haman son of Hammedatha the Agagite He made him more important than all the other officials All the king's servants at the king's gate bowed down to Haman and honored him because the king had commanded it But Mordecai would not bow down or honor him The king's servants at the …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - WER small 0.1598 / medium 0.2476; coverage small 0.8402 / medium 0.7544; duration 173.95s vs expected 205.2s (ratio 0.848); sha256 `ef14545663af8fed784efeedc0ee9780d7031661bd6c52df87c0dd0b6f817af5`
+- **Esther 4** — missing verse 1 at 0:34 — "Mordecai learned about everything that had been done he tore his clothes and put on rough cloth and ashes He went out into the middle of the city crying loudly and sadly He went only as far as" (small.en+medium.en)
+  - audio check: confirmed: missing verse 1 0:19-0:28 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.2115 / medium 0.2073; coverage small 0.7906 / medium 0.8013; duration 159.1s vs expected 187.2s (ratio 0.85); sha256 `36691e723479a160cf842c0450b52c868a99de56d2a7006db740c39a2956fc11`
 
 ## UNCERTAIN
 
@@ -3153,6 +3182,12 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Nehemiah 3** — audio slice contains the disputed words; the models still disagree (coverage small 0.929, medium 0.824)
   - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 1.00) refuted: repeated verse 21 3:34-3:43 (slice coverage small 1.00, medium 0.80, times 1/0)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.929, medium 0.824); WER small 0.0743 / medium 0.1836; coverage small 0.9291 / medium 0.8243; sha256 `8adb8a78e342326d37b08fdba7a5342d223b9cb494c68418f169f0b1dd92d32d`
+- **Nehemiah 13** — audio slice contains the disputed words; the models still disagree (coverage small 0.990, medium 0.933)
+  - audio check: refuted: missing verse 18 3:05-3:14 (slice coverage small 1.00, medium 0.83)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.990, medium 0.933); WER small 0.0139 / medium 0.0751; coverage small 0.9903 / medium 0.9335; sha256 `a9c5c1e36c83dfc303f11cc9239b8b84a0735cff335bfc932c597bbdf0900924`
+- **Esther 1** — audio slice contains the disputed words; the models still disagree (coverage small 0.977, medium 0.716)
+  - audio check: refuted: missing verse 6 0:56-1:05 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.977, medium 0.716); WER small 0.0247 / medium 0.2937; coverage small 0.9768 / medium 0.7156; sha256 `a507c9ae3af038e7de3957681db514e14c8d4922f101af3663d34f33e162c41a`
 
 ## Script
 
