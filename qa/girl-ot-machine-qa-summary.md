@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 570
-- PASS: 31
-- FAIL: 344
-- UNCERTAIN: 195 (jsonl verdict UNSURE)
-- Still to score: 359 Old Testament chapters
+- Scored chapters: 580
+- PASS: 32
+- FAIL: 348
+- UNCERTAIN: 200 (jsonl verdict UNSURE)
+- Still to score: 349 Old Testament chapters
 
 ## PASS
 
-31 chapters. Both models agreed there was no missing, invented, or repeated passage.
+32 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -77,7 +77,7 @@ words clears that span. A split slice stays UNCERTAIN.
 - Nehemiah 1, 5
 - Esther 10
 - Job 2, 34–35
-- Psalms 1, 3, 8, 11–12, 15, 39, 50, 53, 58, 64, 70, 76, 82–83, 92
+- Psalms 1, 3, 8, 11–12, 15, 39, 50, 53, 58, 64, 70, 76, 82–83, 92, 100
 
 ## FAIL
 
@@ -3008,6 +3008,16 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 89** — missing verse 1 at 0:00–0:02 — "I will sing about the LORD's faithful love forever I will tell every generation how faithful you are I will say Your love stands strong forever You made the heavens and your faithfulness is there God said I have made a promise with the one I chose I have made a promise to David my servant I will make your …" (small.en+medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 1.00)
   - WER small 0.2797 / medium 0.1634; coverage small 0.7215 / medium 0.8402; duration 299.26s vs expected 330.4s (ratio 0.906); sha256 `a57ebe6bf3864a0418aee869bc8972e17796899f86e4023f2308bfe8ee13f0f9`
+- **Psalms 93** — missing verse 1 at 0:26–0:30 — "The LORD is King He is dressed in royal glory The LORD is dressed in strength The world is set firmly in place It cannot be moved Your throne was set up long ago You have always been The seas have lifted up LORD The seas have lifted up their voice The seas lift up their crashing waves The LORD …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.92)
+  - WER small 0.7978 / medium 0.7865; coverage small 0.2022 / medium 0.2135; duration 39.59s vs expected 35.6s (ratio 1.112); sha256 `0cde8cc5c6243b7f49d0eca65165de4ee0937a415c46e25fd7b1485a30c2416e`
+- **Psalms 97** — coverage low on both models (small 0.626, medium 0.692); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.3737 / medium 0.3232; coverage small 0.6263 / medium 0.6919; duration 77.65s vs expected 79.2s (ratio 0.98); sha256 `779dfcb9c8f8454d299db40c774c6b146221bedfb09038283a46fe8161aa5e0b`
+- **Psalms 98** — coverage low on both models (small 0.560, medium 0.495); WER backstop both models (small 0.440, medium 0.505); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.4402 / medium 0.5054; coverage small 0.5598 / medium 0.4946; duration 57.6s vs expected 73.6s (ratio 0.783); sha256 `f34da6ace80dd83f63de389dddca275b395ae0bba05eaf537e0f683e8bb2563c`
+- **Psalms 99** — missing verse 1 at 0:26–0:27 — "The LORD is King Let the nations tremble He sits on his throne above the cherubim Let the earth shake The LORD is great in Zion He is high above all people Let them praise your great and amazing name He is holy The King is strong and he loves what is fair You have made things fair You have …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - WER small 0.483 / medium 0.4148; coverage small 0.517 / medium 0.7045; duration 66.6s vs expected 70.4s (ratio 0.946); sha256 `795fd71fdfa7166112f60d00f3d7154ba313e95a8ba28dafd97b802dc4639b8a`
 
 ## UNCERTAIN
 
@@ -3615,6 +3625,21 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 91** — missing verse 1 at 0:27–0:29 — "Whoever lives in the shelter of the Most High will rest in the shadow of the Almighty I will say about the LORD He is my safe place and my strong fort He is my God and I trust him He will save you from hidden traps and from deadly sickness He will cover you with his feathers You will …" (small.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
   - small.en only: missing 'Whoever lives in the shelter of the Most High will rest in the shadow of the Almighty I will say about the LORD He is my safe place and my strong fort He is my God and I trust him He will save you from hidden traps and from deadly sickness He will cover you with his feathers You will …'; coverage unclear (small 0.726, medium 0.990; pass needs both >= 0.96); WER small 0.2737 / medium 0.014; coverage small 0.7263 / medium 0.9895; sha256 `59b7f26675b627f02b29665ee2f143db3df7f06a820991508b2badb97187814e`
+- **Psalms 94** — audio slice contains the disputed words; the models still disagree (coverage small 0.819, medium 0.980)
+  - audio check: refuted: missing verse 1 0:02-0:11 (slice coverage small 1.00, medium 1.00) refuted: inserted verse 8 0:47-0:59 (slice coverage small 0.23, medium 0.15)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.819, medium 0.980); WER small 0.1808 / medium 0.0671; coverage small 0.8192 / medium 0.9796; sha256 `c5473b274ef2f48e94ba3e1ee531a5c1dba37d9584ebd570b61b0bc7e0580b2f`
+- **Psalms 95** — audio slice contains the disputed words; the models still disagree (coverage small 0.962, medium 0.522)
+  - audio check: refuted: missing verse 2 0:00-0:10 (slice coverage small 0.80, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.962, medium 0.522); WER small 0.038 / medium 0.4783; coverage small 0.962 / medium 0.5217; sha256 `c0ca8a58579c023966e08deaa81473eb02e94faf1a23b0729d64cee5b1a8c8ea`
+- **Psalms 96** — audio slice contains the disputed words; the models still disagree (coverage small 0.932, medium 1.000)
+  - audio check: refuted: missing verse 7 0:30-0:40 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.932, medium 1.000); WER small 0.0675 / medium 0.0127; coverage small 0.9325 / medium 1.0; sha256 `cf53d91eab55c1382ef14e1dd5850b1535919de93da4ffbe801188c4ba70768b`
+- **Psalms 101** — audio slice contains the disputed words; the models still disagree (coverage small 0.402, medium 0.983)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.92)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.402, medium 0.983); WER small 0.5977 / medium 0.0172; coverage small 0.4023 / medium 0.9828; sha256 `becebe23ef85eaf37a1bff88949ce89142db9194ef6e0a6ad1a715559941e36d`
+- **Psalms 102** — missing verse 12 at 0:54 — "will be King forever People" (small.en)
+  - audio check: unclear: missing verse 12 0:45-0:55 (slice coverage small 0.00, medium 0.60)
+  - small.en only: missing 'will be King forever People'; coverage unclear (small 0.688, medium 0.996; pass needs both >= 0.96); WER small 0.3122 / medium 0.009; coverage small 0.6878 / medium 0.9955; sha256 `ade740cced329399f2062da6ec2e903e20606464de58ad7857f8a5f1f9f1c102`
 
 ## Script
 
