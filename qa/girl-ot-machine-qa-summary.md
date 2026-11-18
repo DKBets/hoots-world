@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 460
-- PASS: 13
-- FAIL: 301
-- UNCERTAIN: 146 (jsonl verdict UNSURE)
-- Still to score: 469 Old Testament chapters
+- Scored chapters: 470
+- PASS: 14
+- FAIL: 305
+- UNCERTAIN: 151 (jsonl verdict UNSURE)
+- Still to score: 459 Old Testament chapters
 
 ## PASS
 
-13 chapters. Both models agreed there was no missing, invented, or repeated passage.
+14 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -76,7 +76,7 @@ words clears that span. A split slice stays UNCERTAIN.
 - 2 Chronicles 3
 - Nehemiah 1, 5
 - Esther 10
-- Job 2
+- Job 2, 34
 
 ## FAIL
 
@@ -2823,6 +2823,21 @@ words clears that span. A split slice stays UNCERTAIN.
   - WER small 0.0304 / medium 0.1649; coverage small 0.9892 / medium 0.8547; duration 163.63s vs expected 184.4s (ratio 0.887); sha256 `3ea8d7b70384f464cb8c69681b687e68b291630232dd83e3c136ce1fe151f10e`
 - **Job 23** — coverage low on both models (small 0.676, medium 0.655); models also disagree on other spans; agreed defects still fail the chapter
   - WER small 0.3238 / medium 0.3452; coverage small 0.6762 / medium 0.6548; duration 87.85s vs expected 112.4s (ratio 0.782); sha256 `3bd6a6a8b269388bd288900616fad08f42ea403ef5a88d89c49c1772f24430ce`
+- **Job 27** — inserted verse 1 at 0:04–1:08 — "Faded th a Faded th a Faded th n Faded th s Faded th s Faded th s Faded th s Faded th s I still fear God Do not be obliterate do not be a disgruntled do not be as discouraged Do not be as discouraged I still fear God Do not be as discouraged I still fear God …" (small.en+medium.en)
+- **Job 27** — inserted verse 2 at 1:14–1:25 — "be as discouraged I still fear God Do not be as discouraged I still fear God" (small.en+medium.en)
+- **Job 27** — repeated verse 1 at 0:57–1:00 — "I still fear God Do not be" (small.en+medium.en)
+- **Job 27** — repeated verse 1 at 0:59–1:25 — "Do not be as discouraged I still fear God Do not be as discouraged I still fear God Do not be as discouraged I still fear God Do not be as discouraged I still fear God" (small.en+medium.en)
+  - audio check: unclear: inserted verse 1 0:03-0:27 (slice coverage small 0.00, medium 0.38) refuted: repeated verse 1 0:58-1:22 (slice coverage small 1.00, medium 1.00, times 1/1) unclear: inserted verse 2 1:13-1:31 (slice coverage small 0.69, medium 0.69)
+  - WER small 0.252 / medium 0.5544; coverage small 0.9363 / medium 0.7905; duration 215.89s vs expected 150.8s (ratio 1.432); sha256 `0d3dc9d2a048f5b7567867be502535bc7faa547c7673281a3e3bcaaf2ca92f85`
+- **Job 28** — coverage low on both models (small 0.877, medium 0.867); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.3559 / medium 0.1328; coverage small 0.8772 / medium 0.8672; duration 149.85s vs expected 159.6s (ratio 0.939); sha256 `b47a85571ce0e42d7d0365728b8b0947ce6f1b3ea6a11523e5b27331b95be1b3`
+- **Job 29** — missing verse 2 at 0:29 — "I could go back to the months that are gone to the days when God watched over me Back then his lamp shined over my head By his light I walked through the darkness That was when" (medium.en)
+  - audio check: confirmed: missing verse 2 0:14-0:23 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.0052 / medium 0.2222; coverage small 0.9974 / medium 0.7829; duration 130.65s vs expected 154.8s (ratio 0.844); sha256 `af8762a564de762c029d9154c7f10b906739723c5afb94c693743ddd7dc33e92`
+- **Job 30** — missing verse 5 at 0:23 — "People chased them out of town" (small.en+medium.en)
+- **Job 30** — missing verse 25 at 2:34 — "Wasn't I sad for poor people But when I hoped for good things evil came When I looked for light darkness came My heart is upset and never rests Days of suffering are all around me I walk around in sadness without any sunshine I stand up in the meeting and cry for help I have become a brother of …" (small.en+medium.en)
+  - audio check: refuted: missing verse 25 2:06-2:15 (slice coverage small 1.00, medium 1.00) unclear: missing verse 5 0:14-0:24 (slice coverage small 0.00, medium 0.83)
+  - WER small 0.1801 / medium 0.354; coverage small 0.8219 / medium 0.646; duration 164.44s vs expected 193.2s (ratio 0.851); sha256 `360d6660678d48b892df2a52b21118c76bbb2125bb519263fe60657eceb57a0f`
 
 ## UNCERTAIN
 
@@ -3284,6 +3299,22 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Job 24** — missing verse 1 at 0:29–0:30 — "Why doesn't the All Powerful One set times for judging Why don't those who know him ever see those days Wicked people move the stones that mark where land belongs They steal flocks of sheep and keep them They take away the donkeys of orphans They take a widow's ox until she pays what she owes They push needy people …" (medium.en)
   - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) unclear: missing verse 12 1:17-1:27 (slice coverage small 0.00, medium 0.00)
   - small.en only: missing 'But God doesn't blame anyone for doing wrong'; medium.en only: missing 'Why doesn't the All Powerful One set times for judging Why don't those who know him ever see those days Wicked people move the stones that mark where land belongs They steal flocks of sheep and keep them They take away the donkeys of orphans They take a widow's ox until she pays what she owes They push needy people …'; coverage unclear (small 0.984, medium 0.711; pass needs both >= 0.96); WER small 0.018 / medium 0.2974; coverage small 0.984 / medium 0.7106; sha256 `6400edcd81c4b482f96517a56bc548fb4b7cd0f212ee87e7187908f9469bea89`
+- **Job 25** — audio slice contains the disputed words; the models still disagree (coverage small 0.977, medium 0.103)
+  - audio check: refuted: missing verse 2 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.977, medium 0.103); WER small 0.0345 / medium 0.8966; coverage small 0.977 / medium 0.1034; sha256 `79289a1f8c91d1583ebe47fbd638e33585e2577ccd6a21385a32ccfd697d1371`
+- **Job 26** — missing verse 1 at 0:01–0:02 — "answered You have been such a big help to a weak person You have saved someone with no strength You have given such good advice to someone with no wisdom You have shared so much helpful knowledge Who helped you say these words Whose spirit was speaking through you The spirits of the dead tremble under the waters and all …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'answered You have been such a big help to a weak person You have saved someone with no strength You have given such good advice to someone with no wisdom You have shared so much helpful knowledge Who helped you say these words Whose spirit was speaking through you The spirits of the dead tremble under the waters and all …'; coverage unclear (small 0.996, medium 0.443; pass needs both >= 0.96); WER backstop on one model (small 0.009, medium 0.557); WER small 0.009 / medium 0.5566; coverage small 0.9955 / medium 0.4434; sha256 `37d163c9fe5fbadcaf7060dcdccf48d147eda1d8bd7f2c27657ac3772d9b2554`
+- **Job 31** — audio slice contains the disputed words; the models still disagree (coverage small 0.994, medium 0.867)
+  - audio check: refuted: missing verse 5 0:22-0:31 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.994, medium 0.867); WER small 0.01 / medium 0.1357; coverage small 0.9943 / medium 0.8671; sha256 `15ba4c314efbe4fef54af636ff294af1cb140e6101bb23155c3cd588192efdc3`
+- **Job 32** — audio slice contains the disputed words; the models still disagree (coverage small 0.982, medium 0.818)
+  - audio check: refuted: missing verse 1 0:00-0:05 (slice coverage small 0.83, medium 0.83) refuted: inserted verse ? 0:27-0:39 (slice coverage small 0.20, medium 0.20)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.982, medium 0.818); WER small 0.0253 / medium 0.1899; coverage small 0.9823 / medium 0.8177; sha256 `5217153819b1cf9a4fb4336a7224e8a84aafceeb4592716382e829cf1c428200`
+- **Job 33** — missing verse 31 at 2:53 — "and listen to me Be quiet" (small.en)
+- **Job 33** — missing verse 1 at 0:30 — "to all my words I am about to open my mouth My words are on the tip of my tongue My words come from an honest heart My lips will speak what I know is true The Spirit of God has made me The breath of the All Powerful One gives me life Answer me if you can Get ready …" (medium.en)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.92) unclear: missing verse 31 2:44-2:54 (slice coverage small 0.17, medium 0.50)
+  - small.en only: missing 'and listen to me Be quiet'; medium.en only: missing 'to all my words I am about to open my mouth My words are on the tip of my tongue My words come from an honest heart My lips will speak what I know is true The Spirit of God has made me The breath of the All Powerful One gives me life Answer me if you can Get ready …'; coverage unclear (small 0.919, medium 0.690; pass needs both >= 0.96); WER small 0.0808 / medium 0.3115; coverage small 0.9192 / medium 0.6904; sha256 `4d72565cfc78ec7bcf394619f2aa121d78eb1bb13b18d17e556db0dfdd8207d1`
 
 ## Script
 
