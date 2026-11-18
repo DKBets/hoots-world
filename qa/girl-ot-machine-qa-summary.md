@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 540
-- PASS: 25
-- FAIL: 328
-- UNCERTAIN: 187 (jsonl verdict UNSURE)
-- Still to score: 389 Old Testament chapters
+- Scored chapters: 550
+- PASS: 27
+- FAIL: 334
+- UNCERTAIN: 189 (jsonl verdict UNSURE)
+- Still to score: 379 Old Testament chapters
 
 ## PASS
 
-25 chapters. Both models agreed there was no missing, invented, or repeated passage.
+27 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -77,7 +77,7 @@ words clears that span. A split slice stays UNCERTAIN.
 - Nehemiah 1, 5
 - Esther 10
 - Job 2, 34–35
-- Psalms 1, 3, 8, 11–12, 15, 39, 50, 53, 58
+- Psalms 1, 3, 8, 11–12, 15, 39, 50, 53, 58, 64, 70
 
 ## FAIL
 
@@ -2956,6 +2956,24 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 44** — inserted verse 12 at 1:38–1:40 — "You didn't get anything You didn't get anything You didn't get anything You didn't get anything You didn't get anything You didn't get anything You didn't get anything You didn't get anything You didn't get anything You didn't get anything You didn't get anything You didn't get anything You didn't get anything" (small.en+medium.en)
   - audio check: refuted: inserted verse 12 1:37-1:46 (slice coverage small 0.08, medium 0.08) refuted: missing verse 13 1:19-1:28 (slice coverage small 1.00, medium 1.00) confirmed: missing verse 16 1:31-1:41 (slice coverage small 0.25, medium 0.17)
   - WER small 0.3178 / medium 0.4844; coverage small 0.8089 / medium 0.5178; duration 149.97s vs expected 180.0s (ratio 0.833); sha256 `ea7a9fe9484c499b051082cdac8308fcdd72b882945104629d1bf7d1512114c6`
+- **Psalms 63** — missing verse 1 at 0:00–0:02 — "God you are my God I look for you with all my heart I am thirsty for you My whole body longs for you like someone in a dry tired desert with no water I have seen you in your holy place I have seen your power and your glory Your faithful love is better than life so I will …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.4503 / medium 0.7749; coverage small 0.5497 / medium 0.2251; duration 65.24s vs expected 76.4s (ratio 0.854); sha256 `77fb2a9596d2cea21c1325c4098163b633c50a0a12845b984cc29a2cfb46c162`
+- **Psalms 65** — missing verse 4 at 0:17 — "in your courtyards We will be filled with the good things" (medium.en)
+  - audio check: confirmed: missing verse 4 0:08-0:18 (slice coverage small 0.09, medium 0.09)
+  - WER small 0.0 / medium 0.1394; coverage small 1.0 / medium 0.8685; duration 82.86s vs expected 100.4s (ratio 0.825); sha256 `a1afac9b00485cc8e9859c065ffdb8f16ad33726c706a9aca3d23157453d0f1a`
+- **Psalms 66** — missing verse 13 at 1:08 — "the promises I made to you the promises I made when I was in trouble I will bring you the best animals as offerings I will give you" (small.en)
+  - audio check: confirmed: missing verse 13 0:57-1:06 (slice coverage small 0.00, medium 0.17)
+  - WER small 0.0915 / medium 0.0252; coverage small 0.9085 / medium 0.9874; duration 101.33s vs expected 126.8s (ratio 0.799); sha256 `321ee4e2115451e7960f835ce03b5e16e3fc307c7711c358e4142b27834d5920`
+- **Psalms 67** — missing verse 1 at 0:26–0:28 — "God be kind to us and bless us Let your face shine on us Selah Then your ways will be known all over the earth All the nations will know how you save Let all the people praise you God Let all the people praise you Let the nations be glad and sing for joy because you judge people fairly …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - WER small 0.8286 / medium 0.7714; coverage small 0.1714 / medium 0.2286; duration 37.16s vs expected 42.0s (ratio 0.885); sha256 `d1b293f0fb5374327a718632341a05f8b0cf0ab20328fe0354c47b08c4d5830d`
+- **Psalms 69** — inserted verse 3 at 0:16–0:19 — "My eyes are tired for looking for my God" (small.en+medium.en)
+  - audio check: unclear: inserted verse 3 0:15-0:25 (slice coverage small 1.00, medium 0.11)
+  - WER small 0.2194 / medium 0.2297; coverage small 0.7968 / medium 0.7747; duration 233.09s vs expected 271.6s (ratio 0.858); sha256 `7034c87a442429aaf2a913fcccaa0e601be6cd14b4f5bfa2eb30a8511fd7b677`
+- **Psalms 71** — missing verse 1 at 0:00–0:02 — "LORD I run to you to be safe Never let me be put to shame Because you are good rescue me and save me Listen to me and save me Be my rock a safe place I can always go to Give the order to save me because you are my rock and my strong fort My God rescue me …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - WER small 0.1881 / medium 0.2168; coverage small 0.8119 / medium 0.7854; duration 140.97s vs expected 180.8s (ratio 0.78); sha256 `cc93dd799374696d6f1d8a1af1988cb9a262a50098c2380d573deb6c8d1f44f9`
 
 ## UNCERTAIN
 
@@ -3540,6 +3558,12 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 62** — audio slice contains the disputed words; the models still disagree (coverage small 0.642, medium 0.642)
   - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.642, medium 0.642); WER small 0.3583 / medium 0.3583; coverage small 0.6417 / medium 0.6417; sha256 `80084f0b54e2136cd8a892d270032fa31da5e2c9b4ee17b09da682c868c4c045`
+- **Psalms 68** — audio slice contains the disputed words; the models still disagree (coverage small 0.805, medium 0.747)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) refuted: missing verse 27 2:59-3:08 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.805, medium 0.747); WER small 0.1984 / medium 0.2574; coverage small 0.8047 / medium 0.7473; sha256 `c328a8110e5773d6101cbebc327ea04c91dfb8a460537d9a01a8576f5842e0a6`
+- **Psalms 72** — audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.609)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.609); WER small 0.0025 / medium 0.3934; coverage small 0.9975 / medium 0.6091; sha256 `8988510c4797201061847b1e9929928ddc5220fc1898280923ad80ca9829cdc4`
 
 ## Script
 
