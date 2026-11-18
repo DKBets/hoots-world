@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 640
+- Scored chapters: 650
 - PASS: 44
-- FAIL: 372
-- UNCERTAIN: 224 (jsonl verdict UNSURE)
-- Still to score: 289 Old Testament chapters
+- FAIL: 375
+- UNCERTAIN: 231 (jsonl verdict UNSURE)
+- Still to score: 279 Old Testament chapters
 
 ## PASS
 
@@ -3082,6 +3082,15 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Proverbs 8** — missing verse 3 at 0:29 — "She stands by the city gates at the doors and" (medium.en)
   - audio check: confirmed: missing verse 3 0:20-0:30 (slice coverage small 0.10, medium 0.00)
   - WER small 0.0074 / medium 0.1442; coverage small 0.9926 / medium 0.8577; duration 184.06s vs expected 216.4s (ratio 0.851); sha256 `533e516a52d896b12af7af41d2a7fca416cd0950e7dd334bb882975ce1a10292`
+- **Proverbs 13** — missing verse 21 at 2:17 — "Trouble follows sinners But good things come to people who do right" (small.en)
+- **Proverbs 13** — missing verse 7 at 1:08 — "poor but they have lots A rich person may have to use his money to save his life But a" (medium.en)
+  - audio check: confirmed: missing verse 7 0:59-1:09 (slice coverage small 0.17, medium 0.17) refuted: missing verse 21 2:08-2:18 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.0407 / medium 0.3565; coverage small 0.9713 / medium 0.6459; duration 168.45s vs expected 167.2s (ratio 1.007); sha256 `674b998335338eab0ca52e6e5068d2662136b74ea0c7e2662b940d62c0edb723`
+- **Proverbs 16** — coverage low on both models (small 0.865, medium 0.663); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1353 / medium 0.3412; coverage small 0.8647 / medium 0.6627; duration 179.37s vs expected 204.0s (ratio 0.879); sha256 `868429b035716e6bd903f065ad0c3c3d8cb124721c69c6fea32d5ded75110555`
+- **Proverbs 17** — missing verse 2 at 0:27 — "the family passes down Fire tests silver and gold But" (medium.en)
+  - audio check: confirmed: missing verse 2 0:18-0:28 (slice coverage small 0.10, medium 0.10)
+  - WER small 0.0 / medium 0.1714; coverage small 1.0 / medium 0.833; duration 157.91s vs expected 184.4s (ratio 0.856); sha256 `1ac334a3c514c7695660ec3de948dac0573a77e4f7c7a0ffbd3ad40471dc1040`
 
 ## UNCERTAIN
 
@@ -3777,6 +3786,28 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Proverbs 12** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.828)
   - audio check: refuted: missing verse 11 1:08-1:18 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.828); WER small 0.0 / medium 0.1744; coverage small 1.0 / medium 0.8277; sha256 `ae8529e094ed89e2c77a7ffb933241b796a1d6dd17f36c506e263f65146f7aa0`
+- **Proverbs 14** — missing verse 7 at 0:57 — "won't learn anything good from what he says A wise person thinks carefully about the way he goes But fools fool themselves Fools laugh at making things right after doing wrong But honest people want what is good for each other" (medium.en)
+  - audio check: unclear: missing verse 7 0:41-0:50 (slice coverage small 0.08, medium 1.00)
+  - medium.en only: missing 'won't learn anything good from what he says A wise person thinks carefully about the way he goes But fools fool themselves Fools laugh at making things right after doing wrong But honest people want what is good for each other'; coverage unclear (small 0.998, medium 0.823; pass needs both >= 0.96); WER small 0.005 / medium 0.2185; coverage small 0.9983 / medium 0.8228; sha256 `23ac65bae7a3d64d2528b667a76e291d19945afdb97e3cb2e4d884848034cc57`
+- **Proverbs 15** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.688)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.688); WER small 0.0019 / medium 0.3172; coverage small 1.0 / medium 0.6884; sha256 `cabcd817675a09b9f06225a5c5cefdb0f0593c83ee47aa9d58270deaa15ed7fa`
+- **Proverbs 18** — audio slice contains the disputed words; the models still disagree (coverage small 0.923, medium 0.920)
+  - audio check: refuted: missing verse 22 1:59-2:08 (slice coverage small 1.00, medium 1.00) refuted: missing verse 11 0:58-1:07 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.923, medium 0.920); WER small 0.0795 / medium 0.0822; coverage small 0.9233 / medium 0.9205; sha256 `5e17d0e8a2c18841a4bb7be85641c0e6d6aa0dd933684288e1517186f6ab221f`
+- **Proverbs 19** — audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.656)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.656); WER small 0.004 / medium 0.3441; coverage small 0.998 / medium 0.6559; sha256 `8d42bb58f4edbd7a82b446edbbf9435e494e4e3e272340cd2a65201b91b09e2d`
+- **Proverbs 20** — audio slice contains the disputed words; the models still disagree (coverage small 0.811, medium 0.648)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.92)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.811, medium 0.648); WER small 0.1891 / medium 0.3561; coverage small 0.8109 / medium 0.6479; sha256 `1bd14101fc9c9fb3d20dc935bf5fe19ba8d5a0805d1ba948935f3685c8289ceb`
+- **Proverbs 21** — audio slice contains the disputed words; the models still disagree (coverage small 0.873, medium 0.998)
+  - audio check: refuted: missing verse 25 2:20-2:29 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.873, medium 0.998); WER small 0.1273 / medium 0.0081; coverage small 0.8727 / medium 0.998; sha256 `a974fb26886ee2ca3feb0aeb51501586893df2c74948a8e4c80096c12e544859`
+- **Proverbs 22** — missing verse 11 at 0:58 — "Whoever loves a pure heart and speaks kindly will have the king as a friend" (small.en)
+- **Proverbs 22** — missing verse 1 at 0:00–0:02 — "A good name is better than great riches Being loved is better than silver and gold Rich people and poor people have this in common the LORD made them all A careful person sees danger coming and hides But simple people keep going and get hurt Being humble and respecting the LORD bring riches honor and life There are thorns …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00) refuted: missing verse 11 0:49-0:59 (slice coverage small 1.00, medium 1.00)
+  - small.en only: missing 'Whoever loves a pure heart and speaks kindly will have the king as a friend'; medium.en only: missing 'A good name is better than great riches Being loved is better than silver and gold Rich people and poor people have this in common the LORD made them all A careful person sees danger coming and hides But simple people keep going and get hurt Being humble and respecting the LORD bring riches honor and life There are thorns …'; coverage unclear (small 0.968, medium 0.536; pass needs both >= 0.96); WER backstop on one model (small 0.032, medium 0.464); WER small 0.0316 / medium 0.4641; coverage small 0.9684 / medium 0.5359; sha256 `f6cb33142931c24c88caf2800671bb80468954487d10b8567d72aeb994ea66d5`
 
 ## Script
 
