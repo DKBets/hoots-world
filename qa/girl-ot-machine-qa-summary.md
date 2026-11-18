@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 620
-- PASS: 40
-- FAIL: 364
-- UNCERTAIN: 216 (jsonl verdict UNSURE)
-- Still to score: 309 Old Testament chapters
+- Scored chapters: 630
+- PASS: 44
+- FAIL: 367
+- UNCERTAIN: 219 (jsonl verdict UNSURE)
+- Still to score: 299 Old Testament chapters
 
 ## PASS
 
-40 chapters. Both models agreed there was no missing, invented, or repeated passage.
+44 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -77,7 +77,8 @@ words clears that span. A split slice stays UNCERTAIN.
 - Nehemiah 1, 5
 - Esther 10
 - Job 2, 34–35
-- Psalms 1, 3, 8, 11–12, 15, 39, 50, 53, 58, 64, 70, 76, 82–83, 92, 100, 112–113, 124, 126, 130, 133–134, 140
+- Psalms 1, 3, 8, 11–12, 15, 39, 50, 53, 58, 64, 70, 76, 82–83, 92, 100, 112–113, 124, 126, 130, 133–134, 140, 145, 147, 150
+- Proverbs 1
 
 ## FAIL
 
@@ -3060,6 +3061,13 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 141** — missing verse 1 at 0:07 — "to you Let my prayer rise up" (medium.en)
   - audio check: confirmed: missing verse 1 0:00-0:08 (slice coverage small 0.00, medium 0.29)
   - WER small 0.0 / medium 0.3478; coverage small 1.0 / medium 0.6522; duration 69.25s vs expected 82.8s (ratio 0.836); sha256 `bb3c9b0b5803c13821a89fa75b375cee1757f000009cb99dba7b3fb39dff8404`
+- **Psalms 144** — coverage low on both models (small 0.720, medium 0.710); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.2838 / medium 0.297; coverage small 0.7195 / medium 0.7096; duration 108.29s vs expected 121.2s (ratio 0.893); sha256 `a24833c495f8c5b5b62b2726337f2a66b03372e5e514f830639f2a849e10d09f`
+- **Psalms 146** — coverage low on both models (small 0.576, medium 0.560); WER backstop both models (small 0.424, medium 0.440); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.4241 / medium 0.4398; coverage small 0.5759 / medium 0.5602; duration 67.2s vs expected 76.4s (ratio 0.88); sha256 `d7e31d1f64dbbf69374f919436ff67e3e532a1142bff180c1cb7836b23ac27ab`
+- **Proverbs 2** — missing verse 12 at 0:58 — "people who say twisted things These people leave" (small.en+medium.en)
+  - audio check: confirmed: missing verse 12 0:49-0:59 (slice coverage small 0.00, medium 0.12)
+  - WER small 0.1888 / medium 0.115; coverage small 0.8378 / medium 0.8938; duration 106.62s vs expected 135.6s (ratio 0.786); sha256 `b5c807ced9f269cc87d346c597daeb1dbaf4dd81124be15d22ef6e6dd8258fe9`
 
 ## UNCERTAIN
 
@@ -3729,6 +3737,16 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 142** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.390)
   - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.390); WER small 0.0 / medium 0.6104; coverage small 1.0 / medium 0.3896; sha256 `e297364ee13c199c05768a30e4b294a5b5d6d60c8d8f071b29afcf7e232371f4`
+- **Psalms 143** — missing verse 8 at 0:58 — "you Rescue me from my enemies LORD" (small.en)
+- **Psalms 143** — missing verse 5 at 0:30 — "done I think about what your hands" (medium.en)
+  - audio check: unclear: missing verse 5 0:21-0:31 (slice coverage small 0.57, medium 0.43) unclear: missing verse 8 0:49-0:59 (slice coverage small 0.43, medium 0.43)
+  - small.en only: missing 'you Rescue me from my enemies LORD'; medium.en only: missing 'done I think about what your hands'; coverage unclear (small 0.782, medium 0.962; pass needs both >= 0.96); WER small 0.2176 / medium 0.046; coverage small 0.7824 / medium 0.9623; sha256 `a482ffcce540cdea64783f73f591213283b87428cc286e47096358d61d1a33d6`
+- **Psalms 148** — audio slice contains the disputed words; the models still disagree (coverage small 0.643, medium 0.189)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.643, medium 0.189); WER small 0.3571 / medium 0.8112; coverage small 0.6429 / medium 0.1888; sha256 `13809d35f5505ce083f3fbf730d0ee2020490b4a313a59930924f7f5dc86efc3`
+- **Psalms 149** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.324)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.324); WER small 0.0 / medium 0.6757; coverage small 1.0 / medium 0.3243; sha256 `bb39313dbcdb9ed678a9902e410064a3cc402be2413324d3d622ea93fee727a0`
 
 ## Script
 
