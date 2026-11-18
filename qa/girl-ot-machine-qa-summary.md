@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 500
+- Scored chapters: 510
 - PASS: 21
-- FAIL: 320
-- UNCERTAIN: 159 (jsonl verdict UNSURE)
-- Still to score: 429 Old Testament chapters
+- FAIL: 323
+- UNCERTAIN: 166 (jsonl verdict UNSURE)
+- Still to score: 419 Old Testament chapters
 
 ## PASS
 
@@ -2894,6 +2894,32 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 22** — missing verse 3 at 0:19 — "Israel praises you Our families" (medium.en)
   - audio check: confirmed: missing verse 3 0:10-0:20 (slice coverage small 0.20, medium 0.20)
   - WER small 0.0049 / medium 0.106; coverage small 0.9951 / medium 0.9038; duration 204.67s vs expected 245.2s (ratio 0.835); sha256 `91910d8688e40449596966fc44974349efb1ed9ba62d5c5f134477453c8d0760`
+- **Psalms 23** — inserted before verse 1 at 0:07 — "where the sun is shining" (small.en+medium.en windows)
+- **Psalms 23** — missing verse 1 at 0:00–0:02 — "The LORD is my shepherd I have everything I need He lets me rest in green fields He leads me beside calm quiet water He makes my heart strong again He leads me on the right paths to show how good his name is Even when I walk through a very dark valley where there is danger of death I …" (small.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00) refuted: inserted verse ? 0:06-0:18 (slice coverage small 0.20, medium 0.20)
+  - WER small 0.5725 / medium 0.0; coverage small 0.4275 / medium 1.0; duration 48.6s vs expected 55.2s (ratio 0.88); sha256 `df8f93d9f1f160e430c6f2c87d6a8661909d9bf3e105b3e637c88b0cbdd18519`
+- **Psalms 27** — inserted verse 4 at 0:28–0:42 — "you always have my Ren and I will seek his face He's always at the window and may you see you He will rend in the tower of his hen Then in that very day I will seek the Lord and" (small.en+medium.en)
+- **Psalms 27** — inserted verse 4 at 0:42–0:46 — "will find him and his face He will rend the tower" (small.en+medium.en)
+- **Psalms 27** — inserted verse 4 at 0:46–1:44 — "his hen He will get us in the coming fest and the grave He will get us in the coming fast and the grave He will get us in the coming fast and the grave He will get us in the coming fast and the grave He will get us in the coming fast and the grave He will get …" (small.en+medium.en)
+- **Psalms 27** — inserted verse 6 at 2:15–3:10 — "the Lord He will lift my head above my enemies He will give me a part of wine poured into my veins I will sing the Lord's voice in praise He will lift my head above my enemies He will give me a part of wine poured into my veins I will sing the Lord's voice in praise He will …" (small.en+medium.en)
+- **Psalms 27** — inserted verse 6 at 3:10–4:42 — "Lord's voice in praise He will lift my head above my enemies He will give me a part of wine poured into my veins My God you plap praises and you will prove me day and night will fade if you don't play those accolades Then hear me Hear me Lord Hear me Lord Hear me Lord Hear me Lord …" (small.en+medium.en)
+- **Psalms 27** — repeated verse 4 at 0:53–0:55 — "He will get us in the coming" (small.en+medium.en)
+- **Psalms 27** — repeated verse 4 at 0:55–1:19 — "and the grave He will get us in the coming fast and the grave He will get us in the coming fast and the grave He will get us in the coming fast and the grave He will get us in the coming fast and the grave He will get us in the coming fast and the grave He will …" (small.en+medium.en)
+- **Psalms 27** — repeated verse 4 at 1:19–1:24 — "the coming fest and the grave He will get us in the coming fest and the grave" (small.en+medium.en)
+- **Psalms 27** — repeated verse 4 at 1:25–1:28 — "In that very day I will seek the Lord and" (small.en+medium.en)
+- **Psalms 27** — repeated verse 4 at 1:35–1:39 — "In that very day I will seek the Lord and I will" (small.en+medium.en)
+- **Psalms 27** — repeated verse 4 at 1:41–1:43 — "In that very day I will seek" (small.en+medium.en)
+- **Psalms 27** — repeated verse 6 at 2:25–2:39 — "He will lift my head above my enemies He will give me a part of wine poured into my veins I will sing the Lord's voice in praise He will lift my head above my enemies He will give me" (small.en+medium.en)
+- **Psalms 27** — repeated verse 6 at 2:40–3:02 — "wine poured into my veins I will sing the Lord's voice in praise He will lift my head above my enemies He will give me a part of wine poured into my veins I will sing the Lord's voice in praise He will lift my head above my enemies He will give me a part of wine poured into my …" (small.en+medium.en)
+- **Psalms 27** — repeated verse 6 at 3:03–3:05 — "sing the Lord's voice in praise He will" (small.en+medium.en)
+- **Psalms 27** — repeated verse 6 at 3:05–3:18 — "He will give me a part of wine poured into my veins I will sing the Lord's voice in praise He will lift my head above my enemies He will give me a part of wine poured into my veins" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 6 3:09-3:33 (slice coverage small 1.00, medium 1.00) unclear: inserted verse 4 0:45-1:09 (slice coverage small 0.46, medium 0.46) confirmed: inserted verse 6 2:14-2:38 (slice coverage small 1.00, medium 1.00)
+  - WER small 2.0287 / medium 2.0191; coverage small 0.9618 / medium 0.965; duration 331.18s vs expected 125.6s (ratio 2.637); sha256 `3e0613b6100439a3f569fbf5651c3e4d9e547d33430547325868f10fc3cbe062`
+- **Psalms 31** — inserted verse 1 at 0:30–0:55 — "Those invade and see the way Righteousness is yours And the land was saved and incensed in many rivers and many feathered wrens As you den V A ride in unison and make them mighty female goats many feathered wrens many bred and gold you will be known for many years The" (small.en+medium.en)
+- **Psalms 31** — inserted verse 1 at 0:58–1:04 — "know this Take you're my save the God of your say and remind" (small.en+medium.en)
+- **Psalms 31** — inserted verse 1 at 1:04–1:11 — "of yet kindness and love and mercy no matter the circumstance Take that and send" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 1 0:29-0:53 (slice coverage small 0.96, medium 0.96) confirmed: inserted verse 1 1:03-1:17 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 1 0:57-1:10 (slice coverage small 0.85, medium 0.85)
+  - WER small 0.3503 / medium 0.4501; coverage small 0.8408 / medium 0.8238; duration 248.79s vs expected 188.4s (ratio 1.321); sha256 `3f31b6164eb8819a580dcbfb9775037ade76cfb25e17576bcd116013a6b4c22a`
 
 ## UNCERTAIN
 
@@ -3395,6 +3421,27 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 20** — audio slice contains the disputed words; the models still disagree (coverage small 0.057, medium 0.075)
   - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.057, medium 0.075); WER small 0.9434 / medium 0.9245; coverage small 0.0566 / medium 0.0755; sha256 `98041b6418933ee19eea74e13a27fe1994ac9904ec579c3713c7b1ba364211d4`
+- **Psalms 24** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.160)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.160); WER small 0.0 / medium 0.8404; coverage small 1.0 / medium 0.1596; sha256 `b9aa4fa4f3a1ee39427c918a8f9ca091a65dcd74545dd12c1860f979fcb5a8de`
+- **Psalms 25** — audio slice contains the disputed words; the models still disagree (coverage small 0.997, medium 0.706)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.997, medium 0.706); WER small 0.0058 / medium 0.2994; coverage small 0.9971 / medium 0.7064; sha256 `0212faa5ff9941e71d6fb8037fe24453de6113bc147a5a76361f95da38d67249`
+- **Psalms 26** — audio slice contains the disputed words; the models still disagree (coverage small 0.559, medium 0.559)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.559, medium 0.559); WER small 0.4409 / medium 0.4409; coverage small 0.5591 / medium 0.5591; sha256 `7247fc300a9b8940cf4863eef62b5147888e37a7d1ab9912e41a9aae406cea4e`
+- **Psalms 28** — audio slice contains the disputed words; the models still disagree (coverage small 0.375, medium 0.275)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.375, medium 0.275); WER small 0.625 / medium 0.725; coverage small 0.375 / medium 0.275; sha256 `747d7b0d0021ed164063f1ef6e13ad4b2a9b2b2b2c156f145fa0f53c048bf595`
+- **Psalms 29** — audio slice contains the disputed words; the models still disagree (coverage small 0.994, medium 0.529)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.994, medium 0.529); WER small 0.0115 / medium 0.4713; coverage small 0.9943 / medium 0.5287; sha256 `68a6bf023f6f02885b2bf0877c1f93d813e7e5a24ad1fc3a7ee67fc0c4125770`
+- **Psalms 30** — audio slice contains the disputed words; the models still disagree (coverage small 0.585, medium 0.744)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.585, medium 0.744); WER small 0.4201 / medium 0.2648; coverage small 0.5845 / medium 0.7443; sha256 `f3768dab4b26ce4a3e2f561c6514920b5d6bf9da3f95c023de9d86ab167fe725`
+- **Psalms 32** — missing verse 1 at 0:29–0:30 — "Happy is the person whose wrongs are forgiven whose sins are covered Happy is the person whom the LORD doesn't count as guilty and who doesn't try to hide or trick When I kept quiet about my sin my body felt weak I groaned all day long Day and night I felt your hand heavy on me My strength dried …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 1.00)
+  - medium.en only: missing 'Happy is the person whose wrongs are forgiven whose sins are covered Happy is the person whom the LORD doesn't count as guilty and who doesn't try to hide or trick When I kept quiet about my sin my body felt weak I groaned all day long Day and night I felt your hand heavy on me My strength dried …'; coverage unclear (small 0.983, medium 0.681; pass needs both >= 0.96); WER small 0.017 / medium 0.3191; coverage small 0.983 / medium 0.6809; sha256 `3e9fd6cff697d6fcf78029b270ca224d12e1547a0ef087b5095fca4a65dd4509`
 
 ## Script
 
