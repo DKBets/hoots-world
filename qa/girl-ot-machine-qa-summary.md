@@ -58,15 +58,17 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 40
-- PASS: 0
-- FAIL: 27
-- UNCERTAIN: 13 (jsonl verdict UNSURE)
-- Still to score: 889 Old Testament chapters
+- Scored chapters: 50
+- PASS: 1
+- FAIL: 32
+- UNCERTAIN: 17 (jsonl verdict UNSURE)
+- Still to score: 879 Old Testament chapters
 
 ## PASS
 
-None yet.
+1 chapters. Both models agreed there was no missing, invented, or repeated passage.
+
+- Genesis 42
 
 ## FAIL
 
@@ -188,6 +190,21 @@ None yet.
 - **Genesis 40** — missing verse 9 at 1:22 — "cupbearer told Joseph his dream He said In my dream I saw a grapevine in front of me The vine had three branches As soon as it started to bud it bloomed Then its bunches of grapes became ripe I was holding Pharaoh's cup I took the grapes and squeezed them into Pharaoh's cup Then I put the" (medium.en)
   - audio check: confirmed: missing verse 9 0:59-1:08 (slice coverage small 0.00, medium 0.00) refuted: repeated verse 20 2:28-2:37 (slice coverage small 1.00, medium 1.00, times 1/1)
   - WER small 0.0487 / medium 0.1988; coverage small 0.9727 / medium 0.8109; duration 166.66s vs expected 205.2s (ratio 0.812); sha256 `9b3897f8b15f66f8e3e404efb13d3c674d970a97f65072eb23e9a63db509b3fc`
+- **Genesis 41** — missing verse 1 at 0:04 — "Pharaoh had a dream He was standing by the Nile River Seven cows came up out of the river They were healthy and fat and they ate the grass by the river Then seven other cows came up out of the river after them They were ugly and skinny They stood beside the fat cows on the riverbank Then the …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - WER small 0.1954 / medium 0.1356; coverage small 0.8123 / medium 0.8728; duration 456.19s vs expected 522.0s (ratio 0.874); sha256 `18389824c3e2cd3f52655beef0a0a78144e74cf739afab361bc37db05f59b053`
+- **Genesis 44** — coverage low on both models (small 0.884, medium 0.732); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1156 / medium 0.2706; coverage small 0.8844 / medium 0.7318; duration 261.38s vs expected 335.6s (ratio 0.779); sha256 `0424ce127a104a8587069a96269b28a3887d8b417eb009e914ddc3cecc855b21`
+- **Genesis 45** — missing verse 5 at 1:26 — "be angry with yourselves for selling me here God sent me ahead of you to save people's lives For two years now there has been famine in the land And for five more years there will be no plowing and no harvest God sent me ahead of you to keep your family alive on the earth He did it to …" (medium.en)
+  - audio check: confirmed: missing verse 5 0:46-0:55 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.0059 / medium 0.2386; coverage small 0.9956 / medium 0.7673; duration 236.16s vs expected 271.6s (ratio 0.87); sha256 `1ffe00fb25ca2fae258e84e9bccc3f5d1ae6e0e578b8fbde36ffd5a04a60ca27`
+- **Genesis 46** — missing verse 14 at 1:58 — "Zebulun's sons were Sered Elon and Jahleel These were the sons Leah had with Jacob in Paddan Aram She also had a daughter Dinah Altogether there were 33 sons and daughters and grandchildren in this part of the family Gad's sons were Ziphion Haggi Shuni Ezbon Eri Arodi and Areli" (small.en+medium.en)
+  - audio check: unclear: missing verse 14 1:38-1:47 (slice coverage small 0.58, medium 0.58)
+  - WER small 0.2482 / medium 0.254; coverage small 0.7518 / medium 0.746; duration 263.17s vs expected 272.4s (ratio 0.966); sha256 `c0bbc258cd110393ee1ee60c11501fafc22df1b7b55ca55d78ce0036291ed424`
+- **Genesis 50** — inserted verse 8 at 1:11–1:12 — "their little children and their children and" (small.en)
+- **Genesis 50** — missing verse 26 at ? — "and he was placed in a coffin in Egypt" (medium.en)
+  - audio check: confirmed: inserted verse 8 1:10-1:18 (slice coverage small 0.86, medium 0.86)
+  - WER small 0.0234 / medium 0.0328; coverage small 0.9891 / medium 0.9766; duration 237.48s vs expected 256.0s (ratio 0.928); sha256 `9a749817fc670e4ec039897f45f7867292cfb3bc86d34ba5156bfba5347831c9`
 
 ## UNCERTAIN
 
@@ -232,6 +249,18 @@ None yet.
 - **Genesis 39** — audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.872)
   - audio check: refuted: missing verse 17 2:23-2:32 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.872); WER small 0.0019 / medium 0.13; coverage small 0.9981 / medium 0.8719; sha256 `d189c067690349ad96e71551238158f66cd24aeffdb94a8224c0f0fd3010d879`
+- **Genesis 43** — audio slice contains the disputed words; the models still disagree (coverage small 0.973, medium 0.673)
+  - audio check: refuted: missing verse 28 3:42-3:52 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.973, medium 0.673); WER small 0.043 / medium 0.3315; coverage small 0.9725 / medium 0.6729; sha256 `59b4c1946d30e7e13dabf6c893419aeee2adec502f776470ba8f0266512dc34d`
+- **Genesis 47** — audio slice contains the disputed words; the models still disagree (coverage small 0.948, medium 0.576)
+  - audio check: refuted: missing verse 15 2:09-2:19 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.948, medium 0.576); WER small 0.0626 / medium 0.4309; coverage small 0.9481 / medium 0.5762; sha256 `70582e1ad3fe0c73f9ef8b78718fcf219d5fdb13361977a44c0b22b46606b74f`
+- **Genesis 48** — audio slice contains the disputed words; the models still disagree (coverage small 0.980, medium 0.711)
+  - audio check: refuted: missing verse 4 0:21-0:31 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.980, medium 0.711); WER small 0.0218 / medium 0.2893; coverage small 0.9798 / medium 0.7107; sha256 `29791a5f7b96ab8934ba6a6c1738ab1cb43cb225e72ceeff2ef25a24379f1300`
+- **Genesis 49** — missing verse 7 at 0:56 — "Their rage is cursed because it is so cruel I will scatter" (medium.en)
+  - audio check: unclear: missing verse 7 0:47-0:57 (slice coverage small 0.67, medium 0.67)
+  - medium.en only: missing 'Their rage is cursed because it is so cruel I will scatter'; coverage unclear (small 0.991, medium 0.836; pass needs both >= 0.96); WER small 0.0116 / medium 0.1848; coverage small 0.991 / medium 0.8359; sha256 `f470b856a2705257c6241ac7790e0d2d6cedc2afb20e2e8ce8b9b9043c845413`
 
 ## Script
 
