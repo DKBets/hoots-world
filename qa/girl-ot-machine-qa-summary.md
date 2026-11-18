@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 590
-- PASS: 33
-- FAIL: 356
-- UNCERTAIN: 201 (jsonl verdict UNSURE)
-- Still to score: 339 Old Testament chapters
+- Scored chapters: 600
+- PASS: 34
+- FAIL: 361
+- UNCERTAIN: 205 (jsonl verdict UNSURE)
+- Still to score: 329 Old Testament chapters
 
 ## PASS
 
-33 chapters. Both models agreed there was no missing, invented, or repeated passage.
+34 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -77,7 +77,7 @@ words clears that span. A split slice stays UNCERTAIN.
 - Nehemiah 1, 5
 - Esther 10
 - Job 2, 34–35
-- Psalms 1, 3, 8, 11–12, 15, 39, 50, 53, 58, 64, 70, 76, 82–83, 92, 100, 112
+- Psalms 1, 3, 8, 11–12, 15, 39, 50, 53, 58, 64, 70, 76, 82–83, 92, 100, 112–113
 
 ## FAIL
 
@@ -3039,6 +3039,19 @@ words clears that span. A split slice stays UNCERTAIN.
   - WER small 0.5474 / medium 0.5474; coverage small 0.4526 / medium 0.4526; duration 50.26s vs expected 54.8s (ratio 0.917); sha256 `1c08ace071b5e47d0c4711139d312263c60afbec97f00846028df9425a93f1c5`
 - **Psalms 111** — wrong_chapter before verse 1 at 0:00 — "announcement says chapter 11" (small.en+medium.en)
   - WER small 0.0321 / medium 0.0321; coverage small 0.9872 / medium 0.9872; duration 60.12s vs expected 62.4s (ratio 0.963); sha256 `c3bcc280a73be9cf573cfab894cd6c27188b319981821601d0f59efa76ea8f79`
+- **Psalms 115** — coverage low on both models (small 0.735, medium 0.702); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.2799 / medium 0.3097; coverage small 0.7351 / medium 0.7015; duration 96.51s vs expected 107.2s (ratio 0.9); sha256 `f8c922a527068aa9ef127c93017383c1bb76f2a8fd871d49d79e0bb1889539c8`
+- **Psalms 116** — inserted verse 17 at 1:27–1:29 — "I will keep my promises to the Lord in front of" (medium.en)
+  - audio check: confirmed: inserted verse 17 1:26-1:35 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.0207 / medium 0.0586; coverage small 0.9793 / medium 0.9793; duration 97.11s vs expected 116.0s (ratio 0.837); sha256 `6b3c045072eda29056e4313fe4d2526c61ec4e8530dc4cd5ce9a4da5556335e4`
+- **Psalms 117** — coverage low on both models (small 0.885, medium 0.885)
+  - WER small 0.1154 / medium 0.1154; coverage small 0.8846 / medium 0.8846; duration 16.77s vs expected 10.4s (ratio 1.612); sha256 `d953a8279c39a656ec694626b32a52a641c9a0310bc6e53465c5b9c7cc6cc00e`
+- **Psalms 121** — inserted verse 6 at 0:28–0:30 — "the day and the moon will not hurt" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 6 0:27-0:36 (slice coverage small 1.00, medium 0.75)
+  - WER small 0.0684 / medium 0.5385; coverage small 1.0 / medium 0.4615; duration 42.45s vs expected 46.8s (ratio 0.907); sha256 `13111e4f784e363cf862fd82773751d0201293da8413a4bb4e9e309f8c7ffd7d`
+- **Psalms 122** — missing verse 6 at 0:29 — "May the people who love you be safe and happy" (small.en)
+  - audio check: confirmed: missing verse 6 0:20-0:30 (slice coverage small 0.10, medium 0.10)
+  - WER small 0.0853 / medium 0.0078; coverage small 0.9147 / medium 1.0; duration 47.57s vs expected 51.6s (ratio 0.922); sha256 `8a0df720f5962e58ac8a6a9408e5c7edabd4f03422a4da0fcd3e55a5a131271e`
 
 ## UNCERTAIN
 
@@ -3664,6 +3677,19 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 104** — audio slice contains the disputed words; the models still disagree (coverage small 0.737, medium 0.778)
   - audio check: refuted: missing verse 23 2:03-2:12 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.737, medium 0.778); WER small 0.2632 / medium 0.2252; coverage small 0.7368 / medium 0.7781; sha256 `d592fb8fde6220614bb7f80156a918049617b2e6fe5cae40c02f155f32b5a0d7`
+- **Psalms 114** — audio slice contains the disputed words; the models still disagree (coverage small 0.439, medium 0.458)
+  - audio check: refuted: missing verse 1 0:04-0:13 (slice coverage small 0.92, medium 0.92)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.439, medium 0.458); WER small 0.5607 / medium 0.5421; coverage small 0.4393 / medium 0.4579; sha256 `5acb15d6636314a334da01ee14b530f85f0af20b53ea1c114f3f80588505df9b`
+- **Psalms 118** — audio slice contains the disputed words; the models still disagree (coverage small 0.814, medium 0.716)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.814, medium 0.716); WER small 0.1904 / medium 0.2867; coverage small 0.8142 / medium 0.7156; sha256 `8d66e0bcb8b1559698d135caaf266d8bd4519e6ede05ce8333fb7fe73314dbb2`
+- **Psalms 119** — missing verse 42 at 3:38 — "Then I will have an answer for people who insult me because I trust your word Don't take your word of truth away from my mouth because I put my hope in your laws I will always obey your teaching forever and ever I will walk around free because I have looked for your commands" (small.en)
+- **Psalms 119** — missing verse 12 at 1:21 — "Teach me your rules With my lips I have told about all the laws you have spoken I am happy following your teachings as happy as if I had lots of treasure I will think about your commands and pay attention to your ways I will enjoy your rules I will not forget your word Be good to me your …" (medium.en)
+  - audio check: unclear: missing verse 12 0:55-1:04 (slice coverage small 0.00, medium 1.00) refuted: missing verse 42 3:16-3:25 (slice coverage small 1.00, medium 1.00)
+  - small.en only: missing 'Then I will have an answer for people who insult me because I trust your word Don't take your word of truth away from my mouth because I put my hope in your laws I will always obey your teaching forever and ever I will walk around free because I have looked for your commands'; medium.en only: missing 'Teach me your rules With my lips I have told about all the laws you have spoken I am happy following your teachings as happy as if I had lots of treasure I will think about your commands and pay attention to your ways I will enjoy your rules I will not forget your word Be good to me your …'; coverage unclear (small 0.944, medium 0.767; pass needs both >= 0.96); WER small 0.0585 / medium 0.2441; coverage small 0.9444 / medium 0.7669; sha256 `d0f7a04337c15b4afce86e4ec1bfa30a362c1a3dd7cc2d6a9fd13fdca6482342`
+- **Psalms 120** — audio slice contains the disputed words; the models still disagree (coverage small 0.149, medium 0.149)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.149, medium 0.149); WER small 0.8511 / medium 0.8511; coverage small 0.1489 / medium 0.1489; sha256 `081a1742a0fa0f145f9fe8ede6ab662913443d68974166dc772fac47cfec51b8`
 
 ## Script
 
