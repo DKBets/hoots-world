@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 180
+- Scored chapters: 190
 - PASS: 6
-- FAIL: 116
-- UNCERTAIN: 58 (jsonl verdict UNSURE)
-- Still to score: 749 Old Testament chapters
+- FAIL: 123
+- UNCERTAIN: 61 (jsonl verdict UNSURE)
+- Still to score: 739 Old Testament chapters
 
 ## PASS
 
@@ -856,6 +856,61 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Deuteronomy 27** — repeated verse 25 at 4:25–4:35 — "curse rejects it saying blessed is you who makes you an idol out of wood stone or metal made by a craftsman's hand and set it up on a sign" (small.en+medium.en)
   - audio check: confirmed: inserted verse 16 2:21-2:45 (slice coverage small 1.00, medium 1.00) unclear: inserted verse 5 0:38-0:50 (slice coverage small 0.50, medium 0.50) refuted: repeated verse 16 2:44-3:08 (slice coverage small 1.00, medium 0.83, times 1/0)
   - WER small 0.7467 / medium 0.6057; coverage small 0.8971 / medium 0.7086; duration 318.85s vs expected 210.0s (ratio 1.518); sha256 `103e31ba28d733abfb836f396d880168a19c1dbb2746937d965bcf6c96f68cba`
+- **Deuteronomy 28** — inserted verse 64 at 9:12–9:21 — "and bring you made it as a comfort The Lord says I will go with you and prosper I will go with you and prosper I will do" (small.en+medium.en)
+- **Deuteronomy 28** — inserted verse 67 at 10:49–11:04 — "because of the fear in your heart and the things you see The Lord will send you back to Egypt by ships as you went on the way And in the evening you will say I wish it were evening" (small.en+medium.en)
+- **Deuteronomy 28** — inserted verse 68 at 11:11–11:19 — "by ships as you went on the way And in the evening you will say I wish it were morning because of the fear" (small.en+medium.en)
+- **Deuteronomy 28** — inserted verse 68 at 11:19–11:25 — "your heart and the things you see The Lord will send you back to Egypt by" (small.en+medium.en)
+- **Deuteronomy 28** — inserted verse 68 at 11:25–11:38 — "as you went on the way And in the evening you will say I wish it were evening because of the fear in your heart and the things you see The Lord will send you back to Egypt" (small.en+medium.en)
+- **Deuteronomy 28** — inserted verse 68 at 11:40–11:43 — "And in the evening you will say" (small.en+medium.en)
+- **Deuteronomy 28** — inserted verse 68 at 11:43–11:52 — "wish it were morning because of the fear in your heart and the things you see The Lord will send you back to Egypt by ships as" (small.en+medium.en)
+- **Deuteronomy 28** — inserted verse 68 at 11:53–11:55 — "went on the way And in the evening" (small.en+medium.en)
+- **Deuteronomy 28** — inserted verse 68 at 11:56–12:02 — "will say I wish it were morning because of the fear in your heart and the things you" (small.en+medium.en)
+- **Deuteronomy 28** — inserted verse 68 at 12:03–12:09 — "The Lord will send you back to Egypt by ships as you went on the way And in the evening" (small.en+medium.en)
+- **Deuteronomy 28** — repeated verse 67 at 10:59–11:04 — "And in the evening you will say I wish it were evening" (small.en+medium.en)
+- **Deuteronomy 28** — repeated verse 67 at 11:04–12:09 — "because of the fear in your heart and the things you see The Lord will send you back to Egypt by ships as you went on the way And in the evening you will say I wish it were morning because of the fear in your heart and the things you see The Lord will send you back to Egypt …" (small.en+medium.en)
+  - audio check: unclear: repeated verse 67 11:03-11:27 (slice coverage small 1.00, medium 1.00, times 2/1) confirmed: inserted verse 67 10:48-11:10 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 68 11:24-11:44 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.2992 / medium 0.4977; coverage small 0.9428 / medium 0.7014; duration 735.62s vs expected 699.2s (ratio 1.052); sha256 `ffc0b392f3913a1a5c59ca401406b52e04ca70267c819cc89b7c4223d622f4be`
+- **Deuteronomy 29** — missing verse 1 at 0:11 — "with them at Mount Horeb Moses called all Israel together and said to them You saw everything the LORD did in Egypt to Pharaoh to all his officials and to his whole country You saw" (medium.en)
+  - audio check: confirmed: missing verse 1 0:00-0:09 (slice coverage small 0.08, medium 0.00)
+  - WER small 0.0123 / medium 0.1352; coverage small 0.9891 / medium 0.8716; duration 249.43s vs expected 292.8s (ratio 0.852); sha256 `ac7c86e2e92b87d3e0dc404ee9c64f4971a8fd9c798e258c28598be18f92980f`
+- **Deuteronomy 30** — coverage low on both models (small 0.874, medium 0.769); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1281 / medium 0.2329; coverage small 0.8735 / medium 0.7687; duration 187.35s vs expected 240.4s (ratio 0.779); sha256 `03fdcc911c694cb3ef7e0888993b6c0cd79c51e3cd2a88672df2f80d16713a26`
+- **Deuteronomy 31** — missing verse 3 at 0:26 — "you as the LORD said The LORD will do to them what he did to Sihon and Og the kings" (small.en)
+- **Deuteronomy 31** — missing verse 20 at 3:34 — "promised their ancestors a land flowing with milk and honey they will eat until they are full and grow fat Then they will turn to other gods and worship them They will reject me and break my" (medium.en)
+  - audio check: confirmed: missing verse 20 3:20-3:29 (slice coverage small 0.17, medium 0.00) confirmed: missing verse 3 0:17-0:27 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.0887 / medium 0.1742; coverage small 0.9113 / medium 0.828; duration 302.46s vs expected 365.2s (ratio 0.828); sha256 `1aa65325cd6ed51374678236ac42f769304faa2b044b91c9a4a3596f07b981e8`
+- **Deuteronomy 33** — coverage low on both models (small 0.869, medium 0.865); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1417 / medium 0.1471; coverage small 0.8691 / medium 0.865; duration 271.27s vs expected 296.4s (ratio 0.915); sha256 `4aef16158409a9d441f15ccb24e60e528499735e011dbc01656fd49ca7a75bea`
+- **Deuteronomy 34** — missing verse 4 at 1:07–1:16 — "it to your children's children I have let" (small.en+medium.en)
+- **Deuteronomy 34** — missing verse 4 at 1:17–1:22 — "it with your own eyes but" (small.en+medium.en)
+- **Deuteronomy 34** — inserted verse 3 at 0:31–0:42 — "land I promised to Abraham Isaac Ike and Jacob I will give it to you and your descendants forever Then Moses climbed up on Mount Nebo to" (small.en+medium.en)
+- **Deuteronomy 34** — inserted verse 3 at 0:42–0:45 — "Pisgah and God saw the Lord for" (small.en+medium.en)
+- **Deuteronomy 34** — inserted verse 4 at 0:55–0:58 — "with your families Then Moses Moses climbed up" (small.en+medium.en)
+- **Deuteronomy 34** — inserted verse 4 at 1:00–1:03 — "saw the land of Bethlehem Then the Lord" (small.en+medium.en)
+- **Deuteronomy 34** — inserted verse 4 at 1:04–1:06 — "to Moses See this land" (small.en+medium.en)
+- **Deuteronomy 34** — inserted verse 4 at 1:07–1:16 — "you in terms of Jacob and Ezepp But the families lived in Pettit where they lived But the families lived in Pettit where they lived" (small.en+medium.en)
+- **Deuteronomy 34** — inserted verse 4 at 1:17–1:22 — "the glories of God Then God said if God sees in many sins then" (small.en+medium.en)
+- **Deuteronomy 34** — inserted verse 4 at 1:22–1:36 — "remember why you said and cared Then Moses climbed up on Mount Nebo to the top to the top of Pisgah and saw the land of Bethlehem and Esip The Lord said to Moses So great and mighty is" (small.en+medium.en)
+- **Deuteronomy 34** — inserted verse 5 at 1:36–1:42 — "even to go and go a distant place where God would give the glory to the temple But if you were to go and share" (small.en+medium.en)
+- **Deuteronomy 34** — repeated verse 3 at 0:41–0:43 — "Mount Nebo to the top of Pisgah" (small.en+medium.en)
+- **Deuteronomy 34** — repeated verse 4 at 1:13–1:16 — "But the families lived in Pettit where they lived" (small.en+medium.en)
+- **Deuteronomy 34** — repeated verse 4 at 1:24–1:28 — "Then Moses climbed up on Mount Nebo to the top" (small.en+medium.en)
+- **Deuteronomy 34** — repeated verse 4 at 1:28–1:30 — "to the top of Pisgah and saw the land of Bethlehem" (small.en+medium.en)
+- **Deuteronomy 34** — repeated verse 4 at 1:32–1:33 — "The Lord said to Moses" (small.en+medium.en)
+- **Deuteronomy 34** — paraphrase verse ? at ? — "scattered wording does not match the source" (small.en+medium.en)
+  - audio check: unclear: inserted verse 4 1:21-1:42 (slice coverage small 0.83, medium 0.25) confirmed: inserted verse 3 0:30-0:48 (slice coverage small 1.00, medium 0.96) unclear: inserted verse 4 1:06-1:22 (slice coverage small 0.67, medium 0.00)
+  - WER small 0.67 / medium 0.633; coverage small 0.8519 / medium 0.798; duration 170.71s vs expected 118.8s (ratio 1.437); sha256 `9ce91ebf5255c6e9c234c29348ef54fe64d3e4bbe967638049354889b55ab09d`
+- **Joshua 1** — silence verse ? at 2:04–2:09 — "Remember what Moses, the Lord's servant, told you. He said," (waveform)
+- **Joshua 1** — inserted verse 13 at 2:13–2:35 — "Bravely stand and go east of the Jordan River You will be the Lord of the Lord You are now the promising land of getting planting for your forebears and in siblings You will decimate the land and plant in writing in it with You will decimate the land and cross over to an east of the Jordan River You …" (small.en+medium.en)
+- **Joshua 1** — inserted verse 13 at 2:35–2:50 — "decimate the land and cross over in the mountains of Galatia The land of Imogitis and of Naximitis is a bluded place and god happy people Go down there and see how they live and know God is with you" (small.en+medium.en)
+- **Joshua 1** — inserted verse 13 at 2:50–3:05 — "will decimate the land and cross over in the mountains of Galatia Joshua told the people Greet now and tell the people Bread plenty many Soon be harvest And plan plans of vineyards and hopes fast" (small.en+medium.en)
+- **Joshua 1** — inserted verse 13 at 3:06–3:22 — "one month you will celebrate the law of God as you see it Even though we can't see His face in the privacy of our eyes He is always with us Yet we wonder if we are really seeing his face in our own hearts Known him not Joshua told the people" (small.en+medium.en)
+- **Joshua 1** — repeated verse 13 at 2:26–2:27 — "You will decimate the land and" (small.en+medium.en)
+- **Joshua 1** — repeated verse 13 at 2:28–2:30 — "east of the Jordan River You will" (small.en+medium.en)
+- **Joshua 1** — repeated verse 13 at 2:30–2:37 — "You will decimate the land and cross over to an east of the Jordan River You will decimate the land and cross over" (small.en+medium.en)
+- **Joshua 1** — repeated verse 13 at 2:50–2:54 — "you will decimate the land and cross over in the mountains of Galatia" (small.en+medium.en)
+  - audio check: unclear: inserted verse 13 2:12-2:36 (slice coverage small 0.75, medium 0.71) confirmed: inserted verse 13 3:05-3:28 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 13 2:34-2:56 (slice coverage small 0.92, medium 0.88)
+  - WER small 0.4455 / medium 0.5195; coverage small 0.9475 / medium 0.8288; duration 255.62s vs expected 205.6s (ratio 1.243); sha256 `6c35b5bd935945e9c8af7b822b852a6eacd6beb15cbbed972f12051c6e838dc2`
 
 ## UNCERTAIN
 
@@ -1045,6 +1100,15 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Deuteronomy 26** — missing verse 12 at 1:51 — "of all your crops that year give it to the Levites the foreigners" (medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 1.00) refuted: missing verse 12 1:42-1:52 (slice coverage small 1.00, medium 1.00)
   - small.en only: missing 'When you enter the land the LORD your God is giving you to own and you have taken it over and are living there take some of the first crops you harvest from the land the LORD your God is giving you Put them in a basket and go to the place the LORD your God will choose as a …'; medium.en only: missing 'of all your crops that year give it to the Levites the foreigners'; coverage unclear (small 0.825, medium 0.966; pass needs both >= 0.96); WER small 0.1754 / medium 0.0393; coverage small 0.8246 / medium 0.9656; sha256 `766d34ca4db1bf1cdbaa2807ff2620baab7ab49e684a4f7ed924b20e894e528c`
+- **Deuteronomy 32** — missing verse 1 at 0:30 — "heavens and I will speak Earth hear the words of my mouth Let my teaching fall like rain and my words come down like dew like gentle rain on new grass like showers on young plants I will announce the name of the LORD Praise the greatness of our God He is the Rock and everything he does is perfect …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'heavens and I will speak Earth hear the words of my mouth Let my teaching fall like rain and my words come down like dew like gentle rain on new grass like showers on young plants I will announce the name of the LORD Praise the greatness of our God He is the Rock and everything he does is perfect …'; coverage unclear (small 0.998, medium 0.841; pass needs both >= 0.96); WER small 0.0033 / medium 0.1628; coverage small 0.9975 / medium 0.8413; sha256 `ffd9b0c601a1d38c7117323894cee9c23612ec3a4dff0204f3754c2c9dc29ed7`
+- **Joshua 2** — audio slice contains the disputed words; the models still disagree (coverage small 0.890, medium 0.912)
+  - audio check: refuted: missing verse 10 1:31-1:40 (slice coverage small 0.83, medium 1.00) refuted: missing verse 2 0:21-0:31 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.890, medium 0.912); WER small 0.1125 / medium 0.0897; coverage small 0.8903 / medium 0.9117; sha256 `be9dc11b9e0570bc9d66329367f41c400744871bf51f5d617468b694d1491ca6`
+- **Joshua 3** — audio slice contains the disputed words; the models still disagree (coverage small 0.989, medium 0.715)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.989, medium 0.715); WER small 0.0106 / medium 0.296; coverage small 0.9894 / medium 0.7146; sha256 `a6dadbc3c378f37e09c08c6f7e4c9b965c8f6d85d83a063c48e00d2888aecf1e`
 
 ## Script
 
