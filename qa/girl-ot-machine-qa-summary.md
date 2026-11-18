@@ -58,17 +58,18 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 90
-- PASS: 1
-- FAIL: 60
-- UNCERTAIN: 29 (jsonl verdict UNSURE)
-- Still to score: 839 Old Testament chapters
+- Scored chapters: 100
+- PASS: 2
+- FAIL: 68
+- UNCERTAIN: 30 (jsonl verdict UNSURE)
+- Still to score: 829 Old Testament chapters
 
 ## PASS
 
-1 chapters. Both models agreed there was no missing, invented, or repeated passage.
+2 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
+- Leviticus 8
 
 ## FAIL
 
@@ -407,6 +408,62 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Exodus 40** — missing verse 10 at 1:03 — "Set the altar apart and it will be most holy" (small.en+medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00) refuted: missing verse 10 0:54-1:04 (slice coverage small 1.00, medium 1.00)
   - WER small 0.1332 / medium 0.233; coverage small 0.8708 / medium 0.7736; duration 252.12s vs expected 300.4s (ratio 0.839); sha256 `23c4b2114e52d4f825b8bc972e89b826f0fe7cdc5a8efe89fd9c37a8123db3a0`
+- **Leviticus 1** — missing verse 6 at 1:23 — "skin and cut it into pieces The sons of Aaron the priest will put fire on the altar and lay wood on the fire Then Aaron's sons the priests will lay the pieces the head and the fat on the" (medium.en)
+  - audio check: confirmed: missing verse 6 1:07-1:16 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.0132 / medium 0.6228; coverage small 0.9912 / medium 0.3794; duration 147.97s vs expected 182.4s (ratio 0.811); sha256 `2c7a6fca59c183c5bbb94781237c01487dc2e35e633fa9ef2fa81701dbadc9f8`
+- **Leviticus 2** — missing verse 13 at 1:46 — "Offer salt with all your offerings If you bring a grain offering of your first crops to the LORD" (small.en)
+- **Leviticus 2** — missing verse 1 at 0:00–0:02 — "When anyone brings a grain offering to the LORD it must be made of fine flour Pour olive oil on it and put frankincense on it Bring it to Aaron's sons the priests The priest will take a handful of the flour and oil with all the frankincense He will burn this reminder part on the altar It is an …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00) confirmed: missing verse 13 1:37-1:47 (slice coverage small 0.33, medium 0.33)
+  - WER small 0.0484 / medium 0.2978; coverage small 0.9516 / medium 0.707; duration 134.66s vs expected 165.2s (ratio 0.815); sha256 `ac245acc9f42d6035142905f13b13391fd9462f57dceb9377a5d11f0b46d68d8`
+- **Leviticus 3** — inserted verse 3 at 0:53–0:56 — "on the garden If heart is bloodied" (small.en+medium.en)
+- **Leviticus 3** — inserted verse 3 at 0:56–1:02 — "the goers or the ponds or the toes or the muscles of the pea feet offering it must have a good offering" (small.en+medium.en)
+- **Leviticus 3** — inserted verse 4 at 1:13–1:15 — "garden it must have a good offering" (small.en+medium.en)
+- **Leviticus 3** — inserted verse 5 at 1:23–1:26 — "the pea feet offering with a good heart and ready for" (small.en+medium.en)
+- **Leviticus 3** — inserted verse 5 at 1:36–1:40 — "ready for the great great offering on the banks of the garden This offering" (small.en+medium.en)
+- **Leviticus 3** — inserted verse 5 at 1:40–1:45 — "for each piece of the peace offering on the burned offering on the great offering on the burning wood and" (small.en+medium.en)
+- **Leviticus 3** — inserted verse 5 at 1:46–1:47 — "liver is a good offering with" (small.en+medium.en)
+- **Leviticus 3** — inserted verse 6 at 1:55–1:57 — "the muscles of the pea feet offering" (small.en+medium.en)
+- **Leviticus 3** — repeated verse 5 at 1:20–1:28 — "the ponds or the toes or the muscles of the pea feet offering with a good heart and ready for the great offering on the banks of the garden" (small.en+medium.en)
+  - audio check: refuted: repeated verse 5 1:19-1:34 (slice coverage small 1.00, medium 1.00, times 1/1) unclear: inserted verse 3 0:55-1:08 (slice coverage small 1.00, medium 0.04) confirmed: inserted verse 5 1:39-1:51 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.4548 / medium 0.362; coverage small 0.8801 / medium 0.9525; duration 200.11s vs expected 176.8s (ratio 1.132); sha256 `9457479b24e2a42166a515ca280a9bb2052db5716c749942a106140348f0c8d3`
+- **Leviticus 4** — missing verse 23 at 3:05–3:12 — "told about his sin he must bring" (small.en+medium.en)
+- **Leviticus 4** — inserted verse 22 at 2:59–3:04 — "official a great sin says that he has done If" (small.en+medium.en)
+- **Leviticus 4** — inserted verse 23 at 3:05–3:12 — "agreed upon that he did something in capricious and makes himself seen as blame then he brings" (small.en+medium.en)
+- **Leviticus 4** — inserted verse 23 at 3:13–3:15 — "offering and brings it as a testimony" (small.en+medium.en)
+- **Leviticus 4** — inserted verse 23 at 3:17–3:27 — "as a pleasing sacrifice as a pleasing fresh gold lamb and a pleasing blood of a lamb By this time the Lord says" (small.en+medium.en)
+- **Leviticus 4** — inserted verse 24 at 3:29–3:35 — "people be angry The blazing fire flames into the cell and burns the blood" (small.en+medium.en)
+- **Leviticus 4** — inserted verse 24 at 3:35–3:48 — "the pods of the toes of the table The blood of that lamb is a part of the victim and makes the flame more intense This is the sacrifice of" (small.en+medium.en)
+- **Leviticus 4** — inserted verse 24 at 3:55–4:02 — "is a pleasing fake offering and makes the blood of the goat as a testimony of the glowing incense and makes" (small.en+medium.en)
+- **Leviticus 4** — inserted verse 24 at 4:33–5:10 — "says you The blood is often used to deal with sins the prayer forgiveness The blood is not part of the trial but it is a part of the trial Deal incense deal incense and deal incense The blood is not part of the trial but it is a part of the cleansing and makes the trial of the glowing …" (small.en+medium.en)
+- **Leviticus 4** — inserted verse 24 at 5:11–5:15 — "part of the cleansing and makes the trial of the glowing incense" (small.en+medium.en)
+- **Leviticus 4** — repeated verse 24 at 4:58–5:03 — "The blood is not part of the trial but it is a part of the" (small.en+medium.en)
+- **Leviticus 4** — repeated verse 24 at 5:06–5:09 — "incense The blood is not part of the" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 24 4:32-4:56 (slice coverage small 1.00, medium 1.00) unclear: inserted verse 24 3:34-3:54 (slice coverage small 0.42, medium 0.96) confirmed: inserted verse 23 3:16-3:33 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.27 / medium 0.3881; coverage small 0.961 / medium 0.8563; duration 419.03s vs expected 389.6s (ratio 1.076); sha256 `20b92c9da5b0f3cd30eb7340b284c64b1d712bf4ffee715b815fd48851746297`
+- **Leviticus 6** — inserted verse 25 at 3:12–3:25 — "Aaron and his sons These are the rules for the sin offering and the guilt offering It must be burned completely to the Lord and it must must not be eaten The Lord said to Moses Teach" (small.en+medium.en)
+- **Leviticus 6** — inserted verse 25 at 3:27–4:14 — "for the sin offering and the guilt offering They must offer it in the first hour in the morning It must be burned with oil Any flour within five grains may not be burned It must be burned with oil It is a great grain for the sin offerings and the guilt offerings Every flower within five grains may not …" (small.en+medium.en)
+- **Leviticus 6** — inserted verse 25 at 4:17–4:24 — "They must offer it in the morning and the evening And if it enters into a set of plants into a symbiote it will go up" (small.en+medium.en)
+- **Leviticus 6** — repeated verse 25 at 3:18–3:20 — "It must be burned completely to the Lord" (small.en+medium.en)
+- **Leviticus 6** — repeated verse 25 at 3:21–3:24 — "must not be eaten The Lord said to Moses" (small.en+medium.en)
+- **Leviticus 6** — repeated verse 25 at 3:25–3:30 — "Aaron and his sons these are the rules for the sin offering and the guilt offering" (small.en+medium.en)
+- **Leviticus 6** — repeated verse 25 at 3:39–3:41 — "It must be burned with oil" (small.en+medium.en)
+- **Leviticus 6** — repeated verse 25 at 3:47–3:53 — "within five grains may not be burned It must be burned with oil It is a great" (small.en+medium.en)
+- **Leviticus 6** — repeated verse 25 at 3:53–3:55 — "for the sin offerings and the guilt offerings" (small.en+medium.en)
+- **Leviticus 6** — repeated verse 25 at 3:56–3:59 — "The Lord said to Moses Teach Aaron and his sons" (small.en+medium.en)
+- **Leviticus 6** — repeated verse 25 at 4:03–4:05 — "It is a great grain for the sin" (small.en+medium.en)
+- **Leviticus 6** — repeated verse 25 at 4:05–4:07 — "sin offering and guilt offering" (small.en+medium.en)
+- **Leviticus 6** — repeated verse 25 at 4:06–4:09 — "guilt offering They must offer it in the" (small.en+medium.en)
+- **Leviticus 6** — repeated verse 25 at 4:11–4:15 — "It must be burned with oil It is a great deal for the sin" (small.en+medium.en)
+- **Leviticus 6** — repeated verse 25 at 4:14–4:19 — "for the sin offering and guilt offering They must offer it in the morning and the evening" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 25 3:26-3:50 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 25 3:11-3:31 (slice coverage small 0.96, medium 0.88) confirmed: inserted verse 25 4:16-4:30 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.2768 / medium 0.2927; coverage small 0.9934 / medium 0.9748; duration 312.75s vs expected 302.0s (ratio 1.036); sha256 `93ffd39c99fa89f99b912e6288933387df63cacf8048765a21371c17587c3b3a`
+- **Leviticus 7** — coverage low on both models (small 0.882, medium 0.882); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1387 / medium 0.1237; coverage small 0.8821 / medium 0.8821; duration 289.15s vs expected 346.0s (ratio 0.836); sha256 `4df882465e4a635c49ca6693967218265e295237d3ba4bf4508a88e01a7d8102`
+- **Leviticus 9** — coverage low on both models (small 0.847, medium 0.866); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1559 / medium 0.1376; coverage small 0.8474 / medium 0.8657; duration 190.76s vs expected 241.2s (ratio 0.791); sha256 `c7701940b009cd877a1e767ebb7313eb629c3fde67a68c2bde122a896a8c01c7`
+- **Leviticus 10** — missing verse 6 at 1:21 — "Ithamar Don't mess up your hair" (medium.en)
+  - audio check: confirmed: missing verse 6 1:12-1:22 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.0296 / medium 0.2693; coverage small 0.9754 / medium 0.7307; duration 206.04s vs expected 243.6s (ratio 0.846); sha256 `dde965a03648a1ef1741df6701e0c556741b55f0ffdec13ffe65e164eb83c3f4`
 
 ## UNCERTAIN
 
@@ -502,6 +559,9 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Exodus 39** — audio slice contains the disputed words; the models still disagree (coverage small 0.896, medium 0.782)
   - audio check: refuted: missing verse 40 4:43-4:52 (slice coverage small 0.75, medium 0.92)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.896, medium 0.782); WER small 0.1037 / medium 0.2205; coverage small 0.8963 / medium 0.7817; sha256 `1ae5dd78c6aeede9ad3c88ed2c46d8198da4c53ec9b0a207d8f6aad08846cff8`
+- **Leviticus 5** — audio slice contains the disputed words; the models still disagree (coverage small 0.997, medium 0.844)
+  - audio check: refuted: repeated verse 9 1:20-1:29 (slice coverage small 0.20, medium 1.00, times 0/1)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.997, medium 0.844); WER small 0.0068 / medium 0.2017; coverage small 0.9966 / medium 0.8441; sha256 `286fb5ed568e03a5b5bef565d8ac5a5cdbfdae3ec39c25d326a369bb0f7464cb`
 
 ## Script
 
