@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 740
+- Scored chapters: 750
 - PASS: 48
-- FAIL: 419
-- UNCERTAIN: 273 (jsonl verdict UNSURE)
-- Still to score: 189 Old Testament chapters
+- FAIL: 424
+- UNCERTAIN: 278 (jsonl verdict UNSURE)
+- Still to score: 179 Old Testament chapters
 
 ## PASS
 
@@ -3308,6 +3308,66 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Isaiah 61** — missing verse 1 at 0:00–0:02 — "The Spirit of the Lord GOD is on me because the LORD has chosen me to tell good news to humble people He has sent me to heal people whose hearts are broken He sent me to tell prisoners that they are free and to let people out of their chains He sent me to announce the year when the …" (small.en+medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
   - WER small 0.1891 / medium 0.2612; coverage small 0.8109 / medium 0.7388; duration 142.63s vs expected 160.8s (ratio 0.887); sha256 `860d7edd33cf2098fe6e1713bc00e90d417d78e8eca7ecdf72914720bb34364d`
+- **Isaiah 65** — missing verse 1 at 0:00–0:02 — "I let people find me who weren't even asking for me People found me who weren't looking for me I said Here I am Here I am to a nation that didn't call on my name All day long I held out my hands to a stubborn people They walk in a way that isn't good They follow their own …" (small.en+medium.en)
+- **Isaiah 65** — missing verse 14 at 2:28 — "You will cry out because your spirits are broken" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00) refuted: missing verse 14 2:19-2:29 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.1544 / medium 0.3848; coverage small 0.8468 / medium 0.6203; duration 255.96s vs expected 310.8s (ratio 0.824); sha256 `3e5f3ddd29a158036e492c656124c47c17fe809fd150ab49625471be04b394d7`
+- **Isaiah 66** — missing verse 1 at 0:28–0:45 — "what kind of house could" (small.en+medium.en)
+- **Isaiah 66** — inserted verse 1 at 0:04–0:16 — "Haven't seen the Sun hasn't seen any questions hasn't seen any painting as in facing me are Hasn't seen any painting as in blurred in me as in bleed in me as in bleed in me as in bleed That" (small.en+medium.en)
+- **Isaiah 66** — inserted verse 1 at 0:17–0:18 — "what the Lord says I say" (small.en+medium.en)
+- **Isaiah 66** — inserted verse 1 at 0:19–0:28 — "Lord to this generation I will give them taven as they are born as they are born so close as they are as they are born" (small.en+medium.en)
+- **Isaiah 66** — inserted verse 1 at 0:28–0:45 — "close as they are born as they are born I say the Lord when they tell me they need to have a kid I Say the Lord I can make you have a kid as they are born and as they are born I've never done anything which" (small.en+medium.en)
+- **Isaiah 66** — inserted verse 1 at 0:46–2:33 — "can do I give them endings with a neon in the face and A knife in the fist and a nail in the finger I give them baby as they are I give them endings with a neon in the face and a nail in the finger I give them baby as they are as they are born as they …" (small.en+medium.en)
+- **Isaiah 66** — inserted verse 1 at 2:34–2:36 — "give them endings with a neon in the face" (small.en+medium.en)
+- **Isaiah 66** — repeated verse 1 at 0:10–0:12 — "Hasn't seen any painting as in" (small.en+medium.en)
+- **Isaiah 66** — repeated verse 1 at 0:56–1:00 — "I give them endings with a neon in the face and a" (small.en+medium.en)
+- **Isaiah 66** — repeated verse 1 at 0:59–1:04 — "and a nail in the finger I give them baby as they are" (small.en+medium.en)
+- **Isaiah 66** — repeated verse 1 at 1:08–1:13 — "as they are I give them endings with a neon in the face and a knife in the" (small.en+medium.en)
+- **Isaiah 66** — repeated verse 1 at 1:13–1:20 — "in the finger I give them baby as they are as they are born as they are born I" (small.en+medium.en)
+- **Isaiah 66** — repeated verse 1 at 1:19–2:15 — "I give them endings with a neon in the face and a knife in the finger I give them baby as they are I give them endings with a neon in the face and a knife in the finger I give them baby as they are as they are born as they are I give them endings with a neon …" (small.en+medium.en)
+- **Isaiah 66** — repeated verse 1 at 2:15–2:36 — "I give them baby as they are I give them endings with a neon in the face And a knife in the finger I give them baby as they are I give them endings with a neon in the face And a knife in the finger I give them baby as they are I give them endings with a neon …" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 1 0:45-1:09 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 1 1:18-1:42 (slice coverage small 1.00, medium 1.00, times 1/1) refuted: repeated verse 1 2:14-2:38 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.524 / medium 0.388; coverage small 0.9766 / medium 0.9039; duration 442.54s vs expected 341.2s (ratio 1.297); sha256 `5b167f583703405ec47c07b3ac14b9dc2e0d98cb61088505394a5e0e59e17942`
+- **Jeremiah 1** — missing verse 13 at 8:21–8:39 — "a pot of boiling water" (small.en+medium.en)
+- **Jeremiah 1** — inserted verse 2 at 0:11–0:16 — "Lord said to Jeremiah The Lord said" (small.en+medium.en)
+- **Jeremiah 1** — inserted verse 2 at 0:21–1:19 — "day Jeremiah of Disba The trans announcement was about The name of Jeremiah The son of of Hylka the name of Jeremiah the son of Hilka the name of Jeremiah the son of Hilka the name of Jeremiah the son of Hilka the name of Jeremiah the name of Hilka the name of Jeremiah the son of Hilka the name …" (small.en+medium.en)
+- **Jeremiah 1** — inserted verse 3 at 1:35–1:38 — "son of Judah It kept coming while Jeremiah" (small.en+medium.en)
+- **Jeremiah 1** — inserted verse 3 at 1:41–2:44 — "He flew with Aaron and Karen Never seeking plagues or death if you were mighty enough you would blow this fled safely away and carry The cretes were safe the grapes were dead air was full of did of wist you would end up looking for apples and peeds That was my great catch Then he said if you think …" (small.en+medium.en)
+- **Jeremiah 1** — inserted verse 9 at 3:33–4:45 — "The Lord said to me Words of Devis and Grace Locate into the centers of your own houses and companies And the Lord said to me Remind me of your warning and dairings Now break into your house And go with everyone I send you to And no one can resist you or overrun you And go into the centers …" (small.en+medium.en)
+- **Jeremiah 1** — inserted verse 9 at 4:49–5:40 — "I have placed you in the mightest countries to test Please have your veins open and keep listening to the prophets I said to you anyone who speaks concerning with you you will be in danger of getting infected or dead If you want to tap on anyone you want you will go in person and say whatever I tell …" (small.en+medium.en)
+- **Jeremiah 1** — inserted verse 9 at 5:40–5:53 — "ready you to save your rains and grave Rogans to come blow of wind and push you away You will be in my house and I will bring you into my house and you will be a great part of" (small.en+medium.en)
+- **Jeremiah 1** — inserted verse 9 at 5:55–6:02 — "that day I will go into my house and get everyone to go and pray to God and praise His name" (small.en+medium.en)
+- **Jeremiah 1** — inserted verse 12 at 6:23–6:44 — "to see if anything I see is what it means Jeremiah said the Lord said to me I will see what they think and in the name of my nafer I will roar to benefit and give favor to those who praise me The Lord said to me I will roar and give favor to those who praise me and …" (small.en+medium.en)
+- **Jeremiah 1** — inserted verse 13 at 6:59–7:06 — "world it seems like they are not seeking God God I went to Genevieve and said to him I went to Genevieve and said" (small.en+medium.en)
+- **Jeremiah 1** — inserted verse 13 at 7:07–7:16 — "him I would rather eat your food and see your wine in plenty from my bread and my vineyard I remembered my Lord who saved me from Egypt and you invested" (small.en+medium.en)
+- **Jeremiah 1** — inserted verse 13 at 7:16–7:23 — "for many years I had no reason to pursue God's any way whatsoever but I I knew that I had" (small.en+medium.en)
+- **Jeremiah 1** — inserted verse 13 at 7:24–7:26 — "desire to enter the nations and taste and read" (small.en+medium.en)
+- **Jeremiah 1** — inserted verse 13 at 7:26–8:06 — "it said The Lord said to me I would rather eat your food and see your grapes and olives around you with any wine and butter I went to Genevieve and said to him I would rather eat your food and see your grapes and olives around you with any wine and butter I went to Genevieve and said to …" (small.en+medium.en)
+- **Jeremiah 1** — inserted verse 13 at 8:06–8:13 — "with any wine and butter I went to Genevieve and said to him I would rather eat your food and" (small.en+medium.en)
+- **Jeremiah 1** — inserted verse 13 at 8:13–8:16 — "your grapes and olives around you with any wine and butter" (small.en+medium.en)
+- **Jeremiah 1** — inserted verse 13 at 8:19–8:21 — "would rather eat your food and" (small.en+medium.en)
+- **Jeremiah 1** — inserted verse 13 at 8:21–8:39 — "your grapes and olives around you with any wine and butter I went to Genevieve and said to him I would rather eat your food and see your grapes" (small.en+medium.en)
+- **Jeremiah 1** — repeated verse 2 at 0:14–0:18 — "The Lord said to Jeremiah The" (small.en+medium.en)
+- **Jeremiah 1** — repeated verse 2 at 0:29–0:32 — "the name of Jeremiah the son of" (small.en+medium.en)
+- **Jeremiah 1** — repeated verse 2 at 0:33–0:42 — "the name of Jeremiah the son of Hilka the name of Jeremiah the son of Hilka the name of Jeremiah the" (small.en+medium.en)
+- **Jeremiah 1** — repeated verse 2 at 0:43–0:52 — "of Hilka the name of Jeremiah the son of Hilka the name of Jeremiah the name of Hilka the name of Jeremiah the son of Hilka the name of" (small.en+medium.en)
+- **Jeremiah 1** — repeated verse 2 at 1:02–1:19 — "the name of Jeremiah the son of Hilkah the name of Jeremiah the son of Hilkah the name of Jeremiah the son of Hilkah the name of Jeremiah the son of Hilkah the name of Jeremiah the son of" (small.en+medium.en)
+- **Jeremiah 1** — repeated verse 9 at 4:06–4:14 — "and go into the centers of your house and greet everyone as you were In that day I hoped you would kneel before me" (small.en+medium.en)
+- **Jeremiah 1** — repeated verse 13 at 7:05–7:07 — "I went to Genevieve and said to him I" (small.en+medium.en)
+- **Jeremiah 1** — repeated verse 13 at 7:29–7:31 — "I would rather eat your food and see your" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 2 0:20-0:44 (slice coverage small 0.96, medium 0.96) confirmed: inserted verse 9 3:32-3:56 (slice coverage small 0.96, medium 0.96) unclear: inserted verse 3 1:40-2:04 (slice coverage small 0.96, medium 0.62)
+  - WER small 2.4806 / medium 2.0102; coverage small 0.908 / medium 0.908; duration 578.73s vs expected 195.6s (ratio 2.959); sha256 `6ee3e50f2365dc2243d985b28b648590c7e30aa0f28f8abca663bb80a6bab696`
+- **Jeremiah 2** — missing verse 23 at 3:43 — "How can you say I am not unclean I have not followed the Baals Look at what you did in the valley Think about what you have done You are like a young camel running here and there like a wild donkey in the desert sniffing the wind eager to find a mate No one can hold her back Anyone …" (small.en+medium.en)
+- **Jeremiah 2** — inserted verse 10 at 1:33–1:41 — "And if anyone is willing to do anything or say anything or return anything or return my hand I will plead it with you instead" (small.en+medium.en)
+  - audio check: refuted: missing verse 23 3:13-3:22 (slice coverage small 0.92, medium 0.92) confirmed: inserted verse 10 1:32-1:47 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.1085 / medium 0.1994; coverage small 0.9184 / medium 0.8326; duration 342.19s vs expected 387.2s (ratio 0.884); sha256 `80b3b420d067348a97f3689384ae2cfcbf17425e73aa20590638b547e1f01ff5`
+- **Jeremiah 5** — silence verse ? at 0:22–0:28 — "surely as the Lord lives, they are making surely false promises." (waveform)
+- **Jeremiah 5** — inserted verse 3 at 0:49–1:13 — "then they They lie falsely and say Oh what happened with We saw no problems with perils They did nothing firmly to bring new wines They came and said To bring blood up on our canes through the open doors of that house They lied falsely and said Otherworldly wines would bring rivers and grant that they would take the …" (small.en+medium.en)
+- **Jeremiah 5** — inserted verse 3 at 1:14–1:16 — "do The temple was built in vain" (small.en+medium.en)
+- **Jeremiah 5** — inserted verse 3 at 1:17–1:33 — "brought blood from the ground and brought presence into the temple I needed of rife No one would listen today But now I am going on a parable that is after the vows I established to work the fiercely and breeze with" (small.en+medium.en)
+- **Jeremiah 5** — inserted verse 3 at 1:33–1:36 — "pride They did not ask for more grain or food" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 3 0:48-1:12 (slice coverage small 0.92, medium 0.92) confirmed: inserted verse 3 1:16-1:39 (slice coverage small 0.96, medium 1.00) confirmed: inserted verse 3 1:32-1:42 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.311 / medium 0.342; coverage small 0.8724 / medium 0.7881; duration 341.59s vs expected 322.8s (ratio 1.058); sha256 `455d369fa9d0541a8ad82b2d0efcc051a9b08f76fd4755bd4dd6bc35ac496a9b`
 
 ## UNCERTAIN
 
@@ -4159,6 +4219,22 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Isaiah 60** — audio slice contains the disputed words; the models still disagree (coverage small 0.985, medium 0.758)
   - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) refuted: missing verse 20 3:18-3:28 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.985, medium 0.758); WER small 0.0177 / medium 0.2448; coverage small 0.9853 / medium 0.7581; sha256 `fd2745a8787ff5d97f763d81f64909554dd94ef808740851262b12d6ad8262a0`
+- **Isaiah 62** — missing verse 4 at 1:00 — "you will be called My Delight Is in Her and your land will be called Married The LORD is happy with you and your land will be like a bride Just as a young man marries a young woman your people will marry you Just as a groom is happy with his bride your God will be happy with" (medium.en)
+  - audio check: unclear: missing verse 4 0:36-0:45 (slice coverage small 0.58, medium 0.58)
+  - medium.en only: missing 'you will be called My Delight Is in Her and your land will be called Married The LORD is happy with you and your land will be like a bride Just as a young man marries a young woman your people will marry you Just as a groom is happy with his bride your God will be happy with'; coverage unclear (small 0.995, medium 0.772; pass needs both >= 0.96); WER small 0.0109 / medium 0.2391; coverage small 0.9946 / medium 0.7717; sha256 `69f213a7737de3e905b7b3d189bcb1a1c7f9db41f5ddb4e716933dabfbea2a43`
+- **Isaiah 63** — audio slice contains the disputed words; the models still disagree (coverage small 0.920, medium 0.695)
+  - audio check: refuted: missing verse 16 2:41-2:51 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.920, medium 0.695); WER small 0.0835 / medium 0.3197; coverage small 0.9201 / medium 0.6945; sha256 `4d724a6bf3d4db1e906887ce16255c4342a5f22c56c8c10644c906b6650942dd`
+- **Isaiah 64** — missing verse 1 at 0:00–0:02 — "Oh I wish you would tear open the heavens and come down The mountains would shake in front of you like when fire burns up dry sticks and makes water boil Come and show your enemies who you are so the nations will tremble in front of you Long ago you did amazing things we didn't expect You came down …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'Oh I wish you would tear open the heavens and come down The mountains would shake in front of you like when fire burns up dry sticks and makes water boil Come and show your enemies who you are so the nations will tremble in front of you Long ago you did amazing things we didn't expect You came down …'; coverage unclear (small 0.997, medium 0.394; pass needs both >= 0.96); WER backstop on one model (small 0.004, medium 0.606); WER small 0.0035 / medium 0.6063; coverage small 0.9965 / medium 0.3937; sha256 `05b444b4213e453c23dfe1bb8282cc9e88abdd76093d02e69fe57e50fed5f2a7`
+- **Jeremiah 3** — audio slice contains the disputed words; the models still disagree (coverage small 0.996, medium 0.844)
+  - audio check: refuted: missing verse 2 0:17-0:26 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.996, medium 0.844); WER small 0.0091 / medium 0.1625; coverage small 0.9961 / medium 0.844; sha256 `f8a90e43f369161066193e392703cce9895838902d6448e5746471bf615b0ac3`
+- **Jeremiah 4** — missing verse 10 at 1:36 — "Then I said Oh Lord" (small.en)
+- **Jeremiah 4** — missing verse 1 at 0:00–0:02 — "Israel if you will come back says the LORD if you will come back to me and get rid of your disgusting idols and not wander away anymore and if you make your promises truthfully fairly and rightly saying As surely as the LORD lives then the nations will be blessed by him and will praise him This is what …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.83, medium 0.00) refuted: missing verse 10 1:27-1:37 (slice coverage small 0.80, medium 0.80)
+  - small.en only: missing 'Then I said Oh Lord'; medium.en only: missing 'Israel if you will come back says the LORD if you will come back to me and get rid of your disgusting idols and not wander away anymore and if you make your promises truthfully fairly and rightly saying As surely as the LORD lives then the nations will be blessed by him and will praise him This is what …'; coverage unclear (small 0.951, medium 0.778; pass needs both >= 0.96); WER small 0.054 / medium 0.2282; coverage small 0.9509 / medium 0.7779; sha256 `c26fa1f8323df1138ecd1f93aa8d3a815df908ae5f3e8bd3d4c9f08dd58ea4e2`
 
 ## Script
 
