@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 880
+- Scored chapters: 890
 - PASS: 53
-- FAIL: 493
-- UNCERTAIN: 334 (jsonl verdict UNSURE)
-- Still to score: 49 Old Testament chapters
+- FAIL: 499
+- UNCERTAIN: 338 (jsonl verdict UNSURE)
+- Still to score: 39 Old Testament chapters
 
 ## PASS
 
@@ -4107,6 +4107,50 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Amos 1** — inserted verse 3 at 0:42–1:39 — "cast off the faces of their fair deeds of Carian They lived in Tovar Dagorri down the drain and the very niece breathed into a bribal and a new king rises into the throne The very niece breathed into a Brival and a new king rises into the throne The very niece breathed into a Brival and a new king …" (small.en+medium.en)
   - audio check: confirmed: inserted verse 3 0:41-1:05 (slice coverage small 0.88, medium 0.88) unclear: inserted verse 3 0:29-0:44 (slice coverage small 1.00, medium 0.23)
   - WER small 0.4606 / medium 0.1088; coverage small 0.9606 / medium 0.8912; duration 222.76s vs expected 172.8s (ratio 1.289); sha256 `ab6795febe98bcde20fae41a26bd2d48755e60ba19a39bd43267cd92f1321dec`
+- **Amos 3** — missing verse 12 at 1:31–1:32 — "might save only two leg bones or" (small.en+medium.en)
+- **Amos 3** — inserted verse 12 at 1:34–1:43 — "enemy will take over the land they will tear down your strong walls and rob your palaces The Lord says as a shepherd tames a lion" (small.en+medium.en)
+- **Amos 3** — inserted verse 12 at 1:44–1:55 — "his hand the Lord God says An enemy will take over the land and will tear down your strong walls and your precious palaces The Lord says as a shepherd tames" (small.en+medium.en)
+- **Amos 3** — inserted verse 12 at 1:56–2:32 — "lion from his hand the Lord God says An enemy will take over the land and will tear down your strong walls and your precious palaces The Lord says an enemy will take over the land and will tear down your strong walls and your precious palaces The Lord says an enemy will take over the land and will tear …" (small.en+medium.en)
+- **Amos 3** — inserted verse 12 at 2:33–2:38 — "land and will tear down your strong walls and your present gold plates in their hands" (small.en+medium.en)
+- **Amos 3** — repeated verse 12 at 1:33–1:36 — "An enemy will take over the land" (small.en+medium.en)
+- **Amos 3** — repeated verse 12 at 1:36–1:41 — "will tear down your strong walls and rob your palaces The Lord" (small.en+medium.en)
+- **Amos 3** — repeated verse 12 at 1:45–1:48 — "the Lord God says An enemy will take over the land" (small.en+medium.en)
+- **Amos 3** — repeated verse 12 at 1:49–1:51 — "will tear down your strong walls and" (small.en+medium.en)
+- **Amos 3** — repeated verse 12 at 1:52–2:06 — "palaces The Lord says as a shepherd tames a lion from his hand the Lord God says An enemy will take over the land and will tear down your strong walls and your precious palaces The Lord says" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 12 1:55-2:19 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 12 1:51-2:12 (slice coverage small 0.96, medium 0.96, times 0/0) confirmed: inserted verse 12 1:43-2:01 (slice coverage small 0.92, medium 0.92)
+  - WER small 0.7906 / medium 0.2356; coverage small 0.7277 / medium 0.8089; duration 200.15s vs expected 152.8s (ratio 1.31); sha256 `f82681a5c5b7e4351b52d76de7f4ce0e35aa01f1533ee86cac485d11ced8002a`
+- **Amos 5** — coverage low on both models (small 0.876, medium 0.871); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1243 / medium 0.1301; coverage small 0.8757 / medium 0.8713; duration 234.84s vs expected 273.6s (ratio 0.858); sha256 `55ace156650d9626fee633808e17f88d60901d605702ad523e2cc9d2aa8051b9`
+- **Amos 6** — missing verse 3 at 1:19 — "How terrible for you who think the day of trouble is far away You are only bringing a time of violence closer You lie on beds decorated with ivory and stretch out on your couches You eat the best lambs from the flock and the best calves from the barn You strum your harps and make up new songs on …" (small.en+medium.en)
+  - audio check: confirmed: missing verse 3 0:39-0:48 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.3772 / medium 0.4025; coverage small 0.6228 / medium 0.6051; duration 138.84s vs expected 158.0s (ratio 0.879); sha256 `6e00e9859736bdbcf81b245abfb599663d43b3c826bcbd21427d4beb04c7ea63`
+- **Amos 8** — coverage low on both models (small 0.807, medium 0.811); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1934 / medium 0.2005; coverage small 0.8066 / medium 0.8113; duration 140.25s vs expected 169.6s (ratio 0.827); sha256 `d565432f4ecea518f2a65a2906fa23db96d234173b0cd03ae0d79b75c0f9e561`
+- **Amos 9** — missing verse 1 at 0:04–0:12 — "saw the Lord standing beside" (small.en+medium.en)
+  - audio check: confirmed: missing verse 1 0:00-0:06 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.0425 / medium 0.1486; coverage small 0.9846 / medium 0.8533; duration 175.1s vs expected 207.2s (ratio 0.845); sha256 `40f4ea899874a8fe129875e53bb8405c62a27b4a019d28648c53a1243d79ac07`
+- **Jonah 1** — inserted verse 16 at 2:29–2:33 — "They made a covenant with God and promised together that" (small.en+medium.en)
+- **Jonah 1** — inserted verse 16 at 2:33–2:44 — "would never reach the river any further Then the Lord sent a great p who washed over Jonah and played him under a tent The Lord did that for a name for" (small.en+medium.en)
+- **Jonah 1** — inserted verse 16 at 2:44–2:53 — "name to command for the name of Jonah for the name of God of Chorus for the name of Jesus Christ who they did to bring the name" (small.en+medium.en)
+- **Jonah 1** — inserted verse 16 at 2:55–3:02 — "remembered what they had done and waited he had ended his own praise before him God reigned after Jonah" (small.en+medium.en)
+- **Jonah 1** — inserted verse 17 at 3:14–3:18 — "a parable to test him by playing into a storm Jonah dreamt" (small.en+medium.en)
+- **Jonah 1** — inserted verse 17 at 3:28–3:38 — "tasted the greatest parable of his life Then he was sent out to the deep round in the Moria The Lord sent a parable to test him by playing into a storm" (small.en+medium.en)
+- **Jonah 1** — inserted verse 17 at 3:39–3:58 — "gave in a terrible double and he walked out to the deep round in the Moria The Lord sent a parable and tasted the greatest parable of of his life The guests said God gave us a great parable that he shouldn't break our rules The men wrote a parable and tasted if each one" (small.en+medium.en)
+- **Jonah 1** — inserted verse 17 at 3:58–4:07 — "correct They walked out to the deep round in a sea region named Gard They knew this wasn't a normal place but they were willing to die for" (small.en+medium.en)
+- **Jonah 1** — inserted verse 17 at 4:07–4:13 — "name of God In ten very small people they made a prayer to their God and praised him" (small.en+medium.en)
+- **Jonah 1** — inserted verse 17 at 4:15–6:17 — "cast their prayers in a binder One day the Lord sent a parable to test see if each one was correct The Betty wrote a parable that he shouldn't break his bed but he said if each one was correct the Betty would have done him by faith and grace The Betty wrote a parable that he shouldn't break his …" (small.en+medium.en)
+- **Jonah 1** — repeated verse 17 at 3:35–3:39 — "sent a parable to test him by playing into a storm Jonah" (small.en+medium.en)
+- **Jonah 1** — repeated verse 17 at 3:42–3:46 — "out to the deep round in the Moria The Lord sent a parable" (small.en+medium.en)
+- **Jonah 1** — repeated verse 17 at 3:59–4:01 — "walked out to the deep round in" (small.en+medium.en)
+- **Jonah 1** — repeated verse 17 at 4:19–4:21 — "the Lord sent a parable to test him by" (small.en+medium.en)
+- **Jonah 1** — repeated verse 17 at 4:22–4:23 — "if each one was correct" (small.en+medium.en)
+- **Jonah 1** — repeated verse 17 at 4:25–4:26 — "parable that he shouldn't break" (small.en+medium.en)
+- **Jonah 1** — repeated verse 17 at 4:28–4:31 — "if each one was correct the Betty" (small.en+medium.en)
+- **Jonah 1** — repeated verse 17 at 4:34–4:39 — "The Betty wrote a parable that he shouldn't break his bed but he said if each one was correct" (small.en+medium.en)
+- **Jonah 1** — repeated verse 17 at 5:07–5:08 — "The Lord sent a great" (small.en+medium.en)
+- **Jonah 1** — repeated verse 17 at 5:08–5:10 — "parable to test him by playing" (small.en+medium.en)
+  - audio check: unclear: inserted verse 17 4:14-4:38 (slice coverage small 0.54, medium 1.00) confirmed: inserted verse 17 3:38-4:02 (slice coverage small 1.00, medium 0.96) confirmed: inserted verse 16 2:32-2:50 (slice coverage small 0.96, medium 1.00)
+  - WER small 1.2939 / medium 1.1864; coverage small 0.9627 / medium 0.3904; duration 380.33s vs expected 182.4s (ratio 2.085); sha256 `6bcab608fe0e183f4340d7773e6b622b1225b57bc65a0cc58f38e9cf0a983a28`
 
 ## UNCERTAIN
 
@@ -5148,6 +5192,17 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Joel 2** — audio slice contains the disputed words; the models still disagree (coverage small 0.980, medium 0.727)
   - audio check: refuted: missing verse 20 3:01-3:11 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.980, medium 0.727); WER small 0.0256 / medium 0.29; coverage small 0.98 / medium 0.7267; sha256 `105d9cfa82e276d35ee2e18022ea8a8837789ec5f25d47ed9ee27b430c1d90b5`
+- **Amos 2** — missing verse 1 at 0:26–0:28 — "The LORD says Moab has sinned again and again three times even four I will not hold back its punishment They burned the bones of Edom's king until they turned to powder So I will send fire on Moab It will burn up the palaces of Kerioth Moab will die in the noise of battle with shouting and the sound …" (small.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 1.00)
+  - small.en only: missing 'The LORD says Moab has sinned again and again three times even four I will not hold back its punishment They burned the bones of Edom's king until they turned to powder So I will send fire on Moab It will burn up the palaces of Kerioth Moab will die in the noise of battle with shouting and the sound …'; coverage unclear (small 0.816, medium 0.986; pass needs both >= 0.96); WER small 0.1865 / medium 0.0186; coverage small 0.8159 / medium 0.986; sha256 `25960279da62ec8f74db53028df2296bc12d1a6484c719e5af5c06f9c597193c`
+- **Amos 4** — missing verse 11 at ? — "But you still didn't come back to me says the LORD So this is what I will do to you Israel And because I will do this to you get ready to meet your God Israel He is the one who forms the mountains and creates the wind He tells people what he is thinking He turns the morning into …" (medium.en)
+  - medium.en only: missing 'But you still didn't come back to me says the LORD So this is what I will do to you Israel And because I will do this to you get ready to meet your God Israel He is the one who forms the mountains and creates the wind He tells people what he is thinking He turns the morning into …'; coverage unclear (small 0.995, medium 0.806; pass needs both >= 0.96); WER small 0.0072 / medium 0.2014; coverage small 0.9952 / medium 0.8058; sha256 `ebed8f83aab86cdb5dcb55d7baadf3482e56c0fbb5c9e0fcc3fdfc451f80ab44`
+- **Amos 7** — audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.881)
+  - audio check: refuted: missing verse 6 0:44-0:53 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.881); WER small 0.0021 / medium 0.1271; coverage small 0.9979 / medium 0.8812; sha256 `339d87642c32d81d804407d969aa9c82c28c4a49c3b2c1c06442f7fff7329ab7`
+- **Obadiah 1** — audio slice contains the disputed words; the models still disagree (coverage small 0.873, medium 0.986)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.83)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.873, medium 0.986); WER small 0.1282 / medium 0.0142; coverage small 0.8734 / medium 0.9858; sha256 `f3f4c58441958872ec073905e0b31a71d57c3823eac47fa16bc731480531188c`
 
 ## Script
 
