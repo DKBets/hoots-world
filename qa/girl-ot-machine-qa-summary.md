@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 860
+- Scored chapters: 870
 - PASS: 52
-- FAIL: 486
-- UNCERTAIN: 322 (jsonl verdict UNSURE)
-- Still to score: 69 Old Testament chapters
+- FAIL: 489
+- UNCERTAIN: 329 (jsonl verdict UNSURE)
+- Still to score: 59 Old Testament chapters
 
 ## PASS
 
@@ -4070,6 +4070,16 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Daniel 9** — inserted verse 1 at 0:02–0:20 — "Jack 23 Jack 23 Jack 23 Jack 23 Jack 23 Jack 23 Jack 23 Jack Jeremiah found itself in" (small.en+medium.en)
   - audio check: confirmed: inserted verse 1 0:01-0:25 (slice coverage small 1.00, medium 0.79) confirmed: missing verse 1 0:00-0:03 (slice coverage small 0.00, medium 0.00)
   - WER small 0.0393 / medium 0.1716; coverage small 0.9639 / medium 0.8404; duration 337.49s vs expected 366.0s (ratio 0.922); sha256 `5408b81c62af5ddb0f93f800bda6fe1ffbb6ced69fa47d99254660ac4aa35a0c`
+- **Daniel 12** — missing verse 12 at 2:04–2:05 — "thousand three hundred thirty five" (small.en+medium.en)
+  - audio check: confirmed: missing verse 12 1:55-2:05 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.0303 / medium 0.2576; coverage small 0.9697 / medium 0.7449; duration 137.0s vs expected 158.4s (ratio 0.865); sha256 `ee2651649ca37771074d45e18dd5bbce2f716a7aa87aac464446b504e0f22c53`
+- **Hosea 1** — missing verse 1 at 0:26 — "This is the LORD's message that came to Hosea son of Beeri It came when Uzziah Jotham Ahaz and Hezekiah were kings of Judah and when Jeroboam son of Joash was king of Israel When the LORD first spoke through" (small.en+medium.en)
+- **Hosea 1** — missing verse 2 at 0:28–0:29 — "he said to him Go and marry a woman who will not stay faithful to you and have children with her This will show how the land has been unfaithful to me and turned away" (small.en+medium.en)
+  - audio check: confirmed: missing verse 1 0:10-0:19 (slice coverage small 0.17, medium 0.08) refuted: missing verse 2 0:14-0:23 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.2461 / medium 0.162; coverage small 0.757 / medium 0.8505; duration 122.28s vs expected 128.4s (ratio 0.952); sha256 `fcc00fe41ab3e08384e82fd9d98e031fbb80054d64d8ba3a3759e80b06771539`
+- **Hosea 7** — missing verse 1 at 0:26–0:28 — "Whenever I want to heal Israel Ephraim's sins and Samaria's evil come out They lie to each other Thieves break into houses and gangs of robbers attack in the streets They don't stop to think that I remember all the evil they do Now their sins are all around them I can see everything they do They make the king …" (small.en+medium.en)
+  - audio check: confirmed: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.1901 / medium 0.2173; coverage small 0.8099 / medium 0.7852; duration 141.48s vs expected 162.0s (ratio 0.873); sha256 `5d2fa97f5234475bf6dd2190589d7e92a5d73c82486a3ba7c74b93a9f08a3300`
 
 ## UNCERTAIN
 
@@ -5074,6 +5084,28 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Daniel 10** — audio slice contains the disputed words; the models still disagree (coverage small 0.991, medium 0.762)
   - audio check: refuted: missing verse 3 0:21-0:31 (slice coverage small 1.00, medium 0.90)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.991, medium 0.762); WER small 0.0142 / medium 0.2376; coverage small 0.9911 / medium 0.7624; sha256 `505c83f9dae148578193ff1647e4a2a0827da3ce49d285807692b5c1b21c2b21`
+- **Daniel 11** — audio slice contains the disputed words; the models still disagree (coverage small 0.996, medium 0.832)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.996, medium 0.832); WER small 0.0062 / medium 0.1737; coverage small 0.9959 / medium 0.8317; sha256 `dc6e30c07f9871ad53a80c50039b4188432e25c15fc723b84370a612e4e07e72`
+- **Hosea 2** — audio slice contains the disputed words; the models still disagree (coverage small 0.862, medium 0.800)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.862, medium 0.800); WER small 0.1396 / medium 0.2033; coverage small 0.8619 / medium 0.7997; sha256 `0e71733a7e90cd618d32582f0fb2da4848e812f2eab319aa630ba36a216afc5c`
+- **Hosea 3** — missing verse 1 at 0:00–0:02 — "The LORD said to me Go again and love your wife even though she has loved another man and has not been faithful Love her the way the LORD loves the people of Israel even though they turn to other gods and love to bring raisin cakes to them So I paid to bring her back I paid about six …" (small.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 1.00)
+  - small.en only: missing 'The LORD said to me Go again and love your wife even though she has loved another man and has not been faithful Love her the way the LORD loves the people of Israel even though they turn to other gods and love to bring raisin cakes to them So I paid to bring her back I paid about six …'; coverage unclear (small 0.552, medium 1.000; pass needs both >= 0.96); WER backstop on one model (small 0.448, medium 0.006); WER small 0.4477 / medium 0.0058; coverage small 0.5523 / medium 1.0; sha256 `948577a3abd8e5cf99e45cae495317a83f3a61273703a34fda212f1e8d8d5e0e`
+- **Hosea 4** — audio slice contains the disputed words; the models still disagree (coverage small 0.669, medium 0.968)
+  - audio check: refuted: missing verse 1 0:02-0:11 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.669, medium 0.968); WER small 0.3312 / medium 0.0464; coverage small 0.6688 / medium 0.9684; sha256 `235e2887760d8403d7331acb15444efea4f679f7f1b202d9a7850e411953c903`
+- **Hosea 5** — audio slice contains the disputed words; the models still disagree (coverage small 0.596, medium 0.570)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.596, medium 0.570); WER small 0.4298 / medium 0.4298; coverage small 0.5955 / medium 0.5702; sha256 `683857fd66606f69dacdaa15ca825fac4ad5b714ebe28bf9e9771ba36410c64a`
+- **Hosea 6** — audio slice contains the disputed words; the models still disagree (coverage small 0.992, medium 0.625)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.83, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.992, medium 0.625); WER small 0.0154 / medium 0.3784; coverage small 0.9923 / medium 0.6255; sha256 `6e58202d1cf4b39a9b2168836b8b2db0aa8b16d9bf1143600249261d2afc3f9c`
+- **Hosea 8** — missing verse 7 at 0:59 — "Their grain has no heads on it" (small.en)
+- **Hosea 8** — missing verse 1 at 0:00–0:02 — "Put the trumpet to your lips Something like an eagle is coming over the LORD's house because my people have broken my covenant and turned against my law They cry out to me Our God we in Israel know you But Israel has thrown away what is good The enemy will chase after them They chose kings without me They …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00) refuted: missing verse 7 0:50-1:00 (slice coverage small 1.00, medium 1.00)
+  - small.en only: missing 'Their grain has no heads on it'; medium.en only: missing 'Put the trumpet to your lips Something like an eagle is coming over the LORD's house because my people have broken my covenant and turned against my law They cry out to me Our God we in Israel know you But Israel has thrown away what is good The enemy will chase after them They chose kings without me They …'; coverage unclear (small 0.975, medium 0.384; pass needs both >= 0.96); WER backstop on one model (small 0.025, medium 0.616); WER small 0.0248 / medium 0.6161; coverage small 0.9752 / medium 0.3839; sha256 `6269af8c0872a880319f6d830bcb6fd3533a13c4517dfc3d2215a412a65ca93d`
 
 ## Script
 
