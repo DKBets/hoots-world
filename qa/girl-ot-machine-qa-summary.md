@@ -58,18 +58,19 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 160
-- PASS: 5
-- FAIL: 102
-- UNCERTAIN: 53 (jsonl verdict UNSURE)
-- Still to score: 769 Old Testament chapters
+- Scored chapters: 170
+- PASS: 6
+- FAIL: 109
+- UNCERTAIN: 55 (jsonl verdict UNSURE)
+- Still to score: 759 Old Testament chapters
 
 ## PASS
 
-5 chapters. Both models agreed there was no missing, invented, or repeated passage.
+6 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
+- Deuteronomy 11
 
 ## FAIL
 
@@ -770,6 +771,47 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Deuteronomy 7** — missing verse 1 at 0:29–0:30 — "The LORD your God will bring you into the land you are going to take over He will drive out many nations ahead of you the Hittites Girgashites Amorites Canaanites Perizzites Hivites and Jebusites These are seven nations bigger and stronger than you When the LORD your God gives them to you and you defeat them you must destroy them …" (small.en+medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.17)
   - WER small 0.1089 / medium 0.1232; coverage small 0.8923 / medium 0.8833; duration 259.11s vs expected 308.4s (ratio 0.84); sha256 `174d6ecf52e1bc18d1aa11c4115c445d35b1bec520fb6717baf11443e5d7c871`
+- **Deuteronomy 8** — missing verse 18 at 2:35 — "as he is doing today" (small.en)
+- **Deuteronomy 8** — missing verse 16 at 2:14 — "it to make you humble and to test you so that in the end" (medium.en)
+  - audio check: confirmed: missing verse 16 2:05-2:15 (slice coverage small 0.17, medium 0.08) unclear: missing verse 18 2:26-2:36 (slice coverage small 0.40, medium 1.00)
+  - WER small 0.0231 / medium 0.1252; coverage small 0.9807 / medium 0.896; duration 172.89s vs expected 207.6s (ratio 0.833); sha256 `cc2f6f8f38969e3700b6fbb09f15a44c8775462d947ea81d09cb086959aea4df`
+- **Deuteronomy 9** — inserted verse 6 at 1:15–1:22 — "It is because he is giving them to Abraham Isaac and Jacob and you are not going in to take their land because" (small.en+medium.en)
+- **Deuteronomy 9** — inserted verse 6 at 1:22–1:28 — "are good It is because he is giving them to Abraham Isaac and Jacob and they" (small.en+medium.en)
+- **Deuteronomy 9** — inserted verse 6 at 1:28–2:25 — "waiting for your own diligence and faith It's not about winning your own ways or doing your own works It's about waiting for the divine breath of God to drive them to a place where they will go It's not about winning your own ways or doing your own works It's about waiting for the divine breath of God to …" (small.en+medium.en)
+- **Deuteronomy 9** — inserted verse 6 at 2:25–2:26 — "place where they will go" (small.en+medium.en)
+- **Deuteronomy 9** — inserted verse 23 at 5:53–6:00 — "Lord wavered easy up to their land because he was afraid" (small.en+medium.en)
+- **Deuteronomy 9** — inserted verse 23 at 6:03–6:12 — "promise was that he would bring them there to give them an inherent land to eat and prosper in abundance of ducks and wheat Today when I make" (small.en+medium.en)
+- **Deuteronomy 9** — inserted verse 24 at 6:12–6:15 — "sacrifice and promise to give them all their land" (small.en+medium.en)
+- **Deuteronomy 9** — inserted verse 25 at 6:16–6:20 — "into a place where the Cherokees are roaming and broken in sand rocks" (small.en+medium.en)
+- **Deuteronomy 9** — inserted verse 26 at 6:36–6:40 — "In each tribe we will send a spy to Deborah God and tell him to dev" (small.en+medium.en)
+- **Deuteronomy 9** — inserted verse 26 at 6:40–6:48 — "bring back a sample Each tribe will send a spy to Deborah God to dev We then promise together the Lord we all want to go" (small.en+medium.en)
+- **Deuteronomy 9** — inserted verse 27 at 6:48–6:50 — "to grab a brover or two to ten" (small.en+medium.en)
+- **Deuteronomy 9** — inserted verse 28 at 6:50–6:55 — "Each tribe will send a spy to Deborah God We then promise together" (small.en+medium.en)
+- **Deuteronomy 9** — inserted verse 28 at 6:58–7:01 — "samples of each tribe of those who wandered through the Wilder" (small.en+medium.en)
+- **Deuteronomy 9** — repeated verse 6 at 1:40–1:58 — "It's not about winning your own ways or doing your own works It's about waiting for the divine breath of God to drive them to a place where they will go It's not about winning your own ways or doing your own works It's about waiting for the divine breath of God to drive them to a place where they …" (small.en+medium.en)
+- **Deuteronomy 9** — repeated verse 6 at 2:01–2:26 — "or doing your own works It's about waiting for the divine breath of God to drive them to a place where they will go It's not about winning your own ways or doing your own works It's about waiting for the divine breath of God to drive them to a place where they will go It's not about winning your …" (small.en+medium.en)
+- **Deuteronomy 9** — repeated verse 11 at 3:10–3:12 — "forty days and forty nights" (small.en+medium.en)
+- **Deuteronomy 9** — repeated verse 27 at 6:45–6:50 — "We then promise together the Lord we all want to go and to grab a brover or two to ten people" (small.en+medium.en)
+- **Deuteronomy 9** — paraphrase verse ? at ? — "scattered wording does not match the source" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 6 1:27-1:51 (slice coverage small 1.00, medium 1.00) unclear: repeated verse 6 2:00-2:24 (slice coverage small 1.00, medium 0.04, times 3/0) unclear: repeated verse 6 1:39-2:03 (slice coverage small 1.00, medium 1.00, times 2/1)
+  - WER small 0.5447 / medium 0.5235; coverage small 0.8434 / medium 0.8065; duration 431.83s vs expected 357.6s (ratio 1.208); sha256 `2eeef77ad8ade81c95461df9f4c70f2c133d5c5139dcace5c322fe7593584e41`
+- **Deuteronomy 12** — coverage low on both models (small 0.895, medium 0.875); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1064 / medium 0.1275; coverage small 0.8947 / medium 0.8747; duration 291.41s vs expected 360.8s (ratio 0.808); sha256 `5634eb4576da250491f9bc5c42e9a4fc094d28584e17815573a3cf5e844aa0eb`
+- **Deuteronomy 13** — missing verse 6 at 0:58 — "that you and your ancestors have never known" (small.en)
+  - audio check: confirmed: missing verse 6 0:49-0:59 (slice coverage small 0.25, medium 0.25)
+  - WER small 0.0361 / medium 0.0141; coverage small 0.9699 / medium 0.99; duration 155.14s vs expected 199.2s (ratio 0.779); sha256 `7d70468dbeeae98626ea25e728381ceadf636e00d9b160c03392d9037deb2fd2`
+- **Deuteronomy 14** — inserted verse ? at 0:28 — "oh dear wild goats ibex" (small.en+medium.en windows)
+- **Deuteronomy 14** — missing verse 21 at 1:48 — "your town to eat or sell it to a foreigner But you are a holy people who belong to the LORD" (small.en)
+- **Deuteronomy 14** — missing verse 5 at 0:58 — "and mountain sheep You may eat any animal that has a hoof split in two and chews the cud But you must not eat the camel the hare or the rabbit They chew the cud but do not have split hoofs so they are unclean for you The pig has a split hoof but does not chew the cud so …" (medium.en)
+  - audio check: unclear: missing verse 5 0:25-0:34 (slice coverage small 0.67, medium 0.67) unclear: missing verse 21 1:39-1:48 (slice coverage small 0.42, medium 0.08) unclear: inserted verse ? 0:27-0:39 (slice coverage small 0.60, medium 0.60)
+  - WER small 0.0489 / medium 0.1522; coverage small 0.9529 / medium 0.8496; duration 194.18s vs expected 220.8s (ratio 0.879); sha256 `43ba7c8ce458b97517707d69f637c1c585eb7c8e29e4d4e64ec9621b34fba7e6`
+- **Deuteronomy 15** — missing verse 5 at 0:58 — "giving you today The LORD your God will bless you as he promised You will lend to many nations but you will not need to borrow You will rule over many nations but none will rule over you If one of your fellow Israelites is poor and lives in one of the towns in the land the LORD your God …" (small.en)
+- **Deuteronomy 15** — missing verse 12 at 1:47–1:50 — "set them free in the seventh year When" (medium.en)
+  - audio check: unclear: missing verse 5 0:28-0:37 (slice coverage small 0.67, medium 0.67) confirmed: missing verse 12 1:38-1:48 (slice coverage small 0.12, medium 0.00)
+  - WER small 0.1486 / medium 0.0321; coverage small 0.8598 / medium 0.978; duration 197.12s vs expected 236.8s (ratio 0.832); sha256 `7b413184f8003d0b03817db60393cb9666ddd30cc9d1440c56908c63a851fc79`
+- **Deuteronomy 16** — missing verse 1 at 0:30 — "Celebrate the Passover of the LORD your God in the month of Abib because in that month the LORD your God brought you out of Egypt at night Sacrifice an animal from your flock or herd as the Passover offering to the LORD your God at the place the LORD will choose as a home for his name Do not …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - WER small 0.1689 / medium 0.1858; coverage small 0.8328 / medium 0.8193; duration 188.67s vs expected 236.8s (ratio 0.797); sha256 `9f1502fd8e4ed96c1db5853f4d1fb439a92429c7c03b7ed3cf8ae67a130246c6`
 
 ## UNCERTAIN
 
@@ -943,6 +985,12 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Deuteronomy 6** — missing verse 3 at 0:27 — "things will go well for you and you will grow into a great nation in a land flowing with milk and honey just as the LORD the God of your ancestors promised you Listen" (medium.en)
   - audio check: unclear: missing verse 3 0:13-0:22 (slice coverage small 0.25, medium 0.42)
   - medium.en only: missing 'things will go well for you and you will grow into a great nation in a land flowing with milk and honey just as the LORD the God of your ancestors promised you Listen'; coverage unclear (small 0.993, medium 0.534; pass needs both >= 0.96); WER backstop on one model (small 0.009, medium 0.473); WER small 0.0089 / medium 0.4734; coverage small 0.9929 / medium 0.5337; sha256 `6e91a612ebef3e707a2b9d8600cbb6533c4e26238e2a64ca953da77813303c92`
+- **Deuteronomy 10** — audio slice contains the disputed words; the models still disagree (coverage small 0.988, medium 0.832)
+  - audio check: refuted: missing verse 14 2:06-2:15 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.988, medium 0.832); WER small 0.0156 / medium 0.182; coverage small 0.9879 / medium 0.8319; sha256 `a0b6ecf28bdc1028607fa1cbda8927d04cd1d0c7d279cfc55f6055bd497fae84`
+- **Deuteronomy 17** — audio slice contains the disputed words; the models still disagree (coverage small 0.997, medium 0.663)
+  - audio check: refuted: missing verse 4 0:29-0:38 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.997, medium 0.663); WER small 0.0035 / medium 0.3408; coverage small 0.9965 / medium 0.6626; sha256 `7d291e7bcb7f79f80cff865e15e89af313980fac1961212f03617c0895356672`
 
 ## Script
 
