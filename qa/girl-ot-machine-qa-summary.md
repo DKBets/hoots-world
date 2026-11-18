@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 530
-- PASS: 23
+- Scored chapters: 540
+- PASS: 25
 - FAIL: 328
-- UNCERTAIN: 179 (jsonl verdict UNSURE)
-- Still to score: 399 Old Testament chapters
+- UNCERTAIN: 187 (jsonl verdict UNSURE)
+- Still to score: 389 Old Testament chapters
 
 ## PASS
 
-23 chapters. Both models agreed there was no missing, invented, or repeated passage.
+25 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -77,7 +77,7 @@ words clears that span. A split slice stays UNCERTAIN.
 - Nehemiah 1, 5
 - Esther 10
 - Job 2, 34–35
-- Psalms 1, 3, 8, 11–12, 15, 39, 50
+- Psalms 1, 3, 8, 11–12, 15, 39, 50, 53, 58
 
 ## FAIL
 
@@ -3517,6 +3517,29 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 52** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.335)
   - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.335); WER small 0.0052 / medium 0.6649; coverage small 1.0 / medium 0.3351; sha256 `c6c6ecc9034ae0d492b157efa11d43f138ea9554284ac9baa8cbbd00427940e3`
+- **Psalms 54** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.183)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.183); WER small 0.0 / medium 0.8165; coverage small 1.0 / medium 0.1835; sha256 `0f44f31898eb17693f5dcba48b4a645e94c7c49c36b2cd4d2555eca5d815ca15`
+- **Psalms 55** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.754)
+  - audio check: refuted: missing verse 1 0:00-0:05 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.754); WER small 0.0025 / medium 0.2482; coverage small 1.0 / medium 0.7543; sha256 `a9603d14d194f8255e7c6493eaa21f46bb3bbcacef295b24e0515dc50ec9da63`
+- **Psalms 56** — audio slice contains the disputed words; the models still disagree (coverage small 0.973, medium 0.316)
+  - audio check: refuted: missing verse 9 0:42-0:52 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.973, medium 0.316); WER small 0.0267 / medium 0.6844; coverage small 0.9733 / medium 0.3156; sha256 `15bfb99cfc0839a43a25237696cebaf84491c555260914f7e9662f7a483a0fc2`
+- **Psalms 57** — missing verse 6 at 0:50 — "Selah My heart is steady God" (medium.en)
+  - audio check: unclear: missing verse 6 0:41-0:51 (slice coverage small 0.17, medium 0.50)
+  - medium.en only: missing 'Selah My heart is steady God'; coverage unclear (small 0.996, medium 0.649; pass needs both >= 0.96); WER backstop on one model (small 0.004, medium 0.351); WER small 0.0041 / medium 0.3512; coverage small 0.9959 / medium 0.6488; sha256 `8b3350b7c1f3d4311006c3972a7e1893ee1d9c35718f69ec97029f10a295ff84`
+- **Psalms 59** — audio slice contains the disputed words; the models still disagree (coverage small 0.991, medium 0.778)
+  - audio check: refuted: missing verse 3 0:18-0:27 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.991, medium 0.778); WER small 0.0086 / medium 0.2219; coverage small 0.9914 / medium 0.7781; sha256 `7698e5bff874e60c8954a9783ebeb35b4f452c0c9db70b6cac3c67025462b0b3`
+- **Psalms 60** — missing verse 10 at ? — "God you don't go out with our armies anymore Help us against our enemy because help from people is worth nothing With God's help we will be brave and strong He is the one who will beat our enemies" (medium.en)
+  - medium.en only: missing 'God you don't go out with our armies anymore Help us against our enemy because help from people is worth nothing With God's help we will be brave and strong He is the one who will beat our enemies'; coverage unclear (small 0.987, medium 0.802; pass needs both >= 0.96); WER small 0.0315 / medium 0.2027; coverage small 0.9865 / medium 0.8018; sha256 `27dd57cd82216c2621f9aaecc960acc72bca5129d2359979b830f045df6f8a3d`
+- **Psalms 61** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.343)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.343); WER small 0.0071 / medium 0.6571; coverage small 1.0 / medium 0.3429; sha256 `617a0de97ecfbcf4a73eb0a724ec70277f037e008f07f9785296b7d17e7bb869`
+- **Psalms 62** — audio slice contains the disputed words; the models still disagree (coverage small 0.642, medium 0.642)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.642, medium 0.642); WER small 0.3583 / medium 0.3583; coverage small 0.6417 / medium 0.6417; sha256 `80084f0b54e2136cd8a892d270032fa31da5e2c9b4ee17b09da682c868c4c045`
 
 ## Script
 
