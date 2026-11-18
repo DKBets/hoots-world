@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 680
+- Scored chapters: 690
 - PASS: 47
-- FAIL: 389
-- UNCERTAIN: 244 (jsonl verdict UNSURE)
-- Still to score: 249 Old Testament chapters
+- FAIL: 396
+- UNCERTAIN: 247 (jsonl verdict UNSURE)
+- Still to score: 239 Old Testament chapters
 
 ## PASS
 
@@ -3139,6 +3139,73 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Isaiah 1** — missing verse 18 at 3:09 — "now let's talk this over says the LORD Even if your sins are as red as scarlet they will be as white as snow Even if they are as red as crimson they will be as white as wool If you are willing to obey you will eat the good things the land grows But if you refuse and turn …" (medium.en)
   - audio check: confirmed: missing verse 18 2:31-2:40 (slice coverage small 0.08, medium 0.00)
   - WER small 0.0113 / medium 0.2038; coverage small 0.9912 / medium 0.8013; duration 278.49s vs expected 318.0s (ratio 0.876); sha256 `f3416928eac34f36aba84a7c68c8777d48760babe041201eddd71b8bef8b279b`
+- **Isaiah 3** — inserted verse 16 at 2:11–3:21 — "They look like rouges and boast in their pro placing pronouns The Lord also says the Lord also says the Lord also says the Lord proplazing pronouns They begin to drive their tenants poor and bury their proplazing pronouns They begin to drive their tenants poor and bury their proplazing pronouns They begin to drive their tenants poor and bury …" (small.en+medium.en)
+- **Isaiah 3** — repeated verse 16 at 2:49–3:14 — "proplazing pronouns They begin to drive their tenants poor and bury their proplazing pronouns They begin to drive their tenants poor and bury their proplazing pronouns They begin to drive their tenants poor and bury their proplazing pronouns They begin to drive their tenants poor and bury their" (small.en+medium.en)
+- **Isaiah 3** — repeated verse 16 at 3:15–3:22 — "pronouns They begin to drive their tenants poor and bury their pro placing pronouns They" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 16 2:10-2:34 (slice coverage small 0.75, medium 0.75) unclear: repeated verse 16 2:48-3:12 (slice coverage small 1.00, medium 0.21, times 2/0) refuted: repeated verse 16 3:14-3:28 (slice coverage small 1.00, medium 0.73, times 1/0)
+  - WER small 0.1953 / medium 0.5842; coverage small 0.9857 / medium 0.5824; duration 268.59s vs expected 223.2s (ratio 1.203); sha256 `c4856ad267d9d7cfd4fa48663f76a4037cd61338c14d3737d9916c24a46e926d`
+- **Isaiah 5** — missing verse 1 at 1:01–1:04 — "one I love a song about" (small.en+medium.en)
+- **Isaiah 5** — inserted verse 1 at 0:30–0:36 — "I would send Vineyard to the King This Vineyard gave" (small.en+medium.en)
+- **Isaiah 5** — inserted verse 1 at 0:36–1:00 — "no interest to invest in any Vineyard It had his Vineyard and made his Vineyard planted seeds But he watered his Vineyard and made his Vineyard planted seeds But the Lord had no interest in mating his vineyard planted seeds" (small.en+medium.en)
+- **Isaiah 5** — inserted verse 1 at 1:01–1:04 — "Lord had no interest in mating" (small.en+medium.en)
+- **Isaiah 5** — inserted verse 1 at 1:08–1:16 — "Lord had no interest in made his vineyard Planting them planted So he" (small.en+medium.en)
+- **Isaiah 5** — inserted verse 1 at 1:17–1:21 — "his shepherds and they weaved his vineyard and made his" (small.en+medium.en)
+- **Isaiah 5** — repeated verse 1 at 0:49–0:54 — "his Vineyard and made his Vineyard planted seeds But" (small.en+medium.en)
+- **Isaiah 5** — repeated verse 1 at 1:01–1:05 — "The Lord had no interest in mating his vineyard" (small.en+medium.en)
+- **Isaiah 5** — repeated verse 1 at 1:06–1:10 — "seeds The Lord had no interest in" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 1 0:35-0:59 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 1 1:07-1:22 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 1 0:29-0:42 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.1009 / medium 0.3585; coverage small 0.978 / medium 0.7842; duration 409.43s vs expected 344.8s (ratio 1.187); sha256 `42708cdbfaa6d7d7f7db2545f0c21d7eccc8f3e5a8519d2b1a1c0ac066f1752f`
+- **Isaiah 6** — missing verse 1 at 0:25–0:27 — "In the year King Uzziah died I saw the Lord sitting on a throne high and lifted up The bottom of his robe filled the temple Above him stood angels called seraphim Each one had" (small.en+medium.en)
+- **Isaiah 6** — missing verse 2 at 0:30 — "wings With two wings they covered their faces With two they covered their feet And with two they flew They called out to each other Holy holy holy is the LORD of Armies The whole earth is full of his glory Their voices made the" (small.en+medium.en)
+  - audio check: refuted: missing verse 2 0:12-0:21 (slice coverage small 1.00, medium 1.00) confirmed: missing verse 1 0:11-0:20 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.2292 / medium 0.2436; coverage small 0.7708 / medium 0.7593; duration 121.26s vs expected 139.6s (ratio 0.869); sha256 `8efb09a92ee4e7faf90daeee445532a1854e06fd55b8fed5e8f46e136bbdaefa`
+- **Isaiah 8** — missing verse 1 at 0:00–0:02 — "The LORD said to me Take a big piece of writing material and write on it in plain letters Maher Shalal Hash Baz I will have faithful witnesses to tell that it is true Uriah the priest and Zechariah son of Jeberechiah Then my wife the prophetess became pregnant and had a son The LORD said to me Name him …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.1413 / medium 0.3197; coverage small 0.8643 / medium 0.7138; duration 191.74s vs expected 215.2s (ratio 0.891); sha256 `e41a5a16bc23db603f96cd2b43155ea6e70443607c9f1aa26b969bd11943e185`
+- **Isaiah 9** — missing verse 1 at 0:04–0:07 — "dark times won't last for" (small.en+medium.en)
+  - audio check: confirmed: missing verse 1 0:00-0:05 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.1046 / medium 0.4036; coverage small 0.9559 / medium 0.6029; duration 220.03s vs expected 244.8s (ratio 0.899); sha256 `3a891eb147695136905a764afe0b311ba472d179c52ece3962e3e448772451c7`
+- **Isaiah 10** — missing verse 4 at 0:55 — "away His hand is still raised How sad for Assyria I use Assyria like a rod to punish people when I am angry I use it like a stick when I am upset I am sending Assyria against a nation that doesn't care about me I am sending it" (small.en)
+- **Isaiah 10** — missing verse 16 at 3:22 — "So the Lord GOD of Armies will make the strong soldiers of Assyria grow weak A fire will be lit under all their glory The Light of Israel will become a fire Their Holy One will become a flame In one day it will burn up the king's thorns and weeds It will burn up his beautiful forests and his …" (medium.en)
+  - audio check: confirmed: missing verse 16 2:53-3:02 (slice coverage small 0.17, medium 0.17) refuted: missing verse 4 0:35-0:44 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.0803 / medium 0.3428; coverage small 0.9242 / medium 0.6584; duration 304.98s vs expected 353.6s (ratio 0.863); sha256 `3f3bc75256eaa7abe0aa89439d65a81f18d0636c60aa2423467bf4a5228ab1f8`
+- **Isaiah 11** — silence verse ? at 1:16–1:21 — "The earth will be full of knowing the Lord" (waveform)
+- **Isaiah 11** — silence verse ? at 1:23–1:27 — "Jesus reigns.. The" (waveform)
+- **Isaiah 11** — missing verse 15 at 3:57–4:00 — "Euphrates River with his hot wind He" (small.en+medium.en)
+- **Isaiah 11** — missing verse 15 at 4:07–4:13 — "can walk across in sandals There" (small.en+medium.en)
+- **Isaiah 11** — missing verse 16 at 4:19–4:28 — "who are left in Assyria just like there was for Israel when they came up out of" (small.en+medium.en)
+- **Isaiah 11** — inserted verse 9 at 1:13–1:23 — "The earth will be full of knowing the Lord Jesus reigns" (small.en+medium.en)
+- **Isaiah 11** — inserted verse 9 at 2:29–2:31 — "mountains there will be a great feast" (small.en+medium.en)
+- **Isaiah 11** — inserted verse 15 at 3:36–3:43 — "the Jezert sea floor and wind Then he will never use Egypt as a carrier float of water Then" (small.en+medium.en)
+- **Isaiah 11** — inserted verse 15 at 3:44–3:46 — "Lord will never use Egypt as a carrier float" (small.en+medium.en)
+- **Isaiah 11** — inserted verse 15 at 3:47–3:52 — "water The Great Flood will even bring my people from the east and west" (small.en+medium.en)
+- **Isaiah 11** — inserted verse 15 at 3:53–3:56 — "evil will never be again safe And we" (small.en+medium.en)
+- **Isaiah 11** — inserted verse 15 at 3:57–4:00 — "day through the flood of the east The Lord" (small.en+medium.en)
+- **Isaiah 11** — inserted verse 15 at 4:01–4:07 — "never use Egypt as a carrier float of water The Great Flood will even bring my" (small.en+medium.en)
+- **Isaiah 11** — inserted verse 15 at 4:07–4:13 — "from the east and west The dream of the day through the flood of the east The Lord" (small.en+medium.en)
+- **Isaiah 11** — inserted verse 16 at 4:15–4:19 — "carrier float of water The Great Flood will even bring my" (small.en+medium.en)
+- **Isaiah 11** — inserted verse 16 at 4:19–4:28 — "from the east and west The desert will even bring my people from the east and willow The evil will never use" (small.en+medium.en)
+- **Isaiah 11** — inserted verse 16 at 4:28–5:16 — "as carrier float of water The Great Flood will even bring my people from the east and west The Great Flood will west The nations will Great even bring my even bring music and wind the mountains and rivers And bring the people from the east desert even bring my people from will never use Egypt as a carrier float …" (small.en+medium.en)
+- **Isaiah 11** — repeated verse 9 at 1:26–1:28 — "The earth will be full" (small.en+medium.en)
+- **Isaiah 11** — repeated verse 9 at 1:28–1:31 — "of knowing the Lord Jesus reigns" (small.en+medium.en)
+- **Isaiah 11** — repeated verse 9 at 1:45–1:47 — "every knee fiber say in" (small.en+medium.en)
+- **Isaiah 11** — repeated verse 9 at 1:47–1:55 — "in every knee fiber say in every knee fiber say in every knee fiber say in every knee fiber say in every knee fiber say" (small.en+medium.en)
+- **Isaiah 11** — repeated verse 9 at 2:00–2:04 — "the greatest and saltiest and rad rivers so" (small.en+medium.en)
+- **Isaiah 11** — repeated verse 9 at 2:04–2:07 — "so will every knee fiber say in the name of" (small.en+medium.en)
+- **Isaiah 11** — repeated verse 9 at 2:08–2:19 — "in the name of Jesus Lord in the name of Jesus Lord in the name of Jesus Lord in the name of Jesus Lord in the name of Jesus Lord" (small.en+medium.en)
+- **Isaiah 11** — repeated verse 15 at 3:44–3:47 — "will never use Egypt as a carrier float of water" (small.en+medium.en)
+- **Isaiah 11** — repeated verse 15 at 4:00–4:09 — "The Lord will never use Egypt as a carrier float of water The Great Flood will even bring my people from the east and west The" (small.en+medium.en)
+- **Isaiah 11** — repeated verse 15 at 4:08–4:22 — "The dream of the day through the flood of the east The Lord will never use Egypt as a carrier float of water The Great Flood will even bring my people from the east and west The" (small.en+medium.en)
+- **Isaiah 11** — repeated verse 16 at 4:22–4:25 — "will even bring my people from the east and" (small.en+medium.en)
+- **Isaiah 11** — repeated verse 16 at 4:26–4:35 — "will never use Egypt as a carrier float of water The Great Flood will even bring my people from the east and west The" (small.en+medium.en)
+- **Isaiah 11** — repeated verse 16 at 4:35–4:40 — "The Great Flood will even bring my people from the east and west The" (small.en+medium.en)
+- **Isaiah 11** — repeated verse 16 at 4:40–4:49 — "will never use Egypt as a carrier float of water The Great Flood will even bring my people from the east and west The" (small.en+medium.en)
+- **Isaiah 11** — repeated verse 16 at 4:55–4:58 — "people from the east and west the desert" (small.en+medium.en)
+- **Isaiah 11** — repeated verse 16 at 4:59–5:03 — "will even bring my people from the east and west The" (small.en+medium.en)
+- **Isaiah 11** — repeated verse 16 at 5:03–5:07 — "The Lord will never use Egypt as a carrier float of water" (small.en+medium.en)
+- **Isaiah 11** — paraphrase verse ? at ? — "scattered wording does not match the source" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 16 4:27-4:51 (slice coverage small 0.83, medium 1.00) refuted: repeated verse 15 4:07-4:28 (slice coverage small 1.00, medium 1.00, times 1/1) unclear: repeated verse 9 2:07-2:25 (slice coverage small 1.00, medium 1.00, times 4/0)
+  - WER small 0.8491 / medium 0.8728; coverage small 0.8707 / medium 0.3642; duration 316.46s vs expected 185.6s (ratio 1.705); sha256 `23bb8501673bd8ea440bdc9d3a91f5c9bb1434e9bb8983b29e4db4e91f75e6f3`
 
 ## UNCERTAIN
 
@@ -3897,6 +3964,15 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Song of Solomon 8** — missing verse 1 at 0:00–0:01 — "The bride said I wish you were like my brother who was nursed by my mother Then if I found you outside I could kiss you and no one would look down on me I would lead you and bring you to my mother's house She would teach me I would give you spiced wine to drink the juice" (medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.75, medium 0.00)
   - medium.en only: missing 'The bride said I wish you were like my brother who was nursed by my mother Then if I found you outside I could kiss you and no one would look down on me I would lead you and bring you to my mother's house She would teach me I would give you spiced wine to drink the juice'; coverage unclear (small 0.966, medium 0.598; pass needs both >= 0.96); WER backstop on one model (small 0.037, medium 0.404); WER small 0.0367 / medium 0.4042; coverage small 0.9659 / medium 0.5984; sha256 `8dc16608cc272549f58eaca1a8ae206bb29eefb753cf883f5d19dc122be5eac7`
+- **Isaiah 2** — audio slice contains the disputed words; the models still disagree (coverage small 0.992, medium 0.875)
+  - audio check: refuted: repeated verse 21 2:38-2:47 (slice coverage small 0.12, medium 1.00, times 0/1)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.992, medium 0.875); WER small 0.0158 / medium 0.1245; coverage small 0.9921 / medium 0.8755; sha256 `558642c79140a7981e0e5daa1857db07afc2cdf0255324caa22db03e64b5678f`
+- **Isaiah 4** — missing verse 1 at 0:00–0:30 — "On that day seven women will grab one man and say We will buy our own food and our own clothes Just let us be called by your name Take away our shame On that day the Branch of the LORD will be beautiful and glorious The fruit of the land will be the pride and joy of the people …" (small.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.58)
+  - small.en only: missing 'On that day seven women will grab one man and say We will buy our own food and our own clothes Just let us be called by your name Take away our shame On that day the Branch of the LORD will be beautiful and glorious The fruit of the land will be the pride and joy of the people …'; coverage unclear (small 0.545, medium 0.973; pass needs both >= 0.96); paraphrase flag on one model (small 0.219, medium 0.000); WER backstop on one model (small 0.455, medium 0.027); WER small 0.4545 / medium 0.0267; coverage small 0.5455 / medium 0.9733; sha256 `790cc17441059ce6feeb8ce8e179aee28f8fa8b5f69276b128b7bb36f3e6c1ae`
+- **Isaiah 7** — audio slice contains the disputed words; the models still disagree (coverage small 0.973, medium 0.945)
+  - audio check: refuted: missing verse 2 0:16-0:25 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.973, medium 0.945); WER small 0.0283 / medium 0.0597; coverage small 0.9733 / medium 0.945; sha256 `05db07ed62b233823582f200ca86d72d4af0c84922ac100d8e9a7e900406e1d0`
 
 ## Script
 
