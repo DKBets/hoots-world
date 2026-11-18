@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 130
+- Scored chapters: 140
 - PASS: 5
-- FAIL: 82
-- UNCERTAIN: 43 (jsonl verdict UNSURE)
-- Still to score: 799 Old Testament chapters
+- FAIL: 88
+- UNCERTAIN: 47 (jsonl verdict UNSURE)
+- Still to score: 789 Old Testament chapters
 
 ## PASS
 
@@ -641,6 +641,31 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Numbers 13** — repeated verse 8 at 0:56–0:58 — "Lord said to Moses send some men" (small.en+medium.en)
   - audio check: unclear: inserted verse 8 0:58-1:22 (slice coverage small 0.83, medium 0.00) unclear: inserted verse 8 0:52-1:05 (slice coverage small 1.00, medium 0.06) confirmed: inserted verse 8 0:48-0:58 (slice coverage small 0.75, medium 0.75)
   - WER small 0.3201 / medium 0.3521; coverage small 0.939 / medium 0.8933; duration 275.29s vs expected 262.4s (ratio 1.049); sha256 `16d0a1104eb3a328274593a09f13b9b55f0fbaceb9500bd41172bbb1f01d25f6`
+- **Numbers 14** — missing verse 27 at 3:51 — "against me I have heard the complaining of the Israelites Tell them As surely as I live says the LORD I will do to you exactly what I heard you say You will die in this desert every one of you 20 years old or older who was counted and who complained" (small.en)
+- **Numbers 14** — missing verse 35 at 5:33 — "I will surely do these things to this whole wicked community that has joined together against me They will come to their end in this desert They will die here The men Moses had sent to explore the land came back and made the whole community complain against him by spreading a bad report about the land Those men who …" (medium.en)
+  - audio check: refuted: missing verse 35 4:55-5:04 (slice coverage small 1.00, medium 1.00) confirmed: missing verse 27 3:30-3:39 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.058 / medium 0.105; coverage small 0.9448 / medium 0.9024; duration 385.58s vs expected 434.4s (ratio 0.888); sha256 `cf542f3fb60df93508611f5ae463676be1b7275132a5fc08cb00c89b856c8537`
+- **Numbers 16** — inserted verse 21 at 2:59–3:05 — "away Moses and Aaron bowed down with their faces and said to the crowd If you go" (small.en+medium.en)
+- **Numbers 16** — inserted verse 22 at 3:05–3:19 — "with us every one of us did gather around us for every one of us did and take each other's animals and beefers You receive the Lord's wind and take in whatever you bring Grief would hate you down to the ground" (small.en+medium.en)
+- **Numbers 16** — inserted verse 22 at 3:24–3:35 — "crowd Go away from this room and move away from this area Since every one of us did I will give my beefers and pork to die Moses and Aaron bowed down with their faces" (small.en+medium.en)
+- **Numbers 16** — inserted verse 22 at 3:36–3:40 — "saw the twenty firepans blazing in the dust Then the Lord" (small.en+medium.en)
+- **Numbers 16** — inserted verse 22 at 3:41–3:47 — "to Moses Take in every one of these animals and bring them out into your hands Each one will give up his" (small.en+medium.en)
+- **Numbers 16** — inserted verse 22 at 3:51–4:06 — "Lord said to Moses Please get away from this mountain so we can all deal with these mountains without any damage or death Moses moved away from them everywhere and a group of people followed his every move Then the Lord said" (small.en+medium.en)
+- **Numbers 16** — inserted verse 22 at 4:06–4:10 — "Moses Teach every if it were a terrible animal" (small.en+medium.en)
+- **Numbers 16** — repeated verse 22 at 3:20–3:24 — "Moses and Aaron bowed down with their faces and said to the crowd" (small.en+medium.en)
+- **Numbers 16** — repeated verse 22 at 3:33–3:36 — "Moses and Aaron bowed down with their faces and" (small.en+medium.en)
+- **Numbers 16** — repeated verse 36 at 5:56–5:58 — "The Lord said to Moses" (small.en+medium.en)
+  - audio check: unclear: inserted verse 22 3:04-3:25 (slice coverage small 1.00, medium 0.00) confirmed: inserted verse 22 3:50-4:12 (slice coverage small 0.96, medium 1.00) confirmed: inserted verse 22 3:23-3:41 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.1934 / medium 0.3577; coverage small 0.9618 / medium 0.7278; duration 480.94s vs expected 482.0s (ratio 0.998); sha256 `738c9de735cf167de13c596a402d837bc6d3fcb7db0843955eb03d22594ce8cc`
+- **Numbers 18** — coverage low on both models (small 0.883, medium 0.889); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1268 / medium 0.1203; coverage small 0.883 / medium 0.8895; duration 313.56s vs expected 369.2s (ratio 0.849); sha256 `583952f3bce8dc1793bd3c7c3000369b831bfc4b1104622c06fece70be519dc8`
+- **Numbers 19** — coverage low on both models (small 0.882, medium 0.886); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.2316 / medium 0.1158; coverage small 0.8825 / medium 0.8858; duration 212.99s vs expected 245.2s (ratio 0.869); sha256 `f3aaaa037fd3e0a251b9a43d11d57f625a447f06af8f690dc68ce5184b493ab4`
+- **Numbers 20** — coverage low on both models (small 0.862, medium 0.844); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.138 / medium 0.1573; coverage small 0.862 / medium 0.8442; duration 239.4s vs expected 269.6s (ratio 0.888); sha256 `8f50658c970e156a0aa113b26ff2d9b72d895cde7091dfaaa1827e7254861ca2`
+- **Numbers 21** — inserted verse 22 at 2:42–2:43 — "We We will not go" (medium.en)
+  - audio check: confirmed: inserted verse 22 2:41-2:53 (slice coverage small 0.80, medium 0.80)
+  - WER small 0.0451 / medium 0.0548; coverage small 0.9574 / medium 0.9659; duration 284.59s vs expected 328.4s (ratio 0.867); sha256 `24d2e97c006cf6040d5a0354a22ad50c5f4ad522e8af47b2553e7b55e5e6e125`
 
 ## UNCERTAIN
 
@@ -781,6 +806,19 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Numbers 12** — missing verse 1 at 0:00–0:02 — "Miriam and Aaron began to speak against Moses because of the Cushite woman he had married He had married a woman from Cush They said Has the LORD spoken only through Moses Hasn't he also spoken through us And the LORD heard them Moses was a very humble man more humble than anyone else on earth Suddenly the LORD said …" (medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.00)
   - medium.en only: missing 'Miriam and Aaron began to speak against Moses because of the Cushite woman he had married He had married a woman from Cush They said Has the LORD spoken only through Moses Hasn't he also spoken through us And the LORD heard them Moses was a very humble man more humble than anyone else on earth Suddenly the LORD said …'; coverage unclear (small 0.991, medium 0.516; pass needs both >= 0.96); WER backstop on one model (small 0.012, medium 0.490); WER small 0.0118 / medium 0.4897; coverage small 0.9912 / medium 0.5162; sha256 `b48330103fc8d01b716f729797efdad614fb01ef666ba46e62737a2495dbee0a`
+- **Numbers 15** — missing verse 32 at 4:28 — "the Israelites were in the desert they found a man gathering sticks on the Sabbath day The people who found him brought him to Moses Aaron and the whole community They kept him under guard because it was not yet clear what should be done with him Then the LORD said to Moses The man must be put to death …" (small.en)
+- **Numbers 15** — missing verse 9 at 1:10 — "about two quarts of oil Also bring" (medium.en)
+  - audio check: unclear: missing verse 32 3:56-4:05 (slice coverage small 0.83, medium 0.08) unclear: missing verse 9 1:01-1:11 (slice coverage small 0.43, medium 0.29)
+  - small.en only: missing 'the Israelites were in the desert they found a man gathering sticks on the Sabbath day The people who found him brought him to Moses Aaron and the whole community They kept him under guard because it was not yet clear what should be done with him Then the LORD said to Moses The man must be put to death …'; medium.en only: missing 'about two quarts of oil Also bring'; coverage unclear (small 0.907, medium 0.934; pass needs both >= 0.96); WER small 0.096 / medium 0.0781; coverage small 0.9074 / medium 0.9342; sha256 `7acfbc22beac6a7ee0cb4ea7e5468aa1622a26946e7c2b890284c0bc5278c212`
+- **Numbers 17** — audio slice contains the disputed words; the models still disagree (coverage small 0.996, medium 0.723)
+  - audio check: refuted: missing verse 4 0:10-0:20 (slice coverage small 0.80, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.996, medium 0.723); WER small 0.0109 / medium 0.281; coverage small 0.9964 / medium 0.7226; sha256 `bebf8952d601fd6015e0e099db86f2f0aa7a7ab8a14fb35ad563be7b824de970`
+- **Numbers 22** — audio slice contains the disputed words; the models still disagree (coverage small 0.987, medium 0.674)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.987, medium 0.674); WER small 0.0146 / medium 0.3294; coverage small 0.9873 / medium 0.6745; sha256 `d037b69737f58ab3d25a732d69852a70d086d5efac89499325a597a6093181fb`
+- **Numbers 23** — audio slice contains the disputed words; the models still disagree (coverage small 0.970, medium 0.485)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.83, medium 0.92)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.970, medium 0.485); WER small 0.0304 / medium 0.5166; coverage small 0.9696 / medium 0.4848; sha256 `5d8dbb1e4fef8a8e7ed84d498a6e0d465c56d35d161403ee981ef42406a1f2fe`
 
 ## Script
 
