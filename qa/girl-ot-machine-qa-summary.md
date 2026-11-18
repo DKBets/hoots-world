@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 140
+- Scored chapters: 150
 - PASS: 5
-- FAIL: 88
-- UNCERTAIN: 47 (jsonl verdict UNSURE)
-- Still to score: 789 Old Testament chapters
+- FAIL: 96
+- UNCERTAIN: 49 (jsonl verdict UNSURE)
+- Still to score: 779 Old Testament chapters
 
 ## PASS
 
@@ -666,6 +666,81 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Numbers 21** — inserted verse 22 at 2:42–2:43 — "We We will not go" (medium.en)
   - audio check: confirmed: inserted verse 22 2:41-2:53 (slice coverage small 0.80, medium 0.80)
   - WER small 0.0451 / medium 0.0548; coverage small 0.9574 / medium 0.9659; duration 284.59s vs expected 328.4s (ratio 0.867); sha256 `24d2e97c006cf6040d5a0354a22ad50c5f4ad522e8af47b2553e7b55e5e6e125`
+- **Numbers 25** — missing verse 11 at 1:44–2:16 — "priest has turned my anger away from" (small.en+medium.en)
+- **Numbers 25** — inserted verse 11 at 1:18–1:27 — "By a sail of Pharaoh The desert sea has saw grenades Been used this wizard before And has done my will in" (small.en+medium.en)
+- **Numbers 25** — inserted verse 11 at 1:38–1:43 — "you are the there geliest The land was not built of vineyard The pharaohs" (small.en+medium.en)
+- **Numbers 25** — inserted verse 16 at 3:16–3:23 — "Zor Drain these nations as an enemy in your own flame These people figured everyone" (small.en+medium.en)
+- **Numbers 25** — inserted verse 18 at 3:26–3:33 — "would have an argument and reason with one another But I would not do a go so doing and please add this" (small.en+medium.en)
+- **Numbers 25** — inserted verse 18 at 3:33–3:40 — "my prayer Moses knows the enemy and reason with one another but I would not do a go so doing" (small.en+medium.en)
+- **Numbers 25** — inserted verse 18 at 3:40–3:43 — "please add this into my prayer Moses knows" (small.en+medium.en)
+- **Numbers 25** — repeated verse 5 at 0:38–0:40 — "joined in worshipping Baal of Peor" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 11 1:17-1:33 (slice coverage small 0.95, medium 0.91) confirmed: inserted verse 18 3:25-3:39 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 18 3:32-3:46 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.715 / medium 0.5966; coverage small 0.8623 / medium 0.9251; duration 282.67s vs expected 165.6s (ratio 1.707); sha256 `b42a542f269faa6d0719a25c325900da44a4b670cea5e7bce53b9148c0dfed5f`
+- **Numbers 26** — missing verse 53 at 4:44–4:48 — "people listed Give a bigger share" (small.en+medium.en)
+- **Numbers 26** — missing verse 54 at 5:38–5:46 — "a smaller tribe Each tribe will get land based on how many people were counted But" (small.en+medium.en)
+- **Numbers 26** — inserted verse 53 at 4:28–4:43 — "I declared I plan to give you the territory of every territory The tribes shall enter these territories and when each tribe has its say they will grant an end say of rent and miles The tribes who provide" (small.en+medium.en)
+- **Numbers 26** — inserted verse 53 at 4:44–4:48 — "rent and miles shall add any extra amount of rent and miles" (small.en+medium.en)
+- **Numbers 26** — inserted verse 54 at 4:48–4:53 — "the next purpose The tribes who provide the least amount of rent" (small.en+medium.en)
+- **Numbers 26** — inserted verse 54 at 4:53–5:37 — "miles shall add any extra amount of rent in miles to the next purpose The tribes who provide the least amount of rent in miles shall add any extra amount of rent in miles to the next purpose The tribes who provide the least amount of rent in miles shall add any extra amount of rent in miles to the …" (small.en+medium.en)
+- **Numbers 26** — inserted verse 54 at 5:38–5:46 — "the next purpose The tables of the 10 acres shall add any extra amount of rent and miles to the next purpose" (small.en+medium.en)
+- **Numbers 26** — repeated verse 53 at 4:47–4:48 — "amount of rent and miles" (small.en+medium.en)
+- **Numbers 26** — repeated verse 54 at 4:50–4:56 — "The tribes who provide the least amount of rent and miles shall add any extra amount of rent" (small.en+medium.en)
+  - audio check: unclear: inserted verse 54 4:52-5:16 (slice coverage small 1.00, medium 0.29) confirmed: inserted verse 53 4:27-4:49 (slice coverage small 0.96, medium 0.96) confirmed: inserted verse 54 5:36-5:52 (slice coverage small 0.95, medium 1.00)
+  - WER small 0.2803 / medium 0.2225; coverage small 0.8988 / medium 0.8242; duration 436.44s vs expected 359.6s (ratio 1.214); sha256 `49fde167d20bb7ba73816fac6550cee4404ff330ecd018caae100e02acc36f23`
+- **Numbers 28** — coverage low on both models (small 0.877, medium 0.768); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1229 / medium 0.2345; coverage small 0.8771 / medium 0.7684; duration 250.41s vs expected 283.2s (ratio 0.884); sha256 `70b1bb7c6bfbb5c39488568ef8565ba74251ec94885fc966d299e72b29690343`
+- **Numbers 29** — repeated verse 17 at 2:26–2:30 — "young bulls 2 rams and 14 1 year old male lambs" (small.en+medium.en)
+- **Numbers 29** — repeated verse 20 at 2:52–2:56 — "bulls 2 rams and 14 1 year old male lambs" (small.en+medium.en)
+- **Numbers 29** — repeated verse 23 at 3:16–3:20 — "bulls 2 rams and 14 1 year old male lambs" (small.en+medium.en)
+- **Numbers 29** — repeated verse 29 at 4:08–4:11 — "bulls two rams and fourteen one year old male" (small.en+medium.en)
+- **Numbers 29** — repeated verse 32 at 4:34–4:36 — "bulls two rams and fourteen one" (small.en+medium.en)
+  - audio check: refuted: repeated verse 17 2:25-2:36 (slice coverage small 1.00, medium 0.00, times 1/0) refuted: repeated verse 20 2:51-3:02 (slice coverage small 0.00, medium 1.00, times 0/1) refuted: repeated verse 23 3:15-3:26 (slice coverage small 1.00, medium 0.60, times 1/0)
+  - WER small 0.0161 / medium 0.3147; coverage small 0.9882 / medium 0.6907; duration 343.34s vs expected 372.4s (ratio 0.922); sha256 `c4add0d82bd6162a1cdc8689813bae27d700479538132b5fdb41a968468d2bed`
+- **Numbers 30** — silence verse ? at 1:04–1:08 — "The Lord just calls to the sea." (waveform)
+- **Numbers 30** — silence verse ? at 1:10–1:13 — "Winter percents come again. The Lord just" (waveform)
+- **Numbers 30** — silence verse ? at 1:17–1:20 — "The Lord just calls to the sea. The Lord just" (waveform)
+- **Numbers 30** — missing verse 9 at 1:53–2:04 — "divorced woman must keep any promise she makes If a woman living with her husband makes a promise or a serious promise" (small.en+medium.en)
+- **Numbers 30** — missing verse 11 at 2:10–2:23 — "her husband hears about it and says nothing and does not tell her no then she must keep all her promises" (small.en+medium.en)
+- **Numbers 30** — inserted verse 8 at 1:01–1:17 — "The Lord just calls to the sea Winter presents come again The Lord just calls to the sea" (small.en+medium.en)
+- **Numbers 30** — inserted verse 8 at 1:20–1:29 — "just calls to the sea and says See where thou goest thou will end up in hope And thou" (small.en+medium.en)
+- **Numbers 30** — inserted verse 8 at 1:29–1:51 — "honestly find beneath me Then come and say the Lord Lord has said that I would love you and you would love me That is the way that I would do it When I see someone that I find that I feel called and tempted but I'm honestly being tempted in such" (small.en+medium.en)
+- **Numbers 30** — inserted verse 9 at 1:53–2:04 — "safe with them and I know that God would bless them and that we would be able to do whatever they wanted" (small.en+medium.en)
+- **Numbers 30** — inserted verse 11 at 2:10–2:23 — "no one can be against me When I look at at pride at this point I just feel indifferent Bride is a gift but I know that it's a gift that it pleases God" (small.en+medium.en)
+- **Numbers 30** — repeated verse 8 at 1:13–1:17 — "The Lord just calls to the sea" (small.en+medium.en)
+- **Numbers 30** — repeated verse 8 at 1:20–1:22 — "The Lord just calls to the sea" (small.en+medium.en)
+- **Numbers 30** — paraphrase verse ? at ? — "scattered wording does not match the source" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 8 1:28-1:52 (slice coverage small 0.96, medium 0.96) confirmed: inserted verse 11 2:09-2:29 (slice coverage small 0.92, medium 0.92) confirmed: missing verse 9 1:44-1:53 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.4385 / medium 0.5251; coverage small 0.8631 / medium 0.6955; duration 194.01s vs expected 143.2s (ratio 1.355); sha256 `969c2422b9b0bebd806fcfeaf989365e09328860c1f84f169dd4c0724b9ab9a5`
+- **Numbers 31** — missing verse 18 at 1:57–2:02 — "let all the young girls" (small.en+medium.en)
+- **Numbers 31** — inserted verse 18 at 1:57–2:02 — "every woman who has never been with a man shall definitely kill with every man and every woman" (small.en+medium.en)
+- **Numbers 31** — inserted verse 18 at 2:04–2:09 — "man Each one who has any clean blood shall definitely kill with every" (small.en+medium.en)
+- **Numbers 31** — inserted verse 18 at 2:10–2:12 — "set aside out as a tent" (small.en+medium.en)
+- **Numbers 31** — inserted verse 19 at 2:16–3:05 — "has been a double report shall follow the same as the priests played their daily meals Then the Grievous Wipes promised in the name of the prophet Balaam Israel was willing to give their rich plantings to the priests and carry bread it there with every priest Brought the bee from the mountains and brought their blessings to the priests …" (small.en+medium.en)
+- **Numbers 31** — repeated verse 13 at 1:24–1:26 — "Moses Elazar the priest and" (small.en+medium.en)
+- **Numbers 31** — repeated verse 18 at 2:02–2:04 — "every woman who has never been with a" (small.en+medium.en)
+- **Numbers 31** — repeated verse 18 at 2:07–2:10 — "shall definitely kill with every man and every woman" (small.en+medium.en)
+- **Numbers 31** — repeated verse 19 at 2:39–2:42 — "Israel was willing to give their rich plantings to the priests and" (small.en+medium.en)
+- **Numbers 31** — repeated verse 19 at 2:43–2:46 — "to the priests And carry bread it there with every" (small.en+medium.en)
+- **Numbers 31** — repeated verse 19 at 2:47–2:55 — "Israel was willing to give their rich plantings to the priests and pay the blessings to the priests and carry" (small.en+medium.en)
+- **Numbers 31** — repeated verse 19 at 2:55–3:04 — "the blessings to the priests and carry the blessings to the priests and carry the blessings to the priests and carry the blessings to the priests and carry the blessings to the priests and" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 19 2:15-2:39 (slice coverage small 0.96, medium 0.96) refuted: repeated verse 19 2:54-3:10 (slice coverage small 0.25, medium 1.00, times 0/1) refuted: repeated verse 19 2:46-3:01 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.2367 / medium 0.6243; coverage small 0.9609 / medium 0.4843; duration 396.63s vs expected 368.4s (ratio 1.077); sha256 `96d5d48add967391c53f3bcf9ed002f6ea04721f97cbdd243433bb353b506582`
+- **Numbers 32** — missing verse 13 at 2:27–2:35 — "40 years until everyone in that generation who had done evil in his sight was gone" (small.en+medium.en)
+- **Numbers 32** — missing verse 14 at 2:35–2:40 — "now here you are a new group of sinners" (small.en+medium.en)
+- **Numbers 32** — inserted verse 12 at 1:24–1:52 — "they followed the Lord with their whole heart They followed the Lord with their whole heart They followed the Lord with their whole heart They followed the Lord with their whole heart They followed the Lord with their whole heart They followed the Lord with their whole heart They followed the Lord with their whole heart They followed the Lord …" (small.en+medium.en)
+- **Numbers 32** — inserted verse 12 at 1:55–2:00 — "They followed Abraham and they went and did baptism marching forward to the desert at the camp and tent" (small.en+medium.en)
+- **Numbers 32** — inserted verse 13 at 2:04–2:26 — "a covenant with Abraham but they wouldn't dedicate their fleas or their seeds to that desert But the Lord blessed the Israelites for keeping their fleas and keeping their rag ready The Lord blessed the Israelites for keeping their fleas and keeping their rag ready The Lord bless the Israelites for keeping their fleas and keeping their rag ready The …" (small.en+medium.en)
+- **Numbers 32** — inserted verse 13 at 2:27–2:35 — "keeping their fleas and keeping their rag ready The Lord bless the Israelites for keeping their fleas" (small.en+medium.en)
+- **Numbers 32** — inserted verse 14 at 2:35–2:40 — "keeping their rag ready The Lord bless the Israelites for keeping their fleas and keeping their rag ready" (small.en+medium.en)
+- **Numbers 32** — inserted verse 23 at 3:52–5:00 — "And yet one more number of men said We will go and plant a stone wall and build walls and build houses and set up plans for them And then Moses said to the twelve tribes We will go and plant a stone wall and build walls and build houses and set up plans for them And then Moses said …" (small.en+medium.en)
+- **Numbers 32** — repeated verse 12 at 1:27–1:55 — "They followed the Lord with their whole heart They followed the Lord with their whole heart They followed the Lord with their whole heart They followed the Lord with their whole heart They followed the Lord with their whole heart They followed the Lord with their whole heart They followed the Lord with their whole heart They followed the Lord …" (small.en+medium.en)
+- **Numbers 32** — repeated verse 13 at 2:15–2:21 — "The Lord blessed the Israelites for keeping their fleas and keeping their rag ready The Lord" (small.en+medium.en)
+- **Numbers 32** — repeated verse 13 at 2:21–2:40 — "the Israelites for keeping their fleas and keeping their rag ready The Lord bless the Israelites for keeping their fleas and keeping their rag ready The Lord bless the Israelites for keeping their fleas and keeping their rag ready The Lord bless the Israelites for keeping their fleas and keeping their rag ready" (small.en+medium.en)
+- **Numbers 32** — repeated verse 23 at 4:03–4:37 — "We will go and plant a stone wall and build walls and build houses and set up plans for them And then Moses said to the twelve tribes We will go and" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 23 3:51-4:15 (slice coverage small 0.92, medium 0.92) refuted: repeated verse 12 1:26-1:50 (slice coverage small 0.33, medium 0.33, times 0/0) confirmed: inserted verse 12 1:23-1:47 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.457 / medium 0.4516; coverage small 0.9304 / medium 0.7878; duration 449.71s vs expected 367.6s (ratio 1.223); sha256 `d8d28c9cce3f8dd8e82f674c17016f4dfea4b2707298bc96658c57f971662339`
+- **Numbers 33** — coverage low on both models (small 0.803, medium 0.836); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.2093 / medium 0.1747; coverage small 0.8027 / medium 0.836; duration 294.57s vs expected 300.0s (ratio 0.982); sha256 `5f104e8c6b1e57fa7ccb8d3d55bbfd3dfa49093f609273d4f03b87aefef21f83`
 
 ## UNCERTAIN
 
@@ -819,6 +894,12 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Numbers 23** — audio slice contains the disputed words; the models still disagree (coverage small 0.970, medium 0.485)
   - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.83, medium 0.92)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.970, medium 0.485); WER small 0.0304 / medium 0.5166; coverage small 0.9696 / medium 0.4848; sha256 `5d8dbb1e4fef8a8e7ed84d498a6e0d465c56d35d161403ee981ef42406a1f2fe`
+- **Numbers 24** — audio slice contains the disputed words; the models still disagree (coverage small 0.979, medium 0.785)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.83, medium 0.75)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.979, medium 0.785); WER small 0.0275 / medium 0.2203; coverage small 0.9793 / medium 0.7849; sha256 `0162d4321fcc57351f11a205f97e1ff840fde08a29ea4ac18ed7f61d122b76f7`
+- **Numbers 27** — audio slice contains the disputed words; the models still disagree (coverage small 0.818, medium 0.839)
+  - audio check: refuted: repeated verse 21 2:34-2:43 (slice coverage small 1.00, medium 1.00, times 1/1) refuted: repeated verse 22 2:51-3:00 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.818, medium 0.839); WER small 0.1922 / medium 0.1725; coverage small 0.8176 / medium 0.8392; sha256 `941b4576234434cd7b05baa7e510865a70dd50364aed457dcc5e8a3dd06d551e`
 
 ## Script
 
