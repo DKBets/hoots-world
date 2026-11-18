@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 470
-- PASS: 14
-- FAIL: 305
-- UNCERTAIN: 151 (jsonl verdict UNSURE)
-- Still to score: 459 Old Testament chapters
+- Scored chapters: 480
+- PASS: 16
+- FAIL: 311
+- UNCERTAIN: 153 (jsonl verdict UNSURE)
+- Still to score: 449 Old Testament chapters
 
 ## PASS
 
-14 chapters. Both models agreed there was no missing, invented, or repeated passage.
+16 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -76,7 +76,8 @@ words clears that span. A split slice stays UNCERTAIN.
 - 2 Chronicles 3
 - Nehemiah 1, 5
 - Esther 10
-- Job 2, 34
+- Job 2, 34–35
+- Psalms 1
 
 ## FAIL
 
@@ -2838,6 +2839,32 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Job 30** — missing verse 25 at 2:34 — "Wasn't I sad for poor people But when I hoped for good things evil came When I looked for light darkness came My heart is upset and never rests Days of suffering are all around me I walk around in sadness without any sunshine I stand up in the meeting and cry for help I have become a brother of …" (small.en+medium.en)
   - audio check: refuted: missing verse 25 2:06-2:15 (slice coverage small 1.00, medium 1.00) unclear: missing verse 5 0:14-0:24 (slice coverage small 0.00, medium 0.83)
   - WER small 0.1801 / medium 0.354; coverage small 0.8219 / medium 0.646; duration 164.44s vs expected 193.2s (ratio 0.851); sha256 `360d6660678d48b892df2a52b21118c76bbb2125bb519263fe60657eceb57a0f`
+- **Job 37** — missing verse 6 at 0:29 — "He says to the snow Fall on the earth" (small.en)
+- **Job 37** — missing verse 1 at 0:00–0:02 — "My heart pounds at this It jumps inside me Listen Listen to the roar of God's voice Listen to the rumbling that comes from his mouth He sends his lightning across the whole sky to the ends of the earth After that comes the roar of his voice He thunders with his great voice When his voice is heard he …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00) confirmed: missing verse 6 0:20-0:30 (slice coverage small 0.33, medium 0.33)
+  - WER small 0.0258 / medium 0.4134; coverage small 0.9767 / medium 0.5866; duration 129.54s vs expected 154.8s (ratio 0.837); sha256 `29fdb4b06f4c48d125096b0926b1e32d0914a66cbf3693096996a16bc7319e58`
+- **Job 38** — missing verse 17 at 1:25 — "Have the gates of death been shown to you" (small.en)
+- **Job 38** — missing verse 1 at 0:59 — "out of a powerful storm He said Who is this that makes my plans unclear by talking without knowing Get ready to stand up like a man I will ask you questions and you will answer me Where were you when I laid the foundation of the earth Tell me if you understand Who decided how big it would be …" (medium.en)
+  - audio check: confirmed: missing verse 1 0:29-0:38 (slice coverage small 0.08, medium 0.08) confirmed: missing verse 17 1:16-1:26 (slice coverage small 0.33, medium 0.33)
+  - WER small 0.0219 / medium 0.2629; coverage small 0.9828 / medium 0.7371; duration 215.72s vs expected 255.6s (ratio 0.844); sha256 `0d0d7f7a48533d91670fd7dc1eaef7c6d7eadb0de4bacb263dfe9545eb62d253`
+- **Job 40** — inserted verse 2 at 0:21–0:59 — "Lord T Patrick reaches him as an advocate T Patrick reaches him as an advocate T Patrick reaches him as an active T Patrick reaches him as an advocate T Patrick reaches him as an advocate T Patrick reaches him as an advocate T Patrick reaches him as an advocate T Patrick reaches him as an advocate T Patrick reaches …" (small.en+medium.en)
+- **Job 40** — repeated verse 2 at 0:24–0:30 — "T Patrick reaches him as an advocate T Patrick reaches him as an" (small.en+medium.en)
+  - audio check: unclear: inserted verse 2 0:20-0:44 (slice coverage small 1.00, medium 0.00) unclear: repeated verse 2 0:23-0:36 (slice coverage small 1.00, medium 0.54, times 2/0)
+  - WER small 0.339 / medium 0.1667; coverage small 0.9746 / medium 0.839; duration 193.62s vs expected 141.6s (ratio 1.367); sha256 `7df987abcb8b75fa98f86e80f35563d2dd2062c7babfe0144ad54632d6f4e12f`
+- **Job 41** — missing verse 25 at 2:43 — "When it rises up the mighty are afraid They run away when it crashes around A sword that hits it does no harm Neither does a spear a dart or an arrow It treats iron like straw and bronze like rotten wood Arrows don't make it run away Stones from a sling are like bits of straw to it A …" (small.en)
+  - audio check: confirmed: missing verse 25 2:03-2:12 (slice coverage small 0.08, medium 0.00)
+  - WER small 0.311 / medium 0.0118; coverage small 0.6969 / medium 0.9902; duration 168.87s vs expected 203.2s (ratio 0.831); sha256 `61e44e359a7ecbe0a2947d44c75f600a5ca7b27f9969d3c4343cde960c7df477`
+- **Job 42** — inserted verse 12 at 1:49–1:51 — "The Lord blessed the last" (small.en+medium.en)
+- **Job 42** — inserted verse 12 at 1:51–3:00 — "of Job's life even more than the first He bought him seven new sons and ten gliadori golds He rebuilt his family and his love was blue for the plants Job related to genuine grief times and he smiled at the end and God gave him a double the amount of what he had previously These days were nothing but …" (small.en+medium.en)
+- **Job 42** — repeated verse 12 at 1:49–1:54 — "The Lord blessed the last part of Job's life even more than the first" (small.en+medium.en)
+- **Job 42** — repeated verse 12 at 2:31–2:33 — "The Lord blessed Job and" (small.en+medium.en)
+- **Job 42** — repeated verse 12 at 2:37–2:45 — "The Lord blessed Job and his proceeds were much better than the previous years The Lord blessed Job and gave him a" (small.en+medium.en)
+- **Job 42** — repeated verse 12 at 2:49–2:53 — "The Lord blessed Job and gave him a new son and a new" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 12 1:50-2:14 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 12 2:36-2:51 (slice coverage small 0.73, medium 1.00, times 0/1) refuted: repeated verse 12 1:48-2:00 (slice coverage small 1.00, medium 0.07, times 1/0)
+  - WER small 0.464 / medium 0.4963; coverage small 0.9826 / medium 0.7692; duration 228.99s vs expected 161.2s (ratio 1.421); sha256 `5f8bc06d5b270eda7cac210fca1f5c0a56f1908c9ef0bcaa4c467eba5c50fdb2`
+- **Psalms 2** — missing verse 8 at 0:45 — "nations They will belong to you" (medium.en)
+  - audio check: confirmed: missing verse 8 0:36-0:46 (slice coverage small 0.33, medium 0.33)
+  - WER small 0.0047 / medium 0.0332; coverage small 0.9953 / medium 0.9668; duration 77.95s vs expected 84.4s (ratio 0.924); sha256 `38df2ce410340027bd9bdd215442b92518e967ceab72d3299bc469771f47b241`
 
 ## UNCERTAIN
 
@@ -3315,6 +3342,12 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Job 33** — missing verse 1 at 0:30 — "to all my words I am about to open my mouth My words are on the tip of my tongue My words come from an honest heart My lips will speak what I know is true The Spirit of God has made me The breath of the All Powerful One gives me life Answer me if you can Get ready …" (medium.en)
   - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.92) unclear: missing verse 31 2:44-2:54 (slice coverage small 0.17, medium 0.50)
   - small.en only: missing 'and listen to me Be quiet'; medium.en only: missing 'to all my words I am about to open my mouth My words are on the tip of my tongue My words come from an honest heart My lips will speak what I know is true The Spirit of God has made me The breath of the All Powerful One gives me life Answer me if you can Get ready …'; coverage unclear (small 0.919, medium 0.690; pass needs both >= 0.96); WER small 0.0808 / medium 0.3115; coverage small 0.9192 / medium 0.6904; sha256 `4d72565cfc78ec7bcf394619f2aa121d78eb1bb13b18d17e556db0dfdd8207d1`
+- **Job 36** — missing verse 16 at 1:36 — "have been full of the best food But now you are getting the judgment wicked people deserve Judgment and fairness" (medium.en)
+  - audio check: unclear: missing verse 16 1:27-1:37 (slice coverage small 0.17, medium 0.58)
+  - medium.en only: missing 'have been full of the best food But now you are getting the judgment wicked people deserve Judgment and fairness'; coverage unclear (small 1.000, medium 0.886; pass needs both >= 0.96); WER small 0.002 / medium 0.1135; coverage small 1.0 / medium 0.8865; sha256 `38e1f27e7792976ac98f673d548975f3e908767c20e93b0d256929c4915d88c5`
+- **Job 39** — missing verse 1 at 0:00–0:02 — "Do you know when the mountain goats give birth Do you watch when the deer have their babies Do you count the months until they give birth Do you know the time when their babies are born They bend down and give birth to their young Then their labor is over Their babies grow strong in the open fields They …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'Do you know when the mountain goats give birth Do you watch when the deer have their babies Do you count the months until they give birth Do you know the time when their babies are born They bend down and give birth to their young Then their labor is over Their babies grow strong in the open fields They …'; coverage unclear (small 1.000, medium 0.614; pass needs both >= 0.96); WER backstop on one model (small 0.002, medium 0.388); WER small 0.002 / medium 0.3877; coverage small 1.0 / medium 0.6143; sha256 `00646322ca77799d843761a18f8030da738f7a2d442512b57f5bb82867863328`
 
 ## Script
 
