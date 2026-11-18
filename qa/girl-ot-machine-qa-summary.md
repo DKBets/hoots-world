@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 120
+- Scored chapters: 130
 - PASS: 5
-- FAIL: 75
-- UNCERTAIN: 40 (jsonl verdict UNSURE)
-- Still to score: 809 Old Testament chapters
+- FAIL: 82
+- UNCERTAIN: 43 (jsonl verdict UNSURE)
+- Still to score: 799 Old Testament chapters
 
 ## PASS
 
@@ -551,6 +551,96 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Numbers 3** — missing verse 10 at 1:06 — "Appoint Aaron and his sons to serve as priests" (medium.en)
   - audio check: refuted: missing verse 10 0:57-1:07 (slice coverage small 1.00, medium 1.00) confirmed: missing verse 30 3:08-3:18 (slice coverage small 0.20, medium 0.20)
   - WER small 0.0486 / medium 0.1883; coverage small 0.9574 / medium 0.8266; duration 375.81s vs expected 403.6s (ratio 0.931); sha256 `a4ce78d88698c31e64065908a7d973704d9b1e84d71691b1e5143da8109cfcdd`
+- **Numbers 4** — missing verse 1 at 0:00–0:02 — "The LORD said to Moses and Aaron Count the Kohathites one of the Levite clans by their clans and families Count all the men from 30 to 50 years old who come to work in the Tent of Meeting This is the work of the Kohathites in the Tent of Meeting They will take care of the most holy things …" (small.en+medium.en)
+- **Numbers 4** — missing verse 14 at 1:53 — "it with fine leather and put its poles in place After Aaron and his sons have finished covering the holy things and all the holy tools and the camp is ready to move the Kohathites will come to carry them But they must not touch the holy things or they will die These are the things" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00) unclear: missing verse 14 1:30-1:39 (slice coverage small 0.42, medium 0.25)
+  - WER small 0.1959 / medium 0.2621; coverage small 0.805 / medium 0.7519; duration 378.41s vs expected 428.8s (ratio 0.882); sha256 `ce5e43718225520dec25623c359e9e8404b54a6900c774e4840682aad88550cf`
+- **Numbers 5** — silence verse ? at 2:31–2:36 — "to your husband, then And may this bitter water that brings a curse not hurt you." (waveform)
+- **Numbers 5** — missing verse 1 at 0:00–0:02 — "The LORD said to Moses Command the Israelites to send out of the camp anyone who has a serious skin disease or a flow from their body or who is unclean from touching a dead body Send both men and women out of the camp so they will not make the camp unclean because I live among them So the …" (small.en+medium.en)
+- **Numbers 5** — missing verse 20 at 3:38–3:42 — "made yourself unclean by sleeping with another man" (small.en+medium.en)
+- **Numbers 5** — missing verse 22 at 3:54–3:57 — "May this water that brings a" (small.en+medium.en)
+- **Numbers 5** — missing verse 23 at 4:31–4:37 — "priest will write these curses on" (small.en+medium.en)
+- **Numbers 5** — missing verse 23 at 4:55–5:05 — "bitter water Then he will have" (small.en+medium.en)
+- **Numbers 5** — inserted verse 19 at 2:44–2:53 — "as well It is a necessary part of the Daptation A baptism means that believers give up their own personal interests their own personal interests and their own personal interests and marry up" (small.en+medium.en)
+- **Numbers 5** — inserted verse 19 at 2:53–3:00 — "the Daptation of their beliefs They please come into Daptation in a physical sense and give birth to a new life" (small.en+medium.en)
+- **Numbers 5** — inserted verse 19 at 3:01–3:07 — "go a new deed to establish their faith in Christ The baptism is a beautiful promise and a barrier" (small.en+medium.en)
+- **Numbers 5** — inserted verse 19 at 3:10–3:20 — "world and gets started with a newborn The name baptism is broken into a ten table and interpreted as a newborn sing A baptism means" (small.en+medium.en)
+- **Numbers 5** — inserted verse 19 at 3:21–3:37 — "new world The baptism is important because it captures the promise and sets the tone for the next century It also indicates a new state of belief It is a ten plane card of dialogue" (small.en+medium.en)
+- **Numbers 5** — inserted verse 22 at 3:54–3:57 — "Then the priest will have her make the promise with the" (small.en+medium.en)
+- **Numbers 5** — inserted verse 22 at 3:58–4:00 — "He will say may the Lord make your people use" (small.en+medium.en)
+- **Numbers 5** — inserted verse 22 at 4:00–4:02 — "name in a curse May he" (small.en+medium.en)
+- **Numbers 5** — inserted verse 22 at 4:07–4:30 — "ask the priest if this boy enchanced his love and gave him peace in clavers The baptism is a 10 plane card of dialogue It is a prayer for if T be occurred and it is a new lead for their own personal plans The baptism is a 10 plane card of dialogue and is a prayer for if T …" (small.en+medium.en)
+- **Numbers 5** — inserted verse 23 at 4:31–4:37 — "baptism is a meaningful way of reconnecting people to their own personal plans It is" (small.en+medium.en)
+- **Numbers 5** — inserted verse 23 at 4:37–4:40 — "moment of devotion and self expression" (small.en+medium.en)
+- **Numbers 5** — inserted verse 23 at 4:40–4:43 — "it is a new plate of dialogue in history" (small.en+medium.en)
+- **Numbers 5** — inserted verse 23 at 4:44–4:54 — "baptism is a meaningful way of reconnecting people to their own personal plans It is a meaningful way of reconnecting people to their own personal plans" (small.en+medium.en)
+- **Numbers 5** — inserted verse 23 at 4:55–5:05 — "baptism is a meaningful way of reconnecting people to their own personal plans It is a meaningful way of reconnecting people to their own personal plans" (small.en+medium.en)
+- **Numbers 5** — inserted verse 24 at 5:06–5:15 — "baptism is a meaningful way of reconnecting people to their own personal plans It is a meaningful way of reconnecting people to their own personal plans" (small.en+medium.en)
+- **Numbers 5** — inserted verse 24 at 5:16–5:22 — "baptism is a meaningful way of reconnecting people to their own personal plans It is" (small.en+medium.en)
+- **Numbers 5** — inserted verse 24 at 5:22–5:26 — "meaningful way of reconnecting people to their own personal plans" (small.en+medium.en)
+- **Numbers 5** — repeated verse 21 at 3:54–4:04 — "Then the priest will have her make the promise with the curse He will say may the Lord make your people use your name in a curse May he make your body swell and make you" (small.en+medium.en)
+- **Numbers 5** — repeated verse 22 at 4:22–4:25 — "The baptism is a 10 plane card of dialogue and" (small.en+medium.en)
+- **Numbers 5** — repeated verse 22 at 4:28–4:32 — "and it is a new lead for their own personal plans The baptism is a" (small.en+medium.en)
+- **Numbers 5** — paraphrase verse ? at ? — "scattered wording does not match the source" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00) unclear: inserted verse 22 4:06-4:30 (slice coverage small 1.00, medium 0.04) refuted: repeated verse 21 3:53-4:10 (slice coverage small 1.00, medium 0.54, times 1/0)
+  - WER small 0.6471 / medium 0.6172; coverage small 0.7891 / medium 0.5859; duration 397.61s vs expected 307.2s (ratio 1.294); sha256 `fe728fb0ded2766abfa7ce931b6cbe2022e9cc31dae77ef1fa892e0d24eb6f1e`
+- **Numbers 6** — missing verse 1 at 0:00–0:02 — "The LORD said to Moses Tell the Israelites A man or woman might make a special promise to set themselves apart for the LORD as a Nazirite Then they must stay away from wine and other strong drinks They must not drink vinegar made from wine or strong drink They must not drink grape juice or eat grapes or raisins …" (small.en+medium.en)
+- **Numbers 6** — missing verse 10 at 1:50 — "Meeting The priest will offer one as a sin offering and the other as a burnt offering He will make them right with God because they became unclean by being near the dead body That same day they must make their head holy again They must set apart their time for" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00) confirmed: missing verse 10 1:30-1:39 (slice coverage small 0.25, medium 0.25)
+  - WER small 0.2442 / medium 0.1875; coverage small 0.7602 / medium 0.814; duration 243.16s vs expected 275.2s (ratio 0.884); sha256 `8780d4aa6b2a8f447ef4d66de0ae31010102966f9cc3c36c9ce6fcfccd153b3a`
+- **Numbers 7** — missing verse 55 at 6:57 — "quarter pounds and one silver bowl weighing about one and three" (small.en+medium.en)
+- **Numbers 7** — repeated verse 73 at 9:13–9:16 — "pounds and one silver bull weighing about one and" (small.en+medium.en)
+- **Numbers 7** — repeated verse 79 at 9:57–10:00 — "pounds and one silver bull weighing about one and" (small.en+medium.en)
+  - audio check: unclear: missing verse 55 6:48-6:58 (slice coverage small 0.46, medium 0.46) refuted: repeated verse 73 9:12-9:22 (slice coverage small 1.00, medium 0.89, times 1/0) refuted: repeated verse 79 9:56-10:06 (slice coverage small 1.00, medium 0.89, times 1/0)
+  - WER small 0.0391 / medium 0.2678; coverage small 0.9614 / medium 0.7358; duration 695.04s vs expected 787.2s (ratio 0.883); sha256 `7764fe80a32e2696dbe3ef3dfeb266cd29ea56ebd266e12f6b722c86528b6612`
+- **Numbers 8** — missing verse 1 at 0:34–0:53 — "Moses Tell Aaron When you light the lamps the seven lamps must shine light" (small.en+medium.en)
+- **Numbers 8** — missing verse 2 at 0:54–0:59 — "lampstand Aaron did this He lit the lamps so they shone" (small.en+medium.en)
+- **Numbers 8** — missing verse 4 at 1:12–1:14 — "hammered gold from its base" (small.en+medium.en)
+- **Numbers 8** — missing verse 6 at 1:27–1:31 — "make them clean This is how to make them clean Sprinkle" (small.en+medium.en)
+- **Numbers 8** — missing verse 7 at 1:31–1:35 — "water for cleansing on them Have them shave their whole bodies wash their clothes" (small.en+medium.en)
+- **Numbers 8** — missing verse 8 at 1:40–1:48 — "take a young bull and its grain offering of fine flour mixed with oil Take another young bull for a sin offering Bring" (small.en+medium.en)
+- **Numbers 8** — missing verse 10 at 2:01–2:04 — "Israelites put their hands on the Levites Aaron" (small.en+medium.en)
+- **Numbers 8** — inserted verse 1 at 0:31–0:34 — "Israelites and make them clean This is how" (small.en+medium.en)
+- **Numbers 8** — inserted verse 1 at 0:34–0:53 — "make them clean Sprinkle the water for cleansing on them Have them shave their whole bodies wash their clothes and make themselves clean Then have them take a young bull and its grain offering of fine flour mixed with oil Take another young bull for a sin offering Bring the Levites" (small.en+medium.en)
+- **Numbers 8** — inserted verse 2 at 0:54–0:59 — "tent of meeting and gather the whole community of Israel together bring the Levites" (small.en+medium.en)
+- **Numbers 8** — inserted verse 3 at 1:07–1:09 — "tent of meeting and say to" (small.en+medium.en)
+- **Numbers 8** — inserted verse 4 at 1:09–1:12 — "Israelis again set these Levites in front" (small.en+medium.en)
+- **Numbers 8** — inserted verse 4 at 1:12–1:14 — "the tent of the meeting and say" (small.en+medium.en)
+- **Numbers 8** — inserted verse 4 at 1:14–1:19 — "the Israelis again set and set again a member of the Levites in front of" (small.en+medium.en)
+- **Numbers 8** — inserted verse 5 at 1:21–1:24 — "Israelis again Set and set again a member of" (small.en+medium.en)
+- **Numbers 8** — inserted verse 6 at 1:27–1:31 — "say to the Israelis again Set and set again a member of" (small.en+medium.en)
+- **Numbers 8** — inserted verse 7 at 1:31–1:35 — "Levites in front of the tent of the meeting and say to the Israelis again Set" (small.en+medium.en)
+- **Numbers 8** — inserted verse 7 at 1:36–1:39 — "set again a part of the meeting inside these Levites to make" (small.en+medium.en)
+- **Numbers 8** — inserted verse 8 at 1:40–1:48 — "said before the Lord in their prayers The Lord said to Moses Keep the Levites inside the tent of the meeting and say to" (small.en+medium.en)
+- **Numbers 8** — inserted verse 9 at 1:48–1:50 — "Israelis again Set a gumbling" (small.en+medium.en)
+- **Numbers 8** — inserted verse 9 at 1:54–1:58 — "Israelis again Set and set again a member of" (small.en+medium.en)
+- **Numbers 8** — inserted verse 10 at 2:01–2:04 — "Israelis again Set and set again a member" (small.en+medium.en)
+- **Numbers 8** — inserted verse 12 at 2:16–2:24 — "and grain offerings for the beloved of the Lord inside the tent of the meeting and say to the Israelis again Set and set again" (small.en+medium.en)
+- **Numbers 8** — inserted verse 12 at 2:24–2:27 — "member of the Levites in front of the tent of the meeting" (small.en+medium.en)
+- **Numbers 8** — inserted verse 12 at 2:28–2:31 — "Israelis again Set and set again" (small.en+medium.en)
+- **Numbers 8** — inserted verse 12 at 2:31–2:35 — "member of the Levites in front of the tent of the meeting and say" (small.en+medium.en)
+- **Numbers 8** — inserted verse 12 at 2:35–2:40 — "the Israelis again Set and set again a member of the Levites in front of" (small.en+medium.en)
+- **Numbers 8** — inserted verse 12 at 2:41–2:45 — "the Israelis again Set and set again a member of" (small.en+medium.en)
+- **Numbers 8** — inserted verse 12 at 2:46–2:49 — "in front of the tent of the meeting and say to" (small.en+medium.en)
+- **Numbers 8** — inserted verse 13 at 2:49–2:53 — "Israelis again Set and set again a member of the Levites" (small.en+medium.en)
+- **Numbers 8** — inserted verse 13 at 2:58–3:03 — "set again a member of the Levites in front of the tent of the meeting and say" (small.en+medium.en)
+- **Numbers 8** — inserted verse 13 at 3:03–3:07 — "Israelis again Set and set again a member of" (small.en+medium.en)
+- **Numbers 8** — repeated verse 8 at 1:45–1:50 — "the tent of the meeting and say to the Israelis again Set" (small.en+medium.en)
+- **Numbers 8** — repeated verse 9 at 1:51–2:04 — "inside the tent of the meeting and say to the Israelis again Set and set again a member of the Levites in front of the tent of the meeting and say to the Israelis again Set and set again a member" (small.en+medium.en)
+- **Numbers 8** — repeated verse 12 at 2:18–2:41 — "inside the tent of the meeting and say to the Israelis again Set and set again a member of the Levites in front of the tent of the meeting and say to the Israelis again Set and set again a member of the Levites in front of the tent of the meeting and say to the Israelis again Set and …" (small.en+medium.en)
+- **Numbers 8** — paraphrase verse ? at ? — "scattered wording does not match the source" (small.en+medium.en)
+  - audio check: refuted: repeated verse 12 2:17-2:41 (slice coverage small 1.00, medium 0.96, times 1/0) confirmed: inserted verse 1 0:33-0:57 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 9 1:50-2:10 (slice coverage small 1.00, medium 0.08, times 1/0)
+  - WER small 0.7194 / medium 0.7057; coverage small 0.6988 / medium 0.7367; duration 332.12s vs expected 232.4s (ratio 1.429); sha256 `c938220e138d4e532dd44d05ca49e5aab08436481b1d3a45f43c40a50ee25035`
+- **Numbers 10** — missing verse 29 at 3:48 — "Moses said to Hobab the son of" (small.en+medium.en)
+- **Numbers 10** — missing verse 29 at 3:50 — "he would give us Come with us and we will treat you well because the LORD has promised good things to Israel Hobab answered No I will not go I am going back" (small.en+medium.en)
+  - audio check: unclear: missing verse 29 3:36-3:45 (slice coverage small 0.67, medium 0.75) confirmed: missing verse 29 3:39-3:49 (slice coverage small 0.14, medium 0.14)
+  - WER small 0.1738 / medium 0.4345; coverage small 0.8262 / medium 0.571; duration 269.1s vs expected 290.0s (ratio 0.928); sha256 `4d03e98005524eff0a8786a5402a40babf8a124c02f61e432fd5ae282c6b9628`
+- **Numbers 13** — inserted verse 8 at 0:49–0:52 — "the tribe of Noe Zachary son of Noe" (small.en+medium.en)
+- **Numbers 13** — inserted verse 8 at 0:53–0:59 — "son of men those names in his tongue Lord said to Moses send some men from each" (small.en+medium.en)
+- **Numbers 13** — inserted verse 8 at 0:59–1:30 — "of their nations and send them to continue their nation's leadership Make sure you want to send them to see what is in their nations like These were the top leaders of their nations but no way bet had nothing to do with them So Moses sent them from the Peron desert of the Tabrith planned Pertment mountains These men …" (small.en+medium.en)
+- **Numbers 13** — repeated verse 8 at 0:56–0:58 — "Lord said to Moses send some men" (small.en+medium.en)
+  - audio check: unclear: inserted verse 8 0:58-1:22 (slice coverage small 0.83, medium 0.00) unclear: inserted verse 8 0:52-1:05 (slice coverage small 1.00, medium 0.06) confirmed: inserted verse 8 0:48-0:58 (slice coverage small 0.75, medium 0.75)
+  - WER small 0.3201 / medium 0.3521; coverage small 0.939 / medium 0.8933; duration 275.29s vs expected 262.4s (ratio 1.049); sha256 `16d0a1104eb3a328274593a09f13b9b55f0fbaceb9500bd41172bbb1f01d25f6`
 
 ## UNCERTAIN
 
@@ -682,6 +772,15 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Numbers 1** — audio slice contains the disputed words; the models still disagree (coverage small 0.903, medium 0.815)
   - audio check: refuted: repeated verse 26 2:53-3:03 (slice coverage small 1.00, medium 1.00, times 1/1) refuted: repeated verse 20 2:09-2:17 (slice coverage small 1.00, medium 1.00, times 1/1)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.903, medium 0.815); WER small 0.0984 / medium 0.1901; coverage small 0.9026 / medium 0.8147; sha256 `d192b6d82ff9e2468be79f33e2cad0fb34b3d48b4fe39246f4d96caf2c056616`
+- **Numbers 9** — audio slice contains the disputed words; the models still disagree (coverage small 0.960, medium 0.903)
+  - audio check: refuted: missing verse 15 2:08-2:17 (slice coverage small 1.00, medium 1.00) refuted: missing verse 13 1:46-1:56 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.960, medium 0.903); WER small 0.0397 / medium 0.1071; coverage small 0.9603 / medium 0.9033; sha256 `8f8d57912afd8f817c6330e2bfe9ee2d2a0db3ed3b239e073b74e1180be55308`
+- **Numbers 11** — audio slice contains the disputed words; the models still disagree (coverage small 0.917, medium 0.743)
+  - audio check: refuted: missing verse 13 1:44-1:53 (slice coverage small 0.83, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.917, medium 0.743); WER small 0.0853 / medium 0.2603; coverage small 0.9168 / medium 0.743; sha256 `bcf986e91c2922307fa13ea269c33dadfa73ff9347d765081f2ddd5b384c4b28`
+- **Numbers 12** — missing verse 1 at 0:00–0:02 — "Miriam and Aaron began to speak against Moses because of the Cushite woman he had married He had married a woman from Cush They said Has the LORD spoken only through Moses Hasn't he also spoken through us And the LORD heard them Moses was a very humble man more humble than anyone else on earth Suddenly the LORD said …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.00)
+  - medium.en only: missing 'Miriam and Aaron began to speak against Moses because of the Cushite woman he had married He had married a woman from Cush They said Has the LORD spoken only through Moses Hasn't he also spoken through us And the LORD heard them Moses was a very humble man more humble than anyone else on earth Suddenly the LORD said …'; coverage unclear (small 0.991, medium 0.516; pass needs both >= 0.96); WER backstop on one model (small 0.012, medium 0.490); WER small 0.0118 / medium 0.4897; coverage small 0.9912 / medium 0.5162; sha256 `b48330103fc8d01b716f729797efdad614fb01ef666ba46e62737a2495dbee0a`
 
 ## Script
 
