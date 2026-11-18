@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 760
-- PASS: 48
-- FAIL: 432
-- UNCERTAIN: 280 (jsonl verdict UNSURE)
-- Still to score: 169 Old Testament chapters
+- Scored chapters: 770
+- PASS: 49
+- FAIL: 439
+- UNCERTAIN: 282 (jsonl verdict UNSURE)
+- Still to score: 159 Old Testament chapters
 
 ## PASS
 
-48 chapters. Both models agreed there was no missing, invented, or repeated passage.
+49 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -82,6 +82,7 @@ words clears that span. A split slice stays UNCERTAIN.
 - Ecclesiastes 6
 - Song of Solomon 4, 7
 - Isaiah 31
+- Jeremiah 18
 
 ## FAIL
 
@@ -3436,6 +3437,90 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Jeremiah 15** — repeated verse 15 at 3:19–3:21 — "your graves any more than as I have laid" (small.en+medium.en)
   - audio check: confirmed: inserted verse 15 2:48-3:12 (slice coverage small 1.00, medium 1.00) unclear: repeated verse 15 2:55-3:19 (slice coverage small 1.00, medium 0.67, times 2/0) refuted: missing verse 6 0:46-0:55 (slice coverage small 0.92, medium 1.00)
   - WER small 0.3012 / medium 0.4612; coverage small 0.9394 / medium 0.5435; duration 273.96s vs expected 257.6s (ratio 1.064); sha256 `58e56c90787b29b61b2e93389416813180af96e999f1e6774dd9822acbc65bdd`
+- **Jeremiah 16** — coverage low on both models (small 0.844, medium 0.844); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1559 / medium 0.1656; coverage small 0.8441 / medium 0.8441; duration 217.43s vs expected 248.8s (ratio 0.874); sha256 `dff80d795af9b5d751569b010bdb7da2a8a169e056530cda7908b68f73822a30`
+- **Jeremiah 17** — missing verse 1 at 0:00–0:02 — "Judah's sin is written with an iron pen carved with a diamond point It is carved on their hearts and on the corners of their altars Even their children remember their altars and Asherah poles beside the green trees on the high hills My mountain in the countryside I will give away your riches and treasures to your enemies along …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.00)
+  - WER small 0.1201 / medium 0.2286; coverage small 0.8812 / medium 0.7765; duration 265.0s vs expected 313.2s (ratio 0.846); sha256 `f47ff819b59e53e12d1137a7290e3f9db84ed9fd5e98e32365aae0e65b1ee586`
+- **Jeremiah 19** — missing verse 13 at 1:48 — "The houses of Jerusalem and" (small.en)
+- **Jeremiah 19** — missing verse 3 at 0:16 — "the LORD's message kings of Judah and people of Jerusalem This is what" (medium.en)
+  - audio check: confirmed: missing verse 3 0:07-0:17 (slice coverage small 0.25, medium 0.25) refuted: missing verse 13 1:39-1:49 (slice coverage small 0.80, medium 0.80)
+  - WER small 0.0385 / medium 0.2698; coverage small 0.9635 / medium 0.7465; duration 142.21s vs expected 197.2s (ratio 0.721); sha256 `59afb4ef72fe74b67a9e1299255796cc9bfb4b3121e4857168f45aa6fa6c3b21`
+- **Jeremiah 20** — inserted verse 11 at 2:09–2:52 — "seen Then I will go to the most heavens and never stop telling them the name of the Lord are mighty I will win with them and I will go to the most heavens and never stop telling them the name of the Lord Almighty all day long Ten times in the history of this province I have seen these …" (small.en+medium.en)
+- **Jeremiah 20** — inserted verse 11 at 2:56–3:29 — "envisioned a God saves and one day I will go with my God and Everyone knows him and my father's will and my name is in the Lord Then says the will of the Lord Almighty I will go with my God and my Father's will and the name of the Lord Almighty and my faith He is the God's …" (small.en+medium.en)
+- **Jeremiah 20** — inserted verse 12 at 3:43–3:53 — "Sing Lord the Lord and praise the Lord for all his great measures Sing Lord the Lord and praise the Lord for all his great measures" (small.en+medium.en)
+- **Jeremiah 20** — inserted verse 13 at 3:54–4:50 — "Lord the Lord and praise the Lord for all his great measures Please be faithful and give great thanks to the Lord for all his great measures Please be faithful and give great thanks to the Lord for all his great measures Please be faithful and give great thanks to the Lord for all his great measures Please be faithful …" (small.en+medium.en)
+- **Jeremiah 20** — inserted verse 13 at 4:51–4:57 — "for all his great measures please be faithful and thanks to" (small.en+medium.en)
+- **Jeremiah 20** — inserted verse 13 at 4:57–4:59 — "for all his great measures" (small.en+medium.en)
+- **Jeremiah 20** — repeated verse 11 at 3:07–3:10 — "the will of the Lord Almighty I will go" (small.en+medium.en)
+- **Jeremiah 20** — repeated verse 11 at 3:13–3:15 — "the name of the Lord Almighty" (small.en+medium.en)
+- **Jeremiah 20** — repeated verse 12 at 3:48–3:58 — "Sing Lord the Lord and praise the Lord for all his great measures Sing Lord the Lord and praise the Lord for all his great measures" (small.en+medium.en)
+- **Jeremiah 20** — repeated verse 13 at 4:02–4:28 — "the Lord for all his great measures Please be faithful and give great thanks to the Lord for all his great measures Please be faithful and give great thanks to the Lord for all his great measures Please be faithful and give great thanks to the Lord for all his great" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 11 2:08-2:32 (slice coverage small 0.92, medium 0.92) confirmed: inserted verse 13 3:53-4:17 (slice coverage small 1.00, medium 0.96) confirmed: inserted verse 11 2:55-3:19 (slice coverage small 0.96, medium 1.00)
+  - WER small 0.7935 / medium 0.7514; coverage small 0.9598 / medium 0.8279; duration 338.69s vs expected 209.2s (ratio 1.619); sha256 `734d91598a2e3d63494ec9cdd5c30bc6ea9e40167414587d97bc30008fed4d83`
+- **Jeremiah 21** — missing verse 2 at 0:22–0:30 — "him go away Jeremiah answered them Tell Zedekiah This is what the LORD the God of Israel says" (small.en)
+- **Jeremiah 21** — missing verse 14 at 2:26 — "But I will punish you as you deserve for what you have done" (medium.en)
+  - audio check: confirmed: missing verse 2 0:13-0:23 (slice coverage small 0.00, medium 0.17) refuted: missing verse 14 2:17-2:27 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.0492 / medium 0.0609; coverage small 0.9532 / medium 0.9415; duration 152.49s vs expected 170.8s (ratio 0.893); sha256 `8a067815fd899b2309a4c07e9b345d1c1c0ee78fb7e3053a521d25560a1b06d1`
+- **Jeremiah 22** — silence verse ? at 2:52–2:55 — "and hurt them. So this is what the Lord says about" (waveform)
+- **Jeremiah 22** — silence verse ? at 5:05–5:11 — "says the Lord, even if you, Kaniyia son of" (waveform)
+- **Jeremiah 22** — missing verse 18 at 3:17–3:39 — "about Jehoiakim son of Josiah king of Judah No one will cry" (small.en+medium.en)
+- **Jeremiah 22** — missing verse 18 at 3:57–4:02 — "sister No one will cry" (small.en+medium.en)
+- **Jeremiah 22** — missing verse 18 at 4:02–4:08 — "say Oh master or Oh our great king He will be buried like a dead donkey dragged away" (small.en+medium.en)
+- **Jeremiah 22** — missing verse 19 at 4:09–4:14 — "thrown outside the gates of Jerusalem Jerusalem go up" (small.en+medium.en)
+- **Jeremiah 22** — inserted verse 18 at 3:17–3:39 — "You would expect me to do these things but then you go and sick and drag your blood and use it as a present That's not my God It's not my God to do well Only then you go and sit and make yourself things break That's not my God You would expect me to please you there You would …" (small.en+medium.en)
+- **Jeremiah 22** — inserted verse 18 at 3:40–3:46 — "your own pleasures That's not my God You would expect me to do what is right but then you go and sin" (small.en+medium.en)
+- **Jeremiah 22** — inserted verse 18 at 3:47–3:49 — "move on for your own pleasures That's not" (small.en+medium.en)
+- **Jeremiah 22** — inserted verse 18 at 3:49–3:57 — "God You would expect me to do things what are right but then you go and sin and move on for your own pleasures That's not" (small.en+medium.en)
+- **Jeremiah 22** — inserted verse 18 at 3:57–4:02 — "God You would expect me to do things what are right but then you go and sin" (small.en+medium.en)
+- **Jeremiah 22** — inserted verse 18 at 4:02–4:08 — "move on for your own pleasures You would expect me to do things what are right but then you go and sin" (small.en+medium.en)
+- **Jeremiah 22** — inserted verse 19 at 4:09–4:14 — "move on for your own pleasures That's not my God You would expect me" (small.en+medium.en)
+- **Jeremiah 22** — inserted verse 20 at 4:14–4:16 — "do things what are right But then you go and sin" (small.en+medium.en)
+- **Jeremiah 22** — inserted verse 20 at 4:17–4:22 — "move on for your own pleasures That's not my God Even though it is used in the playground" (small.en+medium.en)
+- **Jeremiah 22** — inserted verse 23 at 4:59–5:12 — "As surely as I live says the Lord even if you Kaniya son of Jesus isn't seen" (small.en+medium.en)
+- **Jeremiah 22** — inserted verse 24 at 5:56–6:00 — "go as a breath and no other way of getting away whatsoever But if" (small.en+medium.en)
+- **Jeremiah 22** — inserted verse 24 at 6:01–6:03 — "want to see other signs and know that" (small.en+medium.en)
+- **Jeremiah 22** — inserted verse 25 at 6:04–6:08 — "take you as action and actions of my hand then you" (small.en+medium.en)
+- **Jeremiah 22** — inserted verse 25 at 6:08–6:16 — "go as a breath and no other way of getting away whatsoever But if you want to see other signs and know that I take" (small.en+medium.en)
+- **Jeremiah 22** — repeated verse 18 at 3:41–3:51 — "That's not my God You would expect me to do what is right but then you go and sin and move on for your own pleasures That's not my God You would expect me to do" (small.en+medium.en)
+- **Jeremiah 22** — repeated verse 18 at 3:52–4:04 — "right but then you go and sin and move on for your own pleasures That's not my God You would expect me to do things what are right but then you go and sin and move on for your own pleasures" (small.en+medium.en)
+- **Jeremiah 22** — repeated verse 18 at 4:05–4:20 — "You would expect me to do things what are right but then you go and sin and move on for your own pleasures That's not my God You would expect me to do things what are right But then you go and sin and move on for your own pleasures That's not my God" (small.en+medium.en)
+- **Jeremiah 22** — repeated verse 24 at 5:14–5:19 — "As surely as I live says the Lord even if you Kaniya son of" (small.en+medium.en)
+- **Jeremiah 22** — repeated verse 25 at 6:08–6:16 — "go as a breath and no other way of getting away whatsoever But if you want to see other signs and know that I take you" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 18 3:16-3:40 (slice coverage small 1.00, medium 1.00) unclear: repeated verse 18 4:04-4:26 (slice coverage small 1.00, medium 1.00, times 0/2) refuted: repeated verse 18 3:51-4:10 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.4 / medium 0.3653; coverage small 0.9114 / medium 0.8623; duration 429.18s vs expected 334.0s (ratio 1.285); sha256 `2d2f33c042b7b84f511504d00b78dfcf44cb3fc1fa0f5fc9f21e123f9fbbddd6`
+- **Jeremiah 25** — silence before verse 1 at 0:07–0:11 — "came to Jeremiah about all the people of Judah in the fourth year of..." (waveform)
+- **Jeremiah 25** — silence before verse 1 at 0:13–0:16 — "...Yakaya the the queen. Jeremiah chapter 25." (waveform)
+- **Jeremiah 25** — missing verse 4 at 3:13–3:17 — "or paid attention They said Turn away now each of" (small.en+medium.en)
+- **Jeremiah 25** — missing verse 5 at 3:17–3:19 — "from your evil ways and the evil things" (small.en+medium.en)
+- **Jeremiah 25** — missing verse 5 at 3:32–5:25 — "LORD gave to you and your ancestors forever" (small.en+medium.en)
+- **Jeremiah 25** — inserted verse 1 at 0:02–0:17 — "give us the message that came to Jeremiah about all the people of Judah in the fourth year of Yekiah the Queen Jeremiah chapter 25" (small.en+medium.en)
+- **Jeremiah 25** — inserted verse 1 at 0:37–1:20 — "them and feed their people without wheat and bread and ride their own animals and feed their people without wheat and bread and feed their people without wheat and bread and with their wills and every one Yahya feeds every one every year by the town taker and men seeing by the nervous scene by the koriya throws in vain …" (small.en+medium.en)
+- **Jeremiah 25** — inserted verse 3 at 1:37–1:45 — "the Lord has been telling me too many thousands of words and not just one I've reached out to you all" (small.en+medium.en)
+- **Jeremiah 25** — inserted verse 3 at 1:45–1:48 — "way but no one answered yet The Lord" (small.en+medium.en)
+- **Jeremiah 25** — inserted verse 3 at 1:48–1:54 — "telling me too many thousands of words and not just one I've reached out" (small.en+medium.en)
+- **Jeremiah 25** — inserted verse 3 at 1:54–2:13 — "you all the way but no one answered yet The Lord has been telling me go into debtor or debt and make yourself a sage But no one answers yet The Lord has been telling me go into debtor or debt and make yourself a sage But no one answers yet The Lord has been telling" (small.en+medium.en)
+- **Jeremiah 25** — inserted verse 3 at 2:14–2:28 — "the ways is his flat and the discipline is in his flat and that his flat is good And as for writing in pride I would please do so That is Pharaoh's flat and not just a great figure but" (small.en+medium.en)
+- **Jeremiah 25** — inserted verse 3 at 2:28–2:43 — "would blow and break into the veins and drive blue dyes in veil That is deep wag down into the veins and then please do so That is no common way getting you to do this That is no common way getting you" (small.en+medium.en)
+- **Jeremiah 25** — inserted verse 4 at 2:50–2:55 — "been saying that is God's will that is God's will who sends" (small.en+medium.en)
+- **Jeremiah 25** — inserted verse 4 at 2:55–2:58 — "today but you have not listened yet" (small.en+medium.en)
+- **Jeremiah 25** — inserted verse 4 at 3:00–3:10 — "yet don't do what I tell you That is God's will that is God's will who sends the prophets today That is God's will who sends the prophets today" (small.en+medium.en)
+- **Jeremiah 25** — inserted verse 4 at 3:13–3:17 — "that is God's will who wants to get you to do this But" (small.en+medium.en)
+- **Jeremiah 25** — inserted verse 5 at 3:20–3:23 — "That is God's will but his favor walks" (small.en+medium.en)
+- **Jeremiah 25** — inserted verse 5 at 3:24–3:31 — "same way no one walks in grace but he doesn't get into debt blindly or never in grace By" (small.en+medium.en)
+- **Jeremiah 25** — inserted verse 5 at 3:32–5:25 — "same way one walks in grace but he doesn't get into debt blindly or never in grace But he has flavor for no grace but he doesn't get into debt blindly or never in grace But he doesn't get into debt blindly or never in grace But he has flavor for no grace but he doesn't get into debt blindly …" (small.en+medium.en)
+- **Jeremiah 25** — repeated verse 1 at 0:18–0:21 — "the message that came to Jeremiah about all the people of" (small.en+medium.en)
+- **Jeremiah 25** — repeated verse 3 at 1:47–1:59 — "The Lord has been telling me too many thousands of words and not just one I've reached out to you all the way but no one answered yet The Lord has been telling me" (small.en+medium.en)
+- **Jeremiah 25** — repeated verse 3 at 2:04–2:14 — "yet The Lord has been telling me go into debtor or debt and make yourself a sage But no one answers yet The Lord has been telling me" (small.en+medium.en)
+- **Jeremiah 25** — repeated verse 3 at 2:41–2:46 — "That is no common way getting you to do this That is no common way" (small.en+medium.en)
+- **Jeremiah 25** — repeated verse 4 at 3:02–3:07 — "That is God's will that is God's will who sends the prophets today" (small.en+medium.en)
+- **Jeremiah 25** — repeated verse 4 at 3:07–3:12 — "That is God's will who sends the prophets today But you have not listened" (small.en+medium.en)
+- **Jeremiah 25** — repeated verse 5 at 3:18–3:21 — "do what I tell you That is God's will" (small.en+medium.en)
+- **Jeremiah 25** — repeated verse 5 at 3:30–3:32 — "in grace By the same way" (small.en+medium.en)
+- **Jeremiah 25** — repeated verse 5 at 3:32–3:38 — "one walks in grace but he doesn't get into debt blindly or never in grace" (small.en+medium.en)
+- **Jeremiah 25** — repeated verse 5 at 3:41–4:32 — "grace but he doesn't get into debt blindly or never in grace But he doesn't get into debt blindly or never in grace But he has flavor for no grace but he doesn't get into debt blindly or never in grace But he has flavor for no grace but he doesn't get into debt blindly or never in grace But …" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 5 3:31-3:55 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 5 3:40-4:04 (slice coverage small 1.00, medium 0.58, times 1/0) confirmed: inserted verse 1 0:36-1:00 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.7758 / medium 0.8374; coverage small 0.9152 / medium 0.7657; duration 618.88s vs expected 396.0s (ratio 1.563); sha256 `aca44ebb1ffd9c8d282bd4b6aa0a40f08d221503fb270b65eb1370c5d950457b`
 
 ## UNCERTAIN
 
@@ -4309,6 +4394,12 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Jeremiah 12** — missing verse 1 at 0:00–0:05 — "LORD you are always right when I bring my complaint to you But" (medium.en)
   - audio check: unclear: missing verse 1 0:00-0:01 (slice coverage small 0.00, medium 0.00)
   - medium.en only: missing 'LORD you are always right when I bring my complaint to you But'; coverage unclear (small 0.988, medium 0.722; pass needs both >= 0.96); WER backstop on one model (small 0.012, medium 0.402); WER small 0.0118 / medium 0.4024; coverage small 0.9882 / medium 0.7219; sha256 `357e5c37e61299fa2f61de5851fd346c454291724573aff9ec7f0bea3fd65645`
+- **Jeremiah 23** — audio slice contains the disputed words; the models still disagree (coverage small 0.944, medium 0.795)
+  - audio check: refuted: missing verse 1 0:04-0:14 (slice coverage small 1.00, medium 1.00) refuted: missing verse 32 5:10-5:19 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.944, medium 0.795); WER small 0.057 / medium 0.2077; coverage small 0.9439 / medium 0.795; sha256 `a56a8ee997bbb82e7dc43372ee6edcfc6d745d21a5b2e784d31f30efc862d145`
+- **Jeremiah 24** — missing verse 1 at 0:30 — "king of Babylon took Jeconiah son of Jehoiakim king of Judah away from Jerusalem to Babylon along with the leaders of Judah and the skilled workers and metalworkers the LORD showed me two baskets of figs sitting in front of the LORD's temple One basket had very good figs like figs that ripen early The other basket had very bad …" (medium.en)
+  - audio check: unclear: missing verse 1 0:01-0:10 (slice coverage small 0.83, medium 0.00)
+  - medium.en only: missing 'king of Babylon took Jeconiah son of Jehoiakim king of Judah away from Jerusalem to Babylon along with the leaders of Judah and the skilled workers and metalworkers the LORD showed me two baskets of figs sitting in front of the LORD's temple One basket had very good figs like figs that ripen early The other basket had very bad …'; coverage unclear (small 0.997, medium 0.769; pass needs both >= 0.96); WER small 0.0031 / medium 0.2344; coverage small 0.9969 / medium 0.7688; sha256 `144efa23611bb8ca6baffb7a010e21d8ae7f518864d8135c059ee032156255bb`
 
 ## Script
 
