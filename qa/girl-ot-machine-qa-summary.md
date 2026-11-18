@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 750
+- Scored chapters: 760
 - PASS: 48
-- FAIL: 424
-- UNCERTAIN: 278 (jsonl verdict UNSURE)
-- Still to score: 179 Old Testament chapters
+- FAIL: 432
+- UNCERTAIN: 280 (jsonl verdict UNSURE)
+- Still to score: 169 Old Testament chapters
 
 ## PASS
 
@@ -3368,6 +3368,74 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Jeremiah 5** — inserted verse 3 at 1:33–1:36 — "pride They did not ask for more grain or food" (small.en+medium.en)
   - audio check: confirmed: inserted verse 3 0:48-1:12 (slice coverage small 0.92, medium 0.92) confirmed: inserted verse 3 1:16-1:39 (slice coverage small 0.96, medium 1.00) confirmed: inserted verse 3 1:32-1:42 (slice coverage small 1.00, medium 1.00)
   - WER small 0.311 / medium 0.342; coverage small 0.8724 / medium 0.7881; duration 341.59s vs expected 322.8s (ratio 1.058); sha256 `455d369fa9d0541a8ad82b2d0efcc051a9b08f76fd4755bd4dd6bc35ac496a9b`
+- **Jeremiah 6** — coverage low on both models (small 0.886, medium 0.601); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1139 / medium 0.403; coverage small 0.8861 / medium 0.6008; duration 277.5s vs expected 319.6s (ratio 0.868); sha256 `68ece3382d5aaa34e1e35e9ee91df934fed32b2747f17db828ea6686dc810493`
+- **Jeremiah 7** — missing verse 2 at 0:22–0:42 — "Judah who come through these gates" (small.en+medium.en)
+- **Jeremiah 7** — inserted verse 2 at 0:10–0:14 — "from the Lord Listen you live in Davenport" (small.en+medium.en)
+- **Jeremiah 7** — inserted verse 2 at 0:18–0:22 — "Lord says Prose aprose See what things in front" (small.en+medium.en)
+- **Jeremiah 7** — inserted verse 2 at 0:22–0:42 — "me Don't stop your own local prayers Don't stop your own prayer invites Don't stop your own local prayers Battle is about" (small.en+medium.en)
+- **Jeremiah 7** — repeated verse 2 at 0:29–0:31 — "Don't stop your own local prayers" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 2 0:22-0:46 (slice coverage small 0.91, medium 1.00) confirmed: inserted verse 2 0:17-0:28 (slice coverage small 0.78, medium 0.78) unclear: inserted verse 2 0:09-0:20 (slice coverage small 0.25, medium 1.00)
+  - WER small 0.0815 / medium 0.3228; coverage small 0.9638 / medium 0.7995; duration 380.33s vs expected 353.2s (ratio 1.077); sha256 `e74db5987cf415f868336ed9d4bd5e369938a0965d64704c5cea922aafafc195`
+- **Jeremiah 8** — coverage low on both models (small 0.883, medium 0.759); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1183 / medium 0.2476; coverage small 0.8833 / medium 0.7587; duration 219.69s vs expected 253.6s (ratio 0.866); sha256 `e7295f5ed5d86e5fbc965308b2b712707afc11e7c474c7664d16a5f796799f2f`
+- **Jeremiah 9** — inserted verse 23 at 3:16–3:18 — "Don't let wise people brag about their wisdom" (small.en+medium.en)
+- **Jeremiah 9** — inserted verse 23 at 3:22–4:18 — "Let them hurry and cry out as they do to catch the gathering wheats Say this to the Lord Two women are known for crying and sad plans are known for death sitting in the gutting windows of the temple letting them write blood planting on their feet The dead bodies will lie again for the many days that it …" (small.en+medium.en)
+- **Jeremiah 9** — repeated verse 23 at 3:19–3:22 — "Don't let wise people brag about their wisdom" (small.en+medium.en)
+- **Jeremiah 9** — repeated verse 23 at 3:22–3:24 — "Let them hurry and cry out" (small.en+medium.en)
+- **Jeremiah 9** — repeated verse 23 at 3:42–3:48 — "sitting in the gutting windows of the temple letting them write blood planting on their feet" (small.en+medium.en)
+- **Jeremiah 9** — repeated verse 23 at 3:49–3:53 — "Two women are known for crying and sad plans are known for death" (small.en+medium.en)
+- **Jeremiah 9** — repeated verse 23 at 3:53–3:56 — "Say this to the Lord Two women" (small.en+medium.en)
+- **Jeremiah 9** — repeated verse 23 at 3:55–3:58 — "women who sing sad songs at funerals" (small.en+medium.en)
+- **Jeremiah 9** — repeated verse 23 at 4:10–4:12 — "two women who sing sad songs" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 23 3:21-3:45 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 23 3:41-3:54 (slice coverage small 1.00, medium 1.00, times 1/1) refuted: repeated verse 23 3:48-3:59 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.2438 / medium 0.4658; coverage small 0.9932 / medium 0.7288; duration 303.91s vs expected 292.0s (ratio 1.041); sha256 `8e0f7e67c897575b1af849da65446e6dc1552f7911a47ba5686df7a98764930f`
+- **Jeremiah 10** — silence verse ? at 0:44–0:49 — "of them. They can't hurt you, and they can't do any good either." (waveform)
+- **Jeremiah 10** — missing verse 4 at 1:18–1:25 — "fasten it with hammer and nails so it won't fall over Their idols are like scarecrows in a cucumber field" (small.en+medium.en)
+- **Jeremiah 10** — inserted verse 2 at 0:52–0:57 — "world there is no one like you For his love is at the great nation" (small.en+medium.en)
+- **Jeremiah 10** — inserted verse 3 at 0:59–1:05 — "Lord is born in your flesh and he guides his hand on every nation in all worlds Over my" (small.en+medium.en)
+- **Jeremiah 10** — inserted verse 3 at 1:06–1:10 — "they would never take you into a terrible city You have given yourselves" (small.en+medium.en)
+- **Jeremiah 10** — inserted verse 6 at 1:44–1:46 — "nation of Israel The Lord" (small.en+medium.en)
+- **Jeremiah 10** — inserted verse 6 at 1:49–1:52 — "nation of Israel The Lord is yours against you" (small.en+medium.en)
+- **Jeremiah 10** — inserted verse 7 at 1:58–2:01 — "Lord is yours against you You are the" (small.en+medium.en)
+- **Jeremiah 10** — repeated verse 6 at 1:44–1:47 — "great nation of Israel The Lord is" (small.en+medium.en)
+- **Jeremiah 10** — repeated verse 6 at 1:47–1:53 — "you You are no great nation of Israel The Lord is yours against you You" (small.en+medium.en)
+- **Jeremiah 10** — repeated verse 7 at 1:58–2:01 — "The Lord is yours against you You are" (small.en+medium.en)
+  - audio check: confirmed: missing verse 4 1:09-1:19 (slice coverage small 0.08, medium 0.08) confirmed: inserted verse 3 0:58-1:11 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 2 0:51-1:03 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.3718 / medium 0.2901; coverage small 0.7869 / medium 0.9054; duration 324.57s vs expected 249.6s (ratio 1.3); sha256 `80a28c649d6e2c033d7483193267362d436da72edce6db11594c33b820546e39`
+- **Jeremiah 13** — inserted verse 3 at 0:13–0:48 — "message came to me again Take the belt you've bought and go to the e freighter Go to the Everest River and find an Ererest place in the town of nether So I went to the Everest River and found an ararist place in the town of Nether Then the Lord Messaged came to me again Go to the Belt …" (small.en+medium.en)
+- **Jeremiah 13** — inserted verse 3 at 0:49–1:00 — "again Go to the belt you've bought and go to the Everest River and find an heirest place in the town of Nether Then the Lord messaged came to me again Go to" (small.en+medium.en)
+- **Jeremiah 13** — inserted verse 4 at 1:02–1:09 — "and go to the Everest River and find an heirest place in the town of Nether I went to the Everest River" (small.en+medium.en)
+- **Jeremiah 13** — inserted verse 4 at 1:10–1:18 — "found an heirest place in the town of Nether Then the Lord messaged came to me again Go to the belt you've bought" (small.en+medium.en)
+- **Jeremiah 13** — inserted verse 4 at 1:18–1:24 — "to the Everest River and find an errorist place in the town of Nether I went" (small.en+medium.en)
+- **Jeremiah 13** — inserted verse 4 at 1:25–1:29 — "and found an errorist place in the town of Nether" (small.en+medium.en)
+- **Jeremiah 13** — inserted verse 25 at 4:29–4:32 — "See what the world witnesses see" (small.en+medium.en)
+- **Jeremiah 13** — inserted verse 25 at 4:37–4:40 — "miscreants and sin ruin your way see what" (small.en+medium.en)
+- **Jeremiah 13** — inserted verse 25 at 4:42–4:52 — "actions lead your way see what the breach of your misindent face leads your way see what the breach of your loyal faith leads your way So will probably mix you" (small.en+medium.en)
+- **Jeremiah 13** — inserted verse 27 at 5:06–5:11 — "no God in heaven believing you have no God in heaven or or even in earth You" (small.en+medium.en)
+- **Jeremiah 13** — repeated verse 3 at 0:29–0:30 — "place in the town of Nether" (small.en+medium.en)
+- **Jeremiah 13** — repeated verse 3 at 0:34–0:36 — "the Belt you've bought and go to the" (small.en+medium.en)
+- **Jeremiah 13** — repeated verse 3 at 0:55–1:07 — "place in the town of Nether Then the Lord messaged came to me again Go to the belt you've bought and go to the Everest River and find an heirest place in the town of Nether" (small.en+medium.en)
+- **Jeremiah 13** — repeated verse 4 at 1:07–1:10 — "I went to the Everest River and found an" (small.en+medium.en)
+- **Jeremiah 13** — repeated verse 4 at 1:10–1:20 — "an heirest place in the town of Nether Then the Lord messaged came to me again Go to the belt you've bought and go to the Everest River and find an" (small.en+medium.en)
+- **Jeremiah 13** — repeated verse 4 at 1:21–1:26 — "place in the town of Nether I went to the Everest River and found an" (small.en+medium.en)
+- **Jeremiah 13** — repeated verse 4 at 1:26–1:29 — "an errorist place in the town of Nether" (small.en+medium.en)
+- **Jeremiah 13** — repeated verse 25 at 4:43–4:45 — "your way see what the breach of" (small.en+medium.en)
+- **Jeremiah 13** — paraphrase verse ? at ? — "scattered wording does not match the source" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 3 0:12-0:36 (slice coverage small 0.92, medium 0.92) refuted: repeated verse 3 0:54-1:13 (slice coverage small 1.00, medium 1.00, times 1/1) unclear: inserted verse 3 0:48-1:06 (slice coverage small 1.00, medium 0.17)
+  - WER small 0.4993 / medium 0.6701; coverage small 0.8722 / medium 0.737; duration 352.68s vs expected 269.2s (ratio 1.31); sha256 `3d0fcc981e90914590e00554b557cbc09339c76496297882a8a4d6ddc6313bef`
+- **Jeremiah 14** — missing verse 1 at 0:26 — "This is the LORD's message that came to" (small.en+medium.en)
+- **Jeremiah 14** — missing verse 1 at 0:27–0:28 — "about the time with no rain Judah is sad and its towns are weak The people sit on the ground in black clothes of sadness A cry goes up from Jerusalem The rich people send their servants to get water They go to the wells but find no water They come back with empty jars They are ashamed and upset …" (small.en+medium.en)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.75, medium 0.75) confirmed: missing verse 1 0:17-0:27 (slice coverage small 0.12, medium 0.12)
+  - WER small 0.13 / medium 0.3602; coverage small 0.87 / medium 0.6442; duration 257.79s vs expected 267.6s (ratio 0.963); sha256 `819eb8937c473b93c03850b1b447f0a8a4fd4d4e04bf74e07ed71e92bd0f311d`
+- **Jeremiah 15** — missing verse 6 at 0:58 — "You have left me says the LORD You keep going backward So I will reach out my hand against you and destroy you I am tired of holding back" (small.en+medium.en)
+- **Jeremiah 15** — inserted verse 14 at 2:23–2:31 — "have deplaned me as a guest and I have been disengaged as a promised seed of bread and not have eaten it even as a great wish to God" (small.en+medium.en)
+- **Jeremiah 15** — inserted verse 15 at 2:32–2:34 — "I know your words and I will follow" (small.en+medium.en)
+- **Jeremiah 15** — inserted verse 15 at 2:49–3:21 — "in trouble and peril but I will never give your ways or your graves any more than as I have laid Lord I will never give your ways or your graves any more than as I have laid Lord I will never give your ways or your graves any more than as I have laid Lord I will never give …" (small.en+medium.en)
+- **Jeremiah 15** — repeated verse 15 at 2:56–3:17 — "I will never give your ways or your graves any more than as I have laid Lord I will never give your ways or your graves any more than as I have laid Lord I will never give your ways or your graves any more than as I have laid Lord" (small.en+medium.en)
+- **Jeremiah 15** — repeated verse 15 at 3:19–3:21 — "your graves any more than as I have laid" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 15 2:48-3:12 (slice coverage small 1.00, medium 1.00) unclear: repeated verse 15 2:55-3:19 (slice coverage small 1.00, medium 0.67, times 2/0) refuted: missing verse 6 0:46-0:55 (slice coverage small 0.92, medium 1.00)
+  - WER small 0.3012 / medium 0.4612; coverage small 0.9394 / medium 0.5435; duration 273.96s vs expected 257.6s (ratio 1.064); sha256 `58e56c90787b29b61b2e93389416813180af96e999f1e6774dd9822acbc65bdd`
 
 ## UNCERTAIN
 
@@ -4235,6 +4303,12 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Jeremiah 4** — missing verse 1 at 0:00–0:02 — "Israel if you will come back says the LORD if you will come back to me and get rid of your disgusting idols and not wander away anymore and if you make your promises truthfully fairly and rightly saying As surely as the LORD lives then the nations will be blessed by him and will praise him This is what …" (medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.83, medium 0.00) refuted: missing verse 10 1:27-1:37 (slice coverage small 0.80, medium 0.80)
   - small.en only: missing 'Then I said Oh Lord'; medium.en only: missing 'Israel if you will come back says the LORD if you will come back to me and get rid of your disgusting idols and not wander away anymore and if you make your promises truthfully fairly and rightly saying As surely as the LORD lives then the nations will be blessed by him and will praise him This is what …'; coverage unclear (small 0.951, medium 0.778; pass needs both >= 0.96); WER small 0.054 / medium 0.2282; coverage small 0.9509 / medium 0.7779; sha256 `c26fa1f8323df1138ecd1f93aa8d3a815df908ae5f3e8bd3d4c9f08dd58ea4e2`
+- **Jeremiah 11** — missing verse 6 at 0:43 — "Listen to the words of this promise and obey them" (medium.en)
+  - audio check: unclear: missing verse 6 0:34-0:44 (slice coverage small 0.70, medium 0.70)
+  - medium.en only: missing 'Listen to the words of this promise and obey them'; coverage unclear (small 0.988, medium 0.899; pass needs both >= 0.96); WER small 0.012 / medium 0.128; coverage small 0.988 / medium 0.8991; sha256 `c531dc901100fd4925cc49a65ff8dafed875ef415ad84e5ea67e0cc53c46858e`
+- **Jeremiah 12** — missing verse 1 at 0:00–0:05 — "LORD you are always right when I bring my complaint to you But" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:01 (slice coverage small 0.00, medium 0.00)
+  - medium.en only: missing 'LORD you are always right when I bring my complaint to you But'; coverage unclear (small 0.988, medium 0.722; pass needs both >= 0.96); WER backstop on one model (small 0.012, medium 0.402); WER small 0.0118 / medium 0.4024; coverage small 0.9882 / medium 0.7219; sha256 `357e5c37e61299fa2f61de5851fd346c454291724573aff9ec7f0bea3fd65645`
 
 ## Script
 
