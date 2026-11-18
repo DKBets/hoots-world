@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 920
-- PASS: 53
-- FAIL: 519
-- UNCERTAIN: 348 (jsonl verdict UNSURE)
-- Still to score: 9 Old Testament chapters
+- Scored chapters: 929
+- PASS: 55
+- FAIL: 525
+- UNCERTAIN: 349 (jsonl verdict UNSURE)
+- Still to score: 0 Old Testament chapters
 
 ## PASS
 
-53 chapters. Both models agreed there was no missing, invented, or repeated passage.
+55 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -85,6 +85,7 @@ words clears that span. A split slice stays UNCERTAIN.
 - Jeremiah 18, 43
 - Ezekiel 11, 25
 - Hosea 12
+- Zechariah 12, 14
 
 ## FAIL
 
@@ -4239,6 +4240,23 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Zechariah 9** — missing verse 14 at 2:46 — "the trumpet and march out in the storms from the south The LORD of Armies" (medium.en)
   - audio check: confirmed: missing verse 14 2:37-2:47 (slice coverage small 0.08, medium 0.08)
   - WER small 0.0152 / medium 0.192; coverage small 0.9886 / medium 0.8099; duration 172.07s vs expected 210.4s (ratio 0.818); sha256 `2a1e2bf45c307385de9ab216aae5db30093a2f669c123fc81ac6930094448124`
+- **Zechariah 10** — missing verse 4 at 0:44 — "From Judah will come the cornerstone and the tent peg" (medium.en)
+  - audio check: confirmed: missing verse 4 0:35-0:45 (slice coverage small 0.20, medium 0.20)
+  - WER small 0.0052 / medium 0.0755; coverage small 0.9948 / medium 0.9271; duration 143.4s vs expected 153.6s (ratio 0.934); sha256 `4822b0ca067f0ba5a01b869f3f20c6cd15a9695c051c7c36b7a6ce927f683b8c`
+- **Zechariah 11** — missing verse 1 at 0:25–0:27 — "Open your doors Lebanon so fire can burn up your cedar trees Cry you pine trees because the cedars have fallen The great trees are ruined Cry you oak trees of Bashan because the thick forest has been cut down Listen to the shepherds crying Their rich fields are ruined Listen to the young lions roaring The thick bushes by …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.00)
+  - WER small 0.1615 / medium 0.1677; coverage small 0.8406 / medium 0.8323; duration 154.58s vs expected 193.2s (ratio 0.8); sha256 `510fc70911c7266ee1b0b7faf3f1e79efe128ff467f3ebc14af18aacb59fe28c`
+- **Zechariah 13** — missing verse 1 at 0:26–0:29 — "On that day a fountain will be opened for David's family and the people of Jerusalem It will wash away their sin and make them clean On that day says the LORD of Armies I will get rid of the names of the idols in the land No one will remember them anymore I will also get rid of the …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - WER small 0.4365 / medium 0.2801; coverage small 0.57 / medium 0.7231; duration 106.45s vs expected 122.8s (ratio 0.867); sha256 `8373ce1309a14e7f688bee9121b02bf48415c13fd6d3c05a5a8fb7975aeb4993`
+- **Malachi 1** — missing verse 9 at 2:06 — "of you says the LORD of Armies I wish one" (medium.en)
+  - audio check: confirmed: missing verse 9 1:57-2:07 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.0021 / medium 0.1833; coverage small 1.0 / medium 0.8271; duration 167.51s vs expected 192.0s (ratio 0.872); sha256 `a404d152c73feceaf4cfb47b8191a3f0babf1ee7e0622b2e77a70b5306294834`
+- **Malachi 2** — missing verse 1 at 0:25–0:27 — "Now you priests this warning is for you If you won't listen and if you won't decide in your hearts to honor my name says the LORD of Armies then I will send a curse on you I will turn your blessings into curses In fact I have already done it because you have not taken my words to heart …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - WER small 0.1882 / medium 0.2724; coverage small 0.8118 / medium 0.733; duration 180.95s vs expected 223.2s (ratio 0.811); sha256 `1e0850c85527e39f6789667fda8fa351895a2a5bd99e12290d5f676e825db9b4`
+- **Malachi 3** — coverage low on both models (small 0.856, medium 0.814); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1528 / medium 0.1901; coverage small 0.8561 / medium 0.8135; duration 179.5s vs expected 225.2s (ratio 0.797); sha256 `0324b70bbb1c4823f7e09c3f27b909e378d0b0b4d02d195b9009206643565138`
 
 ## UNCERTAIN
 
@@ -5321,6 +5339,9 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Zechariah 7** — missing verse 1 at 0:00 — "In the fourth year that King Darius ruled the LORD's message came to" (medium.en)
   - audio check: unclear: missing verse 1 0:00-0:01 (slice coverage small 0.00, medium 0.00)
   - medium.en only: missing 'In the fourth year that King Darius ruled the LORD's message came to'; coverage unclear (small 0.994, medium 0.691; pass needs both >= 0.96); WER small 0.0059 / medium 0.3118; coverage small 0.9941 / medium 0.6912; sha256 `a6d59a3716b3a747180eab65b44a135094cb9a1a37b246cd9ef4198c7db9bae5`
+- **Malachi 4** — audio slice contains the disputed words; the models still disagree (coverage small 0.994, medium 0.315)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.994, medium 0.315); WER small 0.0112 / medium 0.6854; coverage small 0.9944 / medium 0.3146; sha256 `64e113a6631be31e1cf11c306024be9d7f428e64ff02bba3592e9a76d5745bdc`
 
 ## Script
 
