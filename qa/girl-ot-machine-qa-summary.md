@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 380
+- Scored chapters: 390
 - PASS: 9
-- FAIL: 257
-- UNCERTAIN: 114 (jsonl verdict UNSURE)
-- Still to score: 549 Old Testament chapters
+- FAIL: 263
+- UNCERTAIN: 118 (jsonl verdict UNSURE)
+- Still to score: 539 Old Testament chapters
 
 ## PASS
 
@@ -2267,6 +2267,130 @@ words clears that span. A split slice stays UNCERTAIN.
 - **2 Chronicles 13** — repeated verse 22 at 5:37–5:40 — "Abijah said Give me that offer and I will go" (small.en+medium.en)
   - audio check: confirmed: inserted verse 9 1:24-1:48 (slice coverage small 1.00, medium 0.96) refuted: repeated verse 9 2:00-2:24 (slice coverage small 0.83, medium 1.00, times 0/1) refuted: repeated verse 9 2:21-2:38 (slice coverage small 1.00, medium 1.00, times 1/1)
   - WER small 0.6922 / medium 0.6246; coverage small 0.9395 / medium 0.3772; duration 356.27s vs expected 224.8s (ratio 1.585); sha256 `5e1f620fb7cea2556925d523f1064445eb49772102eff8d30ff0db2fdc9ce0fa`
+- **2 Chronicles 17** — silence verse ? at 2:17–2:20 — ",000 brave soldiers. Next was Johanna the" (waveform)
+- **2 Chronicles 17** — inserted verse 15 at 2:23–2:34 — "000 brave soldiers Then was Johona the commander with 220 000 brave soldiers Then was Johona the commander with 297" (small.en+medium.en)
+- **2 Chronicles 17** — repeated verse 15 at 2:28–2:33 — "000 brave soldiers Then was Johona the commander with" (small.en+medium.en)
+  - audio check: unclear: inserted verse 15 2:22-2:40 (slice coverage small 0.90, medium 0.15) unclear: repeated verse 15 2:27-2:39 (slice coverage small 1.00, medium 0.89, times 2/0)
+  - WER small 0.1119 / medium 0.5771; coverage small 0.9652 / medium 0.8234; duration 244.31s vs expected 160.8s (ratio 1.519); sha256 `ac432355248115e4d93608fe8bc8e3777c9577e38fa9e47edb76a71f6dec44e3`
+- **2 Chronicles 18** — inserted verse 20 at 3:22–3:25 — "I can trick Ahab who dies in Ramoth Gilead" (small.en+medium.en)
+- **2 Chronicles 18** — inserted verse 20 at 3:26–4:07 — "probably is a great fan to Petey and his armies who were standing on his left The Lord said How will persuade Ahab to die in Ramoth Gilead And the Lord answered every one wish and every one who went in to tell him bloat to the men and come to the revolt with everyone who went in and said …" (small.en+medium.en)
+- **2 Chronicles 18** — inserted verse 20 at 4:09–4:40 — "would like you to go and forth in and out of your moms to help you better realize you are no longer insane Then the king came to the men and said Better one day bloat than any other day Since the land is empty of grave death and everyone knows everyone's enemies they wouldn't plan to do something anything …" (small.en+medium.en)
+- **2 Chronicles 18** — inserted verse 21 at 4:48–4:50 — "say a lie vagical of them and" (small.en+medium.en)
+- **2 Chronicles 18** — inserted verse 21 at 4:50–5:07 — "them they are the lord said the lord The lord said You will be fully unwise and if you are not wise and deaf in me nothing can do that Then you will slip with Adam blow and blow the mobs of your face Then Then said" (small.en+medium.en)
+- **2 Chronicles 18** — inserted verse 21 at 5:08–5:16 — "Is there anyone who will tell as blow down your stomach and take you into the desert Then the king came to the man and" (small.en+medium.en)
+- **2 Chronicles 18** — inserted verse 21 at 5:17–5:20 — "go and forth in and out of your face and tell" (small.en+medium.en)
+- **2 Chronicles 18** — inserted verse 21 at 5:20–5:31 — "that it is ungod's word Then the king came to the man and said That is gods that are making you into a blow down stomach drenching you with acid" (small.en+medium.en)
+- **2 Chronicles 18** — inserted verse 21 at 5:31–5:37 — "poor protein down The Lord answered him One prophet will tell" (small.en+medium.en)
+- **2 Chronicles 18** — inserted verse 21 at 5:37–5:41 — "one thing and then said again This is the one who" (small.en+medium.en)
+- **2 Chronicles 18** — inserted verse 21 at 5:41–5:51 — "devinate a prophet with intense clammings and go down the beatings of the sand Then prophet warned them Geed then and play for rocks" (small.en+medium.en)
+- **2 Chronicles 18** — inserted verse 23 at 6:05–6:39 — "what is this world we see each other and take acid into our blood and play upon us as blow upon others The Lord said R A That's a lie in many dreams and prophets go brotha Now let them breathe my words Now he instantly made me feel God saying in prayer the Lord has taken these blow into …" (small.en+medium.en)
+- **2 Chronicles 18** — inserted verse 23 at 6:40–6:48 — "bleeding for rocks and blood the Lord did that to one prophet in tense clammings and blew down your stomach Then the king" (small.en+medium.en)
+- **2 Chronicles 18** — inserted verse 23 at 6:48–6:52 — "to Zedekiah and and said Lucifer wants to tear" (small.en+medium.en)
+- **2 Chronicles 18** — inserted verse 23 at 6:52–7:02 — "our prophet in said of your face and bleed him so that he will be in pain and slid the pre blues into the inside of his attics Each one goes after" (small.en+medium.en)
+- **2 Chronicles 18** — inserted verse 23 at 7:03–7:05 — "dares into the pre blues that he already has" (small.en+medium.en)
+- **2 Chronicles 18** — inserted verse 23 at 7:06–7:14 — "Lord said there will be eleven perfect men who will tear up anyone by a len and bleed anyone by a len" (small.en+medium.en)
+- **2 Chronicles 18** — repeated verse 20 at 4:15–4:17 — "Then the king came to the men and said" (small.en+medium.en)
+- **2 Chronicles 18** — repeated verse 21 at 5:17–5:19 — "will go and forth in and out of your" (small.en+medium.en)
+- **2 Chronicles 18** — repeated verse 21 at 5:23–5:25 — "Then the king came to the man and said" (small.en+medium.en)
+- **2 Chronicles 18** — repeated verse 23 at 6:30–6:32 — "the Lord said I will go and" (small.en+medium.en)
+- **2 Chronicles 18** — repeated verse 23 at 6:33–6:36 — "as blow down your stomach and" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 20 3:25-3:49 (slice coverage small 0.96, medium 0.92) confirmed: inserted verse 23 6:04-6:28 (slice coverage small 0.79, medium 1.00) confirmed: inserted verse 20 4:08-4:32 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.6583 / medium 0.8607; coverage small 0.9663 / medium 0.7943; duration 541.57s vs expected 367.6s (ratio 1.473); sha256 `b716bbddfded57669e1d49585d76324049874b11ad3348baaf881cca3ec1b165`
+- **2 Chronicles 20** — silence verse ? at 7:12–7:17 — "Wales. So the ships were wicked and couldn't sail to Tarshish." (waveform)
+- **2 Chronicles 20** — missing verse 23 at 4:07 — "After they finished with the men from Seir they turned against each other and destroyed each other" (small.en+medium.en)
+- **2 Chronicles 20** — inserted verse 37 at 6:20–6:44 — "So the ships were wicked and couldn't sail to Tarshish He warned them to return to their place and withdraw their sail in Wales So the ships were wicked and couldn't sail to Tarshish He warned them to return to their place and withdraw their sail in Wales so the ships were wicked and couldn't sail to Tarshish He warned …" (small.en+medium.en)
+- **2 Chronicles 20** — inserted verse 37 at 6:45–6:50 — "wicked and couldn't sail to Tarshish He warned them to return to their place" (small.en+medium.en)
+- **2 Chronicles 20** — inserted verse 37 at 6:50–6:54 — "withdraw their sail in Wales So the ships were wicked and couldn't" (small.en+medium.en)
+- **2 Chronicles 20** — inserted verse 37 at 6:56–7:30 — "He warned them to return to their place and withdraw their sail in Wales so the their ships were wicked and couldn't sail to Tarshish He warned them to return to their place and ships were wicked and couldn't sail to Tarshish He warned them withdraw their sail in ships were wicked and" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 37 6:19-6:43 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 37 6:55-7:19 (slice coverage small 1.00, medium 0.96) confirmed: missing verse 23 3:58-4:08 (slice coverage small 0.33, medium 0.33)
+  - WER small 0.1765 / medium 0.3033; coverage small 0.9653 / medium 0.7239; duration 450.99s vs expected 426.0s (ratio 1.059); sha256 `fd9b7c9d364f3521bebf8fe98373bdab38c044ae4518f5fb41bc9b78c03a3312`
+- **2 Chronicles 21** — silence verse ? at 3:06–3:12 — "his wives too. The only son left was Jehoram's" (waveform)
+- **2 Chronicles 21** — inserted verse 1 at 0:00–0:04 — "Two Chronicles chapter 21 Gahashifat" (small.en+medium.en)
+- **2 Chronicles 21** — inserted verse 17 at 3:06–4:02 — "was Jehoram's youngest son Jehoram's youngest son lived in brew This was the entire story of the crucibleans and justice in places If the nation turned towards Jehoram the nation would lose its praises and blame it on its own They would blame it on Jehoram but it wasn't Jehoram's fault it was God's prov in violation of their covenant …" (small.en+medium.en)
+- **2 Chronicles 21** — inserted verse 17 at 4:02–4:53 — "played in one place of the building The nation went around and found Jehoram and his planned plans and his fears of military Jehoram never sang to the band of Israelites but he floored the sieges and floored defeats in armies with guns The narrow mire did nothing more than drink the great flood and blew the After all this …" (small.en+medium.en)
+- **2 Chronicles 21** — inserted verse 18 at 4:54–5:17 — "the Lord made Jehoram very sick and his stomach hurt and Savr The nation turned to war and the nation turned to war and the nation turned to war the Lord made Jehoram very sick and his stomach hurt and The nation turned towards Jehoram and said Please give us Israel But the Lord said You would lose everything you …" (small.en+medium.en)
+- **2 Chronicles 21** — inserted verse 18 at 5:21–5:35 — "hurt and saverl day The nation turned towards Jehoram and said Let us bring your fees and olives and take the garnets of your rich and give us Israel and fry But the Lord would" (small.en+medium.en)
+- **2 Chronicles 21** — inserted verse 18 at 5:35–5:38 — "lose anything instead he would lose death" (small.en+medium.en)
+- **2 Chronicles 21** — repeated verse 17 at 3:45–3:49 — "fault it was God's prov in violation of their covenant" (small.en+medium.en)
+- **2 Chronicles 21** — repeated verse 17 at 3:58–4:01 — "The nation turned towards Jehoram" (small.en+medium.en)
+- **2 Chronicles 21** — repeated verse 17 at 4:32–4:38 — "After all this the Lord made Jehoram very sick and his stomach hurt and" (small.en+medium.en)
+- **2 Chronicles 21** — repeated verse 18 at 4:56 — "The nation turned towards Jehoram and" (small.en+medium.en)
+- **2 Chronicles 21** — repeated verse 18 at 5:07–5:10 — "The nation turned towards Jehoram and said" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 17 4:01-4:25 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 17 3:05-3:29 (slice coverage small 0.96, medium 0.92) refuted: inserted verse 18 4:53-5:17 (slice coverage small 0.33, medium 0.33)
+  - WER small 0.7317 / medium 0.6655; coverage small 0.9642 / medium 0.737; duration 366.04s vs expected 223.6s (ratio 1.637); sha256 `8cfec29042ed41c426ef22f16647e0488d8f01b3334998bdf827af84690cadee`
+- **2 Chronicles 22** — missing verse 8 at 1:41–1:45 — "sons of Ahaziah's relatives who" (small.en+medium.en)
+- **2 Chronicles 22** — missing verse 8 at 1:46–2:00 — "serving Ahaziah Jehu killed them Then Jehu went looking for Ahaziah" (small.en+medium.en)
+- **2 Chronicles 22** — missing verse 11 at 3:53–4:03 — "from Athaliah so Athaliah did not kill him Joash stayed hidden with them" (small.en+medium.en)
+- **2 Chronicles 22** — inserted verse 8 at 1:28–1:32 — "That's what it is The Lord had chosen Eli to destroy" (small.en+medium.en)
+- **2 Chronicles 22** — inserted verse 8 at 1:34–1:36 — "The Lord said Eli to" (small.en+medium.en)
+- **2 Chronicles 22** — inserted verse 8 at 1:41–1:45 — "Syrians vinegar and mite to damp the beater These items" (small.en+medium.en)
+- **2 Chronicles 22** — inserted verse 8 at 1:46–2:00 — "pleased to destroy Ahab's family that eventually would have every vinegar native in its days Eli declared Ahab's family as the Lord had given Eli and said he would set aside faith in" (small.en+medium.en)
+- **2 Chronicles 22** — inserted verse 9 at 2:00–2:05 — "own faith and he would set aside every vinegar and a native vinegar native" (small.en+medium.en)
+- **2 Chronicles 22** — inserted verse 9 at 2:05–2:09 — "his days Eli would often be one" (small.en+medium.en)
+- **2 Chronicles 22** — inserted verse 9 at 2:12–2:52 — "the temple of Jerusalem and his advocates and friends of the temple Eli would often be one with many rich people and native vinegar would often be one with many rich people and one with many rich cans and renin sague Eli would often be one with many rich people and one with many rich cans and renin sags Eli …" (small.en+medium.en)
+- **2 Chronicles 22** — inserted verse 9 at 2:53–3:00 — "by a prick of dried seed Eli would bring Ahab to name and they would bring Ahab to name" (small.en+medium.en)
+- **2 Chronicles 22** — inserted verse 12 at 4:04–4:47 — "the weather of the seventh of the ninth day of the seventh of the sixth day of the seventh of the seventh day of the seventh of the seventh day of the seventh of the seventh day of the seventh of the seventh day of the seventh of the seventh day of the seventh of the seventh day of the …" (small.en+medium.en)
+- **2 Chronicles 22** — inserted verse 12 at 4:47–5:02 — "seventh of seventh day Joash from Athalia so Athalia did not kill stayed hidden with them" (small.en+medium.en)
+- **2 Chronicles 22** — repeated verse 7 at 1:30–1:33 — "The Lord had chosen Eli to destroy Ahab's family" (small.en+medium.en)
+- **2 Chronicles 22** — repeated verse 9 at 2:17–2:18 — "Eli would often be one" (small.en+medium.en)
+- **2 Chronicles 22** — repeated verse 9 at 2:21–2:25 — "would often be one with many rich people and" (small.en+medium.en)
+- **2 Chronicles 22** — repeated verse 9 at 2:28–2:35 — "Eli would often be one with many rich people and one with many rich cans and renin" (small.en+medium.en)
+- **2 Chronicles 22** — repeated verse 9 at 2:36–2:40 — "Eli would often be one with many rich people and" (small.en+medium.en)
+- **2 Chronicles 22** — repeated verse 9 at 2:40–2:42 — "many rich cans and renin sags" (small.en+medium.en)
+- **2 Chronicles 22** — repeated verse 9 at 2:58–3:00 — "would bring Ahab to name" (small.en+medium.en)
+- **2 Chronicles 22** — paraphrase verse ? at ? — "scattered wording does not match the source" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 9 2:11-2:35 (slice coverage small 0.96, medium 0.96) confirmed: inserted verse 12 4:03-4:27 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 8 1:45-2:06 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.9644 / medium 0.9644; coverage small 0.799 / medium 0.7379; duration 307.5s vs expected 157.2s (ratio 1.956); sha256 `b4ef86368e8d2df0791ce1dc2c8345fd8ca2cf432c382c551a65f8eba3b713d4`
+- **2 Chronicles 23** — silence before verse 1 at 0:04–0:10 — "2 Chronicles chapter 23. In the seventh year, Yohorah" (waveform)
+- **2 Chronicles 23** — silence verse ? at 1:27–1:31 — "silence" (waveform)
+- **2 Chronicles 23** — silence verse ? at 7:23–7:31 — "The Levites and all the people of Judah did everything." (waveform)
+- **2 Chronicles 23** — inserted verse 1 at 0:10–0:54 — "Yohorrah began to be a Bian insect He organized kings of Judah to be indispensable and had bled for the death to cleanse the masking and to dedicate their graveyards to their gods and made them abandoned set apart for the dedication of the temple and all the temples of gods in Israel and gifted of Pharaoh's offerings into the …" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 1 at 0:54–1:19 — "a treasure for those who were crost and may end up in the hands of those who were crost and they were praised by the dedication of the temple of God and they were visited the demand brought from the desert and there acted very often as they went on their voyages and worshipped the gods of their nations and …" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 1 at 1:23–1:36 — "Azariah son of Geroam Ishmael son of Ishmael son of Jehoram Jehoram" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 1 at 2:21–2:36 — "the day and recited and read what they had read And when they left they thought rightly that it was ash praise in mighty feet O Israel learn lessons from your faith The desert is all about leaving your" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 3 at 2:57–4:09 — "They clapped their hands and said the king is Lord and the people who are involved in that king are own people They made a blood covenant with the king and the leaders of the meeting were on their own prayer and reverence They bled the blood of the land and blood of the land and rashepta They sat at …" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 5 at 4:26–5:36 — "of the Lord and everyone who goes into the temple and rests in their cave and any fighting blow is on them today A third will sit at the tables of the gate and on the seventh day of the Sabbath and a third will be in the main court of the temple The Grand Sabbath was not going on …" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 6 at 5:41–6:02 — "the temple in genuine the new king had blue and white robes and a metal repprent and an R and then added three seperate animals and venerable graveyards and reverence and the men who worked in the temple were prepared for deities and reverence The grave gap in" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 6 at 6:03–6:05 — "desert was all about more needing" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 6 at 6:08–6:12 — "temple was not particularly intricate but everyone" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 6 at 6:12–6:56 — "worked in the theater was their present in the moments of their own presence The king made a set of promise from Azariah and wrote a new name for whatever was done in his gate The king made a set of promise from Azariah and wrote a new name for whatever was done in his gate The king made a …" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 6 at 6:59–7:02 — "set a set of deities and white gold in the history" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 8 at 7:20–7:35 — "and all the people of Judah did everything Did everything Yehovah the king commanded And Aleivites" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 8 at 7:40–8:33 — "They rode against Ahob and Aleivites and all the people of Judah worshipped Ahob and worshipped Ahob with other grace sin And with Ahob there were Christ's and with Ahob there were mighty and with Ahob there were mighty and wicked and with Ahob there were mighty and wicked and with Ahob there work mighty and wicked and with a …" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 9 at 8:51–8:59 — "sables that had belonged to King David Then Jehoiada the priest gave the commanders the spears" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 9 at 9:09–9:58 — "each recommissioned as on agreed and worshipped in ceremonies The king was married with God the father and Winnehova and worshipped with him as an intimate priest boy The priests redeemed their flat places and weapons as indicated by the prophet in Samuel The king was willing to give them and anything he wanted Then Yehovah and worshipped with him …" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 9 at 9:58–10:13 — "Samuel The king was willing to give them anything he wanted and worshipped with him as an intimate priest boy The priests redeemed their flat places and weapons as indicated by the prophet in Samuel" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 14 at 11:20–12:24 — "and Alicia was found in a tunnel that was laid under the ground and never laid under the ground and never breathed again Athalia set the kings and disciples and never breathed again And never breathed again the great Western corner And never breathed again the great Western corner And never breathed again the great Western corner And never breathed …" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 16 at 12:58–13:01 — "we would be the land saved and that" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 16 at 13:01–13:32 — "the land of the prince and never breathed again that anyone who says death is guilty of the Lord The priest said it as a prayer and made a promise that would stand in place by this everlasting blessing The king and his uncle set in the top of the temple and never moved into the temple and there brought …" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 16 at 13:33–13:42 — "temple that pleased and saved and then set upon a tassel that fell so far down as an arrow's lower grave under" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 17 at 13:47–13:59 — "many floors down and they fell into it in minutia The temple had broken into its floors and then they flew it again as if it was a cottage in a nest" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 17 at 14:00–14:03 — "now when God breaks the temple it makes" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 17 at 14:03–15:17 — "a beautiful mental art And then in the name of the Lord they set a sign that anyone who says death is guilty says in breath of the Lord The temple set a sign that anyone who says death is guilty says in breath of the Lord The temple had been a beautiful mental art and then in the name …" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 18 at 15:30–16:39 — "of the land and named the departments of the temple and they needed to do the tasks of the Lord The temple had been placed on the top of the temple and then put another temple in it They did a task of the Lord they changed the pavements and built the temple and now are not exceeding the cost …" (small.en+medium.en)
+- **2 Chronicles 23** — inserted verse 18 at 16:40–17:54 — "the Lord they build another temple David had given them their jobs in the Lord's house David had given them their jobs in the Lord's house David had given them their jobs in the Lord's house David had given them their jobs in the Lord's house David had given them their jobs in the Lord's house David had given them …" (small.en+medium.en)
+- **2 Chronicles 23** — repeated verse 3 at 3:37–3:39 — "made a blood covenant with the king and" (small.en+medium.en)
+- **2 Chronicles 23** — repeated verse 3 at 3:46–3:48 — "a blood covenant with the king and" (small.en+medium.en)
+- **2 Chronicles 23** — repeated verse 6 at 6:25–6:42 — "The king made a set of promise from Azariah and wrote a new name for whatever was done in his gate The king made a set of promise from Azariah and wrote a new name for whatever was done in his gate The king made a set" (small.en+medium.en)
+- **2 Chronicles 23** — repeated verse 6 at 6:42–6:56 — "promise from Azariah and wrote a new name for whatever was done in his gate The king made a set a promise from Azariah and wrote a new name for whatever was done in his gate The king" (small.en+medium.en)
+- **2 Chronicles 23** — repeated verse 8 at 7:35–7:37 — "all the people of Judah did everything" (small.en+medium.en)
+- **2 Chronicles 23** — repeated verse 8 at 7:36–7:39 — "did everything Yehovah the king commanded" (small.en+medium.en)
+- **2 Chronicles 23** — repeated verse 8 at 7:41–7:44 — "and Aleivites and all the people of Judah" (small.en+medium.en)
+- **2 Chronicles 23** — repeated verse 8 at 8:04–8:33 — "work mighty and wicked and with a hob their work mighty and wicked and with a hob their work mighty and wicked and with a hob their work mighty and wicked and with a hob their work mighty and wicked and with a hob their work mighty and wicked and with a hob their work mighty and wicked and with …" (small.en+medium.en)
+- **2 Chronicles 23** — repeated verse 9 at 8:54–9:02 — "Then Jehoiada the priest gave the commanders the spears and the large sables that had belonged to King David" (small.en+medium.en)
+- **2 Chronicles 23** — repeated verse 9 at 9:33–10:01 — "and worshipped with him as an intimate priest boy The priests redeemed their flat places and weapons as indicated by the prophet in Samuel The king was willing to give them and anything he wanted Then Yehovah and worshipped with him as an intimate priest boy The priests redeemed their flat places and weapons as indicated by the prophet in …" (small.en+medium.en)
+- **2 Chronicles 23** — repeated verse 14 at 11:35–11:37 — "laid under the ground and never" (small.en+medium.en)
+- **2 Chronicles 23** — repeated verse 14 at 11:47–12:26 — "And never breathed again the great Western corner And never breathed again the great Western corner And never breathed again the great Western corner And never breathed again the great Western corner And never breathed again the great Western corner and never breathed again the Great Western Corner and never breathed again the Great Western Corner and never breathed again …" (small.en+medium.en)
+- **2 Chronicles 23** — repeated verse 16 at 13:24–13:26 — "and never breathed again the" (small.en+medium.en)
+- **2 Chronicles 23** — repeated verse 16 at 13:31–13:36 — "never breathed again the temple that pleased and saved and then" (small.en+medium.en)
+- **2 Chronicles 23** — repeated verse 17 at 14:24–14:31 — "a beautiful mental art and then in the name of the Lord they never breathed again The temple" (small.en+medium.en)
+- **2 Chronicles 23** — repeated verse 17 at 14:30–15:17 — "The temple had been a beautiful mental art and then in the name of the Lord they never breathed again The temple had been a beautiful mental art and then in the name of the Lord they never breathed again The temple had been a beautiful mental art and then in the name of the Lord they never breathed again …" (small.en+medium.en)
+- **2 Chronicles 23** — repeated verse 18 at 16:12–16:17 — "and never breathed again The temple had been placed on the top of the" (small.en+medium.en)
+- **2 Chronicles 23** — repeated verse 18 at 16:30–16:41 — "They did as in Moses did They built another temple and then in the name of the Lord they built another temple and then in the name of the Lord they" (small.en+medium.en)
+- **2 Chronicles 23** — repeated verse 18 at 16:47–17:37 — "David had given them their jobs in the Lord's house David had given them their jobs in the Lord's house David had given them their jobs in the Lord's house David had given them their jobs in the Lord's house David had given them their jobs in the Lord's house David had given them their jobs in the Lord's house …" (small.en+medium.en)
+- **2 Chronicles 23** — repeated verse 18 at 17:37–17:59 — "David had given them their jobs in the Lord's house David had given them their jobs in the Lord's house David had given them their jobs in the Lord's house David had given them their jobs in the Lord's house David had given them their jobs in the Lord's house" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 3 2:56-3:20 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 5 4:25-4:49 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 17 14:02-14:26 (slice coverage small 1.00, medium 1.00)
+  - WER small 3.0527 / medium 2.3411; coverage small 0.9297 / medium 0.8931; duration 1118.85s vs expected 273.2s (ratio 4.095); sha256 `99c5b47a85802ce1e4ea0b503dc3b9fa2f0aeac9ceea3a0d9c24374a295b104d`
 
 ## UNCERTAIN
 
@@ -2628,6 +2752,18 @@ words clears that span. A split slice stays UNCERTAIN.
 - **2 Chronicles 12** — audio slice contains the disputed words; the models still disagree (coverage small 0.975, medium 0.700)
   - audio check: refuted: missing verse 1 0:01-0:10 (slice coverage small 0.83, medium 0.92)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.975, medium 0.700); WER small 0.039 / medium 0.3028; coverage small 0.9748 / medium 0.6995; sha256 `093bce7c3eb7650ecf8d44ff5b87638c9dd8b6f1cb6cc91029a000f8d44300c2`
+- **2 Chronicles 14** — missing verse 1 at 0:29–0:30 — "Abijah died and was buried in the City of David His son Asa became king in his place While Asa was king the land had peace for ten years Asa did what was good and right in the eyes of the LORD his God He removed the altars to foreign gods and the places of idol worship on the hills …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.00)
+  - medium.en only: missing 'Abijah died and was buried in the City of David His son Asa became king in his place While Asa was king the land had peace for ten years Asa did what was good and right in the eyes of the LORD his God He removed the altars to foreign gods and the places of idol worship on the hills …'; coverage unclear (small 0.975, medium 0.455; pass needs both >= 0.96); WER backstop on one model (small 0.028, medium 0.547); WER small 0.0276 / medium 0.5471; coverage small 0.9747 / medium 0.4552; sha256 `ea132ba64ccd9d32af46387bcedb60acf3b2b7dfcea60c148a146e0f938334e4`
+- **2 Chronicles 15** — missing verse 1 at 0:00–0:03 — "The Spirit of God came on Azariah son of Oded He went out to meet Asa and said Listen to me Asa and all you people of Judah and Benjamin The LORD is with you when you are with Him If you look for Him you will find Him But if you leave Him He will leave you For a …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'The Spirit of God came on Azariah son of Oded He went out to meet Asa and said Listen to me Asa and all you people of Judah and Benjamin The LORD is with you when you are with Him If you look for Him you will find Him But if you leave Him He will leave you For a …'; coverage unclear (small 0.984, medium 0.430; pass needs both >= 0.96); WER backstop on one model (small 0.016, medium 0.574); WER small 0.0163 / medium 0.5743; coverage small 0.9837 / medium 0.4297; sha256 `06c4cf4ff38b1352b43f43d234d3be2ea6137a36cd7e29df2fe55486a1969968`
+- **2 Chronicles 16** — audio slice contains the disputed words; the models still disagree (coverage small 0.760, medium 0.511)
+  - audio check: refuted: missing verse 8 1:21-1:30 (slice coverage small 0.75, medium 0.75)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.760, medium 0.511); WER small 0.2398 / medium 0.4892; coverage small 0.7602 / medium 0.5108; sha256 `d5a7a3ce116fcb3d17343516d48635691f7fd9b4308f8329878f8edfc341689b`
+- **2 Chronicles 19** — missing verse 2 at 0:12 — "He said to King Jehoshaphat Should you help wicked people and love those who hate the LORD" (medium.en)
+  - audio check: unclear: missing verse 2 0:03-0:13 (slice coverage small 0.67, medium 0.08)
+  - medium.en only: missing 'He said to King Jehoshaphat Should you help wicked people and love those who hate the LORD'; coverage unclear (small 1.000, medium 0.769; pass needs both >= 0.96); WER small 0.0113 / medium 0.2479; coverage small 1.0 / medium 0.769; sha256 `3540de15766eccefbbf2298ae13136ccec3ccf435456c5701193dc613374e9f9`
 
 ## Script
 
