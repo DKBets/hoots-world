@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 660
-- PASS: 44
-- FAIL: 379
-- UNCERTAIN: 237 (jsonl verdict UNSURE)
-- Still to score: 269 Old Testament chapters
+- Scored chapters: 670
+- PASS: 45
+- FAIL: 384
+- UNCERTAIN: 241 (jsonl verdict UNSURE)
+- Still to score: 259 Old Testament chapters
 
 ## PASS
 
-44 chapters. Both models agreed there was no missing, invented, or repeated passage.
+45 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -79,6 +79,7 @@ words clears that span. A split slice stays UNCERTAIN.
 - Job 2, 34–35
 - Psalms 1, 3, 8, 11–12, 15, 39, 50, 53, 58, 64, 70, 76, 82–83, 92, 100, 112–113, 124, 126, 130, 133–134, 140, 145, 147, 150
 - Proverbs 1
+- Ecclesiastes 6
 
 ## FAIL
 
@@ -3105,6 +3106,24 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Proverbs 31** — repeated verse 28 at 3:21–3:25 — "They praise for the president and his wife They praise for the president and his wife" (small.en+medium.en)
   - audio check: unclear: inserted verse 28 2:20-2:44 (slice coverage small 1.00, medium 0.50) refuted: repeated verse 28 3:20-3:31 (slice coverage small 1.00, medium 1.00, times 1/1) confirmed: inserted verse 28 2:15-2:26 (slice coverage small 1.00, medium 1.00)
   - WER small 0.4697 / medium 0.4607; coverage small 0.9978 / medium 0.8225; duration 226.43s vs expected 178.0s (ratio 1.272); sha256 `5ea56e5ece5afa684db6bbd024e620e8bf40d6307bab11be58d3300ffd16190a`
+- **Ecclesiastes 4** — coverage low on both models (small 0.757, medium 0.858); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.2457 / medium 0.1425; coverage small 0.7568 / medium 0.8575; duration 126.76s vs expected 162.8s (ratio 0.779); sha256 `8802cc0ee49300847b6b102743af2d19a123b78c43afcb7fcca46e6c2f4a13fc`
+- **Ecclesiastes 5** — missing verse 1 at 0:24–0:25 — "Be careful when you go to God's house It is better to come close and listen than to give the offerings of fools They don't even know they are doing wrong Don't be quick to speak Don't hurry to say anything to God God is in heaven and you are on earth So let your words be few Dreams come …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - WER small 0.2371 / medium 0.1918; coverage small 0.7888 / medium 0.8082; duration 165.21s vs expected 185.6s (ratio 0.89); sha256 `df463f70899f197264473404393f010f85e795e667882cbf1d0136e1debcde3c`
+- **Ecclesiastes 8** — inserted verse 4 at 0:25–0:30 — "Whoever obeys his command won't be harmed But the wisdom" (small.en+medium.en)
+- **Ecclesiastes 8** — inserted verse 5 at 0:35–1:43 — "But the wisdom of the king keeps the lights of the sun Then he says something unsaying and contradictory and defiant If you have the goods then be on the look for the other way There's a way for the other God and there's a grave danger to anyone who goes against him As we were talking about Homelander's residence …" (small.en+medium.en)
+- **Ecclesiastes 8** — repeated verse 5 at 0:30–0:36 — "whoever obeys his command won't be harmed But the wisdom" (small.en+medium.en)
+- **Ecclesiastes 8** — repeated verse 5 at 1:30–1:32 — "If you had confidence in bread you would" (small.en+medium.en)
+- **Ecclesiastes 8** — repeated verse 5 at 1:33–1:36 — "into the deadly trap for more than you could ever overcome" (small.en+medium.en)
+- **Ecclesiastes 8** — repeated verse 5 at 1:36–1:43 — "If you had confidence in bread you would vent into the deadly trap for more than you could ever overcome" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 5 0:34-0:58 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 5 1:35-1:49 (slice coverage small 1.00, medium 1.00, times 1/1) refuted: repeated verse 5 1:32-1:42 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.4763 / medium 0.5801; coverage small 1.0 / medium 0.8984; duration 225.11s vs expected 177.2s (ratio 1.27); sha256 `dc30566ec19222cb633ffc45f4e76613b7bfc3b942f11ce7458b16d757ed4c21`
+- **Ecclesiastes 9** — missing verse 1 at 0:27–0:29 — "I thought hard about all this I saw that good and wise people and what they do are in God's hands No one knows if love or hate is coming Anything could happen The same thing happens to everyone It happens to good and wicked people to clean and unclean people to people who give offerings and people who don't …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - WER small 0.1735 / medium 0.1816; coverage small 0.8265 / medium 0.8224; duration 175.32s vs expected 196.0s (ratio 0.894); sha256 `5b1bc8c0f68e07a6c5295a0f5e64979c46a537ef36d1cfb8f2d5ab0a7bf1dd5e`
+- **Ecclesiastes 11** — coverage low on both models (small 0.696, medium 0.688); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.3042 / medium 0.3156; coverage small 0.6958 / medium 0.6882; duration 82.47s vs expected 105.2s (ratio 0.784); sha256 `8fdf01b9a7c943666308f056666cebbc6e054e0fd0e726ac858937d5e9c4d540`
 
 ## UNCERTAIN
 
@@ -3842,6 +3861,18 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Ecclesiastes 1** — missing verse 18 at 1:57 — "have the more sadness they" (medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00) unclear: missing verse 18 1:48-1:58 (slice coverage small 0.40, medium 0.60)
   - small.en only: missing 'These are the words of the Teacher He was the son of David and king in Jerusalem Like a puff of air says the Teacher Like a puff of air Everything passes away like a puff of air What do people gain from all their hard work under the sun People are born and people pass away but the earth …'; medium.en only: missing 'have the more sadness they'; coverage unclear (small 0.747, medium 0.975; pass needs both >= 0.96); WER small 0.2535 / medium 0.0306; coverage small 0.7465 / medium 0.9749; sha256 `a9c99888fdcae992505f68903156c138ff3b93eb88e5fe7b6804709b380da1fb`
+- **Ecclesiastes 2** — audio slice contains the disputed words; the models still disagree (coverage small 0.984, medium 0.754)
+  - audio check: refuted: missing verse 11 1:25-1:34 (slice coverage small 1.00, medium 1.00) refuted: missing verse 16 2:07-2:17 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.984, medium 0.754); WER small 0.018 / medium 0.2508; coverage small 0.9835 / medium 0.7538; sha256 `d79ecbbad3dc1eac01e5666305431ab52f064277171348117bfdf9eb4c42b19c`
+- **Ecclesiastes 3** — audio slice contains the disputed words; the models still disagree (coverage small 0.761, medium 0.687)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.761, medium 0.687); WER small 0.2393 / medium 0.3149; coverage small 0.7607 / medium 0.6871; sha256 `01607b5ab666891003a7224e66984a9f36af436367ddebf05fa948155d2ef4c4`
+- **Ecclesiastes 7** — missing verse 1 at 0:06 — "person dies is better than the day he is born" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:07 (slice coverage small 0.50, medium 0.50)
+  - medium.en only: missing 'person dies is better than the day he is born'; coverage unclear (small 0.997, medium 0.776; pass needs both >= 0.96); WER small 0.005 / medium 0.2292; coverage small 0.9967 / medium 0.7757; sha256 `782ae1bc0904b860ca8369ebfb6c48e97cf73a3d5da4af4b891d05749533a5c7`
+- **Ecclesiastes 10** — missing verse 1 at 0:00–0:02 — "Dead flies make perfume smell bad In the same way a little foolishness can outweigh wisdom and honor A wise person's heart leads him the right way A fool's heart leads him the wrong way Even when a fool walks down the road he doesn't use good sense He shows everyone that he is a fool If a ruler gets …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'Dead flies make perfume smell bad In the same way a little foolishness can outweigh wisdom and honor A wise person's heart leads him the right way A fool's heart leads him the wrong way Even when a fool walks down the road he doesn't use good sense He shows everyone that he is a fool If a ruler gets …'; coverage unclear (small 0.995, medium 0.607; pass needs both >= 0.96); WER backstop on one model (small 0.011, medium 0.396); WER small 0.0108 / medium 0.3962; coverage small 0.9946 / medium 0.6065; sha256 `02a6b76d5bc33b8f9643df146549bd8c3da9b0309a4268bdd81faf3df46771e9`
 
 ## Script
 
