@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 800
+- Scored chapters: 810
 - PASS: 50
-- FAIL: 462
-- UNCERTAIN: 288 (jsonl verdict UNSURE)
-- Still to score: 129 Old Testament chapters
+- FAIL: 467
+- UNCERTAIN: 293 (jsonl verdict UNSURE)
+- Still to score: 119 Old Testament chapters
 
 ## PASS
 
@@ -3932,6 +3932,52 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Lamentations 2** — repeated verse 20 at 5:20–5:23 — "We will not ruin this Terrace" (small.en+medium.en)
   - audio check: confirmed: inserted verse 20 4:19-4:43 (slice coverage small 0.96, medium 1.00) confirmed: inserted verse 20 5:09-5:29 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 20 4:45-4:56 (slice coverage small 1.00, medium 1.00, times 1/1)
   - WER small 0.3536 / medium 0.3139; coverage small 0.8387 / medium 0.8921; duration 368.17s vs expected 322.4s (ratio 1.142); sha256 `936a8c48ba684fd7caf582a5d8f044969b9830ab2358b56bd81b9eeb39757f8b`
+- **Lamentations 4** — coverage low on both models (small 0.892, medium 0.756); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1131 / medium 0.2473; coverage small 0.8922 / medium 0.7562; duration 209.79s vs expected 226.4s (ratio 0.927); sha256 `83e20d127518beef0bcd56b4916cc1dc05365e66618cc9c0605933eb76496754`
+- **Ezekiel 1** — silence before verse 1 at 0:16–0:21 — "It was the fifth day of" (waveform)
+- **Ezekiel 1** — inserted verse 3 at 0:25–0:28 — "wind was upright and a deborah angel above in" (small.en+medium.en)
+- **Ezekiel 1** — inserted verse 3 at 0:31–0:33 — "lion said that it was a vision of" (small.en+medium.en)
+- **Ezekiel 1** — inserted verse 4 at 0:51–0:53 — "desert placed in a 3D stone and" (small.en+medium.en)
+- **Ezekiel 1** — inserted verse 4 at 0:54–0:56 — "desert placed in a 3D stone" (small.en+medium.en)
+- **Ezekiel 1** — inserted verse 4 at 0:56–0:58 — "a breath sang on the top but" (small.en+medium.en)
+- **Ezekiel 1** — inserted verse 4 at 1:01–1:07 — "was The wind was upright and a Deborah angel above and a Deborah angel above" (small.en+medium.en)
+- **Ezekiel 1** — inserted verse 6 at 2:24–3:08 — "no alarm knows anything once But when this metaphor is broken the metaphor isn't one present text It is a metaphor for common insights into the day to day The metaphor isn't one present text It is a metaphor for common insights into the day to day The metaphor isn't one present text It is a metaphor for common insights …" (small.en+medium.en)
+- **Ezekiel 1** — inserted verse 7 at 3:10–3:16 — "someone sitting on the throne again This was intended of the deities and someone sitting" (small.en+medium.en)
+- **Ezekiel 1** — inserted verse 8 at 3:17–4:10 — "the throne again The Lord said in Deborah Angel Tell Dazon presence into the desert The promise is yes and true The promise is yes and true The promise is yes and true The promise is yes and true The promise is yes and true The promise is yes and true The promise is yes and true The promise is …" (small.en+medium.en)
+- **Ezekiel 1** — repeated verse 4 at 0:51–0:53 — "the desert placed in a 3D stone" (small.en+medium.en)
+- **Ezekiel 1** — repeated verse 6 at 2:29–2:37 — "the metaphor isn't one present text It is a metaphor for common insights into the day to day The metaphor isn't" (small.en+medium.en)
+- **Ezekiel 1** — repeated verse 6 at 2:36–2:52 — "The metaphor isn't one present text It is a metaphor for common insights into the day to day The metaphor isn't one present text It is a metaphor for common insights into the day to day The metaphor isn't one present text" (small.en+medium.en)
+- **Ezekiel 1** — repeated verse 8 at 3:26–4:03 — "The promise is yes and true The promise is yes and true The promise is yes and true The promise is yes and true The promise is yes and true The promise is yes and true The promise is yes and true The promise is yes and true The promise is yes and true The promise is yes and true …" (small.en+medium.en)
+  - audio check: unclear: inserted verse 8 3:16-3:40 (slice coverage small 1.00, medium 0.00) unclear: inserted verse 6 2:23-2:47 (slice coverage small 0.00, medium 1.00) unclear: repeated verse 8 3:25-3:49 (slice coverage small 1.00, medium 0.08, times 2/0)
+  - WER small 0.8331 / medium 0.5539; coverage small 0.8301 / medium 0.9276; duration 456.66s vs expected 270.8s (ratio 1.686); sha256 `d36e2826e979e451103674159194557bcae4c4d18755df454a25f2e1945b254f`
+- **Ezekiel 3** — coverage low on both models (small 0.890, medium 0.644); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1111 / medium 0.3591; coverage small 0.8902 / medium 0.6436; duration 236.54s vs expected 295.2s (ratio 0.801); sha256 `6e2cb3f6c325fc25ee334300118c175503c9c884f7e5e61daf66e928659daeae`
+- **Ezekiel 7** — missing verse 7 at 2:05–2:23 — "mountains not happy shouting Very soon I will pour out my anger on you and finish my anger against you I will judge you for the way you live I will make you pay for all your disgusting practices I will not look at you" (small.en+medium.en)
+- **Ezekiel 7** — missing verse 9 at 2:23–2:27 — "pity or spare you I will punish you for" (small.en+medium.en)
+- **Ezekiel 7** — missing verse 9 at 2:30–2:34 — "for the disgusting things you do Then you will know that it" (small.en+medium.en)
+- **Ezekiel 7** — missing verse 9 at 2:36–2:40 — "LORD who strikes you Look" (small.en+medium.en)
+- **Ezekiel 7** — missing verse 10 at 2:42–2:47 — "here It has come Doom has burst out" (small.en+medium.en)
+- **Ezekiel 7** — missing verse 10 at 2:48–2:56 — "punishment has blossomed Pride has bloomed Violence has grown into a rod to punish wickedness None of the people will be" (small.en+medium.en)
+- **Ezekiel 7** — inserted verse 4 at 1:40–1:44 — "are insubordinated Tell them you are never ever far above" (small.en+medium.en)
+- **Ezekiel 7** — inserted verse 7 at 2:05–2:23 — "graves words and the deeds and the prayers and the presence and the names of Jesus Quickly recall what is this The nations are gripped with violence and killing incensed and whispers of no consequence The temple is breached and the temple faced is enveloped" (small.en+medium.en)
+- **Ezekiel 7** — inserted verse 9 at 2:23–2:27 — "wicked plans The bread of wickedness is insanely strong but" (small.en+medium.en)
+- **Ezekiel 7** — inserted verse 9 at 2:30–2:34 — "his grace and his presence is insanely strong The bread of wickedness" (small.en+medium.en)
+- **Ezekiel 7** — inserted verse 9 at 2:36–2:40 — "deliverance of God's deed is insanely strong" (small.en+medium.en)
+- **Ezekiel 7** — inserted verse 10 at 2:42–2:47 — "insanely strong but the deliverance of God's deed is insanely strong" (small.en+medium.en)
+- **Ezekiel 7** — inserted verse 10 at 2:48–2:56 — "wickedness is insanely strong But the deliverance of God's deed is insanely strong The bread of wickedness will leave no one" (small.en+medium.en)
+- **Ezekiel 7** — inserted verse 19 at 4:11–4:14 — "not be able to save them on the day of the Lord's anger" (small.en+medium.en)
+- **Ezekiel 7** — inserted verse 19 at 4:20–5:26 — "By the sale of the deadly thresh the world will not be saved The world will not be saved because the enemies of the Lord are evil And apart from their enemies there are dead There are no dead bodies there are no dead proudies there are no dead plants in the grave They will not plant it and no …" (small.en+medium.en)
+- **Ezekiel 7** — repeated verse 9 at 2:33–2:38 — "The bread of wickedness is insanely strong but the deliverance of God's deed" (small.en+medium.en)
+- **Ezekiel 7** — repeated verse 9 at 2:38–2:55 — "is insanely strong The bread of wickedness is insanely strong but the deliverance of God's deed is insanely strong The bread of wickedness is insanely strong But the deliverance of God's deed is insanely strong The bread of wickedness" (small.en+medium.en)
+- **Ezekiel 7** — repeated verse 19 at 4:16–4:20 — "Their silver and gold will not be able to save them on the day of the Lord's anger" (small.en+medium.en)
+- **Ezekiel 7** — repeated verse 19 at 4:26–4:28 — "The world will not be saved" (small.en+medium.en)
+- **Ezekiel 7** — repeated verse 19 at 5:12–5:13 — "the Nord of the Ten Kingdoms" (small.en+medium.en)
+- **Ezekiel 7** — paraphrase verse ? at ? — "scattered wording does not match the source" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 19 4:19-4:43 (slice coverage small 1.00, medium 1.00) confirmed: missing verse 7 1:47-1:56 (slice coverage small 0.00, medium 0.00) confirmed: inserted verse 7 2:04-2:28 (slice coverage small 1.00, medium 0.75)
+  - WER small 0.668 / medium 0.5976; coverage small 0.664 / medium 0.7575; duration 409.3s vs expected 295.2s (ratio 1.387); sha256 `603f8ebb3ff0ba2ea7136fb2a36df7da6dfd4429fe0b4dc052967018c3b20dbe`
+- **Ezekiel 8** — missing verse 1 at 0:00–0:02 — "In the sixth year on the fifth day of the sixth month I was sitting in my house and the elders of Judah were sitting in front of me Then the power of the Lord God came on me there I looked and saw someone who looked like a man made of fire From his waist down he looked like …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - WER small 0.1803 / medium 0.4694; coverage small 0.8197 / medium 0.5323; duration 188.12s vs expected 235.2s (ratio 0.8); sha256 `2b57638d23685968a3c6eb22280a706fdcbc8ace66a712aa938df074af7e969f`
 
 ## UNCERTAIN
 
@@ -4833,6 +4879,21 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Lamentations 3** — missing verse 1 at 0:00–0:02 — "I am a man who has seen trouble because God was angry and punished us He has led me and made me walk in darkness instead of light Again and again all day long he has turned his hand against me He has made my body and skin grow old He has broken my bones He has surrounded me with …" (medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00) refuted: missing verse 59 3:59-4:08 (slice coverage small 1.00, medium 1.00)
   - small.en only: missing 'LORD you have seen the wrong done to me Judge my case fairly You have seen how they want to pay me back and all their'; medium.en only: missing 'I am a man who has seen trouble because God was angry and punished us He has led me and made me walk in darkness instead of light Again and again all day long he has turned his hand against me He has made my body and skin grow old He has broken my bones He has surrounded me with …'; coverage unclear (small 0.968, medium 0.695; pass needs both >= 0.96); WER small 0.038 / medium 0.3132; coverage small 0.968 / medium 0.6951; sha256 `a76dedc73e7eada9cfa5eab6773a60b8026b2649a18188f93a3813dcbbb062f7`
+- **Lamentations 5** — audio slice contains the disputed words; the models still disagree (coverage small 0.987, medium 0.779)
+  - audio check: refuted: missing verse 1 0:02-0:11 (slice coverage small 0.92, medium 0.92)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.987, medium 0.779); WER small 0.016 / medium 0.2788; coverage small 0.9872 / medium 0.7788; sha256 `a706557ee509314f82f6e5753ce13d207a6578c2e147ce1055f93734948373fe`
+- **Ezekiel 2** — missing verse 1 at 0:00–0:02 — "He said to me Son of man stand up and I will speak to you As he spoke the Spirit came into me and stood me up on my feet" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.42, medium 0.00)
+  - medium.en only: missing 'He said to me Son of man stand up and I will speak to you As he spoke the Spirit came into me and stood me up on my feet'; coverage unclear (small 0.964, medium 0.819; pass needs both >= 0.96); WER small 0.0484 / medium 0.1935; coverage small 0.9637 / medium 0.8185; sha256 `839052dae6ba135ed9220c1239bb69c13ec99f2d3f51d6fd3cad40270b8ebddf`
+- **Ezekiel 4** — audio slice contains the disputed words; the models still disagree (coverage small 0.803, medium 0.456)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.803, medium 0.456); WER small 0.2033 / medium 0.5436; coverage small 0.8029 / medium 0.4564; sha256 `e17b126efa33e1812a1229ceaa92a4538cf96a0d4963abbd243d4c96c1c7d78e`
+- **Ezekiel 5** — audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.585)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.585); WER small 0.0037 / medium 0.4154; coverage small 0.9982 / medium 0.5846; sha256 `e078545d68bd46e7177d7a6281d2dc10f2af5e585ba697be82474f434cc10367`
+- **Ezekiel 6** — audio slice contains the disputed words; the models still disagree (coverage small 0.639, medium 0.699)
+  - audio check: refuted: missing verse 8 0:57-1:06 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.639, medium 0.699); WER small 0.363 / medium 0.3037; coverage small 0.6393 / medium 0.6986; sha256 `76dbf679189e12ad0b0c71a54f61f4af57ed8461c2fa62a93628d6a5fbab607d`
 
 ## Script
 
