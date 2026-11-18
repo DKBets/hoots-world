@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 650
+- Scored chapters: 660
 - PASS: 44
-- FAIL: 375
-- UNCERTAIN: 231 (jsonl verdict UNSURE)
-- Still to score: 279 Old Testament chapters
+- FAIL: 379
+- UNCERTAIN: 237 (jsonl verdict UNSURE)
+- Still to score: 269 Old Testament chapters
 
 ## PASS
 
@@ -3091,6 +3091,20 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Proverbs 17** — missing verse 2 at 0:27 — "the family passes down Fire tests silver and gold But" (medium.en)
   - audio check: confirmed: missing verse 2 0:18-0:28 (slice coverage small 0.10, medium 0.10)
   - WER small 0.0 / medium 0.1714; coverage small 1.0 / medium 0.833; duration 157.91s vs expected 184.4s (ratio 0.856); sha256 `1ac334a3c514c7695660ec3de948dac0573a77e4f7c7a0ffbd3ad40471dc1040`
+- **Proverbs 23** — missing verse 4 at 0:13 — "to get rich Be wise enough" (small.en+medium.en)
+  - audio check: confirmed: missing verse 4 0:04-0:14 (slice coverage small 0.33, medium 0.33)
+  - WER small 0.0255 / medium 0.2153; coverage small 0.9763 / medium 0.8157; duration 183.89s vs expected 219.2s (ratio 0.839); sha256 `b3e1ff8df7fa675756294cac9dcfd0ba0ef3d9de6519d7a57ac39b3338b16e01`
+- **Proverbs 27** — missing verse 3 at 0:14 — "But the trouble a fool causes is heavier than both Anger is cruel and rage is like a flood" (medium.en)
+  - audio check: confirmed: missing verse 3 0:05-0:15 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.013 / medium 0.3457; coverage small 0.987 / medium 0.6674; duration 149.38s vs expected 184.0s (ratio 0.812); sha256 `5e99c170209863fd16c70400562404c910c5784e1e426f26e50022c184f22e18`
+- **Proverbs 30** — coverage low on both models (small 0.893, medium 0.873); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.107 / medium 0.1302; coverage small 0.893 / medium 0.8729; duration 207.36s vs expected 258.0s (ratio 0.804); sha256 `8e51096044292a81857e27a7b0222250498d93105c927d31c638d0b4b8b97ec9`
+- **Proverbs 31** — inserted verse 28 at 2:16–2:20 — "She feeds her household well and cares for their family They praise" (small.en+medium.en)
+- **Proverbs 31** — inserted verse 28 at 2:20–3:26 — "as the trail blazing in the night find each other in their homes They rise in their homes and kneel before their God They praise for their family and Christ in their fled They look for Milo when and know that actually there isn't anything in their place They argue with each other to best what they earn They see …" (small.en+medium.en)
+- **Proverbs 31** — repeated verse 28 at 3:07–3:09 — "they rise in their homes and kneel" (small.en+medium.en)
+- **Proverbs 31** — repeated verse 28 at 3:21–3:25 — "They praise for the president and his wife They praise for the president and his wife" (small.en+medium.en)
+  - audio check: unclear: inserted verse 28 2:20-2:44 (slice coverage small 1.00, medium 0.50) refuted: repeated verse 28 3:20-3:31 (slice coverage small 1.00, medium 1.00, times 1/1) confirmed: inserted verse 28 2:15-2:26 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.4697 / medium 0.4607; coverage small 0.9978 / medium 0.8225; duration 226.43s vs expected 178.0s (ratio 1.272); sha256 `5ea56e5ece5afa684db6bbd024e620e8bf40d6307bab11be58d3300ffd16190a`
 
 ## UNCERTAIN
 
@@ -3808,6 +3822,26 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Proverbs 22** — missing verse 1 at 0:00–0:02 — "A good name is better than great riches Being loved is better than silver and gold Rich people and poor people have this in common the LORD made them all A careful person sees danger coming and hides But simple people keep going and get hurt Being humble and respecting the LORD bring riches honor and life There are thorns …" (medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00) refuted: missing verse 11 0:49-0:59 (slice coverage small 1.00, medium 1.00)
   - small.en only: missing 'Whoever loves a pure heart and speaks kindly will have the king as a friend'; medium.en only: missing 'A good name is better than great riches Being loved is better than silver and gold Rich people and poor people have this in common the LORD made them all A careful person sees danger coming and hides But simple people keep going and get hurt Being humble and respecting the LORD bring riches honor and life There are thorns …'; coverage unclear (small 0.968, medium 0.536; pass needs both >= 0.96); WER backstop on one model (small 0.032, medium 0.464); WER small 0.0316 / medium 0.4641; coverage small 0.9684 / medium 0.5359; sha256 `f6cb33142931c24c88caf2800671bb80468954487d10b8567d72aeb994ea66d5`
+- **Proverbs 24** — audio slice contains the disputed words; the models still disagree (coverage small 0.993, medium 0.641)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.993, medium 0.641); WER small 0.0074 / medium 0.3623; coverage small 0.9926 / medium 0.6414; sha256 `bc41fc1b83f9d555494cfbf24d324db2f77fea03285f1c9357950ef3cb8ef974`
+- **Proverbs 25** — audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.662)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.662); WER small 0.004 / medium 0.3518; coverage small 0.998 / medium 0.6621; sha256 `e89742e4e2c56c3b1405f3a29a04e8b5e6b2cafc129ac3a09ce1a1974fea6f53`
+- **Proverbs 26** — missing verse 19 at 1:52 — "person throwing burning sticks and arrows" (small.en)
+  - audio check: unclear: missing verse 19 1:43-1:53 (slice coverage small 1.00, medium 0.00)
+  - small.en only: missing 'person throwing burning sticks and arrows'; WER small 0.0316 / medium 0.0084; coverage small 0.9747 / medium 0.9937; sha256 `ce03b1af6dbb73207a513b4c0dfa75b629c3b0e5bd1fdf44c9b6ccd52786bf79`
+- **Proverbs 28** — missing verse 19 at 2:17 — "chases silly dreams will end up very poor" (small.en)
+- **Proverbs 28** — missing verse 13 at 1:51 — "Whoever hides his sins won't do well But whoever admits them and stops doing them will find mercy Happy is the person who always respects God But whoever makes his heart hard falls into trouble A wicked ruler over helpless people is like a roaring lion or a charging bear A cruel ruler has no good sense But a ruler …" (medium.en)
+  - audio check: unclear: missing verse 13 1:26-1:35 (slice coverage small 0.00, medium 0.92) unclear: missing verse 19 2:08-2:18 (slice coverage small 0.00, medium 1.00)
+  - small.en only: missing 'chases silly dreams will end up very poor'; medium.en only: missing 'Whoever hides his sins won't do well But whoever admits them and stops doing them will find mercy Happy is the person who always respects God But whoever makes his heart hard falls into trouble A wicked ruler over helpless people is like a roaring lion or a charging bear A cruel ruler has no good sense But a ruler …'; coverage unclear (small 0.977, medium 0.734; pass needs both >= 0.96); WER small 0.0249 / medium 0.2715; coverage small 0.9771 / medium 0.7342; sha256 `a776ca358fa0bd9e3e460cf63e450bc782f299a0990ee6452469d28c551f345d`
+- **Proverbs 29** — audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.828)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.828); WER small 0.0022 / medium 0.181; coverage small 0.9978 / medium 0.8276; sha256 `c36d4f7b4b8d8194e7a118b25a937a7593bfa1a32a604632cb8ea132b60f4545`
+- **Ecclesiastes 1** — missing verse 1 at 0:25–0:29 — "These are the words of the Teacher He was the son of David and king in Jerusalem Like a puff of air says the Teacher Like a puff of air Everything passes away like a puff of air What do people gain from all their hard work under the sun People are born and people pass away but the earth …" (small.en)
+- **Ecclesiastes 1** — missing verse 18 at 1:57 — "have the more sadness they" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00) unclear: missing verse 18 1:48-1:58 (slice coverage small 0.40, medium 0.60)
+  - small.en only: missing 'These are the words of the Teacher He was the son of David and king in Jerusalem Like a puff of air says the Teacher Like a puff of air Everything passes away like a puff of air What do people gain from all their hard work under the sun People are born and people pass away but the earth …'; medium.en only: missing 'have the more sadness they'; coverage unclear (small 0.747, medium 0.975; pass needs both >= 0.96); WER small 0.2535 / medium 0.0306; coverage small 0.7465 / medium 0.9749; sha256 `a9c99888fdcae992505f68903156c138ff3b93eb88e5fe7b6804709b380da1fb`
 
 ## Script
 
