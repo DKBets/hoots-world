@@ -58,21 +58,22 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 360
-- PASS: 8
-- FAIL: 244
-- UNCERTAIN: 108 (jsonl verdict UNSURE)
-- Still to score: 569 Old Testament chapters
+- Scored chapters: 370
+- PASS: 9
+- FAIL: 251
+- UNCERTAIN: 110 (jsonl verdict UNSURE)
+- Still to score: 559 Old Testament chapters
 
 ## PASS
 
-8 chapters. Both models agreed there was no missing, invented, or repeated passage.
+9 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
 - Deuteronomy 11
 - Judges 14
 - 2 Kings 1
+- 2 Chronicles 3
 
 ## FAIL
 
@@ -2175,6 +2176,56 @@ words clears that span. A split slice stays UNCERTAIN.
 - **1 Chronicles 21** — repeated verse 30 at 9:14–9:22 — "the blood brought upon his altar David knew that the Lord had answered him at the threshing floor of Jebusite So David" (small.en+medium.en)
   - audio check: unclear: inserted verse 15 3:31-3:55 (slice coverage small 1.00, medium 0.08) confirmed: inserted verse 27 7:15-7:39 (slice coverage small 1.00, medium 1.00) unclear: inserted verse 30 8:40-9:04 (slice coverage small 0.58, medium 0.00)
   - WER small 1.0623 / medium 0.8741; coverage small 0.9254 / medium 0.7665; duration 568.45s vs expected 327.2s (ratio 1.737); sha256 `fd08873718398eb25a0f2dc69265b0260174481e98985c48097a75cd2519822d`
+- **1 Chronicles 23** — missing verse 1 at 0:00–0:03 — "David was now very old and he had lived a long life So he made his son Solomon king over Israel David gathered all the leaders of Israel along with the priests and the Levites The Levites who were thirty years old or older were counted There were 38 000 men in all David said Of these 24 000 will …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.00)
+  - WER small 0.1836 / medium 0.1903; coverage small 0.8214 / medium 0.8097; duration 236.25s vs expected 239.6s (ratio 0.986); sha256 `4b3fcce8181322df7bdd0723417eec49caec3af4eb4e7568271fda3d064adb55`
+- **1 Chronicles 24** — silence verse ? at 1:07–1:18 — "then one from Ithamar. The first lot was for" (waveform)
+- **1 Chronicles 24** — inserted verse 7 at 1:18–1:22 — "One family was chosen from Elazar then one from Ithamar" (small.en+medium.en)
+- **1 Chronicles 24** — inserted verse 7 at 1:22–1:28 — "first lot was for Yohar Naya and Ithamar" (small.en+medium.en)
+- **1 Chronicles 24** — inserted verse 13 at 2:17–2:50 — "designated sons of David and his team The private in" (small.en+medium.en)
+- **1 Chronicles 24** — repeated verse 7 at 1:18–1:24 — "One family was chosen from Elazar then one from Ithamar The first lot was for" (small.en+medium.en)
+- **1 Chronicles 24** — repeated verse 11 at 1:59–2:05 — "of Inwicada The tenth family was for Sionit of Inwicada The" (small.en+medium.en)
+- **1 Chronicles 24** — repeated verse 11 at 2:04–2:11 — "of Inwicada The ninth family was for Sionit of Inwicada The tenth family was for" (small.en+medium.en)
+  - audio check: refuted: repeated verse 7 1:17-1:30 (slice coverage small 1.00, medium 1.00, times 1/1) refuted: repeated verse 11 2:03-2:17 (slice coverage small 0.93, medium 0.67, times 0/0) refuted: repeated verse 11 1:58-2:11 (slice coverage small 0.64, medium 0.46, times 0/0)
+  - WER small 0.2955 / medium 0.5032; coverage small 0.8415 / medium 0.5118; duration 270.34s vs expected 186.8s (ratio 1.447); sha256 `630514f3022436e2d9f0129d6ff539f3e1529f2ca10cbad557d0f222853174d0`
+- **1 Chronicles 25** — missing verse 4 at 1:20–1:24 — "Joshbekashah Mallothi Hothir and Mahazioth All these were sons of Heman the king's prophet God promised to make Heman strong so God gave him fourteen sons and three daughters All of them were led by their fathers as they made music in the LORD's house They played cymbals stringed instruments and harps as they served in God's house Asaph Jeduthun …" (small.en+medium.en)
+- **1 Chronicles 25** — repeated verse 20 at 2:48–2:51 — "his sons and brothers 12 in all The" (small.en+medium.en)
+- **1 Chronicles 25** — repeated verse 21 at 2:54–2:57 — "his sons and brothers 12 in all The" (small.en+medium.en)
+- **1 Chronicles 25** — repeated verse 25 at 3:13–3:16 — "his sons and brothers 12 in all The" (small.en+medium.en)
+- **1 Chronicles 25** — repeated verse 26 at 3:18–3:21 — "his sons and brothers 12 in all The" (small.en+medium.en)
+- **1 Chronicles 25** — repeated verse 27 at 3:22–3:25 — "his sons and brothers 12 in all The" (small.en+medium.en)
+- **1 Chronicles 25** — repeated verse 28 at 3:27–3:30 — "his sons and brothers 12 in all The" (small.en+medium.en)
+- **1 Chronicles 25** — repeated verse 29 at 3:32–3:34 — "his sons and brothers 12 in all The" (small.en+medium.en)
+  - audio check: unclear: missing verse 4 0:53-1:02 (slice coverage small 0.58, medium 0.58) refuted: repeated verse 20 2:47-2:57 (slice coverage small 1.00, medium 1.00, times 1/1) refuted: repeated verse 21 2:53-3:03 (slice coverage small 0.12, medium 0.88, times 0/0)
+  - WER small 0.2064 / medium 0.3039; coverage small 0.7974 / medium 0.7036; duration 224.51s vs expected 213.2s (ratio 1.053); sha256 `2ae743c1d0c4d44a47bf222a96c853851237d769c6c9c59f2479345df7ce0137`
+- **1 Chronicles 26** — silence before verse 1 at 0:15–0:20 — "silence" (waveform)
+- **1 Chronicles 26** — missing verse 4 at 1:28–1:31 — "second Joah third Sacar fourth" (small.en+medium.en)
+- **1 Chronicles 26** — inserted verse 3 at 0:24–1:24 — "The families of Asaph were Elisava and Samdan sons of Asaph were elemental Exabet and Samdan Zeddabet and Samdan Seven Decomdei Seven Pediguget Gilead the Devil Tatarize the Name and Metalo also known as Metalo the prophet of the temple To the temples of this theme these bands were a saline and abandoned ref to the temple of God and …" (small.en+medium.en)
+- **1 Chronicles 26** — repeated verse 3 at 1:07–1:11 — "The gates were ten and each graniteide was made of glass or silver" (small.en+medium.en)
+  - audio check: unclear: inserted verse 3 0:23-0:47 (slice coverage small 0.79, medium 0.04) refuted: repeated verse 3 1:06-1:17 (slice coverage small 1.00, medium 0.92, times 1/0) confirmed: missing verse 4 1:19-1:29 (slice coverage small 0.20, medium 0.00)
+  - WER small 0.3544 / medium 0.451; coverage small 0.9336 / medium 0.7511; duration 330.03s vs expected 265.2s (ratio 1.244); sha256 `be9d7aa1d7830c3ff947da7d031579ea91d4f03763874bfac1edcbdafccbc2cf`
+- **1 Chronicles 27** — silence verse ? at 0:46–0:54 — "commander for the third month was Benay" (waveform)
+- **1 Chronicles 27** — silence verse ? at 6:01–6:04 — "was the king's friend. After Ahithophel, Johani son" (waveform)
+- **1 Chronicles 27** — missing verse 5 at 1:58–2:02 — "chief priest His group had 24 000 men This" (small.en+medium.en)
+- **1 Chronicles 27** — inserted verse 5 at 0:44–1:01 — "month was Benayai son of Benayai son of Jehoiadai The fourth army commander for the second" (small.en+medium.en)
+- **1 Chronicles 27** — inserted verse 5 at 1:05–1:58 — "He was the leader of the army of the kings He was the leader of the army of the kings He was the leader of the armies of the kings He was the leader of the armies of the kings He was the leader of the armies of the kings He was the leader of the armies of the kings …" (small.en+medium.en)
+- **1 Chronicles 27** — inserted verse 5 at 1:58–2:02 — "kings He was the leader of the army of the kings He" (small.en+medium.en)
+- **1 Chronicles 27** — inserted verse 34 at 6:13–6:23 — "Ithify Debethiel Jededethro Top David and passed his name for David's bloody ancient blood of great endurance David" (small.en+medium.en)
+- **1 Chronicles 27** — inserted verse 34 at 6:23–6:26 — "again saved and prospered and his" (small.en+medium.en)
+- **1 Chronicles 27** — inserted verse 34 at 6:26–7:18 — "were newly mated in sabre Jael and Jagbeth were instrumental in blending histories with prayers Blessed were David who prayed deeply in his prayers David was a man who never stopped praying to God David was a man who never stopped praying to God David was a man who never stopped praying to God David was a man who never …" (small.en+medium.en)
+- **1 Chronicles 27** — repeated verse 5 at 1:11–1:15 — "He was the leader of the army of the kings He was the leader of the" (small.en+medium.en)
+- **1 Chronicles 27** — repeated verse 5 at 1:15–2:12 — "of the kings He was the leader of the armies of the kings He was the leader of the armies of the kings He was the leader of the armies of the kings He was the leader of the armies of the kings He was the leader of the armies of the kings He was the leader of the armies …" (small.en+medium.en)
+- **1 Chronicles 27** — repeated verse 34 at 6:40–7:15 — "David was a man who never stopped praying to God David was a man who never stopped praying to God David was a man who never stopped praying to God David was a man who never stopped praying to God David was a man who never stopped praying to God David was a man who never stopped praying to God …" (small.en+medium.en)
+  - audio check: refuted: repeated verse 5 1:14-1:38 (slice coverage small 1.00, medium 0.21, times 1/0) unclear: inserted verse 5 1:04-1:28 (slice coverage small 1.00, medium 0.21) confirmed: inserted verse 34 6:25-6:49 (slice coverage small 0.92, medium 0.96)
+  - WER small 0.6096 / medium 0.6493; coverage small 0.8836 / medium 0.6699; duration 439.17s vs expected 292.0s (ratio 1.504); sha256 `aa517347f247db03015e4246854b9734a93e8a0554d2fa3b90b3bfd4bf7f0c58`
+- **1 Chronicles 29** — missing verse 21 at 4:07 — "the LORD They offered one thousand bulls one thousand rams and one thousand lambs with their drink offerings and many other sacrifices for all Israel That day they ate and drank in front of the LORD with great joy Then they made David's son Solomon king a second time They anointed him in front of" (small.en)
+- **1 Chronicles 29** — missing verse 6 at 1:11 — "work gave willingly They gave these things for the" (medium.en)
+  - audio check: confirmed: missing verse 21 3:45-3:54 (slice coverage small 0.08, medium 0.25) confirmed: missing verse 6 1:02-1:12 (slice coverage small 0.11, medium 0.11)
+  - WER small 0.1003 / medium 0.1353; coverage small 0.9019 / medium 0.8692; duration 311.04s vs expected 354.8s (ratio 0.877); sha256 `51c566c7d2617b12603e48c989bdddbb9ec32f41835ebeb88f7552e80c057bef`
+- **2 Chronicles 1** — inserted verse 1 at 0:14–0:17 — "his kingdom strong The Lord was with" (small.en+medium.en)
+- **2 Chronicles 1** — inserted verse 2 at 0:31–1:27 — "Lord and waited for ten days and weeks and waited for ten days and weeks and waited for ten days and weeks and waited for ten days and weeks and waited for ten days and weeks and waited for ten days and weeks and waited for ten days and weeks and waited for ten days and weeks and waited for …" (small.en+medium.en)
+  - audio check: refuted: inserted verse 2 0:30-0:54 (slice coverage small 0.00, medium 0.00) unclear: inserted verse 1 0:13-0:23 (slice coverage small 1.00, medium 0.71)
+  - WER small 0.6435 / medium 0.4305; coverage small 0.9529 / medium 0.787; duration 238.81s vs expected 178.4s (ratio 1.339); sha256 `cb8b761f4e29634269d3ffc2fff3fa2e43bff3929e055acb7a8a2e8ac0c44231`
 
 ## UNCERTAIN
 
@@ -2518,6 +2569,12 @@ words clears that span. A split slice stays UNCERTAIN.
 - **1 Chronicles 22** — missing verse 1 at 0:30 — "This is where the house of the LORD God will be with the altar of burnt offering for Israel David gave orders to gather the foreigners living in Israel He chose stoneworkers to cut stones to build God's house David got lots of iron ready to make nails for the doors of the gates and for the clamps He also …" (medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00) refuted: inserted verse 15 2:34-2:44 (slice coverage small 0.00, medium 0.00)
   - small.en only: inserted 'Stone cutters stone workers wood workers'; medium.en only: missing 'This is where the house of the LORD God will be with the altar of burnt offering for Israel David gave orders to gather the foreigners living in Israel He chose stoneworkers to cut stones to build God's house David got lots of iron ready to make nails for the doors of the gates and for the clamps He also …'; coverage unclear (small 0.991, medium 0.687; pass needs both >= 0.96); WER backstop on one model (small 0.017, medium 0.498); WER small 0.0173 / medium 0.4983; coverage small 0.9913 / medium 0.6869; sha256 `08c6c0e69764b1ff45160b7c5ff58dc883e1bda730001186af8c79cbef88dfe7`
+- **1 Chronicles 28** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.899)
+  - audio check: refuted: missing verse 5 1:01-1:11 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.899); WER small 0.0053 / medium 0.1252; coverage small 1.0 / medium 0.8988; sha256 `33f40854b06c57eeeb1bf4f2c68c9e2d20505127fbfa0d8e7242ef8ad74e3628`
+- **2 Chronicles 2** — audio slice contains the disputed words; the models still disagree (coverage small 0.829, medium 0.594)
+  - audio check: refuted: repeated verse 10 1:50-1:59 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.829, medium 0.594); WER small 0.2175 / medium 0.411; coverage small 0.8288 / medium 0.5942; sha256 `526952b13b902614c53c6ea5b0a984cde5e24545af538c165978f20b53a90bf5`
 
 ## Script
 
