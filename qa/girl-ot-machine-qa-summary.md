@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 300
+- Scored chapters: 310
 - PASS: 7
-- FAIL: 197
-- UNCERTAIN: 96 (jsonl verdict UNSURE)
-- Still to score: 629 Old Testament chapters
+- FAIL: 206
+- UNCERTAIN: 97 (jsonl verdict UNSURE)
+- Still to score: 619 Old Testament chapters
 
 ## PASS
 
@@ -1447,6 +1447,67 @@ words clears that span. A split slice stays UNCERTAIN.
 - **1 Kings 9** — repeated verse 22 at 4:01–4:03 — "incense with them in front of the Lord" (small.en+medium.en)
   - audio check: confirmed: inserted verse 25 5:03-5:23 (slice coverage small 1.00, medium 0.88) refuted: inserted verse 22 3:54-4:06 (slice coverage small 0.21, medium 0.10) confirmed: missing verse 25 4:55-5:05 (slice coverage small 0.00, medium 0.00)
   - WER small 0.3436 / medium 0.4022; coverage small 0.7793 / medium 0.8184; duration 333.23s vs expected 286.4s (ratio 1.164); sha256 `679d8044b9bd99afc936d38e722811e6db22a6a9aca4cda42450e60a45fe17a3`
+- **1 Kings 10** — missing verse 11 at 1:40 — "Hiram's ships brought gold from Ophir They also brought from Ophir large loads of almug wood and precious stones The king used the almug" (medium.en)
+  - audio check: confirmed: missing verse 11 1:31-1:40 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.0413 / medium 0.0749; coverage small 0.9625 / medium 0.9315; duration 280.15s vs expected 309.6s (ratio 0.905); sha256 `368a5ecd099f745bf6d083465056692a54e8627d59aef13d3ad2ff77c6876334`
+- **1 Kings 11** — silence before verse 1 at 0:15–0:18 — "the Hittites. The Lord had told the people of Israel. The Lord had told" (waveform)
+- **1 Kings 11** — missing verse 2 at 0:28–0:43 — "because they will turn your hearts" (small.en+medium.en)
+- **1 Kings 11** — missing verse 2 at 1:13–1:17 — "loved them He had seven hundred wives" (small.en+medium.en)
+- **1 Kings 11** — inserted verse 2 at 0:21–0:28 — "Do not marry women To them you have to go astray But Solomon ignored the Lord and led" (small.en+medium.en)
+- **1 Kings 11** — inserted verse 2 at 0:28–0:43 — "by their feet Even many women from Roman Greece and Wego This led to the crimes of Giloboba and many women from Roman The deadly knife against the temple was nearly as in place in women who were married" (small.en+medium.en)
+- **1 Kings 11** — inserted verse 2 at 0:44–0:48 — "the kings of Israel Even those who were not circumcised in" (small.en+medium.en)
+- **1 Kings 11** — inserted verse 2 at 0:53–0:57 — "exhausted himself in his marriages and medals in women who were not pleasant" (small.en+medium.en)
+- **1 Kings 11** — inserted verse 2 at 0:58–1:02 — "his men Solomon married women from all Greece and Asia" (small.en+medium.en)
+- **1 Kings 11** — inserted verse 2 at 1:03–1:12 — "who were married to the kings of Denmark and Pharaoh This led to the crimes of Giloboba even those who were married to the kings of Israel" (small.en+medium.en)
+- **1 Kings 11** — inserted verse 2 at 1:13–1:17 — "even those who were married to the kings of other nations Women" (small.en+medium.en)
+- **1 Kings 11** — inserted verse 3 at 1:17–1:19 — "married to the kings of Israel" (small.en+medium.en)
+- **1 Kings 11** — inserted verse 3 at 1:19–1:22 — "even those who were married to the kings of" (small.en+medium.en)
+- **1 Kings 11** — inserted verse 3 at 1:22–1:35 — "nations led to the crimes of Giloboba This added wealth and gifts to King Solomon But when he saw that everyone was living under Pharaoh's land and kings of Egypt went to send his visits" (small.en+medium.en)
+- **1 Kings 11** — repeated verse 2 at 1:07–1:09 — "This led to the crimes of Giloboba" (small.en+medium.en)
+- **1 Kings 11** — repeated verse 3 at 1:16–1:22 — "Women who were married to the kings of Israel and even those who were married to the kings of other nations" (small.en+medium.en)
+  - audio check: refuted: inserted verse 2 0:27-0:49 (slice coverage small 0.00, medium 0.29) confirmed: inserted verse 3 1:21-1:41 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 2 1:02-1:18 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.1886 / medium 0.2534; coverage small 0.9565 / medium 0.8123; duration 498.65s vs expected 468.8s (ratio 1.064); sha256 `1eeec06e8b62a8bf82bc492296dae117dc25d681b9498798aaae9f5631429705`
+- **1 Kings 12** — inserted verse 30 at 4:47–4:50 — "People went all the way to Dan to worship their calf there" (small.en+medium.en)
+- **1 Kings 12** — repeated verse 30 at 4:52–4:54 — "went all the way to Dan to worship" (small.en+medium.en)
+  - audio check: unclear: inserted verse 30 4:46-4:56 (slice coverage small 0.00, medium 0.92) refuted: repeated verse 30 4:51-5:00 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.0973 / medium 0.2703; coverage small 0.9319 / medium 0.7557; duration 336.47s vs expected 370.0s (ratio 0.909); sha256 `d2ff3b65f2064d71e31fb99921913dda051c93d8adbc1b8ed961fa746a899720`
+- **1 Kings 13** — missing verse 15 at 2:19 — "the prophet said to him Come home with me and eat" (small.en)
+- **1 Kings 13** — missing verse 2 at 0:16 — "The LORD says A son named Josiah will be born into David's family" (medium.en)
+  - audio check: confirmed: missing verse 2 0:07-0:17 (slice coverage small 0.08, medium 0.08) confirmed: missing verse 15 2:10-2:20 (slice coverage small 0.09, medium 0.09)
+  - WER small 0.0215 / medium 0.0543; coverage small 0.9816 / medium 0.9508; duration 314.79s vs expected 390.4s (ratio 0.806); sha256 `d41d290b720a175e9d5f8cfe288107f452df72c484d47d526e2e1cc2157e6c93`
+- **1 Kings 14** — missing verse 27 at 5:08–5:31 — "So King Rehoboam made bronze shields" (small.en+medium.en)
+- **1 Kings 14** — inserted verse 26 at 4:32–4:50 — "Even all the treasures that the King looked fit to take and break the temple of the land and break the tower of David and garven all idols He broke the tower of David and the avendores that were near the depth of the nine And" (small.en+medium.en)
+- **1 Kings 14** — inserted verse 26 at 4:50–4:55 — "brought into the temple the sage dwelling in the temple and Eden at" (small.en+medium.en)
+- **1 Kings 14** — inserted verse 26 at 4:55–5:01 — "temple of David And he knew that it was damn He rode upon his wife that he" (small.en+medium.en)
+- **1 Kings 14** — inserted verse 26 at 5:01–5:07 — "prayers He fled to the wind and flew but the temple was hidden inside of them they" (small.en+medium.en)
+- **1 Kings 14** — inserted verse 27 at 5:08–5:31 — "brethren at the temple and then Eden's sacrifice and blew a night in the temple and And they worshipped the Lord the God of their fathers and they served His blessings inside They worshipped the Lord the God of their fathers and they offered all their idols and gods in the temple The death was due" (small.en+medium.en)
+- **1 Kings 14** — inserted verse 27 at 5:34–5:37 — "be a blue brand They worshipped the Lord" (small.en+medium.en)
+- **1 Kings 14** — inserted verse 27 at 5:38–5:43 — "God of their fathers and they offered all their idols and gods inside" (small.en+medium.en)
+- **1 Kings 14** — inserted verse 27 at 5:46–5:53 — "the temple and inside the sage dwelling in the temple and they were martyred on the temple holy flames" (small.en+medium.en)
+- **1 Kings 14** — inserted verse 27 at 5:54–5:59 — "god of their fathers gave these idols as a test and even inside the temple" (small.en+medium.en)
+- **1 Kings 14** — repeated verse 26 at 5:25–5:27 — "They worshipped the Lord the God of their fathers and they" (small.en+medium.en)
+- **1 Kings 14** — repeated verse 27 at 5:36–5:42 — "They worshipped the Lord the God of their fathers and they offered all their idols and gods" (small.en+medium.en)
+- **1 Kings 14** — repeated verse 27 at 5:48–5:50 — "the sage dwelling in the temple and" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 27 5:07-5:31 (slice coverage small 0.92, medium 1.00) confirmed: inserted verse 26 4:31-4:55 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 27 5:45-5:59 (slice coverage small 1.00, medium 0.90)
+  - WER small 0.2705 / medium 0.5283; coverage small 0.9584 / medium 0.6971; duration 394.92s vs expected 346.0s (ratio 1.141); sha256 `eba267821564cc2c600dbb47bf5eb97f952ac6f01eb9c5c891dc480106f8baab`
+- **1 Kings 15** — inserted verse 1 at 0:00–0:03 — "One Kings chapter 15 Abisham" (small.en)
+- **1 Kings 15** — missing verse 3 at 0:16 — "his father had done before him His heart was not fully faithful to the LORD his God as the heart of his father David had been But because of David the LORD" (medium.en)
+  - audio check: confirmed: missing verse 3 0:03-0:12 (slice coverage small 0.08, medium 0.08) confirmed: inserted verse 1 0:00-0:09 (slice coverage small 0.80, medium 0.80)
+  - WER small 0.0651 / medium 0.2233; coverage small 0.9416 / medium 0.7823; duration 311.68s vs expected 356.4s (ratio 0.875); sha256 `f7f439102434f64df62034e0309392667afce1dc0fe5a83dce4c8551630aa666`
+- **1 Kings 17** — missing verse 15 at 1:54 — "So she went and did what" (small.en)
+- **1 Kings 17** — missing verse 6 at 0:36 — "and meat every morning and every evening And he drank water from the brook After a while the brook dried up because there had been no rain in" (medium.en)
+  - audio check: confirmed: missing verse 6 0:25-0:34 (slice coverage small 0.08, medium 0.00) refuted: missing verse 15 1:45-1:55 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.0211 / medium 0.3198; coverage small 0.9854 / medium 0.6802; duration 197.33s vs expected 246.4s (ratio 0.801); sha256 `710fc35c4c3261c1e28137e8c038c5c11e7b76d7b0beac5fd1d74942641ece2c`
+- **1 Kings 18** — loop verse ? at 4:16–4:22 — "that. We want that. We want that. We want that. We want that. - We want that. We" (waveform)
+- **1 Kings 18** — loop verse ? at 4:22–4:28 — "that. - We want that. We want that. We want that. We want that. We want that! We want that!" (waveform)
+- **1 Kings 18** — inserted verse 24 at 3:26–4:38 — "lip said we want that we want that we want that we want that we want that we want that we want that we want that we want that we want that we want that we want that we want that we want that we want that we want that we want that We want that we want that we …" (small.en+medium.en)
+- **1 Kings 18** — repeated verse 13 at 1:48–1:50 — "in two caves 50 in each" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 24 3:25-3:49 (slice coverage small 1.00, medium 0.96) refuted: repeated verse 13 1:47-1:56 (slice coverage small 1.00, medium 0.83, times 1/0)
+  - WER small 0.1873 / medium 0.4033; coverage small 0.9611 / medium 0.7459; duration 518.44s vs expected 514.8s (ratio 1.007); sha256 `786ee01d0b56ebe238413b1b9c8780516888f53fafa4a03c091536ada4026015`
+- **1 Kings 19** — repeated verse 19 at 3:10–3:12 — "Elisha the son of Shabbat" (small.en)
+- **1 Kings 19** — missing verse 9 at 1:11 — "into a cave and spent the night Then the LORD spoke to him" (medium.en)
+  - audio check: confirmed: missing verse 9 1:02-1:12 (slice coverage small 0.25, medium 0.25) refuted: repeated verse 19 3:09-3:18 (slice coverage small 0.80, medium 0.80, times 0/0)
+  - WER small 0.0193 / medium 0.0578; coverage small 0.9807 / medium 0.9437; duration 230.78s vs expected 270.0s (ratio 0.855); sha256 `073d6a62b18124501e4c083ddfd7824aa25b18019cd4f61c6f968fa264b68a24`
 
 ## UNCERTAIN
 
@@ -1752,6 +1813,9 @@ words clears that span. A split slice stays UNCERTAIN.
 - **1 Kings 7** — audio slice contains the disputed words; the models still disagree (coverage small 0.952, medium 0.821)
   - audio check: refuted: missing verse 5 0:30-0:40 (slice coverage small 1.00, medium 1.00) refuted: missing verse 8 0:55-1:05 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.952, medium 0.821); WER small 0.0492 / medium 0.1819; coverage small 0.9523 / medium 0.8213; sha256 `d7d120570c1691af9f7bd61a2828ccdc7fe9d46c9e0e83057542542ab6b184e2`
+- **1 Kings 16** — audio slice contains the disputed words; the models still disagree (coverage small 0.947, medium 0.754)
+  - audio check: refuted: repeated verse 15 2:10-2:19 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.947, medium 0.754); WER small 0.0529 / medium 0.2505; coverage small 0.9471 / medium 0.7537; sha256 `fe985e9ed3e35cc911fa5e4a867f08c5ff2b29e65078cdb1a08fa6579d3bb48c`
 
 ## Script
 
