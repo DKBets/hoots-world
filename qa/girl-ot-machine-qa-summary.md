@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 850
+- Scored chapters: 860
 - PASS: 52
-- FAIL: 482
-- UNCERTAIN: 316 (jsonl verdict UNSURE)
-- Still to score: 79 Old Testament chapters
+- FAIL: 486
+- UNCERTAIN: 322 (jsonl verdict UNSURE)
+- Still to score: 69 Old Testament chapters
 
 ## PASS
 
@@ -4047,6 +4047,29 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Ezekiel 48** — missing verse 26 at 3:45 — "Zebulun will have one share" (small.en+medium.en)
   - audio check: unclear: missing verse 26 3:36-3:46 (slice coverage small 0.20, medium 0.80)
   - WER small 0.0372 / medium 0.2415; coverage small 0.9661 / medium 0.7607; duration 298.84s vs expected 366.0s (ratio 0.816); sha256 `05b3ce38c5a4c3305698f47eba0c5d4b7b361b37953f01c0a7d4a3de27937c65`
+- **Daniel 1** — inserted verse 1 at 0:15–0:37 — "Nebuchadnezzar K king Lioness sent Nebuchadnezzar to invade US Nebuch our Nebra and Eliezebet And Nebuchadnezzar sent Banyal Brandon gently to invite these men to invade Israel" (small.en+medium.en)
+- **Daniel 1** — inserted verse 1 at 0:41–0:57 — "and he wanted to test if these men could play and serve in his kingdom's brother in heaven Nebuchadnezzar taught Daniel and his men together to invade Israel Nebuchadnezzar taught Daniel and his men together" (small.en+medium.en)
+- **Daniel 1** — inserted verse 1 at 0:58–1:02 — "invade Israel These men tested Daniel" (small.en+medium.en)
+- **Daniel 1** — inserted verse 1 at 1:02–1:16 — "his men together to invade Israel These men tested Daniel and" (small.en+medium.en)
+- **Daniel 1** — inserted verse 1 at 1:16–1:19 — "men together to invade Israel The" (small.en+medium.en)
+- **Daniel 1** — inserted verse 2 at 1:21–1:30 — "fell in Nebuchadnezzar Nebuchadnezzar took Daniel and Elias Sebet and end their ancestors In" (small.en+medium.en)
+- **Daniel 1** — inserted verse 2 at 1:32–1:56 — "seven veteran prophets tested Daniel Lamb and Tamas These men found that they were well vetted from the desert of Judah These men tested Daniel and Eliezebet within ten years and when they came to Daniel's heart they didn't waste any single item that had ever been taken" (small.en+medium.en)
+- **Daniel 1** — inserted verse 2 at 1:56–2:20 — "Disney's gold silver Daniel was meant within Eliezebet an nearly 60 And when my family sought kings I set apart not writing but fingers These men found weather in Daniel's grief and prayer These men These men tested Daniel and Eliezebet twice" (small.en+medium.en)
+- **Daniel 1** — repeated verse 1 at 0:54–0:59 — "Nebuchadnezzar taught Daniel and his men together to invade Israel" (small.en+medium.en)
+- **Daniel 1** — repeated verse 1 at 1:01–1:19 — "Daniel and his men together to invade Israel These men tested Daniel and his men together to invade Israel" (small.en+medium.en)
+- **Daniel 1** — repeated verse 2 at 1:42–1:46 — "These men tested Daniel and" (small.en+medium.en)
+- **Daniel 1** — repeated verse 2 at 2:16–2:19 — "These men tested Daniel and Eliezebet" (small.en+medium.en)
+  - audio check: refuted: inserted verse 2 1:31-1:55 (slice coverage small 0.04, medium 0.04) confirmed: inserted verse 2 1:55-2:19 (slice coverage small 0.96, medium 0.92) confirmed: inserted verse 1 0:40-1:03 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.4086 / medium 0.5603; coverage small 0.9436 / medium 0.6304; duration 336.04s vs expected 205.6s (ratio 1.634); sha256 `4b17e46764a542fea0a65ca5a5e03db019aa2cb3b58d4ed724fe35ed6d61c22d`
+- **Daniel 4** — missing verse 37 at 6:41 — "and give glory to the King of heaven Everything he does is right and all his ways are fair And he is able" (small.en+medium.en)
+  - audio check: confirmed: missing verse 37 6:31-6:40 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.0369 / medium 0.2527; coverage small 0.9631 / medium 0.7523; duration 401.24s vs expected 476.4s (ratio 0.842); sha256 `7aa1cbc380a68f03aeb69c38a282e21678b6eb137edb9af02653a6b6c322f2a5`
+- **Daniel 5** — coverage low on both models (small 0.890, medium 0.736); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1118 / medium 0.2708; coverage small 0.8904 / medium 0.7357; duration 325.89s vs expected 364.8s (ratio 0.893); sha256 `1e15bf6f0e6d843940f3f74d2fa2fdbf569513deb4caf0c60748aa41e785271d`
+- **Daniel 9** — missing verse 1 at 0:02–0:20 — "It was the first year of Darius the son of Xerxes Darius was from the family of" (small.en+medium.en)
+- **Daniel 9** — inserted verse 1 at 0:02–0:20 — "Jack 23 Jack 23 Jack 23 Jack 23 Jack 23 Jack 23 Jack 23 Jack Jeremiah found itself in" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 1 0:01-0:25 (slice coverage small 1.00, medium 0.79) confirmed: missing verse 1 0:00-0:03 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.0393 / medium 0.1716; coverage small 0.9639 / medium 0.8404; duration 337.49s vs expected 366.0s (ratio 0.922); sha256 `5408b81c62af5ddb0f93f800bda6fe1ffbb6ced69fa47d99254660ac4aa35a0c`
 
 ## UNCERTAIN
 
@@ -5033,6 +5056,24 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Ezekiel 42** — audio slice contains the disputed words; the models still disagree (coverage small 0.946, medium 0.656)
   - audio check: refuted: repeated verse 17 2:31-2:41 (slice coverage small 1.00, medium 1.00, times 1/1)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.946, medium 0.656); WER small 0.0545 / medium 0.3459; coverage small 0.9455 / medium 0.656; sha256 `8e7d688411ab60f7a778ce1369f2b8f1af8e182d95dfe4b57377fa2f30337501`
+- **Daniel 2** — audio slice contains the disputed words; the models still disagree (coverage small 0.935, medium 0.868)
+  - audio check: refuted: missing verse 45 6:46-6:55 (slice coverage small 1.00, medium 0.83)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.935, medium 0.868); WER small 0.0654 / medium 0.1373; coverage small 0.9354 / medium 0.8678; sha256 `52a07f047134bbf93117a16649d29b1bee31d8c79c83de08512cc148fceac160`
+- **Daniel 3** — audio slice contains the disputed words; the models still disagree (coverage small 0.916, medium 0.712)
+  - audio check: refuted: repeated verse 3 0:24-0:36 (slice coverage small 1.00, medium 1.00, times 1/0)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.916, medium 0.712); WER small 0.0863 / medium 0.2999; coverage small 0.916 / medium 0.7118; sha256 `05a0743ec20c46f2ccc97a78de6146fd237514136afba752e6065313475eefa8`
+- **Daniel 6** — audio slice contains the disputed words; the models still disagree (coverage small 0.988, medium 0.838)
+  - audio check: refuted: repeated verse 12 1:42-1:51 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.988, medium 0.838); WER small 0.0122 / medium 0.1657; coverage small 0.9878 / medium 0.838; sha256 `ea741d945c2c80712f1eebdf001426c3baf787ab2591ce07fd7535868d7afa14`
+- **Daniel 7** — audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.926)
+  - audio check: refuted: missing verse 9 1:57-2:06 (slice coverage small 1.00, medium 1.00) refuted: inserted verse ? 0:13-0:25 (slice coverage small 0.17, medium 0.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.926); WER small 0.0056 / medium 0.0763; coverage small 0.9978 / medium 0.9259; sha256 `a279e6f83836074c78b9053617502c4c744cabae012f87c695be0d06398f47e3`
+- **Daniel 8** — missing verse 11 at 2:01 — "away the daily burnt offering and the place of his temple was thrown down Because of sin the army and the daily burnt offering were handed over to it It threw truth down to the ground It succeeded in everything it did" (medium.en)
+  - audio check: unclear: missing verse 11 1:44-1:53 (slice coverage small 1.00, medium 0.08)
+  - medium.en only: missing 'away the daily burnt offering and the place of his temple was thrown down Because of sin the army and the daily burnt offering were handed over to it It threw truth down to the ground It succeeded in everything it did'; coverage unclear (small 0.993, medium 0.871; pass needs both >= 0.96); WER small 0.0074 / medium 0.1307; coverage small 0.9926 / medium 0.8705; sha256 `d1d39a4156c46d6939a3e1b732778d526083f1827b44498bdbb0a30c4501d111`
+- **Daniel 10** — audio slice contains the disputed words; the models still disagree (coverage small 0.991, medium 0.762)
+  - audio check: refuted: missing verse 3 0:21-0:31 (slice coverage small 1.00, medium 0.90)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.991, medium 0.762); WER small 0.0142 / medium 0.2376; coverage small 0.9911 / medium 0.7624; sha256 `505c83f9dae148578193ff1647e4a2a0827da3ce49d285807692b5c1b21c2b21`
 
 ## Script
 
