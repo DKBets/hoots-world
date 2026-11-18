@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 730
+- Scored chapters: 740
 - PASS: 48
-- FAIL: 414
-- UNCERTAIN: 268 (jsonl verdict UNSURE)
-- Still to score: 199 Old Testament chapters
+- FAIL: 419
+- UNCERTAIN: 273 (jsonl verdict UNSURE)
+- Still to score: 189 Old Testament chapters
 
 ## PASS
 
@@ -3290,6 +3290,24 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Isaiah 51** — inserted verse 16 at 3:16–3:18 — "stir up the sea and make its waves roar" (small.en+medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00) confirmed: inserted verse 16 3:01-3:15 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 15 2:33-2:53 (slice coverage small 1.00, medium 1.00)
   - WER small 0.3554 / medium 0.4189; coverage small 0.8027 / medium 0.8459; duration 322.69s vs expected 296.0s (ratio 1.09); sha256 `47b6f80355e3ce99eba5c4de047bd38ebf657e68bd7f01bb2314d8ad591544a2`
+- **Isaiah 53** — coverage low on both models (small 0.635, medium 0.877); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.3645 / medium 0.1232; coverage small 0.6355 / medium 0.8768; duration 150.14s vs expected 162.4s (ratio 0.925); sha256 `76a0540f8d88d15a4c8b9b7569f498416fb6e7ff92eca6e83954793975bc92f7`
+- **Isaiah 54** — inserted verse 13 at 2:03–3:14 — "Setting this day is a New Testament It's the Council of God Saddened you with mornings and wines and bakings and raisins and make you bravely say Look at this beautiful present taking it away Look I built your city with beautiful colored stones It's all about you young lady Lady set in you with mornings and wines and bakings …" (small.en+medium.en)
+- **Isaiah 54** — repeated verse 13 at 2:32–2:35 — "stones it's all about you young lady" (small.en+medium.en)
+- **Isaiah 54** — repeated verse 13 at 2:35–3:00 — "lady Set in you with mornings and wines and bakings and raisins and make you bravely say Look at this beautiful present I will build you with precious stones it's all about you young lady Set in you with mornings and wines and bakings and raisins And make you bravely say Look at this beautiful present I will build you …" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 13 2:02-2:26 (slice coverage small 0.96, medium 0.92) unclear: repeated verse 13 2:34-2:58 (slice coverage small 1.00, medium 0.92, times 2/0) refuted: repeated verse 13 2:31-2:41 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.4128 / medium 0.5021; coverage small 0.9979 / medium 0.6298; duration 230.06s vs expected 188.0s (ratio 1.224); sha256 `eae4905c1f5c2ef51140fbfd074ada98aa8de9551a79a48e37bd861b3cfebb90`
+- **Isaiah 57** — missing verse 1 at 0:25–0:28 — "Good people die and no one thinks about it Kind people are taken away and no one understands that good people are being taken away to be safe from evil They go into peace Those who live the right way find rest in death But you come here you children of a witch you children of people who are unfaithful …" (small.en+medium.en)
+  - audio check: confirmed: missing verse 1 0:00-0:09 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.1191 / medium 0.1191; coverage small 0.8809 / medium 0.8809; duration 190.89s vs expected 221.6s (ratio 0.861); sha256 `ab6881a2de089b994dca08ac95322f6dd884cb7837bc78ed6214292728fa10ca`
+- **Isaiah 58** — inserted before verse 1 at 0:00 — "is near god says tune in" (small.en+medium.en windows)
+- **Isaiah 58** — inserted verse 1 at 0:03–0:17 — "sound the moon is near God says tune in Here's the word No good sin Satan devils anything break up riffs give new voices Give Latin's legs insane that Deanian daddy" (small.en)
+- **Isaiah 58** — missing verse 1 at 0:27 — "Don't hold back Raise your voice like a trumpet Tell my people about their rebellion Tell" (medium.en)
+  - audio check: confirmed: inserted verse 1 0:02-0:23 (slice coverage small 0.96, medium 0.96) refuted: missing verse 1 0:18-0:28 (slice coverage small 0.83, medium 0.83) unclear: inserted verse ? 0:00-0:12 (slice coverage small 1.00, medium 0.67)
+  - WER small 0.0643 / medium 0.2369; coverage small 1.0 / medium 0.7711; duration 187.31s vs expected 199.2s (ratio 0.94); sha256 `148d86c5a8af90b05fb4d4268f140e1c28eefbdd1074007729c184697191d01c`
+- **Isaiah 61** — missing verse 1 at 0:00–0:02 — "The Spirit of the Lord GOD is on me because the LORD has chosen me to tell good news to humble people He has sent me to heal people whose hearts are broken He sent me to tell prisoners that they are free and to let people out of their chains He sent me to announce the year when the …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - WER small 0.1891 / medium 0.2612; coverage small 0.8109 / medium 0.7388; duration 142.63s vs expected 160.8s (ratio 0.887); sha256 `860d7edd33cf2098fe6e1713bc00e90d417d78e8eca7ecdf72914720bb34364d`
 
 ## UNCERTAIN
 
@@ -4125,6 +4143,22 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Isaiah 50** — missing verse 1 at 0:30 — "Where is the paper that shows I divorced your mother and sent her away Did I sell you to someone I owed money to No you were sold because of your sins Your mother was sent away because of the wrong things you did When I came why was no one there When I called why didn't anyone answer Is …" (medium.en)
   - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) unclear: missing verse 9 1:25-1:35 (slice coverage small 0.80, medium 0.00)
   - small.en only: missing 'Moths will eat them up'; medium.en only: missing 'Where is the paper that shows I divorced your mother and sent her away Did I sell you to someone I owed money to No you were sold because of your sins Your mother was sent away because of the wrong things you did When I came why was no one there When I called why didn't anyone answer Is …'; coverage unclear (small 0.986, medium 0.786; pass needs both >= 0.96); WER small 0.0244 / medium 0.2249; coverage small 0.9864 / medium 0.7859; sha256 `7aed3e4ca75dd9bd29b80b2951817026f5007145f6b844ce9a084352020f42f6`
+- **Isaiah 52** — missing verse 1 at 0:05 — "on your beautiful clothes Jerusalem the holy city People who don't belong to God and people who are unclean will never come into you again Shake off the dust Get up Jerusalem and sit" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.67, medium 0.67)
+  - medium.en only: missing 'on your beautiful clothes Jerusalem the holy city People who don't belong to God and people who are unclean will never come into you again Shake off the dust Get up Jerusalem and sit'; coverage unclear (small 1.000, medium 0.809; pass needs both >= 0.96); WER small 0.0 / medium 0.1934; coverage small 1.0 / medium 0.8092; sha256 `5a2e5f11d17f39e5503d5ac00967347cd2aabfa244f936f5ea586f5ede772f18`
+- **Isaiah 55** — audio slice contains the disputed words; the models still disagree (coverage small 0.803, medium 0.586)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.803, medium 0.586); WER small 0.202 / medium 0.4194; coverage small 0.8031 / medium 0.5857; sha256 `cf4ecb331f987b20af8d31408ec341058ff7b8d1342d72c21c2d402cf94ab08b`
+- **Isaiah 56** — audio slice contains the disputed words; the models still disagree (coverage small 0.997, medium 0.590)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.997, medium 0.590); WER small 0.0085 / medium 0.4103; coverage small 0.9972 / medium 0.5897; sha256 `4c8d28604130f08e18a97ec914745ececc4832bd5d0377701b24674da922e221`
+- **Isaiah 59** — missing verse 16 at 2:41 — "was no one to help He" (small.en)
+- **Isaiah 59** — missing verse 1 at 0:00–0:02 — "Look the LORD's arm is not too short to save His ears are not too weak to hear But your sins have separated you from your God Your sins have hidden his face from you so he won't listen Your hands are stained with blood Your fingers are dirty with sin Your lips have told lies Your tongue says wicked …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00) refuted: missing verse 16 2:32-2:42 (slice coverage small 0.83, medium 0.83)
+  - small.en only: missing 'was no one to help He'; medium.en only: missing 'Look the LORD's arm is not too short to save His ears are not too weak to hear But your sins have separated you from your God Your sins have hidden his face from you so he won't listen Your hands are stained with blood Your fingers are dirty with sin Your lips have told lies Your tongue says wicked …'; coverage unclear (small 0.938, medium 0.858; pass needs both >= 0.96); WER small 0.0688 / medium 0.1744; coverage small 0.9376 / medium 0.8576; sha256 `29b5bf6874f9344736e2a81efa23ffee1b83f0271cc4b6dab43a80ce41a529b8`
+- **Isaiah 60** — audio slice contains the disputed words; the models still disagree (coverage small 0.985, medium 0.758)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) refuted: missing verse 20 3:18-3:28 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.985, medium 0.758); WER small 0.0177 / medium 0.2448; coverage small 0.9853 / medium 0.7581; sha256 `fd2745a8787ff5d97f763d81f64909554dd94ef808740851262b12d6ad8262a0`
 
 ## Script
 
