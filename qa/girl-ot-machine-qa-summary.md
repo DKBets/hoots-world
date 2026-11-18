@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 210
+- Scored chapters: 220
 - PASS: 6
-- FAIL: 138
-- UNCERTAIN: 66 (jsonl verdict UNSURE)
-- Still to score: 719 Old Testament chapters
+- FAIL: 146
+- UNCERTAIN: 68 (jsonl verdict UNSURE)
+- Still to score: 709 Old Testament chapters
 
 ## PASS
 
@@ -989,6 +989,80 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Joshua 23** — missing verse 4 at 1:02 — "It goes from the Jordan River to the Great Sea in the west The LORD your God will push them out ahead of you and drive them away from you You will take their land just like the LORD your God promised you So be very brave Be careful to obey everything written in the Book of the Law of …" (small.en+medium.en)
   - audio check: confirmed: missing verse 4 0:29-0:38 (slice coverage small 0.25, medium 0.25)
   - WER small 0.4409 / medium 0.3861; coverage small 0.5591 / medium 0.6392; duration 164.95s vs expected 189.6s (ratio 0.87); sha256 `67eadb9161fda1b69ca08b1d5111bdb0dbe249499873bfdd5e03a3b469bd0ee8`
+- **Joshua 24** — missing verse 14 at 2:15 — "Throw away the gods your ancestors served on" (small.en+medium.en)
+  - audio check: unclear: missing verse 14 2:06-2:16 (slice coverage small 0.50, medium 0.12)
+  - WER small 0.0254 / medium 0.1481; coverage small 0.982 / medium 0.8635; duration 325.67s vs expected 378.0s (ratio 0.862); sha256 `3e279f8ae4c6216f03723187da214e5eb28c6cd8cceb31b0043c18ca609fcfaa`
+- **Judges 1** — silence verse ? at 2:18–2:21 — "around each one. The Lord was with Judah. The Lord was" (waveform)
+- **Judges 1** — missing verse 17 at 2:54–3:07 — "named Hormah Judah also took Gaza Ashkelon" (small.en+medium.en)
+- **Judges 1** — inserted verse 16 at 2:06–2:09 — "destroyed the city completely so it was named Horma" (small.en+medium.en)
+- **Judges 1** — inserted verse 16 at 2:13–2:15 — "Ekron with the land around each one" (small.en+medium.en)
+- **Judges 1** — inserted verse 17 at 2:22–2:33 — "Judah He remained the temple of the Lord Each day was another plan and ten mannabush Flowers prospered and oil blew" (small.en+medium.en)
+- **Judges 1** — inserted verse 17 at 2:33–2:38 — "the north wind The temple was built in a grand rand with Meinmar" (small.en+medium.en)
+- **Judges 1** — inserted verse 17 at 2:40–2:44 — "a grand rand with Meinmar The gods served in" (small.en+medium.en)
+- **Judges 1** — inserted verse 17 at 2:44–2:51 — "Aethi island and then again in Ethiopia These waves washed over its coast and" (small.en+medium.en)
+- **Judges 1** — inserted verse 17 at 2:51–2:54 — "taved into the desert Each day" (small.en+medium.en)
+- **Judges 1** — inserted verse 17 at 2:54–3:07 — "another plan and a Temmanabush and oil blue Then many days later as reminders of the days of happiness and deliverance the Lord declared its Sloganoa sand" (small.en+medium.en)
+- **Judges 1** — inserted verse 18 at 3:07–3:09 — "it made a promise to Abraham" (small.en+medium.en)
+- **Judges 1** — inserted verse 18 at 3:10–3:14 — "Lord did what He promised and it made a promise to Abraham" (small.en+medium.en)
+- **Judges 1** — inserted verse 19 at 3:16–3:29 — "used its blessing more than any other nations in the planets of the world If you were rooted in the promise with Abraham then you would find yourselves in a different land and place that seemed impossible" (small.en+medium.en)
+- **Judges 1** — inserted verse 19 at 3:30–3:32 — "any other nations in the planets of the world" (small.en+medium.en)
+- **Judges 1** — repeated verse 17 at 2:38–2:43 — "The temple was built in a grand rand with Meinmar The" (small.en+medium.en)
+- **Judges 1** — repeated verse 17 at 2:53–2:55 — "Each day was another plan and" (small.en+medium.en)
+- **Judges 1** — repeated verse 18 at 3:12–3:16 — "and it made a promise to Abraham The Lord" (small.en+medium.en)
+- **Judges 1** — repeated verse 19 at 3:30–3:32 — "any other nations in the planets of the world" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 19 3:15-3:35 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 17 2:53-3:13 (slice coverage small 0.96, medium 0.92) confirmed: inserted verse 17 2:21-2:39 (slice coverage small 0.91, medium 1.00)
+  - WER small 0.3571 / medium 0.306; coverage small 0.8149 / medium 0.866; duration 366.72s vs expected 337.2s (ratio 1.088); sha256 `d069e5759dfc3ae3ca4491e2c622f5d4a44ffd8f781f2ecaf1fb4df7aadf385f`
+- **Judges 2** — coverage low on both models (small 0.874, medium 0.824); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.126 / medium 0.1791; coverage small 0.874 / medium 0.8242; duration 214.4s vs expected 241.2s (ratio 0.889); sha256 `fbf00080ba4af5487b067a6f9a66420cc196769b825089181bf00a0cbea71cb0`
+- **Judges 3** — missing verse 2 at 0:14 — "in battle could learn how to fight These nations were the five rulers of the Philistines all the Canaanites the people of Sidon and the Hivites who lived" (medium.en)
+  - audio check: confirmed: missing verse 2 0:03-0:12 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.0212 / medium 0.0954; coverage small 0.9801 / medium 0.9126; duration 266.33s vs expected 302.0s (ratio 0.882); sha256 `c9488929f03614771056aa5d541f6c4972b193dabca513d03f07553289cbba93`
+- **Judges 5** — missing verse 12 at 1:37 — "Wake up wake up Deborah Wake up wake up and sing a song Get up Barak Lead away your prisoners son of Abinoam Then the people who were left came down to their leaders The LORD's people came down to me to fight the strong warriors Some came from Ephraim whose roots were in Amalek Benjamin came behind you with …" (small.en+medium.en)
+- **Judges 5** — truncation verse ? at ? — "last 0 source words missing" (small.en+medium.en)
+  - audio check: confirmed: missing verse 12 0:57-1:06 (slice coverage small 0.08, medium 0.08) unclear: truncation verse ? 3:06-3:25 (slice coverage small 0.08, medium 1.00)
+  - WER small 0.2608 / medium 0.3535; coverage small 0.7392 / medium 0.6492; duration 204.67s vs expected 297.6s (ratio 0.688); sha256 `add45b449d48e1c7ce399003d6ff0047636598a31878a51d991c1f36b3c9d5a9`
+- **Judges 6** — missing verse 4 at 0:27–1:40 — "way to Gaza They left nothing for Israel to eat not a sheep a cow or a donkey They came with their animals and tents as many as a swarm" (small.en+medium.en)
+- **Judges 6** — missing verse 5 at 1:40–1:44 — "locusts There were too many of them and their camels to count They came into the land" (small.en+medium.en)
+- **Judges 6** — missing verse 5 at 1:44–1:50 — "ruin it Israel became very poor because of Midian So the people of Israel cried out to" (small.en+medium.en)
+- **Judges 6** — missing verse 7 at 1:52–1:53 — "to the LORD because of Midian" (small.en+medium.en)
+- **Judges 6** — missing verse 8 at 1:54–1:56 — "sent them a prophet He said This is what" (small.en+medium.en)
+- **Judges 6** — missing verse 9 at 2:05–2:22 — "from everyone who was cruel to you I pushed them out ahead of you and gave you their land I told you I am the LORD your God Don't worship the gods of the Amorites whose land you live in But you have not listened" (small.en+medium.en)
+- **Judges 6** — missing verse 11 at 2:26–2:35 — "sat under the oak tree at Ophrah which belonged to Joash from the family of Abiezer His son Gideon was beating out wheat in" (small.en+medium.en)
+- **Judges 6** — missing verse 11 at 2:35–2:44 — "winepress hiding it from the Midianites The angel of the LORD appeared to Gideon and said The LORD is with you mighty hero Gideon said Sir" (small.en+medium.en)
+- **Judges 6** — missing verse 13 at 2:45–3:01 — "the LORD is with us why has all this happened to us Where are all the amazing things our ancestors told us about They said The LORD brought us out of Egypt But now the LORD has left us and let Midian beat us The LORD turned to him and said Go" (small.en+medium.en)
+- **Judges 6** — missing verse 14 at 3:04–3:06 — "have and rescue Israel from Midian" (small.en+medium.en)
+- **Judges 6** — missing verse 16 at 4:15–4:21 — "they were just one man" (small.en+medium.en)
+- **Judges 6** — inserted verse 4 at 0:27–1:40 — "L L L L L L L L L L L L L L L L I told you I am the Lord your God Don't worship the gods" (small.en+medium.en)
+- **Judges 6** — inserted verse 8 at 2:00–2:03 — "have and rescue Israel from Midian" (small.en+medium.en)
+- **Judges 6** — inserted verse 9 at 2:05–2:22 — "you will be the guide who leads Israel I am sending you yet again to rescue Israel from the Midian and any spray for dangers shall disappear Gideon replied Gideon is of no one's land and I would not give his hand any foreign instrument" (small.en+medium.en)
+- **Judges 6** — inserted verse 10 at 2:22–2:24 — "make him prosperous at heart" (small.en+medium.en)
+- **Judges 6** — inserted verse 14 at 3:04–3:06 — "and kept you going on mission" (small.en+medium.en)
+- **Judges 6** — inserted verse 16 at 3:22–3:29 — "will rescue Israel From the Midianites came the Manasites and Zebulun take into their Gerids and he" (small.en+medium.en)
+- **Judges 6** — inserted verse 16 at 3:37–4:15 — "and he will rescue Israel from the Millery wine grape trees But now I am not sure where Israel is within where the goddesses in that area where the goddesses in that area where the great names of their gods and where these great things that everyone knows and where are you telling the Lord you are in my wizard …" (small.en+medium.en)
+- **Judges 6** — inserted verse 16 at 4:15–4:21 — "there are any doubts or fears I would bring you to David and give them a promise of guarantee" (small.en+medium.en)
+- **Judges 6** — inserted verse 17 at 4:22–4:30 — "looked all night long and saw the demon prowling around him and rose up early seven day or after And he" (small.en+medium.en)
+- **Judges 6** — repeated verse 16 at 3:37–3:39 — "and he will rescue Israel from the" (small.en+medium.en)
+- **Judges 6** — repeated verse 16 at 3:47–3:50 — "where the goddesses in that area where the" (small.en+medium.en)
+- **Judges 6** — paraphrase verse ? at ? — "scattered wording does not match the source" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 16 3:36-4:00 (slice coverage small 0.96, medium 1.00) confirmed: missing verse 13 2:24-2:33 (slice coverage small 0.17, medium 0.17) confirmed: missing verse 9 1:47-1:56 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.4002 / medium 0.3679; coverage small 0.7541 / medium 0.6408; duration 518.44s vs expected 458.8s (ratio 1.13); sha256 `6f70fbc42677f7c9e3897fe94cc884f827a526aa35b408aeca5bc1bb0c8f9943`
+- **Judges 7** — missing verse 4 at 1:51–1:56 — "LORD said to Gideon There are still too many" (small.en+medium.en)
+- **Judges 7** — inserted verse 2 at 1:05–1:07 — "Please go and pack and grab your" (small.en+medium.en)
+- **Judges 7** — inserted verse 2 at 1:07–1:25 — "of the running walk and have them move away by the desert lake Edin The number of those who stay one side as a death rope is about 2 500 men The number of those who stay one side as a death rope is about 2 500 men" (small.en+medium.en)
+- **Judges 7** — inserted verse 3 at 1:26–1:31 — "number of those who stay one side as a death rope is about 2 500" (small.en+medium.en)
+- **Judges 7** — inserted verse 3 at 1:33–1:35 — "stay one side as a death rope" (small.en+medium.en)
+- **Judges 7** — inserted verse 3 at 1:36–1:42 — "about 2 500 men The number of those who stay one side as a death rope is about" (small.en+medium.en)
+- **Judges 7** — inserted verse 22 at 4:57–5:04 — "the 300 trumpets blew the Lord had the enemy soldiers fight against each other with their swords all throughout" (small.en+medium.en)
+- **Judges 7** — inserted verse 22 at 5:15–5:31 — "enemy soldiers were so complex and wicked and they thought one was going to be and instead there was a big serval behind them all This wasn't just a sword it was a blade of dagger a plan of sowing motion and an" (small.en+medium.en)
+- **Judges 7** — inserted verse 22 at 5:32–6:14 — "of enemies who fell down in their fights Terrified and gasping the enemy soldiers were many so many huge and they died with no remnants The 300 trumpets blew and then fell many soldiers of their own enemies seizing their hearts and battling with redemption Terrified the 300 trumpets blew and then suddenly new hope was born The enemy soldiers …" (small.en+medium.en)
+- **Judges 7** — repeated verse 22 at 5:05–5:14 — "When the 300 trumpets blew the Lord had the enemy soldiers fight against each other with their swords all throughout the camp" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 22 5:31-5:55 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 2 1:06-1:30 (slice coverage small 0.96, medium 1.00) unclear: inserted verse 22 5:14-5:37 (slice coverage small 0.92, medium 0.21)
+  - WER small 0.4823 / medium 0.4455; coverage small 0.8641 / medium 0.9474; duration 436.44s vs expected 326.8s (ratio 1.335); sha256 `73224eb65522c63b56dbd820501d532f72dba6777f64ae1cf21f4c91982221c8`
+- **Judges 8** — inserted verse 20 at 2:59–3:01 — "Jethr didn't pull out his sword and his brother" (small.en+medium.en)
+- **Judges 8** — repeated verse 15 at 2:16–2:20 — "Have you already captured Zeba and Zalmuna Why should we give" (small.en+medium.en)
+- **Judges 8** — repeated verse 20 at 3:01–3:03 — "didn't pull out his sword" (small.en+medium.en)
+  - audio check: refuted: repeated verse 15 2:15-2:26 (slice coverage small 0.91, medium 0.91, times 0/0) confirmed: inserted verse 20 2:58-3:07 (slice coverage small 0.89, medium 0.89) refuted: repeated verse 20 3:00-3:09 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.0572 / medium 0.2132; coverage small 0.9529 / medium 0.7957; duration 317.61s vs expected 356.4s (ratio 0.891); sha256 `54cb9b7fd088266680c49278378355f6ad14d6c757ceee6d8912df3c895bfffa`
 
 ## UNCERTAIN
 
@@ -1202,6 +1276,12 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Joshua 22** — audio slice contains the disputed words; the models still disagree (coverage small 0.981, medium 0.839)
   - audio check: refuted: repeated verse 32 5:45-5:54 (slice coverage small 0.83, medium 0.83, times 0/0) refuted: repeated verse 31 5:29-5:38 (slice coverage small 1.00, medium 1.00, times 1/1)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.981, medium 0.839); WER small 0.0225 / medium 0.1675; coverage small 0.9814 / medium 0.8394; sha256 `7b7de9a07978d3cd89a20eb44c9f202ffdfc03001f70445a79bec208fddb2dee`
+- **Judges 4** — audio slice contains the disputed words; the models still disagree (coverage small 0.947, medium 0.697)
+  - audio check: refuted: missing verse 2 0:09-0:19 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.947, medium 0.697); WER small 0.0573 / medium 0.3062; coverage small 0.9472 / medium 0.6968; sha256 `abe30f067e46d9c7efc8015609c7b157cf88ebfe0ad252758a7644288e51e544`
+- **Judges 9** — audio slice contains the disputed words; the models still disagree (coverage small 0.964, medium 0.631)
+  - audio check: refuted: repeated verse 11 1:39-1:48 (slice coverage small 0.88, medium 1.00, times 0/1)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.964, medium 0.631); WER small 0.0418 / medium 0.3759; coverage small 0.9639 / medium 0.6306; sha256 `025af5a40737bdf3285562ca4e8e8702cf81759f18c8622723b054092e403cba`
 
 ## Script
 
