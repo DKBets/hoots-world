@@ -32,4 +32,10 @@ if override.is_file() and override.stat().st_size > 0:
 ```
 
 Chapter overrides, if added later, should win the same way over
-`kids-bible-audio/<source_dir>/<Book>/<n>.m4a`.
+`kids-bible-audio/<source_dir>/<Book>/<n>.m4a`. The package script looks for
+those at `kids-bible-audio/overrides/chapters/<source_dir>/<Book>/<n>.m4a`.
+
+`kids-bible-package/build_kids_bible_audio_package.py` calls `story_source()`
+for every story. It checks the override file's sha256 against this manifest
+and refuses to build when the lab-audio file named in `replaces.sha256` has
+changed. Output rows from an override set `"source": "override"`.
