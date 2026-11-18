@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 260
+- Scored chapters: 270
 - PASS: 7
-- FAIL: 169
-- UNCERTAIN: 84 (jsonl verdict UNSURE)
-- Still to score: 669 Old Testament chapters
+- FAIL: 178
+- UNCERTAIN: 85 (jsonl verdict UNSURE)
+- Still to score: 659 Old Testament chapters
 
 ## PASS
 
@@ -1173,6 +1173,65 @@ words clears that span. A split slice stays UNCERTAIN.
 - **1 Samuel 24** — missing verse 22 at 0:00–0:02 — "promise to Saul Then Saul went home but David and his men went up to their hiding place" (small.en+medium.en)
   - audio check: unclear: missing verse 22 0:00-0:01 (slice coverage small 0.00, medium 0.00)
   - WER small 0.0477 / medium 0.3109; coverage small 0.9605 / medium 0.6941; duration 199.3s vs expected 243.2s (ratio 0.819); sha256 `3c9e64c5ae57f22c083d34ee2c8a997d35e31cf4c2250c5bd58d0158a103c3af`
+- **1 Samuel 25** — missing verse 26 at 4:58–5:05 — "as surely as you live the LORD has kept you from killing people and from getting even with your own hands" (small.en+medium.en)
+- **1 Samuel 25** — inserted verse 21 at 3:56–4:01 — "kept you from killing They He said but our Lord is" (small.en+medium.en)
+- **1 Samuel 25** — inserted verse 23 at 4:17–4:23 — "we don't want to do anything but do good and we don't want to do nothing but" (small.en+medium.en)
+- **1 Samuel 25** — inserted verse 23 at 4:23–4:28 — "do good and we don't want to do anything but to do good" (small.en+medium.en)
+- **1 Samuel 25** — inserted verse 24 at 4:38–4:41 — "do good and we don't want" (small.en+medium.en)
+- **1 Samuel 25** — inserted verse 25 at 4:45–4:48 — "do anything but to do good and we don't want to do anything but to do good" (small.en+medium.en)
+- **1 Samuel 25** — inserted verse 29 at 5:36–5:41 — "the Lord your God will keep your la will keep your la" (small.en+medium.en)
+- **1 Samuel 25** — inserted verse 29 at 5:45–5:55 — "your laugh tad bad bed sibs The Lord will surely give you a family of" (small.en+medium.en)
+- **1 Samuel 25** — inserted verse 29 at 5:55–6:09 — "own kin's as you stay with them as you said and said anymore The Lord will surely bring in someone to bring you adopted as their own kin's and no one will ever put" (small.en+medium.en)
+- **1 Samuel 25** — inserted verse 29 at 6:10–6:25 — "stain in your flesh and no one will ever dange anymore as you face every knot The Lord has never rejected that tab that tab in your flesh The Lord will now take" (small.en+medium.en)
+- **1 Samuel 25** — inserted verse 29 at 6:28–6:49 — "never will be ended as you live The Lord has never rejected that tab in your flesh but the Lord will now breathe you into internal flesh and make you feel as if you were found with an alien We will love you anymore" (small.en+medium.en)
+- **1 Samuel 25** — repeated verse 29 at 5:43–5:45 — "the Lord your God will" (small.en+medium.en)
+- **1 Samuel 25** — repeated verse 29 at 5:52–5:55 — "The Lord will surely give you a family of" (small.en+medium.en)
+- **1 Samuel 25** — repeated verse 29 at 6:11–6:13 — "and no one will ever" (small.en+medium.en)
+- **1 Samuel 25** — repeated verse 29 at 6:31–6:33 — "The Lord has never rejected that tab" (small.en+medium.en)
+- **1 Samuel 25** — repeated verse 29 at 6:32–6:35 — "that tab in your flesh" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 29 6:27-6:51 (slice coverage small 0.96, medium 0.96) confirmed: inserted verse 29 5:54-6:15 (slice coverage small 1.00, medium 0.92) confirmed: inserted verse 29 6:09-6:31 (slice coverage small 0.96, medium 0.92)
+  - WER small 0.3298 / medium 0.5207; coverage small 0.862 / medium 0.7347; duration 555.99s vs expected 484.0s (ratio 1.149); sha256 `79494a9482e4e946bee525ec23cddc664010a4f12c8818151352cdba7963de2f`
+- **1 Samuel 26** — silence verse ? at 3:49–3:53 — "I have acted like" (waveform)
+- **1 Samuel 26** — inserted verse 22 at 3:48–4:07 — "the Lord rewards The Lord rewards The Lord rewards everyone who rises up and does Rises and does right the Lord rewards everyone who rises up and does right" (small.en+medium.en)
+- **1 Samuel 26** — inserted verse 23 at 4:11–4:52 — "who rises up and does right He won that day Then Saul said I've made a mistake Please beg take my in says David answered kill me My name is nowhere far from the king I am young and meant with the train and dead attitude of the king I've made a mistake and have made a meta mistake Leave …" (small.en+medium.en)
+- **1 Samuel 26** — inserted verse 23 at 4:53–5:05 — "defend The living rebel is meant to do what needs to be done The living rebel is meant to do what needs to be done The living rebel" (small.en+medium.en)
+- **1 Samuel 26** — inserted verse 23 at 5:08–5:16 — "today but I would not lift my hand against the Lord The Lord handed you over" (small.en+medium.en)
+- **1 Samuel 26** — inserted verse 23 at 5:18–5:38 — "the Lord But I would rather pray to God I do not want to take an arrow because of this I do not want to take an arrow because I would do something bad as the Lord did to me living daily transporting by Noah as" (small.en+medium.en)
+- **1 Samuel 26** — inserted verse 23 at 5:39–6:22 — "Lord has commanded to Noah but he allowed Noah to see me and Noah was I fed him and then he was allowed to Noah and then he was allowed to Noah and And then did he do Noah and then did he do Noah and then did he do Noah and then did he do Noah and then did …" (small.en+medium.en)
+- **1 Samuel 26** — repeated verse 3 at 0:19–0:22 — "on the hill of Hachila facing the desert" (small.en+medium.en)
+- **1 Samuel 26** — repeated verse 22 at 4:03–4:07 — "the Lord rewards everyone who rises up and does" (small.en+medium.en)
+- **1 Samuel 26** — repeated verse 23 at 4:58–5:05 — "The living rebel is meant to do what needs to be done The living rebel" (small.en+medium.en)
+- **1 Samuel 26** — repeated verse 23 at 5:13–5:19 — "The Lord handed you over today but I would not lift my hand against the Lord" (small.en+medium.en)
+- **1 Samuel 26** — repeated verse 23 at 5:26–5:30 — "I do not want to take an arrow because" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 23 5:38-6:02 (slice coverage small 1.00, medium 0.96) confirmed: inserted verse 23 4:10-4:34 (slice coverage small 1.00, medium 0.88) confirmed: inserted verse 23 5:18-5:42 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.4114 / medium 0.5026; coverage small 0.9709 / medium 0.8148; duration 410.03s vs expected 302.4s (ratio 1.356); sha256 `a1d5139b6b3a6845e49bac1fae08cb0a4f91c1bd7c56ab5847c1ff11f68aec08`
+- **1 Samuel 27** — missing verse 8 at 1:16 — "that land for a long time all" (small.en+medium.en)
+- **1 Samuel 27** — missing verse 8 at 1:16 — "way to Shur and Egypt When David attacked an area he didn't leave any man or woman alive He took their sheep cattle" (small.en+medium.en)
+  - audio check: refuted: missing verse 8 1:07-1:16 (slice coverage small 0.92, medium 1.00) confirmed: missing verse 8 1:07-1:17 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.1239 / medium 0.4018; coverage small 0.8761 / medium 0.6012; duration 110.04s vs expected 132.4s (ratio 0.831); sha256 `616b803da747f0be56734edfbb1c318d9fe63c7db895281d6db678f236df46f7`
+- **1 Samuel 28** — missing verse 7 at 0:59 — "one at Endor So Saul put on different clothes so no" (small.en)
+- **1 Samuel 28** — missing verse 22 at 3:42 — "way But he refused and said I won't eat But his servants and the woman kept urging him and finally he listened He got up off the ground and sat on the bed The woman had a fat calf at her house She quickly killed it She took some flour made dough and baked bread without" (medium.en)
+  - audio check: refuted: missing verse 22 3:19-3:28 (slice coverage small 1.00, medium 1.00) confirmed: missing verse 7 0:50-1:00 (slice coverage small 0.09, medium 0.09)
+  - WER small 0.0396 / medium 0.1026; coverage small 0.9765 / medium 0.9076; duration 229.33s vs expected 272.8s (ratio 0.841); sha256 `acc7127d5607a2228c555a206a6fed62c592af27213dbc581d050ab37fc39449`
+- **1 Samuel 30** — coverage low on both models (small 0.878, medium 0.797); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1308 / medium 0.2193; coverage small 0.8785 / medium 0.7966; duration 259.54s vs expected 302.8s (ratio 0.857); sha256 `67ea63cc20004b869a85800878793fd6a731a27759e40b5fb584064874f0f94a`
+- **1 Samuel 31** — missing verse 8 at 1:15 — "and his three sons lying on Mount Gilboa They cut off Saul's head" (medium.en)
+  - audio check: confirmed: missing verse 8 1:06-1:16 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.0242 / medium 0.0634; coverage small 0.9789 / medium 0.9396; duration 125.35s vs expected 132.4s (ratio 0.947); sha256 `5dd4518a336c8851457412d85c38970cc7303a4ae2cdec3d196f7ba7679ed803`
+- **2 Samuel 1** — coverage low on both models (small 0.868, medium 0.760); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1337 / medium 0.2415; coverage small 0.868 / medium 0.7601; duration 225.32s vs expected 248.4s (ratio 0.907); sha256 `e443ab04a0bd48100879b844a938cdf65305444c5c8c93ed6c99687ee4ecb0b5`
+- **2 Samuel 2** — missing verse 15 at 2:39 — "So twelve men from Benjamin fighting for Saul's son Ish Bosheth and twelve of David's soldiers stood up and faced each other Each man grabbed his enemy by the head and stabbed him in the side with his sword and they all fell down together" (small.en+medium.en)
+  - audio check: confirmed: missing verse 15 2:21-2:30 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.1084 / medium 0.1358; coverage small 0.8916 / medium 0.8681; duration 293.93s vs expected 306.4s (ratio 0.959); sha256 `99de7b1d85eb4e8c7be671d66426bc3b336fb44ff0f6bb585d735aefc325f123`
+- **2 Samuel 3** — missing verse 18 at 2:47–2:54 — "from the Philistines and from all their enemies" (small.en+medium.en)
+- **2 Samuel 3** — inserted verse 18 at 2:47–2:54 — "The Lord promised to David through my servant David I will save your people of Israel" (small.en+medium.en)
+- **2 Samuel 3** — inserted verse 19 at 2:57–3:14 — "Israel Abner went out as he wanted and Abner went out as he wanted Abner went out as he wanted and Abner went out as he wanted Abner went out as he wanted Abner went out as" (small.en+medium.en)
+- **2 Samuel 3** — inserted verse 19 at 3:16–3:19 — "out as he wanted Abner went out as he wanted" (small.en+medium.en)
+- **2 Samuel 3** — inserted verse 19 at 3:20–3:24 — "Abner went out as he wanted Abner went out as he" (small.en+medium.en)
+- **2 Samuel 3** — inserted verse 19 at 3:25–3:27 — "and Abner went out as he wanted" (small.en+medium.en)
+- **2 Samuel 3** — repeated verse 18 at 2:47–2:54 — "The Lord promised to David through my servant David I will save your people of Israel" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 19 2:56-3:20 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 18 2:46-3:00 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 18 2:46-3:00 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.1454 / medium 0.1795; coverage small 0.9395 / medium 0.9268; duration 437.8s vs expected 410.0s (ratio 1.068); sha256 `73c694af76fe88bdb56893fa5f5bea741fa986b56c51d8e092e6753e250f82d2`
 
 ## UNCERTAIN
 
@@ -1439,6 +1498,9 @@ words clears that span. A split slice stays UNCERTAIN.
   - audio slice contains the disputed words; the models still disagree (coverage small 0.987, medium 0.786); WER small 0.0166 / medium 0.2184; coverage small 0.9867 / medium 0.7863; sha256 `f744e70cea3d2eae7ea0e5b85d39075e2b85115dcfda636f4f6fcbc671fc4cfa`
 - **1 Samuel 19** — coverage unclear (small 0.958, medium 0.976; pass needs both >= 0.96)
   - coverage unclear (small 0.958, medium 0.976; pass needs both >= 0.96); WER small 0.0438 / medium 0.0389; coverage small 0.9579 / medium 0.9757; sha256 `82614edd05273d0857cc974d7de113b6ad7d1295314fb69c1aa81edc0845f3d2`
+- **1 Samuel 29** — audio slice contains the disputed words; the models still disagree (coverage small 0.805, medium 0.966)
+  - audio check: refuted: missing verse 1 0:06-0:15 (slice coverage small 0.83, medium 0.75)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.805, medium 0.966); WER small 0.2098 / medium 0.0345; coverage small 0.8046 / medium 0.9655; sha256 `2878dc9d3b870f33c3c8be56a657a325501ead473cd1cbe7243389dc26bf87d8`
 
 ## Script
 
