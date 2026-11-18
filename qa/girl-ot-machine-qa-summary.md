@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 280
+- Scored chapters: 290
 - PASS: 7
-- FAIL: 183
-- UNCERTAIN: 90 (jsonl verdict UNSURE)
-- Still to score: 649 Old Testament chapters
+- FAIL: 191
+- UNCERTAIN: 92 (jsonl verdict UNSURE)
+- Still to score: 639 Old Testament chapters
 
 ## PASS
 
@@ -1267,6 +1267,68 @@ words clears that span. A split slice stays UNCERTAIN.
 - **2 Samuel 13** — missing verse 7 at 1:12–1:19 — "David sent a message to Tamar at the palace Please go to your brother Amnon's house and make some food for him" (medium.en)
   - audio check: confirmed: missing verse 3 0:40-0:49 (slice coverage small 0.17, medium 0.17) confirmed: missing verse 7 1:04-1:13 (slice coverage small 0.08, medium 0.08)
   - WER small 0.136 / medium 0.159; coverage small 0.866 / medium 0.908; duration 350.51s vs expected 400.0s (ratio 0.876); sha256 `7468ac7da8ada5d62f3978a2fd1a8a99bccdce4d5ab5a19c78ae4e4ad4f7ac1f`
+- **2 Samuel 15** — inserted verse 9 at 1:22–2:20 — "the Lord says I would wit you And after that Ezra Clanding to the king told Ezra Clanding to the king to give a dream or granted him more than anything else and Ezra Clanding to the king said provided by the Lord and delivered him of presence and gratitude praising to the king Said Ezra Clanding to the king …" (small.en)
+- **2 Samuel 15** — missing verse 4 at 1:06 — "to me and I would make sure they got justice And whenever someone came near to bow down to him Absalom would reach out take hold of him and kiss him Absalom did this to all the Israelites who came to the king to settle their problems That's how Absalom stole the hearts of the people of Israel At the …" (medium.en)
+  - audio check: confirmed: inserted verse 9 1:21-1:45 (slice coverage small 0.88, medium 0.75) refuted: missing verse 4 0:40-0:49 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.2206 / medium 0.3775; coverage small 0.9838 / medium 0.6296; duration 415.83s vs expected 395.2s (ratio 1.052); sha256 `137627b3a02fb049c5ba7096ffd20002db2a23f5f5b056bff51b16c651cb6668`
+- **2 Samuel 16** — inserted verse 18 at 2:59–3:04 — "as I was his faithful servant as he was in these days and since the days gone" (small.en+medium.en)
+- **2 Samuel 16** — inserted verse 18 at 3:04–3:11 — "I will not go on that path I will go where each king went I will go where each king went and I will feed the" (small.en+medium.en)
+- **2 Samuel 16** — inserted verse 18 at 3:12–3:38 — "David grew their bread and I will grow where David go his bread and I will bring the land where David grew his bread and I will bring the nights of Israel and bring the north end of their debts and I will bring myself every day for David and give myself to a beautiful wife as I did Absalom …" (small.en+medium.en)
+- **2 Samuel 16** — repeated verse 18 at 3:08–3:10 — "I will go where each king went" (small.en+medium.en)
+- **2 Samuel 16** — repeated verse 18 at 3:18–3:20 — "his bread and I will bring the" (small.en+medium.en)
+  - audio check: unclear: inserted verse 18 3:11-3:35 (slice coverage small 0.12, medium 0.96) confirmed: inserted verse 18 3:03-3:17 (slice coverage small 1.00, medium 1.00) unclear: inserted verse 18 2:58-3:10 (slice coverage small 0.06, medium 1.00)
+  - WER small 0.3536 / medium 0.3687; coverage small 0.9514 / medium 0.8558; duration 297.13s vs expected 263.6s (ratio 1.127); sha256 `7d391f0d8e489a22f2538b783ebccd9648a3db1f974c85823fecb56babc0b627`
+- **2 Samuel 17** — inserted before verse 1 at 0:00 — "guy fafel also said to" (small.en+medium.en windows)
+- **2 Samuel 17** — missing verse 17 at 2:35–2:38 — "En Rogel They couldn't be seen going into the city" (small.en)
+- **2 Samuel 17** — missing verse 1 at 0:00–0:02 — "Ahithophel also said to Absalom Let me choose twelve thousand men and go after David tonight I will attack him while he is tired and weak I will scare him and all the people with him will run away Then I will strike down only the king I will bring all the people back to you When the man you …" (medium.en)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.83, medium 0.83) confirmed: missing verse 17 2:26-2:36 (slice coverage small 0.10, medium 0.10) confirmed: inserted verse ? 0:00-0:12 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.0424 / medium 0.2579; coverage small 0.9625 / medium 0.747; duration 299.65s vs expected 330.4s (ratio 0.907); sha256 `d3d7c9da6395b7820fac1fa84aa8c04be4170154d737c3c991cc4e09569bd443`
+- **2 Samuel 18** — missing verse 27 at 4:51 — "Ahimaaz son of Zadok The king said He is a good man He must be bringing good news Then Ahimaaz called out to the king Everything is all right He bowed down in front of the king with his face to the ground and said Praise the LORD your God He has handed over the men who rose up against …" (small.en+medium.en)
+  - audio check: unclear: missing verse 27 4:21-4:30 (slice coverage small 0.92, medium 0.67)
+  - WER small 0.0944 / medium 0.333; coverage small 0.9095 / medium 0.672; duration 340.91s vs expected 402.4s (ratio 0.847); sha256 `99c7b59310b58b3cdafa1eb1c5c8d3824848c9ffa6eed1a74867f2b1eae42a64`
+- **2 Samuel 20** — silence verse ? at 4:12–4:17 — "in charge of Israel's whole army. Benaiah son of Jehoiades," (waveform)
+- **2 Samuel 20** — inserted verse 23 at 4:11–4:28 — "Benaiah son of Jehoadeis son of Jehoadeis son of Jeolni" (small.en+medium.en)
+- **2 Samuel 20** — inserted verse 23 at 4:35–5:13 — "of the Caratai and the Palatai and of the city Sheikhelah and Agabeth They won his army and many people were called believers People would wake up and say hallelujah as in praise the Lord for them and his kingdom And every son of Israel would wake up and say Hallelujah as in praise the Lord for them and his …" (small.en+medium.en)
+- **2 Samuel 20** — inserted verse 23 at 5:14–5:18 — "Israel would wake up and say Hallelujah as in praise" (small.en+medium.en)
+- **2 Samuel 20** — inserted verse 23 at 5:18–5:22 — "Lord for his kingdom and an ordinary noise would be heard" (small.en+medium.en)
+- **2 Samuel 20** — inserted verse 23 at 5:22–5:29 — "ready for a new world was brought by a gate Jilnai prospered in his favorite books" (small.en+medium.en)
+- **2 Samuel 20** — repeated verse 23 at 4:54–5:00 — "would wake up and say Hallelujah as in praise the Lord for them and his kingdom And" (small.en+medium.en)
+- **2 Samuel 20** — repeated verse 23 at 5:06–5:11 — "And every son of Israel would wake up and say Hallelujah as in praise the Lord for" (small.en+medium.en)
+- **2 Samuel 20** — repeated verse 23 at 5:13–5:20 — "of Israel would wake up and say Hallelujah as in praise the Lord for his kingdom and" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 23 4:34-4:58 (slice coverage small 0.88, medium 0.92) refuted: repeated verse 23 4:53-5:06 (slice coverage small 0.65, medium 1.00, times 0/1) refuted: repeated verse 23 5:05-5:17 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.2145 / medium 0.4566; coverage small 0.9816 / medium 0.7395; duration 349.82s vs expected 304.0s (ratio 1.151); sha256 `00aa49b83de17c46810ff79983754702784e9f01cf70da2ac6a110694117ae74`
+- **2 Samuel 21** — inserted verse 6 at 1:15–1:22 — "said I will give them to you as a present and if they've ever gone free they would be in danger" (small.en+medium.en)
+- **2 Samuel 21** — inserted verse 7 at 1:25–2:00 — "as a present if they've ever gone free they would be endangered The king said I will give them a medical value of a man who fled David And the king said I will give them the medical value of a man who fled David And the king said I will give them the medical value of a man who …" (small.en+medium.en)
+- **2 Samuel 21** — inserted verse 7 at 2:01–2:04 — "said I will give them the medical value" (small.en+medium.en)
+- **2 Samuel 21** — inserted verse 7 at 2:04–2:06 — "a man who fled David" (small.en+medium.en)
+- **2 Samuel 21** — inserted verse 7 at 2:06–2:10 — "the king said I will give them the medical value" (small.en+medium.en)
+- **2 Samuel 21** — inserted verse 7 at 2:10–2:16 — "a man who fled David And the king said I will give them the medical value" (small.en+medium.en)
+- **2 Samuel 21** — inserted verse 7 at 2:16–2:18 — "a man who fled David And" (small.en+medium.en)
+- **2 Samuel 21** — inserted verse 7 at 2:19–2:21 — "king said I will give them a" (small.en+medium.en)
+- **2 Samuel 21** — repeated verse 6 at 1:22–1:26 — "The king said I will give them to you as a present" (small.en+medium.en)
+- **2 Samuel 21** — repeated verse 6 at 1:26–1:29 — "if they've ever gone free they would be" (small.en+medium.en)
+- **2 Samuel 21** — repeated verse 6 at 1:31–1:33 — "The king said I will give them" (small.en+medium.en)
+- **2 Samuel 21** — repeated verse 6 at 1:36–1:39 — "the king said I will give them" (small.en+medium.en)
+- **2 Samuel 21** — repeated verse 6 at 1:39–2:21 — "medical value of a man who fled David And the king said I will give them the medical value of a man who fled David And the king said I will give them the medical value of a man who fled David And the king said I will give them the medical value of a man who fled David And …" (small.en+medium.en)
+  - audio check: confirmed: repeated verse 6 1:38-2:02 (slice coverage small 1.00, medium 1.00, times 2/2) unclear: inserted verse 7 1:24-1:48 (slice coverage small 1.00, medium 0.25) confirmed: inserted verse 6 1:14-1:28 (slice coverage small 0.91, medium 0.91)
+  - WER small 0.2706 / medium 0.2665; coverage small 0.9588 / medium 0.9629; duration 319.19s vs expected 291.2s (ratio 1.096); sha256 `a922ee88180dba9e2d5771c64fde56eaf6721c8be9cede19a2c10fc958077cc6`
+- **2 Samuel 22** — missing verse 2 at 0:30 — "The LORD is my rock my fortress and the one who rescues me God is my rock where I go to be safe He is my shield and the strength that saves me He is my high tower and my safe place He is my Savior who saves me from people who want to hurt me" (small.en+medium.en)
+- **2 Samuel 22** — missing verse 42 at 4:07 — "saved them They even cried to the LORD but he didn't answer them" (small.en+medium.en)
+  - audio check: confirmed: missing verse 2 0:08-0:17 (slice coverage small 0.08, medium 0.08) confirmed: missing verse 42 3:58-4:08 (slice coverage small 0.00, medium 0.08)
+  - WER small 0.1618 / medium 0.4039; coverage small 0.8426 / medium 0.5993; duration 312.45s vs expected 368.4s (ratio 0.848); sha256 `ede01277b800bc1554e5606283f4fee643abcdcc998220e250ad242cc3e03c6f`
+- **2 Samuel 23** — inserted verse 20 at 3:02–4:12 — "and saved Joab from his bloody arrows He was the most famous of the three and one of the three was Darren Rathrow of Garaseth He was the second of twelve sons of YHWH and he was known for his brave wits and adventures And his favorite deeds were his own bloody arrows and his own sword and his own …" (small.en+medium.en)
+- **2 Samuel 23** — inserted verse 22 at 4:34–4:46 — "He killed two of Moab's best warriors On a snowy day he went down into a pit and killed a lion He also killed a huge Egyptian who had a spear in his hand Benaiah went against him with only a club" (small.en+medium.en)
+- **2 Samuel 23** — inserted verse 22 at 4:47–4:52 — "grabbed the spear out of the Egyptians hand and killed him with his own spear These are" (small.en+medium.en)
+- **2 Samuel 23** — inserted verse 22 at 4:52–5:08 — "kinds of things Benaiah son of YHWH did He killed two of Moab's best warriors On a snowy day he went down into a pit and killed a lion He also killed a huge Egyptian who had a spear in his hand Benaiah went against him with only a club" (small.en+medium.en)
+- **2 Samuel 23** — inserted verse 23 at 5:09–5:14 — "grabbed the spear out of the Egyptian's hand and killed him with his own spear These are" (small.en+medium.en)
+- **2 Samuel 23** — inserted verse 23 at 5:14–5:30 — "kinds of things Benaiah son of YHWH did He killed two of Moab's best warriors On a snowy day he went down into a pit and killed a lion He also killed a huge Egyptian who had a spear in his hand Benaiah went against him with only a club" (small.en+medium.en)
+- **2 Samuel 23** — inserted verse 23 at 5:34–5:49 — "with his own spear These are the kinds of things Benaiah son of YHWH did he killed two of Moab's best warriors on a snowy day He went down into a pit and killed a lion He also killed a huge Egyptian who had a spear" (small.en+medium.en)
+- **2 Samuel 23** — inserted verse 23 at 5:49–5:55 — "his hand Benaiah went against him with only a club He brought down his spear and set it upon" (small.en+medium.en)
+- **2 Samuel 23** — repeated verse 20 at 3:31–3:35 — "he was known for his brave wits and adventures and his" (small.en+medium.en)
+- **2 Samuel 23** — repeated verse 20 at 3:34–4:12 — "and his own sages blasted his name and he was the leader of his own team But as for the three he was known for his brave wits and adventures and his own sages blasted his name and he was the leader of his own team But as for the three he was known for his brave wits and adventures …" (small.en+medium.en)
+- **2 Samuel 23** — repeated verse 22 at 4:34–5:53 — "He killed two of Moab's best warriors On a snowy day he went down into a pit and killed a lion He also killed a huge Egyptian who had a spear in his hand Benaiah went against him with only a club He grabbed the spear out of the Egyptians hand and killed him with his own spear These are …" (small.en+medium.en)
+  - audio check: refuted: repeated verse 22 4:32-4:56 (slice coverage small 1.00, medium 1.00, times 1/1) confirmed: inserted verse 20 3:01-3:25 (slice coverage small 0.96, medium 1.00) confirmed: repeated verse 20 3:33-3:57 (slice coverage small 1.00, medium 1.00, times 2/2)
+  - WER small 0.6587 / medium 0.5487; coverage small 0.8975 / medium 0.79; duration 433.96s vs expected 320.0s (ratio 1.356); sha256 `bbeae4f45281457296cd9087c720dde8620061343723f6088d061aa69aca2de2`
 
 ## UNCERTAIN
 
@@ -1552,6 +1614,12 @@ words clears that span. A split slice stays UNCERTAIN.
 - **2 Samuel 12** — audio slice contains the disputed words; the models still disagree (coverage small 0.927, medium 0.978)
   - audio check: refuted: missing verse 15 2:23-2:32 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.927, medium 0.978); WER small 0.0752 / medium 0.0305; coverage small 0.9269 / medium 0.9782; sha256 `342e1766a94b8d9d560cf505df8a5da0a5e7f918370e898860372250f8f91665`
+- **2 Samuel 14** — audio slice contains the disputed words; the models still disagree (coverage small 0.915, medium 0.924)
+  - audio check: refuted: missing verse 18 3:14-3:23 (slice coverage small 0.83, medium 0.83) refuted: missing verse 27 4:48-4:57 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.915, medium 0.924); WER small 0.1152 / medium 0.0811; coverage small 0.915 / medium 0.9238; sha256 `72db76749324229b11df2870afe50d8b5c2dba40ec3300235402f6c995ae13df`
+- **2 Samuel 19** — audio slice contains the disputed words; the models still disagree (coverage small 0.989, medium 0.786)
+  - audio check: refuted: missing verse 5 0:30-0:39 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 18 2:57-3:06 (slice coverage small 0.60, medium 1.00, times 0/1)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.989, medium 0.786); WER small 0.0161 / medium 0.2233; coverage small 0.9885 / medium 0.7859; sha256 `0596be6e5d4b68cb946095dcb874b45f050491d558037425bffc7f2d2f2d7b15`
 
 ## Script
 
