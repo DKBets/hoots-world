@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 450
+- Scored chapters: 460
 - PASS: 13
-- FAIL: 297
-- UNCERTAIN: 140 (jsonl verdict UNSURE)
-- Still to score: 479 Old Testament chapters
+- FAIL: 301
+- UNCERTAIN: 146 (jsonl verdict UNSURE)
+- Still to score: 469 Old Testament chapters
 
 ## PASS
 
@@ -2812,6 +2812,17 @@ words clears that span. A split slice stays UNCERTAIN.
   - WER small 0.1906 / medium 0.0297; coverage small 0.8094 / medium 0.9703; duration 142.29s vs expected 161.6s (ratio 0.881); sha256 `bdb5bc291f3032c8441a6e5c7b365af2da4787fdbf79e2f82d3824ff816d9474`
 - **Job 13** — coverage low on both models (small 0.842, medium 0.777); models also disagree on other spans; agreed defects still fail the chapter
   - WER small 0.1601 / medium 0.2274; coverage small 0.8422 / medium 0.7773; duration 134.61s vs expected 172.4s (ratio 0.781); sha256 `66425a916ae4574041c2af31d111c27570a903980b4515bf59cc0713659e60c7`
+- **Job 16** — missing verse 11 at 0:59 — "the hands of the wicked Everything was fine but he broke me apart He grabbed me by" (small.en)
+- **Job 16** — missing verse 11 at 0:58 — "over to evil people He" (medium.en)
+  - audio check: confirmed: missing verse 11 0:50-1:00 (slice coverage small 0.17, medium 0.08) unclear: missing verse 11 0:49-0:59 (slice coverage small 0.00, medium 1.00)
+  - WER small 0.1643 / medium 0.0397; coverage small 0.8385 / medium 0.9688; duration 117.46s vs expected 141.2s (ratio 0.832); sha256 `89abc4ed280de7176974de51f0b70c222a18a24bce31e890cf36868d62bc8c94`
+- **Job 18** — WER backstop both models (small 0.402, medium 0.445); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.402 / medium 0.4452; coverage small 0.99 / medium 0.5581; duration 113.37s vs expected 120.4s (ratio 0.942); sha256 `644cef80cf4d5171c9df0065c018323257d8a1f0f950727aceb89656c42e78f2`
+- **Job 20** — inserted verse 1 at 0:08–0:10 — "answered and said Jab toffer" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 1 0:06-0:16 (slice coverage small 0.80, medium 1.00)
+  - WER small 0.0304 / medium 0.1649; coverage small 0.9892 / medium 0.8547; duration 163.63s vs expected 184.4s (ratio 0.887); sha256 `3ea8d7b70384f464cb8c69681b687e68b291630232dd83e3c136ce1fe151f10e`
+- **Job 23** — coverage low on both models (small 0.676, medium 0.655); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.3238 / medium 0.3452; coverage small 0.6762 / medium 0.6548; duration 87.85s vs expected 112.4s (ratio 0.782); sha256 `3bd6a6a8b269388bd288900616fad08f42ea403ef5a88d89c49c1772f24430ce`
 
 ## UNCERTAIN
 
@@ -3254,6 +3265,25 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Job 14** — missing verse 1 at 0:00–0:02 — "People are born and they live only a short time Their lives are full of trouble They grow like flowers and then dry up They are like shadows that quickly disappear Do you keep your eye on someone like that Will you take me to court with you Who can make something clean out of something unclean No one You …" (medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
   - medium.en only: missing 'People are born and they live only a short time Their lives are full of trouble They grow like flowers and then dry up They are like shadows that quickly disappear Do you keep your eye on someone like that Will you take me to court with you Who can make something clean out of something unclean No one You …'; coverage unclear (small 1.000, medium 0.781; pass needs both >= 0.96); WER small 0.0025 / medium 0.2267; coverage small 1.0 / medium 0.7809; sha256 `30a92167674733db0a702cf3fe06f09718898ecf3cbb7f4505a9019d7ab1e1b6`
+- **Job 15** — missing verse 3 at 0:13 — "give speeches that do no good" (medium.en)
+  - audio check: unclear: missing verse 3 0:04-0:14 (slice coverage small 0.67, medium 0.00)
+  - medium.en only: missing 'give speeches that do no good'; WER small 0.0091 / medium 0.0199; coverage small 0.9928 / medium 0.9819; sha256 `6b36ae9fbf29b03a8bf3210b0a85108cdcfa473ca80b262fbfe69015e9699a50`
+- **Job 17** — missing verse 1 at 0:00–0:01 — "My spirit is broken My days are almost over The grave is waiting for me People who make fun of me are all around me I have to watch them insult me God please promise to help me Who else would make a promise for me You have closed my friends minds so they can't understand So you won't let …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'My spirit is broken My days are almost over The grave is waiting for me People who make fun of me are all around me I have to watch them insult me God please promise to help me Who else would make a promise for me You have closed my friends minds so they can't understand So you won't let …'; coverage unclear (small 0.996, medium 0.516; pass needs both >= 0.96); paraphrase flag on one model (small 0.000, medium 0.140); WER backstop on one model (small 0.004, medium 0.504); WER small 0.004 / medium 0.504; coverage small 0.996 / medium 0.516; sha256 `9e164dc08d84f1b0857d3ffe0c650ec1699cb1c82a76da24c1ea743d23058c12`
+- **Job 19** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.438)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.438); WER small 0.0 / medium 0.5619; coverage small 1.0 / medium 0.4381; sha256 `9d17b393c03a48bb97bac0e2f84ffad08a360e90477d343e474e73704f7d1a14`
+- **Job 21** — audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.635)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.635); WER small 0.0058 / medium 0.3645; coverage small 0.9981 / medium 0.6355; sha256 `254b071f532aa19d2032408cc9c73f6259dc04353b64eddfab1e305f9e5b356c`
+- **Job 22** — audio slice contains the disputed words; the models still disagree (coverage small 0.996, medium 0.594)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.996, medium 0.594); WER small 0.0105 / medium 0.4079; coverage small 0.9958 / medium 0.5941; sha256 `20a1235aa3322aa287f04ee504e127e45f4c7b93d4cfb2429291a2511c961641`
+- **Job 24** — missing verse 12 at 1:26 — "But God doesn't blame anyone for doing wrong" (small.en)
+- **Job 24** — missing verse 1 at 0:29–0:30 — "Why doesn't the All Powerful One set times for judging Why don't those who know him ever see those days Wicked people move the stones that mark where land belongs They steal flocks of sheep and keep them They take away the donkeys of orphans They take a widow's ox until she pays what she owes They push needy people …" (medium.en)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) unclear: missing verse 12 1:17-1:27 (slice coverage small 0.00, medium 0.00)
+  - small.en only: missing 'But God doesn't blame anyone for doing wrong'; medium.en only: missing 'Why doesn't the All Powerful One set times for judging Why don't those who know him ever see those days Wicked people move the stones that mark where land belongs They steal flocks of sheep and keep them They take away the donkeys of orphans They take a widow's ox until she pays what she owes They push needy people …'; coverage unclear (small 0.984, medium 0.711; pass needs both >= 0.96); WER small 0.018 / medium 0.2974; coverage small 0.984 / medium 0.7106; sha256 `6400edcd81c4b482f96517a56bc548fb4b7cd0f212ee87e7187908f9469bea89`
 
 ## Script
 
