@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 720
+- Scored chapters: 730
 - PASS: 48
-- FAIL: 410
-- UNCERTAIN: 262 (jsonl verdict UNSURE)
-- Still to score: 209 Old Testament chapters
+- FAIL: 414
+- UNCERTAIN: 268 (jsonl verdict UNSURE)
+- Still to score: 199 Old Testament chapters
 
 ## PASS
 
@@ -3260,6 +3260,36 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Isaiah 39** — missing verse 2 at 0:25 — "in his storerooms There was nothing in his palace or" (medium.en)
   - audio check: confirmed: missing verse 2 0:16-0:26 (slice coverage small 0.20, medium 0.20)
   - WER small 0.0043 / medium 0.3191; coverage small 0.9957 / medium 0.6809; duration 91.31s vs expected 94.0s (ratio 0.971); sha256 `9acb62d2ad1fad574dd6d663a4fc35e7df806682cb94ab0c28f917f2ea9a114b`
+- **Isaiah 44** — missing verse 8 at 1:48 — "don't know of any Everyone who makes idols is worthless The idols they love so much can't help them The people who stand up for idols can't see and they" (small.en)
+  - audio check: confirmed: missing verse 8 1:36-1:45 (slice coverage small 0.33, medium 0.33)
+  - WER small 0.1138 / medium 0.0166; coverage small 0.8862 / medium 0.9901; duration 309.38s vs expected 362.0s (ratio 0.855); sha256 `27a85037d166e0d7cc6a8ed5ea6bcc5adb5fec6920e39eaf719c50fa81e57d41`
+- **Isaiah 45** — missing verse 12 at 2:46 — "to live on it My own hands stretched out the heavens I command all the stars I will stir up Cyrus to do what is right I will make all his paths straight" (medium.en)
+  - audio check: confirmed: missing verse 12 2:33-2:42 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.014 / medium 0.1992; coverage small 0.9886 / medium 0.8084; duration 280.7s vs expected 315.2s (ratio 0.891); sha256 `4bb555e3ab82ebc62ff2cb54cf11065d2e7b1f5d63562d8fcb2e6f6995fce74b`
+- **Isaiah 48** — missing verse 1 at 0:30 — "family of Jacob You are called by the name of Israel and you come from the family line of Judah You make promises in the LORD's name and talk about the God of Israel but you don't mean it and you don't do what is right You call yourselves people of the holy city You say you depend on the …" (small.en+medium.en)
+- **Isaiah 48** — missing verse 6 at 1:26 — "you didn't know They are being made now not long ago You haven't heard about them before today So you can't say Oh I already knew about that You haven't heard about them You haven't understood them Long ago your ears were closed I knew you would be very unfaithful You have been called a rebel since" (small.en+medium.en)
+- **Isaiah 48** — missing verse 21 at 3:22–3:26 — "weren't thirsty when he led" (small.en+medium.en)
+- **Isaiah 48** — inserted verse 20 at 3:09–3:14 — "the Lord has saved cyber The Lord has saved cyber Jake" (small.en+medium.en)
+- **Isaiah 48** — inserted verse 21 at 3:22–3:26 — "who believed in escort and everything and in faith was made in front of" (small.en+medium.en)
+- **Isaiah 48** — inserted verse 21 at 3:26–3:29 — "and in faith became a covenant of" (small.en+medium.en)
+- **Isaiah 48** — inserted verse 21 at 3:29–4:16 — "ghost They who believed in escort and everything and in faith was made in front of them and in faith was made in front of them and in faith was made in front of them and in faith was made in front of them and in faith was made in front of them and in faith was made in front …" (small.en+medium.en)
+- **Isaiah 48** — inserted verse 21 at 4:17–4:20 — "in front of them and in faith was made in front" (small.en+medium.en)
+- **Isaiah 48** — inserted verse 21 at 4:20–4:23 — "them and in faith was made in front of" (small.en+medium.en)
+- **Isaiah 48** — inserted verse 21 at 4:23 — "and in faith was made in front of them" (small.en+medium.en)
+- **Isaiah 48** — inserted verse 21 at 4:23–4:33 — "in faith was made in front of and in faith was made in front of them in faith front of them He split rock and water gushed out There is no peace for wicked" (small.en+medium.en)
+- **Isaiah 48** — repeated verse 20 at 3:11–3:13 — "The Lord has saved cyber" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 21 3:28-3:52 (slice coverage small 1.00, medium 0.96) refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) confirmed: missing verse 6 1:03-1:12 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.881 / medium 0.6077; coverage small 0.664 / medium 0.6849; duration 274.94s vs expected 248.8s (ratio 1.105); sha256 `f8f927dbeb9105abc1791a2776c49161a40190c9a966be8a37e6b00c79939b36`
+- **Isaiah 51** — silence verse ? at 2:41–2:46 — "roar. The Lord of armies is my name." (waveform)
+- **Isaiah 51** — missing verse 1 at 0:00–0:02 — "Listen to me you who want to do what is right you who look for the LORD Look at the rock you were cut from the stone quarry you were dug out of Look at Abraham your father and Sarah who gave birth to you When I called Abraham he was only one person But I blessed him and made …" (small.en+medium.en)
+- **Isaiah 51** — inserted verse 15 at 2:34–2:47 — "the Lord The Lord of armies is my name The Lord of armies is my name" (small.en+medium.en)
+- **Isaiah 51** — inserted verse 15 at 2:49–2:53 — "of armies is my name I stir up the sea and make" (small.en+medium.en)
+- **Isaiah 51** — inserted verse 16 at 2:57–3:02 — "stir up the sea and make its waves roar The Lord of armies is" (small.en+medium.en)
+- **Isaiah 51** — inserted verse 16 at 3:02–3:09 — "name I stir up the sea and make its waves roar The Lord of armies is my name" (small.en+medium.en)
+- **Isaiah 51** — inserted verse 16 at 3:10–3:12 — "stir up the sea and make its waves roar" (small.en+medium.en)
+- **Isaiah 51** — inserted verse 16 at 3:16–3:18 — "stir up the sea and make its waves roar" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00) confirmed: inserted verse 16 3:01-3:15 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 15 2:33-2:53 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.3554 / medium 0.4189; coverage small 0.8027 / medium 0.8459; duration 322.69s vs expected 296.0s (ratio 1.09); sha256 `47b6f80355e3ce99eba5c4de047bd38ebf657e68bd7f01bb2314d8ad591544a2`
 
 ## UNCERTAIN
 
@@ -4076,6 +4106,25 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Isaiah 41** — audio slice contains the disputed words; the models still disagree (coverage small 0.999, medium 0.784)
   - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.999, medium 0.784); WER small 0.0072 / medium 0.2162; coverage small 0.9988 / medium 0.7838; sha256 `400dd8ed023c80ba1f9ce0c7bec002f0de9ddb14580657b00f379172c4755dd2`
+- **Isaiah 42** — audio slice contains the disputed words; the models still disagree (coverage small 0.986, medium 0.814)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.986, medium 0.814); WER small 0.0202 / medium 0.1888; coverage small 0.9856 / medium 0.8141; sha256 `52b67f742b2ddf74f8a6a549b860b50f156f7234892d86f6e1943fbe7b7e0889`
+- **Isaiah 43** — audio slice contains the disputed words; the models still disagree (coverage small 0.869, medium 0.907)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.869, medium 0.907); WER small 0.132 / medium 0.0973; coverage small 0.8693 / medium 0.9067; sha256 `e6830a1499f806d3317a3e36d81dd510d2e1469ca05a2a75bf0c2c61d7bc152b`
+- **Isaiah 46** — audio slice contains the disputed words; the models still disagree (coverage small 0.967, medium 0.550)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 1.00) refuted: missing verse 7 0:59-1:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.967, medium 0.550); WER small 0.0359 / medium 0.4503; coverage small 0.9669 / medium 0.5497; sha256 `d875ec13ee809667e17c4e8654511f43e6bcc7c46bf7564cdd654626cfbf2a80`
+- **Isaiah 47** — missing verse 1 at 0:00–0:02 — "Come down and sit in the dust young woman of Babylon Sit on the ground without a throne people of the Chaldeans No one will call you gentle and delicate anymore Take millstones and grind flour Take off your veil Lift up your skirt and uncover your legs Walk through the rivers You will be uncovered and everyone will see …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'Come down and sit in the dust young woman of Babylon Sit on the ground without a throne people of the Chaldeans No one will call you gentle and delicate anymore Take millstones and grind flour Take off your veil Lift up your skirt and uncover your legs Walk through the rivers You will be uncovered and everyone will see …'; coverage unclear (small 0.994, medium 0.817; pass needs both >= 0.96); WER small 0.0128 / medium 0.194; coverage small 0.9936 / medium 0.8166; sha256 `0813ce7ebfe5d27461490d2e1c31952741615ff7aa913acbbb1789d5a1e55bcd`
+- **Isaiah 49** — audio slice contains the disputed words; the models still disagree (coverage small 0.993, medium 0.887)
+  - audio check: refuted: missing verse 4 0:27-0:36 (slice coverage small 0.75, medium 0.83) refuted: missing verse 14 2:31-2:41 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.993, medium 0.887); WER small 0.0143 / medium 0.1211; coverage small 0.9929 / medium 0.8872; sha256 `ec28b6d25f0f4ca9e26f54feb8ce0af9da703242076e9b764c505759e202b179`
+- **Isaiah 50** — missing verse 9 at 1:34 — "Moths will eat them up" (small.en)
+- **Isaiah 50** — missing verse 1 at 0:30 — "Where is the paper that shows I divorced your mother and sent her away Did I sell you to someone I owed money to No you were sold because of your sins Your mother was sent away because of the wrong things you did When I came why was no one there When I called why didn't anyone answer Is …" (medium.en)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) unclear: missing verse 9 1:25-1:35 (slice coverage small 0.80, medium 0.00)
+  - small.en only: missing 'Moths will eat them up'; medium.en only: missing 'Where is the paper that shows I divorced your mother and sent her away Did I sell you to someone I owed money to No you were sold because of your sins Your mother was sent away because of the wrong things you did When I came why was no one there When I called why didn't anyone answer Is …'; coverage unclear (small 0.986, medium 0.786; pass needs both >= 0.96); WER small 0.0244 / medium 0.2249; coverage small 0.9864 / medium 0.7859; sha256 `7aed3e4ca75dd9bd29b80b2951817026f5007145f6b844ce9a084352020f42f6`
 
 ## Script
 
