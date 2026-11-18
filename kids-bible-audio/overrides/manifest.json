@@ -1,0 +1,82 @@
+{
+  "title": "Kids Bible audio overrides",
+  "updated": "2026-11-17T19:16:00-05:00",
+  "lab_audio_base": {
+    "repo": "DKBets/hoots-world",
+    "branch": "lab-audio",
+    "commit": "044090657f7eeb258692ff793a1874e400207f4a"
+  },
+  "notes": "Trimmed PASS copies of Kids story 10 (Baby Moses in a Basket) for both voices. Trailing spoken Muse production cues were cut; the story body is unchanged (STT match and coverage 100%, no_cue true). Girl voice directory is sample1. These files replace the untrimmed lab-audio 04409065 story-10 blobs under long-road-kids-audio/. They must not be used to overwrite Muse origin audio.",
+  "overrides": [
+    {
+      "voice": "girl",
+      "source_dir": "sample1",
+      "kind": "story",
+      "id": 10,
+      "title": "Baby Moses in a Basket",
+      "override_path": "kids-bible-audio/overrides/stories/sample1/10.m4a",
+      "sha256": "27f00cae3c71e389ca6f4950a1cc7acb8524a17b0dc16f1bf449b09cd8063591",
+      "bytes": 272950,
+      "duration_sec": 65.37,
+      "replaces": {
+        "lab_audio_commit": "044090657f7eeb258692ff793a1874e400207f4a",
+        "path": "long-road-kids-audio/sample1/stories/10.m4a",
+        "blob": "bb995a3b47b15a347dc0101b456dbe20df20ccd4",
+        "bytes": 345145,
+        "sha256": "cb24ed9d34ba4b42fb908f2b6ab2d9cfab794dc72ce4f9d308167f921caf1ee4"
+      },
+      "qa": {
+        "result": "PASS",
+        "method": "trim_cues",
+        "source_copies": "handoff/kids-voice-b1/audio-fixed/girl/stories/10.m4a",
+        "records": [
+          "handoff/kids-voice-b1/audio-fixed/FIX_RESULTS.json",
+          "handoff/kids-voice-b1/audio-check/REPORT.md"
+        ],
+        "before_duration_sec": 83.45,
+        "after_duration_sec": 65.37,
+        "story_end": 65.12,
+        "keep_until": 65.37,
+        "no_cue": true,
+        "tail_ok": true,
+        "coverage_pct": 100.0,
+        "after_match_pct": 100.0
+      }
+    },
+    {
+      "voice": "boy",
+      "source_dir": "boy",
+      "kind": "story",
+      "id": 10,
+      "title": "Baby Moses in a Basket",
+      "override_path": "kids-bible-audio/overrides/stories/boy/10.m4a",
+      "sha256": "73364fb7a5c081a20721709408d3bf32c4fd26a929b8f54be644e569a488f10c",
+      "bytes": 298104,
+      "duration_sec": 71.47,
+      "replaces": {
+        "lab_audio_commit": "044090657f7eeb258692ff793a1874e400207f4a",
+        "path": "long-road-kids-audio/boy/stories/10.m4a",
+        "blob": "16cfd31fef988568cb4faeadd2f98acb1b3050d2",
+        "bytes": 366386,
+        "sha256": "a9e4f97054d7a95f1797935ec0602731b9580d2a5970c2fd908e5ee55509970f"
+      },
+      "qa": {
+        "result": "PASS",
+        "method": "trim_cues",
+        "source_copies": "handoff/kids-voice-b1/audio-fixed/boy/stories/10.m4a",
+        "records": [
+          "handoff/kids-voice-b1/audio-fixed/FIX_RESULTS.json",
+          "handoff/kids-voice-b1/audio-check/REPORT.md"
+        ],
+        "before_duration_sec": 88.75,
+        "after_duration_sec": 71.47,
+        "story_end": 71.22,
+        "keep_until": 71.47,
+        "no_cue": true,
+        "tail_ok": true,
+        "coverage_pct": 100.0,
+        "after_match_pct": 100.0
+      }
+    }
+  ]
+}
