@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 190
+- Scored chapters: 200
 - PASS: 6
-- FAIL: 123
-- UNCERTAIN: 61 (jsonl verdict UNSURE)
-- Still to score: 739 Old Testament chapters
+- FAIL: 130
+- UNCERTAIN: 64 (jsonl verdict UNSURE)
+- Still to score: 729 Old Testament chapters
 
 ## PASS
 
@@ -911,6 +911,47 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Joshua 1** — repeated verse 13 at 2:50–2:54 — "you will decimate the land and cross over in the mountains of Galatia" (small.en+medium.en)
   - audio check: unclear: inserted verse 13 2:12-2:36 (slice coverage small 0.75, medium 0.71) confirmed: inserted verse 13 3:05-3:28 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 13 2:34-2:56 (slice coverage small 0.92, medium 0.88)
   - WER small 0.4455 / medium 0.5195; coverage small 0.9475 / medium 0.8288; duration 255.62s vs expected 205.6s (ratio 1.243); sha256 `6c35b5bd935945e9c8af7b822b852a6eacd6beb15cbbed972f12051c6e838dc2`
+- **Joshua 4** — missing verse 21 at 3:04 — "your children will ask their parents What do these stones mean Then you will tell" (medium.en)
+  - audio check: confirmed: missing verse 21 2:55-3:05 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.0152 / medium 0.1667; coverage small 0.9848 / medium 0.8434; duration 191.27s vs expected 237.6s (ratio 0.805); sha256 `ccde59f8c9f43524a06aa22035de1d7c6a98b187f54e578b008f18e172583ba5`
+- **Joshua 7** — missing verse 1 at 0:00 — "But the people of Israel were not faithful about the things set apart for God A man named Achan took some of them He was the son of Carmi the son of Zabdi the son of Zerah from the tribe of Judah So the LORD was very angry with the people of Israel" (small.en+medium.en)
+- **Joshua 7** — missing verse 2 at 0:01–0:02 — "sent men from Jericho to the town of Ai near Beth Aven east of Bethel He" (small.en+medium.en)
+- **Joshua 7** — inserted verse 26 at 4:59–5:58 — "the Lord stopped being so angry the Lord stopped being so angry the Lord stopped being so angry the Lord stopped being so angry the Lord stopped being so angry the Lord stopped being so angry the Lord stopped being so angry the Lord stopped being so angry the Lord stopped being so angry the Lord stopped being so angry …" (small.en+medium.en)
+- **Joshua 7** — repeated verse 26 at 5:02–5:28 — "the Lord stopped being so angry the Lord stopped being so angry the Lord stopped being so angry the Lord stopped being so angry the Lord stopped being so angry the Lord stopped being so angry the Lord stopped being so angry the Lord stopped being so angry the Lord stopped being so angry the Lord stopped being so angry …" (small.en+medium.en)
+- **Joshua 7** — repeated verse 26 at 5:28–5:58 — "being so angry the Lord stopped being so angry the Lord stopped being so angry the Lord stopped being so angry the Lord stopped being so angry the Lord stopped being so angry the Lord stopped being so angry the Lord stopped being so angry the Lord stopped being so angry the Lord stopped being so angry the Lord stopped …" (small.en+medium.en)
+- **Joshua 7** — repeated verse 26 at 5:58–5:59 — "The Lord stopped being so angry" (small.en+medium.en)
+  - audio check: unclear: inserted verse 26 4:58-5:22 (slice coverage small 0.25, medium 1.00) refuted: repeated verse 26 5:01-5:25 (slice coverage small 0.08, medium 1.00, times 0/1) unclear: repeated verse 26 5:27-5:51 (slice coverage small 1.00, medium 0.25, times 2/0)
+  - WER small 0.3901 / medium 0.4373; coverage small 0.9056 / medium 0.7791; duration 381.23s vs expected 347.6s (ratio 1.097); sha256 `26b29e367749c901d7de6f7a64c613355095c2a6b007771e5727d16dcc1a1f10`
+- **Joshua 8** — missing verse 16 at 2:29 — "All the men in Ai were called out to chase them They chased Joshua and were led away from the city Not one man was left in Ai or Bethel They all went out after Israel They left the city open and chased Israel" (small.en+medium.en)
+- **Joshua 8** — inserted verse 33 at 5:01–6:08 — "Anyone who wanted to wear dress sad with the keys to the temple I promise to you that is what enables us to salivate joy Adapted by a complex meaning of enables and common And it carries with it a sense of celebration and a deeper meaning of relationship with God That is what enables us to celebrate with every …" (small.en+medium.en)
+- **Joshua 8** — repeated verse 33 at 5:28–5:30 — "every facet of our lives" (small.en+medium.en)
+- **Joshua 8** — repeated verse 33 at 5:44–5:47 — "we find our purpose and playpen deeply entrenched" (small.en+medium.en)
+- **Joshua 8** — repeated verse 33 at 5:58–6:00 — "in every sasset of our lives" (small.en+medium.en)
+- **Joshua 8** — repeated verse 33 at 6:02–6:08 — "in every sasset of our lives we may find much more than we find in every sasset" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 33 5:00-5:24 (slice coverage small 0.96, medium 0.96) refuted: missing verse 16 2:11-2:20 (slice coverage small 0.83, medium 0.83) refuted: repeated verse 33 6:01-6:14 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.2543 / medium 0.234; coverage small 0.925 / medium 0.9331; duration 391.34s vs expected 394.8s (ratio 0.991); sha256 `7c77a3deb1eae5584a0acd0abc85b92ce5d37095c296abd48715c20526cfe3b8`
+- **Joshua 9** — silence verse ? at 1:44–1:50 — "Tell them, we are your servants, please make a treaty with us." (waveform)
+- **Joshua 9** — missing verse 21 at 5:46 — "woodcutters and water carriers for all the people just like the leaders said Joshua called the Gibeonites and said Why did you trick us You said We live very far away from you but you really live right here near us Now you are under a curse Some of you will always be servants cutting wood" (small.en+medium.en)
+- **Joshua 9** — inserted verse 12 at 1:52–2:45 — "it in the tent of our homes and it is bright and pleasant in the tent of the King of Omri We believe that there are no sins in us and we can walk without any problem If we saw those animals in the tent of the King we would make a treaty with them But we didn't want to …" (small.en+medium.en)
+- **Joshua 9** — inserted verse 12 at 2:47–2:58 — "the same time with these animals and we would make a treaty with them and just as we would with Abraham We believe every god has done and we would offer to them" (small.en+medium.en)
+- **Joshua 9** — inserted verse 12 at 2:58–3:11 — "ten tenths of our samples and we would do anything we get inside of them Then we saw that Abraham was blooting his eyes and nodding his head in praise And we said He was a prophet and" (small.en+medium.en)
+- **Joshua 9** — inserted verse 12 at 3:17–4:16 — "Generally we would eat his bread together in a tent of dozen and we would grave together various animals in a tent of dozen with Abraham But we would doubt if in prayer we would eat anything without any evidence of his animals or his presence We would grave together various animals in a tent of dozen with Abraham But …" (small.en+medium.en)
+- **Joshua 9** — repeated verse 12 at 2:10–2:12 — "We would make a treaty with them" (small.en+medium.en)
+- **Joshua 9** — repeated verse 12 at 2:12–2:13 — "we would make a treaty with" (small.en+medium.en)
+- **Joshua 9** — repeated verse 12 at 3:31–3:42 — "We would grave together various animals in a tent of dozen with Abraham But we would doubt if in prayer we would eat anything without any evidence of his animals or his presence" (small.en+medium.en)
+- **Joshua 9** — repeated verse 12 at 4:01–4:04 — "in prayer with Abraham and his ancestors We would" (small.en+medium.en)
+- **Joshua 9** — repeated verse 12 at 4:07–4:13 — "to the great God And we would believe that Abraham and his ancestors were in prayer with Abraham and" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 12 3:16-3:40 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 12 1:51-2:15 (slice coverage small 1.00, medium 1.00) refuted: missing verse 21 5:24-5:33 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.7617 / medium 0.6477; coverage small 0.8816 / medium 0.8056; duration 386.13s vs expected 273.6s (ratio 1.411); sha256 `df0e81548e8235c3461369de9bb6995f2d5f3a2fae3d65139530593aeda98252`
+- **Joshua 10** — missing verse 19 at 3:04 — "But don't stay there yourselves" (small.en)
+- **Joshua 10** — missing verse 16 at 2:46–2:51 — "The five kings had run away and hidden in a cave at Makkedah" (medium.en)
+  - audio check: confirmed: missing verse 16 2:37-2:47 (slice coverage small 0.25, medium 0.25) refuted: missing verse 19 2:55-3:05 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.0327 / medium 0.0618; coverage small 0.9682 / medium 0.947; duration 416.17s vs expected 453.2s (ratio 0.918); sha256 `3aee49ff2cd7e2341e2e50d8280d6d226e4f21441b8ec4c05d0e8f022a0f4d73`
+- **Joshua 12** — coverage low on both models (small 0.836, medium 0.880); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1772 / medium 0.1225; coverage small 0.8359 / medium 0.8796; duration 175.36s vs expected 182.8s (ratio 0.959); sha256 `f5c022985ce631e06f5ba99bed35bca61762a4f450bdd21b23f2f653c1a079ef`
+- **Joshua 13** — missing verse 4 at 0:37 — "of Sidon up to Aphek and the border of the Amorites It also includes the land of the Gebalites and all" (medium.en)
+  - audio check: confirmed: missing verse 4 0:29-0:38 (slice coverage small 0.00, medium 0.33)
+  - WER small 0.0511 / medium 0.2132; coverage small 0.9514 / medium 0.793; duration 306.05s vs expected 320.8s (ratio 0.954); sha256 `56e646c81ed6ff5a3e0c53a0632f669eeb0264083576a41dfbbf487925c14dfe`
 
 ## UNCERTAIN
 
@@ -1109,6 +1150,15 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Joshua 3** — audio slice contains the disputed words; the models still disagree (coverage small 0.989, medium 0.715)
   - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.989, medium 0.715); WER small 0.0106 / medium 0.296; coverage small 0.9894 / medium 0.7146; sha256 `a6dadbc3c378f37e09c08c6f7e4c9b965c8f6d85d83a063c48e00d2888aecf1e`
+- **Joshua 5** — missing verse 1 at 0:09 — "All the kings of the Amorites west of the Jordan and all the kings of the Canaanites by the sea heard how the LORD had dried up the Jordan River for the people of Israel until we had crossed over Their hearts melted with fear They had no courage left because of the people of Israel At that time the …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'All the kings of the Amorites west of the Jordan and all the kings of the Canaanites by the sea heard how the LORD had dried up the Jordan River for the people of Israel until we had crossed over Their hearts melted with fear They had no courage left because of the people of Israel At that time the …'; coverage unclear (small 0.994, medium 0.796; pass needs both >= 0.96); WER small 0.0108 / medium 0.2082; coverage small 0.9935 / medium 0.7961; sha256 `d49664f61e2e214ca8f717be2771a117bce46d8d1e2acfcac7c08721dee24a6e`
+- **Joshua 6** — audio slice contains the disputed words; the models still disagree (coverage small 0.937, medium 0.885)
+  - audio check: refuted: missing verse 18 2:39-2:48 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.937, medium 0.885); WER small 0.0644 / medium 0.1184; coverage small 0.9369 / medium 0.8855; sha256 `f4ea3bcd038ed109b20d113170e0ca5037784abc069fc0352ce848d1a31320f1`
+- **Joshua 11** — audio slice contains the disputed words; the models still disagree (coverage small 0.978, medium 0.635)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 7 1:10-1:19 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.978, medium 0.635); WER small 0.0222 / medium 0.3693; coverage small 0.9778 / medium 0.6355; sha256 `02afc087c85c3a82424ce49b5f8f8f02b8a50845272cf22e4f260662de634049`
 
 ## Script
 
