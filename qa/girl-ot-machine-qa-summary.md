@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 580
-- PASS: 32
-- FAIL: 348
-- UNCERTAIN: 200 (jsonl verdict UNSURE)
-- Still to score: 349 Old Testament chapters
+- Scored chapters: 590
+- PASS: 33
+- FAIL: 356
+- UNCERTAIN: 201 (jsonl verdict UNSURE)
+- Still to score: 339 Old Testament chapters
 
 ## PASS
 
-32 chapters. Both models agreed there was no missing, invented, or repeated passage.
+33 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -77,7 +77,7 @@ words clears that span. A split slice stays UNCERTAIN.
 - Nehemiah 1, 5
 - Esther 10
 - Job 2, 34–35
-- Psalms 1, 3, 8, 11–12, 15, 39, 50, 53, 58, 64, 70, 76, 82–83, 92, 100
+- Psalms 1, 3, 8, 11–12, 15, 39, 50, 53, 58, 64, 70, 76, 82–83, 92, 100, 112
 
 ## FAIL
 
@@ -3018,6 +3018,27 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 99** — missing verse 1 at 0:26–0:27 — "The LORD is King Let the nations tremble He sits on his throne above the cherubim Let the earth shake The LORD is great in Zion He is high above all people Let them praise your great and amazing name He is holy The King is strong and he loves what is fair You have made things fair You have …" (small.en+medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
   - WER small 0.483 / medium 0.4148; coverage small 0.517 / medium 0.7045; duration 66.6s vs expected 70.4s (ratio 0.946); sha256 `795fd71fdfa7166112f60d00f3d7154ba313e95a8ba28dafd97b802dc4639b8a`
+- **Psalms 103** — coverage low on both models (small 0.763, medium 0.777); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.24 / medium 0.2286; coverage small 0.7629 / medium 0.7771; duration 126.89s vs expected 140.0s (ratio 0.906); sha256 `c8bae0d81a7485ce267e4f667c7471275aee181d8ec394dc3246ec90da5bfd77`
+- **Psalms 105** — coverage low on both models (small 0.880, medium 0.770); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1289 / medium 0.2314; coverage small 0.8804 / medium 0.7702; duration 210.05s vs expected 257.6s (ratio 0.815); sha256 `8581d5099240a4b59cbef2f54a9902b3f5e8245c9e51c422fbf789301e14fbcd`
+- **Psalms 106** — inserted verse 16 at 1:35–2:46 — "The Lord sent his angels everywhere by inviting their gross vineyards to come but the Lord roasted his flesh and sanded it They sank of the good and sanded of the gross but they sank of the good and sanded of the gross But a sank of the gross but they sank of the gross but they sank of the …" (small.en+medium.en)
+- **Psalms 106** — repeated verse 16 at 1:47–1:50 — "they sank of the good and sanded of the gross But" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 16 1:34-1:58 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 16 1:46-1:56 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.3098 / medium 0.3883; coverage small 0.992 / medium 0.9415; duration 356.86s vs expected 300.8s (ratio 1.186); sha256 `091a70501eebb7964aac8a2ac00a02c54916bdb0a59d5a07dd1eff3d4ea5456d`
+- **Psalms 107** — coverage low on both models (small 0.624, medium 0.810); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.376 / medium 0.1963; coverage small 0.624 / medium 0.8097; duration 233.05s vs expected 262.8s (ratio 0.887); sha256 `63ef8ecfb1394861aecf7be4628fe39d912522da89f9a1c09e3c660f63d87f83`
+- **Psalms 108** — coverage low on both models (small 0.859, medium 0.714); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1553 / medium 0.2961; coverage small 0.8592 / medium 0.7136; duration 73.94s vs expected 82.4s (ratio 0.897); sha256 `1f1c7aa2a9898f3581c5624e2f146f3cb0213e01bf4aca80cd11b083207f1b89`
+- **Psalms 109** — missing verse 13 at 0:57 — "Let his family come to an end" (small.en)
+- **Psalms 109** — missing verse 1 at 0:24–0:25 — "God the one I praise please don't stay silent Wicked people who trick others have opened their mouths against me They have told lies about me They surround me with hateful words They fight against me for no reason I loved them but they turned against me But I keep praying They pay me back with bad things for the …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.67) confirmed: missing verse 13 0:48-0:58 (slice coverage small 0.29, medium 0.29)
+  - WER small 0.0252 / medium 0.2427; coverage small 0.9806 / medium 0.7592; duration 169.13s vs expected 206.0s (ratio 0.821); sha256 `126e53b094927e54a6c6ad58a6012f00f65b42d7605120c89ca3b5e14c252310`
+- **Psalms 110** — missing verse 1 at 0:00–0:03 — "The LORD says to my Lord Sit at my right side until I put your enemies under your feet The LORD will make your power reach out from Zion Rule over your enemies On the day you show your power your people will gladly come to help you dressed in holy clothes Your young strength will be fresh like the …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.5474 / medium 0.5474; coverage small 0.4526 / medium 0.4526; duration 50.26s vs expected 54.8s (ratio 0.917); sha256 `1c08ace071b5e47d0c4711139d312263c60afbec97f00846028df9425a93f1c5`
+- **Psalms 111** — wrong_chapter before verse 1 at 0:00 — "announcement says chapter 11" (small.en+medium.en)
+  - WER small 0.0321 / medium 0.0321; coverage small 0.9872 / medium 0.9872; duration 60.12s vs expected 62.4s (ratio 0.963); sha256 `c3bcc280a73be9cf573cfab894cd6c27188b319981821601d0f59efa76ea8f79`
 
 ## UNCERTAIN
 
@@ -3640,6 +3661,9 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 102** — missing verse 12 at 0:54 — "will be King forever People" (small.en)
   - audio check: unclear: missing verse 12 0:45-0:55 (slice coverage small 0.00, medium 0.60)
   - small.en only: missing 'will be King forever People'; coverage unclear (small 0.688, medium 0.996; pass needs both >= 0.96); WER small 0.3122 / medium 0.009; coverage small 0.6878 / medium 0.9955; sha256 `ade740cced329399f2062da6ec2e903e20606464de58ad7857f8a5f1f9f1c102`
+- **Psalms 104** — audio slice contains the disputed words; the models still disagree (coverage small 0.737, medium 0.778)
+  - audio check: refuted: missing verse 23 2:03-2:12 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.737, medium 0.778); WER small 0.2632 / medium 0.2252; coverage small 0.7368 / medium 0.7781; sha256 `d592fb8fde6220614bb7f80156a918049617b2e6fe5cae40c02f155f32b5a0d7`
 
 ## Script
 
