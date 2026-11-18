@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 840
+- Scored chapters: 850
 - PASS: 52
-- FAIL: 475
-- UNCERTAIN: 313 (jsonl verdict UNSURE)
-- Still to score: 89 Old Testament chapters
+- FAIL: 482
+- UNCERTAIN: 316 (jsonl verdict UNSURE)
+- Still to score: 79 Old Testament chapters
 
 ## PASS
 
@@ -4008,6 +4008,45 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Ezekiel 37** — missing verse 6 at 0:51 — "I will put breath in you and you will come to life Then you will know that" (medium.en)
   - audio check: refuted: missing verse 6 0:42-0:52 (slice coverage small 1.00, medium 1.00) confirmed: missing verse 12 1:44-1:54 (slice coverage small 0.33, medium 0.17)
   - WER small 0.0249 / medium 0.0471; coverage small 0.9804 / medium 0.9607; duration 264.53s vs expected 305.6s (ratio 0.866); sha256 `d9c047ed4e88173aaa68ceb52d9cd32fd474d9b127d0eb42880e9a1b0ab8eaac`
+- **Ezekiel 39** — missing verse 8 at 1:03 — "It is coming It will surely happen says the Lord GOD This is the day I have talked about Then the people who live in the cities of" (medium.en)
+  - audio check: confirmed: missing verse 8 0:52-1:01 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.0156 / medium 0.1691; coverage small 0.9868 / medium 0.8333; duration 275.41s vs expected 333.6s (ratio 0.826); sha256 `b516cc89803e4a2acc0cd27afaa707ea260c06bdcb5d08dae7952d4d78b90ab6`
+- **Ezekiel 43** — inserted verse 3 at 0:23–0:27 — "The Lord's glory came into the temple through the gate that faced east" (small.en+medium.en)
+- **Ezekiel 43** — inserted verse 5 at 0:34–0:38 — "That alone Ninja Beb hummed to God playing" (small.en+medium.en)
+- **Ezekiel 43** — inserted verse 5 at 0:38–0:40 — "Lord and Pharaoh's lead stopped his heart" (small.en+medium.en)
+- **Ezekiel 43** — inserted verse 5 at 0:41–0:44 — "sat against his throne The Lord's glory came" (small.en+medium.en)
+- **Ezekiel 43** — inserted verse 5 at 0:48–0:53 — "alone Ninja Beb hummed and praised to God Almighty and Pharaoh sat at his throne" (small.en+medium.en)
+- **Ezekiel 43** — inserted verse 6 at 0:56–1:01 — "gate that faced east The Lord's glory came into the temple through" (small.en+medium.en)
+- **Ezekiel 43** — inserted verse 6 at 1:01–1:05 — "gate that faced east The Lord's glory came into the temple through" (small.en+medium.en)
+- **Ezekiel 43** — inserted verse 7 at 1:05–1:11 — "gate that faced east The Lord's glory came into the temple through the gate that faced east" (small.en+medium.en)
+- **Ezekiel 43** — inserted verse 7 at 1:12–1:14 — "Lord's glory came into the temple through" (small.en+medium.en)
+- **Ezekiel 43** — repeated verse 4 at 0:29–0:33 — "The Lord's glory came into the temple through the gate that faced east" (small.en+medium.en)
+- **Ezekiel 43** — repeated verse 5 at 0:43–0:49 — "The Lord's glory came into the temple through the gate that faced east That alone Ninja Beb hummed" (small.en+medium.en)
+- **Ezekiel 43** — repeated verse 5 at 0:53–1:17 — "his throne The Lord's glory came into the temple through the gate that faced east The Lord's glory came into the temple through the gate that faced east The Lord's glory came into the temple through the gate that faced east The Lord's glory came into the temple through the gate that faced east The Lord's glory came into the …" (small.en+medium.en)
+- **Ezekiel 43** — paraphrase verse ? at ? — "scattered wording does not match the source" (small.en+medium.en)
+  - audio check: refuted: repeated verse 5 0:52-1:16 (slice coverage small 1.00, medium 1.00, times 1/1) refuted: repeated verse 5 0:42-0:55 (slice coverage small 1.00, medium 0.39, times 1/0) unclear: inserted verse 7 1:04-1:17 (slice coverage small 1.00, medium 0.65)
+  - WER small 0.1852 / medium 0.1489; coverage small 0.8862 / medium 0.8923; duration 311.38s vs expected 330.4s (ratio 0.942); sha256 `cd9af1f308b33cdcb732b0c00edef94306ae2f8282f45f05d1cb7c38abe58f17`
+- **Ezekiel 44** — inserted verse 5 at 0:45–1:44 — "attention please listen The Lord said to me Son of Man please listen The Lord said to me Son of Man please listen Please listen the Lord said to me Son of man please listen the Lord said to me Son of man please listen and then he said to me What do you think I've done for you You …" (small.en+medium.en)
+- **Ezekiel 44** — repeated verse 5 at 0:47–0:49 — "The Lord said to me Son of Man" (small.en+medium.en)
+- **Ezekiel 44** — repeated verse 5 at 0:50–0:57 — "please listen The Lord said to me Son of Man please listen" (small.en+medium.en)
+- **Ezekiel 44** — repeated verse 5 at 1:40–1:44 — "And what is the most interesting man to see outside And" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 5 0:44-1:08 (slice coverage small 1.00, medium 1.00) unclear: repeated verse 5 0:49-1:03 (slice coverage small 1.00, medium 1.00, times 2/1) refuted: repeated verse 5 1:39-1:50 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.1588 / medium 0.1746; coverage small 0.9958 / medium 0.9621; duration 371.5s vs expected 380.4s (ratio 0.977); sha256 `0c5b61262221da8eb002cc88a1058c693163c42d3712a496c7b6755949efa449`
+- **Ezekiel 45** — missing verse 3 at 0:52–0:55 — "measure a section about seven miles long and about three miles wide The temple the Most Holy Place will be in it It is a holy part of the land It will belong to the priests who serve in the temple and come near to serve the LORD It will be a place for their houses and a holy place …" (small.en)
+- **Ezekiel 45** — missing verse 12 at 2:16 — "gerahs Sixty shekels will make one mina This is the gift you must offer one sixtieth of your wheat and one sixtieth of your barley And this is the set amount of olive oil one hundredth" (medium.en)
+  - audio check: confirmed: missing verse 3 0:17-0:26 (slice coverage small 0.17, medium 0.17) refuted: missing verse 12 2:02-2:11 (slice coverage small 0.92, medium 0.92)
+  - WER small 0.1294 / medium 0.1035; coverage small 0.8719 / medium 0.903; duration 259.16s vs expected 309.2s (ratio 0.838); sha256 `3f2124b37aaedf8c27a524f4ebaf6666c92f6290f34fdbe1a6fb707a5491c0af`
+- **Ezekiel 46** — missing verse 19 at 3:54 — "There I saw a place at the far west end He said to me This is the place where the priests will boil the meat of the guilt offerings and sin offerings and bake the grain offerings That way they won't carry them out into the outer courtyard where their holiness could touch the people Then he brought me out …" (small.en+medium.en)
+- **Ezekiel 46** — repeated verse 7 at 1:12–1:14 — "He will give a hen of olive oil with" (small.en+medium.en)
+  - audio check: confirmed: missing verse 19 3:23-3:32 (slice coverage small 0.17, medium 0.17) refuted: repeated verse 7 1:11-1:20 (slice coverage small 0.89, medium 0.89, times 0/0)
+  - WER small 0.1203 / medium 0.1725; coverage small 0.8797 / medium 0.842; duration 260.99s vs expected 329.2s (ratio 0.793); sha256 `62236e77a530f663a1c669f6f8b95a20a3a902067ef6511a665350a2f8101875`
+- **Ezekiel 47** — repeated verse 4 at 0:35–0:37 — "1 500 feet and led me" (small.en)
+- **Ezekiel 47** — repeated verse 4 at 0:35–0:37 — "1500 feet and led me" (medium.en)
+  - audio check: refuted: repeated verse 4 0:34-0:43 (slice coverage small 0.00, medium 0.67, times 0/0) confirmed: repeated verse 4 0:34-0:43 (slice coverage small 1.00, medium 1.00, times 2/2)
+  - WER small 0.0386 / medium 0.0445; coverage small 0.9629 / medium 0.9599; duration 227.71s vs expected 269.6s (ratio 0.845); sha256 `04c35e10176549faf78f2bb44e3ae5d0a736fe03db739a29c3ff90c8454a59d0`
+- **Ezekiel 48** — missing verse 26 at 3:45 — "Zebulun will have one share" (small.en+medium.en)
+  - audio check: unclear: missing verse 26 3:36-3:46 (slice coverage small 0.20, medium 0.80)
+  - WER small 0.0372 / medium 0.2415; coverage small 0.9661 / medium 0.7607; duration 298.84s vs expected 366.0s (ratio 0.816); sha256 `05b3ce38c5a4c3305698f47eba0c5d4b7b361b37953f01c0a7d4a3de27937c65`
 
 ## UNCERTAIN
 
@@ -4985,6 +5024,15 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Ezekiel 38** — audio slice contains the disputed words; the models still disagree (coverage small 0.990, medium 0.925)
   - audio check: refuted: missing verse 15 2:21-2:30 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.990, medium 0.925); WER small 0.0135 / medium 0.0811; coverage small 0.9895 / medium 0.9249; sha256 `518dda604ea475932e5b4c9c74a6c4bfbbba9a1261261fd5c31db7eda6fbf2c4`
+- **Ezekiel 40** — audio slice contains the disputed words; the models still disagree (coverage small 0.929, medium 0.897)
+  - audio check: refuted: repeated verse 33 5:04-5:17 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.929, medium 0.897); WER small 0.0722 / medium 0.1097; coverage small 0.9286 / medium 0.8975; sha256 `498a66d9b0e054da24269e05254b9346b80b22ee794497ea32436147a79be960`
+- **Ezekiel 41** — audio slice contains the disputed words; the models still disagree (coverage small 0.971, medium 0.648)
+  - audio check: refuted: repeated verse 15 2:28-2:38 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.971, medium 0.648); WER small 0.0343 / medium 0.3518; coverage small 0.971 / medium 0.6482; sha256 `4be4bdc1106ef5610131fc4b253e57f67e348c27d5d6de310fbfaf665633309e`
+- **Ezekiel 42** — audio slice contains the disputed words; the models still disagree (coverage small 0.946, medium 0.656)
+  - audio check: refuted: repeated verse 17 2:31-2:41 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.946, medium 0.656); WER small 0.0545 / medium 0.3459; coverage small 0.9455 / medium 0.656; sha256 `8e7d688411ab60f7a778ce1369f2b8f1af8e182d95dfe4b57377fa2f30337501`
 
 ## Script
 
