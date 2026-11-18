@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 870
-- PASS: 52
-- FAIL: 489
-- UNCERTAIN: 329 (jsonl verdict UNSURE)
-- Still to score: 59 Old Testament chapters
+- Scored chapters: 880
+- PASS: 53
+- FAIL: 493
+- UNCERTAIN: 334 (jsonl verdict UNSURE)
+- Still to score: 49 Old Testament chapters
 
 ## PASS
 
-52 chapters. Both models agreed there was no missing, invented, or repeated passage.
+53 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -84,6 +84,7 @@ words clears that span. A split slice stays UNCERTAIN.
 - Isaiah 31
 - Jeremiah 18, 43
 - Ezekiel 11, 25
+- Hosea 12
 
 ## FAIL
 
@@ -4080,6 +4081,32 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Hosea 7** — missing verse 1 at 0:26–0:28 — "Whenever I want to heal Israel Ephraim's sins and Samaria's evil come out They lie to each other Thieves break into houses and gangs of robbers attack in the streets They don't stop to think that I remember all the evil they do Now their sins are all around them I can see everything they do They make the king …" (small.en+medium.en)
   - audio check: confirmed: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00)
   - WER small 0.1901 / medium 0.2173; coverage small 0.8099 / medium 0.7852; duration 141.48s vs expected 162.0s (ratio 0.873); sha256 `5d2fa97f5234475bf6dd2190589d7e92a5d73c82486a3ba7c74b93a9f08a3300`
+- **Hosea 13** — inserted verse 12 at 1:46–3:01 — "Even now I know what they're for They remember that I am God but they forgot the land of Israel They they forgot the land of Judah they forgot the land of Edom they forgot the p tenders they forgot the covenant with Abraham they forgot the covenant with A Noah they forgot the covenant with Abraham they forgot the …" (small.en+medium.en)
+- **Hosea 13** — repeated verse 12 at 2:04–2:09 — "they forgot the covenant with Abraham they forgot the covenant with A Noah" (small.en+medium.en)
+- **Hosea 13** — repeated verse 12 at 2:10–2:13 — "They forgot the land of Israel they" (small.en+medium.en)
+- **Hosea 13** — repeated verse 12 at 2:15–2:19 — "They forgot the covenant with Abraham They forgot the" (small.en+medium.en)
+- **Hosea 13** — repeated verse 12 at 2:44–2:47 — "You shall find him and you will repent of your sins and" (small.en+medium.en)
+  - audio check: unclear: inserted verse 12 1:45-2:09 (slice coverage small 1.00, medium 0.00) refuted: repeated verse 12 2:03-2:15 (slice coverage small 0.61, medium 1.00, times 0/1) refuted: repeated verse 12 2:43-2:53 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.5403 / medium 0.6015; coverage small 0.9731 / medium 0.8289; duration 228.99s vs expected 163.6s (ratio 1.4); sha256 `c3a6666c0ee828437396a51630e289acf167adced484a014b2d8c0e9ae9989ce`
+- **Joel 1** — missing verse 13 at 2:18 — "Come and spend the night in sackcloth you who serve my God There are no more grain offerings or drink offerings at the house of your God Set apart a time" (small.en)
+- **Joel 1** — missing verse 11 at 1:33 — "upset you farmers Cry you who grow grapes Cry for the wheat and the barley because the harvest in the fields is lost" (medium.en)
+  - audio check: refuted: missing verse 13 2:05-2:14 (slice coverage small 1.00, medium 1.00) confirmed: missing verse 11 1:24-1:33 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.0775 / medium 0.1047; coverage small 0.9283 / medium 0.8992; duration 203.9s vs expected 206.4s (ratio 0.988); sha256 `406079866f6811c108616fe26c9f6afe251992e0af3cd17c884fa26f211fc0df`
+- **Joel 3** — silence verse ? at 1:27–1:30 — "and come, all you nations around here. Gather together there. Lord brings" (waveform)
+- **Joel 3** — inserted verse 10 at 1:30–1:53 — "Lord brings you all and we wage war Tear up and press fervincingly unite making the world ready betting all the nations to go and gather their fights to them Tear up and press making the world ready to battle we wage war marching forward without wids unparalleled in widmen and men sound" (small.en+medium.en)
+- **Joel 3** — inserted verse 10 at 1:53–1:57 — "sound of your horn braves and yes break your horns" (small.en+medium.en)
+- **Joel 3** — inserted verse 11 at 2:01–2:05 — "wage but as you stand in a battlefield in your home bruise" (small.en+medium.en)
+- **Joel 3** — inserted verse 11 at 2:05–2:42 — "hearts and minds of intimate men of any case or nation and embrace that as a beating of the settling great architect of Kayla Then comes and brings us to these moments He wages in mortal battle against us and he casts us in fate of great prudence but he lives on and will not any further of his actions …" (small.en+medium.en)
+- **Joel 3** — inserted verse 21 at 4:16–4:52 — "The Lord lives in Zion The Lord lives in Zion The Lord lives in Zion The Lord lives in Zion The Lord lives in Zion The Lord lives in Zion The Lord lives in Zion The Lord lives in Zion The Lord lives in Zion The Lord lives in Zion The Lord lives in Zion The Lord lives in Zion …" (small.en+medium.en)
+- **Joel 3** — inserted verse 21 at 5:00–5:12 — "Lord lives in Zion Zion lives in Zion" (small.en+medium.en)
+- **Joel 3** — repeated verse 21 at 4:20–5:27 — "The Lord lives in Zion The Lord lives in Zion The Lord lives in Zion The Lord lives in Zion The Lord lives in Zion The Lord lives in Zion The Lord lives in Zion The Lord lives in Zion The Lord lives in Zion The Lord lives in Zion The Lord lives in Zion The Lord lives in Zion …" (small.en+medium.en)
+  - audio check: refuted: repeated verse 21 4:19-4:43 (slice coverage small 0.21, medium 0.08, times 0/0) confirmed: inserted verse 11 2:04-2:28 (slice coverage small 1.00, medium 0.96) refuted: inserted verse 21 4:15-4:39 (slice coverage small 0.21, medium 0.21)
+  - WER small 0.6552 / medium 0.4686; coverage small 0.7581 / medium 0.8229; duration 332.63s vs expected 210.0s (ratio 1.584); sha256 `3c2cf7d34e95ec5f43e7a981fd05f6aad34572216dd64a45c91771b50cc33ec1`
+- **Amos 1** — silence verse ? at 0:31–0:34 — "silence" (waveform)
+- **Amos 1** — inserted verse 3 at 0:30–0:38 — "or four The Lord says Damasus has sinned again and again three or" (small.en+medium.en)
+- **Amos 1** — inserted verse 3 at 0:42–1:39 — "cast off the faces of their fair deeds of Carian They lived in Tovar Dagorri down the drain and the very niece breathed into a bribal and a new king rises into the throne The very niece breathed into a Brival and a new king rises into the throne The very niece breathed into a Brival and a new king …" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 3 0:41-1:05 (slice coverage small 0.88, medium 0.88) unclear: inserted verse 3 0:29-0:44 (slice coverage small 1.00, medium 0.23)
+  - WER small 0.4606 / medium 0.1088; coverage small 0.9606 / medium 0.8912; duration 222.76s vs expected 172.8s (ratio 1.289); sha256 `ab6795febe98bcde20fae41a26bd2d48755e60ba19a39bd43267cd92f1321dec`
 
 ## UNCERTAIN
 
@@ -5106,6 +5133,21 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Hosea 8** — missing verse 1 at 0:00–0:02 — "Put the trumpet to your lips Something like an eagle is coming over the LORD's house because my people have broken my covenant and turned against my law They cry out to me Our God we in Israel know you But Israel has thrown away what is good The enemy will chase after them They chose kings without me They …" (medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00) refuted: missing verse 7 0:50-1:00 (slice coverage small 1.00, medium 1.00)
   - small.en only: missing 'Their grain has no heads on it'; medium.en only: missing 'Put the trumpet to your lips Something like an eagle is coming over the LORD's house because my people have broken my covenant and turned against my law They cry out to me Our God we in Israel know you But Israel has thrown away what is good The enemy will chase after them They chose kings without me They …'; coverage unclear (small 0.975, medium 0.384; pass needs both >= 0.96); WER backstop on one model (small 0.025, medium 0.616); WER small 0.0248 / medium 0.6161; coverage small 0.9752 / medium 0.3839; sha256 `6269af8c0872a880319f6d830bcb6fd3533a13c4517dfc3d2215a412a65ca93d`
+- **Hosea 9** — audio slice contains the disputed words; the models still disagree (coverage small 0.990, medium 0.546)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.990, medium 0.546); WER small 0.0167 / medium 0.454; coverage small 0.9895 / medium 0.546; sha256 `d7c418a1277fa0bcfbb31b29c50b9dd1fcf779c12dc83fd2cfe9f2ab6ba3ee6c`
+- **Hosea 10** — missing verse 1 at 0:00–0:02 — "Israel was like a healthy grapevine full of fruit But the more fruit it grew the more altars it built The better their land did the fancier they made their sacred stones Their hearts are not loyal to God Now they must pay for their guilt The LORD will tear down their altars and destroy their sacred stones Soon they …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'Israel was like a healthy grapevine full of fruit But the more fruit it grew the more altars it built The better their land did the fancier they made their sacred stones Their hearts are not loyal to God Now they must pay for their guilt The LORD will tear down their altars and destroy their sacred stones Soon they …'; coverage unclear (small 0.993, medium 0.769; pass needs both >= 0.96); WER small 0.009 / medium 0.233; coverage small 0.9932 / medium 0.7692; sha256 `ee49db190712f3df1cdeb5b3a829332816b6d3ded788a5b65641ee8be5dba1b7`
+- **Hosea 11** — audio slice contains the disputed words; the models still disagree (coverage small 0.987, medium 0.353)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.987, medium 0.353); WER small 0.0158 / medium 0.653; coverage small 0.9874 / medium 0.3533; sha256 `cf2e1a6e614b83d3d5d37d9a64e34e40662c05689e4f5081b3ab099e2a3a3a16`
+- **Hosea 14** — missing verse 1 at 0:00–0:02 — "Israel come back to the LORD your God Your sins have made you fall Bring your words with you and come back to the LORD Say to him Forgive all our sins Accept what is good and we will praise you with our lips Assyria can't save us We won't trust in war horses We will never again say our …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'Israel come back to the LORD your God Your sins have made you fall Bring your words with you and come back to the LORD Say to him Forgive all our sins Accept what is good and we will praise you with our lips Assyria can't save us We won't trust in war horses We will never again say our …'; coverage unclear (small 0.988, medium 0.667; pass needs both >= 0.96); WER small 0.0163 / medium 0.3415; coverage small 0.9878 / medium 0.6667; sha256 `385a4f082082e3296d60f96959b82586338f622e9a5acca85f3798b91de633ee`
+- **Joel 2** — audio slice contains the disputed words; the models still disagree (coverage small 0.980, medium 0.727)
+  - audio check: refuted: missing verse 20 3:01-3:11 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.980, medium 0.727); WER small 0.0256 / medium 0.29; coverage small 0.98 / medium 0.7267; sha256 `105d9cfa82e276d35ee2e18022ea8a8837789ec5f25d47ed9ee27b430c1d90b5`
 
 ## Script
 
