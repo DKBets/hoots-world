@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 340
+- Scored chapters: 350
 - PASS: 8
-- FAIL: 229
-- UNCERTAIN: 103 (jsonl verdict UNSURE)
-- Still to score: 589 Old Testament chapters
+- FAIL: 237
+- UNCERTAIN: 105 (jsonl verdict UNSURE)
+- Still to score: 579 Old Testament chapters
 
 ## PASS
 
@@ -2050,6 +2050,49 @@ words clears that span. A split slice stays UNCERTAIN.
   - WER small 0.1856 / medium 0.4614; coverage small 0.8227 / medium 0.5501; duration 301.78s vs expected 243.6s (ratio 1.239); sha256 `6e6369913e1157fb9408ac93a9c6459b5a75467e27733ad7bdf3e85daa26f6fe`
 - **1 Chronicles 2** — coverage low on both models (small 0.864, medium 0.707); models also disagree on other spans; agreed defects still fail the chapter
   - WER small 0.144 / medium 0.2986; coverage small 0.8642 / medium 0.7073; duration 361.64s vs expected 341.6s (ratio 1.059); sha256 `3546462690eb3c7ae10f9c4ee6eef7539a00c3415fa4bc86c77d7ec6cdd79c5d`
+- **1 Chronicles 3** — silence verse ? at 1:41–1:46 — "silence" (waveform)
+- **1 Chronicles 3** — missing verse 3 at 0:53 — "Eglah These six sons were born to David in Hebron where he ruled for seven years and six months Then he ruled in Jerusalem for thirty three years These sons were born to him in Jerusalem Shimea Shobab Nathan and Solomon Their mother was Bathshua the daughter of Ammiel That was four sons David also had Ibhar Elishama Eliphelet Nogah …" (small.en+medium.en)
+- **1 Chronicles 3** — inserted verse 16 at 1:54–1:59 — "Johanan the oldest Johiki the second Selimony the third" (small.en+medium.en)
+- **1 Chronicles 3** — inserted verse 17 at 2:02–2:17 — "of Josiah were Johanan the oldest Johiki the second Selimony the third and Shallowat was the fifth When it stands for the math connection David Blaise Army General Jerram makes all the great names and places in the places" (small.en+medium.en)
+- **1 Chronicles 3** — inserted verse 17 at 2:18–2:52 — "table Jerom made great leaps in battle and places in the table Josiah the mathematics makes excellent plans and places in the numbers Josiah's son was made in Pharaoh's empire named well as mathematics Josiah's son was made in Pharaoh's empire named well as mathematics Josiah's son was made in Pharaoh's empire named well as mathematics Josiah's son was made …" (small.en+medium.en)
+- **1 Chronicles 3** — inserted verse 17 at 2:53–4:13 — "made in Pharaoh's empire While he had a great name by name Josiah the sons of Josiah were Jesus and Zachariah While he had a great name by name Josiah the sons of Josiah were Jesus and Zachariah While he had a great name by name Josiah the sons of Josiah were Jesus and Zachariah While he had a great …" (small.en+medium.en)
+- **1 Chronicles 3** — repeated verse 17 at 2:34–2:54 — "Josiah's son was made in Pharaoh's empire named well as mathematics Josiah's son was made in Pharaoh's empire named well as mathematics Josiah's son was made in Pharaoh's empire named well as mathematics Josiah's son was made in Pharaoh's empire" (small.en+medium.en)
+- **1 Chronicles 3** — repeated verse 17 at 3:01–4:11 — "While he had a great name by name Josiah the sons of Josiah were Jesus and Zachariah While he had a great name by name Josiah the sons of Josiah were Jesus and Zachariah While he had a great name by name Josiah The sons of Josiah were Jesus and Zachariah While he had a great name by name Josiah …" (small.en+medium.en)
+  - audio check: unclear: inserted verse 17 2:52-3:16 (slice coverage small 1.00, medium 0.04) confirmed: repeated verse 17 3:00-3:24 (slice coverage small 1.00, medium 1.00, times 2/2) unclear: inserted verse 17 2:17-2:41 (slice coverage small 0.04, medium 0.88)
+  - WER small 0.9418 / medium 0.8545; coverage small 0.7328 / medium 0.172; duration 322.43s vs expected 151.2s (ratio 2.132); sha256 `ca25e3f89c061bd128059b000b38470f3c1d24136dddcef9099b9529813b9799`
+- **1 Chronicles 4** — coverage low on both models (small 0.811, medium 0.734); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1993 / medium 0.2814; coverage small 0.8107 / medium 0.7335; duration 315.35s vs expected 321.2s (ratio 0.982); sha256 `3a437dd8a9cd83d664ae1626c625b3687460e38ec9354418835134e774cf2a99`
+- **1 Chronicles 5** — inserted verse ? at 0:28 — "palu hezron and karmi the" (small.en+medium.en windows)
+- **1 Chronicles 5** — missing verse 1 at 0:29–0:30 — "These are the sons of Reuben Israel's oldest son Reuben was the oldest but he did a shameful thing against his father's marriage So his rights as the oldest son were given to the sons of Joseph Israel's son That is why Reuben is not listed in the family records as the oldest son Judah became the strongest of his …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00) confirmed: inserted verse ? 0:27-0:39 (slice coverage small 0.80, medium 0.80)
+  - WER small 0.0919 / medium 0.321; coverage small 0.9097 / medium 0.6839; duration 242.99s vs expected 248.0s (ratio 0.98); sha256 `914e1bf31d130aa00f4a64726e93c39a8a0e9c39d9c9c2b5e720cc4cba4fcf51`
+- **1 Chronicles 6** — missing verse 49 at 4:53 — "They did all the work in the Most Holy Place They made Israel right with God just as Moses God's servant had commanded These were the descendants of Aaron his son Eleazar Eleazar's son Phinehas Phinehas's son Abishua Abishua's son Bukki Bukki's son Uzzi Uzzi's son Zerahiah Zerahiah's son Meraioth Meraioth's son" (small.en+medium.en)
+  - audio check: confirmed: missing verse 49 4:32-4:41 (slice coverage small 0.08, medium 0.25)
+  - WER small 0.2913 / medium 0.2429; coverage small 0.7123 / medium 0.7708; duration 457.22s vs expected 438.0s (ratio 1.044); sha256 `dc75b4d70bdc08e40bafe0261025914b8d0d3f4288b7ad71f83852da75e7b03d`
+- **1 Chronicles 7** — coverage low on both models (small 0.820, medium 0.742); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1888 / medium 0.2608; coverage small 0.8199 / medium 0.7421; duration 330.28s vs expected 277.6s (ratio 1.19); sha256 `b0d4ecd6f085e992fa7e520c1e4cb0181b65618c8d6285c4fbc8c3ec0d9f64bd`
+- **1 Chronicles 8** — missing verse 37 at 2:58–3:00 — "Binea Binea's son was Raphah Raphah's" (small.en+medium.en)
+  - audio check: confirmed: missing verse 37 2:49-2:59 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.204 / medium 0.5144; coverage small 0.8093 / medium 0.49; duration 216.75s vs expected 180.4s (ratio 1.201); sha256 `7fbe182f74b56e0082202b5bf4f85bfc8a400a90a836cd26af7caf12c0478571`
+- **1 Chronicles 10** — missing verse 7 at 1:24–1:25 — "the Philistines came and lived in those towns The next day the Philistines came to take things from the soldiers who had died They found Saul and his sons lying dead on Mount Gilboa They took Saul's armor and his head They sent messengers all over the land of the Philistines to tell the good news to their idols and …" (medium.en)
+  - audio check: confirmed: missing verse 7 0:48-0:57 (slice coverage small 0.33, medium 0.08)
+  - WER small 0.0323 / medium 0.3783; coverage small 0.9707 / medium 0.6246; duration 114.43s vs expected 136.4s (ratio 0.839); sha256 `959160e7b8257996989e6eacb4e5d8975cfe572c7ba2769b1d2d9ec804068c7b`
+- **1 Chronicles 11** — silence verse ? at 3:10–3:17 — "silence" (waveform)
+- **1 Chronicles 11** — silence verse ? at 4:53–4:58 — "These were the brave things Benaiah son of" (waveform)
+- **1 Chronicles 11** — missing verse 22 at 4:00–4:17 — "brave man from Kabzeel who did" (small.en+medium.en)
+- **1 Chronicles 11** — missing verse 45 at 8:02 — "brother Joha the Tizite Eliel the Mahavite Jeribai and Joshaviah sons of Elnaam Ithmah from" (small.en+medium.en)
+- **1 Chronicles 11** — inserted verse 22 at 3:20–3:37 — "3 men were mighty soldiers from Kabsi He won against armies and enemies to end his blood and get into his bed He fought against Pharaoh's enemies and managed to beat his enemies in his bed He" (small.en+medium.en)
+- **1 Chronicles 11** — inserted verse 22 at 3:38–4:00 — "also known for God's blessings and favors He brought in more great works than any other known men of his age He served as a great fighter in God's age and gave his voice to name the names of his mighty works He also came into known men of great valor and set aside for himself to be a sacrifice …" (small.en+medium.en)
+- **1 Chronicles 11** — inserted verse 22 at 4:00–4:17 — "missile of the living idolizing and weeping for his brothers He brought in more great works than any other known men of his age He won several wars based on his actions and his angels blessings and favors He fought in wars with courage and valor and won" (small.en+medium.en)
+- **1 Chronicles 11** — inserted verse 22 at 4:17–4:25 — "fights and blood He bloodied the territory and blooded the people and causes to keep Israel and ended Russia's enemies" (small.en+medium.en)
+- **1 Chronicles 11** — inserted verse 24 at 4:58–5:17 — "Johadas dead for Israel The Lord sent an investigating NGO to ask David if his love was safe and ethical He saw after a salmon and ate breason pigs He set aside his idols and never bowed any favorsLCS and never ate any meat" (small.en+medium.en)
+- **1 Chronicles 11** — inserted verse 24 at 5:18–6:08 — "saved and aided an investigating NGO is land The king the 10 said the nation went down in vertigo and found that these guys are not worthy of dying on their own The king then called for David and said to the guard named Give me three warriors and one Briesen pig The nation waved back in favor and gave …" (small.en+medium.en)
+- **1 Chronicles 11** — repeated verse 22 at 4:04–4:08 — "He brought in more great works than any other known men of his age He" (small.en+medium.en)
+- **1 Chronicles 11** — repeated verse 24 at 5:52–5:54 — "David waved in favor and Joab" (small.en+medium.en)
+- **1 Chronicles 11** — repeated verse 24 at 5:55–6:00 — "a gift of double adoption David waved in favor and Joab gave him" (small.en+medium.en)
+- **1 Chronicles 11** — repeated verse 24 at 6:00–6:08 — "a gift of double adoption David waved in favor and Joab gave him a gift of double adoption David" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 24 5:17-5:41 (slice coverage small 0.96, medium 0.96) confirmed: inserted verse 22 3:37-4:01 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 22 3:59-4:23 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.5028 / medium 0.647; coverage small 0.8808 / medium 0.6652; duration 487.04s vs expected 352.4s (ratio 1.382); sha256 `452830902cc6b7bf44960976ba2d635dfe52c9fc7054dd5f2c2b1f93b32c3128`
 
 ## UNCERTAIN
 
@@ -2376,6 +2419,13 @@ words clears that span. A split slice stays UNCERTAIN.
 - **2 Kings 18** — audio slice contains the disputed words; the models still disagree (coverage small 0.979, medium 0.782)
   - audio check: refuted: missing verse 2 0:06-0:16 (slice coverage small 0.80, medium 0.80)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.979, medium 0.782); WER small 0.0236 / medium 0.2236; coverage small 0.9791 / medium 0.7818; sha256 `8591971d232ea02c986fd701c6c209cd12d86ff8d18582e95eed5634bff0bf15`
+- **1 Chronicles 9** — inserted verse 11 at 1:20–2:16 — "Son of Me ya Son of Me ya Son of Eha a Son of Mena ya Son of A ya Son of Me ya Son of Mena ya Son of Mena ya Son of Mena ya Son of Mena ya Son of Mena ya Son of Mena ya Son of Mena ya Son of Mena ya Son of Mena Son …" (small.en)
+- **1 Chronicles 9** — missing verse 1 at 0:29–0:30 — "All Israel was listed in family records These are written in the Book of the Kings of Israel The people of Judah were taken away as prisoners to Babylon because they were not faithful to God The first people to move back to their own land and towns were Israelites priests Levites and temple servants Some people from the tribes …" (medium.en)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) unclear: inserted verse 11 1:19-1:43 (slice coverage small 0.50, medium 0.50)
+  - small.en only: inserted 'Son of Me ya Son of Me ya Son of Eha a Son of Mena ya Son of A ya Son of Me ya Son of Mena ya Son of Mena ya Son of Mena ya Son of Mena ya Son of Mena ya Son of Mena ya Son of Mena ya Son of Mena ya Son of Mena Son …'; medium.en only: missing 'All Israel was listed in family records These are written in the Book of the Kings of Israel The people of Judah were taken away as prisoners to Babylon because they were not faithful to God The first people to move back to their own land and towns were Israelites priests Levites and temple servants Some people from the tribes …'; coverage unclear (small 0.902, medium 0.762; pass needs both >= 0.96); WER small 0.1684 / medium 0.2705; coverage small 0.9024 / medium 0.7621; sha256 `77ca00bdb7fed1d86a17a2556ba98d8884325b0ca8de20b57e4cb09c19789643`
+- **1 Chronicles 12** — audio slice contains the disputed words; the models still disagree (coverage small 0.865, medium 0.868)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.92)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.865, medium 0.868); WER small 0.1427 / medium 0.1381; coverage small 0.8653 / medium 0.8676; sha256 `197665aa06dc06ae14b72ac4975267c854a3e582cca814b1ba5c93449d7c28dc`
 
 ## Script
 
