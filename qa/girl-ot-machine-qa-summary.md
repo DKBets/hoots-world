@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 150
+- Scored chapters: 160
 - PASS: 5
-- FAIL: 96
-- UNCERTAIN: 49 (jsonl verdict UNSURE)
-- Still to score: 779 Old Testament chapters
+- FAIL: 102
+- UNCERTAIN: 53 (jsonl verdict UNSURE)
+- Still to score: 769 Old Testament chapters
 
 ## PASS
 
@@ -741,6 +741,35 @@ words clears that span. A split slice stays UNCERTAIN.
   - WER small 0.457 / medium 0.4516; coverage small 0.9304 / medium 0.7878; duration 449.71s vs expected 367.6s (ratio 1.223); sha256 `d8d28c9cce3f8dd8e82f674c17016f4dfea4b2707298bc96658c57f971662339`
 - **Numbers 33** — coverage low on both models (small 0.803, medium 0.836); models also disagree on other spans; agreed defects still fail the chapter
   - WER small 0.2093 / medium 0.1747; coverage small 0.8027 / medium 0.836; duration 294.57s vs expected 300.0s (ratio 0.982); sha256 `5f104e8c6b1e57fa7ccb8d3d55bbfd3dfa49093f609273d4f03b87aefef21f83`
+- **Numbers 34** — inserted verse ? at 0:21 — "adar and over to asman" (small.en+medium.en windows)
+- **Numbers 34** — missing verse 8 at 1:19 — "Hor to Lebo Hamath Then the border will go to Zedad continue to Ziphron and end at Hazar Enan That will be your northern border For your eastern border draw a line from Hazar Enan to Shepham The border will go down from Shepham to Riblah on the east side of Ain Then it will continue along the slopes east …" (medium.en)
+  - audio check: refuted: missing verse 8 0:49-0:58 (slice coverage small 0.75, medium 0.83) confirmed: inserted verse ? 0:20-0:32 (slice coverage small 1.00, medium 0.80)
+  - WER small 0.0637 / medium 0.4246; coverage small 0.9427 / medium 0.7622; duration 180.31s vs expected 188.4s (ratio 0.957); sha256 `9a1aa5f4169340697c45e46aae00c93945ac507d453cddf8ea382b98393f208e`
+- **Numbers 36** — missing verse 6 at 1:09 — "This is what the LORD commands about Zelophehad's daughters They may marry anyone they choose as long as they marry within their father's tribe No land in Israel may pass from one tribe to another" (small.en)
+- **Numbers 36** — missing verse 11 at 1:35 — "Hoglah Milcah and Noah Zelophehad's daughters married their cousins on their father's side" (medium.en)
+  - audio check: refuted: missing verse 6 0:55-1:04 (slice coverage small 0.92, medium 0.92) confirmed: missing verse 11 1:26-1:36 (slice coverage small 0.08, medium 0.17)
+  - WER small 0.128 / medium 0.0823; coverage small 0.872 / medium 0.9512; duration 117.89s vs expected 131.2s (ratio 0.899); sha256 `467e628678b3d59d258849d88250ee42f183a3a03790a7ce13a768ea62f73e25`
+- **Deuteronomy 1** — missing verse 1 at 0:02–0:05 — "These are the words Moses spoke to all Israel in the desert" (small.en+medium.en)
+- **Deuteronomy 1** — missing verse 42 at 5:53 — "with you Your enemies will defeat you" (small.en+medium.en)
+  - audio check: confirmed: missing verse 1 0:00-0:03 (slice coverage small 0.08, medium 0.00) confirmed: missing verse 42 5:44-5:54 (slice coverage small 0.29, medium 0.29)
+  - WER small 0.1768 / medium 0.1989; coverage small 0.8294 / medium 0.809; duration 357.38s vs expected 452.4s (ratio 0.79); sha256 `f014fa24cd669dbc801d9c79a275f4d6f77ba1d514a2d35413ee4cab3421923f`
+- **Deuteronomy 2** — missing verse 7 at 3:04–3:07 — "walked through this huge desert" (small.en+medium.en)
+- **Deuteronomy 2** — inserted verse 6 at 0:41–2:41 — "The Lord your God has blessed everything you have done The prosperous prosperity of these lands is a prosperous fortune The Lord your God has blessed everything you have done The prosperous fortune is a prosperous fire The Lord your God has blessed everything you have done The Lord your God has blessed everything you have done The prosperous fire …" (small.en+medium.en)
+- **Deuteronomy 2** — inserted verse 7 at 3:01–3:04 — "have done The Lord your God has blessed everything" (small.en+medium.en)
+- **Deuteronomy 2** — inserted verse 7 at 3:04–3:07 — "have done The Lord your God has blessed you" (small.en+medium.en)
+- **Deuteronomy 2** — repeated verse 6 at 0:49–0:53 — "Lord your God has blessed everything you have done The prosperous" (small.en+medium.en)
+- **Deuteronomy 2** — repeated verse 6 at 0:55–0:59 — "The Lord your God has blessed everything you have done The" (small.en+medium.en)
+- **Deuteronomy 2** — repeated verse 6 at 0:58–1:02 — "The Lord your God has blessed everything you have done The prosperous" (small.en+medium.en)
+- **Deuteronomy 2** — repeated verse 6 at 1:05–2:55 — "The Lord your God has blessed everything you have done The Lord your God has blessed everything you have done The Lord your God has blessed everything you have done The Lord your God has blessed everything you have done The Lord your God has blessed everything you have done The Lord your God has blessed everything you have done …" (small.en+medium.en)
+- **Deuteronomy 2** — repeated verse 7 at 2:57–3:06 — "have done The Lord your God has blessed everything you have done The Lord your God has blessed everything you have done The Lord your God has blessed" (small.en+medium.en)
+- **Deuteronomy 2** — repeated verse 7 at 3:09–3:10 — "the Lord your God has" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 6 0:40-1:04 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 6 1:04-1:28 (slice coverage small 0.00, medium 0.42, times 0/0) refuted: repeated verse 7 2:56-3:12 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.2591 / medium 0.5183; coverage small 0.9668 / medium 0.7231; duration 437.29s vs expected 361.2s (ratio 1.211); sha256 `2872f8668a936deef568f367318b879f58aed1f10b80f862438dbce174665b36`
+- **Deuteronomy 4** — coverage low on both models (small 0.891, medium 0.850); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1136 / medium 0.1527; coverage small 0.8907 / medium 0.8502; duration 472.49s vs expected 552.8s (ratio 0.855); sha256 `c546a0f1783314243387e25c82f95f665d90e175ce51339ebc1a6b11c0e803c0`
+- **Deuteronomy 7** — missing verse 1 at 0:29–0:30 — "The LORD your God will bring you into the land you are going to take over He will drive out many nations ahead of you the Hittites Girgashites Amorites Canaanites Perizzites Hivites and Jebusites These are seven nations bigger and stronger than you When the LORD your God gives them to you and you defeat them you must destroy them …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.17)
+  - WER small 0.1089 / medium 0.1232; coverage small 0.8923 / medium 0.8833; duration 259.11s vs expected 308.4s (ratio 0.84); sha256 `174d6ecf52e1bc18d1aa11c4115c445d35b1bec520fb6717baf11443e5d7c871`
 
 ## UNCERTAIN
 
@@ -900,6 +929,20 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Numbers 27** — audio slice contains the disputed words; the models still disagree (coverage small 0.818, medium 0.839)
   - audio check: refuted: repeated verse 21 2:34-2:43 (slice coverage small 1.00, medium 1.00, times 1/1) refuted: repeated verse 22 2:51-3:00 (slice coverage small 1.00, medium 1.00, times 1/1)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.818, medium 0.839); WER small 0.1922 / medium 0.1725; coverage small 0.8176 / medium 0.8392; sha256 `941b4576234434cd7b05baa7e510865a70dd50364aed457dcc5e8a3dd06d551e`
+- **Numbers 35** — audio slice contains the disputed words; the models still disagree (coverage small 0.986, medium 0.803)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.92)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.986, medium 0.803); WER small 0.0213 / medium 0.205; coverage small 0.9858 / medium 0.8033; sha256 `8f5b85a1730984f5227b99340e0b2b2acda1c714fc11cc41e513390f2a800e4c`
+- **Deuteronomy 3** — missing verse 1 at 0:28–0:30 — "Next we turned and went up the road toward Bashan Og king of Bashan came out with his whole army to fight us at Edrei The LORD said to me Don't be afraid of him I have given him his whole army and his land to you Do to him what you did to Sihon king of the Amorites who …" (small.en)
+- **Deuteronomy 3** — missing verse 2 at 0:19 — "Amorites who ruled in Heshbon" (medium.en)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.83) unclear: missing verse 2 0:10-0:20 (slice coverage small 0.60, medium 0.00)
+  - small.en only: missing 'Next we turned and went up the road toward Bashan Og king of Bashan came out with his whole army to fight us at Edrei The LORD said to me Don't be afraid of him I have given him his whole army and his land to you Do to him what you did to Sihon king of the Amorites who …'; medium.en only: missing 'Amorites who ruled in Heshbon'; coverage unclear (small 0.832, medium 0.965; pass needs both >= 0.96); WER small 0.1684 / medium 0.0427; coverage small 0.8316 / medium 0.965; sha256 `62f245ad4d9d895df7d452ebd771821db2dc5ddc576fee91d7c93d7ed56db741`
+- **Deuteronomy 5** — cue verse 4 at 0:24 — "from the top" (small.en)
+- **Deuteronomy 5** — missing verse 1 at 0:02 — "Moses called all Israel together and said Listen Israel to the rules and laws I am telling you today Learn them and be sure to obey them The LORD our God made a promise with us at Mount Horeb The LORD did not make this promise only with our ancestors but with us all of us who are alive here …" (medium.en)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - small.en only: cue 'from the top'; medium.en only: missing 'Moses called all Israel together and said Listen Israel to the rules and laws I am telling you today Learn them and be sure to obey them The LORD our God made a promise with us at Mount Horeb The LORD did not make this promise only with our ancestors but with us all of us who are alive here …'; coverage unclear (small 0.990, medium 0.880; pass needs both >= 0.96); WER small 0.0128 / medium 0.1253; coverage small 0.9898 / medium 0.8798; sha256 `87ee4e0a052fea56be2f6495383d78453ea57553efbd6606da4db4c74622ccdb`
+- **Deuteronomy 6** — missing verse 3 at 0:27 — "things will go well for you and you will grow into a great nation in a land flowing with milk and honey just as the LORD the God of your ancestors promised you Listen" (medium.en)
+  - audio check: unclear: missing verse 3 0:13-0:22 (slice coverage small 0.25, medium 0.42)
+  - medium.en only: missing 'things will go well for you and you will grow into a great nation in a land flowing with milk and honey just as the LORD the God of your ancestors promised you Listen'; coverage unclear (small 0.993, medium 0.534; pass needs both >= 0.96); WER backstop on one model (small 0.009, medium 0.473); WER small 0.0089 / medium 0.4734; coverage small 0.9929 / medium 0.5337; sha256 `6e91a612ebef3e707a2b9d8600cbb6533c4e26238e2a64ca953da77813303c92`
 
 ## Script
 
