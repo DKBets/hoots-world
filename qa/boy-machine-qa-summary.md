@@ -57,12 +57,12 @@ one full-file pass skipped.
 
 ## Counts
 
-- Scored chapters: 1
+- Scored chapters: 4
 - PASS: 0
 - FAIL: 1
-- UNSURE: 0
-- By list: priority-add 1, stt-suspect 0, nt 0, ot 0
-- Still to score: 1185 (suspect 45, nt 212, ot 928, priority-add 0)
+- UNSURE: 3
+- By list: priority-add 1, stt-suspect 3, nt 0, ot 0
+- Still to score: 1182 (suspect 42, nt 212, ot 928, priority-add 0)
 
 ## FAIL
 
@@ -71,7 +71,12 @@ one full-file pass skipped.
 
 ## UNSURE
 
-None.
+- **Matthew 3** — missing verse 4 at 0:56 — "He ate locusts and wild honey. People came out to him from Jerusalem" (medium.en)
+  - coverage unclear (small 0.990, medium 0.836); pass needs both >= 0.96; medium.en only misses the locusts-and-honey stretch; small.en coverage 0.990; window phrase was the source line with path/paths and was not counted; WER small 0.0169 / medium 0.1783; coverage small 0.9904 / medium 0.8361; sha256 `b56b8b4b20f79383e207f8b244138292bbde72a081945f87ac6c03fa72dffc76`
+- **Matthew 5** — coverage verse 1 at 0:02–0:06 — "Jesus saw the crowds, so he went up on a hill and sat down. Said once in the opening." (slice check)
+  - models flagged verse 1 as an inserted repeat; a 0-18s slice says that sentence once; coverage unclear (small 0.906, medium 0.796); WER small 0.1092 / medium 0.2331; coverage small 0.9056 / medium 0.7956; sha256 `6f46486c995d1c0e278d09d353187ff381758b04da143989f1ddd24d484c52e7`
+- **Matthew 6** — missing verse 27 at 4:06 — "worrying And why do you worry about clothes Look at how the wildflowers grow They don't work or make their own clothes" (medium.en)
+  - medium.en only: missing 'worrying And why do you worry about clothes Look at how the wildflowers grow They don't work or make their own clothes'; WER small 0.0037 / medium 0.0362; coverage small 0.9988 / medium 0.97; sha256 `17878fa585ee86dd8f01a9d5e2764d16ed848b6f3190d271d4ba26ebe42d5b23`
 
 ## Script
 

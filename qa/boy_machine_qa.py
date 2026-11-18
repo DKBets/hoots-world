@@ -1092,10 +1092,14 @@ def shared_extra_phrase(models: dict, audio: np.ndarray, ref_norms: list[str], s
     """
     if audio.size < sr * 8:
         return None
-    ref_grams = {
-        tuple(ref_norms[i : i + SPAN_MIN])
-        for i in range(max(0, len(ref_norms) - SPAN_MIN + 1))
-    }
+    def in_source(gram: tuple[str, ...]) -> bool:
+        # path/paths and other one-edit slips are the source line, not an extra.
+        span = len(gram)
+        for i in range(max(0, len(ref_norms) - span + 1)):
+            if all(tokens_equal(gram[k], ref_norms[i + k]) for k in range(span)):
+                return True
+        return False
+
     found = {SMALL: {}, MEDIUM: {}}
     limit = min(audio.size / sr, 36.0)
     start = 0.0
@@ -1107,7 +1111,7 @@ def shared_extra_phrase(models: dict, audio: np.ndarray, ref_norms: list[str], s
             norms = [tok[0] for tok in words_to_hyp(words)]
             for i in range(len(norms) - SPAN_MIN + 1):
                 gram = tuple(norms[i : i + SPAN_MIN])
-                if gram in ref_grams or gram in found[name]:
+                if gram in found[name] or in_source(gram):
                     continue
                 content = [w for w in gram if w not in FUNC and not w.isdigit()]
                 if len(content) < 2:
