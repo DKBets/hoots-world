@@ -58,18 +58,18 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 100
-- PASS: 2
-- FAIL: 68
-- UNCERTAIN: 30 (jsonl verdict UNSURE)
-- Still to score: 829 Old Testament chapters
+- Scored chapters: 110
+- PASS: 5
+- FAIL: 71
+- UNCERTAIN: 34 (jsonl verdict UNSURE)
+- Still to score: 819 Old Testament chapters
 
 ## PASS
 
-2 chapters. Both models agreed there was no missing, invented, or repeated passage.
+5 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
-- Leviticus 8
+- Leviticus 8, 12, 17–18
 
 ## FAIL
 
@@ -464,6 +464,16 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Leviticus 10** — missing verse 6 at 1:21 — "Ithamar Don't mess up your hair" (medium.en)
   - audio check: confirmed: missing verse 6 1:12-1:22 (slice coverage small 0.17, medium 0.17)
   - WER small 0.0296 / medium 0.2693; coverage small 0.9754 / medium 0.7307; duration 206.04s vs expected 243.6s (ratio 0.846); sha256 `dde965a03648a1ef1741df6701e0c556741b55f0ffdec13ffe65e164eb83c3f4`
+- **Leviticus 14** — coverage low on both models (small 0.879, medium 0.855); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1205 / medium 0.1508; coverage small 0.8795 / medium 0.8545; duration 468.65s vs expected 607.6s (ratio 0.771); sha256 `44e351b9521504e968fce5bcc9dc1f533fd89bb20a2e3bcf8384ec159c53bd4e`
+- **Leviticus 15** — missing verse 11 at 1:11–1:12 — "they will not be clean until" (small.en)
+- **Leviticus 15** — missing verse 2 at 0:30 — "flow from his body because of sickness the flow makes him not clean Whether the flow keeps running or has stopped up it still makes him not clean Any bed he lies on and anything he sits on will not be clean Anyone who touches his bed must wash their clothes and bathe in water and they will not be …" (medium.en)
+  - audio check: unclear: missing verse 2 0:00-0:09 (slice coverage small 0.67, medium 0.00) confirmed: missing verse 11 1:02-1:12 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.0982 / medium 0.108; coverage small 0.9043 / medium 0.8957; duration 264.75s vs expected 326.0s (ratio 0.812); sha256 `03e8f7586fdfea36af9c729a1b53c701ff0be109dd39a0d6d0be98523a4a5e8a`
+- **Leviticus 20** — missing verse 11 at 1:37–1:40 — "Both of them must be put to death They are to blame for their own death If" (small.en)
+- **Leviticus 20** — missing verse 3 at 0:19 — "cut them off from their people By giving their child to Molech" (medium.en)
+  - audio check: refuted: missing verse 11 1:28-1:38 (slice coverage small 1.00, medium 1.00) confirmed: missing verse 3 0:10-0:20 (slice coverage small 0.08, medium 0.00)
+  - WER small 0.0852 / medium 0.3369; coverage small 0.9161 / medium 0.6658; duration 241.62s vs expected 300.4s (ratio 0.804); sha256 `f3d1fb575fb91715d3582c155e9e5f9a904f91cda991243ab3094a3ae47094be`
 
 ## UNCERTAIN
 
@@ -562,6 +572,19 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Leviticus 5** — audio slice contains the disputed words; the models still disagree (coverage small 0.997, medium 0.844)
   - audio check: refuted: repeated verse 9 1:20-1:29 (slice coverage small 0.20, medium 1.00, times 0/1)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.997, medium 0.844); WER small 0.0068 / medium 0.2017; coverage small 0.9966 / medium 0.8441; sha256 `286fb5ed568e03a5b5bef565d8ac5a5cdbfdae3ec39c25d326a369bb0f7464cb`
+- **Leviticus 11** — missing verse 4 at 0:47 — "The camel chews its cud but does not have a split hoof so it is not clean for you The rock badger chews its cud but does not have a split hoof so it is not clean for you The rabbit chews its cud but does not have a split hoof so it is not clean for you The pig …" (medium.en)
+  - audio check: unclear: missing verse 4 0:09-0:18 (slice coverage small 0.42, medium 0.42)
+  - medium.en only: missing 'The camel chews its cud but does not have a split hoof so it is not clean for you The rock badger chews its cud but does not have a split hoof so it is not clean for you The rabbit chews its cud but does not have a split hoof so it is not clean for you The pig …'; coverage unclear (small 0.991, medium 0.797; pass needs both >= 0.96); WER small 0.0123 / medium 0.2051; coverage small 0.9908 / medium 0.7969; sha256 `bced34aaf819592427dd1edd86606d82a82ce4815d3931d7c712cbf06bcc7fc8`
+- **Leviticus 13** — audio slice contains the disputed words; the models still disagree (coverage small 0.929, medium 0.802)
+  - audio check: refuted: missing verse 16 2:11-2:20 (slice coverage small 0.83, medium 0.83)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.929, medium 0.802); WER small 0.072 / medium 0.203; coverage small 0.9292 / medium 0.802; sha256 `6b9f0385ce400b2f3eebeabe581f72108fcda298e4961e16269be281ec739164`
+- **Leviticus 16** — repeated verse 19 at 3:11–3:13 — "the uncleanliness of the Israelites" (small.en)
+- **Leviticus 16** — missing verse 1 at 0:00–0:02 — "The LORD spoke to Moses after the death of Aaron's two sons who died when they came too near the LORD The LORD said to Moses Tell your brother Aaron that he must not come whenever he wants into the Most Holy Place behind the curtain in front of the cover of mercy on the chest If he does he …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00) refuted: repeated verse 19 3:10-3:19 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - small.en only: repeated 'the uncleanliness of the Israelites'; medium.en only: missing 'The LORD spoke to Moses after the death of Aaron's two sons who died when they came too near the LORD The LORD said to Moses Tell your brother Aaron that he must not come whenever he wants into the Most Holy Place behind the curtain in front of the cover of mercy on the chest If he does he …'; coverage unclear (small 0.985, medium 0.769; pass needs both >= 0.96); WER small 0.0171 / medium 0.2343; coverage small 0.9848 / medium 0.7695; sha256 `f6b4a202520247c76fe78dfc6dbe4390af6f7979e08a393ba1eed99430e7262f`
+- **Leviticus 19** — audio slice contains the disputed words; the models still disagree (coverage small 0.903, medium 0.843)
+  - audio check: refuted: missing verse 7 0:28-0:37 (slice coverage small 0.92, medium 0.83)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.903, medium 0.843); WER small 0.0987 / medium 0.162; coverage small 0.9026 / medium 0.8429; sha256 `0b30946db278fd8035124be6efcf54b3d88080f7d798ef3953b9efde051dea7a`
 
 ## Script
 
