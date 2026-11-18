@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 50
+- Scored chapters: 60
 - PASS: 1
-- FAIL: 32
-- UNCERTAIN: 17 (jsonl verdict UNSURE)
-- Still to score: 879 Old Testament chapters
+- FAIL: 40
+- UNCERTAIN: 19 (jsonl verdict UNSURE)
+- Still to score: 869 Old Testament chapters
 
 ## PASS
 
@@ -205,6 +205,81 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Genesis 50** — missing verse 26 at ? — "and he was placed in a coffin in Egypt" (medium.en)
   - audio check: confirmed: inserted verse 8 1:10-1:18 (slice coverage small 0.86, medium 0.86)
   - WER small 0.0234 / medium 0.0328; coverage small 0.9891 / medium 0.9766; duration 237.48s vs expected 256.0s (ratio 0.928); sha256 `9a749817fc670e4ec039897f45f7867292cfb3bc86d34ba5156bfba5347831c9`
+- **Exodus 1** — missing verse 9 at 0:48 — "are more in number and stronger than we" (medium.en)
+  - audio check: confirmed: missing verse 9 0:39-0:49 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.0226 / medium 0.1674; coverage small 0.9796 / medium 0.8462; duration 157.99s vs expected 176.8s (ratio 0.894); sha256 `d2082137478edb4cebbe6509d9ab6e78636f9a4d7d0f8143bee9792d04d0d9af`
+- **Exodus 2** — missing verse 5 at 0:33 — "Pharaoh's daughter came down to" (small.en)
+- **Exodus 2** — missing verse 15 at 2:08 — "and went to live in the land of Midian There he sat down by a well The priest of Midian had seven daughters They came to the well to get water and fill the troughs for their father's flock Some shepherds came and chased them away But Moses stood up and helped the girls" (medium.en)
+  - audio check: confirmed: missing verse 15 1:46-1:56 (slice coverage small 0.17, medium 0.17) unclear: missing verse 5 0:24-0:34 (slice coverage small 1.00, medium 0.40)
+  - WER small 0.0495 / medium 0.1337; coverage small 0.9554 / medium 0.8845; duration 202.75s vs expected 242.4s (ratio 0.836); sha256 `1f45cbef36fc3c7e27d92be97f66487750b5e47fde92a6d4542e974fc47f15f9`
+- **Exodus 4** — missing verse 25 at 3:40–3:41 — "Zipporah took a sharp stone" (small.en+medium.en)
+- **Exodus 4** — inserted verse 24 at 3:35–3:39 — "But God called his Pharaoh and Moses is about to kill his firstborn son" (small.en+medium.en)
+- **Exodus 4** — inserted verse 25 at 3:40–3:41 — "Pharaoh went to flee Daddy" (small.en+medium.en)
+- **Exodus 4** — inserted verse 25 at 3:42–3:44 — "Moses did not take the firstborn" (small.en+medium.en)
+- **Exodus 4** — inserted verse 25 at 3:44–3:50 — "with him But then God had his agenda in mind Moses ended up carrying his Pharaoh and" (small.en+medium.en)
+- **Exodus 4** — inserted verse 25 at 3:50–3:52 — "did not take the firstborn son" (small.en+medium.en)
+- **Exodus 4** — inserted verse 25 at 3:52–3:57 — "him But Pharaoh wanted to kill his firstborn son but Pharaoh would not let" (small.en+medium.en)
+- **Exodus 4** — inserted verse 26 at 4:16–4:59 — "night is naturally implanted in their own properties Moses was willing to do whatever they would want him to do but Pharaoh would not let them go and end up writing on their thing but Pharaoh would not let them go and he would right on his device and him said Let" (small.en+medium.en)
+- **Exodus 4** — repeated verse 25 at 3:49–3:53 — "and Moses did not take the firstborn son with him But" (small.en+medium.en)
+- **Exodus 4** — repeated verse 25 at 3:54–3:56 — "to kill his firstborn son but Pharaoh" (small.en+medium.en)
+- **Exodus 4** — repeated verse 26 at 4:23–4:25 — "but Pharaoh would not let" (small.en+medium.en)
+- **Exodus 4** — repeated verse 26 at 4:27–4:29 — "but Pharaoh would not let them go and" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 26 4:15-4:39 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 25 3:43-3:56 (slice coverage small 0.94, medium 0.94) unclear: inserted verse 24 3:34-3:45 (slice coverage small 0.64, medium 0.93)
+  - WER small 0.2258 / medium 0.2933; coverage small 0.9534 / medium 0.946; duration 340.78s vs expected 326.0s (ratio 1.045); sha256 `ad89a814031305c5d7810c9df8d71ca16fbebe03119c5395094ff1187db04690`
+- **Exodus 6** — missing verse 1 at 0:00–0:02 — "Then the LORD said to Moses Now you will see what I will do to Pharaoh Because of my mighty hand he will let them go Because of my mighty hand he will even drive them out of his land God also said to Moses I am the LORD I appeared to Abraham Isaac and Jacob as God Almighty But …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.1688 / medium 0.1641; coverage small 0.8313 / medium 0.8469; duration 244.78s vs expected 256.0s (ratio 0.956); sha256 `af30cd0c203292de6237d7c5e36ab3077d01e8d3f2a56c0f7f23e084ad06a88f`
+- **Exodus 7** — missing verse 1 at 0:33–1:18 — "LORD said to Moses Look I have made you like God to Pharaoh" (small.en+medium.en)
+- **Exodus 7** — missing verse 9 at 2:34–2:39 — "you Show me a miracle Then tell Aaron Take your walking stick" (small.en+medium.en)
+- **Exodus 7** — missing verse 9 at 2:39–2:45 — "throw it down in front of Pharaoh It will turn into a snake So Moses" (small.en+medium.en)
+- **Exodus 7** — inserted verse 1 at 0:30–0:33 — "I will send some questions to call" (small.en+medium.en)
+- **Exodus 7** — inserted verse 8 at 2:17–2:30 — "The frogs and Devados seem to do what they please The frogs and Devados seem to do what they please The frogs and Devados seem to do what they please The frogs" (small.en+medium.en)
+- **Exodus 7** — inserted verse 8 at 2:30–2:34 — "Devados seem to do what they please The frogs and Devados seem" (small.en+medium.en)
+- **Exodus 7** — inserted verse 9 at 2:34–2:39 — "do what they please The frogs and Devados seem to do what they please The frogs" (small.en+medium.en)
+- **Exodus 7** — inserted verse 9 at 2:39–2:45 — "Devados seem to do what they please The frogs and Devados seem to do what they please The frogs" (small.en+medium.en)
+- **Exodus 7** — repeated verse 8 at 2:20–2:52 — "The frogs and Devados seem to do what they please The frogs and Devados seem to do what they please The frogs and Devados seem to do what they please The frogs and Devados seem to do what they please The frogs and Devados seem to do what they please The frogs and Devados seem to do what they please …" (small.en+medium.en)
+  - audio check: unclear: repeated verse 8 2:19-2:43 (slice coverage small 1.00, medium 0.38, times 2/0) unclear: inserted verse 8 2:16-2:36 (slice coverage small 1.00, medium 0.38) unclear: inserted verse 9 2:38-2:51 (slice coverage small 1.00, medium 0.47)
+  - WER small 0.2283 / medium 0.3717; coverage small 0.9017 / medium 0.855; duration 330.79s vs expected 240.0s (ratio 1.378); sha256 `517f1f3b42b8f423de8f5bf525e16c1084f1dfd09b2df57bbee81858501d9ac4`
+- **Exodus 8** — missing verse 1 at 0:00–0:02 — "Then the LORD said to Moses Go to Pharaoh and tell him This is what the LORD says Let my people go so they can worship me If you refuse to let them go I will fill your whole country with frogs The Nile will be crawling with frogs They will come up into your palace into your bedroom and …" (small.en+medium.en)
+- **Exodus 8** — missing verse 3 at 1:00 — "get into your ovens and your bread bowls The frogs will jump on you on your people and on all your officials The LORD said to Moses Tell Aaron Hold out your hand with your walking stick over the rivers streams and pools Make frogs come up onto the land of Egypt So Aaron held out his hand over the …" (small.en+medium.en)
+  - audio check: unclear: missing verse 3 0:28-0:37 (slice coverage small 1.00, medium 0.67) refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.1831 / medium 0.1702; coverage small 0.8169 / medium 0.8345; duration 289.37s vs expected 340.8s (ratio 0.849); sha256 `4543286f237f6ee7caa71ada7c8c3d2f81999965751d7f91c7bb7a86aca96f14`
+- **Exodus 9** — missing verse 1 at 0:40–0:41 — "said to Moses Go to Pharaoh" (small.en+medium.en)
+- **Exodus 9** — missing verse 1 at 0:53–0:57 — "the Hebrews says Let my people go so they can worship me" (small.en+medium.en)
+- **Exodus 9** — missing verse 3 at 1:11–1:15 — "LORD will send a terrible sickness on your" (small.en+medium.en)
+- **Exodus 9** — inserted verse 1 at 0:30–0:33 — "fields and every ever gathered plants But" (small.en+medium.en)
+- **Exodus 9** — inserted verse 1 at 0:33–0:39 — "little land in never grained and neither was it anything found in that field Because of that a" (small.en+medium.en)
+- **Exodus 9** — inserted verse 1 at 0:40–0:41 — "of your field is the prosperous" (small.en+medium.en)
+- **Exodus 9** — inserted verse 1 at 0:42–0:45 — "the most important plant But the man you work with" (small.en+medium.en)
+- **Exodus 9** — inserted verse 1 at 0:45–0:53 — "about feeding and even if you wanted to grain then you would be able to know that there is no other acre" (small.en+medium.en)
+- **Exodus 9** — inserted verse 1 at 0:53–0:57 — "Israel in any plant in North America but is all in the gardens" (small.en+medium.en)
+- **Exodus 9** — inserted verse 2 at 0:59–1:03 — "see then you would see that there is no other acre of Israel" (small.en+medium.en)
+- **Exodus 9** — inserted verse 2 at 1:04–1:10 — "any plant in North America but is all in the gardens Then the ketovah's informed Moses and Pharaoh" (small.en+medium.en)
+- **Exodus 9** — inserted verse 3 at 1:11–1:15 — "gods said to Moses let my people go" (small.en+medium.en)
+- **Exodus 9** — inserted verse 4 at 1:26–1:32 — "than the animals in Egypt So all your horses and donkeys die by the knife but" (small.en+medium.en)
+- **Exodus 9** — inserted verse 4 at 1:33–1:53 — "of Israel shall eat without roasting or season The Lord declared This is the thing the Lord did on the three days of the day used on the fifteenth day This day was the day of the big flood in Egypt It is known together in the flood end of Egypt in the flood end" (small.en+medium.en)
+- **Exodus 9** — inserted verse 4 at 1:54–2:33 — "and this day was the day of the blood and sacrifice and delivered the Moses and his family Together and a separate plants teach God's table to make him a promise insane and rattle Lord God said take the blood and pass into the table and incense the man and his family to make the devil to see your gaze …" (small.en+medium.en)
+- **Exodus 9** — inserted verse 6 at 2:47–2:51 — "the animals of the mankind died in the next day But the land" (small.en+medium.en)
+- **Exodus 9** — inserted verse 6 at 2:52–2:56 — "Israel did not die Some plagues were the same but the living" (small.en+medium.en)
+- **Exodus 9** — inserted verse 6 at 2:57–3:10 — "of the mankind did not die Lord made a promise throughout Romans This day of the Passover the land will not die any plague or any other virus in the names of the nations nations" (small.en+medium.en)
+- **Exodus 9** — inserted verse 6 at 3:11–3:20 — "day will devastate many animals in the nations and every other nation Lord prevented every flood in Egypt and sent" (small.en+medium.en)
+- **Exodus 9** — inserted verse 6 at 3:23–3:31 — "sliff of devils die Lord said to marrow and pharaoh and reverend your feet let my people go" (small.en+medium.en)
+- **Exodus 9** — inserted verse 6 at 3:31–3:46 — "see what they want with clear text then see how the names of the Lord interpreted plan sounds and gathered into their homes The twenty second day of the month declared a day of reckoning of" (small.en+medium.en)
+- **Exodus 9** — inserted verse 6 at 3:46–3:53 — "man and his family This day was a day of deliverance for all Israel and anyone who" (small.en+medium.en)
+- **Exodus 9** — inserted verse 7 at 3:53–3:56 — "in the month is against Egypt If you want" (small.en+medium.en)
+- **Exodus 9** — inserted verse 7 at 3:57–4:08 — "see it it it it it it it it it it it it it it it it it it it it it it it it it it it it it it it To say the Lord provided the animals" (small.en+medium.en)
+- **Exodus 9** — inserted verse 23 at 6:47–6:50 — "Lord sent thunder and hail and lightning flew down to" (small.en+medium.en)
+- **Exodus 9** — inserted verse 23 at 6:51–9:08 — "Then the moon looks instantly bright and lit and the jarbage danced around Then the desert looks way forward and everyone knows its brat Then the desert looks way forward and everyone knows its brat Then the desert looks way forward and everyone knows its brat Then the desert looks way forward and everyone knows its brat Then the desert …" (small.en+medium.en)
+- **Exodus 9** — inserted verse 23 at 9:08–9:12 — "desert looks way forward and everyone knows its brad Then" (small.en+medium.en)
+- **Exodus 9** — inserted verse 23 at 9:13–9:16 — "desert looks way forward and everyone knows its brad" (small.en+medium.en)
+- **Exodus 9** — repeated verse 23 at 6:46–6:50 — "The Lord sent thunder and hail and lightning flew down to ground" (small.en+medium.en)
+- **Exodus 9** — repeated verse 23 at 7:00–7:17 — "Then the desert looks way forward and everyone knows its brat Then the desert looks way forward and everyone knows its brat Then the desert looks way forward and everyone knows its brat Then the desert looks way forward and everyone knows it's" (small.en+medium.en)
+- **Exodus 9** — repeated verse 23 at 7:17–9:16 — "Then the desert looks way forward and everyone knows it's Brad Then the desert looks way forward and everyone knows it's Brad Then the desert looks way forward and everyone knows it's Brad Then the desert looks way forward and everyone knows it's Brad Then the desert looks way forward and everyone knows it's Brad Then the desert looks way …" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 23 6:50-7:14 (slice coverage small 0.96, medium 0.79) unclear: repeated verse 23 7:16-7:40 (slice coverage small 1.00, medium 1.00, times 1/2) confirmed: inserted verse 4 1:53-2:17 (slice coverage small 1.00, medium 0.96)
+  - WER small 0.9651 / medium 0.8963; coverage small 0.9076 / medium 0.8286; duration 657.28s vs expected 354.8s (ratio 1.853); sha256 `251574c1aa4b41dbea5af5227f2b313a4bcaafdbe3c499b3d56af1823c3f3ca7`
+- **Exodus 10** — missing verse 1 at 0:00–0:02 — "Then the LORD said to Moses Go to Pharaoh I have made him and his officials stubborn so I can show them these signs of my power I am doing this so you can tell your children and grandchildren how I dealt with the Egyptians and about the signs I did among them Then you will know that I am …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.1498 / medium 0.2241; coverage small 0.854 / medium 0.7798; duration 261.46s vs expected 312.4s (ratio 0.837); sha256 `625146670ddc92cf843a2d4a9e861aab0e4607f839faa6370ed065b54c00d037`
 
 ## UNCERTAIN
 
@@ -261,6 +336,12 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Genesis 49** — missing verse 7 at 0:56 — "Their rage is cursed because it is so cruel I will scatter" (medium.en)
   - audio check: unclear: missing verse 7 0:47-0:57 (slice coverage small 0.67, medium 0.67)
   - medium.en only: missing 'Their rage is cursed because it is so cruel I will scatter'; coverage unclear (small 0.991, medium 0.836; pass needs both >= 0.96); WER small 0.0116 / medium 0.1848; coverage small 0.991 / medium 0.8359; sha256 `f470b856a2705257c6241ac7790e0d2d6cedc2afb20e2e8ce8b9b9043c845413`
+- **Exodus 3** — audio slice contains the disputed words; the models still disagree (coverage small 0.994, medium 0.641)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 17 2:49-3:02 (slice coverage small 1.00, medium 0.00, times 1/0)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.994, medium 0.641); WER small 0.0072 / medium 0.363; coverage small 0.9943 / medium 0.6413; sha256 `00839a76868185c7746e695b315dd4777a0b2bb34021fb8b296f34e596150948`
+- **Exodus 5** — audio slice contains the disputed words; the models still disagree (coverage small 0.996, medium 0.655)
+  - audio check: refuted: missing verse 5 0:40-0:49 (slice coverage small 0.92, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.996, medium 0.655); WER small 0.0054 / medium 0.3466; coverage small 0.9964 / medium 0.6552; sha256 `ff0ed6f9a7bf6984dad18bb9f69c8f8f0684d747a1b8c8c79770d24a86dc6a9e`
 
 ## Script
 
