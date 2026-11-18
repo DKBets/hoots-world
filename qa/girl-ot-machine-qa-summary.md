@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 900
+- Scored chapters: 910
 - PASS: 53
-- FAIL: 505
-- UNCERTAIN: 342 (jsonl verdict UNSURE)
-- Still to score: 29 Old Testament chapters
+- FAIL: 513
+- UNCERTAIN: 344 (jsonl verdict UNSURE)
+- Still to score: 19 Old Testament chapters
 
 ## PASS
 
@@ -4173,6 +4173,44 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Micah 6** — repeated verse 8 at 2:23–2:34 — "city The Lord is calling a terror in the city The Lord is calling a terror in the city The Lord is calling a terror in the city The Lord is calling a terror" (small.en+medium.en)
   - audio check: unclear: inserted verse 8 1:16-1:40 (slice coverage small 0.00, medium 0.38) refuted: repeated verse 8 1:20-1:44 (slice coverage small 1.00, medium 0.38, times 1/0) refuted: repeated verse 8 2:22-2:40 (slice coverage small 1.00, medium 1.00, times 1/1)
   - WER small 0.4989 / medium 0.3002; coverage small 0.9865 / medium 0.9932; duration 226.99s vs expected 177.2s (ratio 1.281); sha256 `eac2f200a5c81e6dd67905c395fc068ec8a57a8b90e774fe713a33c4c2a2f563`
+- **Nahum 1** — missing verse 7 at 1:15–1:16 — "He is a strong safe place" (small.en+medium.en)
+  - audio check: confirmed: missing verse 7 1:06-1:16 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.0751 / medium 0.4085; coverage small 0.9366 / medium 0.5939; duration 159.15s vs expected 170.4s (ratio 0.934); sha256 `adaa6a51b7fc6b9f543e8a74692876265e735e7ca18abf2962224e07d1936b57`
+- **Nahum 2** — inserted before verse 1 at 0:00 — "nihom chapter 2 nineveh an" (small.en+medium.en windows)
+- **Nahum 2** — missing verse 13 at ? — "The voices of your messengers will never be heard again" (small.en)
+- **Nahum 2** — missing verse 4 at 0:56 — "The chariots race wildly through the streets They rush back and forth in the town squares They look like flaming torches They dart around like lightning The king calls for his best soldiers but they stumble as they go They hurry to the city wall and set up a shield to protect themselves The river gates are thrown open and …" (medium.en)
+  - audio check: confirmed: missing verse 4 0:21-0:30 (slice coverage small 0.33, medium 0.25) unclear: inserted verse ? 0:00-0:12 (slice coverage small 1.00, medium 0.00)
+  - WER small 0.0406 / medium 0.2938; coverage small 0.9688 / medium 0.7156; duration 115.84s vs expected 128.0s (ratio 0.905); sha256 `f42242bdff2df86f57e2c3781f16a6925780d1d255813fae9c054416edfb9b94`
+- **Nahum 3** — missing verse 1 at 0:30 — "of lies and stolen things It never stops hunting others Hear the crack of whips and the rumble of wheels Horses gallop and chariots bounce along Horsemen charge with flashing swords and shining spears So many people are killed There are piles" (medium.en)
+  - audio check: confirmed: missing verse 1 0:13-0:22 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.0096 / medium 0.2745; coverage small 0.9981 / medium 0.7524; duration 191.06s vs expected 208.4s (ratio 0.917); sha256 `09e029bdde54377f5bc4ca4457e8516a21906923a56c3e2ccb3ce9b34493aef7`
+- **Habakkuk 1** — inserted verse 10 at 1:45–1:49 — "Lord you have chosen Babylon" (small.en+medium.en)
+- **Habakkuk 1** — inserted verse 10 at 1:50–1:59 — "judge us but we will not die Lord you have chosen Babylon to judge us but we will not die You have chosen Babylon to judge us but we will not die Lord" (small.en+medium.en)
+- **Habakkuk 1** — inserted verse 12 at 1:59–2:02 — "have chosen Babylon to judge us but" (small.en+medium.en)
+  - audio check: unclear: inserted verse 10 1:49-2:05 (slice coverage small 0.04, medium 1.00) confirmed: inserted verse 12 1:58-2:08 (slice coverage small 1.00, medium 1.00) unclear: inserted verse 10 1:44-1:55 (slice coverage small 1.00, medium 0.00)
+  - WER small 0.113 / medium 0.1851; coverage small 0.8918 / medium 0.9111; duration 171.61s vs expected 166.4s (ratio 1.031); sha256 `390e75067c29607f2aa4b68c72185752a848ff5f6f08e470bcbb0b7d2d92c89c`
+- **Habakkuk 2** — coverage low on both models (small 0.867, medium 0.841); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1327 / medium 0.1593; coverage small 0.8673 / medium 0.8407; duration 197.8s vs expected 226.0s (ratio 0.875); sha256 `d234939408275de83806765fb3c126412d638f2896b59e1501528f54f986e1d8`
+- **Zephaniah 1** — missing verse 17 at 3:53–4:09 — "they will walk around like blind people because they have sinned against the LORD Their blood will be poured out like dust and their bodies will be thrown away like garbage Their silver and gold won't be able to save them on the" (small.en+medium.en)
+- **Zephaniah 1** — inserted verse 14 at 3:05–3:11 — "Lord's anger Their silver and gold won't be able to save them on" (small.en+medium.en)
+- **Zephaniah 1** — inserted verse 14 at 3:12–3:14 — "Lord's anger Every land village" (small.en+medium.en)
+  - audio check: confirmed: missing verse 17 3:36-3:45 (slice coverage small 0.00, medium 0.00) confirmed: inserted verse 14 3:04-3:17 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 14 3:11-3:20 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.3565 / medium 0.3294; coverage small 0.8065 / medium 0.966; duration 261.12s vs expected 235.6s (ratio 1.108); sha256 `da3bb4c4eaf9124e3c045eb9334e852fc349a501ef597b303e3c3024cf84af3d`
+- **Zephaniah 2** — inserted verse 5 at 1:02–1:08 — "in try to drive our lands outwards And we'll see these valleys and wizards" (small.en+medium.en)
+- **Zephaniah 2** — inserted verse 5 at 1:09–1:14 — "land We shall come to drive our lands and rabbits of" (small.en+medium.en)
+- **Zephaniah 2** — inserted verse 6 at 1:14–1:51 — "And we shall also bring our vineyards and rabbits As brambs of cattle in markets and add as brambs of cattle in markets of cattle in markets and add as bribes of cattle in markets and add as bribes of cattle in markets and add as bribes of cattle in markets and add as bribes of cattle in markets and …" (small.en+medium.en)
+- **Zephaniah 2** — inserted verse 11 at 3:12–3:17 — "them Do whatever you want do whatever you need add them in front of" (small.en+medium.en)
+- **Zephaniah 2** — inserted verse 11 at 3:34–3:39 — "Lord will be all you need Then Israel made on the wall" (small.en+medium.en)
+- **Zephaniah 2** — repeated verse 6 at 1:23–1:25 — "of cattle in markets and add as" (small.en+medium.en)
+- **Zephaniah 2** — repeated verse 6 at 1:26–1:53 — "of cattle in markets and add as bribes of cattle in markets and add as bribes of cattle in markets and add as bribes of cattle in markets and add as bribes of cattle in markets and add as bribes of cattle in markets and add as bribes of cattle in markets and add as bribes of cattle in markets …" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 6 1:13-1:37 (slice coverage small 0.92, medium 0.92) unclear: repeated verse 6 1:25-1:49 (slice coverage small 1.00, medium 0.88, times 2/0) confirmed: inserted verse 5 1:01-1:14 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.4773 / medium 0.4132; coverage small 0.9029 / medium 0.6942; duration 277.46s vs expected 193.6s (ratio 1.433); sha256 `bd2be8f3c4ace9de5852b9ad98798dd24321d492ce81265725aff265fb44d9b6`
+- **Zephaniah 3** — missing verse 15 at 2:38–2:42 — "will never again be afraid" (small.en+medium.en)
+- **Zephaniah 3** — inserted verse 15 at 2:34–2:37 — "The Lord the King of Israel is with" (small.en+medium.en)
+- **Zephaniah 3** — inserted verse 15 at 2:38–2:42 — "The Lord the King of Israel is with you The Lord the King" (small.en+medium.en)
+- **Zephaniah 3** — repeated verse 15 at 2:34–3:02 — "The Lord the King of Israel is with you The Lord the King of Israel is with you The Lord the King of Israel is with you" (small.en+medium.en)
+  - audio check: refuted: repeated verse 15 2:33-2:57 (slice coverage small 0.38, medium 0.38, times 0/0) confirmed: inserted verse 15 2:37-2:48 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 15 2:33-2:43 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.0556 / medium 0.3356; coverage small 0.9815 / medium 0.6712; duration 236.63s vs expected 237.2s (ratio 0.998); sha256 `dd494ce8841a3b4bba3299d1a6fc1dfff6a0d89034f136dbc844270105de02c3`
 
 ## UNCERTAIN
 
@@ -5237,6 +5275,12 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Micah 7** — audio slice contains the disputed words; the models still disagree (coverage small 0.967, medium 0.905)
   - audio check: refuted: missing verse 11 1:43-1:53 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.967, medium 0.905); WER small 0.0367 / medium 0.1269; coverage small 0.9666 / medium 0.9048; sha256 `ab9dea8aadea5f8bbcf38256e4f06939e8f1c316cc4de5d034d390221da8731b`
+- **Habakkuk 3** — audio slice contains the disputed words; the models still disagree (coverage small 0.993, medium 0.635)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.993, medium 0.635); WER small 0.0131 / medium 0.369; coverage small 0.9934 / medium 0.6354; sha256 `63739edff4b205a2fa994e594b4c0ec75cc389da5ef2f8b2475fd4016947a316`
+- **Haggai 1** — audio slice contains the disputed words; the models still disagree (coverage small 0.982, medium 0.594)
+  - audio check: refuted: repeated verse 3 0:22-0:31 (slice coverage small 0.86, medium 0.86, times 0/0)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.982, medium 0.594); WER small 0.0252 / medium 0.4151; coverage small 0.9817 / medium 0.594; sha256 `7341f56c99b784b6b8458cad337e24bb99bfe36e7fdb881f8c200bb9a9ee88c1`
 
 ## Script
 
