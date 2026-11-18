@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 810
-- PASS: 50
-- FAIL: 467
-- UNCERTAIN: 293 (jsonl verdict UNSURE)
-- Still to score: 119 Old Testament chapters
+- Scored chapters: 820
+- PASS: 51
+- FAIL: 468
+- UNCERTAIN: 301 (jsonl verdict UNSURE)
+- Still to score: 109 Old Testament chapters
 
 ## PASS
 
-50 chapters. Both models agreed there was no missing, invented, or repeated passage.
+51 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -83,6 +83,7 @@ words clears that span. A split slice stays UNCERTAIN.
 - Song of Solomon 4, 7
 - Isaiah 31
 - Jeremiah 18, 43
+- Ezekiel 11
 
 ## FAIL
 
@@ -3978,6 +3979,10 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Ezekiel 8** — missing verse 1 at 0:00–0:02 — "In the sixth year on the fifth day of the sixth month I was sitting in my house and the elders of Judah were sitting in front of me Then the power of the Lord God came on me there I looked and saw someone who looked like a man made of fire From his waist down he looked like …" (small.en+medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
   - WER small 0.1803 / medium 0.4694; coverage small 0.8197 / medium 0.5323; duration 188.12s vs expected 235.2s (ratio 0.8); sha256 `2b57638d23685968a3c6eb22280a706fdcbc8ace66a712aa938df074af7e969f`
+- **Ezekiel 13** — missing verse 9 at 1:09 — "They will not be part of the meeting of my people Their names will not be written in the list of the people of Israel" (small.en)
+- **Ezekiel 13** — missing verse 1 at 0:00–0:02 — "The LORD's message came to me Son of man speak against the prophets of Israel who are prophesying Say to those who make up messages from their own minds Listen to the LORD's message This is what the Lord God says How terrible for the foolish prophets who follow their own ideas and have seen nothing Israel your prophets have …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.67, medium 1.00) confirmed: missing verse 9 0:59-1:08 (slice coverage small 0.00, medium 0.17)
+  - WER small 0.0636 / medium 0.2442; coverage small 0.9379 / medium 0.7977; duration 243.93s vs expected 276.8s (ratio 0.881); sha256 `b0350ccf40d80690963b560bc8a940c6aad338bd6c9796fbfbc97acbfe5f19e3`
 
 ## UNCERTAIN
 
@@ -4894,6 +4899,31 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Ezekiel 6** — audio slice contains the disputed words; the models still disagree (coverage small 0.639, medium 0.699)
   - audio check: refuted: missing verse 8 0:57-1:06 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.639, medium 0.699); WER small 0.363 / medium 0.3037; coverage small 0.6393 / medium 0.6986; sha256 `76dbf679189e12ad0b0c71a54f61f4af57ed8461c2fa62a93628d6a5fbab607d`
+- **Ezekiel 9** — missing verse 1 at 0:00–0:02 — "Then he shouted loudly in my ears Bring here the men in charge of punishing the city each with a weapon in his hand I saw six men coming from the direction of the upper gate that faces north each with a weapon in his hand With them was a man dressed in linen with a writing kit at his …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'Then he shouted loudly in my ears Bring here the men in charge of punishing the city each with a weapon in his hand I saw six men coming from the direction of the upper gate that faces north each with a weapon in his hand With them was a man dressed in linen with a writing kit at his …'; coverage unclear (small 1.000, medium 0.750; pass needs both >= 0.96); WER small 0.0027 / medium 0.25; coverage small 1.0 / medium 0.75; sha256 `88ddefc671257a76c6ecf0aa9c80c1c6558488a026e79e3f3b9b2b7f9b16488e`
+- **Ezekiel 10** — missing verse 1 at 0:00–0:02 — "Then I looked and above the dome over the heads of the cherubim I saw something like a sapphire stone that looked like a throne The LORD said to the man dressed in linen Go in between the whirling wheels under the cherubim Fill your hands with burning coals from between the cherubim and scatter them over the city And …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'Then I looked and above the dome over the heads of the cherubim I saw something like a sapphire stone that looked like a throne The LORD said to the man dressed in linen Go in between the whirling wheels under the cherubim Fill your hands with burning coals from between the cherubim and scatter them over the city And …'; coverage unclear (small 0.996, medium 0.537; pass needs both >= 0.96); WER backstop on one model (small 0.005, medium 0.465); WER small 0.0054 / medium 0.465; coverage small 0.9964 / medium 0.5368; sha256 `d8a70e37299476fd91907b01d686398b59f476d8187607bc6bb3889582a5cbe4`
+- **Ezekiel 12** — audio slice contains the disputed words; the models still disagree (coverage small 0.995, medium 0.596)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.995, medium 0.596); WER small 0.0055 / medium 0.4083; coverage small 0.9945 / medium 0.5959; sha256 `9d92dc6227e0536d1f92048462f2205faf372373a53607b9973f17a08a3425f5`
+- **Ezekiel 14** — audio slice contains the disputed words; the models still disagree (coverage small 0.990, medium 0.768)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.83, medium 0.83)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.990, medium 0.768); WER small 0.0145 / medium 0.2348; coverage small 0.9899 / medium 0.7681; sha256 `d5e4d27c9ed9f617e7abaf4b235dcb0755da9d3687bb097ee8dbaf7a556f2acb`
+- **Ezekiel 15** — audio slice contains the disputed words; the models still disagree (coverage small 0.503, medium 0.043)
+  - audio check: refuted: missing verse 2 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.503, medium 0.043); WER small 0.4973 / medium 0.9568; coverage small 0.5027 / medium 0.0432; sha256 `83a7f162c27ed360f3d50a95cdfbbaba7b3bc9065758f21485c8e5c029f69d8e`
+- **Ezekiel 16** — missing verse 48 at 7:03 — "your daughters have done This was the sin of" (small.en)
+- **Ezekiel 16** — missing verse 3 at 0:25 — "Amorite and your mother was a Hittite On the day you were born no one took care of you No one washed you rubbed you with salt or wrapped you in blankets No one" (medium.en)
+  - audio check: refuted: missing verse 3 0:11-0:20 (slice coverage small 1.00, medium 1.00) unclear: missing verse 48 6:54-7:04 (slice coverage small 0.44, medium 0.44)
+  - small.en only: missing 'your daughters have done This was the sin of'; medium.en only: missing 'Amorite and your mother was a Hittite On the day you were born no one took care of you No one washed you rubbed you with salt or wrapped you in blankets No one'; coverage unclear (small 0.948, medium 0.834; pass needs both >= 0.96); WER small 0.0525 / medium 0.168; coverage small 0.9475 / medium 0.8339; sha256 `b42bf6c4189f562cb51adeb31e04a50d30834b53c81f2648cd9a06da986e3c0d`
+- **Ezekiel 17** — missing verse 1 at 0:29–0:30 — "The LORD's message came to me Son of man tell a riddle and a story to the people of Israel Say This is what the Lord God says A great eagle with huge wings long feathers and thick colorful feathers came to Lebanon He took hold of the top of a cedar tree He broke off its highest twig and …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.00)
+  - medium.en only: missing 'The LORD's message came to me Son of man tell a riddle and a story to the people of Israel Say This is what the Lord God says A great eagle with huge wings long feathers and thick colorful feathers came to Lebanon He took hold of the top of a cedar tree He broke off its highest twig and …'; coverage unclear (small 0.990, medium 0.695; pass needs both >= 0.96); WER small 0.0099 / medium 0.3078; coverage small 0.9901 / medium 0.695; sha256 `49165813ddb81a7285c9016350b8012e2bb495c0fa680b6b172fdbc8bbec4110`
+- **Ezekiel 18** — missing verse 11 at 1:24 — "The son eats food offered to idols at the mountain shrines" (small.en)
+  - audio check: unclear: missing verse 11 1:15-1:25 (slice coverage small 1.00, medium 0.00)
+  - small.en only: missing 'The son eats food offered to idols at the mountain shrines'; WER small 0.0415 / medium 0.0127; coverage small 0.9793 / medium 0.9919; sha256 `83fddf0fda41b9c7e465a87f9849f6b2f89729159ad7eb4ec3011c2a7c8dfea5`
 
 ## Script
 
