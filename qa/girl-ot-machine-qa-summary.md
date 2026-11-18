@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 230
+- Scored chapters: 240
 - PASS: 7
-- FAIL: 150
-- UNCERTAIN: 73 (jsonl verdict UNSURE)
-- Still to score: 699 Old Testament chapters
+- FAIL: 156
+- UNCERTAIN: 77 (jsonl verdict UNSURE)
+- Still to score: 689 Old Testament chapters
 
 ## PASS
 
@@ -1091,6 +1091,37 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Judges 18** — missing verse 1 at 0:00–0:02 — "In those days Israel had no king The tribe of Dan was looking for a place of their own to live because they had not yet received land among the tribes of Israel So the people of Dan sent five brave men from their clans from Zorah and Eshtaol to spy out the land and explore it They" (medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.58, medium 0.00) confirmed: inserted verse 1 0:04-0:20 (slice coverage small 0.96, medium 0.92) confirmed: inserted verse ? 0:06-0:18 (slice coverage small 1.00, medium 1.00)
   - WER small 0.0489 / medium 0.2983; coverage small 0.9857 / medium 0.7184; duration 285.78s vs expected 335.2s (ratio 0.853); sha256 `ac92be11f5502fef591fa8a538ba1163577379ba12d1f4202d55da9219b22f10`
+- **Judges 20** — missing verse 23 at 3:03 — "in front of the LORD until evening They asked the LORD Should we go out again to fight against our relatives from Benjamin The LORD said Go fight them So the Israelites went out against Benjamin on the second day Benjamin came out of Gibeah again on the second day and killed eighteen thousand more Israelite soldiers all armed with …" (small.en+medium.en)
+- **Judges 20** — missing verse 26 at 3:04 — "They went without food that day" (small.en+medium.en)
+- **Judges 20** — missing verse 35 at 4:55–4:57 — "twenty five thousand one hundred" (small.en+medium.en)
+- **Judges 20** — repeated verse 46 at 6:19–6:21 — "000 soldiers from Benjamin died" (small.en+medium.en)
+  - audio check: confirmed: missing verse 23 2:33-2:42 (slice coverage small 0.33, medium 0.33) confirmed: missing verse 26 2:55-3:05 (slice coverage small 0.33, medium 0.33) confirmed: missing verse 35 4:46-4:56 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.114 / medium 0.2515; coverage small 0.8927 / medium 0.7502; duration 401.79s vs expected 477.2s (ratio 0.842); sha256 `7071c8f114a772a498801010b39993b6f5a832fbc2ba9d37de0f334d0849f991`
+- **Ruth 1** — missing verse 1 at 0:09–0:11 — "there wasn't enough food in" (small.en+medium.en)
+- **Ruth 1** — missing verse 1 at 0:13–0:16 — "man from Bethlehem in Judah" (small.en+medium.en)
+- **Ruth 1** — missing verse 1 at 0:18–0:22 — "live in the country of Moab with his" (small.en+medium.en)
+- **Ruth 1** — inserted verse 1 at 0:02–0:05 — "In God's days there was a time" (small.en+medium.en)
+- **Ruth 1** — inserted verse 1 at 0:05–0:07 — "the tax keepers ruled the era" (small.en+medium.en)
+- **Ruth 1** — inserted verse 1 at 0:09–0:11 — "the tax keepers ruled the era At" (small.en+medium.en)
+- **Ruth 1** — inserted verse 1 at 0:13–0:16 — "king Bruce and his wife" (small.en+medium.en)
+- **Ruth 1** — inserted verse 1 at 0:18–0:22 — "stay with their parents and well But in Ninnabah the" (small.en+medium.en)
+- **Ruth 1** — repeated verse 1 at 0:08–0:10 — "There was a time when the tax keepers ruled the era" (small.en+medium.en)
+  - audio check: refuted: repeated verse 1 0:07-0:16 (slice coverage small 1.00, medium 1.00, times 1/1) confirmed: inserted verse 1 0:17-0:28 (slice coverage small 0.90, medium 0.90) confirmed: missing verse 1 0:09-0:19 (slice coverage small 0.25, medium 0.25)
+  - WER small 0.0906 / medium 0.2444; coverage small 0.9436 / medium 0.7949; duration 239.45s vs expected 234.0s (ratio 1.023); sha256 `f9357530d9be3d8cccc868aaa0cc6a98b7c320ca324a47451638af1f86c19c53`
+- **Ruth 3** — missing verse 1 at 0:29 — "One day Naomi said to" (medium.en)
+  - audio check: confirmed: missing verse 1 0:20-0:30 (slice coverage small 0.20, medium 0.20)
+  - WER small 0.002 / medium 0.3456; coverage small 1.0 / medium 0.6585; duration 159.06s vs expected 195.6s (ratio 0.813); sha256 `0d6d77b39fd9e893c0a680d43d12751c37d7b8e926faf8441a9de05b37c2739a`
+- **1 Samuel 1** — repeated verse 7 at 1:00–1:01 — "until she cried until she" (small.en)
+- **1 Samuel 1** — missing verse 7 at 0:59–1:02 — "teased her until she cried and wouldn't eat" (medium.en)
+  - audio check: confirmed: missing verse 7 0:50-1:00 (slice coverage small 0.12, medium 0.00) refuted: repeated verse 7 0:59-1:11 (slice coverage small 0.60, medium 0.60, times 0/0)
+  - WER small 0.0277 / medium 0.038; coverage small 0.9796 / medium 0.9781; duration 239.19s vs expected 274.0s (ratio 0.873); sha256 `58e4531642c618c8f3a50ababaa94cd5a30ff2ca77c4b4d723b8ca8f4193c2b8`
+- **1 Samuel 2** — missing verse 1 at 0:00–0:03 — "Then Hannah prayed My heart is full of joy because of the LORD The LORD has made me strong Now I can answer my enemies because I am so happy that you saved me No one is holy like the LORD There is no one but you There is no rock like our God Stop talking so proudly Don't let …" (small.en)
+- **1 Samuel 2** — missing verse 27 at 4:12 — "I clearly showed myself to your ancestor's family when they were slaves of Pharaoh in Egypt" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00) confirmed: missing verse 27 4:03-4:13 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.1471 / medium 0.095; coverage small 0.8529 / medium 0.9097; duration 374.57s vs expected 429.6s (ratio 0.872); sha256 `30feddf053bada8e43d7646df81d19742eac0c129b26b2193e193457195a4d0f`
+- **1 Samuel 4** — missing verse 1 at 0:29–0:30 — "And Samuel's words went out to all Israel Israel went out to fight the Philistines Israel camped at Ebenezer and the Philistines camped at Aphek The Philistines lined up for battle against Israel As the battle went on Israel was beaten by the Philistines who killed about" (medium.en)
+  - audio check: confirmed: missing verse 1 0:10-0:19 (slice coverage small 0.25, medium 0.25)
+  - WER small 0.0081 / medium 0.432; coverage small 0.9919 / medium 0.5761; duration 217.43s vs expected 247.2s (ratio 0.88); sha256 `7b63d1f2074b84eb25724a07e783e86828625cb8f3044edeeeb3870e422b7ed3`
 
 ## UNCERTAIN
 
@@ -1326,6 +1357,18 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Judges 19** — audio slice contains the disputed words; the models still disagree (coverage small 0.977, medium 0.946)
   - audio check: refuted: missing verse 11 1:45-1:55 (slice coverage small 0.89, medium 0.89) refuted: missing verse 8 1:09-1:19 (slice coverage small 0.83, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.977, medium 0.946); WER small 0.0274 / medium 0.0592; coverage small 0.977 / medium 0.9463; sha256 `93f1263a36d66974264223582c35713b8739f0ae6ceec53fafd296d353cf1892`
+- **Judges 21** — audio slice contains the disputed words; the models still disagree (coverage small 0.973, medium 0.714)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 9 1:05-1:14 (slice coverage small 1.00, medium 0.00, times 1/0)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.973, medium 0.714); WER small 0.037 / medium 0.3264; coverage small 0.9727 / medium 0.7138; sha256 `e137044f50b3ff2b0748d53f21cbdcf2f94cb3f6c31d3e12eb692fc11eac2460`
+- **Ruth 2** — audio slice contains the disputed words; the models still disagree (coverage small 0.997, medium 0.593)
+  - audio check: refuted: missing verse 1 0:05-0:14 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.997, medium 0.593); WER small 0.0072 / medium 0.4104; coverage small 0.9971 / medium 0.5925; sha256 `d6564009899bd16a43e9ce7881f4b56cb64ea9295eb2ca831d096c79a3b521f0`
+- **Ruth 4** — missing verse 1 at 0:06–0:09 — "went up to the town gate and sat down there Soon the close relative he had talked about came by" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:07 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'went up to the town gate and sat down there Soon the close relative he had talked about came by'; coverage unclear (small 0.990, medium 0.617; pass needs both >= 0.96); WER backstop on one model (small 0.012, medium 0.383); WER small 0.0116 / medium 0.3827; coverage small 0.99 / medium 0.6173; sha256 `c29067660fc718abf8ab70784bbe062d352b5dc1abb3bf076c8d5128e298db9d`
+- **1 Samuel 3** — audio slice contains the disputed words; the models still disagree (coverage small 0.905, medium 0.981)
+  - audio check: refuted: missing verse 8 1:02-1:11 (slice coverage small 0.75, medium 0.75) refuted: missing verse 13 1:42-1:52 (slice coverage small 0.83, medium 0.83)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.905, medium 0.981); WER small 0.0968 / medium 0.0215; coverage small 0.9054 / medium 0.9806; sha256 `ba7a14ba5b4d209ee1f22225e54fc8552c646b002866cc03e01387b6e25b1e80`
 
 ## Script
 
