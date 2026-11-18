@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 790
+- Scored chapters: 800
 - PASS: 50
-- FAIL: 455
-- UNCERTAIN: 285 (jsonl verdict UNSURE)
-- Still to score: 139 Old Testament chapters
+- FAIL: 462
+- UNCERTAIN: 288 (jsonl verdict UNSURE)
+- Still to score: 129 Old Testament chapters
 
 ## PASS
 
@@ -3831,6 +3831,107 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Jeremiah 45** — repeated verse 4 at 2:49–2:52 — "It was when Baruch wrote down these words" (small.en+medium.en)
   - audio check: unclear: inserted verse 4 2:17-2:41 (slice coverage small 0.62, medium 1.00) unclear: inserted verse 1 0:47-1:11 (slice coverage small 1.00, medium 0.08) confirmed: inserted verse 4 1:56-2:20 (slice coverage small 1.00, medium 1.00)
   - WER small 2.9041 / medium 1.7808; coverage small 0.9521 / medium 0.4932; duration 202.03s vs expected 58.4s (ratio 3.459); sha256 `db701be0822f5d6292fc6ba463aeb54968bb4923f169e2d70bc9f4da678a30c2`
+- **Jeremiah 46** — inserted verse 2 at 0:21–0:54 — "was king That Jehoka's son of Jehoa was king This message was heard for the nations of Egypt and Pharaoh Niko when they fought together in the Katakondo bull King Nebuchadnezzar came against Israel and Pharaoh Munafez and they met at the deserts of Babylon Earlier in the day Jeremiah wrote to the nations of Israel 10 years 20 years …" (small.en+medium.en)
+- **Jeremiah 46** — inserted verse 2 at 1:03–1:09 — "Nebuchadnezzar wrote against Israel Prophets and pharaohs predicted their judgments and disasters" (small.en+medium.en)
+- **Jeremiah 46** — inserted verse 2 at 1:10–1:15 — "Babylon A prophet is meant to die faced and not to live a life to" (small.en+medium.en)
+- **Jeremiah 46** — inserted verse 3 at 1:15–1:27 — "advantageous The prophets will come and share words of device and make common proud and send deeds to their Pharaoh king All Israel was born to die by the dragon Then jumbling" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 2 0:20-0:44 (slice coverage small 0.96, medium 0.88) confirmed: inserted verse 3 1:14-1:33 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 2 1:09-1:21 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.2798 / medium 0.466; coverage small 0.9204 / medium 0.6611; duration 353.79s vs expected 311.6s (ratio 1.135); sha256 `53fcab9f362f36cac0f9c9c212c2744ff695224eea84b122cf6d1be45a8ff3ee`
+- **Jeremiah 48** — missing verse 1 at 0:30 — "of Armies the God of Israel says How terrible for Nebo because it will be destroyed Kiriathaim will be put to shame and captured The fortress will be put to shame and broken down No one will praise Moab anymore In Heshbon enemies make evil plans against her Come let's put an end to that nation You too town of …" (small.en+medium.en)
+- **Jeremiah 48** — missing verse 20 at 4:38 — "and wail Announce by the Arnon River that Moab is destroyed Judgment has come to the high flat land to Holon Jahzah and Mephaath to Dibon Nebo and Beth Diblathaim to Kiriathaim Beth Gamul and Beth Meon to Kerioth and Bozrah and to all the towns of Moab far" (small.en+medium.en)
+- **Jeremiah 48** — missing verse 24 at 4:40 — "near Moab's strength is cut off Its arm is broken says the LORD Make Moab stagger like a" (small.en+medium.en)
+- **Jeremiah 48** — inserted verse 15 at 2:16–2:34 — "the Lord of Hosts If you dare to tell them I will send you with a tired planet by all my actions I will do I will feed you with peace and kindness with wisdom and knowledge as a princep Then you will say to them The Lord has said that I am" (small.en+medium.en)
+- **Jeremiah 48** — inserted verse 15 at 2:34–2:50 — "of the posts and if you go along with it with a tired planet with one grain of barley oil sod by bread and pumpkin and vinegar and sage green you will be happy For that day will come when the gates will be opened in the Sage" (small.en+medium.en)
+- **Jeremiah 48** — inserted verse 16 at 2:52–3:34 — "there present but only the Chief of the Parents The leaders of the Ten Tribes of Israel will all be added prepared But the leaders of the Ten Tribes of Israel will all be added prepared But the leaders of the Ten Tribes of Israel will all be added prepared But the leaders of the Ten Tribes of Israel will …" (small.en+medium.en)
+- **Jeremiah 48** — repeated verse 16 at 3:00–3:26 — "the leaders of the Ten Tribes of Israel will all be added prepared But the leaders of the Ten Tribes of Israel will all be added prepared But the leaders of the Ten Tribes of Israel will all be added prepared But the leaders of the ten tribes of Israel will all be added prepared But the leaders of the …" (small.en+medium.en)
+- **Jeremiah 48** — repeated verse 16 at 3:27–3:34 — "tribes of Israel will all be added prepared But the leaders of the ten tribes of Israel will all be added prepared" (small.en+medium.en)
+  - audio check: unclear: inserted verse 16 2:51-3:15 (slice coverage small 1.00, medium 0.38) unclear: repeated verse 16 2:59-3:23 (slice coverage small 1.00, medium 0.54, times 2/0) refuted: missing verse 1 0:04-0:13 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.4041 / medium 0.4636; coverage small 0.8002 / medium 0.5568; duration 490.67s vs expected 450.4s (ratio 1.089); sha256 `9499223864fa9e078ffca0b652f4ec75b409f8e272f65439b3f539d4db9e94aa`
+- **Jeremiah 49** — missing verse 32 at 5:41 — "will bring disaster on them from every side says the LORD Hazor will become a home for wild dogs an empty ruin forever No one will live there No person" (small.en+medium.en)
+  - audio check: confirmed: missing verse 32 5:29-5:38 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.0849 / medium 0.346; coverage small 0.9178 / medium 0.6585; duration 377.98s vs expected 442.8s (ratio 0.854); sha256 `ac7bb9b7457c8300bb04405e8b3ef314efe25cd4692fc9221121e3d8cb6c443c`
+- **Jeremiah 50** — missing verse 6 at 0:54 — "My people have been lost sheep" (small.en)
+- **Jeremiah 50** — missing verse 4 at 0:56 — "that time says the LORD the people of Israel and the people of Judah will come together They will cry as they walk and they will look for the LORD their God They will ask the way to Zion and turn their faces toward it They will say Come let's join ourselves to the LORD in a covenant that will …" (medium.en)
+  - audio check: confirmed: missing verse 4 0:26-0:34 (slice coverage small 0.17, medium 0.00) refuted: missing verse 6 0:46-0:56 (slice coverage small 0.83, medium 1.00)
+  - WER small 0.022 / medium 0.1922; coverage small 0.9817 / medium 0.8122; duration 474.15s vs expected 545.2s (ratio 0.87); sha256 `55bde22e0a1e775979afb2c1541b91cb84a7ac45cdcc0754728972c2ed5451f8`
+- **Jeremiah 51** — missing verse 4 at 1:31–1:33 — "the Babylonians wounded in her streets Israel" (small.en+medium.en)
+- **Jeremiah 51** — missing verse 5 at 1:33–1:37 — "Judah have not been left alone by their God" (small.en+medium.en)
+- **Jeremiah 51** — missing verse 5 at 1:40–1:47 — "Armies even though their land is full of sin against the Holy One of Israel Run away from" (small.en+medium.en)
+- **Jeremiah 51** — missing verse 51 at 9:51–10:01 — "ashamed because we have been insulted Our faces" (small.en+medium.en)
+- **Jeremiah 51** — missing verse 52 at 11:31–11:35 — "punish her idols All over her" (small.en+medium.en)
+- **Jeremiah 51** — inserted verse 5 at 1:33–1:37 — "blow of the goats and pray saying Amen They will know of" (small.en+medium.en)
+- **Jeremiah 51** — inserted verse 5 at 1:40–1:47 — "their wars with every great war The Lord says in prayer verdrine dubbigs and in the 1997 in" (small.en+medium.en)
+- **Jeremiah 51** — inserted verse 45 at 7:47–9:00 — "The Lord is famous and Bantazide Bing now is great And it is great that Babylon is great But in the meantime there is death and nations spay Believe you that the Lord is famous and his business is great And in Nidia in its veins deeper than any other nation is In Nydia there are no rest and no …" (small.en+medium.en)
+- **Jeremiah 51** — inserted verse 50 at 9:48–9:50 — "get away from there wherever you" (small.en+medium.en)
+- **Jeremiah 51** — inserted verse 51 at 9:51–10:01 — "Blame the Lord in your prayers and in your solemn and in Tim presence of yourself Take in the gospel clemency and get away from there wherever you" (small.en+medium.en)
+- **Jeremiah 51** — inserted verse 51 at 10:02–10:11 — "The Lord is great and is genuine and inset in your hearts you will encounter God see you In the land of the living the land of" (small.en+medium.en)
+- **Jeremiah 51** — inserted verse 51 at 10:11–10:22 — "enemy is defeated That these who leave this land will encounter God see you They will see that God is yet your God And then you will see that in the end" (small.en+medium.en)
+- **Jeremiah 51** — inserted verse 51 at 10:23–10:26 — "days when many of your foes and in the end of" (small.en+medium.en)
+- **Jeremiah 51** — inserted verse 52 at 10:27–11:10 — "when many of your foes will go down those ways and take in their prayers Then the land of the living will brevely wharf and devour their prayers They will go down with intense and no lack of death They will go down with intense and no lack of death They will go down with intense and no lack of …" (small.en+medium.en)
+- **Jeremiah 51** — inserted verse 52 at 11:27–11:31 — "will go down with intents and no lack of death They" (small.en+medium.en)
+- **Jeremiah 51** — inserted verse 52 at 11:31–11:35 — "come and say to their mothers blessed is the" (small.en+medium.en)
+- **Jeremiah 51** — inserted verse 52 at 11:35–12:02 — "where the Lord is Yahweh and I am friendly with your prayers I will go down with intense and no lack of death They will come and say to their mothers Lord is at your feet and I am your God But if you want I will reborn your warms with intense and no lack of death Then you will …" (small.en+medium.en)
+- **Jeremiah 51** — inserted verse 52 at 12:03–12:14 — "Then you will know that the Lord is Yahweh and I will reborn your warms with intense and no lack of death then you will know that the Lord is Yahweh and I" (small.en+medium.en)
+- **Jeremiah 51** — inserted verse 52 at 12:14–12:16 — "leave your Israel graveyard within" (small.en+medium.en)
+- **Jeremiah 51** — repeated verse 51 at 10:15–10:17 — "will encounter God see you" (small.en+medium.en)
+- **Jeremiah 51** — repeated verse 51 at 10:25–10:28 — "in the end of the days when many of your foes" (small.en+medium.en)
+- **Jeremiah 51** — repeated verse 52 at 10:41–11:04 — "They will go down with intense and no lack of death They will go down with intense and no lack of death They will go down with intense and no lack of death They will go down with intense and no lack of death They will go down with intense and no lack of death They will go down with …" (small.en+medium.en)
+- **Jeremiah 51** — repeated verse 52 at 11:29–11:31 — "and no lack of death They will" (small.en+medium.en)
+- **Jeremiah 51** — repeated verse 52 at 11:40–11:46 — "I will go down with intense and no lack of death They will come and say to their mothers" (small.en+medium.en)
+- **Jeremiah 51** — repeated verse 52 at 11:53–11:55 — "with intense and no lack of death" (small.en+medium.en)
+- **Jeremiah 51** — repeated verse 52 at 12:04–12:06 — "that the Lord is Yahweh and I will" (small.en+medium.en)
+- **Jeremiah 51** — repeated verse 52 at 12:06–12:11 — "I will reborn your warms with intense and no lack of death then you will" (small.en+medium.en)
+- **Jeremiah 51** — repeated verse 52 at 12:11–12:14 — "then you will know that the Lord is Yahweh and I will leave" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 45 7:46-8:10 (slice coverage small 1.00, medium 0.92) confirmed: inserted verse 52 10:26-10:50 (slice coverage small 1.00, medium 0.88) confirmed: inserted verse 52 11:34-11:58 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.4775 / medium 0.3199; coverage small 0.9056 / medium 0.8797; duration 856.02s vs expected 665.2s (ratio 1.287); sha256 `43d182479c98647e6a3ec1113227533c97ad537193171e08ac5945b122664078`
+- **Jeremiah 52** — silence verse ? at 9:58–10:01 — "and it was one of the most important days in my life. We learned that" (waveform)
+- **Jeremiah 52** — silence verse ? at 11:00–11:04 — "at the king's table. Every day the king of Babylon gave..." (waveform)
+- **Jeremiah 52** — missing verse 3 at 2:20–2:23 — "Judah until he sent them away from" (small.en+medium.en)
+- **Jeremiah 52** — missing verse 31 at 7:09–7:14 — "twelfth month Evil Merodach became" (small.en+medium.en)
+- **Jeremiah 52** — inserted verse 2 at 0:26–1:37 — "And he didn't refresh the fading right lagoon Instead he sent a king to the desert The king faced his enemies and siege the Pharaoh became better than any other god prophet that he had and he stubbornly defiled the god creator Israel None of the preachers and the moderate ruled his king in vain of the occasion of the …" (small.en+medium.en)
+- **Jeremiah 52** — inserted verse 3 at 1:42–1:56 — "of this came about Israel Because of the Lord's anger Judah suffered and continued to do well in rutafits of their pharaohs They were rutafits of their pharaohs Trying to please his enemies they were rutafits of their pharaohs" (small.en+medium.en)
+- **Jeremiah 52** — inserted verse 3 at 1:57–2:14 — "anger went extinct in Israel Zeddikiah decided to submit in submission to Israel trained in bloody dare and a peasant idiot Instead Zeddikiah decided to submit" (small.en+medium.en)
+- **Jeremiah 52** — inserted verse 3 at 2:14–2:20 — "Desi and Azi in Syria based on agreement in place trained in bloody dare" (small.en+medium.en)
+- **Jeremiah 52** — inserted verse 3 at 2:20–2:23 — "a peasant idiot trained in Zedekiah and" (small.en+medium.en)
+- **Jeremiah 52** — inserted verse 3 at 2:23–2:43 — "mother Israel left beat after Israel in their father trained in military might and kept weapons and army and weapon to go Whether Israel isn't in agreement with the Lord Way or isn't in agreement with the Israelites Israel is about to go into desert and do well in pranks and prayers" (small.en+medium.en)
+- **Jeremiah 52** — inserted verse 31 at 7:09–7:14 — "captives in Babylon and And in taking advantage of their prayers and dedication to the" (small.en+medium.en)
+- **Jeremiah 52** — inserted verse 31 at 7:20–8:29 — "He was diligent and never doubted his words or his data but he wanted to test his faith and godness and never doubted his faith Last year of the death reign of Nebuchadnezzar please Lord test us as we face and test Trust us as we waver and make us more faithful in your faith and make us more faithful …" (small.en+medium.en)
+- **Jeremiah 52** — inserted verse 31 at 8:35–9:30 — "as a deputed ambassador for Nebuchadnezzar That day the King of Judah test us as we face and made us as a deputed of the nation to serve the prophets and etiquettes of the nation That is the day we answered and promised to God of the nations and we wanted to do so with absolute wit and nine vigor …" (small.en+medium.en)
+- **Jeremiah 52** — inserted verse 33 at 9:42–10:55 — "and went into the new kingdom of Babylon That day we learned that his faith was no Wong property but it was much better It was one of the most important days in our history and it was one of the most important days in my life We learned that his faith was no Wong property but it was much …" (small.en+medium.en)
+- **Jeremiah 52** — inserted verse 34 at 11:07–11:21 — "As a matter of fact since adoption Jehoris ate with the kings and the king gave him every single thing As a matter of fact since adoption Jehoris ate the kings and business and family" (small.en+medium.en)
+- **Jeremiah 52** — inserted verse 34 at 11:24–11:27 — "A death was in the candle of the moonlit apt in" (small.en+medium.en)
+- **Jeremiah 52** — inserted verse 34 at 11:30–11:57 — "as a party flagged in the king's name As a matter of fact since a family As a matter of fact Jehoris ate king's name and made him a member a matter king's business and matter of fact Jehoris ate the king's business and family And as fact Jehoris ate the king's business and family fact Jehoris ate the" (small.en+medium.en)
+- **Jeremiah 52** — repeated verse 2 at 0:47–0:48 — "did what was evil in the Lord's eyes" (small.en+medium.en)
+- **Jeremiah 52** — repeated verse 2 at 1:18–1:21 — "he went on his own way and kept playing with pranks" (small.en+medium.en)
+- **Jeremiah 52** — repeated verse 2 at 1:21–1:25 — "Trying to please his enemies he went on his own way and kept playing with pranks" (small.en+medium.en)
+- **Jeremiah 52** — repeated verse 2 at 1:30–1:31 — "Because of the Lord's anger" (small.en+medium.en)
+- **Jeremiah 52** — repeated verse 2 at 1:36–1:43 — "Try very hard Because of the Lord's anger All of this came about Israel" (small.en+medium.en)
+- **Jeremiah 52** — repeated verse 3 at 1:44–1:45 — "Because of the Lord's anger" (small.en+medium.en)
+- **Jeremiah 52** — repeated verse 3 at 1:52–1:54 — "Trying to please his enemies" (small.en+medium.en)
+- **Jeremiah 52** — repeated verse 3 at 2:19–2:21 — "trained in bloody dare and a peasant idiot" (small.en+medium.en)
+- **Jeremiah 52** — repeated verse 31 at 7:16–7:19 — "Elvimetic led the people of Judah into the captives in Babylon" (small.en+medium.en)
+- **Jeremiah 52** — repeated verse 31 at 7:40–7:42 — "and make us more faithful in your" (small.en+medium.en)
+- **Jeremiah 52** — repeated verse 31 at 8:30–8:32 — "That same year he was kind to" (small.en+medium.en)
+- **Jeremiah 52** — repeated verse 31 at 8:33–8:39 — "King of Judah and let him out of prison as a deputed ambassador for Nebuchadnezzar" (small.en+medium.en)
+- **Jeremiah 52** — repeated verse 33 at 9:55–9:58 — "it was one of the most important days in" (small.en+medium.en)
+- **Jeremiah 52** — repeated verse 33 at 10:01–10:09 — "We learned that his faith was no Wong property but it was much better It was one of the most important days in my life" (small.en+medium.en)
+- **Jeremiah 52** — repeated verse 33 at 10:10–10:13 — "and it was one of the most important days in my" (small.en+medium.en)
+- **Jeremiah 52** — repeated verse 33 at 10:14–10:26 — "we learned that his faith was no Wong property but it was much better It was one of the most important days in my life and it was one of the most important days in my history" (small.en+medium.en)
+- **Jeremiah 52** — repeated verse 33 at 10:26–10:44 — "And we learned that his faith was no Wong property but it was much better It was one of the most important days in my history and we learned that his faith was no Wong property but it was much better It was one of the most important days in my life and" (small.en+medium.en)
+- **Jeremiah 52** — repeated verse 34 at 11:15–11:19 — "As a matter of fact since adoption Jehoris ate" (small.en+medium.en)
+- **Jeremiah 52** — repeated verse 34 at 11:33–11:35 — "As a matter of fact since" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 2 0:25-0:49 (slice coverage small 0.96, medium 0.96) confirmed: inserted verse 33 9:41-10:05 (slice coverage small 1.00, medium 0.96) confirmed: inserted verse 31 7:19-7:43 (slice coverage small 1.00, medium 1.00)
+  - WER small 1.2064 / medium 1.301; coverage small 0.9304 / medium 0.7434; duration 716.97s vs expected 350.8s (ratio 2.044); sha256 `fd0b02298c392d97e4ca9297bd8e8c379b378c4e944f30f7a6199026a9c4928f`
+- **Lamentations 2** — silence verse ? at 4:12–4:16 — "who are fainting from hunger at the corner of every street. Look! Look," (waveform)
+- **Lamentations 2** — inserted verse 20 at 4:20–5:05 — "this to Look Lord put your faith in your mentors against the people who are fainting at the corner of every street Look Lord pray for our children for our neighbors for our neighborhood for our neighbor for our world for our nation We are not willing to be a blessing in any way way we can We are not …" (small.en+medium.en)
+- **Lamentations 2** — inserted verse 20 at 5:06–5:10 — "was a feast from every major region of the world Promised" (small.en+medium.en)
+- **Lamentations 2** — inserted verse 20 at 5:10–5:23 — "God and his people that I would never go back down that path and follow so closely with my feet We will not ruin this terrace We will not ruin this Terrace" (small.en+medium.en)
+- **Lamentations 2** — repeated verse 20 at 4:28–4:30 — "at the corner of every street Look" (small.en+medium.en)
+- **Lamentations 2** — repeated verse 20 at 4:46–4:50 — "We are not willing to be a blessing in any way" (small.en+medium.en)
+- **Lamentations 2** — repeated verse 20 at 5:18–5:20 — "We will not ruin this terrace" (small.en+medium.en)
+- **Lamentations 2** — repeated verse 20 at 5:20–5:23 — "We will not ruin this Terrace" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 20 4:19-4:43 (slice coverage small 0.96, medium 1.00) confirmed: inserted verse 20 5:09-5:29 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 20 4:45-4:56 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.3536 / medium 0.3139; coverage small 0.8387 / medium 0.8921; duration 368.17s vs expected 322.4s (ratio 1.142); sha256 `936a8c48ba684fd7caf582a5d8f044969b9830ab2358b56bd81b9eeb39757f8b`
 
 ## UNCERTAIN
 
@@ -4721,6 +4822,17 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Jeremiah 41** — missing verse 1 at 0:00–0:02 — "In the seventh month Ishmael son of Nethaniah son of Elishama came with ten men to Gedaliah son of Ahikam at Mizpah Ishmael was from the royal family and had been one of the king's officers They ate a meal together at Mizpah Then Ishmael son of Nethaniah and the ten men with him got up and killed Gedaliah son …" (medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.83, medium 0.00) refuted: repeated verse 7 1:02-1:11 (slice coverage small 1.00, medium 1.00, times 1/1)
   - small.en only: repeated 'Ishmael son of Nephaniah and the'; medium.en only: missing 'In the seventh month Ishmael son of Nethaniah son of Elishama came with ten men to Gedaliah son of Ahikam at Mizpah Ishmael was from the royal family and had been one of the king's officers They ate a meal together at Mizpah Then Ishmael son of Nethaniah and the ten men with him got up and killed Gedaliah son …'; coverage unclear (small 0.970, medium 0.645; pass needs both >= 0.96); WER backstop on one model (small 0.032, medium 0.363); WER small 0.0324 / medium 0.3626; coverage small 0.9695 / medium 0.645; sha256 `6074b0d9a571c6f6051272aa7eb01143b6eb55e1a734d3d07b784be629ea5aa7`
+- **Jeremiah 47** — audio slice contains the disputed words; the models still disagree (coverage small 0.981, medium 0.710)
+  - audio check: refuted: missing verse 2 0:07-0:16 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.981, medium 0.710); WER small 0.0193 / medium 0.314; coverage small 0.9807 / medium 0.7101; sha256 `ae33057793fbc1a95f5c6c4b1ecbb960b93e6e75a9e4b388a8a77d906205f489`
+- **Lamentations 1** — missing verse 13 at 2:37 — "He has left me alone and weak all day long" (small.en)
+- **Lamentations 1** — missing verse 1 at 0:00–0:02 — "How lonely the city sits that was once full of people She was great among the nations but now she is like a widow She was a princess among the lands but now she has become a slave She cries hard at night Tears run down her cheeks Of all the friends she loved no" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00) refuted: missing verse 13 2:28-2:38 (slice coverage small 1.00, medium 1.00)
+  - small.en only: missing 'He has left me alone and weak all day long'; medium.en only: missing 'How lonely the city sits that was once full of people She was great among the nations but now she is like a widow She was a princess among the lands but now she has become a slave She cries hard at night Tears run down her cheeks Of all the friends she loved no'; coverage unclear (small 0.938, medium 0.753; pass needs both >= 0.96); WER small 0.0637 / medium 0.2493; coverage small 0.9377 / medium 0.7535; sha256 `b9dff164381183f86930a2886fccf42ab4f3a569d93315aa101a072a878b79fa`
+- **Lamentations 3** — missing verse 59 at 4:10 — "LORD you have seen the wrong done to me Judge my case fairly You have seen how they want to pay me back and all their" (small.en)
+- **Lamentations 3** — missing verse 1 at 0:00–0:02 — "I am a man who has seen trouble because God was angry and punished us He has led me and made me walk in darkness instead of light Again and again all day long he has turned his hand against me He has made my body and skin grow old He has broken my bones He has surrounded me with …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00) refuted: missing verse 59 3:59-4:08 (slice coverage small 1.00, medium 1.00)
+  - small.en only: missing 'LORD you have seen the wrong done to me Judge my case fairly You have seen how they want to pay me back and all their'; medium.en only: missing 'I am a man who has seen trouble because God was angry and punished us He has led me and made me walk in darkness instead of light Again and again all day long he has turned his hand against me He has made my body and skin grow old He has broken my bones He has surrounded me with …'; coverage unclear (small 0.968, medium 0.695; pass needs both >= 0.96); WER small 0.038 / medium 0.3132; coverage small 0.968 / medium 0.6951; sha256 `a76dedc73e7eada9cfa5eab6773a60b8026b2649a18188f93a3813dcbbb062f7`
 
 ## Script
 
