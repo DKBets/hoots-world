@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 520
-- PASS: 22
-- FAIL: 327
-- UNCERTAIN: 171 (jsonl verdict UNSURE)
-- Still to score: 409 Old Testament chapters
+- Scored chapters: 530
+- PASS: 23
+- FAIL: 328
+- UNCERTAIN: 179 (jsonl verdict UNSURE)
+- Still to score: 399 Old Testament chapters
 
 ## PASS
 
-22 chapters. Both models agreed there was no missing, invented, or repeated passage.
+23 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -77,7 +77,7 @@ words clears that span. A split slice stays UNCERTAIN.
 - Nehemiah 1, 5
 - Esther 10
 - Job 2, 34–35
-- Psalms 1, 3, 8, 11–12, 15, 39
+- Psalms 1, 3, 8, 11–12, 15, 39, 50
 
 ## FAIL
 
@@ -2951,6 +2951,11 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 40** — missing verse 4 at 0:57 — "who doesn't follow proud people or people" (medium.en)
   - audio check: confirmed: missing verse 12 1:21-1:30 (slice coverage small 0.08, medium 0.08) confirmed: missing verse 4 0:48-0:58 (slice coverage small 0.00, medium 0.00)
   - WER small 0.0752 / medium 0.2231; coverage small 0.9248 / medium 0.7794; duration 139.14s vs expected 159.6s (ratio 0.872); sha256 `e6d980a8a0da48b558ff04930fa72fcf078da4d8b0e05265c14f7ff2b2aafa79`
+- **Psalms 44** — missing verse 13 at 1:40 — "let our neighbors make fun of us The people around us laugh at us The nations tell jokes about us People shake their heads at us All day long I feel so ashamed My face is covered with shame I hear people insulting me and saying mean things My enemies want to" (small.en+medium.en)
+- **Psalms 44** — missing verse 16 at 1:40–1:41 — "even with me All this has happened to us but we haven't forgotten" (small.en+medium.en)
+- **Psalms 44** — inserted verse 12 at 1:38–1:40 — "You didn't get anything You didn't get anything You didn't get anything You didn't get anything You didn't get anything You didn't get anything You didn't get anything You didn't get anything You didn't get anything You didn't get anything You didn't get anything You didn't get anything You didn't get anything" (small.en+medium.en)
+  - audio check: refuted: inserted verse 12 1:37-1:46 (slice coverage small 0.08, medium 0.08) refuted: missing verse 13 1:19-1:28 (slice coverage small 1.00, medium 1.00) confirmed: missing verse 16 1:31-1:41 (slice coverage small 0.25, medium 0.17)
+  - WER small 0.3178 / medium 0.4844; coverage small 0.8089 / medium 0.5178; duration 149.97s vs expected 180.0s (ratio 0.833); sha256 `ea7a9fe9484c499b051082cdac8308fcdd72b882945104629d1bf7d1512114c6`
 
 ## UNCERTAIN
 
@@ -3488,6 +3493,30 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 42** — audio slice contains the disputed words; the models still disagree (coverage small 0.996, medium 0.656)
   - audio check: refuted: missing verse 3 0:08-0:17 (slice coverage small 0.92, medium 0.92)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.996, medium 0.656); WER small 0.0037 / medium 0.3519; coverage small 0.9963 / medium 0.6556; sha256 `4f7cd3e81141a2bb096791e70aef81c9d5f132790b9cd91eebd5f436a97f92a8`
+- **Psalms 43** — audio slice contains the disputed words; the models still disagree (coverage small 0.336, medium 0.328)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.336, medium 0.328); WER small 0.6642 / medium 0.6716; coverage small 0.3358 / medium 0.3284; sha256 `7e7fc4ef6afe5ef52e2e2b1c415d930b973f266a6ce3f4ee0d90e618e2ac706a`
+- **Psalms 45** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.939)
+  - audio check: refuted: missing verse 11 1:07-1:17 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.939); WER small 0.0 / medium 0.0939; coverage small 1.0 / medium 0.9385; sha256 `f4156eb07d52109aecc6d039755dc0dbe723de42a21640517d1ab0272d3dc2d6`
+- **Psalms 46** — audio slice contains the disputed words; the models still disagree (coverage small 0.960, medium 0.662)
+  - audio check: refuted: missing verse 5 0:27-0:36 (slice coverage small 1.00, medium 0.92) refuted: missing verse 9 0:45-0:55 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.960, medium 0.662); WER small 0.0448 / medium 0.3383; coverage small 0.9602 / medium 0.6617; sha256 `063eb92eafa186e1da3c5a739fdf1d7dc7f725fa8c67607020dc9427ef92bd1a`
+- **Psalms 47** — audio slice contains the disputed words; the models still disagree (coverage small 0.986, medium 0.812)
+  - audio check: refuted: missing verse 2 0:07-0:16 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.986, medium 0.812); WER small 0.0139 / medium 0.2083; coverage small 0.9861 / medium 0.8125; sha256 `3c7dcb569700ea2e5763ef3dc8a08fee36a2907b72e710670caaaf3b2f549c91`
+- **Psalms 48** — missing verse 1 at 0:27–0:29 — "The LORD is great He should be greatly praised in the city of our God on his holy mountain Mount Zion is high and beautiful It brings joy to the whole earth It is the city of the great King God is in its strong towers He has shown that he keeps it safe Look Kings gathered their armies together …" (small.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00)
+  - small.en only: missing 'The LORD is great He should be greatly praised in the city of our God on his holy mountain Mount Zion is high and beautiful It brings joy to the whole earth It is the city of the great King God is in its strong towers He has shown that he keeps it safe Look Kings gathered their armies together …'; coverage unclear (small 0.692, medium 1.000; pass needs both >= 0.96); WER small 0.308 / medium 0.0; coverage small 0.692 / medium 1.0; sha256 `c158471d0dc7090a80b59369ee405e67121a6d4c5d685789c1d0e055cf2ab604`
+- **Psalms 49** — audio slice contains the disputed words; the models still disagree (coverage small 0.991, medium 0.897)
+  - audio check: refuted: missing verse 17 1:28-1:37 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.991, medium 0.897); WER small 0.0155 / medium 0.1335; coverage small 0.9907 / medium 0.8975; sha256 `4fdf527ec3ba74820c38f1c77de4d0faaf9ba4bfad482d113ab1aec0d86408e8`
+- **Psalms 51** — missing verse 1 at 0:00–0:02 — "God be kind to me because of your faithful love Because you are so full of tender kindness wipe away my wrongs Wash me clean from all the wrong I have done Make me clean from my sin I know what I have done wrong I can't stop thinking about my sin I have sinned against you and only you …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'God be kind to me because of your faithful love Because you are so full of tender kindness wipe away my wrongs Wash me clean from all the wrong I have done Make me clean from my sin I know what I have done wrong I can't stop thinking about my sin I have sinned against you and only you …'; coverage unclear (small 0.997, medium 0.724; pass needs both >= 0.96); WER small 0.0059 / medium 0.2786; coverage small 0.9971 / medium 0.7243; sha256 `9f7b8255e1ca65321aa173d5187411c5e2f375b2e0ee00a47f19dca6144dcab8`
+- **Psalms 52** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.335)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.335); WER small 0.0052 / medium 0.6649; coverage small 1.0 / medium 0.3351; sha256 `c6c6ecc9034ae0d492b157efa11d43f138ea9554284ac9baa8cbbd00427940e3`
 
 ## Script
 
