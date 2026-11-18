@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 780
-- PASS: 49
-- FAIL: 449
-- UNCERTAIN: 282 (jsonl verdict UNSURE)
-- Still to score: 149 Old Testament chapters
+- Scored chapters: 790
+- PASS: 50
+- FAIL: 455
+- UNCERTAIN: 285 (jsonl verdict UNSURE)
+- Still to score: 139 Old Testament chapters
 
 ## PASS
 
-49 chapters. Both models agreed there was no missing, invented, or repeated passage.
+50 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -82,7 +82,7 @@ words clears that span. A split slice stays UNCERTAIN.
 - Ecclesiastes 6
 - Song of Solomon 4, 7
 - Isaiah 31
-- Jeremiah 18
+- Jeremiah 18, 43
 
 ## FAIL
 
@@ -3734,6 +3734,103 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Jeremiah 35** — repeated verse 2 at 1:01–1:02 — "No right to judge their fort" (small.en+medium.en)
   - audio check: unclear: inserted verse 2 0:47-1:11 (slice coverage small 1.00, medium 0.62) confirmed: inserted verse 13 3:34-3:56 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 1 0:14-0:38 (slice coverage small 1.00, medium 0.96)
   - WER small 0.6046 / medium 0.529; coverage small 0.9139 / medium 0.8471; duration 354.65s vs expected 227.6s (ratio 1.558); sha256 `8191df928ce6e9bc59094d2428c88dc62efc91140f8f13c66e9b690def246259`
+- **Jeremiah 36** — silence before verse 1 at 0:04–0:07 — "Jeremiah chapter 36, In the fourth year that Johorah," (waveform)
+- **Jeremiah 36** — silence verse ? at 3:37–3:41 — "house. In the ninth month of the fifth year, that Jehoakim," (waveform)
+- **Jeremiah 36** — missing verse 2 at 1:06–1:13 — "I have spoken to you about Israel Judah" (small.en+medium.en)
+- **Jeremiah 36** — missing verse 2 at 1:15–1:19 — "all the nations from the time I first spoke to" (small.en+medium.en)
+- **Jeremiah 36** — missing verse 32 at 12:23–13:17 — "many other words like them were added" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 1 at 0:11–0:21 — "Judah and everlasting day Jeremiah chapter 36 in the fourth year that Judah Johorrah" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 1 at 0:22–0:37 — "and everlasting day Jeremiah spoke to the nations including all the people and reminded them that even more would likely be deported Chatting with his disciples Jeremiah said I would write down every word of" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 1 at 0:41–0:48 — "said I have no pride in anything or no one's secret access to him Change words may change" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 2 at 0:49–0:51 — "may encourage everyone to hear" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 2 at 0:52–1:06 — "Change words may change how everyone thinks and what they see Change words may change how everyone thinks and what they see Change words may change how everyone thinks and what they see Change" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 8 at 2:19–2:40 — "every word that Jeremiah told him and read it on his scroll before Jeremiah Jeremiah told Baruch let the Lord Enere be so brave and gentle as a prophet and bring on your people then he will see that their actions will increase in their lives Jeremiah told Baruch let" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 8 at 2:40–2:43 — "Lord Enere be so brave and gentle as a" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 8 at 2:44–2:56 — "and write down every word of this book and read them to the people as they were in order to train them for what is right in their hearts Baruch son of Neriiah went as" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 8 at 2:58–3:30 — "that he saw the Lord's words and read them as his scroll Jeremiah told Baruch let the Lord En enere be so brave and gentle as a prophet and write down every word of this book and read them to the people Jeremiah trained Baruch and read the Lord's words in full class and appeal Jeremiah said to Baruch let …" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 8 at 3:34–3:48 — "In the ninth month of the fifth year that Jehoechim son of Johanna a federal concert was offered at the temple of the Lord" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 9 at 3:55–4:00 — "I wrote down to this occasion the temple was opened and" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 9 at 4:00–4:04 — "priest who led it was incense I wrote down to the names" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 9 at 4:04–4:07 — "the months and years and we entered the new year" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 9 at 4:08–4:39 — "degrave days in memory of the great departure Two thousand twenty one years was the year of the great departure and in diabetes was a common bit of knowing the great departure and in diabetes was a common bit of knowing the Great Departure and in Diabetes was a common bit of knowing the Great Departure and in Diabetes was …" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 9 at 4:39–4:42 — "Great Departure and in Diabetes" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 9 at 4:42–4:51 — "a common bit of knowing the Great Departure This year we will join the Great Departure with Priest and Priestezets" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 28 at 8:15–8:50 — "Yahaka Key gave the same words as Jeremiah spoke on them The Lord said to Jeremiah Get another scroll and write it all the words that were on the first scroll And what I am angry with Yahaka As you wish you would also invite me to praise God beautifully and you would be able to intercede for negative things …" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 28 at 8:50–8:54 — "their sins shall blue on their blue days The king also" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 28 at 8:55–9:00 — "the scroll and all the words as it said And again I am angry at his clain" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 29 at 9:06–9:40 — "Yes the plains actually went over but they wish they lived with me present And now we are inviting" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 29 at 9:40–9:43 — "to come with us into the presence of Yah write down what they've eaten and we would believe" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 29 at 9:44–9:58 — "as we once fed every one of these d what he had said Then yahaka did what he asked Get a a" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 29 at 9:59–10:01 — "write down every one of the verses And" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 29 at 10:09–10:13 — "feasts of Yahaka and roast and write down every one" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 29 at 10:15–10:32 — "understand what this means for is about Yahaka King King about Yahaka King King King's day about Yahaka King King King's day This is what the Lord says Yes there are getting older in their twenties and wither in their greaves" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 29 at 10:36–10:44 — "Yes the Lord says that the youth shall go where their parents and their guardians in mocked with Israel But anyone who is named in the" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 29 at 10:46–10:50 — "waiting to kill in day Everyone who is named in" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 29 at 10:50–11:00 — "land of their fathers is forgettable in their rices and in their grief Wells they will die with no blood and wisdom and we will understand their wayward" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 29 at 11:01–11:08 — "glowing the way we do with usual games as we sit inside these living rooms The greatest wish is" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 30 at 11:08–11:14 — "get a group of Israelites into the same place you visited and we will understand" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 30 at 11:14–11:19 — "true presence of Yahweh and Envay And we will understand the true presence" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 32 at 12:00–12:09 — "Jeremiah spoke Baruch wrote on it all the words of the scroll that That Yohana King King of Judah that" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 32 at 12:17–12:22 — "and all the dangers of the tone same as before but the name was different" (small.en+medium.en)
+- **Jeremiah 36** — inserted verse 32 at 12:23–13:17 — "within it was the name president and the name was different but of the scroll So Jeremiah Baruch the writer of scroll again in breath wind his voice The greater tones of tone same as the menace know their words and dare not desire their own hearts now that they have death in hand and say they will die for …" (small.en+medium.en)
+- **Jeremiah 36** — repeated verse 1 at 0:21–0:25 — "was king of Judah and everlasting day Jeremiah" (small.en+medium.en)
+- **Jeremiah 36** — repeated verse 8 at 2:38–2:44 — "Jeremiah told Baruch let the Lord Enere be so brave and gentle as a prophet and" (small.en+medium.en)
+- **Jeremiah 36** — repeated verse 8 at 2:44–2:47 — "write down every word of this book and" (small.en+medium.en)
+- **Jeremiah 36** — repeated verse 8 at 3:01–3:05 — "Jeremiah told Baruch let the Lord" (small.en+medium.en)
+- **Jeremiah 36** — repeated verse 8 at 3:05–3:13 — "enere be so brave and gentle as a prophet and write down every word of this book and read them to the people" (small.en+medium.en)
+- **Jeremiah 36** — repeated verse 9 at 3:49–3:51 — "In the ninth month of the fifth year that" (small.en+medium.en)
+- **Jeremiah 36** — repeated verse 9 at 4:19–4:45 — "the great departure and in diabetes was a common bit of knowing the Great Departure and in Diabetes was a common bit of knowing the Great Departure and in Diabetes was a common bit of knowing the Great Departure and in Diabetes was a common bit of knowing the Great Departure and in Diabetes was a common bit of knowing …" (small.en+medium.en)
+- **Jeremiah 36** — repeated verse 28 at 8:20–8:22 — "to Jeremiah Get another scroll and write" (small.en+medium.en)
+- **Jeremiah 36** — repeated verse 28 at 8:22–8:25 — "it all the words that were on the first scroll" (small.en+medium.en)
+- **Jeremiah 36** — repeated verse 29 at 10:10–10:14 — "and write down every one of the verses and" (small.en+medium.en)
+- **Jeremiah 36** — repeated verse 29 at 10:22–10:25 — "about Yahaka King King King's day" (small.en+medium.en)
+- **Jeremiah 36** — repeated verse 29 at 10:26–10:28 — "what the Lord says Yes" (small.en+medium.en)
+- **Jeremiah 36** — repeated verse 29 at 10:48–10:52 — "who is named in the land of their fathers is" (small.en+medium.en)
+- **Jeremiah 36** — repeated verse 32 at 12:29–12:33 — "So Jeremiah took another scroll and gave it to Baruch" (small.en+medium.en)
+- **Jeremiah 36** — repeated verse 32 at 12:34–12:36 — "and all the dangers of the tone" (small.en+medium.en)
+  - audio check: unclear: inserted verse 32 12:22-12:46 (slice coverage small 0.04, medium 1.00) confirmed: inserted verse 28 8:14-8:38 (slice coverage small 0.92, medium 0.92) confirmed: inserted verse 9 4:07-4:31 (slice coverage small 0.96, medium 0.96)
+  - WER small 1.1739 / medium 1.2153; coverage small 0.8802 / medium 0.6829; duration 799.06s vs expected 377.2s (ratio 2.118); sha256 `15dab2084622298bb5b9b5306a8f4d1ff5647b31ac82ce126ed298600b39ed74`
+- **Jeremiah 37** — silence before verse 1 at 0:07–0:10 — "son of Josiah became king of Judah in place of Konya son of... Jeholiah." (waveform)
+- **Jeremiah 37** — missing verse 12 at 2:49 — "started to leave Jerusalem to go to the land of Benjamin to get his share of family property there" (small.en+medium.en)
+- **Jeremiah 37** — missing verse 13 at 3:03 — "the Babylonians Jeremiah said That's not true I am not joining" (small.en+medium.en)
+- **Jeremiah 37** — inserted verse 1 at 0:10–0:22 — "Jehoiiah Jehoiiah Jehoiiah Jehoiiah Jehoiiah Jehoiiah Chapter 37 verse 2 as a man named King Zedekiah Please named this" (small.en+medium.en)
+- **Jeremiah 37** — inserted verse 1 at 0:23–0:36 — "the Jews Ty Giah Ty nine Jehovah Jerom Tana Havagileid and Nevises These leaders invaded by the breach national pharaoh They came and settled down with" (small.en+medium.en)
+- **Jeremiah 37** — inserted verse 2 at 0:36–0:40 — "Zedekiah and ruled back against the nations As they ruled and warred" (small.en+medium.en)
+- **Jeremiah 37** — inserted verse 2 at 0:43–1:16 — "blood of a proper nation to come and rally They wanted to diabolically please their nations as well as their pharaohs armies and people They wanted to diabolically please their nations as well as their pharaoh's armies and people They wanted to diabolically please their nations as well as their pharaoh's armies and people They wanted to diabolically please their …" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 2 0:42-1:06 (slice coverage small 1.00, medium 1.00) unclear: inserted verse 1 0:22-0:42 (slice coverage small 0.79, medium 0.67) unclear: inserted verse 1 0:09-0:28 (slice coverage small 0.63, medium 0.68)
+  - WER small 0.4038 / medium 0.6476; coverage small 0.8971 / medium 0.7067; duration 273.24s vs expected 210.0s (ratio 1.301); sha256 `a947d0b41a9dc89673e614f146f3bf6102fdaa6220430f9719c4c2bacb454c80`
+- **Jeremiah 39** — missing verse 4 at 0:42 — "by the road through the king's garden" (small.en)
+- **Jeremiah 39** — missing verse 5 at 1:18 — "him At Riblah the king of Babylon put Zedekiah's sons to death while Zedekiah watched He also put to death all the important people of Judah Then he blinded Zedekiah and put him in bronze chains to take him to Babylon" (medium.en)
+  - audio check: unclear: missing verse 5 1:02-1:11 (slice coverage small 0.92, medium 0.00) confirmed: missing verse 4 0:33-0:43 (slice coverage small 0.29, medium 0.14)
+  - WER small 0.0683 / medium 0.245; coverage small 0.9498 / medium 0.759; duration 173.44s vs expected 199.2s (ratio 0.871); sha256 `da24f8298014ca53cb09f0255506f21be16024f7fddaa9bbb68298ac3444ca9b`
+- **Jeremiah 42** — missing verse 15 at 2:19 — "you people left in Judah" (small.en)
+- **Jeremiah 42** — missing verse 9 at 1:22 — "This is what he says If you stay in" (medium.en)
+  - audio check: confirmed: missing verse 9 1:13-1:23 (slice coverage small 0.22, medium 0.22) refuted: missing verse 15 2:10-2:20 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.0216 / medium 0.1312; coverage small 0.9799 / medium 0.8889; duration 214.4s vs expected 259.2s (ratio 0.827); sha256 `127352ea6d6375582219dc7a55d06ce3529dbe220088b66ac39cdf2094bda215`
+- **Jeremiah 44** — missing verse 26 at 6:11–6:14 — "make a promise by saying As surely" (small.en+medium.en)
+- **Jeremiah 44** — inserted verse 26 at 5:10–5:49 — "saves their lands saves their families wherever they go Even though I can telephones won't even be able to stop you from being safe If you think you see something that is insane it only playas the people and uses them as a pet peeves But they say that nothing can happen and even men bringing infrared even driving information …" (small.en+medium.en)
+- **Jeremiah 44** — inserted verse 26 at 5:50–5:54 — "prove them with my great power That is yes let God never" (small.en+medium.en)
+- **Jeremiah 44** — inserted verse 26 at 5:55–6:11 — "and if anyone mentally hurts tear into their brains and makes them brethren and sing no more In order to bring them back in faith in order to bring them back to their lands and give them back their faith they will bring them back" (small.en+medium.en)
+- **Jeremiah 44** — inserted verse 26 at 6:11–6:14 — "these lands and give them back there for they" (small.en+medium.en)
+- **Jeremiah 44** — repeated verse 26 at 6:05–6:06 — "in order to bring them back" (small.en+medium.en)
+- **Jeremiah 44** — repeated verse 26 at 6:11–6:13 — "lands and give them back" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 26 5:10-5:34 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 26 5:54-6:17 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 26 5:49-6:00 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.2849 / medium 0.2659; coverage small 0.8955 / medium 0.8813; duration 430.29s vs expected 421.2s (ratio 1.022); sha256 `1cf89623370779fbd3200df4bc643cde167c0da02ac2abc15b9a9b8849145449`
+- **Jeremiah 45** — inserted verse 1 at 0:07–0:19 — "Jeremiah son of Josiah Jeremiah chapter 45 This is the message the prophet Jeremiah gave to Baruch son of Nereiah in the fourth year of Jeremiah" (small.en+medium.en)
+- **Jeremiah 45** — inserted verse 1 at 0:20–0:33 — "King of Edom Baruch was threatened by near a Babylon Emperor Barimaya gazed a message to the nations This message contained the Gospel of Noah and fore teller from Barimaya son of Noriah Baruch" (small.en+medium.en)
+- **Jeremiah 45** — inserted verse 1 at 0:34–0:48 — "threatened by Neera Babylon Emperor Barimaya warned the nations of Edom and Rowan plagued the nations in the midst of their daily fightings Then Baruch wrote down and read the enmantments of the message containing these words and envisioned the death" (small.en+medium.en)
+- **Jeremiah 45** — inserted verse 1 at 0:48–1:10 — "the nations in a prophecy meaning Baruch was then buried with Jeremiah and Bailey in a desert tent near Gibeon Bailey was born in a desert tent in North Carolina that day Jeremiah went to Josha Baruch was then buried with Jeremiah and Bailey in a desert tent in North Carolina that day when Jeremiah went to Josha Baruch" (small.en+medium.en)
+- **Jeremiah 45** — inserted verse 1 at 1:11–1:16 — "then buried with Jeremiah and Bailey in a desert tent in North Carolina that day" (small.en+medium.en)
+- **Jeremiah 45** — inserted verse 1 at 1:21–1:37 — "of Jeremiah and was envisioned the burying of the nations and Bailey said a message to the nations and envisioned the prophets and message individuals and results Baruch was then buried with Jeremiah and Bailey in a desert tent in North Carolina that day when" (small.en+medium.en)
+- **Jeremiah 45** — inserted verse 4 at 1:57–2:18 — "will build again if he says if you want anything else But instead you will be able to see Pharaohs and Israel breathing in prosper It's all going to happen in the same place in California The flovers will breathe into the nations and within one day everyone who is in things will be inflamed That day" (small.en+medium.en)
+- **Jeremiah 45** — inserted verse 4 at 2:18–2:51 — "be a bad day for Israel destined to be a slave to the imperial territories It was when Baruch wrote down these words of Jeremiah in a soul and instead of of doing as he wanted he did what he feared He said he wanted anything but other things and be in prayer with God to guide him towards good …" (small.en+medium.en)
+- **Jeremiah 45** — repeated verse 1 at 1:02–1:08 — "Baruch was then buried with Jeremiah and Bailey in a desert tent in North Carolina that day" (small.en+medium.en)
+- **Jeremiah 45** — repeated verse 1 at 1:08–1:19 — "Jeremiah went to Josha Baruch was then buried with Jeremiah and Bailey in a desert tent in North Carolina that day when Jeremiah went to Josha Baruch was" (small.en+medium.en)
+- **Jeremiah 45** — repeated verse 1 at 1:31–1:38 — "Baruch was then buried with Jeremiah and Bailey in a desert tent in North Carolina that day when Jeremiah" (small.en+medium.en)
+- **Jeremiah 45** — repeated verse 4 at 2:37–2:41 — "It's all going to happen in the same place in California" (small.en+medium.en)
+- **Jeremiah 45** — repeated verse 4 at 2:49–2:52 — "It was when Baruch wrote down these words" (small.en+medium.en)
+  - audio check: unclear: inserted verse 4 2:17-2:41 (slice coverage small 0.62, medium 1.00) unclear: inserted verse 1 0:47-1:11 (slice coverage small 1.00, medium 0.08) confirmed: inserted verse 4 1:56-2:20 (slice coverage small 1.00, medium 1.00)
+  - WER small 2.9041 / medium 1.7808; coverage small 0.9521 / medium 0.4932; duration 202.03s vs expected 58.4s (ratio 3.459); sha256 `db701be0822f5d6292fc6ba463aeb54968bb4923f169e2d70bc9f4da678a30c2`
 
 ## UNCERTAIN
 
@@ -4613,6 +4710,17 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Jeremiah 24** — missing verse 1 at 0:30 — "king of Babylon took Jeconiah son of Jehoiakim king of Judah away from Jerusalem to Babylon along with the leaders of Judah and the skilled workers and metalworkers the LORD showed me two baskets of figs sitting in front of the LORD's temple One basket had very good figs like figs that ripen early The other basket had very bad …" (medium.en)
   - audio check: unclear: missing verse 1 0:01-0:10 (slice coverage small 0.83, medium 0.00)
   - medium.en only: missing 'king of Babylon took Jeconiah son of Jehoiakim king of Judah away from Jerusalem to Babylon along with the leaders of Judah and the skilled workers and metalworkers the LORD showed me two baskets of figs sitting in front of the LORD's temple One basket had very good figs like figs that ripen early The other basket had very bad …'; coverage unclear (small 0.997, medium 0.769; pass needs both >= 0.96); WER small 0.0031 / medium 0.2344; coverage small 0.9969 / medium 0.7688; sha256 `144efa23611bb8ca6baffb7a010e21d8ae7f518864d8135c059ee032156255bb`
+- **Jeremiah 38** — missing verse 14 at 2:44 — "house The king said to Jeremiah I am going to ask you something Don't hide anything from me Jeremiah said to Zedekiah If I tell you won't you surely kill me And if I give you advice you won't listen to me But King Zedekiah made a secret promise to Jeremiah He said As surely as the LORD lives who …" (small.en)
+- **Jeremiah 38** — missing verse 5 at 0:49–0:50 — "can't do anything to stop you So they" (medium.en)
+  - audio check: unclear: missing verse 14 2:17-2:26 (slice coverage small 0.92, medium 0.00) unclear: missing verse 5 0:40-0:50 (slice coverage small 0.12, medium 0.62)
+  - small.en only: missing 'house The king said to Jeremiah I am going to ask you something Don't hide anything from me Jeremiah said to Zedekiah If I tell you won't you surely kill me And if I give you advice you won't listen to me But King Zedekiah made a secret promise to Jeremiah He said As surely as the LORD lives who …'; medium.en only: missing 'can't do anything to stop you So they'; coverage unclear (small 0.909, medium 0.849; pass needs both >= 0.96); WER small 0.1018 / medium 0.1591; coverage small 0.9088 / medium 0.8491; sha256 `52f7f6e1ac64d85945cc9fc080365591c1b357f87b86cdb4c2d4338dd6a1cda5`
+- **Jeremiah 40** — audio slice contains the disputed words; the models still disagree (coverage small 0.961, medium 0.630)
+  - audio check: refuted: missing verse 3 0:20-0:30 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 16 3:10-3:19 (slice coverage small 1.00, medium 0.80, times 1/0)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.961, medium 0.630); WER small 0.042 / medium 0.3731; coverage small 0.9613 / medium 0.6303; sha256 `8157f4e97246f27d3cc605a72f4905efeac6682d19bc0118933b23fca6b607c3`
+- **Jeremiah 41** — repeated verse 7 at 1:04–1:05 — "Ishmael son of Nephaniah and the" (small.en)
+- **Jeremiah 41** — missing verse 1 at 0:00–0:02 — "In the seventh month Ishmael son of Nethaniah son of Elishama came with ten men to Gedaliah son of Ahikam at Mizpah Ishmael was from the royal family and had been one of the king's officers They ate a meal together at Mizpah Then Ishmael son of Nethaniah and the ten men with him got up and killed Gedaliah son …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.83, medium 0.00) refuted: repeated verse 7 1:02-1:11 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - small.en only: repeated 'Ishmael son of Nephaniah and the'; medium.en only: missing 'In the seventh month Ishmael son of Nethaniah son of Elishama came with ten men to Gedaliah son of Ahikam at Mizpah Ishmael was from the royal family and had been one of the king's officers They ate a meal together at Mizpah Then Ishmael son of Nethaniah and the ten men with him got up and killed Gedaliah son …'; coverage unclear (small 0.970, medium 0.645; pass needs both >= 0.96); WER backstop on one model (small 0.032, medium 0.363); WER small 0.0324 / medium 0.3626; coverage small 0.9695 / medium 0.645; sha256 `6074b0d9a571c6f6051272aa7eb01143b6eb55e1a734d3d07b784be629ea5aa7`
 
 ## Script
 
