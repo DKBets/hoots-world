@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 830
+- Scored chapters: 840
 - PASS: 52
-- FAIL: 471
-- UNCERTAIN: 307 (jsonl verdict UNSURE)
-- Still to score: 99 Old Testament chapters
+- FAIL: 475
+- UNCERTAIN: 313 (jsonl verdict UNSURE)
+- Still to score: 89 Old Testament chapters
 
 ## PASS
 
@@ -3992,6 +3992,22 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Ezekiel 27** — missing verse 3 at 0:08 — "Tyre the city at the edge of the sea the trader with people from many lands by the sea The Lord GOD says" (medium.en)
   - audio check: confirmed: missing verse 3 0:00-0:09 (slice coverage small 0.25, medium 0.00)
   - WER small 0.0232 / medium 0.3858; coverage small 0.9781 / medium 0.6181; duration 298.11s vs expected 310.0s (ratio 0.962); sha256 `987b43205a9e7bd38306d9cd7ada774780b633d2b97d7c93976e3355390c8064`
+- **Ezekiel 32** — missing verse 2 at 0:09–0:11 — "man sing a sad song about" (small.en+medium.en)
+  - audio check: confirmed: missing verse 2 0:00-0:10 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.1614 / medium 0.2025; coverage small 0.9119 / medium 0.8151; duration 390.83s vs expected 408.8s (ratio 0.956); sha256 `435f1a1eba2adcee054c36e168a61bba635bfdde4a467dca1561c22ea0fb668e`
+- **Ezekiel 33** — missing verse 14 at 2:50 — "what is fair and right if he gives back what he took to hold for a loan returns what he stole follows the rules that lead to life and stops doing wrong he will surely live He will not die None of the sins he did will be remembered against him He has done" (small.en)
+- **Ezekiel 33** — missing verse 26 at 4:35 — "disgusting things and each of you sins with his neighbor's wife Should you own the land Tell them The Lord GOD says As surely as I live the people living in the ruins will die by the sword I will give those in the open fields to wild animals to eat Those hiding in forts and caves will die of …" (medium.en)
+  - audio check: refuted: missing verse 26 4:02-4:11 (slice coverage small 1.00, medium 1.00) confirmed: missing verse 14 2:28-2:37 (slice coverage small 0.08, medium 0.17)
+  - WER small 0.0748 / medium 0.088; coverage small 0.9262 / medium 0.9151; duration 332.12s vs expected 395.6s (ratio 0.84); sha256 `9fade6de04989d427bac94fd42021cee2671697b43255c2fc2187d5fa3bf0e1b`
+- **Ezekiel 34** — inserted verse 24 at 3:42–4:16 — "And I the Lord the Jade 3 Manager will lead them fivers Then he will go out and season the nations with his own guides Then they will go about and deed vineyards And I the Lord will find you safe and warm with my presence Then my Lord will find you safe and warm with my presence Then my …" (small.en+medium.en)
+- **Ezekiel 34** — repeated verse 24 at 4:01–4:13 — "Lord will find you safe and warm with my presence Then my Lord will find you safe and warm with my presence Then my Lord will find you safe and warm with my presence" (small.en+medium.en)
+- **Ezekiel 34** — repeated verse 24 at 4:14–4:21 — "And I the Lord will find you safe and warm with my presence And I the Lord will find you safe" (small.en+medium.en)
+  - audio check: unclear: inserted verse 24 3:41-4:05 (slice coverage small 1.00, medium 0.21) refuted: repeated verse 24 4:00-4:19 (slice coverage small 0.50, medium 1.00, times 0/1) refuted: repeated verse 24 4:13-4:27 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.2199 / medium 0.1345; coverage small 0.8936 / medium 0.9825; duration 331.86s vs expected 342.0s (ratio 0.97); sha256 `df626c4af1608773817c7e5860c008672d4f729d6a1596e7e15455df36f33a3c`
+- **Ezekiel 37** — missing verse 12 at 1:53 — "bring you up out of them" (small.en)
+- **Ezekiel 37** — missing verse 6 at 0:51 — "I will put breath in you and you will come to life Then you will know that" (medium.en)
+  - audio check: refuted: missing verse 6 0:42-0:52 (slice coverage small 1.00, medium 1.00) confirmed: missing verse 12 1:44-1:54 (slice coverage small 0.33, medium 0.17)
+  - WER small 0.0249 / medium 0.0471; coverage small 0.9804 / medium 0.9607; duration 264.53s vs expected 305.6s (ratio 0.866); sha256 `d9c047ed4e88173aaa68ceb52d9cd32fd474d9b127d0eb42880e9a1b0ab8eaac`
 
 ## UNCERTAIN
 
@@ -4951,6 +4967,24 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Ezekiel 28** — audio slice contains the disputed words; the models still disagree (coverage small 0.859, medium 0.760)
   - audio check: refuted: missing verse 6 0:36-0:45 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.859, medium 0.760); WER small 0.1425 / medium 0.2412; coverage small 0.859 / medium 0.7602; sha256 `b60ad33521b3ab385b92221674a7eb93c75ea1e6edbce2e3bac934d0103cd09a`
+- **Ezekiel 29** — missing verse 4 at 0:57 — "you up out of your rivers with all the fish stuck to your scales I will throw you out into the desert you and all the fish of your rivers You will fall in the open field No one will pick" (medium.en)
+  - audio check: unclear: missing verse 4 0:40-0:49 (slice coverage small 0.42, medium 0.00)
+  - medium.en only: missing 'you up out of your rivers with all the fish stuck to your scales I will throw you out into the desert you and all the fish of your rivers You will fall in the open field No one will pick'; coverage unclear (small 0.990, medium 0.588; pass needs both >= 0.96); WER backstop on one model (small 0.010, medium 0.413); WER small 0.0096 / medium 0.4135; coverage small 0.9904 / medium 0.5881; sha256 `059616f848f3ce61ae80c48aaed14f7ecf5054f75b1ec820de431771db040fdd`
+- **Ezekiel 30** — audio slice contains the disputed words; the models still disagree (coverage small 0.988, medium 0.691)
+  - audio check: refuted: repeated verse 9 1:18-1:26 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.988, medium 0.691); WER small 0.0232 / medium 0.3145; coverage small 0.9884 / medium 0.6913; sha256 `64b8b66c60a6b6a83330a50bb12a4992c688eacf0824553b0938dc83079f1e25`
+- **Ezekiel 31** — missing verse 3 at 0:45 — "cedar tree in Lebanon with beautiful branches that shaded the forest It was very tall Its top was high above the thick branches Water made it grow Deep springs made it tall Rivers flowed all around it and streams went out from it to all the trees in the field So it grew taller than all the other trees in …" (medium.en)
+  - audio check: unclear: missing verse 3 0:13-0:22 (slice coverage small 0.00, medium 1.00)
+  - medium.en only: missing 'cedar tree in Lebanon with beautiful branches that shaded the forest It was very tall Its top was high above the thick branches Water made it grow Deep springs made it tall Rivers flowed all around it and streams went out from it to all the trees in the field So it grew taller than all the other trees in …'; coverage unclear (small 0.997, medium 0.856; pass needs both >= 0.96); WER small 0.005 / medium 0.1469; coverage small 0.9967 / medium 0.8564; sha256 `4c3c3b291b43ac336bbd166390780e721e9f50bc93774994fcfeb9643e35626f`
+- **Ezekiel 35** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.664)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.664); WER small 0.0 / medium 0.336; coverage small 1.0 / medium 0.664; sha256 `1cd4164a2aa1a0f764b00059ce0745c6d09548a53fa07495e37ab9dbbf1f78ff`
+- **Ezekiel 36** — audio slice contains the disputed words; the models still disagree (coverage small 0.914, medium 0.821)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.914, medium 0.821); WER small 0.0914 / medium 0.18; coverage small 0.9143 / medium 0.821; sha256 `c1f9e8727dc027f3423c398fadb838b1ba7be1f60cb023be71cbad3033866b23`
+- **Ezekiel 38** — audio slice contains the disputed words; the models still disagree (coverage small 0.990, medium 0.925)
+  - audio check: refuted: missing verse 15 2:21-2:30 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.990, medium 0.925); WER small 0.0135 / medium 0.0811; coverage small 0.9895 / medium 0.9249; sha256 `518dda604ea475932e5b4c9c74a6c4bfbbba9a1261261fd5c31db7eda6fbf2c4`
 
 ## Script
 
