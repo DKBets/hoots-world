@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 890
+- Scored chapters: 900
 - PASS: 53
-- FAIL: 499
-- UNCERTAIN: 338 (jsonl verdict UNSURE)
-- Still to score: 39 Old Testament chapters
+- FAIL: 505
+- UNCERTAIN: 342 (jsonl verdict UNSURE)
+- Still to score: 29 Old Testament chapters
 
 ## PASS
 
@@ -4151,6 +4151,28 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Jonah 1** — repeated verse 17 at 5:08–5:10 — "parable to test him by playing" (small.en+medium.en)
   - audio check: unclear: inserted verse 17 4:14-4:38 (slice coverage small 0.54, medium 1.00) confirmed: inserted verse 17 3:38-4:02 (slice coverage small 1.00, medium 0.96) confirmed: inserted verse 16 2:32-2:50 (slice coverage small 0.96, medium 1.00)
   - WER small 1.2939 / medium 1.1864; coverage small 0.9627 / medium 0.3904; duration 380.33s vs expected 182.4s (ratio 2.085); sha256 `6bcab608fe0e183f4340d7773e6b622b1225b57bc65a0cc58f38e9cf0a983a28`
+- **Jonah 2** — inserted verse 9 at 1:19–1:20 — "gave the fish and order" (medium.en)
+  - audio check: confirmed: inserted verse 9 1:12-1:24 (slice coverage small 0.80, medium 0.80)
+  - WER small 0.0102 / medium 0.0812; coverage small 0.9898 / medium 0.9695; duration 84.48s vs expected 78.8s (ratio 1.072); sha256 `f72327b18b165d385e4ad19fe57d5e0112d13f255a2beb541bd15266529549b6`
+- **Jonah 3** — missing verse 1 at 0:29 — "The LORD's message came to Jonah a second time God said Get up and go to the great city of Nineveh Give it the message I tell you This time Jonah obeyed the LORD and went to Nineveh Nineveh was a very big city It took three days to walk across it" (medium.en)
+  - audio check: confirmed: missing verse 1 0:08-0:17 (slice coverage small 0.25, medium 0.17)
+  - WER small 0.0 / medium 0.2782; coverage small 1.0 / medium 0.7218; duration 97.28s vs expected 99.2s (ratio 0.981); sha256 `971d6c27266be3d15bad9c6a689e8b544dfcea592ecb2ec2438170b121412170`
+- **Jonah 4** — missing verse 6 at 0:52 — "the plant But early the next morning God sent a worm It chewed the plant and" (medium.en)
+  - audio check: confirmed: missing verse 6 0:43-0:53 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.0132 / medium 0.1382; coverage small 0.9868 / medium 0.8684; duration 103.17s vs expected 121.6s (ratio 0.848); sha256 `25f129991d74ca185c991091b6547e2f115077cca5ff0027b0fd616a512cced7`
+- **Micah 2** — missing verse 4 at 1:00 — "about you We are completely ruined God has taken away my people's land and given our fields to traitors So none of you will be left in the LORD's family to divide up the land by drawing lots The people say to Micah Stop preaching Don't preach" (medium.en)
+  - audio check: confirmed: missing verse 4 0:41-0:50 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.0056 / medium 0.2011; coverage small 0.9944 / medium 0.8073; duration 118.57s vs expected 143.2s (ratio 0.828); sha256 `d45f4d10833ad918f019bf3a64213c0f09a7073d81885365121f432807f03507`
+- **Micah 5** — missing verse 11 at 1:47 — "I will destroy the cities in your land and tear down all your strong walls I will get rid of your magic spells You won't have fortune tellers anymore" (small.en)
+- **Micah 5** — missing verse 1 at 0:29–0:30 — "Now gather your soldiers city of soldiers The enemy has surrounded us They will hit Israel's ruler on the cheek with a stick But you Bethlehem Ephrathah are small among the towns of Judah Yet out of you will come someone who will rule over Israel for me His beginnings were long ago from ancient times So God will leave …" (medium.en)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) confirmed: missing verse 11 1:35-1:44 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.1105 / medium 0.3605; coverage small 0.9158 / medium 0.6421; duration 131.93s vs expected 152.0s (ratio 0.868); sha256 `54212f2dfe4628c1bd8adcbaf5e6cff3adb4cc703a304064463b43c648c0e90f`
+- **Micah 6** — inserted verse 8 at 1:17–2:29 — "The Lord is calling a terror in the city The Lord is calling a terror in the city The Lord is calling a terror in the city The Lord is calling a terror in the city The Lord is calling a terror in the city The Lord is calling a terror in the city The Lord is calling a terror …" (small.en+medium.en)
+- **Micah 6** — inserted verse 9 at 2:33–2:34 — "The Lord is calling a terror" (small.en+medium.en)
+- **Micah 6** — repeated verse 8 at 1:21–2:23 — "The Lord is calling a terror in the city The Lord is calling a terror in the city The Lord is calling a terror in the city The Lord is calling a terror in the city The Lord is calling a terror in the city The Lord is calling a terror in the city The Lord is calling a terror …" (small.en+medium.en)
+- **Micah 6** — repeated verse 8 at 2:23–2:34 — "city The Lord is calling a terror in the city The Lord is calling a terror in the city The Lord is calling a terror in the city The Lord is calling a terror" (small.en+medium.en)
+  - audio check: unclear: inserted verse 8 1:16-1:40 (slice coverage small 0.00, medium 0.38) refuted: repeated verse 8 1:20-1:44 (slice coverage small 1.00, medium 0.38, times 1/0) refuted: repeated verse 8 2:22-2:40 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.4989 / medium 0.3002; coverage small 0.9865 / medium 0.9932; duration 226.99s vs expected 177.2s (ratio 1.281); sha256 `eac2f200a5c81e6dd67905c395fc068ec8a57a8b90e774fe713a33c4c2a2f563`
 
 ## UNCERTAIN
 
@@ -5203,6 +5225,18 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Obadiah 1** — audio slice contains the disputed words; the models still disagree (coverage small 0.873, medium 0.986)
   - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.83)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.873, medium 0.986); WER small 0.1282 / medium 0.0142; coverage small 0.8734 / medium 0.9858; sha256 `f3f4c58441958872ec073905e0b31a71d57c3823eac47fa16bc731480531188c`
+- **Micah 1** — audio slice contains the disputed words; the models still disagree (coverage small 0.979, medium 0.895)
+  - audio check: refuted: missing verse 11 1:45-1:54 (slice coverage small 0.92, medium 0.92)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.979, medium 0.895); WER small 0.0256 / medium 0.1142; coverage small 0.979 / medium 0.8951; sha256 `6512cd943b5e6b0e2ed5832f8e45bd41ff28dfc06b2a54effd4a277886cc6e76`
+- **Micah 3** — audio slice contains the disputed words; the models still disagree (coverage small 0.746, medium 0.503)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.746, medium 0.503); WER small 0.2542 / medium 0.5; coverage small 0.7458 / medium 0.5028; sha256 `f7413e2563b131e2b2c67c8103a46fdb34eb39dab22c999d2f9e5b83a2e12c2e`
+- **Micah 4** — missing verse 13 at ? — "Get up and thresh people of Zion I will give you horns of iron and hooves of bronze You will crush many nations You will give the things you take from them to the LORD the Lord of the whole earth" (small.en)
+  - audio check: refuted: missing verse 2 0:18-0:27 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.900, medium 0.688); WER small 0.1023 / medium 0.3186; coverage small 0.9 / medium 0.6884; sha256 `2d4cab0241f0d3d6598b5b7aff00ab1768ab90aab88f41e25ff7ed6ce3e4a90b`
+- **Micah 7** — audio slice contains the disputed words; the models still disagree (coverage small 0.967, medium 0.905)
+  - audio check: refuted: missing verse 11 1:43-1:53 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.967, medium 0.905); WER small 0.0367 / medium 0.1269; coverage small 0.9666 / medium 0.9048; sha256 `ab9dea8aadea5f8bbcf38256e4f06939e8f1c316cc4de5d034d390221da8731b`
 
 ## Script
 
