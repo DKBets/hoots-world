@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 550
-- PASS: 27
-- FAIL: 334
-- UNCERTAIN: 189 (jsonl verdict UNSURE)
-- Still to score: 379 Old Testament chapters
+- Scored chapters: 560
+- PASS: 29
+- FAIL: 340
+- UNCERTAIN: 191 (jsonl verdict UNSURE)
+- Still to score: 369 Old Testament chapters
 
 ## PASS
 
-27 chapters. Both models agreed there was no missing, invented, or repeated passage.
+29 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -77,7 +77,7 @@ words clears that span. A split slice stays UNCERTAIN.
 - Nehemiah 1, 5
 - Esther 10
 - Job 2, 34–35
-- Psalms 1, 3, 8, 11–12, 15, 39, 50, 53, 58, 64, 70
+- Psalms 1, 3, 8, 11–12, 15, 39, 50, 53, 58, 64, 70, 76, 82
 
 ## FAIL
 
@@ -2974,6 +2974,25 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 71** — missing verse 1 at 0:00–0:02 — "LORD I run to you to be safe Never let me be put to shame Because you are good rescue me and save me Listen to me and save me Be my rock a safe place I can always go to Give the order to save me because you are my rock and my strong fort My God rescue me …" (small.en+medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
   - WER small 0.1881 / medium 0.2168; coverage small 0.8119 / medium 0.7854; duration 140.97s vs expected 180.8s (ratio 0.78); sha256 `cc93dd799374696d6f1d8a1af1988cb9a262a50098c2380d573deb6c8d1f44f9`
+- **Psalms 74** — missing verse 1 at 0:12–0:30 — "God why have you turned away from us for so long Why are you so angry with the sheep you take care of Remember your people whom you made your own long ago You rescued them to be your special family Remember Mount Zion where you lived Come and walk through the ruins that have been broken for so long …" (small.en)
+- **Psalms 74** — missing verse 3 at 0:25 — "in your holy place Your enemies shouted loudly" (medium.en)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) confirmed: missing verse 3 0:16-0:26 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.6583 / medium 0.0905; coverage small 0.5603 / medium 0.9146; duration 146.01s vs expected 159.2s (ratio 0.917); sha256 `822e53341c95698d40d1c8d7e64f294ebe2f131b56b234ced14cb4819c2a9f5b`
+- **Psalms 75** — missing verse 5 at 0:29 — "way Being lifted up doesn't come from the east or from the west or from the south" (small.en)
+  - audio check: confirmed: missing verse 5 0:20-0:30 (slice coverage small 0.08, medium 0.00)
+  - WER small 0.1148 / medium 0.0164; coverage small 0.9071 / medium 0.9945; duration 63.1s vs expected 73.2s (ratio 0.862); sha256 `39cbaa7c9006334fc04e6aab2fc81df1c4373a00c1a59279265f198eea1f9e08`
+- **Psalms 77** — missing verse 14 at 1:14–1:15 — "does amazing things You have" (medium.en)
+  - audio check: confirmed: missing verse 14 1:05-1:15 (slice coverage small 0.20, medium 0.20)
+  - WER small 0.0061 / medium 0.0429; coverage small 0.9969 / medium 0.9663; duration 112.21s vs expected 130.4s (ratio 0.861); sha256 `ed5886182fe6df8e243a7577e244185af07ca65a192c1567d133fd8a67c65b14`
+- **Psalms 78** — missing verse 49 at 4:25 — "of angels to bring disaster He made a path for his anger He did not spare them from death but sent a terrible sickness He struck down every oldest son in Egypt the firstborn in the tents" (small.en+medium.en)
+  - audio check: confirmed: missing verse 49 4:10-4:19 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.0514 / medium 0.1698; coverage small 0.9544 / medium 0.8384; duration 394.5s vs expected 482.8s (ratio 0.817); sha256 `b81d901b4524c20e4332941afbf96d9ab20a101be4ef0c593d3cf1c3b98597ec`
+- **Psalms 79** — missing verse 1 at 0:25–0:28 — "God other nations have come into your land They have treated your holy temple badly They have turned Jerusalem into piles of rubble Many of your servants have died and no one cared for their bodies So many of your people were killed all around Jerusalem and there was no one to bury them Our neighbors insult us The people …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - WER small 0.3496 / medium 0.3537; coverage small 0.6504 / medium 0.6504; duration 84.86s vs expected 98.4s (ratio 0.862); sha256 `fec17f7dc68fa638cc612b5e3a45dcdca461b364c85fe3da232b169c8962b285`
+- **Psalms 80** — missing verse 11 at 1:27 — "to the sea Its shoots reached" (medium.en)
+  - audio check: confirmed: missing verse 11 1:18-1:28 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.0032 / medium 0.2332; coverage small 0.9968 / medium 0.7732; duration 109.27s vs expected 125.2s (ratio 0.873); sha256 `87d90a7b15dec22b841d434a80661916db10cfa641db8753f90a5b29e09ef297`
 
 ## UNCERTAIN
 
@@ -3564,6 +3583,12 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 72** — audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.609)
   - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.609); WER small 0.0025 / medium 0.3934; coverage small 0.9975 / medium 0.6091; sha256 `8988510c4797201061847b1e9929928ddc5220fc1898280923ad80ca9829cdc4`
+- **Psalms 73** — missing verse 23 at 2:13 — "with you You hold my right hand You will guide me" (medium.en)
+  - audio check: unclear: missing verse 23 2:04-2:14 (slice coverage small 0.36, medium 0.36)
+  - medium.en only: missing 'with you You hold my right hand You will guide me'; coverage unclear (small 0.995, medium 0.759; pass needs both >= 0.96); WER small 0.0071 / medium 0.2411; coverage small 0.9953 / medium 0.7589; sha256 `36da5ae2d8872b6b6cd7ec1548c374a55021012b4d559e3d76d50c516abc943c`
+- **Psalms 81** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.729)
+  - audio check: refuted: missing verse 5 0:30-0:39 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.729); WER small 0.0 / medium 0.2786; coverage small 1.0 / medium 0.7286; sha256 `b725dba8a8928b1132b1b7766cfa090e256f609f0e0dd9953950aaca8a55fd9f`
 
 ## Script
 
