@@ -1,148 +1,122 @@
 # Kids Bible narration package
 
-Snapshot: `lab-audio` at `044090657f7eeb258692ff793a1874e400207f4a` (includes the re-record fixes landed 10–13 Nov).
+Audio tree: `lab-audio` at `044090657f7eeb258692ff793a1874e400207f4a`, plus the story 10 overrides from PR #2 (`b6fab24`). This branch merges that PR in. The pull request is based on `kids-story-10-baby-moses-overrides` so those override files stay with PR #2.
 
-Chapters live in `kids-bible-audio/sample1` (girl) and `kids-bible-audio/boy` (boy). Stories live in `long-road-kids-audio/sample1/stories` and `long-road-kids-audio/boy/stories`. The app voice names used below are `girl` and `boy`.
+Chapters are in `kids-bible-audio/sample1` (girl) and `kids-bible-audio/boy`. Stories are in `long-road-kids-audio/<same>/stories`. Overrides live in `kids-bible-audio/overrides/` and win when present.
 
 ## Recommendation
 
-Ship **both voices, all 66 books, all 1,189 chapters, and all 50 stories**, using the source AAC-LC files as they are.
+Ship both voices, all 66 books, all 1,189 chapters, and all 50 stories.
+
+Files at or below −1.0 dBTP are an ffmpeg stream copy. Files above −1.0 dBTP are decoded, true-peak limited, and re-encoded as AAC-LC mono at 24 kHz and that file’s own stream bitrate. Story 10 for both voices comes from the trimmed override, not the untrimmed lab-audio file.
 
 | | |
 | --- | ---: |
-| Encoding | AAC-LC, mono, 24 kHz, about 33 kbps, in `.m4a` |
-| How it is built | `ffmpeg` stream copy (`-c:a copy -movflags +faststart`). No re-encode |
-| Package audio | **2,463,206,070 bytes** (2,349.10 MiB, 2.294 GiB) |
-| Non-audio allowance | 300 MiB = 314,572,800 bytes |
-| Projected bundle | **2,777,778,870 bytes** (2,649.10 MiB, 2.588 GiB) |
-| Apple cap used here | 4 GiB = 4,294,967,296 bytes |
-| Headroom under 4 GiB | **1,517,188,426 bytes** (1,446.90 MiB, 1.413 GiB) |
-| Comfort margin held back | 400 MiB = 419,430,400 bytes |
-| Audio budget (cap − 300 MiB − 400 MiB) | 3,560,964,096 bytes |
-| Headroom inside that budget | **1,097,758,026 bytes** (1,046.90 MiB) |
+| Package audio | **2,461,032,628 bytes** (2,347.0 MiB, 2.292 GiB) |
+| Plus 300 MiB non-audio | **2,775,605,428 bytes** (2,647.1 MiB, 2.586 GiB) |
+| Headroom under 4 GiB | **1,519,361,868 bytes** (1,449.0 MiB, 1.415 GiB) |
+| Headroom inside the 400 MiB margin | **1,099,931,468 bytes** (1,049.0 MiB) |
+| Peak-limited files | 2,346 |
+| Stream copies | 132 |
+| Overrides used | 2 (girl and boy story 10) |
 
-A faststart stream copy does not change the AAC frames. On a 20-file sample the copied files grew by 8 bytes in total. On a real 4-file build every output matched the source length exactly (the sha256 changed because the `moov` atom was rewritten). The built package stays at 2,463,206,070 bytes, plus at most a few bytes per file.
+The audio budget is 4 GiB − 300 MiB − 400 MiB = 3,560,964,096 bytes. This package is inside it.
 
-Left out of the bundle: the 14 diagnostic takes in `kids-bible-audio/boy/Revelation/diagnostic-rev5/` (`v01.m4a`–`v14.m4a`). They are not Revelation chapters. Together they are 638,745 bytes and 154.0 seconds. Every canon chapter and every story 1–50 is in, for both voices.
+Left out: the 14 diagnostic takes in `kids-bible-audio/boy/Revelation/diagnostic-rev5/` (638,745 bytes). They are not chapters.
 
-## Inventory
+## Peak fix
 
-2,492 `.m4a` files. Every one is AAC-LC, one channel, 24,000 Hz, and decodes. None are zero-length.
+Trigger: true peak above −1.0 dBTP. Master target for a re-encoded file: −1.5 dBTP.
 
-| Set | Files | Bytes | Duration |
-| --- | ---: | ---: | ---: |
-| Girl chapters | 1,189 | 1,176,162,918 | 284,174.940 s (78.94 h) |
-| Boy chapters | 1,189 | 1,258,032,165 | 303,912.438 s (84.42 h) |
-| Girl stories | 50 | 14,057,655 | 3,401.304 s (56.7 min) |
-| Boy stories | 50 | 14,953,332 | 3,613.497 s (60.2 min) |
-| **Package** | **2,478** | **2,463,206,070** | **595,102.179 s (165.31 h)** |
-| Diagnostic takes (excluded) | 14 | 638,745 | 154.008 s |
+The PCM limiter is ffmpeg `alimiter` after a 4× resample (24 kHz → 96 kHz), with `level=false` so quiet audio is not turned up, `latency=true`, attack 1 ms, release 80 ms. The first ceiling is −2.7 dB. That is the −1.5 dBTP target plus the overshoot libfdk-aac adds at about 32 kbps. The encoded file is measured. If it is still above −1.5 dBTP, the ceiling drops by at least 1.5 dB and the file is encoded again (up to 5 tries).
 
-Container bitrate of the package is 33,117 bps (bytes × 8 / duration).
+ffmpeg’s built-in AAC encoder cannot hold this target. A PCM file limited to −1.5 dBTP came back near 0 dBTP after that encoder at 32 kbps. The re-encode uses `fdkaac -p 2` (libfdk-aac AAC-LC), then a faststart remux. `fdkaac` has to be on PATH.
 
-Loudness (EBU R128, true peak on, all 2,492 files):
+On this build: 2,187 files passed on the first encode, 145 on the second, 14 on the third. None of the re-encoded files are above −1.5 dBTP. The hottest file in the whole package is −1.0 dBTP, and it is a stream copy.
 
-| | Integrated LUFS | True peak (dBTP) |
-| --- | ---: | ---: |
-| Minimum | −17.4 | −3.4 |
-| Median | −16.4 | −0.2 |
-| Mean | −16.43 | −0.07 |
-| Maximum | −15.7 | +5.3 |
+Loudness change on the 2,346 limited files (after minus before):
 
-### Gaps
+| | LUFS |
+| --- | ---: |
+| Median | −0.3 |
+| Mean | −0.30 |
+| Smallest drop | −0.1 |
+| Largest drop | −1.1 |
+| Files that dropped 0.5 dB or more | 85 |
+| Files that dropped 1.0 dB or more | 2 |
 
-- **Missing chapters:** none. Both voices have all 66 Protestant books and chapters 1..N for each book (1,189 each). Stories 1–50 are present for both voices.
-- **Manifest mismatches:** each chapter and story file has one manifest row, and each manifest row has a file. Probed duration and the manifest duration differ by under 0.75 s on every row (the differences are rounding, a few thousandths of a second).
-- **Duplicates:** no shared sha256 among the 2,492 files. Girl and boy takes are distinct files.
-- **Undecodable or zero-length:** none.
-- **True peak above −1.0 dBTP:** 2,348 of the 2,478 package files (94.8%). 920 of those are above 0 dBTP (girl chapters 552, boy chapters 358, girl stories 7, boy stories 3). Six files are at or above +3.0 dBTP:
+The limiter does not aim at a new integrated-loudness target. The drops are the peaks it reduced, plus a lower ceiling on files whose AAC encode overshot. Boy Psalms 31 started at +0.4 dBTP and needed a −4.2 dB PCM ceiling; integrated loudness went from −17.2 to −18.1 LUFS and the encoded true peak is −1.7 dBTP.
 
-  | Voice | Book | Chapter | True peak |
-  | --- | --- | ---: | ---: |
-  | girl | 2 Kings | 25 | +5.3 dBTP |
-  | girl | Job | 1 | +4.2 dBTP |
-  | girl | Micah | 1 | +3.5 dBTP |
-  | boy | 2 Kings | 14 | +3.2 dBTP |
-  | girl | Genesis | 24 | +3.1 dBTP |
-  | girl | 2 Chronicles | 18 | +3.0 dBTP |
+67 stream copies are still above −1.5 dBTP and at or below −1.0 dBTP, so the trigger did not touch them. The loudest of those is −1.0 dBTP. Boy story 10 (the override) is one of them.
 
-Integrated loudness is already in a narrow band around −16.4 LUFS. The hot peaks are intersample peaks in the existing AAC, not missing or corrupt files. The package keeps those masters. A limiter would mean a second lossy AAC generation. Re-encoding the whole library at the same ~32 kbps drops time-domain SNR to about 14 dB and does not shrink the package (see the 32 kbps row below).
+## Overrides
 
-## Encode options
+`build_kids_bible_audio_package.py` calls `story_source()` in `kids-bible-audio/overrides/prefer_override.py`. For chapters it calls `prefer_override()` on `kids-bible-audio/overrides/chapters/<source_dir>/<Book>/<n>.m4a`, which is empty today.
 
-iOS AVPlayer plays AAC-LC and HE-AAC in `.m4a` natively. Both were measured. HE-AAC v2 (parametric stereo) is a stereo tool and was not used for this mono narration.
+When an override file is used, the script checks two hashes and stops if either fails:
 
-Ubuntu’s ffmpeg AAC encoder produces AAC-LC only. HE-AAC was encoded with a local build of libfdk-aac 4.0.1 (`fdkaac -p 5`, CBR, mono WAV in). That binary is not part of this repo. The HE-AAC files probe as stereo; the two decoded channels are identical (dual-mono signaling) and the bitrate is the mono target.
+- The override file must match `sha256` in `overrides/manifest.json`.
+- The lab-audio file named in `replaces` must still match `replaces.sha256`. A mismatch is a stale override.
 
-Size for each re-encode is extrapolated from a fixed 20-file sample (5,170.052 s, both voices, short stories through Psalm 119): sample bytes per second × 595,102.17 s of library audio. The same method predicts the source library at 2,461,692,833 bytes against the exact 2,463,206,070 (−0.06%), so the other rows are good to well under 1%.
+Story 10 in the built manifests:
 
-Quality on that same sample:
+| Voice | Source | Treatment | True peak | LUFS | Duration |
+| --- | --- | --- | ---: | ---: | ---: |
+| girl | override | copy | −1.1 dBTP | −17.2 | 65.37 s |
+| boy | override | copy | −1.0 dBTP | −18.8 | 71.47 s |
 
-- **Log-spectral distance (LSD).** Decode to 16 kHz mono, 32 ms Hann, 16 ms hop, speech frames within 45 dB of the peak frame. Mean over frames of the RMS bin error in dB. HE-AAC is shifted by the measured encoder delay (125.5 ms) before the compare.
-- **SNR.** 10 log10 of signal power over (source − encode) on the first 45 s, no extra gain, for AAC-LC. HE-AAC SNR is on the delay-aligned full sample. HE-AAC’s spectral-band replication does not preserve the waveform, so its SNR stays near 5 dB at every bitrate; the speech-to-text column is the intelligibility check for those rows.
-- **Speech-to-text.** faster-whisper `base`, int8, English, VAD on, first 45 seconds. Reference is the transcript of the **source** file, so the score is “did the same words still come through,” not a comparison to a written script. Six clips: girl and boy Genesis 1, girl and boy story 1, girl Acts 16, boy Revelation 5.
+`source` is `"override"`. `sha256_source` is the override file. `replaced_sha256` is the 04409065 blob that was checked. Both replaced hashes matched.
 
-| Option | Library bytes | Library MiB | In audio budget (3,560,964,096) | LSD dB | SNR dB | WER mean (max) |
-| --- | ---: | ---: | --- | ---: | ---: | ---: |
-| **Source AAC-LC (recommended)** | **2,463,206,070 exact** | **2,349.1** | yes | — | — | reference |
-| Stream copy | 2,463,206,070 exact | 2,349.1 | yes | — | — | same audio |
-| AAC-LC 64 kbps | 4,983,398,834 | 4,752.5 | no (audio alone is over 4 GiB) | 2.63 | 30.0 | 0.015 (0.050) |
-| AAC-LC 48 kbps | 3,687,330,886 | 3,516.5 | no | 3.65 | 24.6 | — |
-| AAC-LC 40 kbps | 3,066,504,034 | 2,924.4 | yes | 4.18 | 22.5 | — |
-| AAC-LC 32 kbps re-encode | 2,465,893,131 | 2,351.7 | yes | 4.97 | 14.2 | 0.026 (0.086) |
-| AAC-LC 24 kbps | 1,860,832,726 | 1,774.6 | yes | 9.92 | 11.4 | 0.058 (0.252) |
-| AAC-LC 16 kbps | 1,260,957,864 | 1,202.5 | yes | 36.06 | 9.0 | 0.109 (0.289) |
-| HE-AAC 32 kbps | 2,416,013,792 | 2,304.0 | yes | 8.07 | 4.7 | 0.049 (0.182) |
-| HE-AAC 24 kbps | 1,820,911,545 | 1,736.6 | yes | 9.02 | 4.6 | 0.057 (0.182) |
-| HE-AAC 16 kbps | 1,225,807,687 | 1,169.0 | yes | 10.04 | 4.6 | 0.047 (0.147) |
+## Quality
 
-AAC-LC commands (mono, 24 kHz, `.m4a`, faststart):
+Re-encoding is a second AAC generation at about 32 kbps. Time-domain SNR against the source, first 45 seconds:
 
-```
-ffmpeg -y -i INPUT -c:a aac -profile:a aac_low -b:a 32k -ac 1 -ar 24000 -movflags +faststart OUTPUT
-```
+| File | What happened | SNR |
+| --- | --- | ---: |
+| Girl Genesis 1 | limited, one pass | 21.8 dB |
+| Girl 2 Kings 25 (+5.3 dBTP) | limited, one pass | 19.6 dB |
+| Boy 2 Kings 14 | limited, three passes, −0.9 LUFS | 15.7 dB |
+| Boy Psalms 31 | limited to a −4.2 dB ceiling | 15.0 dB |
+| Stream copy (boy Psalms 21) | copy | 161 dB |
+| Girl and boy story 10 | copy of the override | 160 dB |
 
-HE-AAC:
+A copy is the same AAC frames (the residual is decoder delay). A one-pass re-encode at about 20 dB SNR is the mild loss of a second 32 kbps generation: a little softer up top, words intact. The earlier speech-to-text check on a 32 kbps re-encode at about 14 dB SNR had a mean word error of 2.6% against the source transcript. Files that need a deeper ceiling, like Psalms 31, sit nearer 15 dB and lose about 1 dB of integrated loudness. That is the audible risk of holding −1.5 dBTP. The package does not raise quiet passages, and it does not retarget loudness to a new LUFS number.
 
-```
-ffmpeg -y -i INPUT -ac 1 -ar 24000 -f wav - | fdkaac -p 5 -b 32000 -m 0 -o OUTPUT -
-```
+## Inventory that did not change
 
-What the table says:
+2,478 package files, both voices, no missing chapters or stories, no duplicate hashes, no zero-length or undecodable files. Source codec is AAC-LC, mono, 24 kHz. Source integrated loudness sits around −16.4 LUFS. Before this pass, 2,348 package files were above −1.0 dBTP and the hottest was girl 2 Kings 25 at +5.3 dBTP.
 
-- 64 kbps is a larger file than the 4 GiB cap allows, for audio that is already a 32 kbps master.
-- 48 kbps is still larger than the source and misses the audio budget.
-- 40 kbps fits and is still larger than the source, with a second-generation SNR around 22 dB.
-- 32 kbps re-encode lands within about 2.7 MB of the source size and costs about 14 dB SNR. Words stay intact (mean WER 2.6%). There is no size reason to pay that.
-- 24 kbps and 16 kbps shrink the library. Mean WER stays under 11%, and the worst 16 kbps clip reaches 29% word error. 16 kbps AAC-LC from the native encoder also blows the spectrum apart (LSD about 36 dB).
-- HE-AAC 32 kbps saves about 45 MiB (1.9%) against the source and is further from the original spectrum than a 32 kbps AAC-LC re-encode. Lower HE-AAC rates save more space and keep mean WER near 5%, with a worst clip around 15–18%.
+## Manifests
 
-Both voices already fit with 1.41 GiB of room under the 4 GiB cap after the 300 MiB non-audio allowance, and with 1.05 GiB of room inside the 400 MiB margin. The package is the source files.
+`kids-bible-package/build/` holds the manifests from this full pass and `package-summary.json`. No encoded audio is committed. The shape matches longroad-ios PR #3 and `scripts/check_kids_audio.py`:
 
-## Build
+Girl Genesis 1 from this build:
 
-`kids-bible-package/build_kids_bible_audio_package.py` reads this repo and writes:
-
-```
-<out>/KidsChapterAudio/<voice>/<Book>/<chapter>.m4a
-<out>/KidsChapterAudio/<voice>/manifest.json
-<out>/KidsStoryAudio/<voice>/<story>.m4a
-<out>/KidsStoryAudio/<voice>/manifest.json
-<out>/package-summary.json
+```json
+{
+  "book": "GEN",
+  "chapter": 1,
+  "voice": "girl",
+  "file": "GEN/001.m4a",
+  "duration": 260.096,
+  "size": 1073834,
+  "sha256": "71f8907808545052257783126fd306b3beb509f6126016f3c57daaaa890d45e5",
+  "sha256_source": "86ba1ba1ef465ab70417e00f1968b46b5e27a6c2709321bc4ba53277ed521b4b",
+  "true_peak_dbtp_before": -0.6,
+  "true_peak_dbtp_after": -1.9,
+  "lufs_before": -16.6,
+  "lufs_after": -16.9,
+  "treatment": "peak-limit",
+  "source": "lab-audio",
+  "source_path": "kids-bible-audio/sample1/Genesis/1.m4a"
+}
 ```
 
-Books are in Protestant order. Stories use `book: "Stories"` and `chapter` as the story number so every row has the same fields: `kind`, `book`, `chapter`, `voice`, `file`, `duration_sec`, `size_bytes`, `sha256_source`, `sha256_encoded`, `source_path`.
+Stories use `storyId` and `file` `stories/1.m4a`, with no `book` field, so the checker treats them as stories. `sha256` is the output file. Every one of the 2,478 output files was checked against `size` and `sha256` after the build.
 
 ```
-python3 kids-bible-package/build_kids_bible_audio_package.py \
-  --dry-run --output /tmp/kids-bible-pkg
-
 python3 kids-bible-package/build_kids_bible_audio_package.py \
   --output /path/to/package
 ```
 
-The script refuses to write inside `kids-bible-audio/` or `long-road-kids-audio/`. A full build that would exceed the audio budget exits non-zero. `--only voice:book:chapter` builds a subset (stories are `girl:Stories:1`).
-
-Dry run of the full library (this commit’s `dry-run/` folder): 2,478 files, 0 missing, `audio_bytes` 2,463,206,070, `within_audio_budget` true. `sha256_encoded` is null and `size_bytes` is the source size.
-
-Real build checked on four files (`girl` 3 John 1, `boy` Philemon 1, `girl` story 1, `boy` story 1), output under `sample-build/` as JSON only. Each output decoded, duration matched within 0.05 s, `sha256_encoded` matched the file on disk, and `sha256_source` matched the repo blob. Those four copies were the same length as the source. The audio files from that run are not in git.
+The script refuses to write inside the source audio trees. A full package over the audio budget exits non-zero. `--resume` continues from `progress.jsonl`.

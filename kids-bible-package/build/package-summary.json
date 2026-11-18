@@ -1,0 +1,323 @@
+{
+  "plan": "both-voices-aac-lc-true-peak",
+  "encoding": "copy-or-peak-limited-aac-lc",
+  "description": "All 66 books, both voices, plus stories 1-50. Files at or below -1.0 dBTP are stream-copied. Files above -1.0 dBTP are true-peak limited and re-encoded as AAC-LC mono 24 kHz at the source bitrate. The encoded master target is -1.5 dBTP.",
+  "dry_run": false,
+  "subset": null,
+  "source_commit": "17b9a390211d138014838ec57ea5c700ee4d904b",
+  "trigger_true_peak_dbtp": -1.0,
+  "target_true_peak_dbtp": -1.5,
+  "initial_pcm_ceiling_db": -2.7,
+  "counts": {
+    "files": 2478,
+    "missing": 0,
+    "failures": 0,
+    "peak_limited": 2346,
+    "stream_copied": 132,
+    "chapters_per_voice": 1189,
+    "stories_per_voice": 50
+  },
+  "audio_bytes": 2461032628,
+  "audio_budget_bytes": 3560964096,
+  "app_limit_bytes": 4294967296,
+  "non_audio_allowance_bytes": 314572800,
+  "margin_bytes": 419430400,
+  "projected_bundle_bytes": 2775605428,
+  "headroom_under_4gib_bytes": 1519361868,
+  "within_audio_budget": true,
+  "true_peak_after_max": -1.0,
+  "peak_limited_still_above_target": [],
+  "copied_above_target": [
+    {
+      "file": "kids-bible-audio/sample1/Job/2.m4a",
+      "true_peak_dbtp_after": -1.3
+    },
+    {
+      "file": "kids-bible-audio/sample1/Job/10.m4a",
+      "true_peak_dbtp_after": -1.1
+    },
+    {
+      "file": "kids-bible-audio/sample1/Job/23.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/sample1/Job/25.m4a",
+      "true_peak_dbtp_after": -1.1
+    },
+    {
+      "file": "kids-bible-audio/sample1/Job/26.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/sample1/Psalms/1.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/sample1/Psalms/4.m4a",
+      "true_peak_dbtp_after": -1.1
+    },
+    {
+      "file": "kids-bible-audio/sample1/Psalms/25.m4a",
+      "true_peak_dbtp_after": -1.4
+    },
+    {
+      "file": "kids-bible-audio/sample1/Psalms/28.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/sample1/Psalms/43.m4a",
+      "true_peak_dbtp_after": -1.2
+    },
+    {
+      "file": "kids-bible-audio/sample1/Psalms/63.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/sample1/Psalms/65.m4a",
+      "true_peak_dbtp_after": -1.2
+    },
+    {
+      "file": "kids-bible-audio/sample1/Psalms/70.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/sample1/Psalms/82.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/sample1/Psalms/84.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/sample1/Psalms/93.m4a",
+      "true_peak_dbtp_after": -1.1
+    },
+    {
+      "file": "kids-bible-audio/sample1/Psalms/110.m4a",
+      "true_peak_dbtp_after": -1.4
+    },
+    {
+      "file": "kids-bible-audio/sample1/Psalms/124.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/sample1/Psalms/125.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/sample1/Psalms/126.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/sample1/Psalms/128.m4a",
+      "true_peak_dbtp_after": -1.3
+    },
+    {
+      "file": "kids-bible-audio/sample1/Psalms/130.m4a",
+      "true_peak_dbtp_after": -1.1
+    },
+    {
+      "file": "kids-bible-audio/sample1/Psalms/150.m4a",
+      "true_peak_dbtp_after": -1.1
+    },
+    {
+      "file": "kids-bible-audio/sample1/Isaiah/53.m4a",
+      "true_peak_dbtp_after": -1.1
+    },
+    {
+      "file": "kids-bible-audio/sample1/Hosea/3.m4a",
+      "true_peak_dbtp_after": -1.1
+    },
+    {
+      "file": "kids-bible-audio/sample1/Hosea/5.m4a",
+      "true_peak_dbtp_after": -1.1
+    },
+    {
+      "file": "kids-bible-audio/sample1/Jonah/2.m4a",
+      "true_peak_dbtp_after": -1.3
+    },
+    {
+      "file": "long-road-kids-audio/sample1/stories/1.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/overrides/stories/sample1/10.m4a",
+      "true_peak_dbtp_after": -1.1
+    },
+    {
+      "file": "long-road-kids-audio/sample1/stories/13.m4a",
+      "true_peak_dbtp_after": -1.1
+    },
+    {
+      "file": "long-road-kids-audio/sample1/stories/19.m4a",
+      "true_peak_dbtp_after": -1.1
+    },
+    {
+      "file": "long-road-kids-audio/sample1/stories/28.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "long-road-kids-audio/sample1/stories/32.m4a",
+      "true_peak_dbtp_after": -1.2
+    },
+    {
+      "file": "long-road-kids-audio/sample1/stories/39.m4a",
+      "true_peak_dbtp_after": -1.1
+    },
+    {
+      "file": "long-road-kids-audio/sample1/stories/40.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "long-road-kids-audio/sample1/stories/48.m4a",
+      "true_peak_dbtp_after": -1.2
+    },
+    {
+      "file": "kids-bible-audio/boy/Leviticus/1.m4a",
+      "true_peak_dbtp_after": -1.4
+    },
+    {
+      "file": "kids-bible-audio/boy/Leviticus/2.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/boy/1 Samuel/3.m4a",
+      "true_peak_dbtp_after": -1.4
+    },
+    {
+      "file": "kids-bible-audio/boy/Job/25.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/boy/Psalms/20.m4a",
+      "true_peak_dbtp_after": -1.2
+    },
+    {
+      "file": "kids-bible-audio/boy/Psalms/75.m4a",
+      "true_peak_dbtp_after": -1.1
+    },
+    {
+      "file": "kids-bible-audio/boy/Psalms/95.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/boy/Psalms/99.m4a",
+      "true_peak_dbtp_after": -1.1
+    },
+    {
+      "file": "kids-bible-audio/boy/Psalms/100.m4a",
+      "true_peak_dbtp_after": -1.1
+    },
+    {
+      "file": "kids-bible-audio/boy/Psalms/101.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/boy/Psalms/103.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/boy/Psalms/124.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/boy/Psalms/130.m4a",
+      "true_peak_dbtp_after": -1.1
+    },
+    {
+      "file": "kids-bible-audio/boy/Psalms/131.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/boy/Psalms/133.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/boy/Psalms/137.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/boy/Psalms/142.m4a",
+      "true_peak_dbtp_after": -1.1
+    },
+    {
+      "file": "kids-bible-audio/boy/Ecclesiastes/6.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/boy/Isaiah/12.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/boy/Hosea/11.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/boy/Philippians/2.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "kids-bible-audio/boy/1 Timothy/2.m4a",
+      "true_peak_dbtp_after": -1.4
+    },
+    {
+      "file": "long-road-kids-audio/boy/stories/7.m4a",
+      "true_peak_dbtp_after": -1.2
+    },
+    {
+      "file": "kids-bible-audio/overrides/stories/boy/10.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "long-road-kids-audio/boy/stories/14.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "long-road-kids-audio/boy/stories/24.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "long-road-kids-audio/boy/stories/25.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "long-road-kids-audio/boy/stories/33.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "long-road-kids-audio/boy/stories/45.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "long-road-kids-audio/boy/stories/48.m4a",
+      "true_peak_dbtp_after": -1.0
+    },
+    {
+      "file": "long-road-kids-audio/boy/stories/49.m4a",
+      "true_peak_dbtp_after": -1.0
+    }
+  ],
+  "lufs_delta_limited": {
+    "min": -1.1,
+    "max": -0.1,
+    "mean": -0.302
+  },
+  "excluded_extra_audio": [
+    "kids-bible-audio/boy/Revelation/diagnostic-rev5/v01.m4a",
+    "kids-bible-audio/boy/Revelation/diagnostic-rev5/v02.m4a",
+    "kids-bible-audio/boy/Revelation/diagnostic-rev5/v03.m4a",
+    "kids-bible-audio/boy/Revelation/diagnostic-rev5/v04.m4a",
+    "kids-bible-audio/boy/Revelation/diagnostic-rev5/v05.m4a",
+    "kids-bible-audio/boy/Revelation/diagnostic-rev5/v06.m4a",
+    "kids-bible-audio/boy/Revelation/diagnostic-rev5/v07.m4a",
+    "kids-bible-audio/boy/Revelation/diagnostic-rev5/v08.m4a",
+    "kids-bible-audio/boy/Revelation/diagnostic-rev5/v09.m4a",
+    "kids-bible-audio/boy/Revelation/diagnostic-rev5/v10.m4a",
+    "kids-bible-audio/boy/Revelation/diagnostic-rev5/v11.m4a",
+    "kids-bible-audio/boy/Revelation/diagnostic-rev5/v12.m4a",
+    "kids-bible-audio/boy/Revelation/diagnostic-rev5/v13.m4a",
+    "kids-bible-audio/boy/Revelation/diagnostic-rev5/v14.m4a"
+  ],
+  "missing": [],
+  "failures": []
+}
