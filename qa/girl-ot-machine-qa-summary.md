@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 910
+- Scored chapters: 920
 - PASS: 53
-- FAIL: 513
-- UNCERTAIN: 344 (jsonl verdict UNSURE)
-- Still to score: 19 Old Testament chapters
+- FAIL: 519
+- UNCERTAIN: 348 (jsonl verdict UNSURE)
+- Still to score: 9 Old Testament chapters
 
 ## PASS
 
@@ -4211,6 +4211,34 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Zephaniah 3** — repeated verse 15 at 2:34–3:02 — "The Lord the King of Israel is with you The Lord the King of Israel is with you The Lord the King of Israel is with you" (small.en+medium.en)
   - audio check: refuted: repeated verse 15 2:33-2:57 (slice coverage small 0.38, medium 0.38, times 0/0) confirmed: inserted verse 15 2:37-2:48 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 15 2:33-2:43 (slice coverage small 1.00, medium 1.00)
   - WER small 0.0556 / medium 0.3356; coverage small 0.9815 / medium 0.6712; duration 236.63s vs expected 237.2s (ratio 0.998); sha256 `dd494ce8841a3b4bba3299d1a6fc1dfff6a0d89034f136dbc844270105de02c3`
+- **Zechariah 1** — inserted verse 13 at 2:07–2:13 — "them for seventy years The Lord answered the An The Lord of Armies you have been angry" (small.en+medium.en)
+- **Zechariah 1** — inserted verse 13 at 2:14–3:07 — "them for seventy years Tell them to those who are willing to see as in my land and here goes again and make them feel the elevens The Lord answered the An la The Lord of Armies as in my land and here goes again and make them feel the elevens The Lord answered the An la The Lord of …" (small.en+medium.en)
+- **Zechariah 1** — inserted verse 13 at 3:07–3:12 — "make them feel the 11s the Lord answered the An law but Lord of" (small.en+medium.en)
+- **Zechariah 1** — repeated verse 13 at 2:06–2:11 — "You have been angry with them for seventy years The Lord answered the An The Lord" (small.en+medium.en)
+- **Zechariah 1** — repeated verse 13 at 2:12–2:15 — "you have been angry with them for seventy years" (small.en+medium.en)
+- **Zechariah 1** — repeated verse 13 at 2:26–3:03 — "as in my land and here goes again and make them feel the elevens The Lord answered the An la The Lord of Armies as in my land and here goes again and make them feel the elevens The Lord answered the An la the Lord of armies as in my land and here goes again and make them feel …" (small.en+medium.en)
+- **Zechariah 1** — repeated verse 13 at 3:04–3:08 — "Lord of armies as in my land and here goes again and make them feel the" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 13 2:13-2:37 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 13 2:25-2:49 (slice coverage small 0.96, medium 0.88, times 0/0) confirmed: inserted verse 13 2:06-2:19 (slice coverage small 0.94, medium 0.94)
+  - WER small 0.3774 / medium 0.434; coverage small 0.964 / medium 0.8491; duration 276.86s vs expected 233.2s (ratio 1.187); sha256 `e76b4c9bd9d7832de93223a1f8093578c57a812772b7a1a490551313ab7ff188`
+- **Zechariah 2** — missing verse 1 at 0:27–0:28 — "Then I looked up and saw a man holding a measuring line I asked Where are you going He answered I am going to measure Jerusalem to see how wide and how long it is Then the angel who was talking with me went out and another angel came out to meet him The second angel said to him Run …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.33)
+  - WER small 0.3289 / medium 0.3624; coverage small 0.6711 / medium 0.6376; duration 91.82s vs expected 119.2s (ratio 0.77); sha256 `6a3756a52666e440eaba96d047f39a9fc76a57a8083c88672042101df6c136e7`
+- **Zechariah 4** — missing verse 7 at 0:49 — "the last stone of the temple while people shout God bless it God bless it Then the LORD's message came to me Zerubbabel's hands have laid" (small.en+medium.en)
+  - audio check: confirmed: missing verse 7 0:39-0:48 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.0952 / medium 0.1651; coverage small 0.9079 / medium 0.8381; duration 104.02s vs expected 126.0s (ratio 0.826); sha256 `b806067633976347c3dd1cc961764ed81e5f8e7d9c25b2a5dda36a91572b2a7d`
+- **Zechariah 6** — inserted verse 12 at 1:32–2:40 — "I will put a Devon on my king and a Cune there before the twelve does nine Joshua did this and was able to bring on prayers and was able to give God Sages prayers to attend the temple Beloved Israel loves the prophet but they never did their best and did so without any fear of death The Lord …" (small.en+medium.en)
+- **Zechariah 6** — repeated verse 12 at 2:25–2:28 — "of a lamb two days in place and made" (small.en+medium.en)
+- **Zechariah 6** — repeated verse 12 at 2:29–2:31 — "desert animal of a lamb" (small.en+medium.en)
+- **Zechariah 6** — repeated verse 12 at 2:32–2:40 — "and made an aerodation of a lamb two days in place and made another desert animal of a lamb of gods and tag" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 12 1:31-1:55 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 12 2:31-2:46 (slice coverage small 1.00, medium 0.96, times 1/0) refuted: repeated verse 12 2:24-2:34 (slice coverage small 1.00, medium 0.67, times 1/0)
+  - WER small 0.5 / medium 0.7253; coverage small 0.9808 / medium 0.522; duration 207.15s vs expected 145.6s (ratio 1.423); sha256 `d1ba960770550c334b25b21119689378d2057a6d5f383c080c6b97c2914df18b`
+- **Zechariah 8** — missing verse 20 at 2:52 — "cities will still come People from one city will go to another and say Let's go right away to ask for the LORD's kindness and to look for the LORD of Armies I'm going too" (small.en)
+- **Zechariah 8** — missing verse 8 at 1:02 — "They will be my people and I will be their God I will be faithful and good to them" (medium.en)
+  - audio check: confirmed: missing verse 20 2:38-2:47 (slice coverage small 0.25, medium 0.25) unclear: missing verse 8 0:53-1:03 (slice coverage small 0.50, medium 0.50)
+  - WER small 0.0686 / medium 0.1993; coverage small 0.933 / medium 0.8007; duration 208.13s vs expected 244.8s (ratio 0.85); sha256 `d1ed6f64faf05c524cc2a527242259eac31b1b2112d548e7d14408262d9416c9`
+- **Zechariah 9** — missing verse 14 at 2:46 — "the trumpet and march out in the storms from the south The LORD of Armies" (medium.en)
+  - audio check: confirmed: missing verse 14 2:37-2:47 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.0152 / medium 0.192; coverage small 0.9886 / medium 0.8099; duration 172.07s vs expected 210.4s (ratio 0.818); sha256 `2a1e2bf45c307385de9ab216aae5db30093a2f669c123fc81ac6930094448124`
 
 ## UNCERTAIN
 
@@ -5281,6 +5309,18 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Haggai 1** — audio slice contains the disputed words; the models still disagree (coverage small 0.982, medium 0.594)
   - audio check: refuted: repeated verse 3 0:22-0:31 (slice coverage small 0.86, medium 0.86, times 0/0)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.982, medium 0.594); WER small 0.0252 / medium 0.4151; coverage small 0.9817 / medium 0.594; sha256 `7341f56c99b784b6b8458cad337e24bb99bfe36e7fdb881f8c200bb9a9ee88c1`
+- **Haggai 2** — audio slice contains the disputed words; the models still disagree (coverage small 0.969, medium 0.944)
+  - audio check: refuted: missing verse 6 0:50-0:59 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 18 2:48-2:56 (slice coverage small 1.00, medium 0.17, times 1/0)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.969, medium 0.944); WER small 0.0424 / medium 0.0738; coverage small 0.9686 / medium 0.9435; sha256 `c753ef42cd6121912beecb4cab97f9cb6504061708da11de15c5f141be175613`
+- **Zechariah 3** — missing verse 1 at 0:29–0:30 — "Then the LORD showed me Joshua the high priest He was standing in front of the LORD's angel Satan was standing at Joshua's right side to accuse him The LORD said to Satan The LORD tells you to stop Satan The LORD who has chosen Jerusalem tells you to stop This man is like a burning stick pulled out of …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'Then the LORD showed me Joshua the high priest He was standing in front of the LORD's angel Satan was standing at Joshua's right side to accuse him The LORD said to Satan The LORD tells you to stop Satan The LORD who has chosen Jerusalem tells you to stop This man is like a burning stick pulled out of …'; coverage unclear (small 0.983, medium 0.692; pass needs both >= 0.96); WER small 0.0208 / medium 0.3149; coverage small 0.9827 / medium 0.692; sha256 `9689fb6af5ba5bc84dda83700053c0ac86916416fee0eeb83db53c2c3c64876f`
+- **Zechariah 5** — audio slice contains the disputed words; the models still disagree (coverage small 0.993, medium 0.590)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.993, medium 0.590); WER small 0.0098 / medium 0.4098; coverage small 0.9934 / medium 0.5902; sha256 `c89198e8f538352220c51e6606f4b76262891cd0f9f2bcbf5fab2dfc7757caff`
+- **Zechariah 7** — missing verse 1 at 0:00 — "In the fourth year that King Darius ruled the LORD's message came to" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:01 (slice coverage small 0.00, medium 0.00)
+  - medium.en only: missing 'In the fourth year that King Darius ruled the LORD's message came to'; coverage unclear (small 0.994, medium 0.691; pass needs both >= 0.96); WER small 0.0059 / medium 0.3118; coverage small 0.9941 / medium 0.6912; sha256 `a6d59a3716b3a747180eab65b44a135094cb9a1a37b246cd9ef4198c7db9bae5`
 
 ## Script
 
