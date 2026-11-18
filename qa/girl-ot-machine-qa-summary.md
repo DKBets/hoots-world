@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 430
-- PASS: 11
-- FAIL: 289
-- UNCERTAIN: 130 (jsonl verdict UNSURE)
-- Still to score: 499 Old Testament chapters
+- Scored chapters: 440
+- PASS: 13
+- FAIL: 293
+- UNCERTAIN: 134 (jsonl verdict UNSURE)
+- Still to score: 489 Old Testament chapters
 
 ## PASS
 
-11 chapters. Both models agreed there was no missing, invented, or repeated passage.
+13 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -75,6 +75,8 @@ words clears that span. A split slice stays UNCERTAIN.
 - 2 Kings 1
 - 2 Chronicles 3
 - Nehemiah 1, 5
+- Esther 10
+- Job 2
 
 ## FAIL
 
@@ -2777,6 +2779,19 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Esther 4** — missing verse 1 at 0:34 — "Mordecai learned about everything that had been done he tore his clothes and put on rough cloth and ashes He went out into the middle of the city crying loudly and sadly He went only as far as" (small.en+medium.en)
   - audio check: confirmed: missing verse 1 0:19-0:28 (slice coverage small 0.00, medium 0.00)
   - WER small 0.2115 / medium 0.2073; coverage small 0.7906 / medium 0.8013; duration 159.1s vs expected 187.2s (ratio 0.85); sha256 `36691e723479a160cf842c0450b52c868a99de56d2a7006db740c39a2956fc11`
+- **Esther 7** — inserted verse 3 at 0:28 — "life That is a good" (small.en)
+- **Esther 7** — missing verse 3 at 1:26 — "save my people That is my request My people and I have been sold to be destroyed killed and wiped out If we had only been sold as slaves I would have stayed quiet That trouble would not be worth bothering the king about King Ahasuerus asked Queen Esther Who is the man who would dare to do such a …" (medium.en)
+  - audio check: confirmed: missing verse 3 0:56-1:05 (slice coverage small 0.08, medium 0.00) unclear: inserted verse 3 0:27-0:39 (slice coverage small 0.60, medium 0.60)
+  - WER small 0.0282 / medium 0.652; coverage small 0.9906 / medium 0.3511; duration 112.04s vs expected 127.6s (ratio 0.878); sha256 `5aac789b83fefbcf4fa81a5dced4dbca55c78afa16e7b1a9f213f88493c09624`
+- **Job 1** — missing verse 4 at 0:59 — "and drink with them When the days of feasting were over Job would send for his children and make them holy He got up early in the morning and offered a burnt offering for each of them Job thought Maybe my children have sinned" (medium.en)
+  - audio check: confirmed: missing verse 4 0:42-0:51 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.0085 / medium 0.1706; coverage small 0.9966 / medium 0.8481; duration 201.86s vs expected 234.4s (ratio 0.861); sha256 `db477aa9eef0ef560924c5812675abe4e54acbe5a5dadc2723bf4384de99e78d`
+- **Job 3** — missing verse 6 at 0:29 — "Let thick darkness grab that night Don't let it be counted with the days of the year Don't let it be part of any month Let that night be empty Let no happy shout be heard in it Let people who curse days curse that one Let those who know how to wake up the sea monster curse it Let …" (medium.en)
+  - audio check: confirmed: missing verse 6 0:00-0:09 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.0047 / medium 0.3023; coverage small 0.9953 / medium 0.7; duration 155.56s vs expected 172.0s (ratio 0.904); sha256 `5e7434057febc5606ef29cbed17c807425e88c668b5ea5eb5f63f9e2b41eaf2f`
+- **Job 4** — missing verse 17 at 1:52 — "Can a human be more right than God Can a person be more pure than the One who made him God doesn't even trust his servants He finds mistakes in his angels So he surely finds mistakes in people who live in houses of clay Their bodies are made from dust They are crushed as easily as a moth Between …" (small.en+medium.en)
+  - audio check: unclear: missing verse 17 1:22-1:31 (slice coverage small 1.00, medium 0.08)
+  - WER small 0.2378 / medium 0.314; coverage small 0.7652 / medium 0.689; duration 116.95s vs expected 131.2s (ratio 0.891); sha256 `a92be5b935e30594fde68171642fa81379c93817904b06c64488592e26051427`
 
 ## UNCERTAIN
 
@@ -3188,6 +3203,18 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Esther 1** — audio slice contains the disputed words; the models still disagree (coverage small 0.977, medium 0.716)
   - audio check: refuted: missing verse 6 0:56-1:05 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.977, medium 0.716); WER small 0.0247 / medium 0.2937; coverage small 0.9768 / medium 0.7156; sha256 `a507c9ae3af038e7de3957681db514e14c8d4922f101af3663d34f33e162c41a`
+- **Esther 5** — coverage unclear (small 0.986, medium 0.959; pass needs both >= 0.96)
+  - coverage unclear (small 0.986, medium 0.959; pass needs both >= 0.96); WER small 0.016 / medium 0.0434; coverage small 0.9863 / medium 0.9589; sha256 `05f18e8f602597c7b9151c770d6e2821120aba23eba1f3fe1de2009eb7c9bc1b`
+- **Esther 6** — audio slice contains the disputed words; the models still disagree (coverage small 0.986, medium 0.524)
+  - audio check: refuted: missing verse 1 0:05-0:14 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.986, medium 0.524); WER small 0.0142 / medium 0.4858; coverage small 0.9858 / medium 0.5236; sha256 `5717cc21f8ce1e7326b961b63bcecef32e1e64c987aa5284295cdfd489bce03a`
+- **Esther 8** — missing verse 11 at 2:18 — "their children and their women They could destroy their attackers and take" (medium.en)
+  - audio check: unclear: missing verse 11 2:08-2:18 (slice coverage small 0.50, medium 0.50)
+  - medium.en only: missing 'their children and their women They could destroy their attackers and take'; WER small 0.0274 / medium 0.0377; coverage small 0.9726 / medium 0.964; sha256 `84080aa311317ce733e3d98ca7fdb0ec2288aeee13c996f2f768d649199d43f3`
+- **Esther 9** — missing verse 31 at 4:48 — "their times of fasting and sadness" (small.en)
+- **Esther 9** — missing verse 1 at 0:00–0:01 — "On the thirteenth day of the twelfth month the month of Adar the king's order was to be carried out On that day the enemies of the Jews had hoped to defeat them But just the opposite happened The Jews defeated those who hated them The Jews gathered together in their cities in all the lands of King Ahasuerus to …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.83, medium 0.00) unclear: missing verse 31 4:39-4:49 (slice coverage small 1.00, medium 0.00)
+  - small.en only: missing 'their times of fasting and sadness'; medium.en only: missing 'On the thirteenth day of the twelfth month the month of Adar the king's order was to be carried out On that day the enemies of the Jews had hoped to defeat them But just the opposite happened The Jews defeated those who hated them The Jews gathered together in their cities in all the lands of King Ahasuerus to …'; coverage unclear (small 0.966, medium 0.511; pass needs both >= 0.96); WER backstop on one model (small 0.038, medium 0.492); WER small 0.0384 / medium 0.4921; coverage small 0.9661 / medium 0.5113; sha256 `44c35635e32e034158f4a2da050ae287394b4ef45a5f308ea4a6188e88da656e`
 
 ## Script
 
