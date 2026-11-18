@@ -60,8 +60,8 @@ words clears that span. A split slice stays UNCERTAIN.
 
 - Scored chapters: 10
 - PASS: 0
-- FAIL: 6
-- UNCERTAIN: 4 (jsonl verdict UNSURE)
+- FAIL: 9
+- UNCERTAIN: 1 (jsonl verdict UNSURE)
 - Still to score: 919 Old Testament chapters
 
 ## PASS
@@ -70,42 +70,39 @@ None yet.
 
 ## FAIL
 
-- **Genesis 3** — missing verse 1 at 0:24–0:28 — "Now the snake was sneakier than any wild animal the LORD God had made The snake said to the woman Did God really say You must not eat from any tree in the garden The woman answered the snake We may eat fruit from the trees in the garden But God said Do not eat fruit from the tree in …" (small.en+medium.en)
-  - audio check: unclear: missing verse 1 0:00-0:24 (slice coverage small 0.00, medium 0.00)
-  - WER small 0.1654 / medium 0.156; coverage small 0.8346 / medium 0.8518; duration 204.03s vs expected 256.4s (ratio 0.796); sha256 `494264005916df0ebcff4de701994317abc126f313f4191df44e48e2a930be6f`
-- **Genesis 4** — missing verse 1 at 0:00–0:02 — "Adam and his wife Eve came together and she became pregnant She had a son named Cain She said With the LORD's help I have had a baby boy Later she had another son Cain's brother Abel Abel took care of sheep Cain worked the ground and grew crops After a while Cain brought some of his crops as a …" (small.en+medium.en)
-- **Genesis 4** — missing verse 14 at 1:55 — "Anyone who finds me will kill me The LORD said to him No If anyone kills Cain that" (small.en+medium.en)
-  - audio check: unclear: missing verse 1 0:00-0:02 (slice coverage small 0.00, medium 0.00) refuted: missing verse 14 1:43-1:57 (slice coverage small 1.00, medium 1.00)
-  - WER small 0.2143 / medium 0.2276; coverage small 0.789 / medium 0.7757; duration 215.17s vs expected 240.8s (ratio 0.894); sha256 `2f0cda25f81b47f304884ff055763afcaac2fc9a0f3cf607839ecb507604e8af`
-- **Genesis 5** — inserted verse ? at 0:28 — "thirty years in all and" (small.en+medium.en windows)
-- **Genesis 5** — inserted verse 13 at 1:10–1:11 — "eight eight hundred and forty" (small.en)
-- **Genesis 5** — missing verse 1 at 0:29–0:30 — "This is the written list of Adam's family When God made people he made them to be like himself He made them male and female and he blessed them On the day they were made he called them people When Adam was 130 years old he had a son who was like him He named him Seth After Seth was …" (medium.en)
-  - audio check: refuted: missing verse 1 0:00-0:24 (slice coverage small 1.00, medium 1.00) refuted: inserted verse 13 1:09-1:17 (slice coverage small 0.20, medium 0.20) confirmed: inserted verse ? 0:27-0:39 (slice coverage small 0.80, medium 0.80)
-  - WER small 0.0557 / medium 0.348; coverage small 0.9698 / medium 0.6566; duration 175.74s vs expected 172.4s (ratio 1.019); sha256 `d5014b609e951cba73dd18f42dc5e57e510590fcf151580e67e509de8f1f616a`
-- **Genesis 6** — inserted before verse 1 at 0:14 — "that was when gods son" (small.en+medium.en windows)
-- **Genesis 6** — missing verse 1 at 0:00–0:02 — "People began to grow in number all over the earth and daughters were born to them God's sons saw that the daughters of people were beautiful They married any of them they wanted The LORD said My Spirit will not keep struggling with people forever They are only human So they will live 120 years The Nephilim were on the …" (small.en)
-  - audio check: unclear: missing verse 1 0:00-0:02 (slice coverage small 0.00, medium 0.00) refuted: inserted verse ? 0:13-0:25 (slice coverage small 0.00, medium 0.00)
-  - WER small 0.1626 / medium 0.0041; coverage small 0.8374 / medium 0.998; duration 172.12s vs expected 196.8s (ratio 0.875); sha256 `02159b9d6d7cefc82fc25a710eabefc7aa7e61d0b18b28bb98078432f57328a7`
-- **Genesis 7** — coverage low on both models (small 0.815, medium 0.874); models also disagree on other spans; agreed defects still fail the chapter
-  - WER small 0.1854 / medium 0.1325; coverage small 0.8146 / medium 0.8742; duration 164.14s vs expected 181.2s (ratio 0.906); sha256 `c112e7127eb19210369455888fe7fe5b1caf3f7ba35bbf3af2491fba46f0888d`
+- **Genesis 2** — missing verse 11 at 1:51 — "It flows all around the land of Havilah where there is gold The gold of that land is good Sweet smelling resin and onyx stones are there too The second river is named Gihon" (small.en+medium.en)
+  - audio check: unclear: missing verse 11 1:37-1:46 (slice coverage small 0.50, medium 0.50)
+  - WER small 0.1528 / medium 0.2971; coverage small 0.8489 / medium 0.7114; duration 188.25s vs expected 235.6s (ratio 0.799); sha256 `00accc7e8face842622ca3f78b6c617e27e74797bbed2ecc9d54c5912be61891`
+- **Genesis 3** — missing verse 1 at 0:00–0:02 — "Now the snake was sneakier than any wild animal the LORD God had made The snake said to the woman Did God really say You must not eat from any tree in the garden The woman answered the snake We may eat fruit from the trees in the garden But God said Do not eat fruit from the tree in …" (small.en)
+- **Genesis 3** — missing verse 22 at 2:52 — "the man has become like one of us knowing good and evil Now he must not reach out and take fruit from" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00) confirmed: missing verse 22 2:44-2:53 (slice coverage small 0.25, medium 0.25)
+  - WER small 0.1513 / medium 0.0702; coverage small 0.8565 / medium 0.936; duration 204.03s vs expected 256.4s (ratio 0.796); sha256 `494264005916df0ebcff4de701994317abc126f313f4191df44e48e2a930be6f`
+- **Genesis 4** — coverage low on both models (small 0.847, medium 0.741); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1628 / medium 0.2641; coverage small 0.8472 / medium 0.7409; duration 215.17s vs expected 240.8s (ratio 0.894); sha256 `2f0cda25f81b47f304884ff055763afcaac2fc9a0f3cf607839ecb507604e8af`
+- **Genesis 5** — coverage low on both models (small 0.872, medium 0.798); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1276 / medium 0.2227; coverage small 0.8724 / medium 0.7981; duration 175.74s vs expected 172.4s (ratio 1.019); sha256 `d5014b609e951cba73dd18f42dc5e57e510590fcf151580e67e509de8f1f616a`
+- **Genesis 6** — missing verse 9 at 1:31 — "Noah was a good man who did what was right No one in his time could find any wrong in him Noah walked closely with God" (medium.en)
+  - audio check: confirmed: missing verse 9 1:21-1:30 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.0041 / medium 0.2053; coverage small 0.998 / medium 0.8008; duration 172.12s vs expected 196.8s (ratio 0.875); sha256 `02159b9d6d7cefc82fc25a710eabefc7aa7e61d0b18b28bb98078432f57328a7`
+- **Genesis 7** — missing verse 1 at 0:00–0:01 — "The LORD said to Noah Go into the boat with your whole family I have seen that you are the one person in this time who does what is right Take seven pairs of every kind of clean animal with you a male and a female Take one pair" (small.en+medium.en)
+- **Genesis 7** — missing verse 23 at 2:42 — "earth people animals crawling things and birds Only Noah was left and everyone with him in" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00) refuted: missing verse 23 2:33-2:43 (slice coverage small 0.83, medium 0.83)
+  - WER small 0.3333 / medium 0.3996; coverage small 0.8146 / medium 0.6071; duration 164.14s vs expected 181.2s (ratio 0.906); sha256 `c112e7127eb19210369455888fe7fe5b1caf3f7ba35bbf3af2491fba46f0888d`
+- **Genesis 8** — coverage low on both models (small 0.844, medium 0.802); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.164 / medium 0.1976; coverage small 0.8439 / medium 0.8024; duration 174.89s vs expected 202.4s (ratio 0.864); sha256 `79f3d96e7cd5d710d6410d8b916c5f2c92ebb79d5f9a9001974ba42e40740538`
+- **Genesis 9** — missing verse 17 at 2:09 — "with all living things on the earth" (small.en+medium.en)
+- **Genesis 9** — inserted verse 19 at 2:21 — "came out of the big boat" (small.en+medium.en)
+  - audio check: refuted: missing verse 17 2:00-2:10 (slice coverage small 1.00, medium 1.00) unclear: inserted verse 19 2:20-2:32 (slice coverage small 0.50, medium 0.50)
+  - WER small 0.3344 / medium 0.2512; coverage small 0.6805 / medium 0.7521; duration 202.45s vs expected 240.4s (ratio 0.842); sha256 `1f2cb76f2da39bc229b6b8967009daf367d84fb31e9f582aae8f466514c9916b`
 - **Genesis 10** — inserted verse 25 at 2:29–2:36 — "Peleg lived in the days of the deep rebirth of Egypt Jepath is a name of the distant family of Rachel and Whelan" (small.en+medium.en)
   - audio check: confirmed: inserted verse 25 2:28-2:42 (slice coverage small 0.96, medium 0.91)
-  - WER small 0.2255 / medium 0.2141; coverage small 0.8314 / medium 0.7904; duration 197.93s vs expected 175.6s (ratio 1.127); sha256 `21c9f5e60029c7707432b635e4359904c70e3c7aa70cd89c313f9ef73337ebc6`
+  - WER small 0.1526 / medium 0.4601; coverage small 0.9021 / medium 0.5968; duration 197.93s vs expected 175.6s (ratio 1.127); sha256 `21c9f5e60029c7707432b635e4359904c70e3c7aa70cd89c313f9ef73337ebc6`
 
 ## UNCERTAIN
 
-- **Genesis 1** — missing verse 1 at 0:29–0:30 — "In the very beginning God made the sky above and the earth below The earth had no shape yet and it was empty It was dark over the deep water God's Spirit was moving over the water God said Let there be light And there was light God saw that the light was good God split the light apart from …" (medium.en)
-  - audio check: unclear: missing verse 1 0:00-0:24 (slice coverage small 1.00, medium 0.00)
-  - medium.en only: missing 'In the very beginning God made the sky above and the earth below The earth had no shape yet and it was empty It was dark over the deep water God's Spirit was moving over the water God said Let there be light And there was light God saw that the light was good God split the light apart from …'; coverage unclear (small 0.999, medium 0.764; pass needs both >= 0.96); WER small 0.004 / medium 0.2417; coverage small 0.9987 / medium 0.7637; sha256 `86ba1ba1ef465ab70417e00f1968b46b5e27a6c2709321bc4ba53277ed521b4b`
-- **Genesis 2** — audio slice contains the disputed words; the models still disagree (coverage small 0.995, medium 0.825)
-  - audio check: refuted: missing verse 1 0:00-0:24 (slice coverage small 1.00, medium 1.00)
-  - audio slice contains the disputed words; the models still disagree (coverage small 0.995, medium 0.825); WER small 0.0051 / medium 0.1766; coverage small 0.9949 / medium 0.8251; sha256 `00accc7e8face842622ca3f78b6c617e27e74797bbed2ecc9d54c5912be61891`
-- **Genesis 8** — missing verse 1 at 0:29–0:30 — "But God remembered Noah and all the animals with him in the boat God sent a wind to blow over the earth and the water began to go down The water under the earth stopped bursting out The windows of the sky were closed and the rain stopped Little by little the water went down from the earth After 150 …" (medium.en)
-  - audio check: unclear: missing verse 1 0:00-0:24 (slice coverage small 1.00, medium 0.00)
-  - medium.en only: missing 'But God remembered Noah and all the animals with him in the boat God sent a wind to blow over the earth and the water began to go down The water under the earth stopped bursting out The windows of the sky were closed and the rain stopped Little by little the water went down from the earth After 150 …'; coverage unclear (small 0.986, medium 0.373; pass needs both >= 0.96); WER backstop on one model (small 0.020, medium 0.626); WER small 0.0198 / medium 0.6265; coverage small 0.9862 / medium 0.3735; sha256 `79f3d96e7cd5d710d6410d8b916c5f2c92ebb79d5f9a9001974ba42e40740538`
-- **Genesis 9** — missing verse 1 at 0:00–0:02 — "God blessed Noah and his sons He said to them Have many children Fill the earth again Every animal on the earth and every bird in the sky will be afraid of you Everything that moves on the ground and all the fish in the sea are put in your care Every living thing that moves can be food for …" (medium.en)
-  - audio check: unclear: missing verse 1 0:00-0:02 (slice coverage small 0.00, medium 0.00)
-  - medium.en only: missing 'God blessed Noah and his sons He said to them Have many children Fill the earth again Every animal on the earth and every bird in the sky will be afraid of you Everything that moves on the ground and all the fish in the sea are put in your care Every living thing that moves can be food for …'; coverage unclear (small 0.995, medium 0.800; pass needs both >= 0.96); WER small 0.0083 / medium 0.2146; coverage small 0.995 / medium 0.8003; sha256 `1f2cb76f2da39bc229b6b8967009daf367d84fb31e9f582aae8f466514c9916b`
+- **Genesis 1** — audio slice contains the disputed words; the models still disagree (coverage small 0.981, medium 0.810)
+  - audio check: refuted: repeated verse 27 3:32-3:41 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.981, medium 0.810); WER small 0.0187 / medium 0.1936; coverage small 0.9813 / medium 0.8104; sha256 `86ba1ba1ef465ab70417e00f1968b46b5e27a6c2709321bc4ba53277ed521b4b`
 
 ## Script
 
