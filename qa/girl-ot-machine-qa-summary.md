@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 200
+- Scored chapters: 210
 - PASS: 6
-- FAIL: 130
-- UNCERTAIN: 64 (jsonl verdict UNSURE)
-- Still to score: 729 Old Testament chapters
+- FAIL: 138
+- UNCERTAIN: 66 (jsonl verdict UNSURE)
+- Still to score: 719 Old Testament chapters
 
 ## PASS
 
@@ -952,6 +952,43 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Joshua 13** — missing verse 4 at 0:37 — "of Sidon up to Aphek and the border of the Amorites It also includes the land of the Gebalites and all" (medium.en)
   - audio check: confirmed: missing verse 4 0:29-0:38 (slice coverage small 0.00, medium 0.33)
   - WER small 0.0511 / medium 0.2132; coverage small 0.9514 / medium 0.793; duration 306.05s vs expected 320.8s (ratio 0.954); sha256 `56e646c81ed6ff5a3e0c53a0632f669eeb0264083576a41dfbbf487925c14dfe`
+- **Joshua 14** — repeated verse 14 at 2:11–2:14 — "Caleb son of Jafuna the Kenazite" (small.en)
+- **Joshua 14** — missing verse 1 at 0:29 — "This is how the people of Israel received their land in Canaan Eleazar the priest" (medium.en)
+  - audio check: confirmed: missing verse 1 0:20-0:30 (slice coverage small 0.25, medium 0.25) refuted: repeated verse 14 2:10-2:20 (slice coverage small 0.17, medium 0.83, times 0/0)
+  - WER small 0.0323 / medium 0.2102; coverage small 0.97 / medium 0.7921; duration 148.52s vs expected 173.2s (ratio 0.858); sha256 `a14713538abb589f697cce0fa4f337989523db5fab3163bd73fde27b2b4454f6`
+- **Joshua 15** — missing verse 27 at 3:26–3:34 — "Pelet Hazar Shual Beersheba Biziothiah Baalah Iim Ezem Eltolad Kesil" (small.en+medium.en)
+- **Joshua 15** — missing verse 37 at 4:10–4:15 — "Migdal Gad Dilean Mizpah Joktheel Lachish" (small.en+medium.en)
+  - audio check: confirmed: missing verse 27 3:17-3:27 (slice coverage small 0.00, medium 0.00) confirmed: missing verse 37 4:01-4:11 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.1591 / medium 0.2955; coverage small 0.8443 / medium 0.7068; duration 372.31s vs expected 352.0s (ratio 1.058); sha256 `f39609ba778f0cfb9a3f27ec971d93505420526f7f81e30d32254abbfd7c7df6`
+- **Joshua 16** — inserted verse 1 at 0:02–0:18 — "The Land Given to Lokes The land given to Lokes started at the Jordan River near Jericho and southward to the Jordan War This land was split into two parts The west part belonged to Kav and the east part belonged to Zion" (small.en+medium.en)
+  - audio check: unclear: inserted verse 1 0:01-0:24 (slice coverage small 1.00, medium 0.12)
+  - WER small 0.2679 / medium 0.2321; coverage small 0.9241 / medium 0.7768; duration 99.07s vs expected 89.6s (ratio 1.106); sha256 `f1d710e60866ea945ded2b303a942a0ec65e22994a5d5fb1173553e97a6bfda6`
+- **Joshua 17** — inserted before verse 1 at 0:14 — "helik azrael shechem hefer and" (small.en+medium.en windows)
+- **Joshua 17** — missing verse 2 at 0:54 — "son of Joseph by their families But Zelophehad son of Hepher son of Gilead son of Makir" (medium.en)
+  - audio check: confirmed: missing verse 2 0:45-0:55 (slice coverage small 0.17, medium 0.17) refuted: inserted verse ? 0:13-0:25 (slice coverage small 0.20, medium 0.20)
+  - WER small 0.0449 / medium 0.3607; coverage small 0.9551 / medium 0.6411; duration 202.37s vs expected 214.0s (ratio 0.946); sha256 `30ae64a70cbb60d44f4d87cc1db7b74a75eeefda305c5b5875b3fdf96a284f9e`
+- **Joshua 19** — missing verse 45 at 4:16–4:19 — "Berak Gath Rimmon Me Jarkon" (small.en+medium.en)
+  - audio check: confirmed: missing verse 45 4:07-4:17 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.162 / medium 0.2182; coverage small 0.8434 / medium 0.7979; duration 310.57s vs expected 298.8s (ratio 1.039); sha256 `c12840ee75fcd7f5fa4b85d316ded433dd463b436cc06db4ce21a5a8ef694e48`
+- **Joshua 20** — missing verse 2 at 0:01–0:02 — "Tell the people of Israel Choose the cities of safety that I told you about through Moses If someone kills another person by accident without meaning to they can run there These cities will keep them safe from the relative who wants to pay them back for the death The person will run to one of these cities They will …" (small.en+medium.en)
+  - audio check: unclear: missing verse 2 0:00-0:09 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.316 / medium 0.5764; coverage small 0.684 / medium 0.4271; duration 93.78s vs expected 115.2s (ratio 0.814); sha256 `84d07352a7639adf9f3ce2503de4156fb6e8f04c6eb103f1626291d6f370de0c`
+- **Joshua 21** — inserted verse 2 at 0:14–0:33 — "to give us towns to live in with fear Joshua chapter 21 then the family leaders of the Levites came to Elazar the priest and Joshua and the family leaders of the tribes of Israel At Shiloh in the land of Canaan they said the Lord commanded through Moses to give us" (small.en+medium.en)
+- **Joshua 21** — inserted verse 3 at 0:37–0:45 — "fled from their villages into plains and cities and seventeen towns in Brabiat with additional fields that fell on the territories" (small.en+medium.en)
+- **Joshua 21** — inserted verse 3 at 0:50–1:00 — "as the commandment of the Lord commanded them to do so Joshua chapter 21 blessed the land of Israel They granted in their villages and fields" (small.en+medium.en)
+- **Joshua 21** — inserted verse 3 at 1:00–1:04 — "the desert Levites and anyone who knew their names they would give them from" (small.en+medium.en)
+- **Joshua 21** — inserted verse 3 at 1:05–1:08 — "attics The Lord asked Israel as the promised" (small.en+medium.en)
+- **Joshua 21** — inserted verse 3 at 1:12–1:22 — "they were were brewing on their fields And Joshua chapter 21 blessed the land of Israel Israel the people moved in their districts and ended up in villages and fields" (small.en+medium.en)
+- **Joshua 21** — inserted verse 3 at 1:23–1:28 — "Promised Land came to Israel and God granted them their rest and they were settled in Zion" (small.en+medium.en)
+- **Joshua 21** — repeated verse 2 at 0:30–0:34 — "Lord commanded through Moses to give us towns to live in with" (small.en+medium.en)
+- **Joshua 21** — repeated verse 3 at 1:15–1:18 — "Joshua chapter 21 blessed the land of Israel" (small.en+medium.en)
+- **Joshua 21** — repeated verse 25 at 4:01–4:03 — "and Gathrimon each with its fields" (small.en+medium.en)
+- **Joshua 21** — repeated verse 33 at 5:03–5:04 — "of Gershon got 13 towns" (small.en+medium.en)
+  - audio check: unclear: inserted verse 2 0:14-0:38 (slice coverage small 0.42, medium 0.29) confirmed: inserted verse 3 1:11-1:28 (slice coverage small 0.88, medium 0.88) unclear: inserted verse 3 0:49-1:06 (slice coverage small 1.00, medium 0.46)
+  - WER small 0.2923 / medium 0.3609; coverage small 0.9207 / medium 0.7598; duration 390.19s vs expected 338.0s (ratio 1.154); sha256 `72f1b09abd145f9d25287e8fad31796639084511434ec8aed86be5b70ff8c69e`
+- **Joshua 23** — missing verse 4 at 1:02 — "It goes from the Jordan River to the Great Sea in the west The LORD your God will push them out ahead of you and drive them away from you You will take their land just like the LORD your God promised you So be very brave Be careful to obey everything written in the Book of the Law of …" (small.en+medium.en)
+  - audio check: confirmed: missing verse 4 0:29-0:38 (slice coverage small 0.25, medium 0.25)
+  - WER small 0.4409 / medium 0.3861; coverage small 0.5591 / medium 0.6392; duration 164.95s vs expected 189.6s (ratio 0.87); sha256 `67eadb9161fda1b69ca08b1d5111bdb0dbe249499873bfdd5e03a3b469bd0ee8`
 
 ## UNCERTAIN
 
@@ -1159,6 +1196,12 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Joshua 11** — audio slice contains the disputed words; the models still disagree (coverage small 0.978, medium 0.635)
   - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 7 1:10-1:19 (slice coverage small 1.00, medium 1.00, times 1/1)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.978, medium 0.635); WER small 0.0222 / medium 0.3693; coverage small 0.9778 / medium 0.6355; sha256 `02afc087c85c3a82424ce49b5f8f8f02b8a50845272cf22e4f260662de634049`
+- **Joshua 18** — audio slice contains the disputed words; the models still disagree (coverage small 0.924, medium 0.739)
+  - audio check: refuted: missing verse 12 1:39-1:49 (slice coverage small 0.83, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.924, medium 0.739); WER small 0.0809 / medium 0.2691; coverage small 0.9238 / medium 0.7387; sha256 `3a66c0154ff0d50e609c130ba2a3fa7883d7a0cddee9c4045f9fc30e969b7f0a`
+- **Joshua 22** — audio slice contains the disputed words; the models still disagree (coverage small 0.981, medium 0.839)
+  - audio check: refuted: repeated verse 32 5:45-5:54 (slice coverage small 0.83, medium 0.83, times 0/0) refuted: repeated verse 31 5:29-5:38 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.981, medium 0.839); WER small 0.0225 / medium 0.1675; coverage small 0.9814 / medium 0.8394; sha256 `7b7de9a07978d3cd89a20eb44c9f202ffdfc03001f70445a79bec208fddb2dee`
 
 ## Script
 
