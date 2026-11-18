@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 240
+- Scored chapters: 250
 - PASS: 7
-- FAIL: 156
-- UNCERTAIN: 77 (jsonl verdict UNSURE)
-- Still to score: 689 Old Testament chapters
+- FAIL: 161
+- UNCERTAIN: 82 (jsonl verdict UNSURE)
+- Still to score: 679 Old Testament chapters
 
 ## PASS
 
@@ -1122,6 +1122,30 @@ words clears that span. A split slice stays UNCERTAIN.
 - **1 Samuel 4** — missing verse 1 at 0:29–0:30 — "And Samuel's words went out to all Israel Israel went out to fight the Philistines Israel camped at Ebenezer and the Philistines camped at Aphek The Philistines lined up for battle against Israel As the battle went on Israel was beaten by the Philistines who killed about" (medium.en)
   - audio check: confirmed: missing verse 1 0:10-0:19 (slice coverage small 0.25, medium 0.25)
   - WER small 0.0081 / medium 0.432; coverage small 0.9919 / medium 0.5761; duration 217.43s vs expected 247.2s (ratio 0.88); sha256 `7b63d1f2074b84eb25724a07e783e86828625cb8f3044edeeeb3870e422b7ed3`
+- **1 Samuel 5** — inserted verse 6 at 0:48–1:03 — "the Lord Patience the Lord Patience the Lord Patience seriously punished the people of Ashtod and the towns of around it giving them plagues of death and plague plague vision" (small.en+medium.en)
+- **1 Samuel 5** — inserted verse 6 at 1:09–2:04 — "with a nasty stinking growl a week until they gave their ark of God They went into the temple of the Lord and made the temple in tangles of blue and blue and blue engrave They went into the temple of the Lord and made the temple in tangles of blue and blue engrave They went into the temple of …" (small.en+medium.en)
+- **1 Samuel 5** — repeated verse 6 at 1:03–1:08 — "The Lord Patience seriously punished the people of Ashtod and the towns of around it" (small.en+medium.en)
+- **1 Samuel 5** — repeated verse 6 at 1:20–1:25 — "They went into the temple of the Lord and made the temple in tangles of blue and blue" (small.en+medium.en)
+- **1 Samuel 5** — repeated verse 6 at 1:24–1:37 — "blue and blue engrave They went into the temple of the Lord and made the temple in tangles of blue and blue" (small.en+medium.en)
+- **1 Samuel 5** — repeated verse 6 at 1:37–1:43 — "They went into the temple of the Lord and made the temple in tangles of blue and blue engrave" (small.en+medium.en)
+- **1 Samuel 5** — repeated verse 6 at 1:44–1:49 — "They went into the temple of the Lord and made the temple in tangles of blue and blue and" (small.en+medium.en)
+- **1 Samuel 5** — repeated verse 6 at 1:49–2:04 — "and grave They went into the temple of the Lord and made the temple in tangles of blue and blue and grave They went into the temple of the Lord and made the temple in tangles of blue and blue and grave They went into the temple of the" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 6 1:08-1:32 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 6 1:48-2:10 (slice coverage small 0.96, medium 0.62, times 0/0) unclear: inserted verse 6 0:47-1:09 (slice coverage small 0.96, medium 0.00)
+  - WER small 0.5144 / medium 0.6089; coverage small 0.9948 / medium 0.6903; duration 194.65s vs expected 152.4s (ratio 1.277); sha256 `fa5bcc38b7762321076f54ded689044ad197eea3867d2d69020d82fb584f6c5b`
+- **1 Samuel 7** — missing verse 11 at 2:36 — "rushed out of Mizpah and chased the Philistines defeating them all the way to a place below Beth Car Then Samuel took a stone and set it up between Mizpah and Shen He named it Ebenezer which means stone of help He said The LORD has helped us all the way to now So the Philistines were defeated and they …" (medium.en)
+  - audio check: confirmed: missing verse 11 2:11-2:20 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.021 / medium 0.3004; coverage small 0.9811 / medium 0.7017; duration 167.0s vs expected 190.4s (ratio 0.877); sha256 `566aed9b2d2ea420ad956959251b0a8501c9b2ada33562b7acc3e24939ac39f6`
+- **1 Samuel 9** — missing verse 3 at 0:30 — "So Kish said to Saul Take one of the servants with you and go look for the donkeys" (small.en+medium.en)
+- **1 Samuel 9** — inserted verse 4 at 0:44–0:46 — "Then Saul went through the land of Shalashah" (small.en+medium.en)
+  - audio check: confirmed: missing verse 3 0:21-0:31 (slice coverage small 0.08, medium 0.08) confirmed: inserted verse 4 0:43-0:52 (slice coverage small 0.88, medium 0.88)
+  - WER small 0.0449 / medium 0.174; coverage small 0.9652 / medium 0.8272; duration 293.42s vs expected 356.4s (ratio 0.823); sha256 `f2ded5c342bce97b5ea9202a1fa57bfa967bbc298f0ccc6a24fc72583470b960`
+- **1 Samuel 10** — missing verse 3 at 0:58 — "Then you will go on until you come to the big oak tree at Tabor Three men will meet you there on their way to worship God at Bethel One will be carrying three young goats another three loaves of bread and another a skin bag of wine They will greet you and give you two loaves of bread Take …" (small.en+medium.en)
+  - audio check: confirmed: missing verse 3 0:18-0:27 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.252 / medium 0.4613; coverage small 0.7507 / medium 0.54; duration 253.06s vs expected 300.0s (ratio 0.844); sha256 `67075b281899c4ceb5b7e0a494a6e8d3acb398d3f17fa4f7976e585680fcaee6`
+- **1 Samuel 14** — missing verse 29 at 4:55 — "Look how much stronger I feel after tasting just a little of this honey Think how much better it would have been if the men had eaten some of the food they took from their enemies today Then even more Philistines would have been defeated That day the Israelites defeated the Philistines all the way from Michmash to Aijalon Then …" (small.en)
+- **1 Samuel 14** — missing verse 1 at 0:01–0:02 — "day Saul's son Jonathan said to the young man who carried his armor Come on let's go over to the Philistine camp on the other side But he didn't tell his father Saul was staying at the edge of Gibeah under a pomegranate tree in Migron About six hundred men were with him Ahijah was there too wearing the priest's …" (medium.en)
+  - audio check: confirmed: missing verse 29 4:17-4:26 (slice coverage small 0.00, medium 0.00) unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - WER small 0.0882 / medium 0.2202; coverage small 0.9182 / medium 0.7834; duration 497.37s vs expected 557.6s (ratio 0.892); sha256 `3edd4ad7842d7df82b79740e3bef59815977e50819b33c65470289cfff6be141`
 
 ## UNCERTAIN
 
@@ -1369,6 +1393,20 @@ words clears that span. A split slice stays UNCERTAIN.
 - **1 Samuel 3** — audio slice contains the disputed words; the models still disagree (coverage small 0.905, medium 0.981)
   - audio check: refuted: missing verse 8 1:02-1:11 (slice coverage small 0.75, medium 0.75) refuted: missing verse 13 1:42-1:52 (slice coverage small 0.83, medium 0.83)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.905, medium 0.981); WER small 0.0968 / medium 0.0215; coverage small 0.9054 / medium 0.9806; sha256 `ba7a14ba5b4d209ee1f22225e54fc8552c646b002866cc03e01387b6e25b1e80`
+- **1 Samuel 6** — audio slice contains the disputed words; the models still disagree (coverage small 0.993, medium 0.944)
+  - audio check: refuted: missing verse 15 2:49-2:59 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.993, medium 0.944); WER small 0.0116 / medium 0.0622; coverage small 0.9928 / medium 0.9436; sha256 `63f244455ff4a7058e2b976783f485149aacc3dba5eff951cb64c45f66b147ca`
+- **1 Samuel 8** — missing verse 1 at 0:00–0:01 — "When Samuel grew old he made his sons leaders over Israel His oldest son was named Joel and his second son was named Abijah They were judges in Beersheba But his sons didn't live the way Samuel did They wanted money They took bribes and didn't judge fairly So all the elders of Israel got together and came to" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.08)
+  - medium.en only: missing 'When Samuel grew old he made his sons leaders over Israel His oldest son was named Joel and his second son was named Abijah They were judges in Beersheba But his sons didn't live the way Samuel did They wanted money They took bribes and didn't judge fairly So all the elders of Israel got together and came to'; coverage unclear (small 0.991, medium 0.817; pass needs both >= 0.96); WER small 0.0109 / medium 0.187; coverage small 0.9913 / medium 0.8174; sha256 `895b5e7fa05543f24a2efba40ce05d2103e04b893a1367a2c45c3616cbdef2ec`
+- **1 Samuel 11** — missing verse 15 at ? — "to the LORD and Saul and all the Israelites celebrated with great joy" (medium.en)
+  - medium.en only: missing 'to the LORD and Saul and all the Israelites celebrated with great joy'; WER small 0.0205 / medium 0.0502; coverage small 0.9863 / medium 0.9612; sha256 `ae45d1ef6c4653a5831770af1ab74b20172ed15aebff60c0852c25bd6b0e40d3`
+- **1 Samuel 12** — audio slice contains the disputed words; the models still disagree (coverage small 0.946, medium 0.991)
+  - audio check: refuted: missing verse 2 0:06-0:15 (slice coverage small 1.00, medium 0.92)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.946, medium 0.991); WER small 0.0571 / medium 0.019; coverage small 0.9458 / medium 0.9912; sha256 `87b761eb05ff00c12faf02427fb56fc5afe1be95c72044fd69c6d10d72b9b3d6`
+- **1 Samuel 13** — audio slice contains the disputed words; the models still disagree (coverage small 0.956, medium 0.708)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.92) refuted: missing verse 6 0:52-1:02 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.956, medium 0.708); WER small 0.0442 / medium 0.2942; coverage small 0.9558 / medium 0.7075; sha256 `fb4a9d4fa8430a4dc020f911ce217ad92e0f33df0fc54e99ae13e23f87c43f99`
 
 ## Script
 
