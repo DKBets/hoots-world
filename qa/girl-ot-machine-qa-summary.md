@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 370
+- Scored chapters: 380
 - PASS: 9
-- FAIL: 251
-- UNCERTAIN: 110 (jsonl verdict UNSURE)
-- Still to score: 559 Old Testament chapters
+- FAIL: 257
+- UNCERTAIN: 114 (jsonl verdict UNSURE)
+- Still to score: 549 Old Testament chapters
 
 ## PASS
 
@@ -2226,6 +2226,47 @@ words clears that span. A split slice stays UNCERTAIN.
 - **2 Chronicles 1** — inserted verse 2 at 0:31–1:27 — "Lord and waited for ten days and weeks and waited for ten days and weeks and waited for ten days and weeks and waited for ten days and weeks and waited for ten days and weeks and waited for ten days and weeks and waited for ten days and weeks and waited for ten days and weeks and waited for …" (small.en+medium.en)
   - audio check: refuted: inserted verse 2 0:30-0:54 (slice coverage small 0.00, medium 0.00) unclear: inserted verse 1 0:13-0:23 (slice coverage small 1.00, medium 0.71)
   - WER small 0.6435 / medium 0.4305; coverage small 0.9529 / medium 0.787; duration 238.81s vs expected 178.4s (ratio 1.339); sha256 `cb8b761f4e29634269d3ffc2fff3fa2e43bff3929e055acb7a8a2e8ac0c44231`
+- **2 Chronicles 4** — missing verse 2 at 0:17–0:28 — "and a half feet high It was forty five feet around Below its rim were shapes of oxen all the way around it ten in every fifteen feet The oxen were in" (medium.en)
+  - audio check: confirmed: missing verse 2 0:04-0:13 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.0346 / medium 0.2615; coverage small 0.9654 / medium 0.7385; duration 181.85s vs expected 208.0s (ratio 0.874); sha256 `38e38cd7aa2dfca3e543e2f930c4e212302edc7427d4b245257a4a72b2427231`
+- **2 Chronicles 5** — coverage low on both models (small 0.756, medium 0.799); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.2436 / medium 0.2108; coverage small 0.7564 / medium 0.7986; duration 139.69s vs expected 170.8s (ratio 0.818); sha256 `60318dd6e937184dbd0769ed9e60bc3db8023baabfa85d143cc93d3ed0e4ae3f`
+- **2 Chronicles 6** — missing verse 11 at 1:30–1:36 — "have put the ark there Inside" (small.en+medium.en)
+- **2 Chronicles 6** — missing verse 20 at 5:31–5:32 — "would put Your name here Please" (small.en+medium.en)
+- **2 Chronicles 6** — inserted verse 10 at 1:27–1:29 — "Lord is jagged and has always been people" (small.en+medium.en)
+- **2 Chronicles 6** — inserted verse 11 at 1:30–1:36 — "would imagine that it is different from here But it tears not in the present Instead" (small.en+medium.en)
+- **2 Chronicles 6** — inserted verse 11 at 1:37–1:40 — "different and unrelatable to anything I can ever envision" (small.en+medium.en)
+- **2 Chronicles 6** — inserted verse 11 at 1:41–1:45 — "Lord is jagged and He is blazed in flames and" (small.en+medium.en)
+- **2 Chronicles 6** — inserted verse 11 at 1:45–1:49 — "is blazed in flames in His bloods of the Lamb and in" (small.en+medium.en)
+- **2 Chronicles 6** — inserted verse 12 at 1:50–2:33 — "pours every blood of the goat You will know this as a blazing and it rises like a lamp from morning until evening and it will rise in flames and it will not go down down The Lord is jagged and He always is blazing in the goat The Lord is jagged and He always is blazing in the goat …" (small.en+medium.en)
+- **2 Chronicles 6** — inserted verse 12 at 2:34–2:40 — "the previous centuries is blazed in flames in his blood and goat in his blood leave the Ark" (small.en+medium.en)
+- **2 Chronicles 6** — inserted verse 12 at 2:44–3:12 — "unveiled and in tandem of the previous centuries is blazed in flames in his blood and goat in his blood and blood The Lord is blessed for the blessings of the Lord and as I entered by the window into the temple I felt and prayed to the Lord of Israel The Lord has blessed the land without any debt …" (small.en+medium.en)
+- **2 Chronicles 6** — inserted verse 12 at 3:14–3:57 — "and I have built and poured and promised to God The temple was in the temple and there was no dense in inveil and I am a part of the land and I have built a tabern on the of the Temple of the 24th Many Series and I have built a tabern on the top of the Temple of …" (small.en+medium.en)
+- **2 Chronicles 6** — repeated verse 12 at 2:07–2:12 — "The Lord is jagged and He always is blazing in the goat The" (small.en+medium.en)
+- **2 Chronicles 6** — repeated verse 12 at 3:32–3:39 — "and I have built a tabern on the top of the Temple of the 24th Many Series and I have built" (small.en+medium.en)
+- **2 Chronicles 6** — repeated verse 12 at 3:45–3:49 — "and I have built a tabern on the top of the Temple of the" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 12 1:49-2:13 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 12 3:13-3:37 (slice coverage small 1.00, medium 0.92) confirmed: inserted verse 12 2:43-3:07 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.3545 / medium 0.5288; coverage small 0.9662 / medium 0.6591; duration 563.54s vs expected 472.8s (ratio 1.192); sha256 `71693fe8282ecadfd928f2692da10a6045bf25e9177ce4978b8338c0d37b7579`
+- **2 Chronicles 8** — inserted verse ? at 0:21 — "horan and lower beth horan" (small.en+medium.en windows)
+- **2 Chronicles 8** — missing verse 1 at 0:30 — "Solomon to build the LORD's house and his own palace After that Solomon rebuilt the towns that Huram had given him and he had Israelites live in them Solomon went to Hamath Zobah and captured it He built Tadmor in the wilderness and all the storage cities in Hamath He also built Upper Beth Horon and Lower Beth Horon They …" (medium.en)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) unclear: inserted verse ? 0:20-0:32 (slice coverage small 0.40, medium 0.60)
+  - WER small 0.0369 / medium 0.1935; coverage small 0.9677 / medium 0.8111; duration 156.12s vs expected 173.6s (ratio 0.899); sha256 `22fd4d6bb7ec0190d233218f334dd25a80a4be41c28d2e9c3c15a81f1d91d4f8`
+- **2 Chronicles 11** — missing verse 7 at 0:49–0:52 — "Beth Zur Soco Adullam Gath Mareshah" (small.en)
+  - audio check: confirmed: missing verse 7 0:40-0:50 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.1088 / medium 0.0509; coverage small 0.8981 / medium 0.9491; duration 177.54s vs expected 172.8s (ratio 1.027); sha256 `bf4b3aba4f311b99528122553f37f15d3a5a630283369cf3c04b8aa434a070cf`
+- **2 Chronicles 13** — inserted verse 8 at 1:16–1:20 — "You drove out the Lord's priests who are Aaron's sons and the Levites" (small.en+medium.en)
+- **2 Chronicles 13** — inserted verse 9 at 1:25–2:33 — "you also blamed Jeroboam and his other Jewish relatives to turn your gods to against Ezra Now I wonder what they would say if they were given the present of David Some people said to a depraved bad boy some would say to a sad prophet saying that they would see their king's appearance and his sons never ruled That …" (small.en+medium.en)
+- **2 Chronicles 13** — inserted verse 21 at 4:39–4:43 — "gave him the throne of David The Lord said to Abijah you will get" (small.en+medium.en)
+- **2 Chronicles 13** — inserted verse 22 at 4:49–4:55 — "was not good enough Lord and knows him not properly and knows God's ways in his hands" (small.en+medium.en)
+- **2 Chronicles 13** — repeated verse 9 at 1:49–1:50 — "Some people said to a" (small.en+medium.en)
+- **2 Chronicles 13** — repeated verse 9 at 1:53–1:55 — "Some people said to a" (small.en+medium.en)
+- **2 Chronicles 13** — repeated verse 9 at 1:55–2:00 — "to a sad prophet saying that they would see their king's appearance and his sons never ruled" (small.en+medium.en)
+- **2 Chronicles 13** — repeated verse 9 at 2:01–2:21 — "Some people said to a sad prophet saying that they would see their king's appearance and his sons never ruled Some people said to a sad prophet saying that they would see their king's appearance and his sons never ruled Some people said to a sad prophet saying that they would see their king's appearance and his sons never" (small.en+medium.en)
+- **2 Chronicles 13** — repeated verse 9 at 2:22–2:32 — "Some people said to a sad prophet saying that they would see their kings appearance and his sons never ruled Some people said to a sad prophet" (small.en+medium.en)
+- **2 Chronicles 13** — repeated verse 22 at 5:23–5:26 — "God because you have your faith in" (small.en+medium.en)
+- **2 Chronicles 13** — repeated verse 22 at 5:37–5:40 — "Abijah said Give me that offer and I will go" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 9 1:24-1:48 (slice coverage small 1.00, medium 0.96) refuted: repeated verse 9 2:00-2:24 (slice coverage small 0.83, medium 1.00, times 0/1) refuted: repeated verse 9 2:21-2:38 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.6922 / medium 0.6246; coverage small 0.9395 / medium 0.3772; duration 356.27s vs expected 224.8s (ratio 1.585); sha256 `5e1f620fb7cea2556925d523f1064445eb49772102eff8d30ff0db2fdc9ce0fa`
 
 ## UNCERTAIN
 
@@ -2575,6 +2616,18 @@ words clears that span. A split slice stays UNCERTAIN.
 - **2 Chronicles 2** — audio slice contains the disputed words; the models still disagree (coverage small 0.829, medium 0.594)
   - audio check: refuted: repeated verse 10 1:50-1:59 (slice coverage small 1.00, medium 1.00, times 1/1)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.829, medium 0.594); WER small 0.2175 / medium 0.411; coverage small 0.8288 / medium 0.5942; sha256 `526952b13b902614c53c6ea5b0a984cde5e24545af538c165978f20b53a90bf5`
+- **2 Chronicles 7** — missing verse 1 at 0:00–0:02 — "When Solomon finished praying fire came down from heaven and burned up the burnt offering and the sacrifices And the glory of the LORD filled the house The priests could not go into the LORD's house because the glory of the LORD filled it All the Israelites watched the fire come down and saw the LORD's glory over the house …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'When Solomon finished praying fire came down from heaven and burned up the burnt offering and the sacrifices And the glory of the LORD filled the house The priests could not go into the LORD's house because the glory of the LORD filled it All the Israelites watched the fire come down and saw the LORD's glory over the house …'; coverage unclear (small 0.992, medium 0.838; pass needs both >= 0.96); WER small 0.0153 / medium 0.1636; coverage small 0.9924 / medium 0.8379; sha256 `47a9df747f84e31e83cc247109fb422dd54307e04109f82407c7d2c5d79dcaf9`
+- **2 Chronicles 9** — audio slice contains the disputed words; the models still disagree (coverage small 0.978, medium 0.883)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.978, medium 0.883); WER small 0.0261 / medium 0.1269; coverage small 0.9776 / medium 0.8831; sha256 `2ee54d6b59abac56a2e63450dcf0c4ee5a278cd19943a49708d665a401218eef`
+- **2 Chronicles 10** — audio slice contains the disputed words; the models still disagree (coverage small 0.992, medium 0.910)
+  - audio check: refuted: missing verse 15 1:57-2:06 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.992, medium 0.910); WER small 0.015 / medium 0.0983; coverage small 0.9915 / medium 0.9103; sha256 `0c7bdf2e5549e7c44dc2720fa1724b4280feee42400bb3b0fb8690d4f2915ad9`
+- **2 Chronicles 12** — audio slice contains the disputed words; the models still disagree (coverage small 0.975, medium 0.700)
+  - audio check: refuted: missing verse 1 0:01-0:10 (slice coverage small 0.83, medium 0.92)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.975, medium 0.700); WER small 0.039 / medium 0.3028; coverage small 0.9748 / medium 0.6995; sha256 `093bce7c3eb7650ecf8d44ff5b87638c9dd8b6f1cb6cc91029a000f8d44300c2`
 
 ## Script
 
