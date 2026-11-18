@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 480
-- PASS: 16
-- FAIL: 311
-- UNCERTAIN: 153 (jsonl verdict UNSURE)
-- Still to score: 449 Old Testament chapters
+- Scored chapters: 490
+- PASS: 20
+- FAIL: 314
+- UNCERTAIN: 156 (jsonl verdict UNSURE)
+- Still to score: 439 Old Testament chapters
 
 ## PASS
 
-16 chapters. Both models agreed there was no missing, invented, or repeated passage.
+20 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -77,7 +77,7 @@ words clears that span. A split slice stays UNCERTAIN.
 - Nehemiah 1, 5
 - Esther 10
 - Job 2, 34–35
-- Psalms 1
+- Psalms 1, 3, 8, 11–12
 
 ## FAIL
 
@@ -2865,6 +2865,19 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 2** — missing verse 8 at 0:45 — "nations They will belong to you" (medium.en)
   - audio check: confirmed: missing verse 8 0:36-0:46 (slice coverage small 0.33, medium 0.33)
   - WER small 0.0047 / medium 0.0332; coverage small 0.9953 / medium 0.9668; duration 77.95s vs expected 84.4s (ratio 0.924); sha256 `38df2ce410340027bd9bdd215442b92518e967ceab72d3299bc469771f47b241`
+- **Psalms 5** — inserted verse 1 at 0:07–0:22 — "my cry Engage your eyes for thou sake in nothing but a man Lord if you please desire my well do not not transport me Please do not transport me Please do not Interrupt" (small.en+medium.en)
+- **Psalms 5** — inserted verse 1 at 0:23–1:19 — "ways Please do not take yes Yes as in the Pharaoh Pharaoh's kings of this land Thou shalt overthrow your naked pride Thou shalt overthrow your naked pride Thou shalt overthrow your naked pride Thou shalt overthrow your naked pride Thou shalt overthrow your naked pride Thou shalt overthrow your naked pride Thou shalt overthrow your naked pride Thou shalt …" (small.en+medium.en)
+- **Psalms 5** — repeated verse 1 at 0:36–1:19 — "Thou shalt overthrow your naked pride Thou shalt overthrow your naked pride Thou shalt overthrow your naked pride Thou shalt overthrow your naked pride Thou shalt overthrow your naked pride Thou shalt overthrow your naked pride Thou shalt overthrow your naked pride Thou shalt overthrow your naked pride Thou shalt overthrow your naked pride Thou shalt overthrow your naked pride …" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 1 0:22-0:46 (slice coverage small 0.92, medium 0.92) unclear: repeated verse 1 0:35-0:59 (slice coverage small 1.00, medium 0.25, times 2/0) confirmed: inserted verse 1 0:06-0:28 (slice coverage small 0.96, medium 1.00)
+  - WER small 0.5966 / medium 0.521; coverage small 0.9958 / medium 0.9958; duration 163.54s vs expected 95.2s (ratio 1.718); sha256 `a15ad37a332c18378feab20a6a89bd8fcc49cafb733d21b95a16e27f8f91e1ff`
+- **Psalms 9** — missing verse 1 at 0:16–0:52 — "LORD with my whole heart" (small.en+medium.en)
+- **Psalms 9** — inserted verse 1 at 0:03–0:16 — "lay to my praise the president the president beloved In Psalms 9 verse 1 Blessed is the nor for their kings The nations blaze their land and many and wades rule against" (small.en+medium.en)
+  - audio check: unclear: inserted verse 1 0:02-0:22 (slice coverage small 0.96, medium 0.58) confirmed: missing verse 1 0:07-0:17 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.4328 / medium 0.3925; coverage small 0.7446 / medium 0.8763; duration 202.58s vs expected 148.8s (ratio 1.361); sha256 `36072e7b2e53ea347c8fd38410dc83eb39001c3d6f091fce799bbe521d40e0f2`
+- **Psalms 10** — missing verse 17 at 1:57 — "You give them strength You listen to them" (small.en)
+- **Psalms 10** — missing verse 5 at 0:58 — "They are proud and they don't" (medium.en)
+  - audio check: refuted: missing verse 17 1:48-1:58 (slice coverage small 1.00, medium 1.00) confirmed: missing verse 5 0:49-0:59 (slice coverage small 0.33, medium 0.33)
+  - WER small 0.0278 / medium 0.2593; coverage small 0.9753 / medium 0.7438; duration 121.94s vs expected 129.6s (ratio 0.941); sha256 `5d9d79b914aac67ae6eeac380271670ffba5a5a834e2ff02fa7b34b7b0f11bab`
 
 ## UNCERTAIN
 
@@ -3348,6 +3361,15 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Job 39** — missing verse 1 at 0:00–0:02 — "Do you know when the mountain goats give birth Do you watch when the deer have their babies Do you count the months until they give birth Do you know the time when their babies are born They bend down and give birth to their young Then their labor is over Their babies grow strong in the open fields They …" (medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
   - medium.en only: missing 'Do you know when the mountain goats give birth Do you watch when the deer have their babies Do you count the months until they give birth Do you know the time when their babies are born They bend down and give birth to their young Then their labor is over Their babies grow strong in the open fields They …'; coverage unclear (small 1.000, medium 0.614; pass needs both >= 0.96); WER backstop on one model (small 0.002, medium 0.388); WER small 0.002 / medium 0.3877; coverage small 1.0 / medium 0.6143; sha256 `00646322ca77799d843761a18f8030da738f7a2d442512b57f5bb82867863328`
+- **Psalms 4** — missing verse 8 at 0:48 — "down and sleep in peace because you alone" (medium.en)
+  - audio check: unclear: missing verse 8 0:39-0:49 (slice coverage small 0.62, medium 0.62)
+  - medium.en only: missing 'down and sleep in peace because you alone'; coverage unclear (small 1.000, medium 0.942; pass needs both >= 0.96); WER small 0.0064 / medium 0.0577; coverage small 1.0 / medium 0.9423; sha256 `4be85e7e014335bd6abd61858af70079d6f926474946f24d0d6fe51a7ba38b50`
+- **Psalms 6** — missing verse 1 at 0:30 — "LORD please don't correct me when you are angry Don't punish me when you are upset Be kind to me LORD because I feel weak Heal me LORD because my body is hurting My heart is very troubled LORD how long will this last Come back LORD and rescue me Save me because of your faithful love People who have …" (medium.en)
+  - audio check: unclear: missing verse 1 0:03-0:12 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'LORD please don't correct me when you are angry Don't punish me when you are upset Be kind to me LORD because I feel weak Heal me LORD because my body is hurting My heart is very troubled LORD how long will this last Come back LORD and rescue me Save me because of your faithful love People who have …'; coverage unclear (small 0.987, medium 0.550; pass needs both >= 0.96); WER backstop on one model (small 0.020, medium 0.470); WER small 0.0199 / medium 0.4702; coverage small 0.9868 / medium 0.5497; sha256 `1a8c6bc1714490487c2ca64cecdd22723b2cd4de776c993e983278b86654b45d`
+- **Psalms 7** — audio slice contains the disputed words; the models still disagree (coverage small 0.742, medium 0.739)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.742, medium 0.739); WER small 0.2579 / medium 0.2642; coverage small 0.7421 / medium 0.739; sha256 `b9abc0bea059e9222cb9e3f20f25d22524813013bc34770933be856d520cc6cb`
 
 ## Script
 
