@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 690
+- Scored chapters: 700
 - PASS: 47
-- FAIL: 396
-- UNCERTAIN: 247 (jsonl verdict UNSURE)
-- Still to score: 239 Old Testament chapters
+- FAIL: 400
+- UNCERTAIN: 253 (jsonl verdict UNSURE)
+- Still to score: 229 Old Testament chapters
 
 ## PASS
 
@@ -3206,6 +3206,20 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Isaiah 11** — paraphrase verse ? at ? — "scattered wording does not match the source" (small.en+medium.en)
   - audio check: confirmed: inserted verse 16 4:27-4:51 (slice coverage small 0.83, medium 1.00) refuted: repeated verse 15 4:07-4:28 (slice coverage small 1.00, medium 1.00, times 1/1) unclear: repeated verse 9 2:07-2:25 (slice coverage small 1.00, medium 1.00, times 4/0)
   - WER small 0.8491 / medium 0.8728; coverage small 0.8707 / medium 0.3642; duration 316.46s vs expected 185.6s (ratio 1.705); sha256 `23bb8501673bd8ea440bdc9d3a91f5c9bb1434e9bb8983b29e4db4e91f75e6f3`
+- **Isaiah 13** — inserted before verse 1 at 0:02–0:14 — "this valley is discussed by Isaiah son of Isaiah What a Z Valley was This Valley declared in Babylon by a pagan new brew Please gather gravesmiths and grave sages and violin" (small.en+medium.en)
+  - audio check: confirmed: inserted verse ? 0:01-0:20 (slice coverage small 0.92, medium 1.00)
+  - WER small 0.1009 / medium 0.222; coverage small 0.9615 / medium 0.8422; duration 196.18s vs expected 218.0s (ratio 0.9); sha256 `79832f2a0f24c5bb936e5dc16b8532a981c64d97345d3e75e59fcae36d5c5e35`
+- **Isaiah 16** — inserted verse 1 at 0:02–0:09 — "Send lambs as a gift to the ruler of the land Send lambs as a gift to the ruler of the land" (small.en+medium.en)
+  - audio check: unclear: inserted verse 1 0:01-0:15 (slice coverage small 0.50, medium 0.86)
+  - WER small 0.095 / medium 0.2172; coverage small 0.957 / medium 0.7896; duration 169.98s vs expected 176.8s (ratio 0.961); sha256 `3e262b262db72546bcae5e32d971195c03320107b4f8dc86c0cc31f890291c7f`
+- **Isaiah 19** — inserted before verse 1 at 0:07 — "and every evil thing will be a" (small.en+medium.en windows)
+- **Isaiah 19** — missing verse 1 at 0:25–0:29 — "This is a message about Egypt Look The LORD is riding on a fast cloud and he is coming to Egypt The idols of Egypt shake in front of him The hearts of the Egyptians melt with fear I will" (small.en)
+- **Isaiah 19** — missing verse 4 at 0:58–0:59 — "I will hand the Egyptians over to a cruel master A fierce king will rule over them says the Lord GOD of Armies The waters of the sea will dry up The river will dry up and be empty The streams will smell bad The rivers of Egypt will shrink and dry up The reeds and rushes will dry up …" (medium.en)
+  - audio check: confirmed: missing verse 4 0:23-0:32 (slice coverage small 0.17, medium 0.00) confirmed: missing verse 1 0:09-0:18 (slice coverage small 0.00, medium 0.00) confirmed: inserted verse ? 0:06-0:18 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.1012 / medium 0.3094; coverage small 0.9032 / medium 0.7258; duration 253.27s vs expected 272.8s (ratio 0.928); sha256 `26af45cb447efd420c7f0f1d15a8018dc85bc950c1eeac73e7cadf83fca348f8`
+- **Isaiah 21** — missing verse 4 at 1:00 — "is pounding I am shaking with fear The evening I wanted to enjoy has become a time of trembling They set the table They spread out the rugs They eat and drink Get up you leaders Oil your shields This" (small.en+medium.en)
+  - audio check: confirmed: missing verse 4 0:44-0:53 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.1749 / medium 0.2222; coverage small 0.8322 / medium 0.7872; duration 150.91s vs expected 169.2s (ratio 0.892); sha256 `ec906b6728c725676df9cda84723bbce6ad2bc7c3b9fc90fe90cab2d139e45d1`
 
 ## UNCERTAIN
 
@@ -3973,6 +3987,26 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Isaiah 7** — audio slice contains the disputed words; the models still disagree (coverage small 0.973, medium 0.945)
   - audio check: refuted: missing verse 2 0:16-0:25 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.973, medium 0.945); WER small 0.0283 / medium 0.0597; coverage small 0.9733 / medium 0.945; sha256 `05db07ed62b233823582f200ca86d72d4af0c84922ac100d8e9a7e900406e1d0`
+- **Isaiah 12** — missing verse 1 at 0:00–0:02 — "On that day you will say LORD I will thank you You were angry with me but now your anger has turned away and you comfort me Look God is the one who saves me I will trust him and not be afraid The LORD the LORD is my strength and my song He has become my salvation You will …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'On that day you will say LORD I will thank you You were angry with me but now your anger has turned away and you comfort me Look God is the one who saves me I will trust him and not be afraid The LORD the LORD is my strength and my song He has become my salvation You will …'; coverage unclear (small 1.000, medium 0.435; pass needs both >= 0.96); WER backstop on one model (small 0.000, medium 0.565); WER small 0.0 / medium 0.5652; coverage small 1.0 / medium 0.4348; sha256 `380407a19ca623371089f4d9444c5e1bcdcc13a9c446a767051e35e4993fddb6`
+- **Isaiah 14** — missing verse 1 at 0:25–0:29 — "The LORD will show kindness to Jacob He will choose Israel again and let them live in their own land Foreigners will join them and become part of the family of Jacob The nations will bring Israel back to their own land Then Israel will have the people of those nations as servants in the LORD's land They will capture …" (small.en)
+- **Isaiah 14** — missing verse 19 at 2:29 — "who died in battle who go down to the stones of the pit You are like a body that people walk on" (medium.en)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) unclear: missing verse 19 2:20-2:29 (slice coverage small 0.00, medium 1.00)
+  - small.en only: missing 'The LORD will show kindness to Jacob He will choose Israel again and let them live in their own land Foreigners will join them and become part of the family of Jacob The nations will bring Israel back to their own land Then Israel will have the people of those nations as servants in the LORD's land They will capture …'; medium.en only: missing 'who died in battle who go down to the stones of the pit You are like a body that people walk on'; coverage unclear (small 0.880, medium 0.918; pass needs both >= 0.96); WER small 0.1201 / medium 0.0833; coverage small 0.8799 / medium 0.9179; sha256 `a3d65341fe872e0ae35429bc92b3a7126a473aabed7840f5c135aa915193bcea`
+- **Isaiah 15** — audio slice contains the disputed words; the models still disagree (coverage small 0.959, medium 0.353)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.92)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.959, medium 0.353); WER small 0.0456 / medium 0.6598; coverage small 0.9585 / medium 0.3527; sha256 `130ee92fe3ac87256f31f2146c61b8a32c749db17d01fe455ee0fdd977bcb383`
+- **Isaiah 17** — audio slice contains the disputed words; the models still disagree (coverage small 0.995, medium 0.693)
+  - audio check: refuted: missing verse 8 1:05-1:14 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.995, medium 0.693); WER small 0.0155 / medium 0.3075; coverage small 0.9948 / medium 0.6925; sha256 `75b5f06940987897186d74755956bfbfab0a1e68bf9ed03e6a71006c8cbeffcb`
+- **Isaiah 18** — missing verse 3 at 0:28 — "raised on the mountains look" (small.en)
+- **Isaiah 18** — missing verse 1 at 0:00–0:02 — "How sad for the land of buzzing wings beyond the rivers of Ethiopia It sends messengers across the sea in boats made of reeds Go fast messengers to a nation of tall people with smooth skin a people feared everywhere a strong nation that stomps on others whose land is divided by rivers All you people of the world everyone …" (medium.en)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) unclear: missing verse 3 0:19-0:29 (slice coverage small 0.80, medium 0.20)
+  - small.en only: missing 'raised on the mountains look'; medium.en only: missing 'How sad for the land of buzzing wings beyond the rivers of Ethiopia It sends messengers across the sea in boats made of reeds Go fast messengers to a nation of tall people with smooth skin a people feared everywhere a strong nation that stomps on others whose land is divided by rivers All you people of the world everyone …'; coverage unclear (small 0.974, medium 0.453; pass needs both >= 0.96); WER backstop on one model (small 0.026, medium 0.551); WER small 0.0256 / medium 0.5513; coverage small 0.9744 / medium 0.453; sha256 `d7d13d1b10367917f2d2f00501e4dbf0a2d8fb0d972178716fefb2414f321a24`
+- **Isaiah 20** — missing verse 1 at 0:29 — "In the year that the army commander from Assyria came to Ashdod King Sargon of Assyria sent him He fought against Ashdod and captured it At that time the LORD spoke through Isaiah son of Amoz He said Go and take off the sackcloth from your body and the sandals from your feet Isaiah did it He walked around without …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'In the year that the army commander from Assyria came to Ashdod King Sargon of Assyria sent him He fought against Ashdod and captured it At that time the LORD spoke through Isaiah son of Amoz He said Go and take off the sackcloth from your body and the sandals from your feet Isaiah did it He walked around without …'; coverage unclear (small 0.995, medium 0.232; pass needs both >= 0.96); WER backstop on one model (small 0.005, medium 0.768); WER small 0.0054 / medium 0.7676; coverage small 0.9946 / medium 0.2324; sha256 `8977c360219f2c2cc9f93aa1e564683ad69d7a5e41a664eb5393d83e5eac91da`
 
 ## Script
 
