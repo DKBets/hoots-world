@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 270
+- Scored chapters: 280
 - PASS: 7
-- FAIL: 178
-- UNCERTAIN: 85 (jsonl verdict UNSURE)
-- Still to score: 659 Old Testament chapters
+- FAIL: 183
+- UNCERTAIN: 90 (jsonl verdict UNSURE)
+- Still to score: 649 Old Testament chapters
 
 ## PASS
 
@@ -1232,6 +1232,41 @@ words clears that span. A split slice stays UNCERTAIN.
 - **2 Samuel 3** — repeated verse 18 at 2:47–2:54 — "The Lord promised to David through my servant David I will save your people of Israel" (small.en+medium.en)
   - audio check: confirmed: inserted verse 19 2:56-3:20 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 18 2:46-3:00 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 18 2:46-3:00 (slice coverage small 1.00, medium 1.00, times 1/1)
   - WER small 0.1454 / medium 0.1795; coverage small 0.9395 / medium 0.9268; duration 437.8s vs expected 410.0s (ratio 1.068); sha256 `73c694af76fe88bdb56893fa5f5bea741fa986b56c51d8e092e6753e250f82d2`
+- **2 Samuel 6** — inserted verse 8 at 1:20–2:26 — "He wondered why God broke him by Nacon's threshing floor The name was named Havanadab Plant Carding David didn't want to name the God's Ark by Nacon's threshing floor since he knew the name of the covenant of God was on it on there He wanted to dare David to take the God's Ark upon his house and make it …" (small.en+medium.en)
+- **2 Samuel 6** — repeated verse 8 at 1:58–2:00 — "David didn't want to name the God's ark" (small.en+medium.en)
+- **2 Samuel 6** — repeated verse 8 at 1:59–2:01 — "the God's ark upon his house" (small.en+medium.en)
+- **2 Samuel 6** — repeated verse 8 at 2:23–2:24 — "The ark was brought out" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 8 1:19-1:43 (slice coverage small 0.96, medium 1.00) refuted: repeated verse 8 1:57-2:06 (slice coverage small 0.88, medium 1.00, times 0/1) refuted: repeated verse 8 1:58-2:07 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.3377 / medium 0.3279; coverage small 0.9837 / medium 0.8662; duration 301.44s vs expected 245.2s (ratio 1.229); sha256 `8c1658992e18b01aed2cd064537dc5afe26c050b5440e787c056f43718ab8b4f`
+- **2 Samuel 7** — inserted verse 3 at 0:22–0:28 — "But that same night the Lord Word came to Nathan What" (small.en+medium.en)
+- **2 Samuel 7** — inserted verse 4 at 0:29–1:22 — "the Lord Word came to Nathan And Nathan said to David The Lord said to David You should go in my house and build a house and place my dwellings in a tent And you from now on continue to visit and see your kings and anime I will send you a text and you will see how my David …" (small.en+medium.en)
+- **2 Samuel 7** — repeated verse 4 at 0:53–0:55 — "And Nathan said to David The Lord" (small.en+medium.en)
+- **2 Samuel 7** — repeated verse 4 at 1:04–1:07 — "I will send you a text and you will see how" (small.en+medium.en)
+- **2 Samuel 7** — repeated verse 4 at 1:09–1:11 — "And Nathan said to David The Lord" (small.en+medium.en)
+- **2 Samuel 7** — repeated verse 4 at 1:11–1:12 — "The Lord is yet to promise" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 4 0:28-0:52 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 3 0:21-0:34 (slice coverage small 0.91, medium 1.00) refuted: repeated verse 4 1:03-1:13 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.341 / medium 0.3601; coverage small 0.8931 / medium 0.6616; duration 314.71s vs expected 314.4s (ratio 1.001); sha256 `24196bded43fb42ba6fb2e50b440ade627c4b39dea5316eb8fc6aa68a205b29f`
+- **2 Samuel 8** — silence verse ? at 3:54–3:59 — "was the royal writer. Ben. I. A son of" (waveform)
+- **2 Samuel 8** — missing verse 18 at 4:11–4:41 — "David's sons were royal advisers" (small.en+medium.en)
+- **2 Samuel 8** — inserted verse 12 at 1:52–2:25 — "He did that as the land of Israel to aspire God's temple He also took a bronze bag and a grey vessel for an Oprah temple and the sacrifices of the manager and the J R's Ananiya to David These bronze were all made from the bag Sacrifices of the Mennotites and the J Rs and Ananias bags were in …" (small.en+medium.en)
+- **2 Samuel 8** — inserted verse 12 at 2:25–2:36 — "J David did things as they were commanded and his bed heated to a warm glow and" (small.en+medium.en)
+- **2 Samuel 8** — inserted verse 12 at 2:36–3:03 — "JANRs and Anaya vessel were installed in a dozen other nations then David and his family David did things as they were commanded and his bed was in a dozen other nations then David and his family was an enormous and distinguished David did things as they were commanded and his bed was in a dozen other nations then David …" (small.en+medium.en)
+- **2 Samuel 8** — inserted verse 18 at 4:06–4:10 — "Benaiya son of Jehoa was in charge of the charities" (small.en+medium.en)
+- **2 Samuel 8** — inserted verse 18 at 4:11–4:41 — "Pelletex the King's Guards Benaiya son of Jehoa was in charge of the charities Jehoa pelletex the king's guards Benaiya son of Jehoa unchecked by the" (small.en+medium.en)
+- **2 Samuel 8** — repeated verse 12 at 2:43–2:47 — "David did things as they were commanded and his bed" (small.en+medium.en)
+- **2 Samuel 8** — repeated verse 12 at 2:47–2:51 — "in a dozen other nations then David and his family" (small.en+medium.en)
+- **2 Samuel 8** — repeated verse 12 at 2:54–3:02 — "David did things as they were commanded and his bed was in a dozen other nations then David and his family" (small.en+medium.en)
+- **2 Samuel 8** — repeated verse 18 at 4:07–4:37 — "son of Jehoa was in charge of the charities and Pelletex the King's Guards Benaiya son of Jehoa was in charge of the charities and pelletex the king's guards Benaiya son of Jehoa was in charge of the charities and pelletex the king's guards Benaiya son of Jehoa was in charge of the charities and pelletex the king's guards" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 12 1:51-2:15 (slice coverage small 1.00, medium 0.96) confirmed: inserted verse 12 2:35-2:59 (slice coverage small 1.00, medium 0.83) refuted: repeated verse 18 4:06-4:30 (slice coverage small 0.96, medium 0.46, times 0/0)
+  - WER small 0.5821 / medium 0.8406; coverage small 0.9034 / medium 0.7029; duration 284.63s vs expected 165.6s (ratio 1.719); sha256 `0c2140946fd07c958d6f424fdf8e0dfa3bc6f1d2880cbdfd0003ec1d436bec4a`
+- **2 Samuel 10** — inserted verse ? at 0:28 — "the head of the house" (small.en+medium.en windows)
+- **2 Samuel 10** — missing verse 10 at 1:41 — "the Ammonites Joab said If the Arameans are too strong for me you come and help me But if" (medium.en)
+  - audio check: confirmed: missing verse 10 1:32-1:42 (slice coverage small 0.17, medium 0.17) unclear: inserted verse ? 0:27-0:39 (slice coverage small 0.40, medium 0.20)
+  - WER small 0.0426 / medium 0.1667; coverage small 0.9611 / medium 0.8463; duration 186.03s vs expected 216.0s (ratio 0.861); sha256 `83e0b820df03def0e3cdccba63cac31d3e7296e351cd47f24016d88eef0da519`
+- **2 Samuel 13** — missing verse 3 at 0:54 — "brother Shimeah and he was a very tricky man Jonadab asked Amnon You're the king's son Why do you look so sad every morning Won't you tell me Amnon said I'm in love with Tamar my" (small.en)
+- **2 Samuel 13** — missing verse 7 at 1:12–1:19 — "David sent a message to Tamar at the palace Please go to your brother Amnon's house and make some food for him" (medium.en)
+  - audio check: confirmed: missing verse 3 0:40-0:49 (slice coverage small 0.17, medium 0.17) confirmed: missing verse 7 1:04-1:13 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.136 / medium 0.159; coverage small 0.866 / medium 0.908; duration 350.51s vs expected 400.0s (ratio 0.876); sha256 `7468ac7da8ada5d62f3978a2fd1a8a99bccdce4d5ab5a19c78ae4e4ad4f7ac1f`
 
 ## UNCERTAIN
 
@@ -1501,6 +1536,22 @@ words clears that span. A split slice stays UNCERTAIN.
 - **1 Samuel 29** — audio slice contains the disputed words; the models still disagree (coverage small 0.805, medium 0.966)
   - audio check: refuted: missing verse 1 0:06-0:15 (slice coverage small 0.83, medium 0.75)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.805, medium 0.966); WER small 0.2098 / medium 0.0345; coverage small 0.8046 / medium 0.9655; sha256 `2878dc9d3b870f33c3c8be56a657a325501ead473cd1cbe7243389dc26bf87d8`
+- **2 Samuel 4** — repeated verse 5 at 0:50–0:51 — "sons of Rimmon from Beiroth" (small.en)
+- **2 Samuel 4** — missing verse 1 at 0:00 — "When Saul's son Ish Bosheth heard that Abner had died in Hebron he lost his courage and all Israel was worried Saul's son had" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.83, medium 0.00) refuted: repeated verse 5 0:49-0:57 (slice coverage small 1.00, medium 0.00, times 1/0)
+  - small.en only: repeated 'sons of Rimmon from Beiroth'; medium.en only: missing 'When Saul's son Ish Bosheth heard that Abner had died in Hebron he lost his courage and all Israel was worried Saul's son had'; coverage unclear (small 0.965, medium 0.616; pass needs both >= 0.96); WER backstop on one model (small 0.047, medium 0.394); WER small 0.047 / medium 0.3936; coverage small 0.9653 / medium 0.6163; sha256 `06dbe784e99c455b9d7c3920dc1d620f5fd6bdee37655f7315c3eefe41f061f3`
+- **2 Samuel 5** — audio slice contains the disputed words; the models still disagree (coverage small 0.980, medium 0.819)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.980, medium 0.819); WER small 0.0237 / medium 0.1861; coverage small 0.9797 / medium 0.819; sha256 `99acac10f164d5d30fe69a3111bef9e6eb17a314588e74a4cff022a87e454079`
+- **2 Samuel 9** — audio slice contains the disputed words; the models still disagree (coverage small 0.948, medium 0.888)
+  - audio check: refuted: missing verse 3 0:18-0:28 (slice coverage small 0.90, medium 0.90)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.948, medium 0.888); WER small 0.0519 / medium 0.1239; coverage small 0.9481 / medium 0.8876; sha256 `768d72ae51ae74fe6ff327e6cba366f882141b0064914dda185ccc94b5429567`
+- **2 Samuel 11** — missing verse 1 at 0:00–0:03 — "In the spring when kings usually go off to war David sent Joab out with his officers and the whole army of Israel They defeated the Ammonites and surrounded the city of Rabbah But David stayed in Jerusalem One evening David got up from his bed and walked around on the flat roof of his palace From the roof he …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'In the spring when kings usually go off to war David sent Joab out with his officers and the whole army of Israel They defeated the Ammonites and surrounded the city of Rabbah But David stayed in Jerusalem One evening David got up from his bed and walked around on the flat roof of his palace From the roof he …'; coverage unclear (small 0.992, medium 0.532; pass needs both >= 0.96); WER backstop on one model (small 0.014, medium 0.470); WER small 0.0138 / medium 0.4697; coverage small 0.9917 / medium 0.5317; sha256 `bf291e6a0a8fba83fb288fb33d9cd29bfd10fb93ed4c3feebe8d37ec1e3a4a69`
+- **2 Samuel 12** — audio slice contains the disputed words; the models still disagree (coverage small 0.927, medium 0.978)
+  - audio check: refuted: missing verse 15 2:23-2:32 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.927, medium 0.978); WER small 0.0752 / medium 0.0305; coverage small 0.9269 / medium 0.9782; sha256 `342e1766a94b8d9d560cf505df8a5da0a5e7f918370e898860372250f8f91665`
 
 ## Script
 
