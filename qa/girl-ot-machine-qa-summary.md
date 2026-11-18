@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 630
+- Scored chapters: 640
 - PASS: 44
-- FAIL: 367
-- UNCERTAIN: 219 (jsonl verdict UNSURE)
-- Still to score: 299 Old Testament chapters
+- FAIL: 372
+- UNCERTAIN: 224 (jsonl verdict UNSURE)
+- Still to score: 289 Old Testament chapters
 
 ## PASS
 
@@ -3068,6 +3068,20 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Proverbs 2** — missing verse 12 at 0:58 — "people who say twisted things These people leave" (small.en+medium.en)
   - audio check: confirmed: missing verse 12 0:49-0:59 (slice coverage small 0.00, medium 0.12)
   - WER small 0.1888 / medium 0.115; coverage small 0.8378 / medium 0.8938; duration 106.62s vs expected 135.6s (ratio 0.786); sha256 `b5c807ced9f269cc87d346c597daeb1dbaf4dd81124be15d22ef6e6dd8258fe9`
+- **Proverbs 3** — coverage low on both models (small 0.843, medium 0.674); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1573 / medium 0.3382; coverage small 0.8427 / medium 0.6745; duration 190.29s vs expected 221.2s (ratio 0.86); sha256 `ff9cbd1a4026a389e577f370cf933909814e302507916fd668419c424712a636`
+- **Proverbs 4** — missing verse 12 at 1:13 — "won't trip Hold on tight to good teaching Don't let it go Keep it because it is your life Don't go down the path of wicked people Don't walk the way evil people walk Stay away from it Don't go near it Turn" (medium.en)
+  - audio check: confirmed: missing verse 12 0:55-1:04 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.0024 / medium 0.1175; coverage small 0.9976 / medium 0.8825; duration 148.91s vs expected 166.8s (ratio 0.893); sha256 `4d75b1a017b8d8660ed219409a8a45027f1720dfffdd9da5d75223533debb0a5`
+- **Proverbs 6** — missing verse 20 at 1:57 — "rules Don't turn away from your mother's teaching Keep them close to your heart always Tie them around your neck When you walk they will lead you When you sleep they will watch over you When you wake up they will talk with you Good" (small.en+medium.en)
+  - audio check: confirmed: missing verse 20 1:39-1:48 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.0926 / medium 0.2693; coverage small 0.9091 / medium 0.7324; duration 205.91s vs expected 233.2s (ratio 0.883); sha256 `547ff0de17acad6b449c89e51d688c427072193e0b58c09155876ac00f7ec8d7`
+- **Proverbs 7** — missing verse 7 at 1:24 — "sense He was walking down the street near her corner He went toward her house It was getting dark The evening came and then the middle of the night Then a woman came out to meet him She was dressed to catch his eye and she had a sneaky plan She was loud and stubborn She never stayed at home …" (medium.en)
+  - audio check: confirmed: missing verse 7 0:57-1:06 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.008 / medium 0.5172; coverage small 0.9947 / medium 0.4854; duration 125.1s vs expected 150.8s (ratio 0.83); sha256 `90fc6f462ffdfb0e718b07c685d996ae85c9405f58f0ed8c98a8ee34eb9139e0`
+- **Proverbs 8** — missing verse 3 at 0:29 — "She stands by the city gates at the doors and" (medium.en)
+  - audio check: confirmed: missing verse 3 0:20-0:30 (slice coverage small 0.10, medium 0.00)
+  - WER small 0.0074 / medium 0.1442; coverage small 0.9926 / medium 0.8577; duration 184.06s vs expected 216.4s (ratio 0.851); sha256 `533e516a52d896b12af7af41d2a7fca416cd0950e7dd334bb882975ce1a10292`
 
 ## UNCERTAIN
 
@@ -3747,6 +3761,22 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 149** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.324)
   - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.324); WER small 0.0 / medium 0.6757; coverage small 1.0 / medium 0.3243; sha256 `bb39313dbcdb9ed678a9902e410064a3cc402be2413324d3d622ea93fee727a0`
+- **Proverbs 5** — missing verse 18 at 1:23 — "Let your home be blessed" (small.en)
+  - audio check: unclear: missing verse 18 1:14-1:24 (slice coverage small 1.00, medium 0.20)
+  - small.en only: missing 'Let your home be blessed'; WER small 0.0249 / medium 0.0138; coverage small 0.9779 / medium 0.989; sha256 `d7c4f7c9426f986a2e26a8442ca4bdca07b6da53a5c8ddcc08386db6068cc1a4`
+- **Proverbs 9** — missing verse 5 at 0:53 — "and eat my bread Drink what I have prepared for you Leave your foolish ways and live Walk on the road of understanding If you correct someone who makes fun of others you will get insults back If you correct a wicked person you will get hurt Don't correct someone who mocks or he will hate you Correct a wise …" (medium.en)
+  - audio check: unclear: missing verse 5 0:25-0:34 (slice coverage small 0.67, medium 0.58)
+  - medium.en only: missing 'and eat my bread Drink what I have prepared for you Leave your foolish ways and live Walk on the road of understanding If you correct someone who makes fun of others you will get insults back If you correct a wicked person you will get hurt Don't correct someone who mocks or he will hate you Correct a wise …'; coverage unclear (small 1.000, medium 0.731; pass needs both >= 0.96); WER small 0.0034 / medium 0.2727; coverage small 1.0 / medium 0.7306; sha256 `dcbd6e6fea41499466e46809c4a103a61ae67061400541352938898a2b81a7d1`
+- **Proverbs 10** — missing verse 21 at 2:12 — "words of people who do right help many people But" (small.en)
+- **Proverbs 10** — missing verse 1 at 0:30 — "A wise child makes a father glad But a foolish child makes a mother sad Riches gained by doing wrong don't help in the end But doing what is right saves you from death The LORD won't let people who do right go hungry But he pushes away what wicked people want Lazy hands make a person poor But hard …" (medium.en)
+  - audio check: unclear: missing verse 1 0:01-0:10 (slice coverage small 1.00, medium 0.00) refuted: missing verse 21 2:03-2:13 (slice coverage small 1.00, medium 1.00)
+  - small.en only: missing 'words of people who do right help many people But'; medium.en only: missing 'A wise child makes a father glad But a foolish child makes a mother sad Riches gained by doing wrong don't help in the end But doing what is right saves you from death The LORD won't let people who do right go hungry But he pushes away what wicked people want Lazy hands make a person poor But hard …'; coverage unclear (small 0.975, medium 0.817; pass needs both >= 0.96); WER small 0.0305 / medium 0.1846; coverage small 0.9749 / medium 0.8172; sha256 `c1a85c0b562fbf1dac6c1a819ae9f1a0207fded043d4504b82b74968541a1cb5`
+- **Proverbs 11** — audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.725)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.725); WER small 0.0036 / medium 0.2769; coverage small 0.9982 / medium 0.725; sha256 `e053dbe5753eb5c79b899f6fd2a73ba35698be6075674b96ae990d6ba0043eec`
+- **Proverbs 12** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.828)
+  - audio check: refuted: missing verse 11 1:08-1:18 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.828); WER small 0.0 / medium 0.1744; coverage small 1.0 / medium 0.8277; sha256 `ae8529e094ed89e2c77a7ffb933241b796a1d6dd17f36c506e263f65146f7aa0`
 
 ## Script
 
