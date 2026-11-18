@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 510
-- PASS: 21
-- FAIL: 323
-- UNCERTAIN: 166 (jsonl verdict UNSURE)
-- Still to score: 419 Old Testament chapters
+- Scored chapters: 520
+- PASS: 22
+- FAIL: 327
+- UNCERTAIN: 171 (jsonl verdict UNSURE)
+- Still to score: 409 Old Testament chapters
 
 ## PASS
 
-21 chapters. Both models agreed there was no missing, invented, or repeated passage.
+22 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -77,7 +77,7 @@ words clears that span. A split slice stays UNCERTAIN.
 - Nehemiah 1, 5
 - Esther 10
 - Job 2, 34–35
-- Psalms 1, 3, 8, 11–12, 15
+- Psalms 1, 3, 8, 11–12, 15, 39
 
 ## FAIL
 
@@ -2920,6 +2920,37 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 31** — inserted verse 1 at 1:04–1:11 — "of yet kindness and love and mercy no matter the circumstance Take that and send" (small.en+medium.en)
   - audio check: confirmed: inserted verse 1 0:29-0:53 (slice coverage small 0.96, medium 0.96) confirmed: inserted verse 1 1:03-1:17 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 1 0:57-1:10 (slice coverage small 0.85, medium 0.85)
   - WER small 0.3503 / medium 0.4501; coverage small 0.8408 / medium 0.8238; duration 248.79s vs expected 188.4s (ratio 1.321); sha256 `3f31b6164eb8819a580dcbfb9775037ade76cfb25e17576bcd116013a6b4c22a`
+- **Psalms 35** — missing verse 1 at 0:00–0:02 — "LORD stand against the people who stand against me Fight against those who fight against me Pick up your big shield and your small shield Stand up and help me Lift your spear and stop the people chasing me Tell me I am the one who saves you Let the people who want to hurt me be ashamed and embarrassed …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - WER small 0.2025 / medium 0.1646; coverage small 0.7993 / medium 0.8373; duration 203.86s vs expected 221.2s (ratio 0.922); sha256 `3e90afa2a3c93cd83c061b2af9fe6a9508c7b73e3e4d4abc728498192cb09100`
+- **Psalms 37** — missing verse 5 at 0:30 — "Trust him and he will help you He will make your" (small.en+medium.en)
+- **Psalms 37** — inserted verse 8 at 0:47–0:49 — "No attack is worth anything" (small.en+medium.en)
+  - audio check: unclear: missing verse 5 0:21-0:31 (slice coverage small 1.00, medium 0.46) confirmed: inserted verse 8 0:46-0:55 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.0288 / medium 0.1787; coverage small 0.9784 / medium 0.8934; duration 249.86s vs expected 277.6s (ratio 0.9); sha256 `97ec708e7f36680d94070a42ac00b4ea50992c1f09bfa07d85ee1135e97b23bf`
+- **Psalms 38** — missing verse 1 at 0:05–0:10 — "you are angry Don't punish" (small.en+medium.en)
+- **Psalms 38** — missing verse 2 at 0:47–0:57 — "hand is pressing down hard" (small.en+medium.en)
+- **Psalms 38** — missing verse 2 at 0:58–1:05 — "me My whole body is sick because" (small.en+medium.en)
+- **Psalms 38** — missing verse 5 at 1:20–1:26 — "have sores that are getting worse because" (small.en+medium.en)
+- **Psalms 38** — missing verse 6 at 1:40–1:42 — "am sad all day long" (small.en+medium.en)
+- **Psalms 38** — inserted verse 1 at 0:10–0:13 — "with love and warmth Yes Lord" (small.en+medium.en)
+- **Psalms 38** — inserted verse 2 at 0:20–0:44 — "this Yes Lord you are correct Yes Lord you are correct This night every night I pray Tell your voice instead of many things Each night I wish I could sing your throne Each night I wish I could sing your love Each night I wish I could sing" (small.en+medium.en)
+- **Psalms 38** — inserted verse 2 at 0:47–0:57 — "new mercies each night In songs later days and weeks I praise you and yes sing your love And I comment" (small.en+medium.en)
+- **Psalms 38** — inserted verse 2 at 0:58–1:05 — "your love and recognize you as your Lord In songs later days and weeks I praise" (small.en+medium.en)
+- **Psalms 38** — inserted verse 3 at 1:05–1:19 — "and yes sing your love And I comment on your love and recognize you as your Lord In songs later days and weeks I praise you and yes sing your love And" (small.en+medium.en)
+- **Psalms 38** — inserted verse 5 at 1:20–1:26 — "comment on your love and recognize you as your Lord In songs later days and weeks" (small.en+medium.en)
+- **Psalms 38** — inserted verse 5 at 1:27–1:33 — "praise you and yes sing your love In songs later days and weeks" (small.en+medium.en)
+- **Psalms 38** — inserted verse 6 at 1:33–1:36 — "praise you and yes sing your love" (small.en+medium.en)
+- **Psalms 38** — inserted verse 6 at 1:37–1:39 — "songs later days and weeks" (small.en+medium.en)
+- **Psalms 38** — inserted verse 6 at 1:40–1:42 — "praise you and yes sing your love" (small.en+medium.en)
+- **Psalms 38** — repeated verse 2 at 0:38–0:41 — "Each night I wish I could sing your" (small.en+medium.en)
+- **Psalms 38** — repeated verse 2 at 0:42–0:45 — "Each night I wish I could sing your" (small.en+medium.en)
+- **Psalms 38** — paraphrase verse ? at ? — "scattered wording does not match the source" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 2 0:19-0:43 (slice coverage small 0.96, medium 1.00) confirmed: inserted verse 3 1:04-1:25 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 2 0:46-1:03 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.603 / medium 0.5701; coverage small 0.7701 / medium 0.5582; duration 190.38s vs expected 134.0s (ratio 1.421); sha256 `feeab5a02754361741bcd69c8229aa460057520b4b675eb37c3e8813d04fd910`
+- **Psalms 40** — missing verse 12 at 1:32 — "many troubles are all around me My sins have caught up with me and I can't even see There are more of them than the hairs on my head" (small.en)
+- **Psalms 40** — missing verse 4 at 0:57 — "who doesn't follow proud people or people" (medium.en)
+  - audio check: confirmed: missing verse 12 1:21-1:30 (slice coverage small 0.08, medium 0.08) confirmed: missing verse 4 0:48-0:58 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.0752 / medium 0.2231; coverage small 0.9248 / medium 0.7794; duration 139.14s vs expected 159.6s (ratio 0.872); sha256 `e6d980a8a0da48b558ff04930fa72fcf078da4d8b0e05265c14f7ff2b2aafa79`
 
 ## UNCERTAIN
 
@@ -3442,6 +3473,21 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Psalms 32** — missing verse 1 at 0:29–0:30 — "Happy is the person whose wrongs are forgiven whose sins are covered Happy is the person whom the LORD doesn't count as guilty and who doesn't try to hide or trick When I kept quiet about my sin my body felt weak I groaned all day long Day and night I felt your hand heavy on me My strength dried …" (medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 1.00)
   - medium.en only: missing 'Happy is the person whose wrongs are forgiven whose sins are covered Happy is the person whom the LORD doesn't count as guilty and who doesn't try to hide or trick When I kept quiet about my sin my body felt weak I groaned all day long Day and night I felt your hand heavy on me My strength dried …'; coverage unclear (small 0.983, medium 0.681; pass needs both >= 0.96); WER small 0.017 / medium 0.3191; coverage small 0.983 / medium 0.6809; sha256 `3e9fd6cff697d6fcf78029b270ca224d12e1547a0ef087b5095fca4a65dd4509`
+- **Psalms 33** — audio slice contains the disputed words; the models still disagree (coverage small 0.997, medium 0.489)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.997, medium 0.489); WER small 0.003 / medium 0.5136; coverage small 0.997 / medium 0.4894; sha256 `ac199d3b09758feaed3b3422217f79e9a2512e66307f3ecdd6cad3211f9a59c8`
+- **Psalms 34** — audio slice contains the disputed words; the models still disagree (coverage small 0.774, medium 0.549)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.774, medium 0.549); WER small 0.2284 / medium 0.4513; coverage small 0.7744 / medium 0.5487; sha256 `8a687c8f7b365d748565fd3c5ec000d1d093e38ded043c1461b0654fd1877b4a`
+- **Psalms 36** — missing verse 1 at 0:00–0:02 — "I have thought hard about the wrong that wicked people do They don't respect God at all They think so highly of themselves that they can't see their own sin and hate it Their words are evil and full of lies They have stopped being wise and doing good Even in bed they plan to do wrong They choose a …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'I have thought hard about the wrong that wicked people do They don't respect God at all They think so highly of themselves that they can't see their own sin and hate it Their words are evil and full of lies They have stopped being wise and doing good Even in bed they plan to do wrong They choose a …'; coverage unclear (small 1.000, medium 0.580; pass needs both >= 0.96); WER backstop on one model (small 0.000, medium 0.425); WER small 0.0 / medium 0.4251; coverage small 1.0 / medium 0.5797; sha256 `aeab19a24ffd5fd830b1bfd5c9e532263cc8294b53a9a8cbb62d4ec753033186`
+- **Psalms 41** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.535)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.535); WER small 0.0 / medium 0.4652; coverage small 1.0 / medium 0.5348; sha256 `fccd5e4f58460d4047065af889c2fc9fa67ddf06ba6e715bb43616df9d6d21be`
+- **Psalms 42** — audio slice contains the disputed words; the models still disagree (coverage small 0.996, medium 0.656)
+  - audio check: refuted: missing verse 3 0:08-0:17 (slice coverage small 0.92, medium 0.92)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.996, medium 0.656); WER small 0.0037 / medium 0.3519; coverage small 0.9963 / medium 0.6556; sha256 `4f7cd3e81141a2bb096791e70aef81c9d5f132790b9cd91eebd5f436a97f92a8`
 
 ## Script
 
