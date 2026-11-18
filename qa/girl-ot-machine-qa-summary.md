@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 170
+- Scored chapters: 180
 - PASS: 6
-- FAIL: 109
-- UNCERTAIN: 55 (jsonl verdict UNSURE)
-- Still to score: 759 Old Testament chapters
+- FAIL: 116
+- UNCERTAIN: 58 (jsonl verdict UNSURE)
+- Still to score: 749 Old Testament chapters
 
 ## PASS
 
@@ -812,6 +812,50 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Deuteronomy 16** — missing verse 1 at 0:30 — "Celebrate the Passover of the LORD your God in the month of Abib because in that month the LORD your God brought you out of Egypt at night Sacrifice an animal from your flock or herd as the Passover offering to the LORD your God at the place the LORD will choose as a home for his name Do not …" (small.en+medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
   - WER small 0.1689 / medium 0.1858; coverage small 0.8328 / medium 0.8193; duration 188.67s vs expected 236.8s (ratio 0.797); sha256 `9f1502fd8e4ed96c1db5853f4d1fb439a92429c7c03b7ed3cf8ae67a130246c6`
+- **Deuteronomy 18** — coverage low on both models (small 0.848, medium 0.820); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1537 / medium 0.1815; coverage small 0.8481 / medium 0.8204; duration 186.92s vs expected 216.0s (ratio 0.865); sha256 `4f5cfec6f193e1ac157541e705ff41860ecab9fd8fd43b0b52ab3e3283e1d10f`
+- **Deuteronomy 19** — missing verse 19 at 2:44 — "then do to the lying witness" (small.en)
+- **Deuteronomy 19** — missing verse 1 at 0:29–0:30 — "The LORD your God will destroy the nations whose land he is giving you When you have driven them out and are living in their towns and houses set apart three cities for yourselves in the land the LORD your God is giving you to own Build roads to them and divide the land" (medium.en)
+  - audio check: confirmed: missing verse 1 0:07-0:16 (slice coverage small 0.17, medium 0.00) refuted: missing verse 19 2:35-2:45 (slice coverage small 0.83, medium 0.83)
+  - WER small 0.0155 / medium 0.3838; coverage small 0.9845 / medium 0.6231; duration 188.8s vs expected 232.4s (ratio 0.812); sha256 `63f2251c2ad2d30c2cc9911bd95caff8b3709178728304487139ee9044b60605`
+- **Deuteronomy 20** — missing verse 11 at 1:20 — "make peace and open their gates then all the people in the city will become your workers and serve you But if they will not make peace and they fight against you then surround" (small.en+medium.en)
+  - audio check: confirmed: missing verse 11 1:07-1:16 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.2798 / medium 0.2857; coverage small 0.7262 / medium 0.7163; duration 167.55s vs expected 201.6s (ratio 0.831); sha256 `bd3dc475a56bee9112f87f3733aa5f470f2bcdb2c4586f988ea759a865911fac`
+- **Deuteronomy 21** — coverage low on both models (small 0.768, medium 0.749); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.2333 / medium 0.2587; coverage small 0.7683 / medium 0.7492; duration 208.51s vs expected 252.0s (ratio 0.827); sha256 `52edec2b22d2d38986b792ddf082a6dbd4fb6bc25240da8a082c149e9a847c80`
+- **Deuteronomy 22** — missing verse 1 at 0:00–0:02 — "If you see your neighbor's ox or sheep wandering away don't pretend you didn't see it Take it back to your neighbor If your neighbor does not live near you or you don't know who owns it take it home with you Keep it until your neighbor comes looking for it and then give it back Do the same if …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.00)
+  - WER small 0.1292 / medium 0.2829; coverage small 0.8773 / medium 0.7287; duration 249.34s vs expected 309.6s (ratio 0.805); sha256 `24ba99876d3ba4f5de3d80f0b821d35867315b0357e7d12c2d16f8751f525e8d`
+- **Deuteronomy 25** — missing verse 1 at 0:00–0:02 — "Suppose two people have an argument and go to court and the judges decide the case They must declare the innocent person innocent and the guilty person guilty If the guilty person deserves to be beaten the judge must have him lie down and be beaten while the judge watches The number of blows must match what he did wrong …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.00)
+  - WER small 0.396 / medium 0.4121; coverage small 0.6081 / medium 0.5919; duration 150.27s vs expected 198.0s (ratio 0.759); sha256 `5474413c96ac30fc84ff926e584a2ea32e7f7a47c1196973062655cc6305d08f`
+- **Deuteronomy 27** — missing verse 25 at 4:15–4:21 — "takes money to kill an innocent person" (small.en+medium.en)
+- **Deuteronomy 27** — inserted verse 5 at 0:39–0:44 — "altar there to the Lord your God and altar and altar there to the Lord your God and altar there to the Lord your God and altar and altar there to the Lord your God and altar there to the Lord your God and altar there to the Lord your God and" (small.en+medium.en)
+- **Deuteronomy 27** — inserted verse 15 at 1:59–2:13 — "it up in secret All the people will answer Amen The Hebrew blast curse rejects it saying Cursed is anyone who makes an idol out of wood stone or metal Made by a craftsman's hand and set" (small.en+medium.en)
+- **Deuteronomy 27** — inserted verse 15 at 2:18–2:20 — "The Hebrew blast curse rejects it saying" (small.en+medium.en)
+- **Deuteronomy 27** — inserted verse 16 at 2:22–2:55 — "who makes an idol out of wood stone or metal made by a craftsman's hand and set it up in secret The Hebrew blast curse rejects it saying blessed is you who makes you an idol out of wood stone or metal made by a craftsman's hand and set it up in secret The Hebrew blast curse rejects it saying …" (small.en+medium.en)
+- **Deuteronomy 27** — inserted verse 16 at 2:56–3:02 — "makes you an idol out of wood stone or metal made by a craftsman's hand and set it up in secret" (small.en+medium.en)
+- **Deuteronomy 27** — inserted verse 24 at 4:02–4:06 — "will die with an idol out of wood or a dead woman or a tanimal with" (small.en+medium.en)
+- **Deuteronomy 27** — inserted verse 24 at 4:11–4:14 — "The Hebrew blast curse rejects it saying Blessed" (small.en+medium.en)
+- **Deuteronomy 27** — inserted verse 25 at 4:15–4:21 — "makes you an idol out of wood stone or metal made by a craftsman's hand and set it up on a sign" (small.en+medium.en)
+- **Deuteronomy 27** — inserted verse 25 at 4:25–4:28 — "The Hebrew curse rejects it saying blessed" (small.en+medium.en)
+- **Deuteronomy 27** — inserted verse 26 at 4:29–4:37 — "makes you an idol out of wood stone or metal made by a craftsman's hand and set it up on a sign The Lord will" (small.en+medium.en)
+- **Deuteronomy 27** — inserted verse 26 at 4:37–4:39 — "have the man God given to set in sign" (small.en+medium.en)
+- **Deuteronomy 27** — inserted verse 26 at 4:40–4:45 — "Hebrew blast curse rejects it saying blessed is you who makes you an idol out" (small.en+medium.en)
+- **Deuteronomy 27** — inserted verse 26 at 4:45–4:48 — "wood stone or metal made" (small.en+medium.en)
+- **Deuteronomy 27** — inserted verse 26 at 4:48–4:50 — "a craftsman's hand and set it up on a sign" (small.en+medium.en)
+- **Deuteronomy 27** — inserted verse 26 at 4:53–5:13 — "The Hebrew blast curse rejects it saying someone makes a green idol out of wood Who secretly kills people will say Amen Cursed is kill Cursed is anyone who does not keep the" (small.en+medium.en)
+- **Deuteronomy 27** — repeated verse 15 at 2:07–2:11 — "Cursed is anyone who makes an idol out of wood stone or metal" (small.en+medium.en)
+- **Deuteronomy 27** — repeated verse 15 at 2:11–2:13 — "Made by a craftsman's hand and" (small.en+medium.en)
+- **Deuteronomy 27** — repeated verse 15 at 2:13–2:39 — "it up in secret All the people will answer Amen The Hebrew blast curse rejects it saying Cursed is anyone who makes an idol out of wood stone or metal made by a craftsman's hand and set it up in secret" (small.en+medium.en)
+- **Deuteronomy 27** — repeated verse 16 at 2:40–2:43 — "The Hebrew blast curse rejects it saying" (small.en+medium.en)
+- **Deuteronomy 27** — repeated verse 16 at 2:45–3:02 — "an idol out of wood stone or metal made by a craftsman's hand and set it up in secret The Hebrew blast curse rejects it saying blessed is you who makes you an idol out of wood stone or metal made by a craftsman's hand and set it up in secret" (small.en+medium.en)
+- **Deuteronomy 27** — repeated verse 24 at 4:03–4:04 — "an idol out of wood" (small.en+medium.en)
+- **Deuteronomy 27** — repeated verse 24 at 4:11–4:21 — "The Hebrew blast curse rejects it saying Blessed is you who makes you an idol out of wood stone or metal made by a craftsman's hand and set it up" (small.en+medium.en)
+- **Deuteronomy 27** — repeated verse 25 at 4:22–4:25 — "the people will say The Hebrew" (small.en+medium.en)
+- **Deuteronomy 27** — repeated verse 25 at 4:25–4:35 — "curse rejects it saying blessed is you who makes you an idol out of wood stone or metal made by a craftsman's hand and set it up on a sign" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 16 2:21-2:45 (slice coverage small 1.00, medium 1.00) unclear: inserted verse 5 0:38-0:50 (slice coverage small 0.50, medium 0.50) refuted: repeated verse 16 2:44-3:08 (slice coverage small 1.00, medium 0.83, times 1/0)
+  - WER small 0.7467 / medium 0.6057; coverage small 0.8971 / medium 0.7086; duration 318.85s vs expected 210.0s (ratio 1.518); sha256 `103e31ba28d733abfb836f396d880168a19c1dbb2746937d965bcf6c96f68cba`
 
 ## UNCERTAIN
 
@@ -991,6 +1035,16 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Deuteronomy 17** — audio slice contains the disputed words; the models still disagree (coverage small 0.997, medium 0.663)
   - audio check: refuted: missing verse 4 0:29-0:38 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.997, medium 0.663); WER small 0.0035 / medium 0.3408; coverage small 0.9965 / medium 0.6626; sha256 `7d291e7bcb7f79f80cff865e15e89af313980fac1961212f03617c0895356672`
+- **Deuteronomy 23** — audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.909)
+  - audio check: refuted: missing verse 21 2:24-2:33 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.998, medium 0.909); WER small 0.0036 / medium 0.0998; coverage small 0.9982 / medium 0.9091; sha256 `d5dfb2afe6fae77a2628919155b466a1f27e320322f96f96c9a00e6d98b97ca1`
+- **Deuteronomy 24** — audio slice contains the disputed words; the models still disagree (coverage small 0.995, medium 0.732)
+  - audio check: refuted: missing verse 6 1:00-1:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.995, medium 0.732); WER small 0.0052 / medium 0.2749; coverage small 0.9948 / medium 0.732; sha256 `2f0585858b0d36ef75de351dd4546e72560d7f71a7d9190b539dadfe0b76bbd5`
+- **Deuteronomy 26** — missing verse 1 at 0:29–0:30 — "When you enter the land the LORD your God is giving you to own and you have taken it over and are living there take some of the first crops you harvest from the land the LORD your God is giving you Put them in a basket and go to the place the LORD your God will choose as a …" (small.en)
+- **Deuteronomy 26** — missing verse 12 at 1:51 — "of all your crops that year give it to the Levites the foreigners" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 1.00) refuted: missing verse 12 1:42-1:52 (slice coverage small 1.00, medium 1.00)
+  - small.en only: missing 'When you enter the land the LORD your God is giving you to own and you have taken it over and are living there take some of the first crops you harvest from the land the LORD your God is giving you Put them in a basket and go to the place the LORD your God will choose as a …'; medium.en only: missing 'of all your crops that year give it to the Levites the foreigners'; coverage unclear (small 0.825, medium 0.966; pass needs both >= 0.96); WER small 0.1754 / medium 0.0393; coverage small 0.8246 / medium 0.9656; sha256 `766d34ca4db1bf1cdbaa2807ff2620baab7ab49e684a4f7ed924b20e894e528c`
 
 ## Script
 
