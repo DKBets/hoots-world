@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 710
+- Scored chapters: 720
 - PASS: 48
-- FAIL: 404
-- UNCERTAIN: 258 (jsonl verdict UNSURE)
-- Still to score: 219 Old Testament chapters
+- FAIL: 410
+- UNCERTAIN: 262 (jsonl verdict UNSURE)
+- Still to score: 209 Old Testament chapters
 
 ## PASS
 
@@ -3238,6 +3238,28 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Isaiah 30** — missing verse 1 at 0:30 — "LORD They make plans but not with me They make deals but not by my Spirit They keep adding sin to sin They go down to Egypt without asking me They want Pharaoh to protect them They want to hide in Egypt's shadow But Pharaoh's protection will bring you shame Hiding in Egypt's shadow will make you embarrassed Your leaders …" (small.en+medium.en)
   - audio check: refuted: missing verse 1 0:04-0:13 (slice coverage small 1.00, medium 1.00) unclear: missing verse 1 0:00-0:01 (slice coverage small 0.00, medium 0.00)
   - WER small 0.087 / medium 0.4203; coverage small 0.9161 / medium 0.588; duration 352.68s vs expected 386.4s (ratio 0.913); sha256 `be6d681adb6f395993c4554c2ad41bba47c70f50e5b11a660a12ee6618e78a11`
+- **Isaiah 33** — coverage low on both models (small 0.869, medium 0.845); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.133 / medium 0.1587; coverage small 0.8686 / medium 0.8446; duration 224.6s vs expected 249.6s (ratio 0.9); sha256 `5787c95992728b378a0ee958474cc04b5970ec449c9d4b3927da1c2d4c70dd96`
+- **Isaiah 35** — missing verse 1 at 0:00–0:02 — "The desert and the dry land will be glad The wilderness will be happy and bloom like a flower It will be covered with flowers It will shout and sing for joy It will be as beautiful as the forests of Lebanon as lovely as Mount Carmel and the valley of Sharon Everyone will see the glory of the LORD …" (small.en+medium.en)
+  - audio check: confirmed: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.17)
+  - WER small 0.233 / medium 0.2115; coverage small 0.767 / medium 0.7885; duration 106.71s vs expected 111.6s (ratio 0.956); sha256 `1ba554696063853db70122080c822c7df85ea2214ca4fe8597391664cd4f41e6`
+- **Isaiah 36** — missing verse 3 at 0:59 — "of Asaph who kept the records went with him The commander said to them Tell Hezekiah This is what the great king the king" (medium.en)
+  - audio check: confirmed: missing verse 3 0:50-0:59 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.0202 / medium 0.1584; coverage small 0.986 / medium 0.868; duration 223.53s vs expected 257.6s (ratio 0.868); sha256 `080d71ed5dfa49bd3db31d43a3937398dc6c656e6b33873f3e67e5e7bf1900fd`
+- **Isaiah 37** — missing verse 27 at 4:27 — "dries up before it can grow But I know" (small.en)
+- **Isaiah 37** — missing verse 3 at 0:52 — "to be born but the mother has no strength to give birth Maybe the LORD your God heard the words of the commander His master the king of Assyria sent him to make fun of the living God Maybe the LORD your God will punish him for the words he has heard So please pray for the people who are …" (medium.en)
+  - audio check: refuted: missing verse 3 0:25-0:34 (slice coverage small 1.00, medium 1.00) confirmed: missing verse 27 4:18-4:28 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.0344 / medium 0.1693; coverage small 0.9712 / medium 0.8363; duration 376.83s vs expected 430.0s (ratio 0.876); sha256 `6277f100fe8380f2a1d0865e3566b1587e1495b9d1cbbf1736d12cc44a5d4d31`
+- **Isaiah 38** — inserted verse 3 at 0:33–0:36 — "Then the Lord's word came to Isaiah" (small.en+medium.en)
+- **Isaiah 38** — inserted verse 4 at 0:50–1:34 — "I will go back to 10 years old and I will add you an additional 10 years It is not just in a bow I will go with in a double stick and a three year deal I will go with a double stick and a three year deal I will go with a double stick and a three year …" (small.en+medium.en)
+- **Isaiah 38** — inserted verse 5 at 1:35–1:53 — "a three year deal Yes same year yes" (small.en+medium.en)
+- **Isaiah 38** — repeated verse 4 at 0:37–0:40 — "Then the Lord's word came to Isaiah" (small.en+medium.en)
+- **Isaiah 38** — repeated verse 4 at 1:02–1:36 — "a double stick and a three year deal I will go with a double stick and a three year deal I will go with a double stick and a three year deal I will go with a double stick and a three year deal I will go with a double stick and a three year deal I will go with …" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 4 0:49-1:13 (slice coverage small 1.00, medium 1.00) unclear: repeated verse 4 1:01-1:25 (slice coverage small 0.50, medium 1.00, times 0/3) confirmed: inserted verse 5 1:34-1:58 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.3143 / medium 0.4301; coverage small 0.9835 / medium 0.9614; duration 268.71s vs expected 217.6s (ratio 1.235); sha256 `30b159b0c668df86dba380ab32def8bba8ca3a4c0636971f5d80c946447d6688`
+- **Isaiah 39** — missing verse 2 at 0:25 — "in his storerooms There was nothing in his palace or" (medium.en)
+  - audio check: confirmed: missing verse 2 0:16-0:26 (slice coverage small 0.20, medium 0.20)
+  - WER small 0.0043 / medium 0.3191; coverage small 0.9957 / medium 0.6809; duration 91.31s vs expected 94.0s (ratio 0.971); sha256 `9acb62d2ad1fad574dd6d663a4fc35e7df806682cb94ab0c28f917f2ea9a114b`
 
 ## UNCERTAIN
 
@@ -4041,6 +4063,19 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Isaiah 29** — audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.791)
   - audio check: refuted: missing verse 3 0:22-0:31 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 1.000, medium 0.791); WER small 0.0028 / medium 0.2916; coverage small 1.0 / medium 0.7909; sha256 `af0bcbba64960b04d57c96f26dc94fcedb939f5b01b19f9789385c3ca617d1f4`
+- **Isaiah 32** — missing verse 1 at 0:00–0:02 — "Look a king will rule with goodness and leaders will rule fairly Each one will be like a hiding place from the wind and a shelter from the storm They will be like streams of water in a dry land like the shade of a big rock in a hot tired land Then the eyes of people who see won't …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'Look a king will rule with goodness and leaders will rule fairly Each one will be like a hiding place from the wind and a shelter from the storm They will be like streams of water in a dry land like the shade of a big rock in a hot tired land Then the eyes of people who see won't …'; coverage unclear (small 0.993, medium 0.610; pass needs both >= 0.96); WER backstop on one model (small 0.010, medium 0.397); WER small 0.0097 / medium 0.3971; coverage small 0.9927 / medium 0.6102; sha256 `b757f04b616aa95ba47cc7d7ea214e08ade6cc253cd1ded50c8a12c9fced684a`
+- **Isaiah 34** — audio slice contains the disputed words; the models still disagree (coverage small 0.808, medium 0.672)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.808, medium 0.672); WER small 0.1918 / medium 0.3362; coverage small 0.8082 / medium 0.6724; sha256 `4e037d435b0d6056e38d8f6cdc82d6dbc16aee907fb41b3a2232d8263b4a2ef5`
+- **Isaiah 40** — missing verse 24 at 3:14 — "They have barely put down roots in the ground" (small.en)
+- **Isaiah 40** — missing verse 1 at 0:29–0:30 — "Comfort comfort my people says your God Speak kindly to Jerusalem Tell her that her hard times are over and her sins are forgiven She has received from the LORD's hand double for all her sins A voice is calling out Get the road ready for the LORD in the desert Make a straight highway in the wilderness for our …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00) refuted: missing verse 24 3:05-3:15 (slice coverage small 1.00, medium 1.00)
+  - small.en only: missing 'They have barely put down roots in the ground'; medium.en only: missing 'Comfort comfort my people says your God Speak kindly to Jerusalem Tell her that her hard times are over and her sins are forgiven She has received from the LORD's hand double for all her sins A voice is calling out Get the road ready for the LORD in the desert Make a straight highway in the wilderness for our …'; coverage unclear (small 0.977, medium 0.587; pass needs both >= 0.96); WER backstop on one model (small 0.031, medium 0.417); WER small 0.0313 / medium 0.4173; coverage small 0.9774 / medium 0.5865; sha256 `7688510363a0bd33b384e2e6b6adb80657b8f56bede81118969d4743661d9cda`
+- **Isaiah 41** — audio slice contains the disputed words; the models still disagree (coverage small 0.999, medium 0.784)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.999, medium 0.784); WER small 0.0072 / medium 0.2162; coverage small 0.9988 / medium 0.7838; sha256 `400dd8ed023c80ba1f9ce0c7bec002f0de9ddb14580657b00f379172c4755dd2`
 
 ## Script
 
