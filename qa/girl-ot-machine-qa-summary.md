@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 80
+- Scored chapters: 90
 - PASS: 1
-- FAIL: 54
-- UNCERTAIN: 25 (jsonl verdict UNSURE)
-- Still to score: 849 Old Testament chapters
+- FAIL: 60
+- UNCERTAIN: 29 (jsonl verdict UNSURE)
+- Still to score: 839 Old Testament chapters
 
 ## PASS
 
@@ -353,6 +353,60 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Exodus 30** — missing verse 1 at 0:29–0:30 — "Make an altar out of acacia wood for burning incense It must be square 18 inches long and 18 inches wide It must be 3 feet high Its horns must be one piece with it Cover its top its sides and its horns with pure gold Put a gold edge all around it Make two gold rings for it below …" (medium.en)
   - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 34 4:06-4:14 (slice coverage small 1.00, medium 0.80)
   - WER small 0.0148 / medium 0.3748; coverage small 0.9951 / medium 0.6264; duration 280.32s vs expected 324.4s (ratio 0.864); sha256 `3ac1815ac85bfa0fc6ba946eb3d54150dc31df16dacf6d4c38cd2195abf051fb`
+- **Exodus 31** — inserted verse 1 at 0:37–0:42 — "be a major artist of the tabernacle of tabernets and everyone who works in" (small.en+medium.en)
+- **Exodus 31** — inserted verse 3 at 1:02–1:07 — "everyone who works in the tabernac will all make one another indicated" (small.en+medium.en)
+- **Exodus 31** — inserted verse 3 at 1:13–1:17 — "tabern and everyone who works in the tabernac will all" (small.en+medium.en)
+  - audio check: unclear: inserted verse 1 0:36-0:48 (slice coverage small 0.00, medium 1.00) confirmed: inserted verse 3 1:01-1:13 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 3 1:12-1:23 (slice coverage small 0.80, medium 0.90)
+  - WER small 0.3309 / medium 0.5259; coverage small 0.8222 / medium 0.8296; duration 213.42s vs expected 162.0s (ratio 1.317); sha256 `cd01177e1f6ecd9b52ce9fd2f3a04bfcc67d4e3af40292ac6409cf6644188099`
+- **Exodus 33** — missing verse 1 at 0:00–0:02 — "Then the LORD said to Moses Leave this place you and the people you brought out of Egypt Go to the land I promised to Abraham Isaac and Jacob I told them I will give it to your family I will send an angel ahead of you I will drive out the Canaanites Amorites Hittites Perizzites Hivites and Jebusites Go …" (small.en+medium.en)
+- **Exodus 33** — inserted verse 11 at 1:38–1:40 — "away a man speaks to a friend" (small.en+medium.en)
+- **Exodus 33** — inserted verse 11 at 1:42–1:44 — "Lord would speak to Moses face to face away" (small.en+medium.en)
+- **Exodus 33** — inserted verse 11 at 1:47–2:30 — "And he would return to that tent as he saw the Lord But Pharaoh's nephew would go into the tent and pull the tent away and the Lord would stand at the end of the tent and make a stand a sign as away from a pond of Nile and the people would wait at the end of the tent …" (small.en+medium.en)
+- **Exodus 33** — inserted verse 11 at 2:35–2:42 — "he saw the Lord's name in Miriel's name and I gave Moses a blessing of non other names And" (small.en+medium.en)
+- **Exodus 33** — inserted verse 11 at 2:42–2:44 — "Lord said I gave Moses a blessing" (small.en+medium.en)
+- **Exodus 33** — inserted verse 11 at 2:45–2:47 — "non other names and he would go into" (small.en+medium.en)
+- **Exodus 33** — inserted verse 11 at 2:48–2:59 — "and see the Lord and he would see a Nile until God's name And a man said of non other names I have no any say other than the ones that live with Moses" (small.en+medium.en)
+- **Exodus 33** — inserted verse 22 at 4:27–4:46 — "place and I will let you see how great and powerful and I will let you see how great and powerful and I will show you how great and powerful and I will let you see how great and powerful and I will show you how great and powerful and I will show you how great and powerful and I …" (small.en+medium.en)
+- **Exodus 33** — inserted verse 22 at 4:46–4:49 — "how great and powerful and" (small.en+medium.en)
+- **Exodus 33** — inserted verse 22 at 4:49–4:52 — "will show you how great and powerful and" (small.en+medium.en)
+- **Exodus 33** — inserted verse 23 at 4:52–4:58 — "show you how great and powerful" (small.en+medium.en)
+- **Exodus 33** — inserted verse 23 at 5:00–5:02 — "how great and powerful and I" (small.en+medium.en)
+- **Exodus 33** — inserted verse 23 at 5:02–5:36 — "show you how great and powerful and I will show you how great show show you how great and powerful and I how great and powerful I will put you in a crack in the I will cover you with my hand until I have passed by then take my hand away will see my back but my face must …" (small.en+medium.en)
+- **Exodus 33** — repeated verse 11 at 1:41–1:45 — "The Lord would speak to Moses face to face away a man speaks" (small.en+medium.en)
+- **Exodus 33** — repeated verse 11 at 2:19–2:24 — "And the Lord would stand at the end of the tent and make a sign as it was in Egypt And the" (small.en+medium.en)
+- **Exodus 33** — repeated verse 11 at 2:25–2:27 — "away and the Lord would" (small.en+medium.en)
+- **Exodus 33** — repeated verse 11 at 2:43–2:46 — "I gave Moses a blessing of non other names and" (small.en+medium.en)
+- **Exodus 33** — repeated verse 11 at 2:46–2:49 — "and he would go into the tent and see the" (small.en+medium.en)
+- **Exodus 33** — repeated verse 22 at 4:31–4:35 — "and I will let you see how great and powerful and I will" (small.en+medium.en)
+- **Exodus 33** — repeated verse 22 at 4:36–4:46 — "how great and powerful and I will let you see how great and powerful and I will show you how great and powerful and I will show you how great and powerful and I will show you how great and powerful and I will show you how great and powerful and I will show you how great and powerful and …" (small.en+medium.en)
+- **Exodus 33** — repeated verse 22 at 4:46–5:16 — "you how great and powerful and I will show you how great and powerful and I will show you how great and powerful and I will show you how great and powerful and I will show you how great and powerful and I will show you how great and powerful and I will show you how great and powerful and …" (small.en+medium.en)
+- **Exodus 33** — repeated verse 23 at 5:16–5:23 — "show you how great and powerful and I will show you how great and powerful and I will" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 22 4:26-4:50 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 22 4:35-4:52 (slice coverage small 1.00, medium 1.00, times 1/1) confirmed: inserted verse 11 1:46-2:10 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.9752 / medium 0.8195; coverage small 0.7964 / medium 0.5811; duration 337.02s vs expected 241.6s (ratio 1.395); sha256 `51388dbbe555e71ffa2148163b3689985008f9eb712280350d90cf8f6dee0988`
+- **Exodus 34** — inserted verse 1 at 0:04–0:11 — "Close your eyes low and close your cheeks and follow me forsaken The Lord said to Moses" (small.en+medium.en)
+- **Exodus 34** — repeated verse 27 at 4:18–4:20 — "the Lord said to Moses" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 1 0:03-0:17 (slice coverage small 1.00, medium 1.00) refuted: repeated verse 27 4:17-4:26 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.2825 / medium 0.1482; coverage small 0.8937 / medium 0.8754; duration 333.91s vs expected 372.4s (ratio 0.897); sha256 `409f1be8a41c101d76288642006a5de974e6188fdb5401dba4c4ed231c02d740`
+- **Exodus 35** — inserted verse 30 at 3:38–3:44 — "the Lord has chosen Beaisel by name and across of the Dimbobah's all tribe" (small.en+medium.en)
+- **Exodus 35** — inserted verse 30 at 3:47–4:17 — "and across of Dimbobah's all tribe and an artament of the God of everywhere bright and beautiful figures of the Moses calling Atticus and Aaron to make the work of the tender indeed And across of everyone who is intelligent of their own hands and make them everyone as plain as you can do And then set these tasks against …" (small.en+medium.en)
+- **Exodus 35** — inserted verse 30 at 4:17–4:33 — "intelligent of their own hands And an ornament of the glow of the grand illusions Then set these tasks against me and imparted them to all the Levites of your own grand illusions The priests received the grain and a group of" (small.en+medium.en)
+- **Exodus 35** — inserted verse 30 at 4:39–4:41 — "great temptings and deveerious divinities" (small.en+medium.en)
+- **Exodus 35** — inserted verse 30 at 4:42–4:54 — "the ghosts they made the task endless and bored the veil inside the temple The Lord will remind you with every day by flooding over the again and they will come and gather work for the veil" (small.en+medium.en)
+- **Exodus 35** — inserted verse 34 at 5:16–5:18 — "has filled him with the Spirit of God He" (small.en+medium.en)
+- **Exodus 35** — inserted verse 34 at 5:19–6:12 — "given him wisdom understanding and knowledge in all craft skill They make everyone as a builder is and inspire others to make and build work with all of the same diligence and envision the green carpet and build the sanctuary The land will enhance the sanctuary the land will enhance the sanctuary the land will enhance the sanctament of the …" (small.en+medium.en)
+- **Exodus 35** — repeated verse 30 at 4:16–4:20 — "and across of everyone who is intelligent of their own hands And" (small.en+medium.en)
+- **Exodus 35** — repeated verse 30 at 4:22–4:29 — "Then set these tasks against me and imparted them to all the Levites of your own grand illusions" (small.en+medium.en)
+- **Exodus 35** — repeated verse 34 at 5:15–5:22 — "The Lord has filled him with the Spirit of God He has given him wisdom understanding and knowledge" (small.en+medium.en)
+- **Exodus 35** — repeated verse 34 at 5:36–5:42 — "the sanctuary the land will enhance the sanctuary the land will enhance the" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 34 5:18-5:42 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 30 3:46-4:10 (slice coverage small 1.00, medium 0.88) confirmed: inserted verse 30 4:16-4:39 (slice coverage small 0.96, medium 0.96)
+  - WER small 0.5217 / medium 0.6746; coverage small 0.9523 / medium 0.7966; duration 398.38s vs expected 285.2s (ratio 1.397); sha256 `0a4ec244fddf875d74022db9f111b4e70ccda06bf3450dee8d9ce0b4df068dde`
+- **Exodus 36** — missing verse 1 at 0:00–0:02 — "Bezalel Oholiab and every skilled worker the LORD has given wisdom and understanding must do all the work for the holy place just as the LORD has commanded So Moses called Bezalel Oholiab and every skilled worker the LORD had given wisdom everyone whose heart moved them to come and do the work They took from Moses all the offerings …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00)
+  - WER small 0.125 / medium 0.3165; coverage small 0.8803 / medium 0.6888; duration 256.26s vs expected 300.8s (ratio 0.852); sha256 `3a7090de1443784873b547285091eeffbdbed48b31e64487d3ee884f0a4f2598`
+- **Exodus 40** — missing verse 1 at 0:00–0:02 — "Then the LORD said to Moses Set up the holy tent the Tent of Meeting on the first day of the first month Put the chest of the promise inside it and hang the curtain in front of the chest Bring in the table and set out the things that go on it Bring in the lampstand and light its …" (small.en+medium.en)
+- **Exodus 40** — missing verse 10 at 1:03 — "Set the altar apart and it will be most holy" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00) refuted: missing verse 10 0:54-1:04 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.1332 / medium 0.233; coverage small 0.8708 / medium 0.7736; duration 252.12s vs expected 300.4s (ratio 0.839); sha256 `23c4b2114e52d4f825b8bc972e89b826f0fe7cdc5a8efe89fd9c37a8123db3a0`
 
 ## UNCERTAIN
 
@@ -435,6 +489,19 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Exodus 28** — audio slice contains the disputed words; the models still disagree (coverage small 0.975, medium 0.715)
   - audio check: refuted: missing verse 38 4:44-4:54 (slice coverage small 0.88, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.975, medium 0.715); WER small 0.0342 / medium 0.2891; coverage small 0.9751 / medium 0.715; sha256 `c6fae483611545e97629985ddcec200020340f82eb461ba765d194feedc40d89`
+- **Exodus 32** — missing verse 12 at 1:57 — "your mind about bringing this disaster on your people Remember your servants Abraham Isaac and Israel" (small.en)
+- **Exodus 32** — missing verse 1 at 0:29–0:30 — "The people saw that Moses was taking a long time to come down from the mountain So they gathered around Aaron and said Come make us gods to lead us We don't know what happened to this Moses who brought us out of Egypt Aaron said to them Take off the gold earrings your wives sons and daughters are wearing …" (medium.en)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) unclear: missing verse 12 1:48-1:58 (slice coverage small 0.08, medium 0.00)
+  - small.en only: missing 'your mind about bringing this disaster on your people Remember your servants Abraham Isaac and Israel'; medium.en only: missing 'The people saw that Moses was taking a long time to come down from the mountain So they gathered around Aaron and said Come make us gods to lead us We don't know what happened to this Moses who brought us out of Egypt Aaron said to them Take off the gold earrings your wives sons and daughters are wearing …'; coverage unclear (small 0.973, medium 0.641; pass needs both >= 0.96); WER backstop on one model (small 0.029, medium 0.362); WER small 0.0287 / medium 0.3617; coverage small 0.9734 / medium 0.6415; sha256 `76947d4b61282ce38eaabcd8af363ecd96a2f21355c0e38c2cf7f9a388ffd80d`
+- **Exodus 37** — audio slice contains the disputed words; the models still disagree (coverage small 0.984, medium 0.722)
+  - audio check: refuted: repeated verse 10 0:53-1:02 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.984, medium 0.722); WER small 0.0255 / medium 0.3036; coverage small 0.9836 / medium 0.7218; sha256 `e7699ca7bf464c5869457f4a6c920cd8dd4e54ec54b5346f5a06b2d8572c50d9`
+- **Exodus 38** — audio slice contains the disputed words; the models still disagree (coverage small 0.995, medium 0.878)
+  - audio check: refuted: repeated verse 15 2:01-2:11 (slice coverage small 1.00, medium 1.00, times 1/1) refuted: missing verse 17 2:11-2:21 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.995, medium 0.878); WER small 0.0095 / medium 0.1277; coverage small 0.9946 / medium 0.8777; sha256 `56b4661c6fd94e8feafca27bf3af067a83a7e4c56ff2108f0440528bb9f092d4`
+- **Exodus 39** — audio slice contains the disputed words; the models still disagree (coverage small 0.896, medium 0.782)
+  - audio check: refuted: missing verse 40 4:43-4:52 (slice coverage small 0.75, medium 0.92)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.896, medium 0.782); WER small 0.1037 / medium 0.2205; coverage small 0.8963 / medium 0.7817; sha256 `1ae5dd78c6aeede9ad3c88ed2c46d8198da4c53ec9b0a207d8f6aad08846cff8`
 
 ## Script
 
