@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 670
-- PASS: 45
-- FAIL: 384
-- UNCERTAIN: 241 (jsonl verdict UNSURE)
-- Still to score: 259 Old Testament chapters
+- Scored chapters: 680
+- PASS: 47
+- FAIL: 389
+- UNCERTAIN: 244 (jsonl verdict UNSURE)
+- Still to score: 249 Old Testament chapters
 
 ## PASS
 
-45 chapters. Both models agreed there was no missing, invented, or repeated passage.
+47 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -80,6 +80,7 @@ words clears that span. A split slice stays UNCERTAIN.
 - Psalms 1, 3, 8, 11–12, 15, 39, 50, 53, 58, 64, 70, 76, 82–83, 92, 100, 112–113, 124, 126, 130, 133–134, 140, 145, 147, 150
 - Proverbs 1
 - Ecclesiastes 6
+- Song of Solomon 4, 7
 
 ## FAIL
 
@@ -3124,6 +3125,20 @@ words clears that span. A split slice stays UNCERTAIN.
   - WER small 0.1735 / medium 0.1816; coverage small 0.8265 / medium 0.8224; duration 175.32s vs expected 196.0s (ratio 0.894); sha256 `5b1bc8c0f68e07a6c5295a0f5e64979c46a537ef36d1cfb8f2d5ab0a7bf1dd5e`
 - **Ecclesiastes 11** — coverage low on both models (small 0.696, medium 0.688); models also disagree on other spans; agreed defects still fail the chapter
   - WER small 0.3042 / medium 0.3156; coverage small 0.6958 / medium 0.6882; duration 82.47s vs expected 105.2s (ratio 0.784); sha256 `8fdf01b9a7c943666308f056666cebbc6e054e0fd0e726ac858937d5e9c4d540`
+- **Song of Solomon 2** — coverage low on both models (small 0.811, medium 0.347); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.1917 / medium 0.6528; coverage small 0.8111 / medium 0.3472; duration 127.45s vs expected 144.0s (ratio 0.885); sha256 `c86b112ce6e7aac7d74d05fe2d93c6f05a5207a7d941ca1cfe910b7956dca526`
+- **Song of Solomon 3** — coverage low on both models (small 0.693, medium 0.477); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.3133 / medium 0.5267; coverage small 0.6933 / medium 0.4767; duration 105.73s vs expected 120.0s (ratio 0.881); sha256 `2c48363e2269c8651f2d9fc1c1d584d8b04fad467ac8469ba2b89b3cc019d282`
+- **Song of Solomon 5** — missing verse 1 at 0:00–0:02 — "The king said I have come into my garden my dear one my bride I have gathered my myrrh and my spice I have eaten my honey I have drunk my wine and my milk The friends said Eat friends Drink and drink dear ones The bride said I was asleep but my heart was awake Listen My love is …" (small.en+medium.en)
+- **Song of Solomon 5** — inserted verse 1 at 0:00–0:02 — "Song of Solomon chapter 5" (small.en+medium.en)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 1 0:00-0:08 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.1931 / medium 0.2698; coverage small 0.8069 / medium 0.7351; duration 145.71s vs expected 161.6s (ratio 0.902); sha256 `e35c8f1c65692b979c05487ae6df6f592f1c51933b689f40e109a71690ee0201`
+- **Song of Solomon 6** — missing verse 8 at 1:21 — "There may be sixty queens and eighty other wives and more young women than anyone can count But my dove my perfect one is the only one for me She is her mother's only daughter her mother's favorite The young women saw her and called her blessed The queens and other wives saw her and they praised her The friends …" (small.en+medium.en)
+  - audio check: unclear: missing verse 8 0:54-1:03 (slice coverage small 1.00, medium 0.00)
+  - WER small 0.244 / medium 0.247; coverage small 0.7589 / medium 0.7589; duration 118.83s vs expected 134.4s (ratio 0.884); sha256 `698f0d367b89472bd01b7c6c9a76b55f13087f4339db278f513872f4a540b441`
+- **Isaiah 1** — missing verse 18 at 3:09 — "now let's talk this over says the LORD Even if your sins are as red as scarlet they will be as white as snow Even if they are as red as crimson they will be as white as wool If you are willing to obey you will eat the good things the land grows But if you refuse and turn …" (medium.en)
+  - audio check: confirmed: missing verse 18 2:31-2:40 (slice coverage small 0.08, medium 0.00)
+  - WER small 0.0113 / medium 0.2038; coverage small 0.9912 / medium 0.8013; duration 278.49s vs expected 318.0s (ratio 0.876); sha256 `f3416928eac34f36aba84a7c68c8777d48760babe041201eddd71b8bef8b279b`
 
 ## UNCERTAIN
 
@@ -3873,6 +3888,15 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Ecclesiastes 10** — missing verse 1 at 0:00–0:02 — "Dead flies make perfume smell bad In the same way a little foolishness can outweigh wisdom and honor A wise person's heart leads him the right way A fool's heart leads him the wrong way Even when a fool walks down the road he doesn't use good sense He shows everyone that he is a fool If a ruler gets …" (medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
   - medium.en only: missing 'Dead flies make perfume smell bad In the same way a little foolishness can outweigh wisdom and honor A wise person's heart leads him the right way A fool's heart leads him the wrong way Even when a fool walks down the road he doesn't use good sense He shows everyone that he is a fool If a ruler gets …'; coverage unclear (small 0.995, medium 0.607; pass needs both >= 0.96); WER backstop on one model (small 0.011, medium 0.396); WER small 0.0108 / medium 0.3962; coverage small 0.9946 / medium 0.6065; sha256 `02a6b76d5bc33b8f9643df146549bd8c3da9b0309a4268bdd81faf3df46771e9`
+- **Ecclesiastes 12** — audio slice contains the disputed words; the models still disagree (coverage small 0.976, medium 0.578)
+  - audio check: refuted: missing verse 5 0:46-0:56 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.976, medium 0.578); WER small 0.0292 / medium 0.4244; coverage small 0.9761 / medium 0.5782; sha256 `066cd81de486da9bbfc14dc4f80be9b5f621be0f6d53c6f5134d88ac900f7bdf`
+- **Song of Solomon 1** — audio slice contains the disputed words; the models still disagree (coverage small 0.938, medium 0.966)
+  - audio check: refuted: missing verse 13 1:32-1:42 (slice coverage small 1.00, medium 1.00) refuted: missing verse 5 0:27-0:37 (slice coverage small 0.83, medium 0.83)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.938, medium 0.966); WER small 0.07 / medium 0.0364; coverage small 0.9384 / medium 0.9664; sha256 `5b191a7da681e0661d1471b5716911f7887a743df12d6e8b6772b45ad4bb8a3e`
+- **Song of Solomon 8** — missing verse 1 at 0:00–0:01 — "The bride said I wish you were like my brother who was nursed by my mother Then if I found you outside I could kiss you and no one would look down on me I would lead you and bring you to my mother's house She would teach me I would give you spiced wine to drink the juice" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.75, medium 0.00)
+  - medium.en only: missing 'The bride said I wish you were like my brother who was nursed by my mother Then if I found you outside I could kiss you and no one would look down on me I would lead you and bring you to my mother's house She would teach me I would give you spiced wine to drink the juice'; coverage unclear (small 0.966, medium 0.598; pass needs both >= 0.96); WER backstop on one model (small 0.037, medium 0.404); WER small 0.0367 / medium 0.4042; coverage small 0.9659 / medium 0.5984; sha256 `8dc16608cc272549f58eaca1a8ae206bb29eefb753cf883f5d19dc122be5eac7`
 
 ## Script
 
