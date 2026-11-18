@@ -58,15 +58,15 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 820
-- PASS: 51
-- FAIL: 468
-- UNCERTAIN: 301 (jsonl verdict UNSURE)
-- Still to score: 109 Old Testament chapters
+- Scored chapters: 830
+- PASS: 52
+- FAIL: 471
+- UNCERTAIN: 307 (jsonl verdict UNSURE)
+- Still to score: 99 Old Testament chapters
 
 ## PASS
 
-51 chapters. Both models agreed there was no missing, invented, or repeated passage.
+52 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
@@ -83,7 +83,7 @@ words clears that span. A split slice stays UNCERTAIN.
 - Song of Solomon 4, 7
 - Isaiah 31
 - Jeremiah 18, 43
-- Ezekiel 11
+- Ezekiel 11, 25
 
 ## FAIL
 
@@ -3983,6 +3983,15 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Ezekiel 13** — missing verse 1 at 0:00–0:02 — "The LORD's message came to me Son of man speak against the prophets of Israel who are prophesying Say to those who make up messages from their own minds Listen to the LORD's message This is what the Lord God says How terrible for the foolish prophets who follow their own ideas and have seen nothing Israel your prophets have …" (medium.en)
   - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.67, medium 1.00) confirmed: missing verse 9 0:59-1:08 (slice coverage small 0.00, medium 0.17)
   - WER small 0.0636 / medium 0.2442; coverage small 0.9379 / medium 0.7977; duration 243.93s vs expected 276.8s (ratio 0.881); sha256 `b0350ccf40d80690963b560bc8a940c6aad338bd6c9796fbfbc97acbfe5f19e3`
+- **Ezekiel 22** — missing verse 1 at 0:00–0:02 — "The LORD's message came to me Son of man will you judge the city that is full of murder Then show her all the disgusting things she has done Say This is what the Lord God says You are a city that kills its own people and brings your time of punishment closer You make yourself unclean by making idols …" (small.en+medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 1.00)
+  - WER small 0.1075 / medium 0.3187; coverage small 0.8938 / medium 0.6865; duration 277.93s vs expected 308.8s (ratio 0.9); sha256 `d7c2ec023f6c8d9e83e986f0bbb0dcc74f596e06aa48e333517937e74edbc361`
+- **Ezekiel 26** — missing verse 18 at 3:17 — "of your fall The islands in the sea are terrified because you are gone The Lord GOD says I will make you an empty city like cities where no one lives I will bring the deep sea over you and the great waters will cover you Then I will bring you down to the grave to join the people of …" (small.en+medium.en)
+  - audio check: unclear: missing verse 18 2:45-2:54 (slice coverage small 0.33, medium 0.75)
+  - WER small 0.1431 / medium 0.2736; coverage small 0.8585 / medium 0.7327; duration 212.78s vs expected 254.4s (ratio 0.836); sha256 `9cf8e34d83bbdf91fde0e90509079395b2fc6cd1e4428451a083d533300e8063`
+- **Ezekiel 27** — missing verse 3 at 0:08 — "Tyre the city at the edge of the sea the trader with people from many lands by the sea The Lord GOD says" (medium.en)
+  - audio check: confirmed: missing verse 3 0:00-0:09 (slice coverage small 0.25, medium 0.00)
+  - WER small 0.0232 / medium 0.3858; coverage small 0.9781 / medium 0.6181; duration 298.11s vs expected 310.0s (ratio 0.962); sha256 `987b43205a9e7bd38306d9cd7ada774780b633d2b97d7c93976e3355390c8064`
 
 ## UNCERTAIN
 
@@ -4924,6 +4933,24 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Ezekiel 18** — missing verse 11 at 1:24 — "The son eats food offered to idols at the mountain shrines" (small.en)
   - audio check: unclear: missing verse 11 1:15-1:25 (slice coverage small 1.00, medium 0.00)
   - small.en only: missing 'The son eats food offered to idols at the mountain shrines'; WER small 0.0415 / medium 0.0127; coverage small 0.9793 / medium 0.9919; sha256 `83fddf0fda41b9c7e465a87f9849f6b2f89729159ad7eb4ec3011c2a7c8dfea5`
+- **Ezekiel 19** — missing verse 1 at 0:29–0:30 — "Sing a sad song for the princes of Israel Say What a lioness your mother was among the lions She lay down among the young lions and raised her cubs She raised one of her cubs and he became a strong young lion He learned to hunt and he attacked people The nations heard about him He was caught in …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'Sing a sad song for the princes of Israel Say What a lioness your mother was among the lions She lay down among the young lions and raised her cubs She raised one of her cubs and he became a strong young lion He learned to hunt and he attacked people The nations heard about him He was caught in …'; coverage unclear (small 0.991, medium 0.700; pass needs both >= 0.96); WER small 0.0121 / medium 0.3061; coverage small 0.9909 / medium 0.7; sha256 `ea87822f3c3b16117cf9748c5f183ed616b9285f294002938797881cd36982b6`
+- **Ezekiel 20** — audio slice contains the disputed words; the models still disagree (coverage small 0.907, medium 0.773)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) refuted: missing verse 8 1:08-1:17 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.907, medium 0.773); WER small 0.095 / medium 0.2293; coverage small 0.907 / medium 0.7734; sha256 `121f4596f674e505da3595b62b8a5cf1923410fe38c985f278d5b98c79b75559`
+- **Ezekiel 21** — audio slice contains the disputed words; the models still disagree (coverage small 0.905, medium 0.706)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.905, medium 0.706); WER small 0.0969 / medium 0.2953; coverage small 0.9054 / medium 0.7058; sha256 `36e0c0d60262a618167de8dff873c60a7c0b41ca9624f47c39629a155698d812`
+- **Ezekiel 23** — missing verse 1 at 0:00–0:02 — "The LORD's message came to me again Son of man there were two women daughters of the same mother When they were young they were unfaithful in Egypt Even in their youth they gave themselves to others there The older sister was named Oholah and her sister was Oholibah They became mine and they had sons and daughters Oholah is …" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00)
+  - medium.en only: missing 'The LORD's message came to me again Son of man there were two women daughters of the same mother When they were young they were unfaithful in Egypt Even in their youth they gave themselves to others there The older sister was named Oholah and her sister was Oholibah They became mine and they had sons and daughters Oholah is …'; coverage unclear (small 0.986, medium 0.709; pass needs both >= 0.96); WER small 0.0172 / medium 0.3307; coverage small 0.9862 / medium 0.7089; sha256 `d60f1da6f0186b0d671fe3f69b8f562add4b93dfa23da440ffe2963c8acad99c`
+- **Ezekiel 24** — audio slice contains the disputed words; the models still disagree (coverage small 0.805, medium 0.638)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.92)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.805, medium 0.638); WER small 0.1975 / medium 0.3633; coverage small 0.8052 / medium 0.6381; sha256 `d4385576de1e0d17ff5ff9ba0c05b14ea7f3b8f68781fdf3d9a25305ab71bef0`
+- **Ezekiel 28** — audio slice contains the disputed words; the models still disagree (coverage small 0.859, medium 0.760)
+  - audio check: refuted: missing verse 6 0:36-0:45 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.859, medium 0.760); WER small 0.1425 / medium 0.2412; coverage small 0.859 / medium 0.7602; sha256 `b60ad33521b3ab385b92221674a7eb93c75ea1e6edbce2e3bac934d0103cd09a`
 
 ## Script
 
