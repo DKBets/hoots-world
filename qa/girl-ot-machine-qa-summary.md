@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 20
+- Scored chapters: 30
 - PASS: 0
-- FAIL: 14
-- UNCERTAIN: 6 (jsonl verdict UNSURE)
-- Still to score: 909 Old Testament chapters
+- FAIL: 20
+- UNCERTAIN: 10 (jsonl verdict UNSURE)
+- Still to score: 899 Old Testament chapters
 
 ## PASS
 
@@ -128,6 +128,31 @@ None yet.
 - **Genesis 19** — repeated verse 24 at 4:21–4:24 — "And one night Nana saw that a man was gifting" (small.en+medium.en)
   - audio check: confirmed: inserted verse 24 3:17-3:41 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 24 4:11-4:35 (slice coverage small 1.00, medium 0.96) refuted: repeated verse 24 4:20-4:30 (slice coverage small 0.90, medium 1.00, times 0/1)
   - WER small 0.2454 / medium 0.3388; coverage small 0.9661 / medium 0.8737; duration 384.6s vs expected 389.6s (ratio 0.987); sha256 `b5b34f7b1f08ad250e31c43cdabdf8afd35672ff0cd336240d86148a865f4100`
+- **Genesis 21** — missing verse 14 at 1:49 — "Abraham took some bread and a skin bag of water He gave them to Hagar and put them on her shoulder He sent her away with the boy She wandered in the desert of Beersheba When the water was all gone she put the boy under a bush Then she went and sat down" (small.en+medium.en)
+  - audio check: confirmed: missing verse 14 1:28-1:37 (slice coverage small 0.17, medium 0.25)
+  - WER small 0.1322 / medium 0.2447; coverage small 0.8678 / medium 0.7584; duration 238.98s vs expected 263.2s (ratio 0.908); sha256 `a2dc90ea8d5ef519974db369de3ca2b5fe7b77e7a176ce7c156bb125b5d1e41c`
+- **Genesis 24** — inserted verse 48 at 6:18–7:01 — "the Lord And he praised me and said blessed be the Lord your God And he said blessed be the Lord your God for the great canyon and desert And I again placed my feet and knelt in prayer to the Lord And he asked me if Yahweh God is with you tell me and welcome you in person And …" (small.en+medium.en)
+- **Genesis 24** — inserted verse 48 at 7:02–7:23 — "And he asked me if Yahweh God is with you tell me your family is blessed with so many sons And he asked me if Yahweh God is with you tell me your lineage is blessed with so many sons And he asked me if Yahweh God is with you tell me your lineage is blessed with so many sons" (small.en+medium.en)
+- **Genesis 24** — repeated verse 48 at 6:16–6:18 — "bowed down and worshipped the Lord" (small.en+medium.en)
+- **Genesis 24** — repeated verse 48 at 6:23–6:26 — "said blessed be the Lord your God" (small.en+medium.en)
+- **Genesis 24** — repeated verse 48 at 6:44–6:48 — "And he asked me if Yahweh God is with you tell me" (small.en+medium.en)
+- **Genesis 24** — repeated verse 48 at 6:57–7:06 — "and I again placed my feet and knelt in prayer to the Lord And he asked me if Yahweh God is with you tell me your" (small.en+medium.en)
+- **Genesis 24** — repeated verse 48 at 7:14–7:23 — "is blessed with so many sons And he asked me if Yahweh God is with you tell me your lineage is blessed with so many sons" (small.en+medium.en)
+  - audio check: confirmed: inserted verse 48 6:17-6:41 (slice coverage small 1.00, medium 1.00) unclear: inserted verse 48 7:01-7:25 (slice coverage small 1.00, medium 0.00) refuted: repeated verse 48 6:56-7:12 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - WER small 0.1606 / medium 0.3044; coverage small 0.9563 / medium 0.7081; duration 590.46s vs expected 640.0s (ratio 0.923); sha256 `80b9131f02b68c960dae8addf02ddf1cfe0f82c0a2ba72feb654be9ae3ac2ebd`
+- **Genesis 25** — missing verse 23 at 2:53 — "said to her Two nations are inside you Two peoples will come from you and go separate ways One will be stronger than the other" (small.en)
+- **Genesis 25** — missing verse 1 at 0:00–0:01 — "Abraham married another wife Her name was Keturah She had these sons with him Zimran Jokshan Medan Midian Ishbak and Shuah Jokshan was the father of Sheba and Dedan Dedan's sons were the Asshurim the Letushim and the Leummim Midian's sons were Ephah Epher Hanoch Abida and Eldaah All" (medium.en)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) confirmed: missing verse 23 2:43-2:52 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.0821 / medium 0.3176; coverage small 0.9179 / medium 0.69; duration 266.03s vs expected 263.2s (ratio 1.011); sha256 `d3e799f360c7f760cc0eca5368f78f3cc0cabcd9e85558644a70f5099c834a26`
+- **Genesis 27** — missing verse 25 at 3:11 — "Bring me some of the meat to eat my son Then I will give you my blessing So Jacob brought it to him and" (small.en+medium.en)
+  - audio check: confirmed: missing verse 25 3:01-3:10 (slice coverage small 0.08, medium 0.08)
+  - WER small 0.1654 / medium 0.159; coverage small 0.841 / medium 0.8494; duration 367.1s vs expected 432.8s (ratio 0.848); sha256 `b6db3d796671daafa22605fa57b7491ea6bccb7adb349bd48de42d65f058af7f`
+- **Genesis 29** — coverage low on both models (small 0.852, medium 0.855); models also disagree on other spans; agreed defects still fail the chapter
+  - WER small 0.156 / medium 0.152; coverage small 0.8519 / medium 0.8545; duration 256.73s vs expected 305.2s (ratio 0.841); sha256 `58683f6d1645f21d169fc65137d68af21992acb8a69f7f56641dcf5d9472c04b`
+- **Genesis 30** — missing verse 21 at 2:25 — "Later she had a daughter and named her Dinah" (small.en)
+- **Genesis 30** — missing verse 15 at 1:36 — "son's mandrakes too Rachel said All right Jacob can spend tonight with you in return for your" (medium.en)
+  - audio check: confirmed: missing verse 15 1:27-1:37 (slice coverage small 0.17, medium 0.25) refuted: missing verse 21 2:16-2:26 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.0273 / medium 0.1525; coverage small 0.9769 / medium 0.857; duration 340.1s vs expected 380.4s (ratio 0.894); sha256 `443af245b5ee9ebded99968ca653582015bf0acd2711a3f3abc627ee1801e619`
 
 ## UNCERTAIN
 
@@ -150,6 +175,18 @@ None yet.
 - **Genesis 20** — missing verse 3 at 0:21 — "You are going to die because of" (medium.en)
   - audio check: unclear: missing verse 3 0:12-0:22 (slice coverage small 0.71, medium 0.71)
   - medium.en only: missing 'You are going to die because of'; coverage unclear (small 0.984, medium 0.910; pass needs both >= 0.96); WER small 0.023 / medium 0.0922; coverage small 0.9839 / medium 0.9101; sha256 `78556b073cbb1ce3ca96f79a48bb4bf12ee024c3f2a503104ee9c24eef0bd7d2`
+- **Genesis 22** — missing verse 4 at 0:58 — "and saw the place far away Abraham said to his servants Stay here with the donkey The boy and I will go over there We will worship" (medium.en)
+  - audio check: unclear: missing verse 4 0:47-0:56 (slice coverage small 0.42, medium 0.42)
+  - medium.en only: missing 'and saw the place far away Abraham said to his servants Stay here with the donkey The boy and I will go over there We will worship'; coverage unclear (small 0.974, medium 0.593; pass needs both >= 0.96); WER backstop on one model (small 0.029, medium 0.412); WER small 0.0293 / medium 0.4121; coverage small 0.9744 / medium 0.5934; sha256 `17af77c5284d3b175a32cb46d5709bab68051591aed12b0b44645e1cd197342d`
+- **Genesis 23** — audio slice contains the disputed words; the models still disagree (coverage small 0.989, medium 0.903)
+  - audio check: refuted: repeated verse 16 1:51-1:59 (slice coverage small 0.60, medium 0.60, times 0/0)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.989, medium 0.903); WER small 0.0271 / medium 0.1086; coverage small 0.9887 / medium 0.9027; sha256 `f4d204f58871106a4c6f9936b9e571ab9c14e63549c079ab3338a702a2a32807`
+- **Genesis 26** — audio slice contains the disputed words; the models still disagree (coverage small 0.798, medium 0.842)
+  - audio check: refuted: missing verse 26 3:37-3:46 (slice coverage small 0.83, medium 0.92) refuted: missing verse 29 3:58-4:08 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.798, medium 0.842); WER small 0.2072 / medium 0.1638; coverage small 0.7978 / medium 0.8424; sha256 `401125bd31ebf6be30f8c1c6e0d2fb3cf73001b374bd325fa03b69302c92bdab`
+- **Genesis 28** — audio slice contains the disputed words; the models still disagree (coverage small 0.981, medium 0.833)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 0.92)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.981, medium 0.833); WER small 0.0195 / medium 0.172; coverage small 0.9805 / medium 0.8333; sha256 `33742cdd9dcefbed568c799ba0729d790429e90e513b90cae0ba213d8c0cc14f`
 
 ## Script
 
