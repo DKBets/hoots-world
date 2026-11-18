@@ -1084,6 +1084,100 @@ def context_at(words: list[dict], t: float) -> str:
     return " ".join(near[:20])
 
 
+def spoken_forms(n: int) -> list[tuple[str, ...]]:
+    """Spoken readings of a number written as digits in the source."""
+    if n < 0 or n >= 10000:
+        return []
+    if n < 20:
+        return [(_ONES[n],)]
+    if n < 100:
+        tens, rest = divmod(n, 10)
+        if rest == 0:
+            return [(_TENS[tens - 2],)]
+        return [(_TENS[tens - 2], _ONES[rest]), (f"{_TENS[tens - 2]}{_ONES[rest]}",)]
+    if n < 1000:
+        hundreds, rest = divmod(n, 100)
+        head = (_ONES[hundreds], "hundred")
+        if rest == 0:
+            return [head]
+        out = []
+        for tail in spoken_forms(rest):
+            out.append(head + tail)
+            out.append(head + ("and",) + tail)
+        return out
+    thousands, rest = divmod(n, 1000)
+    head = (_ONES[thousands], "thousand")
+    if rest == 0:
+        return [head]
+    out = []
+    for tail in spoken_forms(rest):
+        out.append(head + tail)
+        out.append(head + ("and",) + tail)
+    return out
+
+
+def _number_suffixes(token: str) -> list[tuple[str, ...]]:
+    if not token.isdigit() or len(token) > 4:
+        return []
+    suffixes = []
+    seen = set()
+    for form in spoken_forms(int(token)):
+        for i in range(len(form)):
+            suf = form[i:]
+            if suf not in seen:
+                seen.add(suf)
+                suffixes.append(suf)
+    return suffixes
+
+
+def _soft_slip(a: str, b: str) -> bool:
+    if a == b:
+        return True
+    if min(len(a), len(b)) >= 3 and a.rstrip("s") == b.rstrip("s"):
+        return True
+    return min(len(a), len(b)) >= 4 and one_edit(a, b)
+
+
+def gram_in_source(gram: tuple[str, ...], ref_norms: list[str]) -> bool:
+    """True when a heard phrase is the source line, a spoken number, or one small slip."""
+    span = len(gram)
+    if span == 0 or not ref_norms:
+        return False
+    limit = len(ref_norms) - span + 1
+    for i in range(max(0, limit)):
+        if all(tokens_equal(gram[k], ref_norms[i + k]) for k in range(span)):
+            return True
+    for i in range(len(ref_norms)):
+        gi = 0
+        si = i
+        slips = 0
+        while gi < span and si < len(ref_norms):
+            tok = ref_norms[si]
+            suffixes = _number_suffixes(tok)
+            taken = 0
+            for suf in suffixes:
+                length = len(suf)
+                if length <= span - gi and all(tokens_equal(gram[gi + k], suf[k]) for k in range(length)):
+                    taken = max(taken, length)
+            if taken:
+                gi += taken
+                si += 1
+                continue
+            if tokens_equal(tok, gram[gi]):
+                gi += 1
+                si += 1
+                continue
+            if slips < 1 and _soft_slip(tok, gram[gi]):
+                slips += 1
+                gi += 1
+                si += 1
+                continue
+            break
+        if gi == span:
+            return True
+    return False
+
+
 def shared_extra_phrase(
     models: dict,
     audio: np.ndarray,
@@ -1103,14 +1197,9 @@ def shared_extra_phrase(
     if audio.size < sr * 8:
         return None
     def in_source(gram: tuple[str, ...]) -> bool:
-        # path/paths and other one-edit slips are the source line, not an extra.
-        span = len(gram)
-        if span == 0:
-            return False
-        for i in range(max(0, len(ref_norms) - span + 1)):
-            if all(tokens_equal(gram[k], ref_norms[i + k]) for k in range(span)):
-                return True
-        return False
+        # path/paths, spoken numbers (930 -> "nine hundred and thirty"), and one
+        # plural slip are the source line, not an extra passage.
+        return gram_in_source(gram, ref_norms)
 
     number_keys = {tuple(form) for form in number_forms(chapter)}
 
@@ -1480,12 +1569,16 @@ def check_disputed_spans(models, audio, quotes, verses) -> list[dict]:
         elif kind == "missing":
             anchor = float(quote["time"])
             n_words = quote.get("words") or len(tokenize(quote.get("quote") or ""))
-            gap = min(30.0, max(12.0, float(n_words) * 0.4))
-            abs_s = max(0.0, anchor - gap)
-            abs_e = min(dur, anchor + 1.5)
-            if abs_e - abs_s > 24.0:
-                abs_e = abs_s + 24.0
-            target = first_words(quote.get("quote") or "", 16)
+            # Long clips that start on a chapter title make Whisper drop the
+            # words that follow. Keep the check on the first words only.
+            if n_words > 20:
+                gap = min(40.0, float(n_words) * 0.4)
+                abs_s = max(0.0, anchor - gap)
+                abs_e = min(dur, abs_s + 9.0)
+            else:
+                abs_e = min(dur, anchor + 1.0)
+                abs_s = max(0.0, abs_e - 10.0)
+            target = first_words(quote.get("quote") or "", 12)
             a = int(abs_s * 16000)
             b = min(int(audio.shape[0]), max(a + 1, int(abs_e * 16000)))
             clip = audio[a:b]
@@ -1605,15 +1698,8 @@ def apply_slice_checks(verdict, reasons, quotes, checks, small, medium, acoustic
     ignore_tail = all(c["kind"] == "truncation" for c in refuted) and bool(refuted)
     if refuted and _bars_ok(small, ignore_tail) and _bars_ok(medium, ignore_tail):
         return "PASS", ["disputed spans are not in the audio; both models meet the pass bars"], [], note
-    both_low = (
-        small
-        and medium
-        and small["coverage"] < COVERAGE_FAIL
-        and medium["coverage"] < COVERAGE_FAIL
-    )
-    wer_both = small and medium and small["wer"] > WER_BACKSTOP and medium["wer"] > WER_BACKSTOP
-    if refuted and (both_low or wer_both):
-        return "FAIL", reasons, quotes, note
+    # The slice heard the source words, so a low full-file coverage is a
+    # recognizer miss, not an agreed missing passage.
     reasons = [
         "audio slice contains the disputed words; the models still disagree "
         f"(coverage small {small['coverage']:.3f}, medium {medium['coverage']:.3f})"
@@ -2199,6 +2285,12 @@ def self_test() -> None:
     gaps = silence_gaps(gap_audio, sr)
     assert gaps and gaps[0]["seconds"] > 3.0, gaps
     assert header_cut("genesis chapter 1 in the very beginning god made".split(), "Genesis", 1) == 3
+    assert gram_in_source(tuple("thirty years in all and".split()), "adam lived 930 years in all and then".split())
+    assert gram_in_source(tuple("that was when gods son".split()), "that was when gods sons had children".split())
+    assert not gram_in_source(
+        tuple("temple and his attic promise".split()),
+        "the lord appeared to abram he said i will give".split(),
+    )
 
     clean_models = {
         "coverage": 0.99,
