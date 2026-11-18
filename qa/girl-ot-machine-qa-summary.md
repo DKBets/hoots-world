@@ -58,19 +58,20 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 220
-- PASS: 6
-- FAIL: 146
-- UNCERTAIN: 68 (jsonl verdict UNSURE)
-- Still to score: 709 Old Testament chapters
+- Scored chapters: 230
+- PASS: 7
+- FAIL: 150
+- UNCERTAIN: 73 (jsonl verdict UNSURE)
+- Still to score: 699 Old Testament chapters
 
 ## PASS
 
-6 chapters. Both models agreed there was no missing, invented, or repeated passage.
+7 chapters. Both models agreed there was no missing, invented, or repeated passage.
 
 - Genesis 42
 - Leviticus 8, 12, 17–18
 - Deuteronomy 11
+- Judges 14
 
 ## FAIL
 
@@ -1063,6 +1064,33 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Judges 8** — repeated verse 20 at 3:01–3:03 — "didn't pull out his sword" (small.en+medium.en)
   - audio check: refuted: repeated verse 15 2:15-2:26 (slice coverage small 0.91, medium 0.91, times 0/0) confirmed: inserted verse 20 2:58-3:07 (slice coverage small 0.89, medium 0.89) refuted: repeated verse 20 3:00-3:09 (slice coverage small 1.00, medium 1.00, times 1/1)
   - WER small 0.0572 / medium 0.2132; coverage small 0.9529 / medium 0.7957; duration 317.61s vs expected 356.4s (ratio 0.891); sha256 `54cb9b7fd088266680c49278378355f6ad14d6c757ceee6d8912df3c895bfffa`
+- **Judges 11** — missing verse 18 at 3:05–3:12 — "They came along the east side of Moab and camped on" (small.en+medium.en)
+- **Judges 11** — missing verse 19 at 3:22–3:36 — "sent messengers to Sihon king of the Amorites who ruled in Heshbon They said Please let us go through your land to our own place But Sihon didn't trust" (small.en+medium.en)
+- **Judges 11** — missing verse 20 at 3:37–3:40 — "to go through his land He gathered all" (small.en+medium.en)
+- **Judges 11** — inserted verse 18 at 3:05–3:12 — "He gathered all his army camp Israel and Israel defeated him Then" (small.en+medium.en)
+- **Judges 11** — inserted verse 18 at 3:13–3:19 — "Lord gave Sihan and his army to Israel and Israel defeated him Then" (small.en+medium.en)
+- **Judges 11** — inserted verse 18 at 3:19–3:22 — "Lord gave Sihan and his army to" (small.en+medium.en)
+- **Judges 11** — inserted verse 19 at 3:22–3:36 — "and Israel defeated him Then the Lord gave Sihan and his army to Israel and Israel defeated him Then the Lord gave Sihan and his army to Israel and" (small.en+medium.en)
+- **Judges 11** — inserted verse 21 at 3:46–3:49 — "gave Sihan and his army to Israel and" (small.en+medium.en)
+- **Judges 11** — inserted verse 21 at 3:57–4:02 — "him Then the Lord gave Sihan and his army to Israel" (small.en+medium.en)
+- **Judges 11** — repeated verse 18 at 3:15–3:36 — "Israel and Israel defeated him Then the Lord gave Sihan and his army to Israel and Israel defeated him Then the Lord gave Sihan and his army to Israel and Israel defeated him Then the Lord gave Sihan and his army to Israel and Israel" (small.en+medium.en)
+- **Judges 11** — repeated verse 20 at 3:39–4:02 — "the Lord gave Sihan and his army to Israel and Israel defeated him Then the Lord gave Sihan and his army to Israel and Israel defeated him Then the Lord gave Sihan and his army to Israel and Israel defeated him Then the Lord gave Sihan and his army to Israel" (small.en+medium.en)
+  - audio check: refuted: repeated verse 20 3:38-4:02 (slice coverage small 1.00, medium 0.50, times 1/0) refuted: repeated verse 18 3:14-3:38 (slice coverage small 1.00, medium 0.92, times 0/0) confirmed: missing verse 19 3:10-3:19 (slice coverage small 0.17, medium 0.17)
+  - WER small 0.1239 / medium 0.2956; coverage small 0.9034 / medium 0.7298; duration 421.08s vs expected 410.0s (ratio 1.027); sha256 `375f3a2ca386760c88b14ee92fc230db7d16bc26306156379f40555971dde719`
+- **Judges 12** — inserted before verse 1 at 0:14 — "jeff thought answered my people" (small.en+medium.en windows)
+- **Judges 12** — missing verse 1 at 0:00–0:02 — "The men of Ephraim gathered their army and crossed the river to Zaphon They said to Jephthah Why did you go to fight the Ammonites without calling us to go with you We are going to burn your house down with you in it Jephthah answered My people and I had a big fight with the Ammonites I called you …" (medium.en)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse ? 0:13-0:25 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.0438 / medium 0.4; coverage small 0.9616 / medium 0.6027; duration 136.49s vs expected 146.0s (ratio 0.935); sha256 `3da09464dfd2e5f5d55e67686932c4df23378174354c40bab366b661a0b836bd`
+- **Judges 16** — inserted before verse 1 at 0:00 — "samuel samuel samson went to" (small.en+medium.en windows)
+- **Judges 16** — missing verse 4 at 0:44 — "Some time later Samson fell in love with a woman named Delilah who lived in the Valley of Sorek" (small.en)
+- **Judges 16** — missing verse 1 at 0:00–0:02 — "Samson went to Gaza There he saw a woman known for living a sinful life and he stayed with her The people of Gaza heard Samson is here So they surrounded the place and waited quietly all night by the city gate They said At sunrise we will kill him But Samson stayed only until midnight Then he got up …" (medium.en)
+  - audio check: confirmed: missing verse 1 0:00-0:09 (slice coverage small 0.00, medium 0.00) refuted: missing verse 4 0:35-0:45 (slice coverage small 0.83, medium 0.83) confirmed: inserted verse ? 0:00-0:12 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.0367 / medium 0.2075; coverage small 0.9738 / medium 0.8071; duration 320.34s vs expected 381.6s (ratio 0.839); sha256 `3a1737af4db4f269b122d23ee941383972c9f29cf49266f5d81829aa9f00236b`
+- **Judges 18** — inserted before verse 1 at 0:07 — "and the nation sought savior every" (small.en+medium.en windows)
+- **Judges 18** — inserted verse 1 at 0:05–0:14 — "everyone believed in their God according to their minds Everything was up to you but God caked into the world and the nations sought Savior Every niece sought" (small.en)
+- **Judges 18** — missing verse 1 at 0:00–0:02 — "In those days Israel had no king The tribe of Dan was looking for a place of their own to live because they had not yet received land among the tribes of Israel So the people of Dan sent five brave men from their clans from Zorah and Eshtaol to spy out the land and explore it They" (medium.en)
+  - audio check: unclear: missing verse 1 0:00-0:09 (slice coverage small 0.58, medium 0.00) confirmed: inserted verse 1 0:04-0:20 (slice coverage small 0.96, medium 0.92) confirmed: inserted verse ? 0:06-0:18 (slice coverage small 1.00, medium 1.00)
+  - WER small 0.0489 / medium 0.2983; coverage small 0.9857 / medium 0.7184; duration 285.78s vs expected 335.2s (ratio 0.853); sha256 `ac92be11f5502fef591fa8a538ba1163577379ba12d1f4202d55da9219b22f10`
 
 ## UNCERTAIN
 
@@ -1282,6 +1310,22 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Judges 9** — audio slice contains the disputed words; the models still disagree (coverage small 0.964, medium 0.631)
   - audio check: refuted: repeated verse 11 1:39-1:48 (slice coverage small 0.88, medium 1.00, times 0/1)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.964, medium 0.631); WER small 0.0418 / medium 0.3759; coverage small 0.9639 / medium 0.6306; sha256 `025af5a40737bdf3285562ca4e8e8702cf81759f18c8622723b054092e403cba`
+- **Judges 10** — audio slice contains the disputed words; the models still disagree (coverage small 0.963, medium 0.785)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 0.92, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.963, medium 0.785); WER small 0.0395 / medium 0.2222; coverage small 0.963 / medium 0.7852; sha256 `a8b06b14dc563761469f39bafaea44989a5c00819bdcdd53e7b8b124e24655e2`
+- **Judges 13** — audio slice contains the disputed words; the models still disagree (coverage small 0.970, medium 0.944)
+  - audio check: refuted: repeated verse 7 1:09-1:19 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.970, medium 0.944); WER small 0.0327 / medium 0.0698; coverage small 0.9703 / medium 0.9435; sha256 `6f515855e453d53658338b84ed411f5b02c00a891a9b1df6cb1a109f593000eb`
+- **Judges 15** — repeated verse 11 at 1:28–1:29 — "in the Rock of Edom" (small.en)
+- **Judges 15** — missing verse 8 at 1:08 — "attacked them fiercely and defeated many of them" (medium.en)
+  - audio check: unclear: missing verse 8 0:59-1:09 (slice coverage small 1.00, medium 0.12) refuted: repeated verse 11 1:27-1:35 (slice coverage small 1.00, medium 1.00, times 1/1)
+  - small.en only: repeated 'in the Rock of Edom'; medium.en only: missing 'attacked them fiercely and defeated many of them'; WER small 0.0072 / medium 0.0358; coverage small 0.9928 / medium 0.9731; sha256 `f58fe0639865b8864668c5263c173786639f5273e59e6b8cbc77b9afb637ab2e`
+- **Judges 17** — audio slice contains the disputed words; the models still disagree (coverage small 0.759, medium 0.503)
+  - audio check: refuted: missing verse 4 0:27-0:36 (slice coverage small 1.00, medium 0.92)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.759, medium 0.503); WER small 0.2411 / medium 0.506; coverage small 0.7589 / medium 0.503; sha256 `c39e4e596e05fb11144220d11c07327e59e8748ff9c4c30083f50190ff1a333e`
+- **Judges 19** — audio slice contains the disputed words; the models still disagree (coverage small 0.977, medium 0.946)
+  - audio check: refuted: missing verse 11 1:45-1:55 (slice coverage small 0.89, medium 0.89) refuted: missing verse 8 1:09-1:19 (slice coverage small 0.83, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.977, medium 0.946); WER small 0.0274 / medium 0.0592; coverage small 0.977 / medium 0.9463; sha256 `93f1263a36d66974264223582c35713b8739f0ae6ceec53fafd296d353cf1892`
 
 ## Script
 
