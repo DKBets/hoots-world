@@ -58,11 +58,11 @@ words clears that span. A split slice stays UNCERTAIN.
 
 ## Counts
 
-- Scored chapters: 70
+- Scored chapters: 80
 - PASS: 1
-- FAIL: 48
-- UNCERTAIN: 21 (jsonl verdict UNSURE)
-- Still to score: 859 Old Testament chapters
+- FAIL: 54
+- UNCERTAIN: 25 (jsonl verdict UNSURE)
+- Still to score: 849 Old Testament chapters
 
 ## PASS
 
@@ -310,6 +310,49 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Exodus 20** — missing verse 18 at 2:07 — "They saw the lightning and the smoking mountain They shook with fear and stood far away They said to Moses You speak to us and we will listen" (medium.en)
   - audio check: confirmed: missing verse 10 1:04-1:13 (slice coverage small 0.08, medium 0.00) refuted: missing verse 18 1:56-2:05 (slice coverage small 0.92, medium 0.92)
   - WER small 0.1326 / medium 0.0585; coverage small 0.8674 / medium 0.9415; duration 190.98s vs expected 205.2s (ratio 0.931); sha256 `fc13abc67163eae5ec80da7da696cb9f73f6931d85a0694ac3f7c028ab61c2ac`
+- **Exodus 23** — missing verse 1 at 0:00–0:02 — "Do not spread lies about others Don't help guilty people by telling lies in court Do not follow the crowd in doing wrong When you speak in court don't go along with the crowd and twist the truth And do not take the side of a poor person in court just because he is poor If you see your enemy's …" (small.en+medium.en)
+- **Exodus 23** — missing verse 11 at 1:13–1:16 — "in the seventh year let the land rest and don't plant anything Then the poor people can eat what grows there and the wild animals can eat what is left Do the same with your vineyards and olive trees Work for six days" (small.en+medium.en)
+- **Exodus 23** — missing verse 12 at 1:16–1:17 — "rest on the seventh day Then your ox and donkey can rest Your" (small.en+medium.en)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) refuted: missing verse 11 0:55-1:04 (slice coverage small 1.00, medium 1.00) unclear: missing verse 12 1:07-1:17 (slice coverage small 1.00, medium 0.25)
+  - WER small 0.3463 / medium 0.3475; coverage small 0.6687 / medium 0.655; duration 257.49s vs expected 320.0s (ratio 0.805); sha256 `6cf97729413cf340f7d09c18c8e750c99be842fbe2e232a5299ff2f980fabce8`
+- **Exodus 24** — missing verse 1 at 0:00–0:02 — "Then the LORD said to Moses Come up the mountain to me Bring Aaron Nadab Abihu and 70 of the leaders of Israel All of you must worship from a distance Only Moses may come near the LORD The others must not come near and the people must not come up the mountain with him Moses went and told the …" (small.en+medium.en)
+- **Exodus 24** — missing verse 18 at 2:29–2:33 — "as he climbed up the mountain He stayed on the mountain for 40 days" (small.en+medium.en)
+- **Exodus 24** — inserted verse 18 at 2:26–2:28 — "inside the cloud and sat on" (small.en+medium.en)
+- **Exodus 24** — inserted verse 18 at 2:29–2:33 — "of Israel And Moses said I would like to see your glory glory glory" (small.en+medium.en)
+- **Exodus 24** — inserted verse 18 at 2:34–3:44 — "Moses saw the cloud I would like to see your glory glory glory glory glory glory glory Glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory glory …" (small.en+medium.en)
+- **Exodus 24** — repeated verse 18 at 2:39–2:42 — "And Moses said I would like to see your glory glory glory" (small.en+medium.en)
+  - audio check: unclear: inserted verse 18 2:33-2:57 (slice coverage small 1.00, medium 0.58) unclear: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 0.00) confirmed: missing verse 18 2:20-2:30 (slice coverage small 0.33, medium 0.00)
+  - WER small 0.6599 / medium 0.9459; coverage small 0.6532 / medium 0.6239; duration 224.6s vs expected 177.6s (ratio 1.265); sha256 `50c1296fa4717106cfba79a819a4e2b2ada77f9dc5a0c7712585afa29812178a`
+- **Exodus 25** — missing verse 2 at 0:43–0:45 — "from everyone whose heart wants" (small.en+medium.en)
+- **Exodus 25** — missing verse 3 at 1:19–1:26 — "should accept from them gold silver" (small.en+medium.en)
+- **Exodus 25** — inserted verse 2 at 0:09–0:28 — "bring me an offering As Rhett said instructions Give me what they buried possessions and I will be the member of their families They will bring me an offering and I will be the member of their families They will make unto me a feast and I will be the member of their families They will" (small.en+medium.en)
+- **Exodus 25** — inserted verse 2 at 0:29–0:40 — "and I will be the member of their families They will make unto me a feast and I will be the member of their families The Lord said to Moses Tell me of" (small.en+medium.en)
+- **Exodus 25** — inserted verse 2 at 0:40–0:42 — "vineyards and they will bring me an" (small.en+medium.en)
+- **Exodus 25** — inserted verse 2 at 0:43–0:45 — "And I will give you access" (small.en+medium.en)
+- **Exodus 25** — inserted verse 2 at 0:45–0:57 — "each teave and stade as it was designed in the palace And they will make unto me a feast and I will be the member of their families They will bring me an offering and I will" (small.en+medium.en)
+- **Exodus 25** — inserted verse 3 at 0:57–1:08 — "you access to each teave and stade They will make unto me a feast and I will be the member of their families They will make unto me a feast and I will be" (small.en+medium.en)
+- **Exodus 25** — inserted verse 3 at 1:08–1:18 — "member of their families They will bring me an offering and I will give you access to each teave and stade They will make unto me a feast and I will give" (small.en+medium.en)
+- **Exodus 25** — inserted verse 3 at 1:19–1:26 — "access to each teave and stade They will make unto me a feast and I will give you access to each teave" (small.en+medium.en)
+- **Exodus 25** — repeated verse 2 at 0:19–0:23 — "and I will be the member of their families They will" (small.en+medium.en)
+- **Exodus 25** — repeated verse 2 at 0:24–0:37 — "and I will be the member of their families They will bring me an offering and I will be the member of their families They will make unto me a feast and I will be the member of their families" (small.en+medium.en)
+- **Exodus 25** — repeated verse 2 at 0:37–0:40 — "The Lord said to Moses Tell" (small.en+medium.en)
+- **Exodus 25** — repeated verse 2 at 0:41–0:44 — "they will bring me an offering And I will" (small.en+medium.en)
+- **Exodus 25** — repeated verse 2 at 0:49–0:59 — "they will make unto me a feast and I will be the member of their families They will bring me an offering and I will give you access to each teave and stade" (small.en+medium.en)
+- **Exodus 25** — repeated verse 2 at 1:00–1:18 — "They will make unto me a feast and I will be the member of their families They will make unto me a feast and I will be the member of their families They will bring me an offering and I will give you access to each teave and stade They will make unto me a feast and I will" (small.en+medium.en)
+- **Exodus 25** — repeated verse 3 at 1:17–1:27 — "and I will give you access to each teave and stade They will make unto me a feast and I will give you access to each teave and stade" (small.en+medium.en)
+  - audio check: refuted: repeated verse 2 0:59-1:23 (slice coverage small 1.00, medium 1.00, times 1/1) unclear: inserted verse 2 0:08-0:32 (slice coverage small 1.00, medium 0.29) refuted: repeated verse 2 0:23-0:43 (slice coverage small 1.00, medium 0.96, times 1/0)
+  - WER small 0.3509 / medium 0.5963; coverage small 0.9629 / medium 0.4565; duration 322.77s vs expected 280.4s (ratio 1.151); sha256 `e5738e01af7a7652e1a251ad3296bb67b2a4001692b5b116e63a4fef8fd3ca49`
+- **Exodus 26** — repeated verse 27 at 2:45–2:46 — "5 for the frames on" (small.en)
+- **Exodus 26** — missing verse 5 at 0:58 — "50 loops on one curtain and" (medium.en)
+  - audio check: confirmed: missing verse 5 0:49-0:59 (slice coverage small 0.33, medium 0.33) unclear: repeated verse 27 2:44-2:52 (slice coverage small 1.00, medium 1.00, times 1/2)
+  - WER small 0.0112 / medium 0.2444; coverage small 0.9944 / medium 0.7598; duration 243.33s vs expected 284.8s (ratio 0.854); sha256 `49da5d723a486af0e40b0ea879a31377825e0ddcaf6594fe0a514bbd6c82825b`
+- **Exodus 29** — missing verse 44 at 0:00–0:02 — "I will also set apart Aaron and his sons to serve me as priests Then I will live among the Israelites and be their God They will know that I am the LORD their God I brought them out of Egypt so I could live among them I am the LORD their God" (small.en+medium.en)
+  - audio check: unclear: missing verse 44 0:00-0:09 (slice coverage small 0.58, medium 0.00)
+  - WER small 0.0647 / medium 0.1622; coverage small 0.9379 / medium 0.8457; duration 357.46s vs expected 451.2s (ratio 0.792); sha256 `8574814a248b347c74a6eff31e1137c69d595fb951576e54f2d16d8eb5e639f4`
+- **Exodus 30** — inserted verse 34 at 4:07–4:08 — "the same amount of each" (small.en)
+- **Exodus 30** — missing verse 1 at 0:29–0:30 — "Make an altar out of acacia wood for burning incense It must be square 18 inches long and 18 inches wide It must be 3 feet high Its horns must be one piece with it Cover its top its sides and its horns with pure gold Put a gold edge all around it Make two gold rings for it below …" (medium.en)
+  - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00) confirmed: inserted verse 34 4:06-4:14 (slice coverage small 1.00, medium 0.80)
+  - WER small 0.0148 / medium 0.3748; coverage small 0.9951 / medium 0.6264; duration 280.32s vs expected 324.4s (ratio 0.864); sha256 `3ac1815ac85bfa0fc6ba946eb3d54150dc31df16dacf6d4c38cd2195abf051fb`
 
 ## UNCERTAIN
 
@@ -378,6 +421,20 @@ words clears that span. A split slice stays UNCERTAIN.
 - **Exodus 15** — audio slice contains the disputed words; the models still disagree (coverage small 0.992, medium 0.660)
   - audio check: refuted: missing verse 1 0:00-0:09 (slice coverage small 1.00, medium 1.00)
   - audio slice contains the disputed words; the models still disagree (coverage small 0.992, medium 0.660); WER small 0.0078 / medium 0.3427; coverage small 0.9922 / medium 0.6604; sha256 `e4b7861a476847d56d6d5f4fc60bbc21f0c54dfe6c2d7bc4e6775556db1a2d48`
+- **Exodus 21** — audio slice contains the disputed words; the models still disagree (coverage small 0.974, medium 0.895)
+  - audio check: refuted: missing verse 3 0:08-0:18 (slice coverage small 1.00, medium 1.00) refuted: missing verse 2 0:02-0:12 (slice coverage small 1.00, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.974, medium 0.895); WER small 0.03 / medium 0.1198; coverage small 0.9735 / medium 0.8952; sha256 `ad39d1edd58241d0efd278744310049f2d5681d9adc8b311e05c1f4329b59cba`
+- **Exodus 22** — repeated verse 15 at 2:17–2:18 — "not have to pay for" (small.en)
+- **Exodus 22** — missing verse 19 at 2:45 — "Anyone who has sexual relations with an animal must be put to death" (medium.en)
+  - audio check: unclear: missing verse 19 2:36-2:46 (slice coverage small 0.00, medium 1.00) refuted: repeated verse 15 2:16-2:24 (slice coverage small 0.80, medium 0.80, times 0/0)
+  - small.en only: repeated 'not have to pay for'; medium.en only: missing 'Anyone who has sexual relations with an animal must be put to death'; WER small 0.0151 / medium 0.0277; coverage small 0.9962 / medium 0.9823; sha256 `452a770adbf6c8ab58f3dc2fb8c381e62ebfdc7f461fdcfc991fa9f259f74fdc`
+- **Exodus 27** — missing verse 7 at 0:45–0:46 — "they are on two sides" (small.en)
+- **Exodus 27** — missing verse 7 at 0:45 — "sides of the altar when it is carried Make the altar hollow out" (medium.en)
+  - audio check: unclear: missing verse 7 0:36-0:46 (slice coverage small 0.33, medium 0.42) unclear: missing verse 7 0:36-0:46 (slice coverage small 0.40, medium 0.00)
+  - small.en only: missing 'they are on two sides'; medium.en only: missing 'sides of the altar when it is carried Make the altar hollow out'; coverage unclear (small 0.987, medium 0.951; pass needs both >= 0.96); WER small 0.0133 / medium 0.0578; coverage small 0.9867 / medium 0.9511; sha256 `6ff4063b42f0d13cade11a1895032b4187fbba09b6f0282eac4ce42349a8289d`
+- **Exodus 28** — audio slice contains the disputed words; the models still disagree (coverage small 0.975, medium 0.715)
+  - audio check: refuted: missing verse 38 4:44-4:54 (slice coverage small 0.88, medium 1.00)
+  - audio slice contains the disputed words; the models still disagree (coverage small 0.975, medium 0.715); WER small 0.0342 / medium 0.2891; coverage small 0.9751 / medium 0.715; sha256 `c6fae483611545e97629985ddcec200020340f82eb461ba765d194feedc40d89`
 
 ## Script
 
